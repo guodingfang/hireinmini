@@ -1,0 +1,101 @@
+@import "../../utils/calendar/calendar.wxss";
+
+.orderlist {
+    background: #fff;
+    margin-top: 20rpx;
+    padding:20rpx 20rpx 10rpx 20rpx;
+}
+
+.order-title {
+    font-size: 32rpx;
+    border-bottom: 1rpx solid #dedede;
+    padding-bottom: 20rpx;
+}
+
+.icon-order {
+    width: 25rpx;
+    height: 29rpx;
+    color: #2ab7ff;
+    margin-right: 8rpx;
+    position: relative;
+    top: 4rpx;
+}
+
+.order-cont {
+    padding-top: 10rpx;
+}
+
+.order-item {
+    height:74rpx;
+    margin-bottom:0;
+}
+
+.order-item view {
+    display: inline-block;
+    margin-right: 30rpx;
+    font-size: 29rpx;
+    max-width:100px;
+    position:relative;
+    top:6rpx;
+}
+
+.order-item .action-item{
+    width:30%;
+    margin-right:15rpx;
+}
+
+.order-item .icon-cancel {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 4rpx;
+    position: relative;
+    top: 4rpx;
+}
+
+.order-item .m-cancel {
+    position: absolute;
+    top: 5rpx;
+    right: 0rpx;
+    margin-right: 0;
+}
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;  
+    z-index:200; 
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}
+.calendar{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:100;
+    border-bottom:1px solid #dedede;
+}
+
+.margintop-shou{
+    margin-top:300rpx;
+}
+.margintop-middle{
+    margin-top:640rpx;
+}
+.margintop-bottom{
+    margin-top:730rpx;
+}
+.margintop-top{
+    margin-top:520rpx;
+}

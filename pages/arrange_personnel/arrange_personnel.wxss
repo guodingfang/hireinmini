@@ -1,0 +1,255 @@
+/* pages/arrange_personnel/arrange_personnel.wxss */
+@import "../../common/lib/weui.wxss";
+
+page {
+    font-size: 30rpx;
+}
+
+form {
+    padding-bottom: 1rpx;
+    display: block;
+}
+
+.pad-fill {
+    padding-top: 10rpx;
+}
+
+.position-r {
+    position: relative;
+}
+
+.order-info {
+    margin-top: 20rpx;
+    padding: 0 25rpx;
+    background: #fff;
+}
+
+.order-info-title {
+    padding: 25rpx 0;
+    border-bottom: 1rpx solid #dedede;
+}
+
+.order-info .img {
+    padding-right: 16rpx;
+    width: 26rpx;
+    height: 30rpx;
+    vertical-align: -3rpx;
+}
+
+.order-info .img1 {
+    padding-right: 16rpx;
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: -2rpx;
+}
+
+.order-info-title .title {
+    display: inline-block;
+}
+
+.order-info-name {
+    display: inline-block;
+    padding: 23rpx 0;
+    padding-right: 20rpx;
+    width: 140rpx;
+    color: #acacac;
+    vertical-align: top;
+}
+
+.content {
+    display: inline-block;
+    padding: 23rpx 0;
+    width: 77%;
+}
+
+.title-name {
+    position: absolute;
+    top: 25rpx;
+    right: 0;
+    color: #ff9a00;
+}
+
+.equipment-info {
+    display: -webkit-flex;
+    display: flex;
+    line-height: 60rpx;
+}
+
+.equipment-info .val {
+    width: 100%;
+}
+
+.personnel-name {
+    display: inline-block;
+    padding-right: 26rpx;
+}
+
+.orange {
+    color: #ff9a00;
+}
+
+.personnel-name image {
+    padding-left: 18rpx;
+}
+
+.prcture-img-list {
+    display: -webkit-flex;
+    display: flex;
+    padding: 10rpx 0;
+}
+
+.prcture-img {
+    padding: 5rpx;
+    flex: 1;
+    height: 167rpx;
+}
+
+.evaluate-content {
+    display: inline-block;
+    padding: 16rpx 0;
+    width: 77%;
+}
+
+.evaluate-name {
+    vertical-align: top;
+}
+
+.pad-wrap {
+    padding: 25rpx 0;
+}
+
+.detail-total .detail-item:not(:last-child) {
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+/*人员安排*/
+
+.arr-main {
+    display: inline-block;
+    text-align: center;
+}
+
+.arr-inp {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.arr-choice {
+    display: inline-block;
+    vertical-align: -1rpx;
+}
+
+.arr-name {
+    display: inline-block;
+    padding: 24rpx 0;
+}
+
+.arrow {
+    position: absolute;
+    right: 0rpx;
+    top: 37rpx;
+    width: 18rpx;
+    height: 30rpx;
+}
+
+.arrow.hasDelIcon {
+    right: 52rpx;
+}
+
+.arr-row {
+    position: relative;
+}
+
+.arrow-add {
+    width: 35rpx;
+    height: 35rpx;
+    vertical-align: middle;
+}
+
+.arr-add {
+    margin-left: 20rpx;
+}
+
+.text {
+    border: 1px solid #f0f0f0;
+    width: 93%;
+    padding: 20rpx;
+    height: 230rpx;
+    overflow: hidden;
+    display: block;
+    border-radius: 10rpx;
+}
+
+.limit {
+    margin-bottom:130rpx;
+    padding-bottom:20rpx;
+}
+
+.client-name {
+    position: relative;
+    border-bottom: 3rpx solid #dedede;
+}
+
+.client-name:last-child {
+    border-bottom: 0;
+}
+
+.client-name .name {
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #333;
+}
+
+.client-name .name-input {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.client-name .name-picker {
+    display: inline-block;
+    width: 100%;
+    vertical-align: -8rpx;
+    text-align: center;
+    padding: 22rpx 0;
+}
+
+.picker-name {
+    padding: 26rpx 0 30rpx 0;
+}
+
+.red-cancel {
+    position: absolute;
+    top: 35rpx;
+    right: 0;
+    width: 40rpx;
+    height: 40rpx;
+}
+.order-info1{
+    margin-top: 20rpx;
+    padding: 0 25rpx;
+    background: #fff;
+    /* height: 300rpx; */
+}
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed; 
+    z-index:200;  
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

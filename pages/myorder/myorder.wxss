@@ -1,0 +1,185 @@
+/* pages/myorder/myorder.wxss */
+@import "../../common/lib/weui.wxss";
+
+.wrap-yang {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+page {
+    background: #f0f0f0;
+    font-size: 30rpx;
+}
+
+.order-bg {
+    padding: 0 25rpx;
+    margin-top: 20rpx;
+    background: #fff;
+}
+
+.order-bottom {
+    padding-bottom: 20rpx;
+}
+
+.title {
+    margin: 15rpx 0;
+    color: #666;
+}
+
+.client-info {
+    background: #fff;
+}
+
+.client-name {
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.client-name .name {
+    display: inline-block;
+    padding: 25rpx 0;
+    width: 180rpx;
+    color: #333;
+    vertical-align: middle;
+}
+
+.client-name .time {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.client-name .time .time-val {
+    width: 170rpx;
+}
+
+.client-name .transit {
+    display: inline-block;
+    padding: 0 48rpx 0 10rpx;
+    vertical-align: middle;
+}
+
+.client-name .name-input {
+    display: inline-block;
+    width: 60%;
+    vertical-align: middle;
+}
+
+.posi-rela {
+    position: relative;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.client-name .search-img {
+    position: absolute;
+    top: 18rpx;
+    right: 20rpx;
+    padding: 5px;
+    width: 46rpx;
+    height: 46rpx;
+    background: #ff9a00;
+    border-radius: 6rpx;
+}
+
+.client-name .order-img {
+    display: inline-block;
+    padding-right: 16rpx;
+    width: 26rpx;
+    height: 30rpx;
+    vertical-align: -2rpx;
+}
+
+.client-name .order-img image {
+    width: 100%;
+    height: 100%;
+}
+
+.client-name .order-num-name {
+    display: inline-block;
+    padding: 25rpx 0;
+    padding-right: 16rpx;
+}
+
+.client-name .order-num {
+    display: inline-block;
+}
+
+.client-name .order-type {
+    display: inline-block;
+    position: absolute;
+    top: 25rpx;
+    right: 0;
+    color: #ff9a00;
+}
+
+.fill-pad-t15 {
+    padding-top: 15rpx;
+}
+
+.order-info-name {
+    display: inline-block;
+    padding: 10rpx 0;
+    padding-right: 20rpx;
+    color: #aaa;
+}
+
+.order-info-val {
+    display: inline-block;
+}
+
+.order-info {
+    padding: 10rpx 0;
+    background: #f7f7f7;
+}
+
+.order-title {
+    padding: 8rpx 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    text-align: center;
+}
+
+.order-title .flex {
+    display: block;
+}
+
+.order-btn {
+    text-align: right;
+}
+
+.order-btn-name {
+    display: inline-block;
+    padding: 6rpx 26rpx;
+    margin: 20rpx 10rpx 0 10rpx;
+    border-radius: 6rpx;
+    background: #ff9a00;
+    color: #fff;
+}
+
+.cancel {
+    background: #dedede;
+    color: #757575;
+}
+
+.order-null {
+    padding-top: 100rpx;
+}
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;  
+    z-index:200; 
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

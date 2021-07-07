@@ -1,0 +1,73 @@
+@import "../../common/lib/weui.wxss";
+
+page {
+    font-size: 30rpx;
+}
+
+.pad {
+    padding: 0 25rpx;
+}
+
+.position-r {
+    position: relative;
+}
+
+.title {
+    margin: 15rpx 0;
+    color: #666;
+}
+
+.client-info {
+    background: #fff;
+}
+
+.client-info .client-name {
+    border-top: 1rpx solid #f0f0f0;
+}
+
+.client-info .client-name:last-child {
+    border: none;
+}
+
+.client-info .img {
+    position: absolute;
+    top: 31rpx;
+    right: 25rpx;
+    width: 20rpx;
+    height: 34rpx;
+}
+
+.client-name .name {
+    height: 100rpx;
+    line-height: 100rpx;
+    color: #333;
+}
+
+.client-name .name-input {
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed; 
+    z-index:200;  
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

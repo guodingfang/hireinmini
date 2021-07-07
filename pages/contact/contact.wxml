@@ -1,0 +1,51 @@
+<!--pages/contact/contact.wxml-->
+<view class="wrap-yang">
+    <view class='client-head'>
+        <view class='head-content'>
+            <image src='../../images/default-head.png' class='head-img'></image>
+            <view class='head-name' name="customername">{{customername }}
+            </view>
+        </view>
+    </view>
+    <view class="page_fixed">
+        <view class="page__bd">
+            <view class="weui-tab">
+                <view class="weui-navbar1">
+                    <view class="weui-navbar__item bold" bindtap='skip' data-url='client_info/client_info'>
+                        <view class="weui-navbar__title">客户详情</view>
+                    </view>
+                    <view class="weui-navbar__item bold weui-bar__item_on">
+                        <view class="weui-navbar__title">联系人</view>
+                    </view>
+                    <view class="weui-navbar__item bold" bindtap='skip' data-url='client_order/client_order'>
+                        <view class="weui-navbar__title">查看订单</view>
+                    </view>
+                    <view class="weui-navbar__slider bgcolor" style="left:{{sliderLeft}}rpx;"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='contact-info'>
+        <view class='contact-name pad'>
+            <view class='name'>姓名</view>
+            <view class='phone'>手机号</view>
+            <view class='oper'>操作</view>
+        </view>
+        <view class='string'></view>
+        <view class='contact-name pad' wx:for='{{list}}' wx:for-item='item'>
+            <view class='name'>{{item.contname}}</view>
+            <view class='phone'  bindtap='callme' data-phone="{{item.phone}}">{{item.phone}}<image src='../../images/phone.png' class='img1'></image></view>
+            <view class='oper'>
+                <view class='oper-edit' bindtap='clickEdit' data-contid='{{item.contid}}'>编辑</view>
+                <view class='wire'></view>
+                <view class='oper-del' bindtap='clickDel' data-contid='{{item.contid}}'>删除</view>
+            </view>
+        </view>
+    </view>
+    <view bindtap='addcont' class='btn-position-f' form-type='submit'>新增联系人</view>
+</view>
+
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

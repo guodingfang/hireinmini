@@ -1,0 +1,59 @@
+<!--pages/add-product/add-product.wxml-->
+<form bindsubmit='formSubmit'>
+  <view class='se-box'>
+    <view class='se-name'>产品图片</view>
+    <input name='prodid' value='{{prodid}}' hidden='true'></input>
+    <!--图片上传 start-->
+    <view class="page">
+      <view class="page__bd">
+        <view class="weui-cells img-wrap">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">
+              <view class="weui-uploader">
+                <view class="weui-uploader__bd">
+                  <view class="weui-uploader__files" id="uploaderFiles">
+                    <block wx:for="{{files}}" wx:key="{{index}}">
+                      <view class="weui-uploader__file">
+                        <view class="fechar" bindtap="fechar" data-key="{{index}}" data-picid="{{item.id}}" data-pictype="{{item.pictype}}">
+                          <image src="../../images/icon-picdel.png" class="icon-delpic"></image>
+                        </view>
+                        <image class="weui-uploader__img" src="{{item.thumbsname}}" bindtap="previewImage" id="{{item.picfilename}}" mode="aspectFill" />
+                      </view>
+                    </block>
+                  </view>
+                  <view class="weui-uploader__input-box" hidden="{{hide}}">
+                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--图片上传 end-->
+  </view>
+  <view class='se-top vi-row'>
+    <view class='col-3'>产品名称</view>
+    <view class='col-9'>
+      <input class='name-input' placeholder='请输入产品名称' name='prodname' value='{{prodname}}'></input>
+    </view>
+  </view>
+  <view class='se-box se-top'>
+    <view class='se-name '>产品描述</view>
+    <view class='se-border'>
+      <textarea class='text' cursor-spacing="100"  placeholder='请输入产品描述' placeholder-class='zindex-1' name='proddescription' value='{{proddescription}}'></textarea>
+    </view>
+  </view>
+  <button class='se-btn' form-type='submit'>保存产品</button>
+</form>
+
+<view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>
+</view>
+<loading hidden="{{loadingHidden}}">
+  加载中...
+</loading>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

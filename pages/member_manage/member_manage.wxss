@@ -1,0 +1,143 @@
+/* pages/member_manage/member_manage.wxss */
+
+page {
+    background: #f0f0f0;
+    font-size: 30rpx;
+}
+
+.client-name {
+    position: relative;
+    padding: 30rpx;
+    margin-bottom: 3rpx;
+    background: #fff;
+}
+
+.member-right {
+    display: inline-block;
+    width: 70%;
+    line-height: 31rpx;
+}
+
+.member-name, .member-phone {
+    padding: 9rpx 0;
+}
+
+.member-phone {
+    color: #888;
+}
+
+.member-name label {
+    display: inline-block;
+    color: #ff9a00;
+    border: 3rpx solid #ff9a00;
+    height: 30rpx;
+    font-size: 27rpx;
+    margin-left: 20rpx;
+    padding: 1rpx 2rpx;
+    line-height: 28rpx;
+    border-radius: 5rpx;
+    vertical-align: 3rpx;
+}
+
+.client-img {
+    position: absolute;
+    top: 54rpx;
+    right: 30rpx;
+    width: 160rpx;
+    height: 38rpx;
+}
+
+.client-img image {
+    width: 39rpx;
+    height: 40rpx;
+    margin-left: 30rpx;
+}
+
+.string {
+    border-top: 1rpx solid #f0f0f0;
+}
+
+.position-r {
+    position: relative;
+}
+
+.order-info {
+    margin-top: 20rpx;
+    padding: 0 25rpx;
+    background: #fff;
+}
+
+.notop {
+    margin-top: 0;
+}
+
+.order-info-title {
+    padding: 40rpx 0;
+}
+
+.order-info .img2 {
+    position: absolute;
+    width: 26rpx;
+    height: 30rpx;
+    right: 10rpx;
+    top: 44rpx;
+}
+
+.order-info .img1 {
+    padding-right: 16rpx;
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: -2rpx;
+}
+
+.order-info-title .title {
+    display: inline-block;
+}
+
+.order-info-name {
+    display: inline-block;
+    padding: 16rpx 0;
+    padding-right: 20rpx;
+    width: 140rpx;
+    color: #acacac;
+    vertical-align: top;
+}
+
+.top {
+    margin-top: 15rpx;
+    padding: 35rpx;
+    background: #fff;
+}
+
+.mun {
+    width: 40rpx;
+    height: 40rpx;
+    border-radius: 20rpx;
+    background: #ff9a00;
+    color: #fff;
+    position: absolute;
+    text-align: center;
+    top: 42rpx;
+    right: 50rpx;
+    line-height: 40rpx;
+}
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;
+    z-index:200;   
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

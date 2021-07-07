@@ -1,0 +1,36 @@
+<!--pages/member_alter/member_alter.wxml-->
+<view class='client-info top-info pad'>
+    <view class='client-name relative'>
+        <view class="flex">
+            <view class='name col-3'>姓名</view>
+            <view class="col-9">
+                <input class="name-input right" placeholder='请填写姓名' name="customerid" bindfocus="customerSelect" bindinput="customerInput" bindblur="listhide"></input>
+            </view>
+        </view>
+    </view>
+    <view class='client-name relative'>
+        <view class="flex">
+            <view class='name col-3'>电话</view>
+            <view class="col-9">
+                <input class="name-input right" placeholder='请填写电话' name="customerid" bindfocus="customerSelect" bindinput="customerInput" bindblur="listhide"></input>
+            </view>
+        </view>
+    </view>
+    <view class='client-name flex remove-bottom'>
+        <view class='name col-3'>所属团队</view>
+        <view class="col-9">
+            <picker bindchange="" value="" range="" class='sel-public'>
+                <input class="name-input right" placeholder='请选择团队' name="acttype" value='' disabled='false'></input>
+            </picker>
+        </view>
+    </view>
+    <view class='client-name flex remove-bottom'>
+        <view class='name col-3'>员工类型</view>
+        <view class="col-9">
+            <picker bindchange="" value="" range="" class='sel-public'>
+                <input class="name-input right" placeholder='请选择类型' name="acttype" value='' disabled='false'></input>
+            </picker>
+        </view>
+    </view>
+</view>
+<button class='btn-position-f'>提交</button>

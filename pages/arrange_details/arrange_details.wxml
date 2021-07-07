@@ -1,0 +1,99 @@
+<!--pages/arrange_details/arrange_details.wxml-->
+<view class='order-info'>
+    <view class='order-info-title'>
+        <image src='../../images/order.png' class='img'></image>
+        <view class='title'>派单详情</view>
+    </view>
+    <view class='string'></view>
+    <view class='pad-fill'></view>
+    <view>
+        <view class='order-info-name'>客户名称</view>
+        <view class='content'>{{orderinfo['customername']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>联系方式</view>
+        <view class='content'>{{orderinfo['phone']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>活动日期</view>
+        <view class='content'>{{orderinfo['actdate']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>联系人</view>
+        <view class='content'>{{orderinfo['contact']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>活动地点</view>
+        <view class='content'>{{orderinfo['address']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>活动类型</view>
+        <view class='content'>{{orderinfo['typename']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>活动备注</view>
+        <view class='content'>{{orderinfo['comments']}}</view>
+    </view>
+    <view class='pad-fill'></view>
+</view>
+<!--设备 start-->
+<view class='order-info'>
+    <view class='order-info-title position-r' wx:if='{{detailinfo.length > 2}}' bindtap='facility' data-type='{{facilitytype}}'>
+        <image src='../../images/equipment.png' class='img1'></image>
+        <view class='title'>活动设备</view>
+        <view class='title-name'>
+            <image src='{{faciliticon}}' class='img1'></image>{{facilitname}}
+        </view>
+    </view>
+    <view class="facility">
+        <view wx:for="{{detailinfo}}" wx:key="index" class='flex {{index>1?hidden:"equipment-info"}}'>
+            <view class="col-3">{{item.goodsname}}</view>
+            <view class="col-3">{{item.goodsspec}}</view>
+            <view class="col-3">{{item.goodsunit}}</view>
+            <view class="col-3">{{item.brandname}}</view>
+        </view>
+    </view>
+</view>
+<!--设备 end-->
+<view class='order-info'>
+    <view class='order-info-title'>
+        <image src='../../images/arranged.png' class='img1'></image>
+        <view class='title'>人员安排</view>
+    </view>
+    <view class='string'></view>
+    <view class='pad-fill'></view>
+    <view class='' wx:for="{{arrange}}" wx:key="{{index}}">
+        <view class='order-info-name'>{{item.theme}}</view>
+        <view class='content'>
+            <block wx:for="{{item.man}}" wx:for-item="itemman" wx:for-index="idx" wx:key="{{idx}}">
+                <view class='personnel-name {{itemman.readbj==1?"orange":""}}' bindtap="callphone" data-phone="{{itemman.phone}}">{{itemman.employeename}}
+                    <image src='../../images/phone.png' class='img1'></image>
+                </view>
+            </block>
+        </view>
+    </view>
+    <view class='pad-fill'></view>
+</view>
+<view class='order-info '>
+    <view class=''>
+        <view class='order-info-name'>备注：</view>
+        <view class='content'>{{arrangecomments}}</view>
+    </view>
+</view>
+<!--已有图片 start-->
+<view class='order-info' wx:if="{{pics.length > 0}}">
+    <view class='order-info-title position-r'>
+        <image src='../../images/order-type.png' class='img1'></image>
+        <view class='title'>已有图片</view>
+    </view>
+    <view class="pad-wrap">
+        <block wx:for="{{pics}}" wx:key="{{index}}">
+            <image wx:if="{{item!=''}}" src="{{imgurl}}{{item}}" class="order-img"></image>
+        </block>
+    </view>
+</view>
+<!--已有图片 end-->
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

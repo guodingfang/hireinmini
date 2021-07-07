@@ -1,0 +1,41 @@
+<!--pages/member_details/member_details.wxml-->
+<view class='mem-top'>
+    <image src='../../images/ground.png' class='ground'></image>
+    <view class='mem-head'>
+        <image src='{{info.userphoto}}' wx:if="{{info.userphoto!= ''}}"></image>
+        <image src='../../images/default-head.png' wx:else></image>
+        <view>{{info.employeename}}</view>
+    </view>
+</view>
+<view class='my-list'>
+    <view class='string'></view>
+    <view class='my-row'>
+        <view class='my-left'>部门</view>
+        <view class='my-right'>{{info.deptname}}</view>
+    </view>
+    <view class='string'></view>
+    <view class='my-row'>
+        <view class='my-left'>员工类型</view>
+        <view class='my-right'>{{info.employeetypename}}</view>
+    </view>
+    <view class='string'></view>
+    <view class='my-row'>
+        <view class='my-left'>工号</view>
+        <view class='my-right'>{{info.employeenumber}}</view>
+    </view>
+    <view class='string'></view>
+    <view class='my-row'>
+        <view class='my-left'>手机</view>
+        <view class='my-right'>{{info.phone}}</view>
+    </view>
+    <view class='string'></view>
+    <view class='my-row'>
+        <view class='my-left'>地址</view>
+        <view class='my-right'>{{info.address}}</view>
+    </view>
+    <!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>
+
+</view>

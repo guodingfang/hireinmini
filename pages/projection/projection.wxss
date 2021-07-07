@@ -1,0 +1,131 @@
+/* pages/projection/projection.wxss */
+.calculate_box{
+  background: #fff;
+  font-size: 30rpx;
+  padding-bottom: 20rpx;
+}
+.calculate_title{
+  font-size: 32rpx;
+  padding: 20rpx;
+  /* background: #f0f0f0; */
+  border: 1px solid #f0f0f0;
+  font-weight: bold;
+}
+.screen_scale{
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+.screen_list{
+  text-align: center;
+  flex: auto;
+  position: relative;
+}
+.screen_list.on::before{
+  content: '';
+  width: 100rpx;
+  height: 6rpx;
+  background: #2c318f;
+  position: absolute;
+  bottom: -20rpx;
+  left: 50%;
+  margin-left: -50rpx;
+  border-radius: 6rpx;
+}
+.screen_list.on{
+  color: #2c318f;
+}
+.screen_title{
+  line-height: 30rpx;
+  padding: 20rpx;
+  margin-top: 30rpx;
+  /* border-top: 10rpx solid #f0f0f0; */
+}
+.screen_ipt{
+  height: 70rpx;
+  line-height: 70rpx;
+  border: 1px solid #dad7d7;
+  background: #f8fbff;
+  margin: 0 20rpx;
+  padding: 0 25rpx;
+  border-radius: 6rpx;
+}
+.screen_ipt input{
+  background: none;
+  width: 100%;
+  font-size: 28rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #333;
+}
+.screen_info{
+  padding: 20rpx;
+  overflow: hidden;
+  position: relative;
+}
+.change_icon{
+  position: absolute;
+  width: 60rpx;
+  top: 10rpx;
+  left: 50%;
+  margin-left: -30rpx;
+}
+.change_icon image{
+  width: 100%;
+}
+.screen_info_list{
+  width: 48%;
+  float: left;
+}
+.screen_info_list text{
+  display: block;
+  text-align: center;
+}
+.screen_info_list input{
+  height: 70rpx;
+  line-height: 70rpx;
+  border: 1px solid #dad7d7;
+  background: #f0f0f0;
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+}
+.screen_input .screen_info_list input{
+  background: #f8fbff;
+}
+
+.calculate_result{
+  overflow: hidden;
+  padding-bottom: 2rpx;
+}
+.calculate_result .screen_ipt{
+  background: #f0f0f0;
+}
+.distance_box{
+  position: relative;
+  overflow: hidden;
+  padding: 30rpx 20rpx;
+}
+.distance_list{
+  width: 50%;
+  float: left;
+}
+.distance_title{
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+.distance_title text{
+  width: 180rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 60rpx;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #fff;
+}
+.distance_title.on text{
+  border: 1px solid #7076e4;
+  background: #81a6f7;
+  color: #fff;
+}

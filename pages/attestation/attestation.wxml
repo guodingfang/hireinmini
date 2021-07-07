@@ -1,0 +1,66 @@
+<!--pages/attestation/attestation.wxml-->
+<view style="background:#fff;">
+    <view class="attestation_title">个人信息</view>
+    <view>
+        <view class="attestation_list">
+            <view class="attestation_list_text"><text>*</text> 真实姓名:</view>
+            <input type="text" placeholder="请输入真实姓名" bindinput='inputVal' data-model="fullname" />
+        </view>
+        <view class="attestation_list">
+            <!-- <text>联系电话：</text> -->
+            <view class="attestation_list_text"><text>*</text> 联系电话:</view>
+            <input type="number" maxlength="11" placeholder="请输入联系电话" bindinput='inputVal' data-model="phone" />
+        </view>
+        <view class="attestation_list">
+            <view class="attestation_list_text"><text>*</text> 身份证号:</view>
+            <input type="idcard" maxlength="18" placeholder="请输入身份证号" bindinput='inputVal' data-model="idnumber" />
+        </view>
+        <!-- <view class="attestation_list" style="padding-left:200rpx;">
+            <view style="margin-left:-180rpx;" class="attestation_list_text"><text>*</text>其他联系人：</view>
+            <input type="text" placeholder="请输入其他联系人" bindinput='inputVal' data-model="othercontacter" />
+        </view> -->
+        <view class="attestation_list" style="padding-left:200rpx;">
+            <view style="margin-left:-180rpx;" class="attestation_list_text">公司负责人：</view>
+            <input type="text" placeholder="请输入公司负责人" bindinput='inputVal' data-model="contacter" />
+        </view>
+        <view class="attestation_list" style="padding-left:320rpx;">
+            <view style="margin-left:-300rpx;" class="attestation_list_text">隶属关系或隶属公司：</view>
+            <input type="text" placeholder="请输入亲属关系或亲属公司" bindinput='inputVal' data-model="companyname" />
+        </view>
+    </view>
+    <view class="attestation_title">图片信息</view>
+    <view class="pic_info">
+        <view class="pic_info_list" wx:for="{{imgList}}" wx:for-item="item" wx:key="index">
+            <view class="pic_img">
+                <view class="pic_img_box" data-index="{{index}}" bindtap="choosePhoto">
+                    <image wx:if="{{item.img!=''}}" mode="widthFix" src="{{item.img}}"/>
+                    <view class="pic_tip_text" wx:else>
+                        <view class="add_icon">+</view>
+                        <view>{{item.title}}</view>
+                    </view>
+                </view>
+                <view wx:if="{{item.type==true}}" class="img_popup"></view>
+            </view>
+            <view class="pic_txt"><text>*</text> {{item.text}}</view>
+        </view>
+    </view>
+    <view class="attestation_title">企业信息</view>
+    <view class="pic_info">
+        <view class="pic_info_list" >
+            <view class="pic_img">
+                <!-- <image mode="widthFix" src="{{cardLicense.img}}" data-index="3" bindtap="choosePhoto"/> -->
+                <view class="pic_img_box" data-index="3" bindtap="choosePhoto">
+                    <image wx:if="{{cardLicense.img!=''}}" mode="widthFix" src="{{cardLicense.img}}"/>
+                    <view class="pic_tip_text" wx:else>
+                        <view class="add_icon">+</view>
+                        <view>{{cardLicense.title}}</view>
+                    </view>
+                </view>
+                <view wx:if="{{cardLicense.type==true}}" class="img_popup"></view>
+                <!-- <image wx:if="{{cardLicense.type}}" src="../../images/icon-picdel.png" class="icon_imgdel" bindtap="delpic" data-type="cardBack"></image> -->
+            </view>
+            <text>{{item.text}}</text>
+        </view>
+    </view>
+    <view class="sub_btn" bindtap="submitInfo">提交认证</view>
+</view>

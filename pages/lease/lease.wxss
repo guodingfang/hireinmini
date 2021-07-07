@@ -1,0 +1,173 @@
+/* pages/lease/lease.wxss */
+@import "../../common/lib/weui.wxss";
+@import "../../common/css/publiclist.wxss";
+
+page {
+    font-size: 30rpx;
+}
+
+/* 搜索 :start */
+
+.page-head {
+    position: fixed;
+    top: 0;
+    border-bottom: 1rpx solid #f0f0f0;
+    background: #fff;
+    z-index: 999;
+}
+
+.head-city {
+    padding-top: 20rpx;
+    margin: 0 16rpx 0 25rpx;
+    width: 160rpx;
+    height: 78rpx;
+}
+
+.head-city__label {
+    display: inline-block;
+    margin-top: 6rpx;
+    text-align: center;
+    max-width: 130rpx;
+}
+
+.city-img {
+    position: absolute;
+    top: 46rpx;
+    padding-left: 6rpx;
+    width: 22rpx;
+    height: 14rpx;
+}
+
+.head-search {
+    position: relative;
+    margin-top: 13rpx;
+    padding: 0 70rpx;
+    width: 270rpx;
+    height: 74rpx;
+    background: #f5f5f5;
+    border-radius: 74rpx;
+    display: flex;
+    align-items: center;
+}
+
+.search-img {
+    position: absolute;
+    top: 20rpx;
+    left: 22rpx;
+    width: 32rpx;
+    height: 32rpx;
+}
+
+.search-input {
+    width: 300rpx;
+}
+
+.placeholder {
+    color: #bdbdbd;
+}
+
+.head-btn {
+    padding-top: 24rpx;
+    padding-left: 4%;
+    font-size: 32rpx;
+}
+
+.refresh-img {
+    width: 34rpx;
+    height: 32rpx;
+    vertical-align: -6rpx;
+}
+
+/* 搜索 :end */
+
+/* 列表 :start */
+
+/* 未读信息数 :start */
+
+.unread-wrap {
+    margin-top: 20rpx;
+}
+
+.unreadcount {
+    background: rgba(0, 0, 0, 0.7);
+    display: inline-block;
+    border-radius: 4rpx;
+    color: #fff;
+    padding: 2rpx 30rpx;
+}
+
+.unreadcount .read-dot {
+    width: 10rpx;
+    height: 10rpx;
+    border-radius: 50%;
+    background: #d43d3d;
+    margin-right: 10rpx;
+    position: relative;
+    top: -4rpx;
+    display: inline-block;
+}
+
+/* 未读信息数 :end */
+
+.content-list {
+    padding: 22rpx 26rpx;
+    margin-bottom: 16rpx;
+    background: #fff;
+}
+
+.page-content {
+    padding-top: 100rpx;
+}
+
+.cont-wrap {
+    margin-top: 20rpx;
+}
+
+/* 列表 :end */
+
+.issue {
+    position: fixed;
+    width: 76rpx;
+    height: 76rpx;
+    top: 72%;
+    right: 20rpx;
+    background: #000;
+    border-radius: 50%;
+    text-align: center;
+    filter: alpha(Opacity=70);
+    -moz-opacity: 0.7;
+    opacity: 0.7;
+}
+
+.issue .names {
+    width: 60rpx;
+    height: 60rpx;
+    color: #fff;
+    font-size: 28rpx;
+    line-height: 30rpx;
+    margin-left: 8rpx;
+    margin-top: 24rpx;
+    text-align: center;
+}
+
+.returnindex {
+    width: 76rpx;
+    height: 76rpx;
+    background: rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius: 50rpx;
+    position: fixed;
+    z-index: 200;
+}
+
+.returnindexpic {
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top: 25%;
+    left: 25%;
+}

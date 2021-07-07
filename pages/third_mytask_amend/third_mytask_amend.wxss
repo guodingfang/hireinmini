@@ -1,0 +1,290 @@
+/* pages/mytask_amend/mytask_amend.wxss */
+@import "../../common/lib/weui.wxss";
+
+page {
+    font-size: 30rpx;
+}
+
+.string {
+    border-top: 1rpx solid #f0f0f0;
+}
+
+.pad-fill {
+    padding-top: 10rpx;
+}
+
+.position-r {
+    position: relative;
+}
+
+.order-info {
+    margin-top: 20rpx;
+    padding: 0 25rpx;
+    background: #fff;
+}
+
+.order-info-title {
+    padding: 25rpx 0;
+    border-bottom: 1rpx solid #dedede;
+}
+
+.order-info .img {
+    padding-right: 16rpx;
+    width: 26rpx;
+    height: 30rpx;
+    vertical-align: -3rpx;
+}
+
+.order-info .img1 {
+    padding-right: 16rpx;
+    width: 28rpx;
+    height: 28rpx;
+    vertical-align: -2rpx;
+}
+
+.order-info-title .title {
+    display: inline-block;
+}
+
+.order-info-name {
+    display: inline-block;
+    padding: 23rpx 0;
+    padding-right: 20rpx;
+    width: 140rpx;
+    color: #acacac;
+    vertical-align: top;
+}
+
+.content {
+    display: inline-block;
+    padding: 23rpx 0;
+    width: 77%;
+}
+
+.title-name {
+    position: absolute;
+    top: 25rpx;
+    right: 0;
+    color: #ff9a00;
+}
+
+.equipment-info {
+    display: -webkit-flex;
+    display: flex;
+    line-height: 60rpx;
+}
+
+.equipment-info .val {
+    width: 100%;
+}
+
+.personnel-name {
+    display: inline-block;
+    padding-right: 26rpx;
+}
+
+.orange {
+    color: #ff9a00;
+}
+
+.personnel-name image {
+    padding-left: 18rpx;
+}
+
+.prcture-img-list {
+    display: -webkit-flex;
+    display: flex;
+    padding: 10rpx 0;
+}
+
+.prcture-img {
+    padding: 5rpx;
+    flex: 1;
+    height: 167rpx;
+}
+
+.evaluate-content {
+    display: inline-block;
+    padding: 16rpx 0;
+    width: 77%;
+}
+
+.evaluate-name {
+    vertical-align: top;
+}
+
+.pad-wrap {
+    padding: 25rpx 0;
+}
+
+.detail-total .detail-item:not(:last-child) {
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+/*图片上传*/
+
+.weui-uploader__bd {
+    margin-bottom: -4rpx;
+    margin-right: -9rpx;
+}
+
+.weui-uploader__input-box {
+    display: inline-block;
+    width: 150rpx;
+    height: 150rpx;
+    border: 1px solid #d9d9d9;
+    margin: 0 25rpx;
+    margin-bottom: 20rpx;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.weui-label {
+    font-size: 33rpx;
+}
+
+.color-red {
+    color: #d43d3d;
+}
+
+.weui-uploader__input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.weui-uploader__file {
+    position: relative;
+    display: inline-block;
+    margin-right: 24rpx;
+    margin-bottom: 17rpx;
+}
+
+.fechar {
+    position: absolute;
+    right: -9rpx;
+    top: -10rpx;
+    padding: 5rpx;
+    display: inline-block;
+    font-size: 24rpx;
+}
+
+.weui-uploader__img {
+    display: block;
+    width: 150rpx;
+    height: 150rpx;
+}
+
+.weui-cells {
+    margin-top: 0;
+}
+
+.weui-cell {
+    padding: 10px 0;
+}
+
+/*图片上传*/
+
+.text {
+    border: 1px solid #f0f0f0;
+    width: 93%;
+    padding: 20rpx;
+    height: 100rpx;
+    overflow: hidden;
+    display: block;
+    border-radius: 10rpx;
+}
+
+.limit {
+    height: 180rpx;
+    margin-bottom: 130rpx;
+}
+
+.arr-name {
+    display: inline-block;
+    padding: 24rpx 0;
+}
+
+.order-img {
+    width: 23%;
+    margin-right: 10rpx;
+    height: 164rpx;
+    margin-bottom: 10rpx;
+}
+
+.order-img:nth-child(4n) {
+    margin-right: 0;
+}
+
+/*图片上传*/
+
+.weui-uploader__bd {
+    margin-bottom: -4rpx;
+    margin-right: -9rpx;
+    padding-top: 15rpx;
+}
+
+.weui-uploader__input-box {
+    display: inline-block;
+    width: 150rpx;
+    height: 150rpx;
+    border: 1px solid #d9d9d9;
+    margin: 0 25rpx 20rpx 0;
+}
+
+.width100 {
+    width: 100%;
+}
+
+.weui-label {
+    font-size: 33rpx;
+}
+
+.color-red {
+    color: #d43d3d;
+}
+
+.weui-uploader__input {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.weui-uploader__file {
+    position: relative;
+    display: inline-block;
+    margin-right: 24rpx;
+    margin-bottom: 17rpx;
+}
+
+.fechar {
+    position: absolute;
+    right: -9rpx;
+    top: -10rpx;
+    padding: 5rpx;
+    display: inline-block;
+    font-size: 24rpx;
+}
+
+.weui-uploader__img {
+    display: block;
+    width: 150rpx;
+    height: 150rpx;
+}
+
+/*图片上传*/
+
+.weui-cells {
+    margin-top: 0;
+}
+
+.weui-cell {
+    padding: 7px 0 5px 0;
+}
+
+.icon-delpic {
+    width: 40rpx;
+    height: 40rpx;
+}

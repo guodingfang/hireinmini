@@ -1,0 +1,175 @@
+<!--pages/client_order_info/client_order_info.wxml-->
+<view class='order-info'>
+    <view class='order-info-title'>
+        <image src='../../images/order.png' class='img'></image>
+        <view class='title'>订单详情</view>
+    </view>
+    
+    
+    <view class=''>
+        <view class='order-info-name'>活动日期</view>
+        <view class='content'>{{info.order.daterange}}</view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>联系人</view>
+        <view class='content'>{{info.order.contact}}</view>
+    </view>
+     <view class=''>
+        <view class='order-info-name'>联系方式</view>
+        <view class='content' bindtap='callme' data-phone="{{info.order.phone}}">{{info.order.phone}}<image src='../../images/phone.png' class='img1'></image></view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>活动场地</view>
+        <view class='content'>{{info.order.address}}</view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>活动类型</view>
+        <view class='content'>{{info.order.acttype}}</view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>活动备注</view>
+        <view class='content'>{{info.order.comments}}</view>
+    </view>
+    
+</view>
+<!-- <view class='order-info '>
+    <!-- <view class='order-info-title position-r'>
+    <image src='../../images/order-type.png' class='img1'></image><view class='title'>订单状态</view>
+    <view class='title-name'>{{info.order.statusname}}</view>
+  </view> 
+    
+    <view class='order-info-title position-r'>
+        <image src='../../images/price.png' class='img1'></image>
+        <view class='title'>订单费用</view>
+        <view class='title-name'>{{info.order.actcost}}</view>
+    </view>
+</view> -->
+<view class='order-info'>
+    <view class='order-info-title position-r'>
+        <image src='../../images/equipment.png' class='img1'></image>
+        <view class='title'>活动设备</view>
+        <view class='title-name' wx:if='{{info.goods.length > 2}}' bindtap='facility' data-type='{{facilitytype}}'>
+            <image src='{{faciliticon}}' class='img1'></image>{{facilitname}}
+        </view>
+    </view>
+    
+    
+    <view class='facility'>
+        <view wx:for='{{info.goods}}' wx:for-item='item' wx:key="index" class='{{index>1?hidden:"equipment-info"}}'>
+            <view class='val word-wrap'>{{item.prodname}}</view>
+            <view class='val word-wrap'>{{item.prodspec}}</view>
+            <view class='val word-wrap'>{{item.goodsnum}}{{item.produnit}}</view>
+            <view class='val word-wrap'>{{item.brandname}}</view>
+        </view>
+    </view>
+    
+</view>
+<view wx:if='{{info.arrange_total!=null}}'>
+    <view class='order-info'>
+        <view class='order-info-title'>
+            <image src='../../images/remark.png' class='img1'></image>
+            <view class='title'>派单备注</view>
+        </view>
+        
+        
+        <view wx:for='{{info.arrange_total}}' wx:for-item='item' wx:key="{{index}}">
+            <view class='order-info-name'>{{item.theme}}</view>
+            <view class='content'>{{item.comments}}</view>
+        </view>
+        
+    </view>
+    <view class='order-info'>
+        <view class='order-info-title'>
+            <image src='../../images/arranged.png' class='img1'></image>
+            <view class='title'>人员安排</view>
+        </view>
+        
+        
+        <view wx:for='{{info.arrangerman_all}}' wx:for-item='item' wx:key="{{index}}">
+            <view class='order-info-name'>{{item.theme}}</view>
+            <view class='content'>
+                <block wx:for='{{item.man}}' wx:for-item='itemer' wx:key="{{index}}">
+                    <view class='personnel-name {{item.readbj==1?"orange":""}}'>
+                        <label>{{itemer.employeename}}
+                            <image src='../../images/phone.png' class='img1' bindtap='callme' data-phone="{{itemer.phone}}"></image>
+                        </label>
+                    </view>
+                </block>
+                <!-- <view class='personnel-name orange'>赵晓宇<image src='../../images/phone.png' class='img1'></image></view>-->
+            </view>
+        </view>
+        
+    </view>
+</view>
+<view class='order-info' hidden='{{scenepic}}'>
+    <view class='order-info-title'>
+        <image src='../../images/picture.png' class='img1'></image>
+        <view class='title'>现场图片</view>
+    </view>
+    
+    
+    <view class='prcture-img-list'>
+        <image src='../../images/none.jpg' class='prcture-img'></image>
+        <image src='../../images/none.jpg' class='prcture-img'></image>
+        <image src='../../images/none.jpg' class='prcture-img'></image>
+        <image src='../../images/none.jpg' class='prcture-img'></image>
+    </view>
+    
+</view>
+<view class='order-info'>
+    <view class='order-info-title'>
+        <image src='../../images/order.png' class='img'></image>
+        <view class='title'>订单信息</view>
+    </view>
+    
+    
+    <view class=''>
+        <view class='order-info-name'>创建时间</view>
+        <view class='content'>{{info.order.ordercreatetime}}</view>
+    </view>
+    
+</view>
+<view class='order-info' wx:if='{{info.picmsg.length > 0}}'>
+    <view class='order-info-title'>
+        <image src='../../images/picture.png' class='img1'></image>
+        <view class='title'>图片留言内容</view>
+    </view>
+    
+    
+    <view class='prcture-img-list'>
+        <image wx:for='{{info.picmsg}}' wx:for-item='item' wx:key="{{index}}" src='{{imgurl}}{{item.picfilename}}' class='prcture-img' catchtap="previewImage" data-src='{{imgurl}}{{item.picfilename}}'></image>
+    </view>
+    <view hidden='true'>
+        <view class='order-info-name evaluate-name'>用户评价</view>
+        <view class='evaluate-content' wx:if='{{info.order.comments == ""}}'>客官很懒,什么都没有留下</view>
+        <view class='evaluate-content' wx:else>{{info.order.comments}}</view>
+    </view>
+</view>
+<view class='order-info' hidden='{{evaluate}}'>
+    <view class='order-info-title'>
+        <image src='../../images/user-evaluate.png' class='img1'></image>
+        <view class='title'>用户评价</view>
+    </view>
+    
+    
+    <view class=''>
+        <view class='order-info-name'>用户评分</view>
+        <view class='content'>
+            <image src='../../images/grade.png' class='img1'></image>
+            <image src='../../images/grade.png' class='img1'></image>
+            <image src='../../images/grade.png' class='img1'></image>
+            <image src='../../images/grade.png' class='img1'></image>
+            <image src='../../images/grade1.png' class='img1'></image>
+        </view>
+    </view>
+    <view class=''>
+        <view class='order-info-name evaluate-name'>用户评价</view>
+        <view class='evaluate-content'>客官很懒,什么都没有留下</view>
+    </view>
+</view>
+<view class='pad-fill'></view>
+
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

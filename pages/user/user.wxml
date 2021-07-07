@@ -1,0 +1,154 @@
+<import src="../../template/login.wxml" />
+<!--个人头像-->
+<view wx:if='{{pageshow}}'>
+    <view class='head'>
+        <view class='col-3 head-left' bindtap="modifyInfo">
+            <image class='head-img' src='{{userinfo.userpic}}'></image>
+        </view>
+        <view class='col-9 head-right'>
+            <view>
+                <view class='username' wx:if='{{userinfo.username}}'>{{userinfo.username}}</view>
+                <view class='username' wx:else>{{userinfo.nickname}}</view>
+                <view class='user-phone'>{{userinfo.phone}}</view>
+            </view>
+            <view class='examine' wx:if='{{companyinfo == "audit"}}'>您的申请已提交，等待审核</view>
+            <view class='conpamyname' wx:elif='{{companyinfo}}'>{{companyinfo.companyname}}</view>
+        </view>
+    </view>
+    <!--我的订单-->
+    <view class='order '>
+        <view bindtap='myorder'  class='title'>
+            <view>我的订单</view>
+            <view class='title-more'>查看我的订单
+                <image src='../../images/user/user-13.png'></image>
+            </view>
+        </view>
+        <view class='order-list orderlist'>
+            <view bindtap='myorder' class='weui-flex__item order-single col-3'>
+                <image class='order-icon' src='../../images/user/user-11.png'></image>
+                <view>已审核</view>
+            </view>
+            <view bindtap='checkmyorder' class='weui-flex__item order-single col-3'>
+                <view class='nav-unmesnum' wx:if="{{ordernumber>0}}">{{ordernumber}}</view>
+                <image class='order-icon' src='../../images/user/user-2.png'></image>
+                <view>审核中</view>
+            </view>
+            <view bindtap='ordercancel'  class='weui-flex__item order-single col-3'>
+                <image class='order-icon' src='../../images/user/user-10.png'></image>
+                <view>已取消</view>
+            </view>
+            <view bindtap='orderaudit' class='weui-flex__item order-single col-3'>
+                <view hidden='{{orderaudit}}'>
+                    <view class='nav-unmesnum' wx:if="{{ordernumbers>0}}">{{ordernumbers}}</view>
+                    <image class='order-icon' src='../../images/user/user-2.png'></image>
+                    <view>待我审核</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--我的公司-->
+    <view class='order '>
+        <view bindtap='company' data-audit='{{info.audit}}' class='title'>
+            <view>我的公司</view>
+            <view class='title-more'>查看公司
+                <image src='../../images/user/user-13.png'></image>
+            </view>
+        </view>
+        <view class='order-list weui-flex'>
+            <view class='weui-flex__item order-single col-3' bindtap='company'>
+                <image class='order-icon' src='../../images/user/user-3.png'></image>
+                <view>公司</view>
+            </view>
+            <view class='weui-flex__item order-single col-3' bindtap='client'>
+                <image class='order-icon' src='../../images/user/user-5.png'></image>
+                <view>客户</view>
+            </view>
+            <view class='weui-flex__item order-single col-3' bindtap='membermanage'>
+                <image class='order-icon' src='../../images/user/user-1.png' style='width:62rpx;'></image>             
+                   <view class='nav-unmesnum1' wx:if="{{companyinfo.auditcount>0}}">{{companyinfo.auditcount}}</view>
+                <view>成员</view>
+            </view>
+            <view class='weui-flex__item order-single col-3'>
+                <image class='order-icon' src='../../images/user/user-6.png'></image>
+                <view>权限</view>
+            </view>
+        </view>
+    </view>
+    <!--我的任务-->
+    <view class='title tap top' bindtap='toServerPage' >
+        <image class='title-icon' src='../../images/user/user-9.png'></image>
+        <view class='title1'>服务主页</view>
+        <view class='title-more1'>
+            <image src='../../images/user/user-13.png'></image>
+        </view>
+    </view>
+    <view class='title tap' bindtap='toAttestation' >
+        <image class='title-icon' src='../../images/user/user-9.png'></image>
+        <view class='title1'>认证</view>
+        <view class='title-more1'>
+            <image src='../../images/user/user-13.png'></image>
+        </view>
+    </view>
+    <view class='title tap' bindtap='toProjection' >
+        <image class='title-icon' src='../../images/user/user-9.png'></image>
+        <view class='title1'>投影</view>
+        <view class='title-more1'>
+            <image src='../../images/user/user-13.png'></image>
+        </view>
+    </view>
+    <view class='title tap top' bindtap='toDiscern' >
+        <image class='title-icon' src='../../images/user/user-9.png'></image>
+        <view class='title1'>人脸识别</view>
+        <view class='title-more1'>
+            <image src='../../images/user/user-13.png'></image>
+        </view>
+    </view>
+    <view class='title tap top' bindtap='toTool' >
+        <image class='title-icon' src='../../images/user/user-9.png'></image>
+        <view class='title1'>工具</view>
+        <view class='title-more1'>
+            <image src='../../images/user/user-13.png'></image>
+        </view>
+    </view>
+    <view class='title tap' bindtap='toCreateOrganize' >
+        <image class='title-icon' src='../../images/user/user-9.png'></image>
+        <view class='title1'>创建组织</view>
+        <view class='title-more1'>
+            <image src='../../images/user/user-13.png'></image>
+        </view>
+    </view>
+    <view class='title tap top' bindtap='mytask' >
+        <image class='title-icon' src='../../images/user/user-9.png'></image>
+        <view class='title1'>我的任务</view>
+        <view class='title-more1'>
+            <image src='../../images/user/user-13.png'></image>
+        </view>
+    </view>
+    <view bindtap='mylease' class='title tap'>
+        <image class='title-icon' src='../../images/user/user-8.png'></image>
+        <view class='title1'>我的发布</view>
+        <view class='title-more1'>
+            <image src='../../images/user/user-13.png'></image>
+        </view>
+    </view>
+    <view class='title tap no-bottom' bindtap='mymain'>
+        <image class='title-icon' src='../../images/user/user-12.png'></image>
+        <view class='title1'>主营产品</view>
+        <view class='title-more1'>
+            <image src='../../images/user/user-13.png'></image>
+        </view>
+    </view>
+    <view class='title tap top no-bottom' bindtap="setup" style='margin-bottom:40rpx;'>
+        <view class='cancel'>注销登录</view>
+    </view>
+</view>
+<view wx:else>
+    <template is='login' data='{{userinfo,verification,phone,logourl,canGetUserProfile}}'></template>
+</view>
+
+<!-- 遮罩 -->
+<view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>

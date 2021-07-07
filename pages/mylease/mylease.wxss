@@ -1,0 +1,67 @@
+/* pages/mylease/mylease.wxss */
+@import "../../common/lib/weui.wxss";
+@import "../../common/css/publiclist.wxss";
+
+page {
+    font-size: 30rpx;
+}
+
+.page-content {
+    margin-bottom: 40rpx;
+    background: #fff;
+}
+
+.content-list {
+    margin: 0 26rpx;
+}
+.item-operation{padding-left:100rpx;padding-top:20rpx;}
+.item-pub{border:1rpx solid #d43d3d;border-radius:6rpx;padding:6rpx 22rpx;display:inline-block;color:#d43d3d;margin-right:30rpx;}
+.item-del{color:#3d3d3d;border:1rpx solid #3d3d3d;}
+
+.counts-wrap{background:#fff;margin-bottom:20rpx;text-align:center;line-height:48rpx;padding:20rpx 0;}
+.counts-wrap .count-item{color:#d43d3d;font-size:32rpx;}
+
+.perfect-msg{height:70rpx;background:#fff8f1;line-height:70rpx;}
+.perfect-msg .msg-text{color:#ffa025;padding-left:20rpx;font-size:28rpx;}
+
+.perfect-msg .img-close{position:absolute;top:22rpx;right:20rpx;width:26rpx;height:26rpx;}
+
+.vip-wrap{background:#fff;margin-bottom:20rpx;padding:20rpx 0;}
+.vip-wrap .vip-item{padding-left:20rpx;}
+.icon-crown{width:50rpx;height:32rpx;position:relative;margin-left:10rpx;top:4rpx;}
+.btn-charge{display:inline-block;padding:0 10rpx;border-radius:100rpx;background:#ff9000;color:#fff;text-align:center;height:70rpx;flex-direction:column;justify-content:center;position:relative;top:12rpx;font-size:28rpx;right:20rpx;width:75%;line-height:70rpx;}
+.datetime{font-size:28rpx;color:#8f8f8f;}
+.color-f96{color:#ff9600;}
+.perfect-msg .img-close{position:absolute;top:22rpx;right:20rpx;width:26rpx;height:26rpx;}
+
+.filter-status{height:84rpx;border-bottom:1rpx solid #f0f0f0;text-align:center;line-height:84rpx;}
+.filter-status .filter-wrap .filter-item{width:66%;margin:0 auto;}
+.filter-status .filter-item.active{color:#d43d3d;border-bottom:6rpx solid #d43d3d;font-weight:bold;}
+
+.notData-img{padding-top:100rpx;}
+
+.color-pubstatus{margin-left:20rpx;display:inline-block;font-size:26rpx;color:#fff;padding:0 8rpx;border-radius:6rpx;position:relative;top:-10rpx;}
+.color-status0{background:#ff9000;}
+.color-status1{background:#33a852;}
+.color-status2{background:#f5351b;}
+
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;   
+    z-index:200;
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

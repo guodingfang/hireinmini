@@ -1,0 +1,15 @@
+@import "../../common/css/companyinfo.wxss";
+.com-btn1 .share{
+    color: #444;
+    background: #fff;
+    overflow: visible;
+    border-radius: 0;
+    font-size: 32rpx;
+    border-top: 1rpx solid #f0f0f0;
+    position:relative;
+    top:23rpx;
+}
+.com-wrap{
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}

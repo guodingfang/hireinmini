@@ -1,0 +1,29 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "个人信息详情",
+          "pathName": "pages/userInfoDetail/userInfoDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "宴会厅页面",
+          "pathName": "pages/banquet/banquet",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

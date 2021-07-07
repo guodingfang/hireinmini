@@ -1,0 +1,23 @@
+<!--pages/com-picture/com-picture.wxml-->
+<view class='pic-btn' bindtap='chooseImage'>
+    上传图片
+</view>
+<view class='com-border'>
+    <view class='com-cont1' wx:for='{{list}}' wx:for-item='item' wx:key="{{index}}">
+        <view class='com-pro'>
+            <image class='img' src="{{baseurl}}{{item.picture}}" data-src='{{baseurl}}{{item.picture}}' catchtap="Imageappear"></image>
+        </view>
+        <view class='com-selec' bindtap='clickDel' data-picid='{{item.id}}'>
+            <image class='img1' src='../../images/icon-del.png'></image>
+            删除
+        </view>
+    </view>
+</view>
+<view class='no-info' wx:if="{{noresult}}">
+    <image src='../../images/noinfo.png' class='no-info-img'></image>
+</view>
+<view class="show-loading gray" wx:if="{{noresult}}">您还没有图片，请先上传。</view>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

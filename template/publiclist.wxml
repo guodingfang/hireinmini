@@ -1,0 +1,129 @@
+<!-- 公共列表start -->
+<template name='publiclist'>
+    <!-- <block wx:for='{{list}}' wx:for-item='item' wx:key='key'> -->
+        <view class='content-list'>
+            <view>
+                <view class='flex'>
+                    <view bindtap="recommendurl" data-skiptype='{{skiptype}}' data-userid='{{item.userid}}' data-companyid='{{item.companyid}}' data-msgid='{{item.msgid}}'>
+                        <image src="{{item.userpic==''?'../../images/default-head.png':item.userpic}}" class='list-portrait'></image>
+                    </view>
+                    <view class='list-info col-10'>
+                        <view class='info-head' >
+                            <view>
+                                <text class='info-username display-inlineblock word-wrap' bindtap="recommendurl" data-skiptype='{{skiptype}}' data-userid='{{item.userid}}' data-companyid='{{item.companyid}}' data-msgid='{{item.msgid}}'>{{item.contacter}}</text>
+                                <!-- <text class='info-city'>关注</text> -->
+                                <view class="info-comment" data-msgid='{{item.msgid}}' data-index='{{index}}' data-userid='{{item.userid}}' data-companyid='{{item.companyid}}' data-focused='{{item.focused}}' bindtap="attention">
+                                    <button style="color: #ffb426;" class="info-city" id="{{item.msgid}}">
+                                        <text>{{item.focused==1?'已关注':'关注'}}</text>
+                                    </button>
+                                </view>
+                            </view>
+                            <view class='info-time display-inlineblock' bindtap="recommendurl" data-skiptype='{{skiptype}}' data-userid='{{item.userid}}' data-companyid='{{item.companyid}}' data-msgid='{{item.msgid}}'>{{item.updateinfo}}<text catchtap='company' data-companyid='{{item.companyid}}' class='company-name'>{{item.companyname}}</text></view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            
+            <view bindtap="indetailurl" data-skiptype='{{skiptype}}' data-msgid='{{item.msgid}}'>
+                <!-- <text class='info-time'>{{item.refreshinfo}}</text> -->
+                <text class='info-content word-wrap-line4' wx:if="{{keycont!=1}}">{{item.content}}</text>
+                <!-- <text class='info-content word-wrap-line4' wx:if="{{keycont==1}}">
+                    <block wx:for="{{item.newcontent}}" wx:key="keyidx" wx:for-item='keyitem' >
+                        <text class='{{keyitem.flag? "color-main" : ""}}'>{{keyitem.text}}</text>
+                    </block>
+                </text> -->
+                <!-- <view class='info-fulltext' wx:if='{{item.content.length > 72}}'>全文</view> -->
+            </view>
+            <view url="../detail/detail?msgid={{item.msgid}}&hostuserid={{item.userid}}" data-type="{{urltype=='index'?'navigate':'redirect'}}" class='info-imgs' wx:if="{{pagetype!='detail'}}">
+                <block wx:for='{{item.pics}}' wx:for-item='item1' wx:key='key1' wx:for-index="idx">
+                    <block wx:if="{{item.pics.length>1}}">
+                        <image mode='aspectFill' src='{{imgurls}}{{item1.picurl_thumbnails}}' data-src="{{imgurls}}{{item1.picurl}}" data-imglist="{{item.pics}}" class='img relative' catchtap="indetailurl" data-skiptype='{{skiptype}}' data-msgid='{{item.msgid}}' wx:if="{{item.picsign==1 && idx < 3}}" data-index='{{idx}}'>
+                            <view class="showpiccount" wx:if="{{item.pics.length>3 && idx==2}}">+{{item.pics.length-3}}</view>
+                        </image>
+                    </block>
+                    <block wx:else><!--="{{item.pics.length==1}}"单个图片显示大图-->
+                        <block wx:if="{{item.picsign==1}}">
+                            <image mode='aspectFill' src='{{imgurls}}{{item1.picurl_thumbnails}}' data-src="{{imgurls}}{{item1.picurl}}" data-imglist="{{item.pics}}" class='image1 relative' catchtap="indetailurl" data-skiptype='{{skiptype}}' data-msgid='{{item.msgid}}' wx:if="{{item.picsign==1 && idx < 3}}" data-index='{{idx}}'>
+                            </image>
+                        </block>
+                        <block wx:elif="{{item.picsign==3}}">
+                            <image mode='aspectFill' src='{{imgurls}}{{item1.picurl_thumbnails}}' data-src="{{imgurls}}{{item1.picurl}}" data-imglist="{{item.pics}}" class='image1 relative' catchtap="indetailurl" data-skiptype='{{skiptype}}' data-msgid='{{item.msgid}}' wx:if="{{item.picsign==3 && idx < 3}}" data-index='{{idx}}'>
+                            </image>
+                        </block>
+                    </block>
+                    <!-- 横向视频宽度100% -->
+                    <block wx:if="{{item1.width > item1.height}}">
+                        <view class="video-wrap" style="width:100%;position:relative;z-index:10;" wx:if="{{item.picsign==2 && item1.videourl}}">
+                            <image wx:if="{{item.picsign==2}}" src="{{videourl}}{{item1.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{item1.width}},h_{{item1.height}},m_fast" style="width:100%; border-radius:15rpx;" data-src="{{videourl}}{{item1.videourl}}" bindtap="playVideo" data-vid="video{{index}}" hidden="{{ currentVid == 'video'+index }}" class="videoimg"></image>
+                            <image src="../../images/icon-video.png" class="icon-video" wx:if="{{item.picsign==2}}" bindtap="playVideo" data-vid="video{{index}}" hidden="{{ currentVid == 'video'+index }}"></image>
+                            
+                            <video src="{{videourl}}{{item1.videourl}}" class="listvideo" wx:if="{{item.picsign==2}}" poster="{{videourl}}{{item1.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{item1.width}},h_{{item1.height}},m_fast" style="width:100%;" id="video{{ index }}" data-vv="{{'video'+index}}" hidden="{{ currentVid != 'video'+index }}" direction="{{item1.width > item1.height?90:0}}" objectFit="cover" loop="{{true}}" bindfullscreenchange="exitfullscreenfunc"/>
+                        </view>
+                    </block>
+                    <!-- 纵向视频原尺寸 -->
+                    <block wx:if="{{item1.width < item1.height}}">
+                        <view class="video-wrap" style="width:{{item1.width}}rpx;height:{{item1.height}}rpx;position:relative;z-index:10;" wx:if="{{item.picsign==2 && item1.videourl}}">
+                            <image wx:if="{{item.picsign==2}}" src="{{videourl}}{{item1.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{item1.width}},h_{{item1.height}},m_fast" style="width:{{item1.width}}rpx;height:{{item1.height}}rpx;" data-src="{{videourl}}{{item1.videourl}}" bindtap="playVideo" data-vid="video{{index}}" hidden="{{ currentVid == 'video'+index }}" class="videoimg"></image>
+                            <image src="../../images/icon-video.png" class="icon-video" wx:if="{{item.picsign==2}}" bindtap="playVideo" data-vid="video{{index}}" hidden="{{ currentVid == 'video'+index }}"></image>                            
+                            <video src="{{videourl}}{{item1.videourl}}" class="listvideo" wx:if="{{item.picsign==2}}" poster="{{videourl}}{{item1.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{item1.width}},h_{{item1.height}},m_fast" style="width:{{item1.width}}rpx;height:{{item1.height}}rpx;" id="video{{ index }}" data-vv="{{'video'+index}}" hidden="{{ currentVid != 'video'+index }}" direction="{{item1.width > item1.height?90:0}}" objectFit="cover" loop="{{true}}" bindfullscreenchange="exitfullscreenfunc"/>
+                        </view>
+                    </block>
+                </block>
+            </view>
+            <view class='info-bottom'>
+                <view class='info-phone' bindtap="clickPhone" data-phone="{{item.contactphone}}">
+                    <image src='../../images/dial.png' class='icon-thumb icon-dial'></image>
+                    <text>拨打电话</text>
+                </view>
+                <view class='info-browse' wx:if='{{item.viewcount}}'><image src='../../images/browse.png' class='browse-img'></image>{{item.viewcount}}</view>
+                <view class="info-comment" bindtap="editPraise" data-msgid="{{item.msgid}}" data-userid="{{item.userid}}" data-index="{{index}}" data-praised='{{item.praised}}'>
+                    <image src="../../images/thumb.png" class="icon-thumb" wx:if="{{item.praised == 0}}"></image>
+                    <image src="../../images/thumb-select.png" class="icon-thumb" wx:if="{{item.praised == 1}}"></image>
+                    <text>{{item.praisecount==0?'点赞':item.praisecount}}</text>
+                </view>
+                <view class="info-comment" bindtap="commentboxFunc" data-ctusername="{{item.contacter}}" data-tuserid='{{item.userid}}' data-msgid='{{item.msgid}}' data-index='{{index}}'>
+                    <image src="../../images/icon-comment.png" class="icon-thumb"></image>
+                    <text>{{item.discusscount==0?'评论':item.discusscount}}</text>
+                </view>
+                
+                <view style="vertical-align:text-top;" class="info-comment" data-msgid="{{item.msgid}}" bindtap="shareFunc">
+                    <button id="{{item.msgid}}" open-type="share">
+                        <image src="../../images/share3.png" class="icon-thumb"></image>
+                        <text>{{item.forwardcount==0?'转发':item.forwardcount}}</text>
+                    </button>
+                </view>
+                <!-- <button class='oper-btn share' open-type="share">
+                    <image src='../../images/share2.png' class='share-img'></image>
+                </button> -->
+            </view>
+            <!--点赞和评论 start-->
+            
+            <block wx:if="{{page != 'index'}}">
+            <block wx:if="{{page != 'lease'}}">
+                <view class="comment-wrap comment-wrapo" wx:if="{{item.praiser.length > 0 || item.discusscount > 0}}">
+                    <image src="../../images/sanjiao.png" class="icon-sanjiao"></image>
+                    <view wx:if="{{item.praiser.length > 0}}" class="pulist">
+                        <image src="../../images/thumb.png" class="icon-thumb"></image>
+                        <block wx:for="{{item.praiser}}" wx:for-item="uitem" wx:for-index="idx" wx:key="key1">
+                            <text bindtap='reurlFunc' data-companyid='{{uitem.companyid}}' data-userid='{{uitem.userid}}'>{{uitem.username}} <text wx:if="{{idx != (item.praiser.length-1)}}">,</text> </text>
+                        </block>
+                    </view>
+                        <view class="commitlist" wx:if="{{item.discusscount > 0}}">
+                            <block wx:for="{{item.discuss}}" wx:for-item="citem" wx:for-index="cidx" wx:key="cidx">
+                                <view class="commit-item" wx:if="{{item.userid==citem.userid_receiver}}" data-fuserid="{{citem.userid_sender}}" data-tuserid="{{citem.userid_receiver}}" data-msguserid="{{item.userid}}" data-tusername="{{citem.touser}}" data-fusername="{{citem.sender}}" data-msgid='{{item.msgid}}' data-index='{{index}}' bindtap="replyComment">
+                                    <text class="color-link" catchtap='reurlFunc' data-companyid='{{citem.companyid_sender}}' data-userid='{{citem.userid_sender}}'>{{citem.sender}}:</text>{{citem.content}}</view>
+                                <view class="commit-item" wx:if="{{item.userid!=citem.userid_receiver}}" data-fuserid="{{citem.userid_sender}}" data-tuserid="{{citem.userid_receiver}}" data-msguserid="{{item.userid}}" data-tusername="{{citem.touser}}" data-fusername="{{citem.sender}}" data-msgid='{{item.msgid}}' data-index='{{index}}' bindtap="replyComment">
+                                    <text class="color-link" catchtap='reurlFunc' data-companyid='{{citem.companyid_sender}}' data-userid='{{citem.userid_sender}}'>{{citem.sender}}</text>
+                                    <text>回复</text>
+                                    <text class="color-link" catchtap='reurlFunc' data-companyid='{{citem.companyid_receiver}}' data-userid='{{citem.userid_receiver}}'>{{citem.touser}}:</text> {{citem.content}}
+                                </view>
+                            </block>
+                        </view>
+                </view>
+            </block>
+            </block>
+            <!--点赞和评论 end-->
+        </view>
+    <!-- </block> -->
+</template>
+<!-- 公共列表end -->

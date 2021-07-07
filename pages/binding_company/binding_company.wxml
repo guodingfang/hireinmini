@@ -1,0 +1,20 @@
+<!--pages/binding_company/binding_company.wxml-->
+<view class='search position-r'>
+    <image src='../../images/search1.png' class='search-img'></image>
+    <input placeholder='请输入公司名称' class='search-input' name='companyname' value='{{companyname}}' bindinput='companyname'></input>
+    <view class='search-btn' bindtap='search'>搜索</view>
+</view>
+<view class='list'>
+    <view wx:for='{{list}}' wx:for-item='item'>
+        <view bindtap='joincompany' data-url='join_company/join_company?companyid={{item.companyid}}' class='name'>{{item.companyname}}</view>
+        <view class='string'></view>
+    </view>
+</view>
+<view class='no-info' wx:if="{{list==''}}">
+    <view class='onon'>没有搜索到相关的公司</view>
+    <image src='../../images/noinfo.png' class='no-info-img'></image>
+</view>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

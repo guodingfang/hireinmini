@@ -1,0 +1,51 @@
+<!--pages/userInfoDetail/userInfoDetail.wxml-->
+<view class="userinfo_wrap">
+    <view class="userinfo_box_logo">
+        <view class="userinfo_logo" bindtap="choosePhoto">
+            <image wx:if="{{userInfoList.userpic == ''}}" mode="widthFix" src="/images/default-head.png" />
+            <image wx:else mode="widthFix" src="{{userInfoList.userpic}}" />
+        </view>
+        <view class="userinfo_logo_text">点击更换头像</view>
+    </view>
+    <view class="userinfo_box">
+        <view class="userinfo_text">用户名</view>
+        <view class="userinfo_info">
+            <input type="text" placeholder="{{userInfoList.nickname==''?'请填写用户名':userInfoList.nickname}}" data-name="nickname" bindinput="changeIpt" />
+        </view>
+        <view class="userinfo_right">
+            <image mode="widthFix" src="/images/arrows-r.png" />
+        </view>
+    </view>
+    <view class="userinfo_box">
+        <view class="userinfo_text">简介</view>
+        <view class="userinfo_info">
+            <input type="text" placeholder="{{userInfoList.remark==''?'这个人很懒，什么也没留下':userInfoList.remark}}" data-name="remark" bindinput="changeIpt" />
+        </view>
+        <view class="userinfo_right">
+            <image mode="widthFix" src="/images/arrows-r.png" />
+        </view>
+    </view>
+    <view class="userinfo_box">
+        <view class="userinfo_text">性别</view>
+        <view class="userinfo_info">
+            <picker bindchange="selectGender" value="{{index}}" range="{{genderList}}" range-key="gender">
+                <view style="color:#666;" wx:if="{{genderIndex < 0}}" class="picker">待完善</view>
+                <view wx:else class="picker">{{genderList[genderIndex].gender}}</view>
+            </picker>
+        </view>
+        <view class="userinfo_right">
+            <image mode="widthFix" src="/images/arrows-r.png" />
+        </view>
+    </view>
+    <view class="userinfo_box">
+        <view class="userinfo_text">地区</view>
+        <view class="userinfo_info">
+            <input class="weui-input" placeholder="请选择城市" name="cityname" disabled='true' value="{{cityname}}" bindtap="getPortid" />
+            <input type="text" hidden="true" name="citycode" value="{{citycode}}" bindinput="getCorrect"/>
+        </view>
+        <view class="userinfo_right">
+            <image mode="widthFix" src="/images/arrows-r.png" />
+        </view>
+    </view>
+    <view class="submit_info" bindtap="submitInfo">提交</view>
+</view>

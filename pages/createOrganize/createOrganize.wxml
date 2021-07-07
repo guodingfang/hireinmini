@@ -1,0 +1,58 @@
+<!--pages/createOrganize/createOrganize.wxml-->
+<view>
+    <view class="rectangle_radius organize">
+        <view class="organize_info_logo_box">
+            <view class="organize_info_text">组织或合作logo：</view>
+            <view class="organize_info_logo">
+                <text wx:if="{{logo==''}}">+</text>
+                <image wx:else src="{{logo}}" />
+            </view>
+        </view>
+        <view class="organize_info">
+            <view class="organize_info_text">组织名称：</view>
+            <view class="organize_info_ipt">
+                <input type="text" />
+            </view>
+        </view>
+        <view class="organize_info">
+            <view class="organize_info_text">组织简介：</view>
+            <view class="organize_info_ipt organize_info_textarea">
+                <textarea type="text" />
+            </view>
+        </view>
+        <view class="organize_tips"><text>*</text> 组织创建成功与否系统通知您。</view>
+    </view>
+    <view class="rectangle_radius organize">
+        <view class="organize_user_info">
+            <view class="organize_user_info_left">申请人姓名：</view>
+            <view class="organize_user_info_right">
+                <input type="text" placeholder="请输入申请人姓名" />
+            </view>
+        </view>
+        <view class="organize_user_info">
+            <view class="organize_user_info_left">申请人手机号：</view>
+            <view class="organize_user_info_right">
+                <input type="text" placeholder="请输入申请人手机号" />
+            </view>
+        </view>
+        <view class="organize_user_info">
+            <view class="organize_user_info_left">选择地区：</view>
+            <view class="organize_user_info_right">
+                <input class="weui-input" placeholder="请选择城市" name="cityname" disabled='true' value="{{cityname}}" bindtap="getPortid" />
+                <input type="text" hidden="true" name="citycode" value="{{citycode}}" bindinput="getCorrect"/>
+            </view>
+        </view>
+        <view class="organize_user_info">
+            <view class="organize_user_info_left">选择类型：</view>
+            <view class="organize_user_info_right organize_user_type">
+                <picker bindchange="selectType" value="{{index}}" range="{{typeList}}" range-key="type">
+                    <view style="color:#666;" wx:if="{{index==''}}" class="picker">{{typeDefault}}</view>
+                    <view wx:else class="picker">{{typeList[index].type}}</view>
+                </picker>
+            </view>
+        </view>
+        <view class="organize_tips" style="margin-top:0;"><text>*</text> 一旦组织创建成功，您会成为该组织负责人。</view>
+    </view>
+    <view class="organize_point"><text>注：</text> 请保持组织热度，热度过低官方可能关停该组织</view>
+    <view class="create_btn">确定创建</view>
+</view>

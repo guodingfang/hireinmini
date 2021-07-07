@@ -1,0 +1,18 @@
+/* pages/bill_info/bill_info.wxss */
+@import "../../common/css/issueinfo.wxss";
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;
+    z-index:200;
+}    
+.returnindexpic{
+  width: 38rpx;
+  height: 38rpx;
+  margin-left:19rpx;
+  margin-top:19rpx;
+}

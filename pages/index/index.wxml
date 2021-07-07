@@ -1,0 +1,121 @@
+<import src="../../template/publiclist.wxml" />
+<view>
+    <view class="dark" wx:if="{{guideflag==1}}" bindtap="closeguide">
+        <view class="flex">
+            <view class="index-search-city col-3 d-left" data-city="{{cityname}}">
+                <view class='index-city__label'>{{cityname}}</view>
+                <image src="../../images/bottom.png" class="icon-bottom"></image>
+            </view>
+            <view bindtap='searchgood' class="search-input-view relative flex col-9">
+                <image src="../../images/icon-search1.png" class="icon-search img-search"></image>
+                <view class="search-input weui-cell_input d-right">搜索江湖事</view>
+            </view>
+        </view>
+        <image src="../../images/guide/g-city.png" class="g-city"></image>
+        <image src="../../images/guide/g-search.png" class="g-search"></image>
+        <view class="btn-know">我知道了</view>
+    </view>
+    <!--index.wxml-->
+    <view class="index-header-search flex">
+        <navigator url='../citylist/citylist?rurl=index' class="index-search-city col-3">
+            <view class='index-city__label word-wrap'>{{cityname}}</view>
+            <image src="../../images/bottom.png" class="icon-bottom"></image>
+        </navigator>
+        <view bindtap="searchgood" class="search-input-view relative flex col-9">
+            <image src="../../images/icon-search.png" class="icon-search"></image>
+            <view confirm-type="search" disabled="true" class="search-input weui-cell_input">搜索江湖事</view>
+        </view>
+    </view>
+    <!-- 轮播图 start -->
+    <swiper indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}'>
+        <swiper-item wx:for='{{imglist}}' wx:for-itme='itme' wx:key='index'>
+            <image src='{{imgurl}}{{item.picfile}}' bindtap='swipclick' data-url='{{item.url}}' class='carousel-img'></image>
+        </swiper-item>
+    </swiper>
+    <!-- 轮播图 end -->
+    <!--按钮 start-->
+    <!--暂时隐藏掉 2021/6/1 view class="weui-flex index-nav-list">
+        <view class="weui-flex__item" bindtap="market">
+            <image src="../../images/icon-1.png" class="icon-nav" mode="widthFix"></image>
+            <view class="nav-name">推荐</view>
+        </view>
+        <button bindtap="clickoper" data-url='action/action' class="weui-flex__item btn">
+            <image src="../../images/icon-2.png" class="icon-nav" mode="widthFix"></image>
+            <view class="nav-name">活动</view>
+        </button>
+        <button bindtap="clickoper" data-url='client/client' class="weui-flex__item btn">
+            <image src="../../images/icon-3.png" class="icon-nav" mode="widthFix"></image>
+            <view class="nav-name">通讯录</view>
+        </button>
+        <button bindtap="clickoper" data-url="orderarrange/orderarrange" class="weui-flex__item btn">
+            <image src="../../images/icon-4.png" class="icon-nav" mode="widthFix"></image>
+            <view class="nav-name">派单</view>
+        </button>
+        <button bindtap="clickoper" data-url="order-under/order-under" class="weui-flex__item btn">
+            <image src="../../images/icon-5.png" class="icon-nav" mode="widthFix"></image>
+            <view class="nav-name">下单</view>
+        </button>
+    </view-->
+    <!--按钮 end-->
+
+    <!-- 租圈列表 strat -->
+    <view class='NewIssue'><image class='issue-img' src='../../images/issue.png'></image>本地最新发布</view>
+    <view class="cont-wrap">
+        <block class='list' wx:for='{{list}}' wx:for-item='item' wx:key="index">
+            <template is='publiclist' data='{{item, imgurls,videourl,urltype,currentVid,index,skiptype,page,forwardcount}}'></template>
+        </block>
+    </view>
+    <view class="weui-loadmore" wx:if="{{hidden}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <navigator class="show-loading" wx:if="{{finish}}" url="../lease/lease" open-type="switchTab">点击查看更多信息</navigator>
+    <view class="show-loading" wx:if="{{noresult}}">未搜索到您想要的内容</view>
+    <!--评论框 start-->
+    <view class="misk-wrap" bindtap="hideCommentBox" wx:if="{{commentShow}}"></view>
+    <form wx:if="{{commentShow}}" catchsubmit="sendComment">
+        <view class="com-wrap flex">
+            <view class="col-10">
+                <input type="text" name="content" confirm-type="send" class="com-textarea" cursor-spacing="7" focus="{{true}}" bindconfirm='sendComment' placeholder="{{placeInput}}"></input>
+                <input type="text" hidden="{{true}}" name="tuserid" value="{{com_tuserid}}" />
+                <input type="text" hidden="{{true}}" name="fuserid" value="{{com_fuserid}}" />
+                <input type="text" hidden="{{true}}" name="tusername" value="{{com_tusername}}" />
+                <input type="text" hidden="{{true}}" name="fusername" value="{{com_fusername}}" />
+                <input type="text" hidden="{{true}}" name="msgid" value="{{msgid}}" />
+            </view>
+            <view class="col-2">
+                <button class="btn-send active" formType="submit">发送</button>
+            </view>
+        </view>
+    </form>
+    <!--评论框 end-->
+    <!-- 租圈列表 end -->
+</view>
+
+<!-- 遮罩 -->
+<view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>
+
+
+<view class='focus-wrap'>
+    <view class='focus-item1' bindtap='entercompany'>入驻</view>
+    <view class='focus-item2'>
+        <contact-button type="default-light" size="20" session-from="weapp">
+        </contact-button>
+    </view>
+</view>
+<!-- <block wx:if="{{condition}}">
+  <view class='dark'>
+    <view class='focus-mask'>
+      <view class='focus-img'>
+        <image src='../../images/erweima.png' bindtap='appear'></image>
+      </view>
+      <view class='focus-follow'>长按二维码关注i赁客公众号</view>
+      <view class='line-css'></view>
+      <view class='focus-confirm' bindtap='disappear'>确认</view>
+    </view>
+  </view>
+</block> -->

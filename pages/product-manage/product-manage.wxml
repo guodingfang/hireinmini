@@ -1,0 +1,34 @@
+<!--pages/product-manage/product-manage.wxml-->
+<view class='pro-list'>
+    <view class='pro-box' wx:for='{{list}}' wx:for-item='item'>
+        <view class='pro-pic'>
+            <input name='prodid' value='{{item.prodid}}' hidden='true'></input>
+            <image class='img' src='{{imageurl}}{{item.prodimage}}' wx:if='{{item.prodimage!=""}}' data-src='{{imageurl}}{{item.prodimage}}' catchtap="Imageappear" ></image>
+            <image src='../../images/nopic2.png' wx:else></image>
+        </view> 
+        <view class='pro-name'  bindtap='returnprodetail'data-prodid='{{item.prodid}}'>
+            <view class='pro-title word-wrap'>{{item.prodname}}</view>
+            <view class='pro-describe word-wrap-line2'>{{item.proddescription}}</view>
+        </view>
+        <view class='client-img'>
+                <image src='../../images/icon-del.png' bindtap='clickDel' data-prodid='{{item.prodid}}'></image>
+                <image src='../../images/amend.png' bindtap='clickEdit' data-prodid='{{item.prodid}}'></image>
+        </view>
+    </view>
+</view>
+<view class="show-loading" wx:if="{{hidden}}">正在加载</view>
+<view class="show-loading" wx:if="{{finish}}">加载完毕</view>
+<view class="show-loading" wx:if="{{noresult}}">您还没有产品，请先增加产品。</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>
+<view class='no-info' wx:if="{{noresult}}">
+    <image src='../../images/noinfo.png' class='no-info-img'></image>
+</view>
+<view class='com-box'></view>
+<view class='pic-btn' bindtap='addpro'>增加产品</view>
+
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

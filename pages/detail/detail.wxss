@@ -1,0 +1,299 @@
+@import "../../common/css/publiclist.wxss";
+@import "../../wxParse/wxParse.wxss";
+
+.page-content {
+    margin-bottom: 20rpx;
+    background: #fff;
+}
+
+.content-list {
+    margin: 0 26rpx;
+}
+
+.othermes {
+    background: #fff;
+}
+
+.othermes .o-title-wrap {
+    padding: 0 26rpx;
+    line-height: 80rpx;
+}
+
+.othermes .o-title {
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.fixed-phone {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 1rpx solid #f0f0f0;
+    overflow: hidden;
+    height: 100rpx;
+    line-height: 50rpx;
+    text-align: center;
+    z-index: 50;
+}
+
+.fixed-item {
+    display: inline-block;
+    margin: 12rpx 0;
+    width: 92%;
+    height: 74rpx;
+    line-height: 74rpx;
+    border-radius: 74rpx;
+    font-size: 30rpx;
+}
+
+.more-btn {
+    border: 1rpx solid #333;
+}
+
+.phone-btn {
+    color: #fff;
+    background: linear-gradient(to right, #2ab7ff, #6dccfc);
+}
+
+.icon-public {
+    margin-right: 10rpx;
+    width: 32rpx;
+    height: 32rpx;
+    vertical-align: -6rpx;
+}
+
+.border-right {
+    border-right: 1rpx solid #f0f0f0;
+}
+
+.padding-bottom {
+    padding-bottom: 120rpx;
+}
+
+.item-operation {
+    padding-left: 26rpx;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
+}
+
+.item-pub {
+    border: 1rpx solid #d43d3d;
+    border-radius: 6rpx;
+    padding: 6rpx 22rpx;
+    display: inline-block;
+    color: #d43d3d;
+    margin-right: 30rpx;
+}
+
+.item-del {
+    color: #3d3d3d;
+    border: 1rpx solid #3d3d3d;
+}
+
+.pulist {
+    padding: 20rpx;
+    border-bottom: 1rpx solid #d6d6d6;
+}
+
+.comment-wrap {
+    margin-left: 14%;
+    color: #576b95;
+    background: #eee;
+    font-size: 28rpx;
+    margin-top: 20rpx;
+    position: relative;
+}
+
+.comment-wrap .icon-sanjiao {
+    width: 30rpx;
+    height: 14rpx;
+    position: absolute;
+    top: -12rpx;
+    left: 16rpx;
+}
+
+.com-wrap {
+    width: 100%;
+    min-height: 80rpx;
+    background: #ebebeb;
+    position: fixed;
+    z-index: 51;
+    bottom: 0;
+    left: 0;
+    padding-top: 6rpx;
+    padding-bottom: 8rpx;
+}
+
+.com-wrap .btn-send {
+    width: 76%;
+    border: 1rpx solid #d4d4d4;
+    background: #ebebeb;
+    color: #d4d4d4;
+    padding: 0;
+    margin: 12rpx auto;
+    text-align: center;
+    height: 66rpx;
+    line-height: 66rpx;
+    border-radius: 6rpx;
+    font-size: 30rpx;
+}
+
+.com-wrap .btn-send.active {
+    background: #d43d3d;
+    color: #fff;
+    border: 0;
+}
+
+.com-wrap .com-textarea {
+    width: 98%;
+    min-height: 80rpx;
+    height: auto;
+    border-bottom: 1px solid #d4d4d4;
+    line-height: 80rpx;
+    text-indent: 4rpx;
+    margin-left: 2%;
+}
+
+.misk-wrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 50;
+}
+
+.commitlist {
+    padding: 20rpx;
+}
+
+.commitlist .commit-item {
+    color: #333;
+    font-size: 30rpx;
+    line-height: 36rpx;
+    margin-top: 8rpx;
+}
+
+.commitlist .commit-item:first-child {
+    margin-top: 0;
+}
+
+.commitlist .commit-item .color-link {
+    color: #576b95;
+    margin: 0 2rpx;
+}
+
+/* 转发、朋友圈 */
+
+.opertion1 {
+    position: fixed;
+    right: 20rpx;
+    top: 200rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+
+.opertion {
+    position: fixed;
+    right: 20rpx;
+    bottom: 196rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+
+/* .info-content-detail{font-size:38rpx;line-height:56rpx;font-weight:bold;} */
+
+/* 详情 :start 2018-8 */
+
+.info-imgs .img1 {
+    padding-bottom: 6rpx;
+    width: 100%;
+    height: 380rpx;
+}
+
+.info-imgs .img1:last-child {
+    padding: 0;
+}
+
+.info-item1 {
+    vertical-align: -6rpx;
+}
+
+.info-bottom1{
+    padding-left: 0;
+}
+
+.comment-wrap1{
+    margin-left: 0;
+}
+
+/* 公司信息 :start */
+
+.company {
+    padding: 26rpx;
+    margin-bottom:20rpx;
+    background: #fff;
+}
+
+.company .company-info{
+    padding-left:20rpx;
+    line-height: 50rpx;
+}
+
+.company .company-pic{
+    width: 120rpx;
+    height: 120rpx;
+}
+.company .company-name{
+    padding-top: 18rpx;
+
+}
+.company .company-address{
+    color:#8f8f8f;
+    font-size:26rpx;
+}
+
+.company .icon-thumb{
+    top: -12rpx;
+}
+
+.company .address-info{
+    width:230px;
+    display:inline-block;
+}
+
+.company .company-right{
+    position: absolute;
+    top: 50%;
+    right: 26rpx;
+    margin-top: -20rpx;
+    width: 27rpx;
+    height: 40rpx;
+}
+
+/* 公司信息 :end */
+
+/* 详情 :end 2018-8 */
+
+/* wxParse :start */
+.wxparsecontent view{
+    word-break:break-all; overflow:auto;
+}
+/* wxParse :end */
+
+/*相关信息:start*/
+.comment-wrapo{
+    margin-left: 0;
+}
+/*相关信息:end*/
+.detail_title{
+    font-size: 34rpx;
+    font-weight: bold;
+    padding: 20rpx 0 0;
+    color: #576b95;
+    margin-left: 26rpx;
+}

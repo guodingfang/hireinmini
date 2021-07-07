@@ -1,0 +1,58 @@
+<!--pages/add_client/add_client.wxml-->
+<form bindsubmit='formSubmit'>
+    <view>
+        <input hidden='true' name='customerid' value='{{customerid}}'></input>
+        <view class='title'>客户信息</view>
+        <view class='client-info pad'>
+            <view class='client-name flex'>
+                <view class='name col-3'>
+                    <view class='red-text'>*</view>客户名称</view>
+                <view class='col-9'>
+                    <input class='name-input' placeholder='请输入客户名称' name='customername' value='{{customername}}'></input>
+                </view>
+            </view>
+            <view class='client-name flex remove-bottom'>
+                <view class='name col-3'>
+                    <view class='red-text'>*</view>地址</view>
+                <view class='col-9'>
+                    <input class='name-input' placeholder='请输入地址' name='address' value='{{address}}'></input>
+                </view>
+            </view>
+        </view>
+        <view class='clientcont' hidden='{{edit}}'>
+            <view class='title'>
+                联系人</view>
+            <view class='client-info pad'>
+                <view class='client-name flex'>
+                    <view class='name col-3'>
+                        <view class='red-text'>*</view>姓名</view>
+                    <view class='col-9'>
+                        <input class='name-input' placeholder='请输入姓名' name='contactname' value='{{contactname}}'></input>
+                    </view>
+                </view>
+                <view class='client-name flex'>
+                    <view class='name col-3'>
+                        <view class='red-text'>*</view>电话</view>
+                    <view class='col-9'>
+                        <input class='name-input' type='number' placeholder='请输入电话' name='contactphone' value='{{contactphone}}'></input>
+                    </view>
+                </view>
+                <view class='client-name position-r flex remove-bottom'>
+                    <view class='name col-3'>性别</view>
+                    <view class='col-9'>
+                        <picker class="sel-public" mode="selector" bindchange="getsexid" name="gender" value="{{gender}}" range="{{sexlist}}" range-key="gendername">
+                            <input class="name-input right" placeholder='请选择性别' disabled='true' name="gendername" value='{{gendername}}'></input>
+                        </picker>
+                    </view>
+                    <image src='../../images/arrows-r.png' class='img'></image>
+                </view>
+            </view>
+        </view>
+        <button class='btn-position-f' form-type='submit'>提交</button>
+    </view>
+</form>
+
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

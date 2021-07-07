@@ -1,0 +1,51 @@
+<!--pages/add-member/add-member.wxml-->
+<form bindsubmit='formSubmit'>
+    <view class='contact-info pad'>
+        <view class='contact-name flex'>
+            <view class='name col-3'><view class='red-text'>*</view>姓名</view>
+            <view class='col-9 right'>
+                <input class='name-input' placeholder='请输入姓名' name='employeename' value='{{employeename}}'></input>
+            </view>
+        </view>
+        <view class='string'></view>
+        <view class='contact-name flex' hidden='true'>
+            <view class='name col-3'><view class='red-text'>*</view>部门</view>
+            <view class='col-9 right'>
+                <picker class="name-input" placeholder='请选择部门' name='deptid' value='{{deptid}}' mode="selector" bindchange="getdeptid" range="{{deptlist}}" range-key="deptname">
+                    <view class="name-input" wx:if='{{deptname!=""}}'>
+                        {{deptname}}
+                    </view>
+                    <view class="name-input" wx:else>
+                        请选择部门
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class='string'  hidden='true'></view>
+        <view class='contact-name flex'>
+            <view class='name col-3'><view class='red-text'>*</view>员工类型</view>
+            <view class='col-9 right'>
+                <picker class="name-input" name='groupid' value='{{groupid}}' mode="selector" bindchange="getgroupid" range="{{grouplist}}" range-key="title">
+                    <view class="name-input" wx:if='{{groupname!=""}}'>
+                        {{groupname}}
+                    </view>
+                    <view class="name-input" wx:else>
+                        请选择员工类型
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class='string'></view>
+        <view class='contact-name flex'>
+            <view class='name col-3'><view class='red-text'>*</view>手机</view>
+            <view class='col-9 right'>
+                <input class='name-input' placeholder='请输入手机' name='phone' value='{{phone}}'></input>
+            </view>
+        </view>
+    </view>
+    <button class='btn-position-f' form-type='submit'>提交</button>
+</form>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

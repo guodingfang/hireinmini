@@ -1,0 +1,22 @@
+<!--pages/product_derails/product_derails.wxml-->
+<view class='pro-top'>
+    <image data-src='{{info.pics[0].picfilename}}' catchtap="Imageappear" src='{{info.pics[0].picfilename}}' wx:if="{{info.pics[0].picfilename!=''}}"></image>
+    <image src='../../images/nopic2.png' wx:else></image>
+</view>
+<view class='pro-title'>
+    <view class='col-9'>{{info.prodname}}</view>
+    <button class='col-3 pro-fen com-ment'  open-type='share' data-prodname='{{info.prodname}}'>
+        <label>分享</label>
+        <image src='../../images/share.png'></image>
+    </button>
+</view>
+<view class='pro-detail'>
+    <view class='pro-des'>
+        <image src='../../images/info-describe.png'></image>产品描述
+    </view>
+    <view class='pro-content'>{{info.proddescription}}</view>
+</view>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+    <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

@@ -1,0 +1,38 @@
+/* pages/clientInvite/clientInvite.wxss */ 
+.inv-top {
+    background: #fff;
+    overflow: hidden;
+}
+
+.inv-top image {
+    width: 252rpx;
+    height: 362rpx;
+    margin: 40rpx auto;
+    display: block;
+}
+
+.inv-name {
+    font-size: 38rpx;
+    text-align: center;
+}
+
+.inv-mem {
+    color: #ea2843;
+    font-size: 34rpx;
+    text-align: center;
+    margin-top: 25rpx;
+    margin-bottom: 40rpx;
+}
+
+.btn-add {
+    width: 96%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    font-size: 36rpx;
+    background: #2ab7ff;
+    color: #fff;
+    z-index: 100;
+    margin: 70rpx auto;
+}

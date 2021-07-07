@@ -1,0 +1,52 @@
+<!--pages/client_info/client_info.wxml-->
+<view class="wrap-yang">
+    <view class='client-head'>
+        <view class='head-content'>
+            <image src='../../images/default-head.png' class='head-img'></image>
+            <view class='head-name'>{{info.customername }}
+            </view>
+        </view>
+    </view>
+    <view class="page_fixed">
+        <view class="page__bd">
+            <view class="weui-tab">
+                <view class="weui-navbar1">
+                    <view class="weui-navbar__item bold weui-bar__item_on" bindtap='skip' data-url=''>
+                        <view class="weui-navbar__title">客户详情</view>
+                    </view>
+                    <view url='../contact/contact' class="weui-navbar__item bold" bindtap='skip' data-url='contact/contact'>
+                        <view class="weui-navbar__title">联系人</view>
+                    </view>
+                    <view class="weui-navbar__item bold" bindtap='skip' data-url='client_order/client_order'>
+                        <view class="weui-navbar__title">查看订单</view>
+                    </view>
+                    <view class="weui-navbar__slider bgcolor" style="left:{{sliderLeft}}rpx;"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class='client-info'>
+        <view class='client-name pad'>
+            <view class='name'>名称</view>
+            <view class='name-val'>{{info.customername }}
+            </view>
+        </view>
+        <view class='string'></view>
+        <view class='client-name pad'>
+            <view class='name'>地址</view>
+            <view class='name-val'>{{info.address }}
+            </view>
+        </view>
+        <view class='string'></view>
+        <view class='client-name pad'>
+            <view class='name'>所属业务员</view>
+            <view class='name-val'>{{info.employeename }}
+            </view>
+        </view>
+    </view>
+    <view class='btn-position-f' bindtap='clickEdit' data-customerid='{{item.customerid}}'>修改客户</view>
+</view>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

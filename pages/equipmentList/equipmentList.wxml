@@ -1,0 +1,15 @@
+<!--pages/equipmentList/equipmentList.wxml-->
+<view>
+    <view class="equipment" wx:for="{{equipmentList}}" wx:for-itme="item" wx:key="index">
+        <view class="equipment_img" data-prodid="{{item.prodid}}" bindtap="toDetail">
+            <image mode="widthFix" style="width:100%" src="{{imgUrl}}{{item.prodpic}}" alt="" />
+        </view>
+        <view class="text_info" data-prodid="{{item.prodid}}" bindtap="toDetail">
+            <view class="text_list text_name">{{item.prodname}}</view>
+            <view class="text_list text_price">{{item.rents.rprice}}元/{{item.produnit}}/{{item.rents.leaseterm}}天</view>
+            <view class="text_list text_size">{{item.prodspec}}</view>
+            <view class="text_list text_brand">{{item.prodbrand}}</view>
+        </view>
+        <view class="rent_btn {{item.rent?'rent_btn_on':''}}" data-index="{{index}}" bindtap="rentClick">租</view>
+    </view>
+</view>

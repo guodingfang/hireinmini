@@ -1,0 +1,117 @@
+/* pages/attestation/attestation.wxss */
+.attestation_title{
+  font-size: 32rpx;
+  /* font-weight: bold; */
+  padding: 20rpx 30rpx;
+  background: #f0f0f0;
+  position: relative;
+}
+.attestation_title::before{
+  content: '';
+  width: 8rpx;
+  height: 30rpx;
+  background: #df9e12;
+  position: absolute;
+  top: 30rpx;
+  left: 13rpx;
+  border-radius: 8rpx;
+}
+.attestation_list{
+  border-bottom: 1rpx solid #f0f0f0;
+  padding: 30rpx 30rpx 30rpx 200rpx;
+}
+.attestation_list .attestation_list_text{
+  line-height: 50rpx;
+  font-size: 30rpx;
+  float: left;
+  margin-left: -180rpx;
+}
+.attestation_list .attestation_list_text text{
+  color: #f30;
+}
+.attestation_list input{
+  width: 99%;
+  line-height: 40rpx;
+  display: inline-block;
+  font-size: 29rpx;
+  vertical-align: top;
+  color: #666;
+}
+.pic_info{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 10rpx 30rpx;
+}
+.pic_info_list{
+  width: 50%;
+  position: relative;
+}
+.pic_info_list .pic_img{
+  width: 90%;
+  height: 300rpx;
+  /* display: block; */
+  margin: 30rpx auto 10rpx;
+  border: 1rpx solid #f0f0f0;
+  border-radius: 8rpx;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+.pic_img_box{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.pic_info_list .pic_img image{
+  width: 100%;
+  border-radius: 10rpx;
+}
+.add_icon{
+  width: 100rpx;
+  height: 100rpx;
+  font-size: 60rpx;
+  text-align: center;
+  margin: 0 auto;
+  color: #999;
+  border: 1px dashed #999;
+  margin-bottom: 20rpx;
+}
+.pic_tip_text{
+  font-size: 30rpx;
+  color: #666;
+  /* text-align: center; */
+}
+/* .pic_info_list .pic_img image.icon_imgdel{
+  position: absolute;
+  top: 15rpx;
+  right: 4%;
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+} */
+.pic_info_list .pic_img .img_popup{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0);
+}
+.pic_info_list .pic_txt{
+  font-size: 30rpx;
+  text-align: center;
+}
+.pic_info_list .pic_txt text{
+  color: #f30;
+}
+.sub_btn{
+  margin: 30rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #10a0e7;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+}

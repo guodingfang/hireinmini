@@ -1,0 +1,61 @@
+<view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+            <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+            <input type="text" class="weui-search-bar__input" placeholder="搜索" bindinput="searchgoods" />
+        </view>
+    </view>
+</view>
+<view bindtap='add_mymain' class="btn-add-main" data-url="add_mymain/add_mymain?rurl=getspec">
+    <image src="../../images/icon-addnew.png" class="icon-add"></image>
+    添加主营产品
+</view>
+<form bindsubmit="getspecSubmit">
+    <view class="flex spec-item spec-title">
+        <view class="col-1 weui-check__hd_in-checkbox"></view>
+        <view class="col-11 flex">
+            <view class="col-3">名称</view>
+            <view class="col-3">规格</view>
+            <view class="col-2">品牌</view>
+            <view class="col-2">数量</view>
+            <view class="col-2">单位</view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title relative getspec-wrap">
+        <checkbox-group bindchange="checkboxChange" name="specid">
+            <label class="weui-cell weui-check__label spec-item flex" wx:for="{{checkboxItems}}" wx:key="value">
+                <checkbox class="weui-check" value="{{index}}" />
+
+                <view class="weui-cell__hd weui-check__hd_in-checkbox col-1">
+                    <icon class="weui-icon-checkbox_circle" type="circle" size="21" wx:if="{{!item.checked}}"></icon>
+                    <image src="../../images/icon-checked.png" alt="" wx:if="{{item.checked}}" class="icon-selected"></image>
+                </view>
+                <view class="weui-cell__bd col-11 flex">
+                    <view class="col-3 word-wrap">
+                        <text>{{item.prodname}}</text>
+                    </view>
+                    <view class="col-3 word-wrap">
+                        <text>{{item.pordspec}}</text>
+                    </view>
+                    <view class="col-2 word-wrap">
+                        <text>{{item.prodbrand}}</text>
+                    </view>
+                    <view class="col-2">
+                        <input type="digit" placeholder="数量" data-index="{{index}}" bindinput="getIndexNum" placeholder-class="zindex-1" placeholder-style="font-size:26rpx;" catchtap="cancelfunc" />
+                    </view>
+                    <view class="col-2 word-wrap">
+                        <text>{{item.produnit}}</text>
+                    </view>
+                </view>
+            </label>
+        </checkbox-group>
+    </view>
+    <button class="btn-position-f" formType="submit">提交</button>
+</form>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

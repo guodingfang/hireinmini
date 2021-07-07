@@ -1,0 +1,48 @@
+<form bindsubmit='formSubmit'>
+    <view class='contact-info'>
+        <view class='contact-name pad'>
+            <input hidden='true' name='thirdpartyid' value='{{thirdpartyid}}'></input>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>标签</view>
+            <view class='col-9 right'>
+                <input class='name-input' placeholder='请输入标签' name='label' value='{{label}}'></input>
+            </view>
+        </view>
+        <view class='string'></view>
+        <view class='contact-name pad'>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>联系人</view>
+            <view class='col-9 right'>
+                <input class='name-input' placeholder='请输入联系人' name='contact' value='{{contact}}'></input>
+            </view>
+        </view>
+        <view class='string'></view>
+        <view class='contact-name pad'>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>联系电话</view>
+            <view class='col-9 right'>
+                <input class='name-input' placeholder='请输入联系电话' type='number' name='contactphone' value='{{contactphone}}'></input>
+            </view>
+        </view>
+        <view class='string'></view>
+        <view class='contact-name pad'>
+            <view class='name col-3'>
+                公司名称</view>
+            <view class='col-9 right'>
+                <input class='name-input' placeholder='请输入公司名称' name='company' value='{{company}}'></input>
+            </view>
+        </view>
+    </view>
+    <view class='contact-info'>
+        <view class='contact-name pad'>
+            <view class='name'>备注</view>
+            <textarea class='text' cursor-spacing="100"  placeholder='请输入备注' name='comments' value='{{comments}}'></textarea>
+        </view>
+        <view class='baseline'></view>
+    </view>
+    <button class='btn-position-f' form-type='submit'>提交</button>
+</form>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

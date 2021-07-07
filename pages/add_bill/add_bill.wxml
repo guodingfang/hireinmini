@@ -1,0 +1,128 @@
+<!--pages/add_bill/add_bill.wxml-->
+<form bindsubmit="formSubmit">
+    <!--图片上传 start-->
+    <view class="page">
+        <view class="page__bd">
+            <view class="weui-cells img-wrap">
+                <view class='img-name'>上传图片</view>
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <view class="weui-uploader">
+                            <view class="weui-uploader__bd">
+                                <view class="weui-uploader__files" id="uploaderFiles">
+                                    <block wx:for="{{files}}" wx:for-item='item' wx:key="index">
+                                        <view class="weui-uploader__file">
+                                            <view class="fechar" bindtap="fechar" data-key="{{index}}" data-picid="{{item.id}}" data-pictype="{{item.pictype}}">
+                                                <image src="../../images/icon-picdel.png" class="icon-delpic"></image>
+                                            </view>
+                                            <image class="weui-uploader__img" src="{{item.thumbsname}}" bindtap="previewImage" id="{{item.thumbsname}}" mode="aspectFill" />
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="weui-uploader__input-box" hidden="{{hide}}">
+                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--图片上传 end-->
+    <view class='list'>
+        <input hidden='true' name='id' value='{{id}}'></input>
+        <view class='info flex'>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>主题</view>
+            <view class='col-9'>
+                <input class='val' placeholder='请输入主题' name='topic' value='{{topic}}'></input>
+            </view>
+        </view>
+
+        <view class='info flex position-r'>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>开始时间</view>
+            <view class='col-9'>
+                <picker class='time' mode="date" value="{{startDate}}" bindchange="startDateChange">
+                    <input class='val' placeholder='请选择时间' disabled='true' value='{{startDate}}' name='startdate'></input>
+                </picker>
+            </view>
+            <image src='../../images/arrows-r.png' class='img'></image>
+        </view>
+
+        <view class='info flex position-r'>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>结束时间</view>
+            <view class='col-9'>
+                <picker class='time' mode="date" value="{{endDate}}" bindchange="endDateChange">
+                    <input class='val' placeholder='请选择时间' disabled='true' value='{{endDate}}' name='enddate'></input>
+                </picker>
+            </view>
+            <image src='../../images/arrows-r.png' class='img'></image>
+        </view>
+
+        <view class='info flex position-r'>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>城市</view>
+            <navigator url='../citylist/citylist' class='col-9'>
+                <input value='{{citycode}}' hidden='true' name='citycode'></input>
+                <input class='val' placeholder='请选择城市' value='{{cityname}}' disabled='true' name='cityname'></input>
+            </navigator>
+            <image src='../../images/arrows-r.png' class='img'></image>
+        </view>
+
+        <view class='info flex position-r'>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>地点</view>
+            <view class='col-9'>
+                <input class='val' placeholder='请输入举办地点' name='address' value='{{address}}'></input>
+            </view>
+        </view>
+
+        <view class='info flex'>
+            <view class='name col-3'><view class='red-text'></view>费用</view>
+            <view class='col-9'>
+                <input class='val' type='digit' placeholder='不填为面议' name='cost' value='{{cost}}'></input>
+            </view>
+        </view>
+    </view>
+    <view class='list'>
+        <view class='info flex position-r'>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>联系人</view>
+            <view class='col-8'>
+                <input class='val' type='text' placeholder='请输入联系人' value='{{linkman}}' name='contact'></input>
+            </view>
+            <image class='removeimg' src='../../images/cancel.png' bindtap='delTextFunc' data-type='linkman'></image>
+        </view>
+
+        <view class='info flex position-r'>
+            <view class='name col-3'>
+                <view class='red-text'>*</view>联系电话</view>
+            <view class='col-8'>
+                <input class='val' type='number' placeholder='请输入联系电话' value='{{phone}}' name='contactphone'></input>
+            </view>
+            <image class='removeimg' src='../../images/cancel.png' bindtap='delTextFunc' data-type='phone'></image>
+        </view>
+    </view>
+    <view class='list'>
+        <view class='info'>
+            <view class='name col-3'>详细描述</view>
+            <textarea class='describe-contetn' maxlength="-1" cursor-spacing="100" placeholder='请输入描述' name='comments' placeholder-class='zindex-1' value='{{comments}}'></textarea>
+            <view class='pad-fill-t25'></view>
+        </view>
+    </view>
+    <view class='pad-fill-t115'></view>
+    <button class='btn-position-f' form-type='submit'>发布</button>
+</form>
+
+<view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

@@ -1,0 +1,81 @@
+/* pages/binding_company/binding_company.wxss */
+@import "../../common/lib/weui.wxss";
+
+page {
+    font-size: 30rpx;
+}
+
+.string {
+    border-top: 1rpx solid #f0f0f0;
+}
+
+.position-r {
+    position: relative;
+}
+
+.search {
+    padding: 10rpx 15rpx;
+    background: #fff;
+}
+
+.search .search-img {
+    position: absolute;
+    top: 28rpx;
+    left: 28rpx;
+    width: 36rpx;
+    height: 36rpx;
+}
+
+.search .search-input {
+    display: inline-block;
+    padding-left: 64rpx;
+    width: 520rpx;
+    height: 60rpx;
+    border-radius: 60rpx;
+    background: #f0f0f0;
+    vertical-align: middle;
+}
+
+.search .search-btn {
+    display: inline-block;
+    padding: 12rpx 30rpx;
+    margin-left: 16rpx;
+    border-radius: 6rpx;
+    vertical-align: middle;
+}
+
+.list {
+    margin-top: 20rpx;
+    padding: 0 25rpx;
+    background: #fff;
+}
+
+.list .name {
+    padding: 25rpx 0;
+}
+
+.onon {
+    text-align: center;
+    margin-top: 40rpx;
+}
+
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;   
+    z-index:200;
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

@@ -1,0 +1,175 @@
+/**user.wxss**/
+@import "../../common/lib/weui.wxss";
+@import "../../common/css/publiclist.wxss";
+.head {
+    padding: 30rpx;
+    background: #50c4ff;
+    height: 132rpx;
+}
+
+.head-img {
+    width: 120rpx;
+    height: 120rpx;
+    border: 6rpx solid #fff;
+    border-radius: 70rpx;
+}
+
+.head-left {
+    display: inline-block;
+    height: 132rpx;
+}
+
+.head-right {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 36rpx;
+    color: #fff;
+    font-family: "黑体";
+    margin-top: 6px;
+}
+
+.username {
+    display: inline-block;
+}
+
+.user-phone {
+    display: inline-block;
+    margin-left: 40rpx;
+}
+
+.examine {
+    color: #e7240e;
+    font-size: 30rpx;
+    margin-top: 20rpx;
+}
+
+.conpamyname {
+    font-size: 30rpx;
+    margin-top: 12rpx;
+}
+
+.order-list {
+    text-align: center;
+    font-family: "simhei";
+    padding: 20rpx 20rpx;
+    background: #fff;
+    margin-top: 10rpx;
+}
+
+.title {
+    font-size: 32rpx;
+    padding: 20rpx 30rpx;
+    position: relative;
+    border-bottom: 1rpx solid #e6e6e6;
+}
+
+.order {
+    margin-top: 20rpx;
+    background: #fff;
+}
+
+.title-more {
+    position: absolute;
+    right: 30rpx;
+    top: 24rpx;
+    font-size: 28rpx;
+    color: #8f8f8f;
+}
+
+.title-more image {
+    width: 15rpx;
+    height: 25rpx;
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 10rpx;
+    margin-top: 10rpx;
+}
+
+.order-single {
+    position:relative;
+    display: inline-block;
+    font-size: 28rpx;
+    /* line-height:34rpx;  */
+}
+
+.order-icon {
+    width: 52rpx;
+    height: 52rpx;
+}
+
+.tap {
+    background: #fff;
+    position: relative;
+}
+
+.top {
+    margin-top: 20rpx;
+}
+
+.title-more1 {
+    position: absolute;
+    right: 30rpx;
+    top: 30rpx;
+    font-size: 28rpx;
+    color: #8f8f8f;
+}
+
+.title-more1 image {
+    width: 16rpx;
+    height: 28rpx;
+    display: inline-block;
+    margin-top: 5rpx;
+}
+
+.title-icon {
+    position: absolute;
+    left: 30rpx;
+    top: 28rpx;
+    width: 35rpx;
+    height: 35rpx;
+}
+
+.title1 {
+    padding-left: 60rpx;
+}
+
+.no-bottom {
+    border-bottom: none;
+}
+
+.cancel {
+    background: #fff;
+    color: #333;
+    border: none;
+    font-size: 32rpx;
+    text-align: center;
+}
+
+.nav-unmesnum{
+    position: absolute;
+    background:#e7240e;
+    border-radius: 50%;
+    top: -8px;
+    right: 42rpx;
+    width: 16px;
+    height: 16px;
+    display: block;
+    text-align: center;
+    line-height: 18px;
+    color: #fff;
+    font-family: "黑体";
+}
+.nav-unmesnum1{
+    position: absolute;
+    background:#e7240e;
+    border-radius: 50%;
+    top: -8px;
+    right: 42rpx;
+    width: 16px;
+    height: 16px;
+    display: block;
+    text-align: center;
+    line-height: 18px;
+    color: #fff;
+    font-family: "黑体";
+}

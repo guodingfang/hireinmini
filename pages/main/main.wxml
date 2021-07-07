@@ -1,0 +1,24 @@
+<!--pages/main/main.wxml-->
+<view class='my-title'>
+    <view bindtap='tabcompany'>基本资料</view>
+    <view class='active'>主营产品</view>
+</view>
+
+<view class='my-list'>
+    <view class='my-row actv'>
+        <view>品名</view>
+        <view>规格</view>
+        <view>品牌</view>
+    </view>
+    <view wx:for='{{list}}' wx:for-item='item' wx:key="{{index}}">
+        <view class='string'></view>
+        <view class='my-row'>
+            <view>{{item.prodname}}</view>
+            <view>{{item.pordspec}}{{item.produnit}}</view>
+            <view>{{item.prodbrand}}</view>
+        </view>
+    </view>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>

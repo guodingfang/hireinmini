@@ -1,0 +1,17 @@
+/* pages/publicnumber/publicnumber.wxss */
+
+page {
+    background: #fff;
+}
+
+.pic {
+    display: block;
+    margin: 0 auto;
+    margin-top: 100rpx;
+}
+
+.text {
+    text-align: center;
+    margin-top: 15rpx;
+    font-size: 40rpx;
+}

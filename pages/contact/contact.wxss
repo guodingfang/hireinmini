@@ -1,0 +1,142 @@
+/* pages/contact/contact.wxss */
+@import "../../common/lib/weui.wxss";
+
+.wrap-yang {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+page {
+    background: #f0f0f0;
+    font-size: 30rpx;
+}
+
+.client-head {
+    height: 250rpx;
+    background: #50c4ff;
+}
+
+.client-head .head-content {
+    text-align: center;
+}
+
+.client-head .head-content .head-img {
+    margin-top: 20px;
+    width: 120rpx;
+    height: 120rpx;
+    border: 4rpx solid #fff;
+    border-radius: 50%;
+}
+
+.client-head .head-content .head-name {
+    color: #fff;
+}
+
+.weui-navbar1 {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    z-index: 500;
+    top: 0;
+    width: 100%;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.page_fixed {
+    background: #fff;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.bgcolor {
+    background: #ff9a00;
+}
+
+.string {
+    border-top: 1rpx solid #f0f0f0;
+}
+
+.contact-info {
+    padding: 0 25rpx;
+    margin-top: 20rpx;
+    background: #fff;
+}
+
+.contact-name {
+    position: relative;
+}
+
+.contact-name .name {
+    display: inline-block;
+    padding: 25rpx 0;
+    width: 230rpx;
+    color: #333;
+    vertical-align: 8rpx;
+}
+
+.contact-name .phone {
+    display:inline-block;
+padding:25rpx 0;
+width:230rpx;
+color:#333;
+vertical-align:8rpx;
+
+}
+
+.contact-name .oper {
+    display: inline-block;
+    position: absolute;
+    top: 25rpx;
+    right: -48rpx;
+    width: 200rpx;
+    color: #ff9a00;
+}
+
+.oper .oper-edit {
+    display: inline-block;
+    padding-right: 10rpx;
+}
+
+.oper .oper-del {
+    display: inline-block;
+    padding-left: 10rpx;
+}
+
+.sel-public {
+    display: inline-block;
+}
+
+.wire {
+    display: inline-block;
+    border-left: 2rpx solid #ff9a00;
+    height: 30rpx;
+    vertical-align: -4rpx;
+}
+.img1{
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: -2rpx;
+    margin-left: 9rpx;
+}
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;   
+    z-index:200;
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

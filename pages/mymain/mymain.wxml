@@ -1,0 +1,30 @@
+<!--pages/mymain/mymain.wxml-->
+<view class='my-list' wx:if='{{list != ""}}'>
+    <view class='my-row actv'>
+        <view>品名</view>
+        <view>规格</view>
+        <view>品牌</view>
+    </view>
+
+    <view class='my-row' wx:for='{{list}}' wx:for-item='item' wx:key="{{index}}">
+        <view>{{item.prodname}}</view>
+        <view>{{item.pordspec}}</view>
+        <view>{{item.prodbrand}}</view>
+        <view bindtap='add_mymain' class='main-alter' data-url='add_mymain/add_mymain?id={{item.prodid}}'>
+            <image src='../../images/amend.png'></image>
+        </view>
+    </view>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>
+<view class='no-info' wx:if="{{list == ''}}">
+    <image src='../../images/noinfo.png' class='no-info-img'></image>
+</view>
+<view class="show-loading gray" wx:if="{{list == ''}}">暂无数据</view>
+<view class='padding-t110'></view>
+<view class='btn-position-f' bindtap='addmain'>新增主营产品</view>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

@@ -1,0 +1,22 @@
+<!--pages/join_company/join_company.wxml-->
+<form bindsubmit='formSubmit'>
+    <view class='client-info top-info pad'>
+        <view class='client-name flex'>
+            <view class='name col-3'>姓名</view>
+            <input class='name-input' type='text' placeholder='请输入姓名' name="employeename" value='{{employeename}}'></input>
+        </view>
+
+        <view class='client-name flex remove-bottom'>
+            <view class='name col-3'>手机号</view>
+            <view class='name-input' name="phone">{{phone}}</view>
+        </view>
+    </view>
+    <view class='client-info top-info pad'>
+        <view class='client-name remove-bottom'>
+            <view class='name col-3'>申请理由</view>
+            <textarea class='describe-contetn' cursor-spacing="100" placeholder='请输入申请理由' name="comments" value='{{comments}}'></textarea>
+            <view class='pad-fill-t25'></view>
+        </view>
+    </view>
+    <button class='btn-position-f' form-type='submit'>申请加入</button>
+</form>

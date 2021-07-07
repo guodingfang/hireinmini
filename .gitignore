@@ -1,0 +1,11 @@
+# IDE
+.idea
+.vscode
+.DS_Store
+.svn
+
+# node_modules
+node_modules
+
+# project.config
+# project.config.json

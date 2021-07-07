@@ -1,0 +1,150 @@
+/**index.wxss**/
+@import "../../common/lib/weui.wxss";
+@import "../../common/css/publiclist.wxss";
+
+page {
+    background: #fff;
+    color: #3d3d3d;
+    font-size: 32rpx;
+}
+
+.form-wrap {
+    padding: 20rpx 30rpx;
+}
+
+.textarea {
+    width: 100%;
+    margin: 0rpx auto;
+    height: 100px;
+}
+
+.img-wrap .img-item {
+    width: 210rpx;
+    height: 210rpx;
+    margin-right: 30rpx;
+    margin-bottom: 30rpx;
+    margin-top: 0;
+    display: inline-block;
+    position: relative;
+}
+
+.img-wrap .icon-imgdel {
+    position: absolute;
+    top: -10rpx;
+    right: -10rpx;
+    width: 40rpx;
+    height: 40rpx;
+    z-index: 10;
+}
+
+.img-wrap .icon-add {
+    width: 210rpx;
+    height: 210rpx;
+    margin-right: 30rpx;
+}
+
+.img-wrap .img-item:nth-child(3n) {
+    margin-right: 0;
+}
+
+.item-icon {
+    width: 34rpx;
+    height: 34rpx;
+    margin-right: 20rpx;
+    position: relative;
+    top: 6rpx;
+}
+
+.icon-right {
+    width: 30rpx;
+    height: 30rpx;
+    position: absolute;
+    top: 36rpx;
+    right: 140rpx;
+}
+
+.weui-input {
+    width: 360rpx;
+    min-height: 100rpx;
+}
+
+.weui-cells:before {
+    border-color: #f0f0f0;
+}
+
+.weui-cells:after {
+    border-color: #f0f0f0;
+}
+
+.weui-cell:before {
+    border: 0;
+}
+
+.weui-cell:after {
+    border: 0;
+}
+
+.weui-cell {
+    border-top: 1rpx solid #f0f0f0;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.weui-cell.no-border {
+    border: 0;
+}
+
+.weui-cell_input {
+    padding: 0;
+}
+
+.btn-release {
+    background: #2ab7ff;
+    color: #fff;
+    margin: 0 0 0 12rpx;
+}
+
+.btn-release.btnblur {
+    color: #ccc;
+    background: #2ab7ff;
+}
+
+.btn-release.active {
+    top: 200rpx;
+}
+
+.margin-top {
+    margin-top: 70rpx;
+}
+
+.weui-cells.active:after {
+    border-bottom: 1rpx solid #d43d3d;
+}
+
+.weui-cell.active {
+    border-bottom: 1rpx solid #d43d3d;
+}
+
+.video {
+    width: 210rpx;
+    height: 210rpx;
+}
+
+/* 2018-8 :start */
+
+.weui-cells:after {
+    border: none;
+}
+
+.form-list {
+    position: relative;
+}
+
+.form-list .form-btn {
+    position: absolute;
+    top: 60rpx;
+    right: 0;
+    width: 120rpx;
+    background: #fff;
+}
+
+/* 2018-8 :end */

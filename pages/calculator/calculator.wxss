@@ -1,0 +1,255 @@
+@import "../../common/lib/weui.wxss";
+page, .page, .page__bd {
+    height: 100%;
+}
+
+.page__bd {
+    padding-bottom: 0;
+}
+
+.weui-tab__content {
+    text-align: left;
+    padding-bottom: 50rpx;
+}
+
+.weui-navbar__item.weui-bar__item_on {
+    color: #6ECEFF;
+}
+
+.weui-navbar__slider {
+    background-color: #6ECEFF;
+    width: 92rpx;
+    height: 4rpx;
+}
+
+.weui-navbar {
+    background-color: #fff;
+    border-bottom: none;
+}
+
+.weui-tab__panel {
+    background-color: #F5F5F5;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
+}
+.weui-navbar__title{
+    font-size: 28rpx;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+
+.top-distance{
+    margin-top: 5rpx;
+}
+.cover {
+    box-shadow: 3rpx 6rpx 10rpx #dbdbdb;
+    background-color: #fff;
+    border-radius: 15rpx;
+}
+
+.interval {
+    margin-top: 18rpx;
+}
+
+.bottom-line {
+    border-bottom: 1rpx solid #e5e5e5;
+}
+
+/* item start */
+
+view.item .title {
+    height: 94rpx;
+    font-size: 30rpx;
+    color: #333;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+view.item .toolbar1 {
+    padding: 19rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+view.item .toolbar1>view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+view.item .toolbar1 text {
+    font-size: 28rpx;
+    color: #1a1a1a;
+}
+
+.toolbar-input-placeholder {
+    font-size: 28rpx;
+    color: #b8b8b8;
+}
+
+view.item .toolbar1 .left {
+    width: 55%;
+    padding-right: 40rpx;
+}
+
+view.item .toolbar1 .left input {
+    font-size: 28rpx;
+}
+
+view.item .toolbar1>view.right {
+    width: 45%;
+    padding-left: 20rpx;
+    border-left: 1px solid #e5e5e5;
+}
+
+view.item .toolbar2 {
+    padding: 19rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+view.item .toolbar2 text{
+    font-size: 28rpx;
+    color: #1a1a1a;
+}
+
+/* item end */
+.active{
+    background-color: #e9f8ff!important;
+    border: 1px solid #2ab7ff!important;
+}
+/* page2 start */
+view.page2{
+    margin-top: 25rpx;
+    padding: 24rpx 25rpx;
+    background-color: #fff;
+}
+view.page2 .nape .title{
+    font-size: 30rpx;
+    color:#333;
+    margin-bottom: 4rpx;
+    font-weight: bold;
+}
+view.page2 .nape .content{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cell-base{
+    background-color: #f5f5f5;
+    height: 68rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+    color: #1a1a1a;
+    border: 1px solid #f5f5f5;
+}
+view.page2 .nape .content > view.cell1{
+    width: 206rpx;
+    margin-top: 24rpx;
+}
+view.page2 .nape .content > view.cell2{
+    width: 318rpx;
+    height: 68rpx;
+}
+view.page2 .nape .content > .cell3{
+    width: 200rpx;
+    text-align: center;
+}
+.page2-input-style{
+    color: #a3a3a3;
+    font-size: 28rpx;
+    text-align: center;
+}
+#nape2 .title{
+    height: 90rpx;
+    display: flex;
+    align-items: center;
+}
+#end{
+    text-align: right;
+    justify-content: space-between;
+    padding-right: 20rpx;
+    padding-left: 20rpx;
+    box-sizing: border-box;
+}
+#end .font-right{
+    text-align: right;
+}
+.page2 .box{
+    display: flex;
+}
+.page2 .box > view{
+    width: 50%;
+}
+.page2 .box > view.left{
+    margin-right: 24rpx;
+}
+.page2 .box > view text{
+    font-size: 30rpx;
+    color:#333;
+    margin-bottom: 4rpx;
+    font-weight: bold;
+}
+.page2 .box > view view{
+    width: 318rpx;
+}
+/* page2 e3nd */
+/* page3 start */
+.page3-interval{
+    margin-top: 28rpx;
+}
+.page3{
+    padding: 35rpx 40rpx;
+    margin-top: 35rpx;
+    background-color: #fff;
+}
+.page3 .native{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page3 .native text{
+    font-size: 28rpx;
+    color: #1a1a1a;
+}
+.page3 .native text.first{
+    letter-spacing: 20rpx;
+}
+.page3 .native input{
+    width: 432rpx;
+    padding-left: 30rpx;
+    margin-right: 10rpx;
+}
+/* page3 end */
+.tip{
+    margin-top: 62rpx;
+    font-size: 28rpx;
+    color: #666;
+}
+/* 分享 start */
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 80%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;   
+    z-index:200;
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}
+/* 分享 end */

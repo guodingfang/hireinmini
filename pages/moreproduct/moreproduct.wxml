@@ -1,0 +1,16 @@
+<!--pages/moreproduct/moreproduct.wxml-->
+<view>
+    <view class='pro-box' wx:for='{{list}}' wx:for-item='item' wx:key="key">
+        <view bindtap='product_derails' data-url='product_derails/product_derails?prodid={{item.prodid}}'>
+            <view class='pro-pic'>
+                <input name='prodid' value='{{item.prodid}}' hidden='true'></input>
+                <image class='img' src='{{imageurl}}{{item.prodimage}}' wx:if="{{item.prodimage!=''}}" data-src='{{imageurl}}{{item.prodimage}}' catchtap="seeImage">></image>
+                <image class='img' src='../../images/nopic2.png' wx:else></image>
+            </view>
+            <view class='pro-name'>
+                <view class='pro-title word-wrap'>{{item.prodname}}</view>
+                <view class='pro-describe word-wrap-line2'>{{item.proddescription}}</view>
+            </view>
+        </view>
+    </view>
+</view>

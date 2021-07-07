@@ -1,0 +1,73 @@
+<view class='order-info'>
+    <view class='order-info-title'>
+        <image src='../../images/order.png' class='img'></image>
+        <view class='title'>订单详情</view>
+    </view>
+    <view class='string'></view>
+    <view class='pad-fill'></view>
+    <view class=''>
+        <view class='order-info-name'>客户名称</view>
+        <view class='content'>{{order.customername}}</view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>联系方式</view>
+        <view class='content'>{{order.phone}}</view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>活动日期</view>
+        <view class='content'>{{order.daterange}}</view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>联系人</view>
+        <view class='content'>{{order.contact}}</view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>活动场地</view>
+        <view class='content'>{{order.address}}</view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>活动类型</view>
+        <view class='content'>{{order.acttype}}</view>
+    </view>
+    <view class=''>
+        <view class='order-info-name'>活动备注</view>
+        <view class='content'>{{order.comments}}</view>
+    </view>
+    <view class='pad-fill'></view>
+</view>
+<view class='order-info '>
+    <view class='string'></view>
+    <view class='order-info-title position-r'>
+        <image src='../../images/price.png' class='img1'></image>
+        <view class='title'>订单费用</view>
+        <view class='title-name'>{{order.actcost>0?order.actcost:"面议"}}</view>
+    </view>
+</view>
+<view class='order-info'>
+    <view class='order-info-title position-r'>
+        <image src='../../images/equipment.png' class='img1'></image>
+        <view class='title'>活动设备</view>
+    </view>
+    <view class='string'></view>
+    <view class='pad-fill'></view>
+    <view class='equipment-info flex' wx:for='{{goods}}' wx:for-item='item' wx:key="{{index}}">
+        <view class='val col-3'>{{item.prodname}}</view>
+        <view class='val col-3'>{{item.prodspec}}</view>
+        <view class='val col-3'>{{item.goodsnum}}{{item.produnit}}</view>
+        <view class='val col-3'>{{item.brandname}}</view>
+    </view>
+    <view class='pad-fill'></view>
+</view>
+<view class='pad-t100'></view>
+
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>
+
+
+
+<view class='flex com-btn'>
+    <view class='btn1' bindtap='passfunc' data-status='3'>审核未通过</view>
+    <view class='btn2' bindtap='passfunc' data-status='2'>审核通过</view>
+</view>

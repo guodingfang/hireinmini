@@ -1,0 +1,79 @@
+<!--pages/mylease/mylease.wxml-->
+<view class='page-content'>
+    <block wx:for="{{list}}" wx:key="index" wx:for-item='item'>
+        <view class='content-list'>
+            <view class='flex'>
+                <view data-userid="{{item.userid}}" bindtap="recommendurl" data-companyid='{{item.companyid}}' data-msgid='{{item.msgid}}'>
+                    <image src="{{item.userpic==''?'../../images/img-header.png':item.userpic}}" class='list-portrait'></image>
+                </view>
+                <view class='list-info col-10'>
+                    <view class='info-head' data-hostuserid="{{item.userid}}" data-companyid='{{item.companyid}}' data-msgid="{{item.msgid}}" bindtap="recommendurl">
+                        <view>
+                            <text class='info-username display-inlineblock word-wrap'>{{item.contacter}}</text>
+                            <text class='info-city'>[{{item.cityname}}]</text>
+                        </view>
+                        <view class='info-time display-inlineblock'>{{item.updateinfo}}</view>
+                    </view>
+                    <navigator url="../detail/detail?msgid={{item.msgid}}&hostuserid={{item.userid}}">
+                        <text class='info-content word-wrap-line4'>{{item.content}}</text>
+                        <!-- <view class='info-fulltext' wx:if='{{item.content.length > 72}}'>全文</view> -->
+                    </navigator>
+                    <view class='info-imgs'>
+                        <block wx:for="{{item.pics}}" wx:for-item="item2" wx:for-index="idx" wx:key="key1">
+
+                            <image mode='aspectFill' src='{{imgurls}}{{item2.picurl_thumbnails}}' data-src="{{imgurls}}{{item2.picurl}}" data-imglist="{{item.pics}}" class='img relative' bindtap="prevPublicImg" wx:if="{{item.picsign!=2}}">
+                                <view class="showpiccount" wx:if="{{item.piccount>0 && idx==2}}">+{{item.piccount}}</view>
+                            </image>
+
+                            <view class="video-wrap" style="width:{{item2.width}}rpx;height:{{item2.height}}rpx;position:relative;z-index:10;" wx:if="{{item.picsign==2}}">
+                                <image wx:if="{{item.picsign==2}}" src="{{videourl}}{{item2.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{item2.width}},h_{{item2.height}},m_fast" style="width:{{item2.width}}rpx;height:{{item2.height}}rpx;" data-src="{{videourl}}{{item2.videourl}}" bindtap="playVideo" data-vid="video{{index}}" hidden="{{ currentVid == 'video'+index }}" class="videoimg"></image>
+                                <image src="../../images/icon-video.png" class="icon-video" wx:if="{{item.picsign==2}}" bindtap="playVideo" data-vid="video{{index}}" hidden="{{ currentVid == 'video'+index }}"></image>
+
+                                <video src="{{videourl}}{{item2.videourl}}#t=2" class="listvideo" wx:if="{{item.picsign==2}}" poster="{{videourl}}{{item2.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{item2.width}},h_{{item2.height}},m_fast" style="width:{{item2.width}}rpx;height:{{item2.height}}rpx;" id="video{{index}}" hidden="{{ currentVid != 'video'+index }}" direction="{{item2.width > item2.height?90:0}}" objectFit="cover" loop="{{true}}" bindfullscreenchange="exitfullscreenfunc" />
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </view>
+            <view class='info-bottom'>
+                <view class='info-phone' bindtap="callPhone" data-phone="{{item.contactphone}}">
+                    <image src='../../images/dial.png' class='icon-thumb icon-dial'></image>
+                    <text>拨打电话</text>
+                </view>
+                <view class='info-browse' wx:if='{{item.viewcount}}'>
+                    <image src='../../images/browse.png' class='browse-img'></image>{{item.viewcount}}</view>
+                <view class="info-comment" bindtap="editPraise" data-msgid="{{item.msgid}}" data-userid="{{item.userid}}" data-index="{{index}}" data-praised='{{item.praised}}'>
+                    <image src="../../images/thumb.png" class="icon-thumb" wx:if="{{item.praised == 0}}"></image>
+                    <image src="../../images/thumb-select.png" class="icon-thumb" wx:if="{{item.praised == 1}}"></image>
+                    <text>{{item.praisecount==0?'点赞':item.praisecount}}</text>
+                </view>
+                <view class="info-comment" bindtap="indetailurl" data-msgid="{{item.msgid}}" data-type="navigate">
+                    <image src="../../images/icon-comment.png" class="icon-thumb"></image>
+                    <text>{{item.discusscount==0?'评论':item.discusscount}}</text>
+                </view>
+            </view>
+            <view class="item-operation">
+                <view class="item-pub item-edit" wx:if='{{item.picsign != 2}}' data-url="../release/release?msgid={{item.msgid}}" bindtap="editmsg">修改</view>
+                <view class="item-pub item-del" data-msgid="{{item.msgid}}" bindtap="delmsg">删除</view>
+            </view>
+        </view>
+    </block>
+</view>
+<view class="weui-loadmore" wx:if="{{hidden}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+</view>
+<view class="show-loading" wx:if="{{finish}}">加载完毕</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>
+<view class='no-info' wx:if="{{noresult}}">
+    <image src='../../images/noinfo.png' class='no-info-img'></image>
+</view>
+<view class="show-loading gray" wx:if="{{noresult}}">未搜索到您想要的内容</view>
+<view class='pad-fill'></view>
+<button class='btn-position-f' bindtap='issue'>发布</button>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

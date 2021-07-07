@@ -1,0 +1,2 @@
+/* pages/join_company/join_company.wxss */
+@import "../../common/css/list.wxss";

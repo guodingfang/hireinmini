@@ -1,0 +1,62 @@
+/* pages/userInfoDetail/userInfoDetail.wxss */
+.userinfo_wrap{
+    background: #fff;
+    padding: 0 10rpx 30rpx 30rpx;
+}
+.userinfo_box{
+    line-height: 50rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20rpx 30rpx 20rpx 0;
+    position: relative;
+    font-size: 30rpx;
+}
+.userinfo_box_logo{
+    padding: 50rpx 0;
+}
+.userinfo_logo{
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 180rpx;
+    margin: 0 auto;
+    border: 1px solid #f0f0f0;
+    overflow: hidden;
+}
+.userinfo_logo image{
+    width: 100%;
+}
+.userinfo_logo_text{
+    font-size: 30rpx;
+    text-align: center;
+    margin-top: 30rpx;
+}
+.userinfo_right{
+    width: 14rpx;
+    height: 26rpx;
+    position: absolute;
+    top: 50%;
+    right: 5rpx;
+    margin-top: -23rpx;
+}
+.userinfo_right image{
+    width: 100%;
+}
+.userinfo_info{
+    width: 70%;
+    text-align: right;
+}
+.userinfo_info input{
+    text-align: right;
+}
+.submit_info{
+    height: 80rpx;
+    line-height: 80rpx;
+    margin: 30rpx;
+    background: #2ab7ff;
+    border-radius: 10rpx;
+    font-size: 30rpx;
+    color: #fff;
+    text-align: center;
+}

@@ -1,0 +1,101 @@
+<view class="flex box box-tb box-align-center">
+    <!--日历 start-->
+    <view class="calendar pink-color box box-tb bg-fff">
+        <!--显示年月日 start-->
+        <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
+            <view class="prev box box-rl" bindtap="handleCalendar" data-handle="prev">
+                <view class="prev-handle box box-lr box-align-center box-pack-center">
+                    <image src="../../images/icon-left.png" class="icon-jt"></image>
+                </view>
+            </view>
+            <view bindtap="chooseYearAndMonth" class="date-area box box-lr box-align-center box-pack-center">{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view>
+            <view class="next box box-lr" bindtap="handleCalendar" data-handle="next">
+                <view class="next-handle box box-lr box-align-center box-pack-center">
+                    <image src="../../images/icon-right.png" class="icon-jt"></image>
+                </view>
+            </view>
+        </view>
+        <!--显示年月日 end-->
+        <!--显示星期几 start-->
+        <view class="weeks box box-lr box-pack-center box-align-center">
+            <view class="flex week fs28" wx:for="{{weeks_ch}}" wx:key="index" data-idx="{{index}}">{{item}}</view>
+        </view>
+        <!--显示星期几 end-->
+        <!--月历循环 start-->
+        <view class="days box box-lr box-wrap" bindtouchstart="touchStart" bindtouchend="touchEnd">
+            <!-- <block wx:for="{{empytGrids}}" wx:key="{{index}}">
+                <view wx:if="{{hasEmptyGrid}}" data-idx="{{index}}" class="grid white-color box box-align-center box-pack-center">
+                </view>
+            </block> -->
+            <block wx:for="{{days}}" wx:key="index">
+                <view class="grid white-color box box-align-center box-pack-center {{item.show?'':'hide'}} {{item.othermonth?'othermonth':''}} " data-idx="{{index}}" data-day="{{item.day}}" data-fullday="{{item.fullday}}" bindtap="tapDayItem">
+                    <view class="day {{item.choosed ? 'border-radius pink-bg' : ''}} box box-align-center box-pack-center relative {{item.show?'':'height-0'}}">
+                        {{item.day}}
+                        <view class="icon-dot" wx:if="{{item.dot}}"></view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <!--月历循环 end-->
+        <view class="shrink btn-se {{isExpand?'':'hide'}} " bindtap="clickShrink">收起
+            <image src="../../images/icon-up.png" class="icon-updown"></image>
+        </view>
+        <view class="expand btn-se {{isExpand?'hide':''}}" bindtap="clickExpand">展开
+            <image src="../../images/icon-down.png" class="icon-updown"></image>
+        </view>
+    </view>
+    <!--日历 end-->
+    <!--订单 start-->
+    <view class="{{margintop}}">
+        <block wx:for="{{orderlist}}" wx:key="index">
+            <view bindtap='taskdetail' class="orderlist" data-url='{{item.tasktype==1?"mytask_amend/mytask_amend":"third_mytask_amend/third_mytask_amend"}}?orderid={{item.orderid}}&stepid={{item.stepid}}' open-type='redirect'>
+                <view class="order-title box relative">
+                    <image src="../../images/task.png" class="icon-order"></image>
+                    <view class="t-item">{{item.theme}}</view>
+                </view>
+                <view class="order-cont relative">
+                    <view class="order-item relative box">
+                        <view class="col-2 o-left word-wrap">地点</view>
+                        <view class="col-10 o-man word-wrap">{{item.address}}</view>
+                    </view>
+                    <view class="order-item relative box">
+                        <view class="col-2 o-left word-wrap">联系人</view>
+                        <view class="col-10 o-man word-wrap">{{item.contact}}</view>
+                    </view>
+                    <view class="order-item relative box">
+                        <view class="col-2 o-left word-wrap">电话</view>
+                        <view class="col-10 o-man word-wrap">{{item.contactphone}}</view>
+                    </view>
+                    <view class="order-item relative box">
+                        <view class="col-2 o-left word-wrap">参与者</view>
+                        <view class="col-10 o-man word-wrap">
+                            <view wx:for="{{item.impmans}}" wx:for-index="idx" wx:for-item="itemname">{{itemname.employeename}}</view>
+                        </view>
+                    </view>
+                    <image src="../../images/img-readed.png" class="img-readed" wx:if="{{item.readbj==1}}"></image>
+                </view>
+            </view>
+        </block>
+    </view>
+    <!--订单 end-->
+</view>
+<!--弹出层 start-->
+<view wx:if="{{showPicker}}" class="box box-tb date-picker">
+    <view class="picker-btns box box-lr box-pack-between box-align-center">
+        <view class="picker-btn picker-cancel" data-type="cancel" bindtap="tapPickerBtn">取消</view>
+        <view class="picker-btn picker-confirm" data-type="confirm" bindtap="tapPickerBtn">确定</view>
+    </view>
+    <picker-view class="flex" indicator-style="height: 50px;" style="width: 100%; height: 150px;" value="{{picker_value}}" bindchange="pickerChange">
+        <picker-view-column>
+            <view class="picker-view" wx:for="{{picker_year}}" style="line-height: 50px">{{item}}年</view>
+        </picker-view-column>
+        <picker-view-column>
+            <view class="picker-view" wx:for="{{picker_month}}" style="line-height: 50px">{{item}}月</view>
+        </picker-view-column>
+    </picker-view>
+</view>
+<!--弹出层 end-->
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

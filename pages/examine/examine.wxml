@@ -1,0 +1,49 @@
+<!--pages/examine/examine.wxml-->
+<view class='client-name' wx:for='{{list}}' wx:for-item='item' wx:key="{{index}}">
+    <view class='member-right'>
+        <view class='member-name'>{{item.employeename}} {{item.phone}}</view>
+        <view class='member-phone'>{{item.comments}}</view>
+    </view>
+    <view class='client-img'>
+        <view class='ex-btn' bindtap='exchk12' data-employeeid='{{item.employeeid}}' data-phone='{{item.phone}}' data-activate='0'>审核拒绝</view>
+        <view bindtap='exchk' data-employeeid='{{item.employeeid}}' data-phone='{{item.phone}}' data-activate='1'>审核通过</view>
+    </view>
+</view>
+<view class='no-info' wx:if="{{list == ''}}">
+    <view class='no-iner'>暂无需要审核的信息</view>
+    <image src='../../images/noinfo.png' class='no-info-img'></image>
+</view>
+<!--弹窗-->
+<view class='exshade' name='popup' hidden='{{popup}}'>
+</view>
+<view class='exbox' name='popup' hidden='{{popup}}'>
+    <view class='extitle'>审核</view>
+    <view class='ex-row' hidden='true'>
+        <view class='exname'>部门</view>
+        <view class='right'>
+            <picker class="name-input" name='deptid' value='{{deptid}}' mode="selector" bindchange="getdeptid" range="{{deptlist}}" range-key="deptname">
+                <view class="name-input">
+                    {{deptname}}
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class='ex-row'>
+        <view class='exname col-3'>职务</view>
+        <view class='col-9 right'>
+            <picker class="name-input" name='groupid' value='{{groupid}}' mode="selector" bindchange="getgroupid" range="{{grouplist}}" range-key="title">
+                <view class="name-input">
+                    {{groupname}}
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class='ex-btn1'>
+        <view class='feng' bindtap='feng'>取消</view>
+        <view class='feng1' bindtap='getok'>通过</view>
+    </view>
+</view>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

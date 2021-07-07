@@ -1,0 +1,78 @@
+/* pages/member_details/member_details.wxss */
+
+.my-list {
+    background: #fff;
+    padding: 0 25rpx;
+}
+
+.my-left, .my-right {
+    display: inline-block;
+    width: 50%;
+    font-size: 30rpx;
+    line-height: 90rpx;
+}
+
+.my-right {
+    text-align: right;
+    width: 46%;
+    color: #888;
+}
+
+.string {
+    height: 3rpx;
+    background: #f0f0f0;
+}
+
+.mem-top {
+    width: 100%;
+    display: block;
+    position: relative;
+    height: 250rpx;
+    margin-bottom: 60rpx;
+}
+
+.mem-top .ground {
+    width: 100%;
+    height: 230rpx;
+}
+
+.mem-head image {
+    display: block;
+    height: 120rpx;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 60rpx;
+    overflow: hidden;
+    top: 90rpx;
+    left: 50%;
+    width: 120rpx;
+    margin-left: -55rpx;
+}
+
+.mem-head view {
+    text-align: center;
+    font-size: 32rpx;
+    top: 230rpx;
+    width: 100%;
+    position: absolute;
+}
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;  
+    z-index:200; 
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

@@ -1,0 +1,58 @@
+<!--pages/issue/issue.wxml-->
+<view class='issue-type' hidden='{{pagehide}}'>
+    <view class='title'>选择发布类型</view>
+    <view class='list'>
+        <view  bindtap='choosetype' data-url='add_bill/add_bill' class='info'>
+            <image src='../../images/bill.png' class='img'></image>
+            <view class='name'>发单</view>
+        </view>
+        <view class='pad-fill-l25'></view>
+        <view  bindtap='choosetype' data-url='add_job/add_job' class='info'>
+            <image src='../../images/job.png' class='img'></image>
+            <view class='name'>求租</view>
+        </view>
+    </view>
+    <view class='pad-fill-t25'></view>
+    <view class='list'>
+        <view  bindtap='choosetype' data-url='add_sell/add_sell' class='info'>
+            <image src='../../images/sell.png' class='img'></image>
+            <view class='name'>出售</view>
+        </view>
+        <view class='pad-fill-l25'></view>
+        <view  bindtap='choosetype' data-url='add_buy/add_buy' class='info'>
+            <image src='../../images/buy.png' class='img'></image>
+            <view class='name'>求购</view>
+        </view>
+    </view>
+    <view class="text-ts-wrap">
+        <view class='flex'>
+            <view class='left'>·</view>
+            <text class='right'>禁止发布违反国家法律法规内容，违者自承担所有法律后果</text>
+        </view>
+        <view class='flex'>
+            <view class='left'>·</view>
+            <text class='right'>滥发虚假信息，重复发信息霸屏者，将限制使用</text>
+        </view>
+    </view>
+</view>
+<!-- 未授权登录 -->
+<view class="notLogin login" hidden="{{notLogin}}">
+    <image src="../../images/accredit.png"></image>
+    <view class='annotation'>您还没有授权，请先授权</view>
+    <button class="button" bindtap="login">授权并登录</button>
+</view>
+
+<!-- 未注册 -->
+<view class='bg-shade' hidden='{{notRegister}}'></view>
+<view class="not-register" hidden="{{notRegister}}">
+    <image src="../../images/register-logo.png"></image>
+    <button class="button" bindtap='getCode' type="primary" open-type="getPhoneNumber" bindgetphonenumber="login">微信用户快速登录</button>
+    <view class='register' bindtap='register'>输入手机号码注册</view>
+</view>
+
+<!-- 遮罩 -->
+<view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>

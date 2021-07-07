@@ -1,0 +1,38 @@
+<!--pages/member_manage/member_manage.wxml-->
+<view class='order-info notop'>
+    <view class='order-info-title position-r' bindtap='invite'>
+        <image src='../../images/arranged.png' class='img1'></image>
+        <view class='title'>邀请成员</view>
+        <image src='../../images/icon-right.png' class='img2'></image>
+    </view>
+    <view class='string'></view>
+    <view class='order-info-title position-r' bindtap='examine'>
+        <image src='../../images/order-type.png' class='img1'></image>
+        <view class='title'>审核成员</view>
+        <view class='mun' wx:if="{{mun>0}}">{{mun}}</view>
+        <image src='../../images/icon-right.png' class='img2'>
+        </image>
+    </view>
+</view>
+<view class='top'>
+    <view class='top-title'>公司成员</view>
+</view>
+<view class='string'></view>
+<view class='client-name' wx:for='{{list}}' wx:for-item='item' wx:key="{{index}}">
+    <view bindtap='member_details' class='member-right' data-url='member_details/member_details?employeeid={{item.employeeid}}'>
+        <view class='member-name'>{{item.employeename}}
+            <label wx:if='{{item.title}}'>{{item.title}}</label>
+            <label wx:if='{{item.status}}'>{{item.status}}</label>
+        </view>
+        <view class='member-phone'>{{item.phone}}</view>
+    </view>
+    <view class='client-img'>
+        <image wx:if='{{userid != item.userid}}' src='../../images/icon-del.png' bindtap='clickDel' data-employeeid='{{item.employeeid}}'></image>
+        <image wx:else></image>
+        <image src='../../images/amend.png' bindtap='memalter' data-employeeid='{{item.employeeid}}'></image>
+    </view>
+</view>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

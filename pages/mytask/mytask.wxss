@@ -1,0 +1,28 @@
+@import "../../utils/calendar/calendar.wxss";
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;   
+    z-index:200;
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}
+.img-readed{
+    width:200rpx;
+    height:136rpx;
+    position:absolute;
+    top:64rpx;
+    right:20rpx;
+}

@@ -1,0 +1,74 @@
+<!--pages/client_order_info/client_order_info.wxml-->
+<view class='order-info'>
+    <view class='detail-total'>
+        <view class='detail-item'>
+            <view class='order-info-name'>单据号码</view>
+            <view class='content text-right'>{{orderinfo.ordercode}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>订单状态</view>
+            <view class='content text-right'>{{orderinfo.statusname}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>起止日期</view>
+            <view class='content text-right'>{{orderinfo.date_start}}-{{orderinfo.date_end}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>客户名称</view>
+            <view class='content text-right'>{{orderinfo.customername}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>联系人</view>
+            <view class='content text-right'>{{orderinfo.contact}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>电话</view>
+            <view class='content text-right'>{{orderinfo.phone}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>活动类型</view>
+            <view class='content text-right'>{{orderinfo.typename}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>活动费用</view>
+            <view class='content text-right'>{{orderinfo.actcost}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>仓库名称</view>
+            <view class='content text-right'>{{orderinfo.warehousename}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>业务员</view>
+            <view class='content text-right'>{{orderinfo.employeename}}</view>
+        </view>
+        <view class='detail-item'>
+            <view class='order-info-name'>审核人</view>
+            <view class='content text-right'>{{orderinfo.employee_audit}}</view>
+        </view>
+    </view>
+</view>
+<view class='order-info' wx:if="{{orderinfo.comments != ''}}">
+    <view class='order-info-title'>
+        <image src='../../images/remark.png' class='img1'></image>
+        <view class='title'>备注</view>
+    </view>
+    <view class="pad-wrap">
+        {{orderinfo.comments}}
+    </view>
+</view>
+<view class='order-info'>
+    <view class='order-info-title position-r'>
+        <image src='../../images/equipment.png' class='img1'></image>
+        <view class='title'>活动设备</view>
+        <!-- <view class='title-name'>
+            <image src='../../images/unfold.png' class='img1'></image>展开</view> -->
+    </view>
+    <view class="pad-wrap">
+        <view class='equipment-info flex' wx:for="{{detailinfo}}" wx:key="{{index}}">
+            <view class="col-3 word-wrap">{{item.prodname}}</view>
+            <view class="col-3 word-wrap">{{item.pordspec}}</view>
+            <view class="col-3 word-wrap">{{item.num}}{{item.produnit}}</view>
+            <view class="col-3 word-wrap">{{item.brandname}}</view>
+        </view>
+    </view>
+</view>

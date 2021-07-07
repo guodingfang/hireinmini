@@ -1,0 +1,65 @@
+/* pages/add_clientInvite/add_clientInvite.wxss */
+@import "../../common/css/publiclist.wxss";
+.inv-top {
+    background: #fff;
+    overflow: hidden;
+}
+
+.inv-top image {
+    width: 260rpx;
+    height: 260rpx;
+    margin: 40rpx auto;
+    display: block;
+}
+
+.inv-name {
+    font-size: 38rpx;
+    text-align: center;
+}
+
+.inv-mem {
+    color: #ea2843;
+    font-size: 34rpx;
+    text-align: center;
+    margin-top: 25rpx;
+    margin-bottom: 40rpx;
+}
+
+.oper{
+    padding-top:55rpx;
+    text-align: center;
+}
+
+.btn{
+    padding: 30rpx 0;
+}
+
+.confirm{
+    background: #ff9a00;
+    color: #fff;
+}
+
+.cancel{
+    background:#dedede;
+    color:#757575;
+}
+/* 返回首页 */
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed;   
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

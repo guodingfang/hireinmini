@@ -1,0 +1,89 @@
+<!--pages/lease/lease.wxml-->
+<import src="../../template/publiclist.wxml" />
+
+<view>
+    <!-- 搜索 start -->
+    <view class='page-head flex'>
+        <!-- 城市名称start -->
+        <view class='head-city' bindtap='citylist' data-url='lease'>
+            <view class='head-city__label word-wrap'>{{cityname}}</view>
+            <image src='../../images/bottom1.png' class='city-img'></image>
+        </view>
+        <view class='head-search'>
+            <image src='../../images/icon-search.png' class='search-img'></image>
+            <input type='text' confirm-type='search' bindconfirm='searchBtn' placeholder='请输入关键词搜索' placeholder-class='placeholder' focus='{{focusval}}' class='search-input' value='{{searchInput}}' bindinput='searchInput' value='{{keyword}}'></input>
+        </view>
+        <view class='head-btn' bindtap='search'>搜索</view>
+        <!-- 城市名称end -->
+    </view>
+    <!-- 搜索 end -->
+    <!-- 列表 start -->
+    <view class='page-content'>
+        <!--未读消息数 start-->
+        <view class="text-center unread-wrap" wx:if='{{unreadcount > 0}}' bindtap="jumpreplylist">
+            <view class="unreadcount">
+                <view class="read-dot"></view>
+                <text class="read-text">{{unreadcount}}条新信息</text>
+            </view>
+        </view>
+        <!--未读消息数 end-->
+        <view class='cont-wrap'>
+            <block class='list' wx:for='{{list}}' wx:for-item='item' wx:key="index">
+                <template is='publiclist' data='{{item, imgurls,videourl,urltype,currentVid,index,skiptype,page,forwardcount}}'></template>
+            </block>
+        </view>
+        <view class="weui-loadmore" wx:if="{{hidden}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+        <view class="show-loading" wx:if="{{finish}}">已显示全部信息</view>
+        <view class="show-loading" wx:if="{{noresult}}">未搜索到您想要的内容</view>
+        <!--评论框 start-->
+        <view class="misk-wrap" bindtap="hideCommentBox" wx:if="{{commentShow}}"></view>
+        <form wx:if="{{commentShow}}" catchsubmit="sendComment">
+            <view class="com-wrap flex">
+                <view class="col-10">
+                    <input type="text" name="content" confirm-type="send" class="com-textarea" cursor-spacing="7" focus="{{true}}" bindconfirm='sendComment' placeholder="{{placeInput}}"></input>
+                    <input type="text" hidden="{{true}}" name="tuserid" value="{{com_tuserid}}" />
+                    <input type="text" hidden="{{true}}" name="fuserid" value="{{com_fuserid}}" />
+                    <input type="text" hidden="{{true}}" name="tusername" value="{{com_tusername}}" />
+                    <input type="text" hidden="{{true}}" name="fusername" value="{{com_fusername}}" />
+                    <input type="text" hidden="{{true}}" name="msgid" value="{{msgid}}" />
+                </view>
+                <view class="col-2">
+                    <button class="btn-send active" formType="submit">发送</button>
+                </view>
+            </view>
+        </form>
+        <!--评论框 end-->
+    </view>
+    <!-- 列表 end -->
+</view>
+
+<!-- <view class='issue' bindtap='issue'>
+    <view class='names'>发布</view>
+</view>
+ <!-- 返回主页 -->
+<!-- <view class='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view> -->
+
+<!-- 操作start -->
+<view class='opertion'>
+    <!-- 返回首页start -->
+    <!-- <view class='oper-btn' bindtap="returnindex">
+        <image src='../../images/returnindex.png' class='oper-img'></image>
+    </view> -->
+    <!-- 返回首页end -->
+    <!-- 分享start -->
+    <button class='oper-btn share' open-type="share">
+        <image src='../../images/share2.png' class='share-img'></image>
+    </button>
+    <!-- 分享end -->
+    <!-- 我要发布start -->
+    <view class='oper-btn puhlish-btn btn-msgrelease' bindtap='issue'>
+        <view class='publish-name'>我要发布</view>
+    </view>
+    <!-- 我要发布end -->
+</view>
+<!-- 操作end -->

@@ -1,0 +1,107 @@
+<!--pages/mytask_amend/mytask_amend.wxml-->
+<view class='order-info notop'>
+    <view>
+        <view class='order-info-name'>联系人</view>
+        <view class='content'>{{orderinfo['contact']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>联系方式</view>
+        <view class='content'>{{orderinfo['phone']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>活动日期</view>
+        <view class='content'>{{orderinfo['actdate']}}</view>
+    </view>
+
+    <view>
+        <view class='order-info-name'>活动地点</view>
+        <view class='content'>{{orderinfo['address']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>活动类型</view>
+        <view class='content'>{{orderinfo['typename']}}</view>
+    </view>
+    <view>
+        <view class='order-info-name'>活动备注</view>
+        <view class='content'>{{orderinfo['comments']}}</view>
+    </view>
+    <view class='pad-fill'></view>
+</view>
+<view class='order-info '>
+    <view class='order-info-title position-r'>
+        <image src='../../images/order-type.png' class='img1'></image>
+        <view class='title'>订单状态</view>
+        <view class='title-name'>{{orderinfo['statusname']}}</view>
+    </view>
+    <view class='order-info-title position-r'>
+        <image src='../../images/order-type.png' class='img1'></image>
+        <view class='title'>活动设备</view>
+    </view>
+    <view class="pad-wrap">
+        <view class='equipment-info flex' wx:for="{{detailinfo}}" wx:key="{{index}}">
+            <view class="col-3 word-wrap">{{item.goodsname}}</view>
+            <view class="col-3 word-wrap">{{item.goodsspec}}</view>
+            <view class="col-3 word-wrap">{{item.goodsunit}}</view>
+            <view class="col-3 word-wrap">{{item.brandname}}</view>
+        </view>
+    </view>
+</view>
+<!--已有图片 start-->
+<view class='order-info'>
+    <view class='order-info-title position-r'>
+        <image src='../../images/order-type.png' class='img1'></image>
+        <view class='title'>已有图片</view>
+    </view>
+    <view class="pad-wrap">
+        <block wx:for="{{pics}}" wx:key="{{index}}">
+            <image wx:if="{{item!=''}}" src="{{imgurl}}{{item}}" class="order-img"></image>
+        </block>
+    </view>
+</view>
+<!--已有图片 end-->
+<view class='order-info '>
+    <view class='order-info-title position-r'>
+        <image src='../../images/order-type.png' class='img1'></image>
+        <view class='title'>添加图片</view>
+    </view>
+    <!--图片上传 start-->
+    <view class="page">
+        <view class="page__bd">
+            <view class="weui-cells img-wrap">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <view class="weui-uploader">
+                            <view class="weui-uploader__bd">
+                                <view class="weui-uploader__files" id="uploaderFiles">
+                                    <block wx:for="{{files}}" wx:key="*this">
+                                        <view class="weui-uploader__file">
+                                            <view class="fechar" bindtap="fechar" data-key="{{index}}">
+                                                <image src="../../images/icon-picdel.png" class="icon-delpic"></image>
+                                            </view>
+                                            <image class="weui-uploader__img" src="{{item}}" bindtap="previewImage" id="{{item}}" mode="aspectFill" />
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="weui-uploader__input-box" hidden="{{hide}}">
+                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--图片上传 end-->
+</view>
+<form class="form-wrap" bindsubmit="goodssubmit">
+    <view class='order-info'>
+        <view class='arr-row'>
+            <view class='arr-name col-3'>备注：</view>
+        </view>
+        <view class='arr-row limit'>
+            <textarea class='text' cursor-spacing="100" placeholder='请输入备注' name="comments" placeholder-class='zindex-1'></textarea>
+        </view>
+    </view>
+    <button class='btn-position-f' formType="submit">提交</button>
+</form>

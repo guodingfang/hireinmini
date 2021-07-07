@@ -1,0 +1,83 @@
+@import "../../utils/calendar/calendar.wxss";
+
+.orderlist {
+    padding-bottom: 0rpx;
+}
+
+.order-title {
+    font-size: 32rpx;
+    border-bottom: 1rpx solid #dedede;
+    padding-bottom: 20rpx;
+}
+
+.icon-order {
+    width: 25rpx;
+    height: 32rpx;
+    color: #2ab7ff;
+    margin-right: 8rpx;
+    position: relative;
+    top: 3rpx;
+}
+
+.order-cont {
+    padding-top: 0rpx;
+}
+
+.order-cont .o-left {
+    margin-right: 8rpx;
+    color: #acacac;
+}
+
+.order-cont .o-man view {
+    margin-right: 16rpx;
+}
+
+.order-item view {
+    display: inline;
+    font-size: 29rpx;
+}
+
+.t-item {
+    margin-right: 15rpx;
+    display: inline-block;
+    width:27%;
+    position:relative;
+    top:6rpx;
+}
+
+.btn-pd {
+    position: absolute;
+    top: 0rpx;
+    right: 0;
+    background: #ff9600;
+    color: #fff;
+    border-radius: 8rpx;
+    width: 96rpx;
+    height: 56rpx;
+    text-align: center;
+    line-height: 56rpx;
+    padding: 0;
+}
+.order-item:last-child{
+    padding-bottom:7rpx;
+}
+.returnindex{
+    width: 76rpx;
+    height: 76rpx;
+    background:rgba(0, 0, 0, 0.7);
+    top: 64%;
+    right: 20rpx;
+    border-radius:50rpx;
+    position: fixed; 
+    z-index:200;  
+}    
+.returnindexpic{
+    width: 38rpx;
+    height: 38rpx;
+    /* margin-left:19rpx;
+    margin-top:19rpx; */
+    position: absolute;
+    text-align: center;
+    top:25%;
+    left: 25%;
+}

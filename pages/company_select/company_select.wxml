@@ -1,0 +1,26 @@
+<!--pages/company_select/company_select.wxml-->
+<view class='select' hidden='{{pagehide}}'>
+    <view class='pad-fill'></view>
+    <view bindtap='aboutcompany' data-url='establish_company/establish_company' class='title'>
+        <view class='name'>
+            <image src='../../images/establish.png' class='img'></image>创建公司</view>
+    </view>
+    <view  bindtap='aboutcompany' data-url='binding_company/binding_company' class='title'>
+        <view class='name'>
+            <image src='../../images/binding.png' class='img'></image>
+            <view class='val'>绑定公司</view>
+        </view>
+    </view>
+</view>
+
+<!-- 遮罩 -->
+<view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>
+
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>

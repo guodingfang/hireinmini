@@ -1,0 +1,138 @@
+<!-- 轮播图 start -->
+<view>
+    <swiper class='carousel-img' id='swiper' indicator-dots='{{indicatorDots}}' autoplay='{{autoplay}}' interval='{{interval}}' duration='{{duration}}' wx:if='{{info.compamypiclist.length}}'>
+        <swiper-item wx:for='{{info.compamypiclist}}' wx:for-item='item' wx:key='{{index}}'>
+            <image data-src='{{imageurl}}{{item.picfilename}}'  catchtap="Imageappear1"  src='{{imageurl}}{{item.picfilename}}' class='carousel-img'></image>
+        </swiper-item>
+    </swiper>
+    <!-- 轮播图 end -->
+    <!-- 公司名称及分享评分加关注 start -->
+    <view class='com-theme'>
+        <view class='com-left'>
+            <view class='com-tilte'>{{info.companyname}}</view>
+            <view class='com-score'>
+                <view class='com-stars'>
+                    <image wx:if='{{info.level >= 1}}' src='../../images/grade.png'></image>
+                    <image wx:if='{{info.level >= 2}}' src='../../images/grade.png'></image>
+                    <image wx:if='{{info.level >= 3}}' src='../../images/grade.png'></image>
+                    <image wx:if='{{info.level >= 4}}' src='../../images/grade.png'></image>
+                    <image wx:if='{{info.level == 5}}' src='../../images/grade.png'></image>
+                </view>
+                <view class='com-number'>{{info.level}}分</view>
+            </view>
+        </view>
+        <view class='com-right'>
+            <view bindtap='attention' wx:if='{{oncern != 1}}' data-id='{{info.companyid}}'>
+                <image class='com-follow' src='../../images/follow.png'></image>
+                <view>加关注</view>
+            </view>
+            <view bindtap='delattention' wx:elif='{{oncern == 1}}' data-id='{{info.companyid}}'>
+                <image class='com-follow' src='../../images/follow1.png'></image>
+                <view>已关注</view>
+            </view>
+            <view>粉丝：{{info.num}}</view>
+        </view>
+    </view>
+    <!-- 公司名称及分享评分加关注 end -->
+    <!-- 公司地址及主营标签 start -->
+    <view class='frame'>
+        <view class='content flex'>
+            <view class='col-1'>
+                <image class='img' src='../../images/address1.png'></image>
+            </view>
+            <view class='col-11'>公司地址: {{info.address}}</view>
+        </view>
+        <view class='content flex' wx:if='{{info.mainbusiness.label}}'>
+            <view class='col-1'>
+                <image class='img' src='../../images/mainbusiness.png'></image>
+            </view>
+            <view class='col-11'>
+                <view class='work' wx:for='{{info.mainbusiness.label}}' wx:for-item='item' wx:key='{{index}}'>{{item.labelname}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 公司地址及主营标签 end -->
+</view>
+<!-- 视频及图片 start -->
+<view class='frame'>
+    <view class='com-mint content heig' wx:if='{{info.pics.length > 0}}'>
+        <view class='frame-img'>
+            <image class='img' src='../../images/img.png'></image>图片：
+        </view>
+        <view class='cont1' wx:for='{{info.pics}}' wx:for-item='item'>
+            <image data-src='{{imageurl}}{{item.picture}}' catchtap="Imageappear" src='{{imageurl}}{{item.thumbnail}}'></image>
+        </view>
+        <view class='more' bindtap='morepic' data-id='{{info.companyid}}'>
+            <image class='img1' src='../../images/arrows-r.png'></image>
+        </view>
+    </view>
+    <view class='com-mint content heig' wx:if='{{info.videos.length > 0}}'>
+        <view class='frame-img'>
+            <image class='img' src='../../images/video.png'></image>视频：</view>
+        <view class='cont2' wx:for='{{info.videos}}' wx:for-item='item'>
+            <video src='{{item.videourl}}'>
+                <cover-image class="comimger" src="../../images/nopic1.png" />
+            </video>
+        </view>
+        <view class='more' bindtap='morevideo' data-id='{{info.companyid}}'>
+            <image class='img1' src='../../images/arrows-r.png'></image>
+        </view>
+    </view>
+</view>
+<!-- 视频及图片 end -->
+<!-- 简介、产品、评论菜单 start -->
+<view class="com-main">
+    <view class='menu' bindtap='skip' data-url='companydetails/companydetails'>
+        <view>简介</view>
+    </view>
+    <view class='menu'>
+        <view class="active">产品</view>
+    </view>
+    <view class='menu' bindtap='skip' data-url='com-brief/com-brief'>
+        <view>评论</view>
+    </view>
+</view>
+<!-- 简介、产品、评论菜单 end -->
+<!-- 简介、产品、评论内容 start -->
+<view class="scoll-h">
+    <view class='com-border' wx:if='{{info.productlist.length > 0}}'>
+        <view class='brief border-none com-mint'>公司产品
+            <view class='more' bindtap='moreproduct' data-id='{{info.companyid}}'>查看更多>></view>
+        </view>
+        <view class='product-list'>
+            <view  bindtap='product_derails' class='product' wx:for='{{info.productlist}}' wx:for-item='item' wx:key='index' data-url='product_derails/product_derails?prodid={{item.prodid}}'>
+                <image src='{{imageurl}}{{item.prodimage}}' wx:if='{{item.prodimage!=""}}'></image>
+                <image src='../../images/nopic2.png' wx:else></image>
+                <view class='product-name'>{{item.prodname}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 简介、产品、评论内容 end -->
+<!-- 返回主页 --> 
+<view class='returnindex' bindtap='returnindex'>
+    <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>
+<!-- 图片 -->
+<view class='com-btn ' wx:if="{{comp}}">
+    <view class='btn' bindtap='mycom'>进入公司</view>
+    <view class='btn' bindtap='manage'>公司管理</view>
+</view>
+<view class='com-btn1' wx:else>
+    <button class='btn1 share' open-type='share' data-companyname='{{info.companyname}}'>
+        <image class='share-img' src='../../images/share1.png'></image>
+        <view>分享给朋友</view>
+    </button>
+    <view class='btn1 contact' bindtap='contact' data-phone='{{info.phone}}'>
+       <view class="contact-phone-view  com-wrap">
+            <image class='contact-img' src='../../images/phone1.png'></image>{{info.contact}}</view>
+    </view>
+</view>
+
+
+<view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>
+</view>
+<loading hidden="{{loadingHidden}}">
+    加载中...
+</loading>

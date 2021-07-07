@@ -1,0 +1,21 @@
+<!--pages/tool/tool.wxml-->
+<view>
+    <view class="tool_box">
+        <view class="title_box">租赁工具<text>更多</text></view>
+        <view class="tool_list_box">
+            <view class="tool_list" wx:for="{{toolList}}" wx:for-item="item" wx:key="index">{{item.text}}</view>
+        </view>
+    </view>
+    <view class="tool_box">
+        <view class="title_box">租赁知识<text>更多</text></view>
+        <view class="tool_content">
+            <view class="tool_content_text" wx:for="{{knowledgeList}}" wx:for-item="item" wx:key="index">{{item.text}}</view>
+        </view>
+    </view>
+    <view class="tool_box">
+        <view class="title_box">租赁技术问题付费咨询<text>更多</text></view>
+        <view class="tool_list_box">
+            <view class="tool_list" wx:for="{{questionList}}" wx:for-item="item" wx:key="index">{{item.text}}</view>
+        </view>
+    </view>
+</view>

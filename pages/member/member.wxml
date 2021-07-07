@@ -1,0 +1,41 @@
+<view class="wrap-yang">
+    <!--通讯录导航-->
+    <view class="page_fixed">
+        <view class="page__bd">
+            <view class="weui-tab">
+                <view class="weui-navbar1">
+                    <view id='0' class="weui-navbar__item bold client {{activeIndex == 0 ? 'weui-bar__item_on' : ''}}" data-id="1" data-page="arrivelist_lie" bindtap='skip' data-leftval="50" data-url='client/client'>
+                        <view class="weui-navbar__title">客户</view>
+                    </view>
+                    <view class="weui-navbar__item bold member {{activeIndex == 1 ? 'weui-bar__item_on' : ''}}" data-id="0" data-page="arrivelist_pos" id='1' bindtap='skip' data-leftval="275">
+                        <view class="weui-navbar__title">成员</view>
+                    </view>
+                    <view class="weui-navbar__item bold thirdparty {{activeIndex == 2 ? 'weui-bar__item_on' : ''}}" data-id="0" data-page="arrivelist_pos" id='2' data-leftval="535" bindtap='skip' data-url='thirdparty/thirdparty'>
+                        <view class="weui-navbar__title">第三方合作</view>
+                    </view>
+                    <view class="weui-navbar__slider bgcolor" style="left:{{sliderLeft}}rpx;"></view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!--通讯录导航-->
+    <view class="clear"></view>
+    <view class='container1'>
+        <view class='client-name' wx:for='{{list}}' wx:for-item='item' wx:key="{{index}}">
+            <view class='member-header'>
+                <image class='member-head' src='{{item.userpic}}'></image>
+            </view>
+            <view class='member-right'  bindtap='callme' data-phone="{{item.phone}}">
+                <view class='member-name'>{{item.employeename}}
+                    <label wx:if='{{item.title}}'>{{item.title}}</label>
+                </view>
+                <view class='member-phone'>{{item.phone}}<image src='../../images/phone.png' class='img1'></image></view>
+                
+            </view>
+        </view>
+    </view>
+</view>
+<!-- 返回主页 -->
+<view class='returnindex' bindtap='returnindex'>
+   <image class='returnindexpic' src='../../images/returnindex.png'></image>
+</view>
