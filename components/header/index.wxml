@@ -1,0 +1,4 @@
+<view class="header">
+  <v-location></v-location>
+  <v-search></v-search>
+</view>

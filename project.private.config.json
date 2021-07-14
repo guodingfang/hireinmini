@@ -21,6 +21,13 @@
         {
           "name": "宴会厅页面",
           "pathName": "pages/banquet/banquet",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/add_bill/add_bill",
+          "pathName": "pages/add_bill/add_bill",
+          "query": "",
           "scene": null
         }
       ]

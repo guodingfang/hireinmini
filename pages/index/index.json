@@ -1,4 +1,8 @@
 {
-    "enablePullDownRefresh": true,
-    "backgroundTextStyle": "dark"
+	"usingComponents": {
+		"v-header": "/components/header",
+		"v-item": "/components/contents/list-item"
+  },
+	"enablePullDownRefresh": true,
+	"backgroundTextStyle": "dark"
 }

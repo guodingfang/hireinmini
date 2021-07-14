@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-location": "/components/public/location",
+    "v-search": "/components/public/search"
+  }
+}

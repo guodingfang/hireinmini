@@ -105,19 +105,19 @@
                 "pagePath": "pages/index/index",
                 "iconPath": "images/footbar-1.png",
                 "selectedIconPath": "images/footbar-1-selected.png",
-                "text": "首页"
+                "text": "发现"
             },
             {
                 "pagePath": "pages/lease/lease",
                 "iconPath": "images/footbar-2.png",
                 "selectedIconPath": "images/footbar-2-selected.png",
-                "text": "租圈"
+                "text": "服务"
             },
             {
                 "pagePath": "pages/calculator/calculator",
                 "iconPath": "images/footbar-3.png",
                 "selectedIconPath": "images/footbar-3-selected.png",
-                "text": "工具"
+                "text": "助手"
             },
             {
                 "pagePath": "pages/user/user",

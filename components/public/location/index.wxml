@@ -1,0 +1,4 @@
+<view class="location">
+  <text>全国</text>
+  <image class="icon" src="/images/bottom.png"></image>
+</view>

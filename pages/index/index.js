@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 import { Config } from '../../utils/config.js';
+import { getReleaseList } from '../../models/release'
 var util = require('../../utils/util.js');
 var publiclist = require('../../template/publiclist.js');
 import emoji from '../../utils/emoji';
@@ -114,14 +115,24 @@ Page({
         phone: '',
         verificationCode: '',
         page: 'index',
-        forwardcount: 0,   //转发
+				forwardcount: 0,   //转发
+				
+				newList: [],
     },
 
-    onLoad: function () {
+    async onLoad () {
         publiclist.init.apply(this, []); // this关键字必须传进去 这样才能使header.js中的数据和函数注入到这个模块
         login.init.apply(this, []); // this关键字必须传进去 这样才能使header.js中的数据和函数注入到这个模块
         //获取轮播图
         getSlideshow(this);
+        const { data, page } = await getReleaseList({
+          pagenum: 1,
+          userid: 7548,
+          cityname: '全国'
+        });
+        this.setData({
+        	newList: data
+        })
     },
 
     /**

@@ -1,0 +1,11 @@
+
+.location {
+  display: flex;
+  align-items: center;
+  width: 125rpx;
+}
+
+.icon {
+  width: 27rpx;
+  height: 14rpx;
+}
