@@ -1,60 +1,82 @@
 <view class="item">
   <view class="header">
-    <image class="portrait" src="{{ item.userpic }}"></image>
+    <image class="portrait" src="{{ item.userpic }}" bind:tap="onSkipUser"></image>
     <view class="header-info">
       <view class="username word-wrap">{{ item.contacter }}</view>
       <view class="explain">
         <text class="time">{{ item.updateinfo }}</text>
-        <text class="company">赁客数字租赁服务中心</text>
+        <text class="company" bind:tap="onSkipCompany">{{ item.companyname }}</text>
       </view>
     </view>
-    <view class="status">关注</view>
+    <view class="status">{{ item.focused === '1' ? '已关注' : '关注' }}</view>
   </view>
-  <view class="content">
+  <view class="content" bind:tap="onSkipDetail">
     <view class="content-info">{{ item.content }}</view>
     <view class="imgs" wx:if="{{ imgShow }}">
-      <block wx:if="{{ imgShow === 1 }}">
+      <block wx:if="{{type === 'img'}}">
+        <block wx:if="{{ imgShow === 1 }}">
+          <image
+            class="big-img"
+            mode="aspectFill"
+            src="{{bigImgAndVideoUrl}}"
+          ></image>
+        </block>
+        <block wx:else>
+          <image
+            wx:for="{{imgs}}"
+            wx:key="id"
+            class="small-img"
+            mode="aspectFill"
+            src="{{imgUrl}}{{item.picurl_thumbnails}}"
+          ></image>
+          <view class="mask" wx:if="{{ imgShow > 3 }}">+{{imgShow - 3}}</view>
+        </block>      
+      </block>
+      <block wx:if="{{type === 'video'}}">
         <image
           class="big-img"
           mode="aspectFill"
-          src="{{imgUrls}}{{imgs[0].picurl_thumbnails}}"
+          src="{{bigImgAndVideoUrl}}"
+          catch:tap="onOpenVideo"
         ></image>
-      </block>
-      <block wx:else>
-        <image
-          wx:for="{{imgs}}"
-          wx:key="id"
-          class="small-img"
-          mode="aspectFill"
-          src="{{imgUrls}}{{item.picurl_thumbnails}}"
-        ></image>
-        <view class="mask" wx:if="{{ imgShow > 3 }}">+{{imgShow - 3}}</view>
+        <m-video
+          wx:if="{{openVideo}}"
+          m-video="big-video"
+          src="{{videoUrl}}{{imgs[0].videourl}}"
+        ></m-video>
       </block>
     </view>
   </view>
   <view class="footer">
-    <view class="footer-item info-phone" data-phone="{{item.contactphone}}" bindtap="onDial">
-      <image class="footer-item-icon icon-dial" src="/images/dial.png"></image>
+    <view class="footer-item info-phone" catchtap="onDial">
+      <image class="footer-item-icon icon-dial" src="./images/icon-dial.png"></image>
       <text class="footer-item-label">拨打电话</text>
     </view>
     <view class="footer-item info-browse">
-      <image class="footer-item-icon icon-browse" src="/images/browse.png"></image>
+      <image class="footer-item-icon icon-browse" src="./images/icon-browse.png"></image>
       <text class="footer-item-label">{{ item.viewcount }}</text>
     </view>
-    <view class="footer-item info-like" bindtap="onLick">
-      <image class="footer-item-icon" src="{{ true ? '/images/thumb.png' : '/images/thumb-select.png' }}"></image>
-      <text class="footer-item-label">{{ Number(item.praisecount) || '点赞' }}</text>
+    <view class="footer-item info-like" catchtap="onLike">
+      <image class="footer-item-icon" src="{{ !item.praised ? './images/icon-notLike.png' : './images/icon-like.png' }}"></image>
+      <text class="footer-item-label">{{ item.praisecount || '点赞' }}</text>
     </view>
-    <view class="footer-item info-comment" bindtap="onComment">
+    <view class="footer-item info-comment" catchtap="onComment">
       <image class="footer-item-icon" src="/images/icon-comment.png"></image>
-      <text class="footer-item-label">{{ Number(item.discusscount) || '评论' }}</text>
+      <text class="footer-item-label">{{ item.discusscount || '评论' }}</text>
     </view>
     
-    <view class="footer-item info-share" bindtap="onShare">
-      <button open-type="share" class="info-share-content">
-        <image class="footer-item-icon icon-thumb" src="/images/share3.png"></image>
-        <text class="footer-item-label">{{ Number(item.forwardcount) || '转发' }}</text>
+    <view class="footer-item info-share" catchtap="onShare">
+      <button
+        open-type="share"
+        data-msgid="{{item.msgid}}"
+        data-url="{{bigImgAndVideoUrl}}"
+        class="info-share-content"
+      >
+        <image class="footer-item-icon icon-thumb" src="./images/icon-share.png"></image>
+        <text class="footer-item-label">{{ item.forwardcount || '转发' }}</text>
       </button>
     </view>
   </view>
 </view>
+
+<m-comment commentShow="{{commentShow}}" bind:send="onSendComment"></m-comment>

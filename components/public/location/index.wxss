@@ -2,10 +2,16 @@
 .location {
   display: flex;
   align-items: center;
-  width: 125rpx;
+  justify-content: center;
+  width: 200rpx;
+  height: 50rpx;
+  color: #333;
+  border-radius: 25rpx;
+  overflow: hidden;
 }
 
 .icon {
+  margin-left: 12rpx;
   width: 27rpx;
   height: 14rpx;
 }

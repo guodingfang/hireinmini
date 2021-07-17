@@ -2,8 +2,8 @@
   "description": "项目配置文件。",
   "setting": {
     "urlCheck": true,
-    "es6": true,
-    "enhance": false,
+    "es6": false,
+    "enhance": true,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": true,
@@ -27,8 +27,7 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
-    "useIsolateContext": true,
+    "useIsolateContext": false,
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],

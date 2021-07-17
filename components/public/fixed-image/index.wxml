@@ -1,0 +1,3 @@
+<view class="fixed">
+  <slot name="list"></slot>  
+</view>

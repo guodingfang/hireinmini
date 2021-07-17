@@ -24,7 +24,6 @@
         "pages/client/client",
         "pages/add_contact/add_contact",
         "pages/citylist/citylist",
-        "pages/logs/logs",
         "pages/searchgood/searchgood",
         "pages/order-under/order-under",
         "pages/client_info/client_info",

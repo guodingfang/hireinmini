@@ -1,4 +1,8 @@
 .header {
+  padding: 0 24rpx;
   display: flex;
-  background-color: aquamarine;
+  height: 100rpx;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2ab7ff;
 }

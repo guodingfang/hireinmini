@@ -1,8 +1,12 @@
 {
 	"usingComponents": {
 		"v-header": "/components/header",
-		"v-item": "/components/contents/list-item"
+		"v-tab": "/components/contents/tab",
+		"v-carousel": "/components/carousel",
+		"v-item": "/components/contents/list-item",
+		"v-fixed": "/components/public/fixed-image"
   },
 	"enablePullDownRefresh": true,
-	"backgroundTextStyle": "dark"
+	"backgroundTextStyle": "dark",
+	"onReachBottomDistance": 450
 }

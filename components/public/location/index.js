@@ -4,7 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    cityname: {
+      type: String,
+      value: '全国'
+    }
   },
 
   /**
@@ -18,6 +21,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onChangeLocation() {
+      this.triggerEvent('change', {}, {})
+    }
   }
 })

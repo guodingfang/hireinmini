@@ -1,0 +1,15 @@
+.tab {
+  display: flex;
+  height: 88rpx;
+}
+
+.tab-item {
+  flex: 0 0 180rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-item-select {
+  font-weight: bold;
+}

@@ -1,0 +1,7 @@
+<image
+  src="{{src}}"
+  bind:tap="onSkip"
+  style="width: {{width}}rpx; height: {{height}}rpx"
+  webp
+  lazy-load
+></image>

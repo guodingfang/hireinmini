@@ -1,0 +1,7 @@
+<view class="video-container m-video">
+  <video
+    class="default-video"
+    src="{{src}}"
+    show-center-play-btn="{{false}}"
+  ></video>
+</view>

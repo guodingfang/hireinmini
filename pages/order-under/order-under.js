@@ -1,5 +1,5 @@
 import { Config } from '../../utils/config.js';
-var Util = require('../../utils/util.js');
+import { getNowFormatDate } from '../../utils/util'
 var config = new Config();
 var app = getApp();
 
@@ -276,9 +276,9 @@ Page({
             companyid: companyid,
             employeeid: employeeid,
             userid: userid,
-            start: Util.getNowFormatDate(),
-            end: Util.getNowFormatDate(),
-            nowDate: Util.getNowFormatDate(),
+            start: getNowFormatDate(),
+            end: getNowFormatDate(),
+            nowDate: getNowFormatDate(),
             edittitle: "下订单",
         })
 

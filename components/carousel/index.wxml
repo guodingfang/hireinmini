@@ -1,0 +1,23 @@
+<view class="carousel m-carousel">
+  <swiper
+    class="carousel-content"
+    circular="{{true}}"
+    indicator-dots="{{configure.indicatorDots}}"
+    indicator-color="{{configure.indicatorColor}}"
+    autoplay="{{configure.autoplay}}"
+    bindchange="onChange"
+  >
+    <block wx:key="id" wx:for-index="index" wx:for="{{images}}">
+      <swiper-item class="carousel-item">
+        <v-skip src="{{imgUrl}}{{item.picfile}}" url="{{item.url}}" width="710" height="300"></v-skip>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view
+    class="num"
+    wx:if="{{configure.numDisplay}}"
+    style="right: {{configure.numRight || 20}}rpx; bottom: {{configure.numBottom || 20}}rpx"
+  >
+    {{current}}/{{total}}
+  </view>
+</view>

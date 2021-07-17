@@ -1,4 +1,5 @@
 import errorHandle from './errorHandle'
+import { getUserInfo } from './util'
 
 class HttpRequest {
   constructor (baseURL) {
@@ -64,10 +65,19 @@ class HttpRequest {
     return this.httpRequest(options)
   }
   post(url, data) {
+    const commonParams = getUserInfo([
+      'accesstoken',
+      'userid',
+      'unionid'
+    ])
+    console.log('commonParams', commonParams)
     return this.httpRequest({
       method: 'POST',
       url,
-      data
+      data: {
+        ...commonParams,
+        ...data,
+      }
     })
   }
 }

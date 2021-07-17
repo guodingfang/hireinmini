@@ -29,6 +29,12 @@
           "pathName": "pages/add_bill/add_bill",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "进入企业",
+          "pathName": "pages/companydetails/companydetails",
+          "query": "",
+          "scene": null
         }
       ]
     }

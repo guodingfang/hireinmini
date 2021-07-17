@@ -102,6 +102,11 @@
   justify-content: center;
 }
 
+.big-video {
+  width: 700rpx;
+  height: 360rpx;
+}
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -111,6 +116,7 @@
 .footer-item, .footer-item .info-share-content {
   display: flex;
   align-items: center;
+  justify-content: center;
   /* flex-direction: column; */
 }
 
@@ -131,6 +137,7 @@
 }
 
 .footer-item .footer-item-label {
+  flex: 1;
   color: #576b95;
   font-size: 28rpx;
 }

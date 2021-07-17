@@ -1,4 +1,4 @@
-<view class="search">
+<view class="search" bind:tap="onSearch">
   <image class="icon-search" src="/images/icon-search.png"></image>
-  <view class="search-input">搜索内容1</view>
+  <view class="search-input">搜索内容</view>
 </view>

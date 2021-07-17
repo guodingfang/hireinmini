@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "m-video": "/components/public/m-video",
+    "m-comment": "/components/public/m-comment"
+  }
 }

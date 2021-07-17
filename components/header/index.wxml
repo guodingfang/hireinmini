@@ -1,4 +1,7 @@
 <view class="header">
-  <v-location></v-location>
-  <v-search></v-search>
+  <v-location
+    cityname="{{ cityname }}"
+    bind:change="onChangeLocation"
+  ></v-location>
+  <v-search bind:search="onSearch"></v-search>
 </view>
