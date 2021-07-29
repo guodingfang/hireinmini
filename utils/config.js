@@ -168,7 +168,8 @@ class Config {
         return result;
     }
 }
-Config.baseUrl = 'https://wxapp.ilinking.com.cn/index.php/WxMini/';
+Config.baseUrl = 'https://wxmini.ilinking.com.cn/index.php/WxMini/';
+// Config.baseUrl = 'https://wxapp.ilinking.com.cn/index.php/WxMini/';
 Config.imgUrl = 'https://wxapp.ilinking.com.cn/Public/';
 Config.imgUrls = 'https://wxapp.ilinking.com.cn/upload/';
 Config.videoUrl = 'http://file.ilinking.com.cn/';

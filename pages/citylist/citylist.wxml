@@ -12,7 +12,7 @@
 </block>
 <scroll-view scroll-y="true" style="height:{{winHeight}}px" bindscroll="bindScroll" scroll-into-view="{{scrollTopId}}" scroll-top="{{scrollTop}}">
     <view class="hotcity-common thisCity" wx:if='{{rurl == "index"}}'>当前选择城市</view>
-    <view class="thisCityName" wx:if='{{rurl == "index"}}'>{{city}}</view>
+    <view class="thisCityName" wx:if='{{rurl == "index"}}'>{{city || '全国'}}</view>
     <view wx:if='{{history != ""}}'>
         <view class="hotcity hotcity-common">历史城市</view>
         <view class="weui-grids">

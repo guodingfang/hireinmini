@@ -1,0 +1,68 @@
+<view class="tab" bind:tap="onSelectTab">
+  <view class="tab-val">
+    <view class="tab-item {{selectTab === 'buy' ? 'tab-select-item' : ''}}" data-type="buy">我要买</view>
+    <view class="tab-item {{selectTab === 'sell' ? 'tab-select-item' : ''}}" data-type="sell">我要卖</view>
+  </view>
+  <view class="tab-bg">
+    <view class="tab-bg-item {{selectTab === 'buy' ? 'tab-select-bg-left-item' : ''}}"></view>
+    <view class="tab-bg-item {{selectTab === 'sell' ? 'tab-select-bg-right-item' : ''}}"></view>
+  </view>
+
+</view>
+<view class="content {{selectTab === 'buy' ? 'content-left' : 'content-right'}}">
+  <view class="list" wx:if="{{selectTab === 'buy'}}">
+    <view class="item" wx:key="id" wx:for="{3}">
+      <image class="item-img" src="https://wxapp.ilinking.com.cn/upload/text/titlepic/20210709/60e82312755a0_thumbs.jpeg"></image>
+      <view class="item-info">
+        <view class="item-row">
+          <view class="type">官方优选</view>
+          <view class="address">北京</view>
+        </view>
+        <view class="item-row">
+          <view class="name">明道 330</view>
+          <view class="date">2018年</view>
+        </view>
+        <view class="item-row">
+          <view class="price">200元/台</view>
+          <view class="num">50台</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+
+  <view class="sell-content" wx:if="{{selectTab === 'sell'}}">
+    <view class="form">
+      <view class="form-item">
+        <text class="label">设备品牌</text>
+        <input class="val" placeholder="请输入设备品牌" />
+      </view>
+      <view class="form-item">
+        <text class="label">设备地址</text>
+        <input class="val" placeholder="请输入设备地址" />
+      </view>
+      <view class="form-item">
+        <text class="label">购买时间</text>
+        <input class="val" placeholder="请输入购买时间" />
+      </view>
+      <view class="form-item">
+        <text class="label">联系方式</text>
+        <input class="val" placeholder="请输入联系方式" />
+      </view>
+      <view class="form-item">
+        <text class="label">出售意向</text>
+        <input class="val" placeholder="请输入出售意向" />
+      </view>
+    </view>
+    <view class="activity">
+      <image class="activity-item" src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"></image>
+    </view>
+
+    <view class="">
+      <view class="header">
+        <view class="title">近半年销售趋势</view>
+      </view>
+    </view>
+  </view>
+</view>

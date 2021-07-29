@@ -97,11 +97,11 @@ Page({
             wx.setStorageSync('cityinfo', event.currentTarget.dataset);//城市详情缓存
             //新增用户城市
             addUserCity(function () {
-                prevPage.setData({
-                    cityname: event.currentTarget.dataset.cityname,
-                    citycode: event.currentTarget.dataset.citycode,
-                    switchover: true,
-                })
+                // prevPage.setData({
+                //     cityname: event.currentTarget.dataset.cityname,
+                //     citycode: event.currentTarget.dataset.citycode,
+                //     switchover: true,
+                // })
                 //返回首页
                 wx.switchTab({
                     url: '../index/index'

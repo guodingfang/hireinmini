@@ -29,7 +29,7 @@
 <!--联系电话 start-->
 <view class="fix-top">
     <view class="fixed-phone flex">
-        <navigator class="col-6" url="../lease/lease" open-type="switchTab">
+        <navigator class="col-6" url="../service/service" open-type="switchTab">
             <view class='fixed-item more-btn'>
                 <image src="../../images/icon-mes.png" class="icon-public"></image>
                 <text>更多信息</text>

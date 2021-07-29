@@ -1,0 +1,111 @@
+
+.assistant {
+  display: flex;
+  flex-direction: column;
+  padding: 24rpx;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.model {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding-bottom: 24rpx;
+  margin-bottom: 24rpx;
+  box-sizing: border-box;
+  border-radius: 24rpx;
+}
+
+.call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx;
+  box-sizing: border-box;
+  min-height: 60rpx;
+}
+
+.call-button {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 0rpx solid transparent;
+}
+
+.call-button::after{
+  border: 0;
+}
+
+.model .header {
+  padding: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #e5e5e5;
+  margin-bottom: 12rpx;
+}
+
+.model .header .title {
+  position: relative;
+  font-size: 36rpx;
+  color: #333333;
+  padding-left: 12rpx;
+}
+
+.header .title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 6rpx;
+  height: 100%;
+  border-radius: 6rpx;
+  background-color: tomato;
+}
+
+.model .header .more {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-not {
+  margin-top: 12rpx;
+}
+
+.tool-content,
+.service-content {
+  display: flex;
+}
+
+.tool-item,
+.service-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-item .iconfont {
+  font-size: 56rpx;
+  color: #fedb7c;
+}
+
+.service-item  .iconfont {
+  font-size: 56rpx;
+  color: #999999;
+}
+
+.tool-item .label,
+.service-item .label {
+  margin-top: 6rpx;
+  font-size: 28rpx;
+  color: #666666;
+}
+

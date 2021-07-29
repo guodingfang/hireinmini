@@ -1,11 +1,20 @@
 import request from '../utils/request'
 
 /**
- * 获取租赁列表
+ * 获取发现页-租赁列表
  * @param {*} option 
  */
 const getReleaseList = (option = {}) => {
   return request.post('/Release/newRelease', {
+    ...option
+  })
+}
+/**
+ * 根据关键字获取服务页-租赁列表
+ * @param {*} option 
+ */
+const getKeyWordReleaseList = (option = {}) => {
+  return request.post('/Release/releaseList', {
     ...option
   })
 }
@@ -50,8 +59,16 @@ const addComment = (option = {}) => {
   })
 }
 
+const getDiscoverMsgList = (option = {}) => {
+  return request.post('/Release/getDiscoverMsgList', {
+    ...option
+  })
+}
+
 export {
+  getDiscoverMsgList,
   getReleaseList,
+  getKeyWordReleaseList,
   addUserDialRecord,
   addLikeRelease,
   deleteLikeRelease,

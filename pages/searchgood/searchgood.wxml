@@ -1,66 +1,63 @@
-<!--pages/searchgood/searchgood.wxml-->
-<view class="searchs">
-    <view class="flex">
-        <view class="frame">
-            <image src="../../images/icon-search1.png"></image>
-            <input type="text" placeholder=" 请输入搜索内容" name='searchval' bindinput='searchsContent' value="{{searchsContent}}" placeholder-style='color:#ccc;' />
-        </view>
-        <view class="search" bindtap='search'>搜索</view>
-    </view>
+<view class="header">
+	<v-search
+		m-search="m-search"
+		placeholder="请输入搜索内容"
+		value="{{keyword}}"
+		search="input"
+		bind:clear="onInputClear"
+		bind:change="onInput"
+	/>
+	<view class="search-btn" bindtap='onSearch'>搜索</view>
 </view>
+
+
 <view hidden="{{search}}">
-    <view class="hotSearchs">热门搜索</view>
-    <view class="hotContent">
-        <view class="Content" wx:for='{{hotlist}}' wx:for-item='item' bindtap="searchs" data-val='{{item.content}}' wx:key="{{index}}">{{item.content}}</view>
-    </view>
-    <view hidden="{{his}}" class="historySearchs">
-        <view class="flex">
-            <view class="col-10">历史搜索</view>
-            <view class="col-2 delete_img" bindtap='clear'>
-                <label class='empty'>
-                    <image bindtap="empty" src="../../images/icon-del.png"></image>清空
-                </label>
-            </view>
-        </view>
-    </view>
-    <view hidden="{{his}}" class="historyContent">
-        <view class="Content1" wx:for='{{hislist}}' wx:for-item='item' bindtap="searchs" data-val='{{item.searchtext}}' wx:key="{{index}}">
-            <image src="../../images/icon-search1.png"></image>
-            <view>{{item.searchtext}}</view>
-        </view>
-    </view>
+	<view class="model">
+		<view class="title">热门搜索</view>
+		<view class="content">
+			<view
+				class="item"
+				wx:for="{{hotlist}}"
+				wx:key="id"
+				data-value='{{item.content}}'
+				bindtap="onSelect"
+			>{{item.content}}</view>
+		</view>
+	</view>
+
+	<view class="model">
+		<view class="title">
+			<text>历史搜索</text>
+			<view class='empty' bindtap='clear'>
+				<image class="icon-empty" bindtap="empty" src="/images/icon-del.png"></image>清空
+			</view>
+		</view>
+		<view class="content">
+			<view
+				class="item"
+				wx:for="{{hislist}}"
+				wx:key="id"
+				bindtap="onSelect"
+				data-value="{{item.searchtext}}"
+			>{{item.searchtext}}</view>
+		</view>
+	</view>
 </view>
-<view hidden='{{lists}}'>
-    <view wx:for='{{list}}' wx:for-item='item' wx:key="{{index}}">
-        <view bindtap='companydetails' class='company-row' data-url='companydetails/companydetails?companyid={{item.companyid}}&typeid=2'>
-            <view class='comp-content'>
-                <view class='comp-img'>
-                    <image src='{{imgurl}}{{item.logopic}}' wx:if='{{item.logopic != ""}}'></image>
-                    <image src='../../images/none.jpg' wx:else></image>
-                </view>
-                <view class='comp-right'>
-                    <view class='comp-title word-wrap'>
-                        {{item.companyname}}
-                    </view>
-                    <view class='work-list' wx:if='{{item.briefintroduction != ""}}'>
-                        <view class='work' wx:for='{{item.label}}' wx:for-item='label' wx:key="{{index}}">
-                            {{label.labelname}}
-                        </view>
-                    </view>
-                    <view class='city'>
-                        {{item.cityname}}{{item.address}}
-                    </view>
-                </view>
-            </view>
-        </view>
-    </view>
-    <view class="show-loading" wx:if="{{hidden}}">正在加载</view>
-    <view class="show-loading" wx:if="{{finish}}">加载完毕</view>
-    <loading hidden="{{loadingHidden}}">
-        加载中...
-    </loading>
-    <view class='no-info' wx:if="{{noresult}}">
-        <image src='../../images/noinfo.png' class='no-info-img'></image>
-    </view>
-    <view class="show-loading gray" wx:if="{{noresult}}">未搜索到您想要的内容</view>
+
+<view class="info" hidden="{{ !search }}">
+	<v-tab list="{{tabList}}"  bind:select="onSelectTab" />
+	<v-info wx:if="{{ type !== 'service' }}" releaseList="{{releaseList}}" />
+	<v-service wx:if="{{ type !== 'content' }}" />
+
+	<view class="weui-loadmore" wx:if="{{moreHidden}}">
+		<view class="weui-loading"></view>
+		<view class="weui-loadmore__tips">正在加载</view>
+	</view>
+
+	<view wx:if="{{releaseList.length === 0}}">
+		<view class='no-info'>
+			<image src='/images/noinfo.png' class='no-info-img'></image>
+		</view>
+		<view class="show-loading gray">未搜索到您想要的内容</view>
+	</view>
 </view>

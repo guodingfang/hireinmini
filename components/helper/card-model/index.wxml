@@ -1,0 +1,19 @@
+<view class="model">
+  <view class="item" wx:for="{{list}}" wx:key="id">
+    <block wx:if="{{picture === 'big'}}">
+      <image
+      class="big-img"
+      wx:if="{{item.pics.length > 0}}"
+      src="{{imgUrl}}{{item.pics[0].picurl_thumbnails}}"></image>
+    </block>
+    <block wx:if="{{picture === 'small'}}">
+      <image
+      class="samll-img"
+      src="{{userpic}}"></image>
+    </block>
+    <view class="val">
+      {{item.content}}
+    </view>
+    <text class="iconfont icon-zhuanfa"></text>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+		"v-header": "/components/header",
+		"v-tab": "/components/contents/tab",
+		"v-carousel": "/components/carousel",
+    "v-itemlist": "/components/contents/list-item",
+    "v-item": "/components/service/item",
+    "v-skip": "/components/public/skip-image",
+		"v-fixed": "/components/public/fixed-image"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
+  "onReachBottomDistance": 450,
+  "navigationBarTitleText": "服务"
+}

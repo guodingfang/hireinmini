@@ -1,0 +1,49 @@
+@import "/common/lib/iconfont.wxss";
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding: 24rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+.des {
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 12rpx;
+}
+
+.img {
+  width: 710rpx;
+  height: 350rpx;
+  border-radius: 24rpx;
+}
+
+.footer {
+  margin-top: 12rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 32rpx;
+}
+
+.name {
+  color: #666666;
+}
+
+.operation {
+  display: flex;
+}
+
+.operation-item {
+  display: flex;
+}
+
+.operation-item .iconfont {
+  font-size: 36rpx;
+  color: #666666;
+}
+
+.operation-item .val {
+  margin-left: 12rpx;
+}

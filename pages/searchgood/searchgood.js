@@ -1,257 +1,201 @@
-import { Config } from '../../utils/config.js';
-var util = require('../../utils/util.js');
-var config = new Config();
-var app = getApp();
-var userid = 0;
-// 分页获取搜索内容
-var p = 0;
-var s_pagecount = 1;
-var formdata = [];
-var url = Config.baseUrl + 'Search/getSearchList';
-var GetList = function (that) {
-    formdata.userid = userid;
-    formdata.searchval = that.data.searchsContent;
-    formdata.citycode = wx.getStorageSync('cityinfo').citycode;
-    formdata.pagenum = p;
-    /*加载完毕*/
-    if (p == s_pagecount) {
-        that.setData({
-            hidden: false,
-            finish: true,
-            noresult: false
-        });
-    }
-    if (s_pagecount > p) {
-        that.setData({
-            hidden: true,
-            finish: false,
-            noresult: false
-        });
-        wx.request({
-            url: url,
-            data: formdata,
-            header: { "Content-Type": "application/x-www-form-urlencoded" },
-            method: 'post',
-            success: function (res) {
-                wx.stopPullDownRefresh();
-                var l = that.data.list;
-                that.setData({
-                    finish: false,
-                    noresult: false,
-                    loadingHidden: true,
-                    search: true,
-                    lists: false,
-                });
-                if (res.data.page.pagecount == 0) {
-                    that.setData({
-                        finish: false,
-                        hidden: false,
-                        loadingHidden: true,
-                        noresult: true,
-                        list: []
-                    });
-                } else {
-                    s_pagecount = res.data.page.pagecount;
-                    for (var i = 0; i < res.data.data.length; i++) {
-                        l.push(res.data.data[i])
-                    }
-                    that.setData({
-                        list: l
-                    });
+import {
+	getSearchHistoryList,
+	getSearchHotList,
+	getSearchList,
+	clearHisSearch
+} from '../../models/search'
 
-                    if (res.data.page.pagecount == 1) {
-                        that.setData({
-                            finish: true,
-                            hidden: false,
-                            noresult: false
-                        });
-                    }
-                }
-            }
-        });
+import { getDiscoverMsgList } from '../../models/release'
 
-        p = p + 1;
-    }
-    /*pagecount > p 结尾*/
-}
+import { promisic } from '../../utils/util'
+
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        list: [],
-        hotlist: [],
-        hislist: [],
-        searchsContent: '',
-        loadingHidden: false,
-        search: false,
-        his: false,
-        lists: true,
-        imgurl: Config.imgUrl,
-    },
+	/**
+	 * 页面的初始数据
+	 */
+	data: {
+		keyword: '',
+		list: [],
+		hotlist: [],
+		hislist: [],
+		search: false,
+		pagenum: 0,
+		type: 'all',
+		moreHidden: false,
+		tabList: [{
+			name: '全部',
+			type: 'all',
+			select: true
+		}, {
+			name: '内容',
+			type: 'content'
+		}, {
+			name: '服务',
+			type: 'service'
+		}],
+		releaseList: [],
+	},
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        wx.setNavigationBarTitle({
-            title: '搜索'
-        })
-        userid = wx.getStorageSync('userinfo').userid ? wx.getStorageSync('userinfo').userid : 0;
-        //获取历史搜索列表
-        getHisSearchList(this);
-        //获取热门搜索列表
-        getHotSearchList(this);
-    },
+	/**
+	 * 生命周期函数--监听页面加载
+	 */
+	onLoad(options) {
+		this.getSearchHistoryList();
+		this.getSearchHotList();
+	},
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
+	// 获取历史搜索
+	async getSearchHistoryList() {
+		const hislist = await getSearchHistoryList({})
+		this.setData({
+			hislist
+		})
+	},
 
-    },
+	// 获取热门搜索
+	async getSearchHotList() {
+		const hotlist = await getSearchHotList({})
+		this.setData({
+			hotlist
+		})
+	},
 
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-        p = 0;
-        this.setData({
-            list: [],
-        });
-        GetList(this)
+	// 搜索内容监控
+	onInput(e) {
+		const { value } = e.detail
+		if(value === '') {
+			this.setData({
+				search: false
+			})
+		}
+		this.setData({
+			keyword: value
+		})
+	},
 
-    },
-    /**
-    * 点击进入公司详情、
-    */
-    companydetails: function (event) {
-        var url = config.getDataSet(event, 'url')
-        config.permission(url, function () {
-            wx.navigateTo({
-                url: '../' + url,
-            })
-        })
-    },
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-        GetList(this)
-    },
+	// 清空搜索内容
+	onInputClear() {
+		this.setData({
+			keyword: '',
+			search: false
+		})
+	},
 
-    /**
-     * 获取搜索内容
-     */
-    searchsContent: function (e) {
-        this.setData({
-            searchsContent: e.detail.value,
-        })
-        if (!e.detail.value) {
-            this.setData({
-                search: false,
-                lists: true,
-            })
-        }
-    },
+	// 选择tab
+	onSelectTab(e) {
+		const { type = '' } = e.detail
+		if (type === 'all') {
+			this.getSearchList()
+		} else if (type === 'content') {
+			this.getSearchContent({reset: true})
+		} else if (type === 'service') {
+			this.getSearchService()
+		}
+		this.setData({
+			type,
+			tabList: this.data.tabList.map(tab => tab.type === type ? { ...tab, select: true }: { ...tab, select: false })
+		})
+	},
 
-    /*点击搜索*/
-    search: function (event) {
-        p = 0,
-            this.setData({
-                search: false,
-                lists: true,
-                list: [],
-            })
-        GetList(this);
-    },
+	// 搜索全部
+	async getSearchList() {
+		const { keyword } = this.data
+		const { 
+			content,
+			designscheme
+		 } = await getSearchList({
+			keyword,
+		})
+		const hislist = this.data.hislist.filter(his => his.searchtext !== keyword)
+		this.setData({
+			releaseList: content,
+			hislist: [
+				{ searchtext: keyword },
+				...hislist,	
+			]
+		})
+	},
 
-    /**
-     * 点击热门及历史搜索
-     */
-    searchs: function (e) {
-        p = 0,
-            this.setData({
-                search: true,
-                money: false,
-                searchsContent: e.currentTarget.dataset.val,
-            })
-        GetList(this)
-    },
+	async getSearchContent({ reset = false }) {
+		const { cityname = '全国', keyword, pagenum = 0, releaseList = [] } = this.data
+		const { data, page } = await getDiscoverMsgList({
+			pagenum: reset ? 0 : pagenum,
+			cityname,
+			keyword,
+			tabname: 'search'
+		})
+		this.setData({
+			releaseList: reset ? data : [ releaseList, ...data ],
+			loadingHidden: true,
+			pagenum: page.page + 1,
+			moreHidden: false
+		})
+	},
 
-    /**
-     * 清空历史搜索
-     */
-    clear: function (e) {
-        var that = this;
-        wx.showModal({
-            title: '提示',
-            content: '确定这样操作嘛 ?',
-            success: function (res) {
-                if (res.confirm) {
-                    wx.request({
-                        url: Config.baseUrl + 'Search/clearHisSearch',
-                        header: {
-                            "Content-Type": "application/x-www-form-urlencoded"
-                        },
-                        data: { userid: userid },
-                        method: 'POST',
-                        success: function (res) {
-                            if (res.data.result == true) {
-                                that.setData({
-                                    hislist: [],
-                                    his: true,
-                                })
-                            }
-                        }
-                    })
-                }
-            }
-        })
-    }
+	getSearchService() {
+
+	},
+	
+	onSearch() {
+		this.setData({
+			search: true
+		})
+		this.getSearchList()
+	},
+
+	// 清空历史搜索
+	async clearHisSearch() {
+		const { result } = await clearHisSearch();
+		if (result == true) {
+			that.setData({
+				hislist: [],
+			})
+		}
+	},
+
+	async clear() {
+		const { confirm } = await promisic(wx.showModal)({
+			title: '提示',
+			content: '确定这样操作嘛 ? ',
+		})
+		if(!confirm) return
+		await this.clearHisSearch()
+	},
+
+	onSelect(e) {
+		const { value } = e.target.dataset
+		if(!value) return
+		this.setData({
+			keyword: value,
+			search: true
+		})
+		this.getSearchList()
+	},
+
+	/**
+	 * 生命周期函数--监听页面显示
+	 */
+	onShow: function () {
+
+	},
+
+	/**
+	 * 页面相关事件处理函数--监听用户下拉动作
+	 */
+	onPullDownRefresh: function () {
+
+	},
+	/**
+	 * 页面上拉触底事件的处理函数
+	 */
+	async onReachBottom () {
+		const { type } = this.data
+		if( type === 'content') {
+			this.setData({
+				moreHidden: true,
+			})
+			await this.getSearchContent({})
+		}
+	}
 })
-
-/**
- * 历史搜索列表
- */
-function getHisSearchList(that) {
-    wx.request({
-        url: Config.baseUrl + 'Search/getSearchHistoryList',
-        header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        data: { userid: userid },
-        method: 'POST',
-        success: function (res) {
-            if (res.data == '') {
-                that.setData({
-                    his: true,
-                })
-            } else {
-                that.setData({
-                    hislist: res.data,
-                })
-            }
-        }
-    })
-}
-
-/**
- * 热门搜索列表
- */
-function getHotSearchList(that) {
-    wx.request({
-        url: Config.baseUrl + 'Search/getSearchHotList',
-        header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        data: { userid: userid },
-        method: 'POST',
-        success: function (res) {
-            that.setData({
-                hotlist: res.data,
-            })
-        }
-    })
-}

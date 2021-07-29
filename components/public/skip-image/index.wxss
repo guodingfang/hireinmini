@@ -1,1 +1,6 @@
-/* components/public/skip-image/index.wxss */
+.skip-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}

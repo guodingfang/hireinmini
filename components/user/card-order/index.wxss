@@ -1,0 +1,77 @@
+@import "/common/lib/iconfont.wxss";
+
+.card {
+  background-color: #ffffff;
+  margin: 24rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+.card .header {
+  padding: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #e5e5e5;
+  margin-bottom: 12rpx;
+}
+
+.card .header .title {
+  position: relative;
+  font-size: 36rpx;
+  color: #333333;
+  padding-left: 12rpx;
+}
+
+.header .title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 6rpx;
+  height: 100%;
+  border-radius: 6rpx;
+  background-color: tomato;
+}
+
+.card .header .more {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.list {
+  display: flex;
+  padding: 20rpx;
+}
+
+.item {
+  flex: 0 0 25%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100rpx;
+}
+
+.icon {
+  position: relative;
+  width: 52rpx;
+  height: 52rpx;
+  overflow: visible !important;
+}
+
+.label {
+  font-size: 28rpx;
+}
+
+.num{
+  position: absolute;
+  background:#e7240e;
+  border-radius: 50%;
+  right: -8rpx;
+  top: -8rpx;
+  width: 16px;
+  height: 16px;
+  display: block;
+  text-align: center;
+  line-height: 18px;
+  color: #fff;
+  font-family: "黑体";
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "v-header": "/components/header",
+    "v-tab": "/components/contents/tab"
+  }
+}

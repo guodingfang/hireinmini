@@ -19,7 +19,6 @@ Component({
       type: Array,
       value: [],
       observer(newVal) {
-        console.log('images', newVal)
         this.setData({
           total: newVal.length,
           current: newVal.length === 0 ? 0 : 1,

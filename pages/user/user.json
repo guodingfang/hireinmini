@@ -1,1 +1,11 @@
-{}
+{
+  "usingComponents": {
+    "v-header": "/components/user/card-header",
+    "v-order": "/components/user/card-order",
+    "v-company": "/components/user/card-company",
+    "v-knowledge": "/components/user/card-knowledge",
+    "v-lease-order": "/components/user/card-lease-order",
+    "v-organization": "/components/user/card-organization"
+  },
+  "navigationBarTitleText": "个人中心"
+}

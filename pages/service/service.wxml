@@ -1,0 +1,72 @@
+<v-header
+	cityname="{{ cityname }}"
+	header-fixed="header-fixed"
+	placeholder="请输入关键词搜索"
+	search="input"
+	value="{{keyword}}"
+	rightText="搜索"
+	bind:change="onSearch"
+	bind:clear="onInputClear"
+/>
+
+<view class="block"></view>
+
+<v-carousel m-carousel="m-carousel" images="{{carouselList}}" />
+
+<v-tab list="{{tabList}}" bind:select="onSelect" />
+
+<v-skip
+	src="https://wxapp.ilinking.com.cn/Public/pics/looping/20210630/60dc30894fb12.jpg"
+	width="710"
+	height="250"
+/>
+
+<!-- <block wx:for="{{ releaseList }}" wx:key="id">
+	<v-itemlist info="{{item}}" />
+</block> -->
+
+<view class="model" wx:if="{{hotProductList.length > 0}}">
+	<view class="header">
+		<view class="title">热租产品</view>
+	</view>
+	<block wx:key="id" wx:for="{{hotProductList}}">
+		<v-item />
+	</block>
+</view>
+
+<view class="model" wx:if="{{schemeList.length > 0}}">
+	<view class="header">
+		<view class="title">牛设计</view>
+	</view>
+	<block wx:key="id" wx:for="{{schemeList}}">
+		<v-item />
+	</block>
+</view>
+
+<view class="model" wx:if="{{topSellList.length > 0}}">
+	<view class="header">
+		<view class="title">品质二手</view>
+	</view>
+	<block wx:key="id" wx:for="{{topSellList}}">
+		<v-item />
+	</block>
+</view>
+
+<view class="weui-loadmore" wx:if="{{moreHidden}}">
+	<view class="weui-loading"></view>
+	<view class="weui-loadmore__tips">正在加载</view>
+</view>
+
+<v-fixed>
+	<view slot="list">
+		<view class="fixed-item">
+			<button class='fixed-button' open-type="share">
+				<image src='/images/share2.png' class='icon-share'></image>
+			</button>
+		</view>
+		<view class="fixed-item" bind:tap="issue">
+			<text>我要</text>
+			<text>发布</text>
+		</view>
+	</view>
+</v-fixed>

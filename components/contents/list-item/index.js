@@ -1,5 +1,6 @@
 import config from '../../../config'
-import { addUserDialRecord, addLikeRelease, deleteLikeRelease, addComment } from '../../../models/release';
+import { addUserDialRecord, addLikeRelease, deleteLikeRelease, addComment } from '../../../models/release'
+import { addAttention } from '../../../models/user'
 import { getUserInfo } from '../../../utils/util'
 
 Component({
@@ -149,7 +150,21 @@ Component({
           ...this.data.item,
           discusscount: this.data.item.discusscount + 1
         }
-        
+      })
+    },
+
+    async onAttention() {
+      const { userid: targetuserid, focused } = this.data.item
+      console.log('focused', focused);
+      await addAttention({
+        targetuserid,
+        focused: focused === 1 ? 0 : 1
+      })
+      this.setData({
+        item: {
+          ...this.data.item,
+          focused: focused === 1 ? 0 : 1
+        }
       })
     },
 
@@ -171,10 +186,14 @@ Component({
 
     // 跳转详情页
     onSkipDetail(e) {
+      const { type = 'img' } = e.currentTarget.dataset
+      const { target = '' } = e.target.dataset;
       const { msgid = '' } = this.properties.item;
-      wx.navigateTo({
+      if(type === 'img' || target === 'info') {
+        wx.navigateTo({
           url: "/pages/detail/detail?msgid=" + msgid
-      })
+        })
+      }
     },
   }
 })

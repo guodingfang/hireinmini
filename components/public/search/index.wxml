@@ -1,4 +1,20 @@
-<view class="search" bind:tap="onSearch">
-  <image class="icon-search" src="/images/icon-search.png"></image>
-  <view class="search-input">搜索内容</view>
+<view class="search m-search" bind:tap="onSearch">
+  <block wx:if="{{search === 'block'}}">
+    <image class="icon-search" src="/images/icon-search.png"></image>
+    <view class="search-text">{{placeholder}}</view>
+  </block>
+  <block wx:if="{{search === 'input'}}">
+    <view class="search-input">
+      <image class="icon-search" src="/images/icon-search.png"></image>
+      <input
+        class="input-val"
+        value="{{value}}"
+        type="text"
+        placeholder="{{placeholder}}"
+        bindinput="onInput"
+      />
+      <text class="iconfont icon-guanbi" hidden="{{!value}}" catch:tap="onClear"></text>
+    </view>
+    <view class="search-right" wx:if="{{rightText}}">{{ rightText }}</view>
+  </block>
 </view>

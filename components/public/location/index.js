@@ -10,6 +10,8 @@ Component({
     }
   },
 
+  externalClasses: ['m-location'],
+
   /**
    * 组件的初始数据
    */

@@ -8,10 +8,10 @@
         <text class="company" bind:tap="onSkipCompany">{{ item.companyname }}</text>
       </view>
     </view>
-    <view class="status">{{ item.focused === '1' ? '已关注' : '关注' }}</view>
+    <view class="status" bind:tap="onAttention">{{ item.focused === 1 ? '已关注' : '关注' }}</view>
   </view>
-  <view class="content" bind:tap="onSkipDetail">
-    <view class="content-info">{{ item.content }}</view>
+  <view class="content" data-type="{{type}}" bind:tap="onSkipDetail">
+    <view class="content-info" data-target="info">{{ item.content }}</view>
     <view class="imgs" wx:if="{{ imgShow }}">
       <block wx:if="{{type === 'img'}}">
         <block wx:if="{{ imgShow === 1 }}">
@@ -25,14 +25,19 @@
           <image
             wx:for="{{imgs}}"
             wx:key="id"
+            wx:for-index="index"
             class="small-img"
             mode="aspectFill"
             src="{{imgUrl}}{{item.picurl_thumbnails}}"
-          ></image>
-          <view class="mask" wx:if="{{ imgShow > 3 }}">+{{imgShow - 3}}</view>
+          >
+            <view class="mask" wx:if="{{ imgShow > 3 && imgs.length === index + 1 }}">+{{imgShow - 3}}</view>
+          </image>
         </block>      
       </block>
       <block wx:if="{{type === 'video'}}">
+        <view class="video-mask" catch:tap="onOpenVideo">
+          <text class="iconfont icon-ziyuan play-icon"></text>
+        </view>
         <image
           class="big-img"
           mode="aspectFill"

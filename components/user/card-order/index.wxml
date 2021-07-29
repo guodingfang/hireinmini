@@ -1,0 +1,29 @@
+<view class="card">
+  <view class="header" data-type="0" bind:tap="onSkipOrder">
+    <text class="title">我的订单</text>
+    <view class="more">
+      <text>查看我的订单</text>
+      <text class="iconfont icon-gengduo"></text>
+    </view>
+  </view>
+  <view class="list">
+    <view class="item" data-type="0" bind:tap="onSkipOrder">
+      <image class="icon" src="/images/user/user-11.png"></image>
+      <text class="label">已审核</text>
+    </view>
+    <view class="item" data-type="1" bind:tap="onSkipOrder">
+      <image class="icon" src="/images/user/user-2.png"></image>
+      <text class="label">审核中</text>
+    </view>
+    <view class="item" data-type="2" bind:tap="onSkipOrder">
+      <image class="icon" src="/images/user/user-10.png"></image>
+      <text class="label">已取消</text>
+    </view>
+    <view class="item" hidden="{{orderaudit}}" data-type="3" bind:tap="onSkipOrder">
+      <image class="icon" src="/images/user/user-2.png">
+        <text class="num" wx:if="{{ordernumbers}}">{{ordernumbers}}</text>
+      </image>
+      <text class="label">待我审核</text>
+    </view>
+  </view>
+</view>

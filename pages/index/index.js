@@ -1,58 +1,124 @@
-//index.js
-//获取应用实例
-import {
-	Config
-} from '../../utils/config.js';
 
-import {
-	getReleaseList
-} from '../../models/release';
-import {
-	getCarousel
-} from '../../models/util';
+import { login } from '../../models/user'
+import { getDiscoverMsgList } from '../../models/release'
+import { getCarousel, getRecommendAccountList } from '../../models/util'
+import { getAttentionedList } from '../../models/user'
 
-var util = require('../../utils/util.js');
-var publiclist = require('../../template/publiclist.js');
-import emoji from '../../utils/emoji';
-
-var login = require('../../template/login.js');
-var config = new Config();
-var app = getApp();
+// login Template
+import loginPage from '../../template/login'
 
 Page({
 	data: {
 		loadingHidden: false,
 		releaseList: [],
-		cityname: '',
+		cityname: '全国',
 		pagenum: 0,
+		moreHidden: false,
+		tabname: 'recommend',
+		interest: {
+			title: '',
+			list: [],
+		},
+		tabList: [
+      {
+        id: '1',
+				name: '关注',
+				type: 'focus',
+      },
+      {
+        id: '2',
+				name: '推荐',
+				type: 'recommend',
+				select: true
+      },
+      {
+        id: '3',
+				name: '全国',
+				type: 'country',
+      },
+      {
+        id: '4',
+				name: '本地',
+				type: 'native'
+      }
+    ]
 	},
 
 	async onLoad() {
-		login.init.apply(this, []); // this关键字必须传进去 这样才能使header.js中的数据和函数注入到这个模块
-
-		this.getCarousel();
+		loginPage.init.apply(this, [])
 	},
 
-	// 获取租赁列表
-	async getReleaseList({ reset = false }) {
-		const { pagenum, cityname, releaseList } = this.data
-		const {
-			data,
-			page
-		} = await getReleaseList({
+	// 关注账号列表
+	async getAttentionedList() {
+		const list = await getAttentionedList({})
+		if(list.length === 0) {
+			this.getRecommendAccountList()
+		} else {
+			this.setData({
+				interest: {
+					title: '我的关注',
+					list,
+				}
+			})
+		}
+	},
+
+	// 推荐账号列表
+	async getRecommendAccountList() {
+		const list = await getRecommendAccountList({})
+		this.setData({
+			interest: {
+				title: '为你推荐',
+				list,
+			}
+		})
+	},
+
+	async onSelectTab(e) {
+		const { tabList } = this.data
+		const { type } = e.detail
+		this.setData({
+			pagenum: 0,
+			tabList: tabList.map(tab => tab.type === type ? { ...tab, select: true } : { ...tab, select: false }),
+			tabname: type
+		})
+		await this.getCarousel()
+		await this.getDiscoverMsgList({ reset: true })
+	},
+
+	// 用户登录
+	async login() {
+		const { code, userinfo } = await login()
+		if(code === 0) {
+			this.setData({ userinfo })
+		}
+	},
+
+	async getDiscoverMsgList({ reset = false }) {
+		const { pagenum, cityname, releaseList, tabname = '' } = this.data
+		if (tabname === 'focus') {
+			await this.getAttentionedList()
+		}
+		const { data, page } = await getDiscoverMsgList({
 			pagenum,
-			cityname
-		});
+			cityname,
+			keyword: '',
+			tabname
+		})
 		this.setData({
 			releaseList: reset ? data : [ ...releaseList, ...data ],
 			loadingHidden: true,
-			pagenum: page + 1
+			pagenum: page.page + 1,
+			moreHidden: false
 		})
 	},
 
 	// 获取首页轮播
 	async getCarousel() {
-		const list = await getCarousel({})
+		const { tabname } = this.data
+		const list = await getCarousel({
+			tabname
+		})
 		this.setData({
 			carouselList: list
 		})
@@ -78,155 +144,39 @@ Page({
 		return cityname
 	},
 
+	// 客服消息
+	handleContact(e) {
+		console.log('e', e)
+	},
+
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () {
+	async onShow () {
+		await this.login();
 		const cityname = this.getCityInfo()
-		if(cityname === this.data.cityname) return
+		if(cityname === this.data.cityname && this.data.releaseList.length !== 0) return
 		this.setData({
-			loadingHidden: false,
 			pagenum: 0,
-			cityname,
+			cityname: cityname || this.data.cityname,
 		})
-		this.getReleaseList({ reset: true })
-
-		// var that = this;
-		// 判断用户登录信息是否缓存
-		// config.userLogin(function () {
-		// 	var userinfo = wx.getStorageSync('userinfo');
-		// 	userid = userinfo.userid ? userinfo.userid : 0;
-		// 	if (userid > 0) {
-		// 		/* 查询用户信息缓存是否失效 */
-		// 		app.judgeLogoNBrace(function () {
-		// 			that.setData({
-		// 				userid: userid,
-		// 				username: userinfo.nickname,
-		// 				loadingHidden: true,
-		// 			})
-		// 		});
-		// 	} else {
-		// 		that.setData({
-		// 			userid: userid,
-		// 			loadingHidden: true,
-		// 		})
-		// 	}
-		// 	//获取城市缓存
-		// 	var cityinfo = wx.getStorageSync('cityinfo');
-		// 	if (cityinfo != '') {
-		// 		that.setData({
-		// 			cityname: cityinfo.cityname,
-		// 			citycode: cityinfo.citycode,
-		// 		})
-		// 		if (that.data.switchover) {
-		// 			that.setData({
-		// 				list: [],
-		// 			})
-		// 			p = 0;
-		// 			//分页获取租圈列表
-		// 			GetList(that);
-		// 		}
-		// 	} else {
-		// 		getCity(that);
-		// 	}
-		// })
+		this.getCarousel()
+		this.getDiscoverMsgList({ reset: true })
 	},
 
 	/**
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage(e) {
-		console.log('转发来源:', e);
 		if (e.from === 'button') {
-			let {
-				msgid,
-				url
-			} = e.target.dataset;
+			let { msgid, url } = e.target.dataset;
 			return {
 				title: '赁客+',
-				path: '/pages/detail/detail?msgid=' + msgid,
+				path: `/pages/detail/detail?msgid=${msgid}`,
 				imageUrl: url
-				// imageUrl: 'https://wxapp.ilinking.com.cn/upload/wood/20210601/60b5927ed0301.jpg'
 			}
 		}
 	},
-
-	/*推荐跳转到公司列表*/
-	market: function (event) {
-		config.permission('companylist/companylist', function () {
-			wx.navigateTo({
-				url: '../companylist/companylist',
-			})
-		})
-	},
-
-	/*点击关注我们使主页出现二维码*/
-	appear: function (event) {
-		wx.navigateTo({
-			url: '../webview/webview',
-		})
-	},
-
-	/**
-	 * 公共点击 (必须登录)
-	 */
-	clickoper: function (event) {
-		var that = this;
-		getUserinfo(that, function () {
-			var companyid = wx.getStorageSync('userinfo').companyid ? wx.getStorageSync('userinfo').companyid : 0;
-			if (companyid > 0) {
-				var url = config.getDataSet(event, 'url');
-				config.permission(url, function (res) {
-					wx.navigateTo({
-						url: '../' + url,
-					})
-				});
-			} else {
-				config.modalqd('请先创建或绑定公司', function (res) {
-					if (res.confirm) {
-						wx.navigateTo({
-							url: '../company_select/company_select',
-						})
-					}
-				});
-			}
-		})
-	},
-
-	/* 搜索跳转 */
-	// searchgood: function () {
-	// 	config.permission('searchgood/searchgood', function () {
-	// 		wx.navigateTo({
-	// 			url: '../searchgood/searchgood',
-	// 		})
-	// 	})
-	// },
-
-	/*跳转到公司 */
-	// entercompany: function (e) {
-	// 	var that = this;
-	// 	getUserinfo(that, function () {
-	// 		var companyid = wx.getStorageSync('userinfo').companyid ? wx.getStorageSync('userinfo').companyid : 0;
-	// 		if (companyid > 0) {
-	// 			// 有公司跳转公司详情页
-	// 			config.permissionht('company-manage/company-manage', function (res) {
-	// 				if (res.data.result) {
-	// 					wx.navigateTo({
-	// 						url: '../companydetails/companydetails?typeid=1&companyid=' + companyid,
-	// 					})
-	// 				} else {
-	// 					wx.navigateTo({
-	// 						url: '../companydetails/companydetails?typeid=2&companyid=' + companyid,
-	// 					})
-	// 				}
-	// 			})
-	// 		} else { // 无公司跳转创建公司或绑定公司页
-	// 			wx.navigateTo({
-	// 				url: '../company_select/company_select',
-	// 			})
-	// 		}
-	// 	})
-	// },
 
 	/* 下拉刷新 */
 	async onPullDownRefresh () {
@@ -234,7 +184,7 @@ Page({
 			loadingHidden: false,
 			pagenum: 0,
 		})
-		await this.getReleaseList({ reset: true });
+		await this.getDiscoverMsgList({ reset: true });
 		//停止刷新
 		wx.stopPullDownRefresh();
 	},
@@ -243,167 +193,10 @@ Page({
 	 * 页面上拉触底事件的处理函数
 	 */
 	async onReachBottom () {
-		//上拉
-		await this.getReleaseList({})
-	},
-
-	/**
-	 * 跳转详情
-	 */
-	// clickInfo: function (e) {
-	// 	var typeid = config.getDataSet(e, 'typeid');
-	// 	var id = config.getDataSet(e, 'id');
-	// 	var index = config.getDataSet(e, 'index');
-	// 	var that = this;
-	// 	if (typeid == 1) {
-	// 		config.permission('bill_info/bill_info', function () {
-	// 			addBrowse(that, index, id, typeid, function () {
-	// 				wx.navigateTo({
-	// 					url: '../bill_info/bill_info?id=' + id + '&adtypeid=' + typeid,
-	// 				})
-	// 			})
-	// 		})
-	// 	} else if (typeid == 2) {
-	// 		config.permission('job_info/job_info', function () {
-	// 			addBrowse(that, index, id, typeid, function () {
-	// 				wx.navigateTo({
-	// 					url: '../job_info/job_info?id=' + id + '&adtypeid=' + typeid,
-	// 				})
-	// 			})
-	// 		})
-	// 	} else if (typeid == 3) {
-	// 		config.permission('sell_info/sell_info', function () {
-	// 			addBrowse(that, index, id, typeid, function () {
-	// 				wx.navigateTo({
-	// 					url: '../sell_info/sell_info?id=' + id + '&adtypeid=' + typeid,
-	// 				})
-	// 			})
-	// 		})
-	// 	} else {
-	// 		config.permission('buy_info/buy_info', function () {
-	// 			addBrowse(that, index, id, typeid, function () {
-	// 				wx.navigateTo({
-	// 					url: '../buy_info/buy_info?id=' + id + '&adtypeid=' + typeid,
-	// 				})
-	// 			})
-	// 		})
-	// 	}
-	// },
-})
-
-/**
- * 获取城市
- */
-function getCity(that) {
-	//获取最新历史城市
-	wx.request({
-		url: Config.baseUrl + 'Index/getHitory',
-		header: {
-			"Content-Type": "application/x-www-form-urlencoded"
-		},
-		data: {
-			userid: userid
-		},
-		method: 'POST',
-		success: function (res) {
-			if (res.data != '') {
-				p = 0;
-				that.setData({
-					citycode: res.data.citycode,
-					cityname: res.data.cityname,
-					list: []
-				})
-				/*缓存城市信息*/
-				wx.setStorageSync('cityinfo', res.data);
-				//分页获取租圈列表
-				GetList(that);
-			} else {
-				/* 定位 */
-				userLocation(that);
-			}
-		}
-	})
-}
-
-/**
- * 请求定位
- */
-function userLocation(that) {
-	wx.getLocation({
-		type: 'wgs84',
-		complete: function (res) {
-			var latitude = res.latitude
-			var longitude = res.longitude
-			wx.request({
-				url: Config.baseUrl + 'Index/userLocation',
-				header: {
-					"Content-Type": "application/x-www-form-urlencoded"
-				},
-				method: 'POST',
-				data: {
-					userid: userid,
-					latitude: latitude,
-					longitude: longitude,
-				},
-				success: function (data) {
-					p = 0;
-					that.setData({
-						citycode: data.data.citycode,
-						cityname: data.data.cityname,
-						list: [],
-					})
-					/*缓存城市信息*/
-					wx.setStorageSync('cityinfo', data.data);
-					//分页获取租圈列表
-					GetList(that);
-				}
-			})
-		},
-	})
-
-}
-
-/**
- * 增加浏览次数
- */
-function addBrowse(that, index, id, typeid, callback) {
-	wx.request({
-		url: Config.baseUrl + 'Advert/addBrowse',
-		data: {
-			id: id,
-			typeid: typeid
-		},
-		header: {
-			"Content-Type": "application/x-www-form-urlencoded"
-		},
-		method: 'post',
-		success: function (res) {
-			if (res.data.result == true) {
-				var datalist = that.data.list;
-				for (var i = 0; i < datalist.length; i++) {
-					if (i == index) {
-						datalist[i]['viewcounts'] = parseInt(datalist[i]['viewcounts']) + 1;
-					}
-					that.setData({
-						list: datalist,
-					})
-				}
-				callback();
-			}
-		}
-	})
-}
-
-/**
- * 获取用户信息
- */
-function getUserinfo(that, callback) {
-	var code = wx.getStorageSync('userinfo').code;
-	if (code == 0) {
-		callback();
-	} else if (code > 0) {
-		wx.navigateTo({
-			url: '../login/login',
+		this.setData({
+			moreHidden: true,
 		})
-	}
-}
+		//上拉
+		await this.getDiscoverMsgList({})
+	},
+})

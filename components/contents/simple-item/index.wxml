@@ -1,0 +1,15 @@
+<view class="item">
+  <view class="des">万豪酒店系宴会厅会议设计</view>
+  <view class="imgs">
+    <image class="img" src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"></image>
+  </view>
+  <view class="footer">
+    <view class="name">大华会议设计</view>
+    <view class="operation">
+      <view class="operation-item">
+        <text class="iconfont icon-zhuanfa"></text>
+        <text class="val">525</text>
+      </view>
+    </view>
+  </view>
+</view>

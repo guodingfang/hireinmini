@@ -1,4 +1,4 @@
-import { fa } from "../../../utils/pinYin";
+import { trim } from '../../../utils/util'
 
 // components/public/m-comment/index.js
 Component({
@@ -37,19 +37,17 @@ Component({
         value: e.detail.value
       })
     },
-    trim(str) {
-      return str.replace(/(^\s*)|(\s*$)/g, "");
-    },
     onSend(e) {
       const { value } = this.data;
-      if (this.trim(value) === '') {
+      if (trim(value) === '') {
         wx.showToast({
           title: '请输入评论内容',
+          icon: 'none'
         })
         return
       }
       this.triggerEvent('send', {
-        value: this.trim(value)
+        value: trim(value)
       }, {})
       this.onClose()
     }

@@ -1,7 +1,18 @@
-<view class="header">
+<view class="header header-fixed">
   <v-location
+    wx:if="{{isLocation}}"
     cityname="{{ cityname }}"
     bind:change="onChangeLocation"
+    m-location="m-location"
   ></v-location>
-  <v-search bind:search="onSearch"></v-search>
+  <v-search
+    m-search="{{isLocation ? 'm-search' : 'm-search-xl' }}"
+    placeholder="{{placeholder}}"
+    search="{{search}}"
+    value="{{value}}"
+    rightText="{{rightText}}"
+    bind:search="onSearch"
+    bind:clear="onClear"
+    bind:change="onChange"
+  ></v-search>
 </view>

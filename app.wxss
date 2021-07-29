@@ -1,4 +1,5 @@
-/**app.wxss**/
+@import "/common/lib/iconfont.wxss";
+
 page {
 	background: #f0f0f0;
 	font-size: 30rpx;

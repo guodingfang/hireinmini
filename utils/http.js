@@ -7,6 +7,7 @@ class HttpRequest {
   }
   
   httpRequest(options) {
+
     const newOptions = Object.assign(this.getInsideConfig(), options)
     return new Promise((resolve, reject) => {
       this.request({
@@ -70,7 +71,7 @@ class HttpRequest {
       'userid',
       'unionid'
     ])
-    console.log('commonParams', commonParams)
+    // console.log('commonParams', commonParams)
     return this.httpRequest({
       method: 'POST',
       url,

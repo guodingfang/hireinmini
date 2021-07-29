@@ -1,0 +1,18 @@
+<view class="model">
+		<view class="header">
+			<view class="title">服务</view>
+			<view class="more" bind:tap="onSkipTool">
+				<text>更多</text>
+				<text class="iconfont icon-gengduo"></text>
+			</view>
+		</view>
+		<view class="model-content">
+			<view class="info-item" wx:key="id" wx:for="{{2}}">
+				<image class="item-img" src="/images/default.png"></image>
+				<view class="item-content">
+					<view class="item-label">北京：货车限行时段</view>
+					<view class="item-val">下午16:00-20:00五环内</view>
+				</view>
+			</view>
+		</view>
+	</view>

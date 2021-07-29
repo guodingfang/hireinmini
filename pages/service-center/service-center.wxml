@@ -1,0 +1,15 @@
+<v-header
+  isLocation="{{false}}"
+	header-fixed="header-fixed"
+	placeholder="请输入关键词搜索"
+	search="input"
+	value="{{keyword}}"
+	bind:change="onSearch"
+	bind:clear="onInputClear"
+/>
+
+<v-tab list="{{tabList}}" bind:select="onSelect" />
+
+<view class="activity">
+  <image class="activity-item" src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"></image>
+</view>

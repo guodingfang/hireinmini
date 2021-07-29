@@ -35,6 +35,66 @@
           "pathName": "pages/companydetails/companydetails",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "服务页",
+          "pathName": "pages/service/service",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "助手页",
+          "pathName": "pages/helper/helper",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的页",
+          "pathName": "pages/user/user",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索页",
+          "pathName": "pages/searchgood/searchgood",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "详情页",
+          "pathName": "pages/detail/detail",
+          "query": "msgid=4639",
+          "scene": null
+        },
+        {
+          "name": "设计中心",
+          "pathName": "pages/design-centre/design-centre",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "维修中心",
+          "pathName": "pages/maintain-center/maintain-center",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "二手中心",
+          "pathName": "pages/used-center/used-center",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "服务中心",
+          "pathName": "pages/service-center/service-center",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "工具页",
+          "pathName": "pages/tool/tool",
+          "query": "",
+          "scene": null
         }
       ]
     }

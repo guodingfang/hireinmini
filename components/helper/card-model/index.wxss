@@ -1,0 +1,42 @@
+@import '/common/lib/iconfont.wxss';
+
+.model {
+  width: 710rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12rpx 0;
+}
+
+.item + .item {
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.big-img {
+  width: 230rpx;
+  height: 160rpx;
+  margin-right: 24rpx;
+  border-radius: 12rpx;
+}
+
+.samll-img {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 24rpx;
+  border-radius: 50%;
+}
+
+.val {
+  color: #333333;
+  font-size: 30rpx;
+  flex: 1;
+  padding: 24rpx 0;
+}
+
+.iconfont {
+  padding: 24rpx;
+}

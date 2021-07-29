@@ -43,8 +43,35 @@ const getUserInfo = (params = []) => {
 	return result
 }
 
+// 去字符串首位空格
+const trim = (str) => {
+	return str.replace(/(^\s*)|(\s*$)/g, "");
+}
+
+/**
+ * Promise封装
+ * @param {*} func 
+ */
+const promisic = (func) => {
+  return function (params={}) {
+    return new Promise((resolve, reject) => {
+      const args = Object.assign(params, {
+        success: (res) => {
+          resolve(res)
+        },
+        fail: (error) => {
+          reject(error)
+        }
+      });
+      func(args);
+    })
+  }
+}
+
 export {
 	formatTime,
 	getNowFormatDate,
-	getUserInfo
+	getUserInfo,
+	trim,
+	promisic
 }

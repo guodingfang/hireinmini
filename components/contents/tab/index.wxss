@@ -1,10 +1,12 @@
 .tab {
   display: flex;
-  height: 88rpx;
+  /* height: 88rpx; */
+  /* justify-content: space-around; */
 }
 
 .tab-item {
-  flex: 0 0 180rpx;
+  min-width: 180rpx;
+  width: var(--width--);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,4 +14,14 @@
 
 .tab-item-select {
   font-weight: bold;
+  position: relative;
+}
+
+.tab-item-select::after {
+  position: absolute;
+  bottom: 15rpx;
+  content: '';
+  width: 100rpx;
+  height: 6rpx;
+  background-color: #2ab7ff;
 }

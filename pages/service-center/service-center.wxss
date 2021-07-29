@@ -1,0 +1,13 @@
+/* pages/service-center/service-center.wxss */
+
+.activity {
+  width: 710rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.activity-item {
+  width: 710rpx;
+  border-radius: 24rpx;
+}

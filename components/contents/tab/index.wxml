@@ -4,11 +4,14 @@
   scroll-x
   scroll-with-animation
   bind:tap="onSelectTab"
+  style="height: {{height}}rpx"
 >
-  <block wx:for="{{list}}" wx:key="id">
-    <view
-      data-id="{{item.id}}"
-      class="tab-item {{ item.select ? 'tab-item-select': '' }}"
-    >{{ item.name }}</view>
-  </block>
+  <view
+    wx:for="{{list}}"
+    wx:key="id"
+    data-id="{{item.id}}"
+    data-type="{{item.type}}"
+    style="--width--: {{100 / list.length}}%"
+    class="tab-item {{ item.select ? 'tab-item-select': '' }}"
+  >{{ item.name }}</view>
 </scroll-view>

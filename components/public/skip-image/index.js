@@ -13,6 +13,10 @@ Component({
     height: {
       type: Number,
       value: 0,
+    },
+    Radius: {
+      type: Number,
+      value: 24
     }
   },
 
