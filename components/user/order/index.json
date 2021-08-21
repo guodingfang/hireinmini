@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "m-header": "/components/public/m-header"
+  }
+}

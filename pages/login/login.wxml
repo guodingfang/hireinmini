@@ -1,5 +1,5 @@
 <!--pages/login/login.wxml-->
 <import src="../../template/login.wxml" />
 <view>
-    <template is='login' data='{{userinfo,verification,phone,logourl,canGetUserProfile}}'></template>
+	<template is='login' data='{{userinfo,verification,phone,logourl,canGetUserProfile}}'></template>
 </view>

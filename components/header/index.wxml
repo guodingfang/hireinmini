@@ -1,18 +1,34 @@
-<view class="header header-fixed">
-  <v-location
-    wx:if="{{isLocation}}"
-    cityname="{{ cityname }}"
-    bind:change="onChangeLocation"
-    m-location="m-location"
-  ></v-location>
-  <v-search
-    m-search="{{isLocation ? 'm-search' : 'm-search-xl' }}"
-    placeholder="{{placeholder}}"
-    search="{{search}}"
-    value="{{value}}"
-    rightText="{{rightText}}"
-    bind:search="onSearch"
-    bind:clear="onClear"
-    bind:change="onChange"
-  ></v-search>
+
+
+<view class="header m-header {{ fixed ? 'header-f' : ''}}" style="padding-top:{{statusBarHeight}}rpx">
+  <view class="top-header" wx:if="{{isTopTitle}}">
+    <image
+      wx:if="{{currentPage}}"
+      class="title-logo"
+      wx:if="{{currentPage}}"
+      src="/images/title/{{currentPage}}.png"
+    ></image>
+    <view wx:else>
+      <slot name="top-header-content"></slot>
+    </view>
+  </view>
+  
+  <view class="header-content" wx:if="{{isHeaderContent}}">
+    <v-location
+      wx:if="{{isLocation}}"
+      cityname="{{ cityname }}"
+      bind:change="onChangeLocation"
+      m-location="m-location"
+    ></v-location>
+    <v-search
+      m-search="{{isLocation ? 'm-search' : 'm-search-xl' }}"
+      placeholder="{{placeholder}}"
+      search="{{search}}"
+      value="{{value}}"
+      rightText="{{rightText}}"
+      bind:search="onSearch"
+      bind:clear="onClear"
+      bind:change="onChange"
+    ></v-search>
+  </view>
 </view>

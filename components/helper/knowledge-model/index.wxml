@@ -1,0 +1,25 @@
+<view class="model">
+  <view class="item" wx:for="{{list}}" wx:key="id">
+    <image
+      class="img"
+      wx:if="{{item.pics.length > 0}}"
+      src="{{imgUrl}}{{item.pics[0].picurl_thumbnails}}"
+    ></image>
+    <view class="content">
+      <view class="name single-row-overstep">{{item.content}}</view>
+      <view class="info">
+        <view class="price">
+          <m-price price="999" />
+        </view>
+        <view class="label">线下实操课程</view>
+      </view>
+      <view class="footer">
+        <view class="issuer">
+          <image class="logo" src="https://mobile.ilinking.com.cn/Public/pics/userphoto/20210407/606d7683aebbf.png"></image>
+          <text class="issuer-val">灯光控制学院</text>
+        </view>
+        <view class="tips">最近999+人在学</view>
+      </view>
+    </view>
+  </view>
+</view>

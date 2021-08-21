@@ -1,5 +1,0 @@
-@import '../card-order/index.wxss';
-
-.icon-menber {
-  width: 64rpx;
-}

@@ -50,6 +50,7 @@ let encodeEmoji = (str = must, identity, copy) => {
         let tmp = entityToString(char.substring(min + 1, max + 1));
         return tmp;
     });
+    console.log('str', str)
     return str;
 }
 //将带有表情包的字符串转换为替换后的数组

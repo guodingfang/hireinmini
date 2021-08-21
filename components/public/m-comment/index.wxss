@@ -21,7 +21,7 @@
   width: 750rpx;
   min-height: 80rpx;
   position: fixed;
-  bottom: 0;
+  bottom: 100rpx;
   z-index: 100;
   background-color: #ebebeb;
   display: flex;

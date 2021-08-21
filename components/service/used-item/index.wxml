@@ -1,0 +1,16 @@
+<view class="item">
+  <image
+    class="product-img"
+    src="https://wxapp.ilinking.com.cn/Public/pics/goods/20210501/2.png"
+  ></image>
+  <view class="info">
+    <view class="val two-row-overstep">利亚德紧急驰援河南，首批救灾物资预计今日抵达</view>
+    <view class="location">
+      <image class="icon-location" src="/images/icon/location-2.png"></image>
+      <text class="location-name">设备所在地址</text>
+    </view>
+    <view class="price-browse">
+      <m-price price="{{99999}}" />
+    </view>
+  </view>
+</view>

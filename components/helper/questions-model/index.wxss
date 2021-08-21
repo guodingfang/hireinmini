@@ -1,0 +1,50 @@
+.model {
+  display: flex;
+  flex-direction: column;
+  width: 690rpx;
+  padding: 0 20rpx;
+}
+
+.item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.item:not(:last-child)::after {
+  position:absolute;
+  content: '';
+  width: 650rpx;
+  height: 1rpx;
+  background-color: #E5E5E5;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.icon-consult {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.info {
+  margin-left: 12rpx;
+  flex: 1;
+  display: flex;
+}
+
+.val {
+  color: #1A1A1A;
+  font-size: 28rpx;
+}
+
+.tips {
+  margin-left: auto;
+  color: #999999;
+  font-size: 24rpx;
+}

@@ -1,0 +1,63 @@
+@import "/assets/style/global.wxss";
+
+.itme {
+  display: flex;
+  flex-direction: column;
+  width: 335rpx;
+  height: 365rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  background: #FFFFFF;
+  border: 1px solid #E5E5E5;
+}
+
+.img {
+  width: 335rpx;
+  height: 250rpx;
+}
+
+.info {
+  padding: 10rpx 15rpx 15rpx 15rpx;
+}
+
+.name {
+  color: #1A1A1A;
+  font-size: 28rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.company-browse {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.company-name {
+  color: #0400E6;
+  font-size: 22rpx;
+}
+
+.icon-browse {
+  width: 32rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+
+.browse-val {
+  color: #999999;
+  font-size: 22rpx;
+}

@@ -11,8 +11,9 @@ const login = async (option = {}) => {
   const info = await request.post('/WXAppLogin/WXAppLogins', {
     code,
   })
+  console.log('info', info)
   if(info.code === 0 && info.result) {
-    wx.setStorageSync('userinfo', info.userinfo)
+    wx.setStorageSync('logininfo', info.userinfo)
     return {
       code: 0,
       userinfo: info.userinfo

@@ -1,0 +1,30 @@
+<view class="tabber-container" style="height: {{tabHeight}}rpx; padding-bottom: {{paddingBottom}}rpx">
+  <block wx:for="{{tabbar.list}}" wx:key="index">
+    <view
+      wx:if="{{!item.custom}}"
+      class="tab-item {{ curRoute === item.pagePath ? 'tab-item-select' : '' }}"
+      bind:tap="redirectTo"
+      data-taburl="{{item.pagePath}}"
+    >
+      <image
+        class="tab-icon"
+        src="{{ curRoute === item.pagePath ? item.selectedIconPath : item.iconPath }}"
+        mode="aspectFit">
+      </image>
+      <view class="item-text">{{item.text}}</view>
+    </view>
+
+    <view
+      wx:else
+      class="tab-item"
+    >
+      <image
+        class="tab-icon tab-icon-custom"
+        style="width: {{ item.width }}; height: {{ item.height }}"
+        src="{{ item.iconPath }}"
+        mode="aspectFit">
+      </image>
+    </view>
+  </block>
+  
+</view>

@@ -1,14 +1,17 @@
 import {
 	Config
 } from '../../utils/config.js';
-// var login = require('../../template/login.js');
+
+import loginPage from '../../template/login'
+
 var config = new Config();
-var app = getApp();
 
 import { checkFrontPower } from '../../models/util'
-import { login, getMyCompanyInfo, getMyOrderForAuditNum, getLocation } from '../../models/user'
+import { getMyCompanyInfo, getMyOrderForAuditNum } from '../../models/user'
 
-import { getUserInfo } from '../../utils/util'
+import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
+
+const app = getApp()
 
 Page({
 
@@ -33,17 +36,17 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	async onLoad (options) {
-		// var that = this;
-		// login.init.apply(this, []); // this关键字必须传进去 这样才能使header.js中的数据和函数注入到这个模块
-		// if (wx.getUserProfile) {
-		// 	this.setData({
-		// 		canGetUserProfile: true,
-		// 	});
-		// }
-		// that.getLogoUrl();
 
-		await this.login();
-		await this.getLocation();
+		const { userid = '' } = getUserInfo(['userid'])
+		console.log('userid', userid)
+		if(!userid) {
+			loginPage.init.apply(this, [])
+		}
+		this.setData({
+			pageshow: true
+		})
+		this.getHeaderBlock();
+		await this.getInfo();
 		await this.getCheckOrder()
 		await this.getMyCompanyInfo()
 		await this.getMyOrderForAuditNum()
@@ -52,16 +55,20 @@ Page({
 		})
 	},
 
-	// 用户登录
-	async login() {
-		const { code, userinfo } = await login()
-		if(code === 0) {
-			this.setData({ userinfo })
-		}
+	getHeaderBlock() {
+		const { workInfo, statusBarHeight, headerTopHeader } = app.globalData;
+		const { tabHeight } = judgeTabBarHeight(workInfo);
+		this.setData({
+			headerBlock: statusBarHeight + headerTopHeader,
+			tabHeight,
+		})
 	},
 
-	async getLocation() {
-		await getLocation()
+	getInfo() {
+		const info = wx.getStorageSync('logininfo')
+		this.setData({
+			userinfo: info
+		})
 	},
 
 	// 跳转到我的订单审核

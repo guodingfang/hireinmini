@@ -1,6 +1,6 @@
 <view class="comment" wx:if="{{commentShow}}">
   <view class="mask" bind:tap="onClose"></view>
-  <view class="form-info">
+  <view class="form-info" style="bottom: {{ bottom }}rpx">
     <input
       type="text" 
       name="content"

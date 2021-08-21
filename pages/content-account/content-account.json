@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "v-header": "/components/header",
+    "v-info": "/components/account/user-info",
+    "v-item": "/components/contents/list-item",
+    "m-sticky": "/components/public/sticky"
+  },
+  "navigationStyle": "custom"
+}

@@ -1,3 +1,4 @@
+import { re } from '../utils/pinYin'
 import request from '../utils/request'
 
 /**
@@ -65,6 +66,22 @@ const getDiscoverMsgList = (option = {}) => {
   })
 }
 
+/**
+ * 获取租赁详情
+ * @param {*} option 
+ */
+const getReleaseDetail = (option = {}) => {
+  return request.post('/Release/getMsgReleaseDetail', {
+    ...option,
+  })
+}
+
+const getOtherHosList = (option = {}) => {
+  return request.post('/Release/otherHostMsgList', {
+    ...option
+  })
+}
+
 export {
   getDiscoverMsgList,
   getReleaseList,
@@ -72,5 +89,7 @@ export {
   addUserDialRecord,
   addLikeRelease,
   deleteLikeRelease,
-  addComment
+  addComment,
+  getReleaseDetail,
+  getOtherHosList
 }

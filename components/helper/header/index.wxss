@@ -1,0 +1,58 @@
+.header {
+  display: flex;
+  height: 88rpx;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 0 30rpx;
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+}
+
+.icon-location {
+  width: 26rpx;
+  height: 32rpx;
+}
+
+.location-val {
+  margin-left: 10rpx;
+  color: #1A1A1A;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.dial-button {
+  margin: 0;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 30rpx;
+  background-color: #E6E6FF;
+  border: 0 solid transparent;
+}
+
+.dial-button::after{
+  border: 0;
+}
+
+.icon-dial {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.dial-val {
+  padding: 0 18rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1A1A1A;
+  font-size: 24rpx;
+}

@@ -1,0 +1,49 @@
+@import "/assets/style/global.wxss";
+
+.focus-list {
+	display: flex;
+  height: 164rpx;
+}
+
+.focus-item {
+  flex: 0 0 180rpx;
+  padding: 7rpx 0 14rpx 0;
+  box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.focus-item:first-child {
+  padding-left: 10rpx;
+}
+
+.not-focus .focus-item::after {
+  position: absolute;
+  right: 10rpx;
+  content: '关注';
+  width: 60rpx;
+  height: 28rpx;
+  color: #FFA12C;
+  font-size: 20rpx;
+  background-color: #FFEED9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rpx;
+}
+
+.focus-pic {
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50%;
+}
+
+.focus-name {
+	max-width: 160rpx;
+	font-size: 28rpx;
+	color: #1A1A1A;
+	text-align: center;
+}

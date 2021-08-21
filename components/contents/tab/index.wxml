@@ -1,10 +1,10 @@
 <scroll-view
   enable-flex
-  class="tab"
+  class="tab {{ fixed ? 'tab-f' : ''}}"
   scroll-x
   scroll-with-animation
   bind:tap="onSelectTab"
-  style="height: {{height}}rpx"
+  style="height: {{height}}rpx; top: {{ fixed ? headerBlock : 0}}rpx"
 >
   <view
     wx:for="{{list}}"

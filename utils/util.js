@@ -36,7 +36,7 @@ const getUserInfo = (params = []) => {
 	const result = {};
 	if(params.length === 0) return result
 
-	const info = wx.getStorageSync('userinfo')
+	const info = wx.getStorageSync('logininfo')
 	params.forEach(param => {
 		result[param] = info[param]
 	})
@@ -68,10 +68,31 @@ const promisic = (func) => {
   }
 }
 
+const judgeTabBarHeight = (workInfo) => {
+	if(workInfo && workInfo.model) {
+		console.log('workInfo', workInfo)
+		const { model } = workInfo;
+		if (model.search('iPhone X') != -1 || 
+			model.search('iPhone 11') != -1 ||
+			model.search('unknown<iPhone12,1>') != -1
+		) {
+			return {
+				tabHeight: 150,
+				paddingBottom: 50,
+			};
+		}
+		return {
+			tabHeight: 100,
+			paddingBottom: 0,
+		}
+	}
+}
+
 export {
 	formatTime,
 	getNowFormatDate,
 	getUserInfo,
 	trim,
-	promisic
+	promisic,
+	judgeTabBarHeight
 }

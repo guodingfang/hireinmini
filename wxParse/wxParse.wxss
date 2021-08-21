@@ -204,3 +204,7 @@
 .wxParse-figure {
   overflow: hidden;
 }
+
+.wxParse-p {
+    text-indent: 0 !important;
+}

@@ -1,0 +1,9 @@
+
+<view class="price" style="font-size: {{configs.smallFontSize}}rpx">
+  <view class="decorate">
+    ￥
+  </view>
+  <view class="val" style="font-size: {{configs.bigFontSize}}rpx">
+    {{price}}
+  </view>
+</view>

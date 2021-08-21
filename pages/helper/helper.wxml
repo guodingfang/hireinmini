@@ -1,86 +1,62 @@
-<view class="assistant">
-  <view class="model call">
-    <button class="call-button" open-type="contact" bindcontact="handleContact">
-      呼叫我的助手
-    </button>
+
+<view style="height: {{headerBlock}}rpx">
+  <v-header
+    fixed="{{true}}"
+    currentPage="helper"
+    isTopTitle="{{true}}"
+    isHeaderContent="{{false}}"
+  />
+</view>
+
+<view style="height: 88rpx">
+  <v-helper-header />
+</view>
+
+
+<view class="advert">
+  <v-skip
+    src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+    width="690"
+    height="200"
+    radius="100"
+  />
+</view>
+
+<view class="model tool">
+  <m-header title="租赁常用工具" bind:more="onMore"/>
+
+  <view class="content tool-content">
+    <view class="tool-item" wx:for="{{tools}}" wx:key="id">
+      <image class="tool-img" src="./images/{{item.type}}.png"></image>
+      <text class="label">{{item.val}}</text>
+    </view>
   </view>
   
-  <view class="model tool">
-    <view class="header">
-      <view class="title">租赁工具</view>
-      <view class="more" bind:tap="onSkipTool">
-        <text>更多</text>
-        <text class="iconfont icon-gengduo"></text>
-      </view>
-    </view>
+</view>
+<view class="model knowledge"> 
+  <m-header title="租赁学院" bind:more="onMore"/>
+  <view class="content knowledge-content">
+    <v-knowledge list="{{knowledgeList}}" wx:if="{{knowledgeList.length > 0}}" />
+    <text class="content-not" wx:else>暂未有知识提供</text>
+  </view>
+</view>
+<view class="model questions">
+  <m-header title="租赁技术在线问答（100+）" bind:more="onMore"/>
+  <view class="content questions-content">
+    <!-- <v-questions list="{{questionsList}}" wx:if="{{questionsList.length == 0}}"/> -->
+    <v-questions />
+    <!-- <text class="content-not" wx:else>暂未有问答内容</text> -->
+  </view>
+</view>
 
-    <view class="content tool-content">
-      <view class="tool-item">
-        <text class="iconfont icon-Energy-"></text>
-        <text class="label">功耗公式</text>
-      </view>
-      <view class="tool-item">
-        <text class="iconfont icon-fsux_tubiao_gongshi_jisuan"></text>
-        <text class="label">LED公式</text>
-      </view>
-      <view class="tool-item">
-        <text class="iconfont icon-jiagou"></text>
-        <text class="label">雷亚架公式</text>
-      </view>
-      <view class="tool-item">
-        <text class="iconfont icon-gongshi"></text>
-        <text class="label">开窗公式</text>
-      </view>
-    </view>
-    
-  </view>
-  <view class="model knowledge"> 
-    <view class="header">
-      <view class="title">租赁知识</view>
-      <view class="more">
-        <text>更多</text>
-        <text class="iconfont icon-gengduo"></text>
-      </view>
-    </view>
-    <view class="content knowledge-content">
-      <v-card list="{{knowledgeList}}" wx:if="{{knowledgeList.length > 0}}" picture="big" />
-      <text class="content-not" wx:else>暂未有知识提供</text>
+<v-fixed>
+	<view slot="list">
+    <view class="fixed-item" bind:tap="skipCompany">
+      <image class="consult" src="/images/public/consult.png"></image>
     </view>
   </view>
-  <view class="model questions">
-    <view class="header">
-      <view class="title">租赁知识在线问答</view>
-      <view class="more">
-        <text>更多</text>
-        <text class="iconfont icon-gengduo"></text>
-      </view>
-    </view>
-    <view class="content questions-content">
-      <v-card list="{{questionsList}}" wx:if="{{questionsList.length > 0}}" picture="small" />
-      <text class="content-not" wx:else>暂未有问答内容</text>
-    </view>
-  </view>
-  <view class="model service">
-    <view class="header">
-      <view class="title">更多服务</view>
-      <view class="more">
-        <text>更多</text>
-        <text class="iconfont icon-gengduo"></text>
-      </view>
-    </view>
-    <view class="content service-content">
-      <view class="service-item">
-        <text class="iconfont icon-checklist"></text>
-        <text class="label">消电检查报告</text>
-      </view>
-      <view class="service-item">
-        <text class="iconfont icon-yajin"></text>
-        <text class="label">场地押金</text>
-      </view>
-      <view class="service-item">
-        <text class="iconfont icon-shenhe"></text>
-        <text class="label">活动手续报批</text>
-      </view>
-    </view>
-  </view>
+</v-fixed>
+
+<view style="height: {{tabHeight}}rpx">
+  <v-tabbar />
 </view>

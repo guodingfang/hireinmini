@@ -1,0 +1,17 @@
+@import '../product-item/index.wxss';
+
+
+.location {
+  display: flex;
+  align-items: center;
+}
+
+.icon-location {
+  width: 22rpx;
+  height: 26rpx;
+}
+
+.location-name {
+  color: #666666;
+  font-size: 22rpx;
+}

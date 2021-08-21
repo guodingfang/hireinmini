@@ -1,10 +1,34 @@
 .header {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  width: 100vw;
+}
+
+.header-f {
+  position: fixed;
+  z-index: 9999;
+}
+
+.top-header {
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  width: 100%;
+}
+
+.title-logo {
+  width: 228rpx;
+  height: 50rpx;
+}
+
+.header-content {
   padding: 0 24rpx;
   display: flex;
   height: 100rpx;
   align-items: center;
   justify-content: space-between;
-  background-color: #2ab7ff;
 }
 
 .m-location {

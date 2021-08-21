@@ -1,3 +1,4 @@
+@import '/assets/style/global.wxss';
 
 .location {
   display: flex;
@@ -5,13 +6,17 @@
   justify-content: center;
   width: 200rpx;
   height: 50rpx;
-  color: #333;
-  border-radius: 25rpx;
-  overflow: hidden;
 }
 
-.icon {
-  margin-left: 12rpx;
-  width: 27rpx;
-  height: 14rpx;
+.icon-location {
+  margin-right: 10rpx;
+  width: 26rpx;
+  height: 32rpx;
+}
+
+.city-name {
+  flex: 1;
+  color: #1A1A1A;
+  font-size: 34rpx;
+  font-weight: 800;
 }

@@ -1,10 +1,13 @@
-import { getKeyWordReleaseList } from '../../models/release'
 import { getCarousel } from '../../models/util'
+import { getLocation } from '../../models/user'
+import { judgeTabBarHeight } from '../../utils/util'
 import {
 	getHighRentRateProduct,
   getRecommendSchemeList,
   getTopSell
 } from '../../models/service'
+
+const app = getApp();
 
 Page({
 
@@ -12,15 +15,13 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		headerBlock: 0,
 		cityname: '全国', // 筛选城市
 		keyword: '',
-		releaseList: [],
 		carouselList: [],
-
 		hotProductList: [],
 		schemeList: [],
 		topSellList: [],
-
 		tabList: [
 			{
 				type: 'design-centre',
@@ -28,7 +29,7 @@ Page({
 			},
 			{
 				type: 'banquet',
-				name: '预定场地'
+				name: '场地服务'
 			},
 			{
 				type: 'service-center',
@@ -49,8 +50,23 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad (options) {
+		this.getHeaderBlock()
 		this.getCarousel()
 		this.getInfo()
+		this.getLocation()
+	},
+
+	getHeaderBlock() {
+		const { workInfo, statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;
+		const { tabHeight } = judgeTabBarHeight(workInfo);
+		this.setData({
+			headerBlock: statusBarHeight + headerTopHeader + headerSearchHeader,
+			tabHeight,
+		})
+	},
+
+	getLocation() {
+		getLocation()
 	},
 
 	getInfo() {
@@ -79,32 +95,22 @@ Page({
 		const list = await getTopSell({})
 		if(list instanceof Array) {
 		this.setData({
-			topSellList: list
+			topSellList: [1,2,3]
 		})
 		}
 	},
 
 	onSelect(e) {
-		console.log('e', e)
 		const { type } = e.detail
 		wx.navigateTo({
 			url: `/pages/${type}/${type}`,
 		})
 	},
 
-	onSearch(e) {
-		const { value } = e.detail
-		this.setData({
-			keyword: value,
-			pagenum: 0,
-		})
-		this.getKeyWordReleaseList({ reset: true })
+	onMore(e) {
+		console.log('更多', e)
 	},
-	onInputClear() {
-		this.setData({
-			keyword: '',
-		})
-	},
+
 		// 获取首页轮播
 	async getCarousel() {
 		const list = await getCarousel({
@@ -112,22 +118,6 @@ Page({
 		})
 		this.setData({
 			carouselList: list
-		})
-	},
-
-	// 根据关键词获取租赁列表
-	async getKeyWordReleaseList({ reset = false }) {
-		const { pagenum, cityname, releaseList, keyword = '' } = this.data
-		const { data, page } = await getKeyWordReleaseList({
-			pagenum,
-			cityname,
-			keyword
-		});
-		this.setData({
-			releaseList: reset ? data : [ ...releaseList, ...data ],
-			loadingHidden: true,
-			pagenum: page + 1,
-			moreHidden: false
 		})
 	},
 
@@ -144,7 +134,6 @@ Page({
 			pagenum: 0,
 			cityname: cityname || this.data.cityname,
 		})
-		this.getKeyWordReleaseList({})
 	},
 	/**
 	 * 跳转到主页
@@ -166,51 +155,41 @@ Page({
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
 	async onPullDownRefresh () {
-		this.setData({
-			loadingHidden: false,
-			pagenum: 0,
-		})
-		await this.getKeyWordReleaseList({ reset: true })
-		//停止刷新
-		wx.stopPullDownRefresh();
+
 	},
 
 	/**
 	 * 页面上拉触底事件的处理函数
 	 */
 	async onReachBottom () {
-		this.setData({
-			moreHidden: true,
-		})
-		//上拉
-		await this.getKeyWordReleaseList({})
+
 	},
 
 	/**
 	 * 用户点击右上角分享
 	 */
 
-	onShareAppMessage(e) {
-		if (e.from === 'button') {
-			let { msgid, url } = e.target.dataset;
-			return {
-				title: '服务',
-				path: `/pages/detail/detail?msgid=${msgid}`,
-				imageUrl: url
-			}
-		}
-	},
+	// onShareAppMessage(e) {
+	// 	if (e.from === 'button') {
+	// 		let { msgid, url } = e.target.dataset;
+	// 		return {
+	// 			title: '服务',
+	// 			path: `/pages/detail/detail?msgid=${msgid}`,
+	// 			imageUrl: url
+	// 		}
+	// 	}
+	// },
 
 	/**
 	 * 跳转发布
 	 */
-	issue: function () {
-		wx.navigateTo({
-			url: '../release/release',
-		})
-		// config.permission('release/release', function() {
-		// })
-	},
+	// issue: function () {
+	// 	wx.navigateTo({
+	// 		url: '../release/release',
+	// 	})
+	// 	// config.permission('release/release', function() {
+	// 	// })
+	// },
 
 	/**
 	 * 点击进入城市列表、

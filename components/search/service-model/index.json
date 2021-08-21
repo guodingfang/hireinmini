@@ -1,4 +1,7 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "m-header": "/components/public/m-header",
+    "m-price": "/components/public/m-price"
+  }
 }

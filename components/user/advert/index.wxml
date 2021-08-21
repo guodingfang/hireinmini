@@ -1,0 +1,13 @@
+<view class="group">
+  <m-header title="租赁公司" m-header="m-header" bgColor="yellow" />
+  <view class="list">
+    <view class="item">
+      <image class="icon" src="/images/user/advert-publicity.png"></image>
+      <text class="label">我要宣传</text>
+    </view>
+    <view class="item">
+      <image class="icon" src="/images/user/advert-add.png"></image>
+      <text class="label">接入广告</text>
+    </view>
+  </view>
+</view>

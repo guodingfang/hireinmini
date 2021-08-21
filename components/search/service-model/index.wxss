@@ -1,1 +1,78 @@
-@import '../info-model/index.wxss'
+@import "/assets/style/global.wxss";
+
+.info-item {
+  position: relative;
+  display: flex;
+  width: 690rpx;
+  height: 200rpx;
+  padding: 20rpx 0;
+  margin: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.info-item:not(:last-child)::after {
+  position: absolute;
+  content: '';
+  width: 690rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1rpx;
+  background-color: #E5E5E5;
+  margin: auto;
+  z-index: 1;
+}
+
+.item-img {
+  width: 225rpx;
+  height: 160rpx;
+  margin-right: 10rpx;
+  border-radius: 20rpx;
+}
+
+.item-label {
+  width: 455rpx;
+  font-size: 28rpx;
+  color: #1A1A1A;
+  height: 80rx;
+  line-height: 40rpx;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.company-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.company,
+.browse {
+  display: flex;
+  align-items: center;
+}
+
+.company .logo {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+}
+
+.browse {
+  margin-top: auto;
+}
+
+.icon-browse {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.company-val, 
+.browse-val {
+  color: #999999;
+  font-size: 22rpx;
+}

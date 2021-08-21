@@ -1,0 +1,7 @@
+<view class="model-header m-header {{bgColor}}">
+		<view class="title">{{ title }}</view>
+		<view class="more" wx:if="{{more}}" bind:tap="handleMore">
+			<text>更多</text>
+			<image class="icon-more" src="/images/icon/more.png"></image>
+		</view>
+	</view>

@@ -4,23 +4,15 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    configure: {
-      type: Object,
-      value: {
-        indicatorDots: false,
-        indicatorColor: 'rgba(0, 0, 0, .3)',
-        autoplay: false,
-        numDisplay: true,
-        numRight: 20,
-        numBottom: 20
-      },
+    displayIndicator: {
+      type: Boolean,
+      value: true,
     },
     images: {
       type: Array,
       value: [],
       observer(newVal) {
         this.setData({
-          total: newVal.length,
           current: newVal.length === 0 ? 0 : 1,
         })
       }

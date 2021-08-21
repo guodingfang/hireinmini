@@ -1,4 +1,3 @@
-import { trim } from '../../../utils/util'
 
 Component({
   /**

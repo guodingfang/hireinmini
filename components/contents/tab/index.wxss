@@ -1,7 +1,12 @@
 .tab {
   display: flex;
-  /* height: 88rpx; */
-  /* justify-content: space-around; */
+  background-color: #FFFFFF;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.tab-f {
+  position: fixed;
+  z-index: 9999;
 }
 
 .tab-item {
@@ -10,18 +15,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #808080;
 }
 
 .tab-item-select {
+  color: #1A1A1A;
   font-weight: bold;
   position: relative;
 }
 
 .tab-item-select::after {
   position: absolute;
-  bottom: 15rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   content: '';
-  width: 100rpx;
+  width: 40rpx;
   height: 6rpx;
-  background-color: #2ab7ff;
+  background-color: #0400E6;
 }

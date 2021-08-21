@@ -1,15 +1,17 @@
 {
   "usingComponents": {
 		"v-header": "/components/header",
-		"v-tab": "/components/contents/tab",
-		"v-carousel": "/components/carousel",
-    "v-itemlist": "/components/contents/list-item",
-    "v-item": "/components/service/item",
+    "v-carousel": "/components/carousel",
+    "v-tab": "/components/service/tab",
+    "m-header": "/components/public/m-header",
+    "v-product": "/components/service/product-item",
+    "v-design": "/components/service/design-item",
+    "v-used": "/components/service/used-item",
     "v-skip": "/components/public/skip-image",
-		"v-fixed": "/components/public/fixed-image"
+    "v-fixed": "/components/public/fixed-image",
+    "v-tabbar": "/components/tabbar"
   },
-  "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
-  "onReachBottomDistance": 450,
+  "navigationStyle": "custom",
   "navigationBarTitleText": "服务"
 }

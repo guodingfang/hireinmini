@@ -1,6 +1,43 @@
 @import "../../common/css/publiclist.wxss";
 @import "../../wxParse/wxParse.wxss";
 
+.details-title {
+	color: #1A1A1A;
+	font-size: 40rpx;
+	font-weight: 800rpx;
+}
+
+.content-accont {
+	display: flex;
+	background-color: #F7F7F7;
+	border-radius: 20rpx;
+	width: 690rpx;
+	height: 120rpx;
+}
+
+.content-accont-log {
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 50%;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+}
+
+.attention {
+	background-color: #FFEED9;
+	width: 133rpx;
+	height: 50rpx;
+	color: #FFA12C;
+	font-size: 24rpx;
+	text-align: center;
+	line-height: 50rpx;
+	border-radius: 12rpx;
+}
+
+/* ************** */
 .page-content {
 	margin-bottom: 20rpx;
 	background: #fff;

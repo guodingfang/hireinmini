@@ -1,0 +1,81 @@
+@import "/assets/style/global.wxss";
+
+.model {
+  width: 690rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.item {
+  display: flex;
+  padding: 20rpx 0;
+}
+
+.img {
+  width: 225rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+}
+
+.content {
+  flex: 1;
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  color: #1A1A1A;
+  font-size: 30rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+}
+
+.info {
+  margin-top: auto;
+  display: flex;
+}
+
+.price {
+  margin-right: 6rpx;
+}
+
+.label {
+  font-size: 22rpx;
+  color: #FFA12C;
+  background-color: #FFEED9;
+  padding: 0 10rpx;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 8rpx;
+}
+
+.footer {
+  margin-top: 16rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.issuer {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 34rpx;
+  height: 34rpx;
+  border-radius: 50%;
+}
+
+.issuer-val {
+  margin-left: 10rpx;
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.tips {
+  color: #999999;
+  font-size: 24rpx;
+}

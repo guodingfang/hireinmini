@@ -1,5 +1,5 @@
 import { trim } from '../../../utils/util'
-
+const app = getApp();
 // components/public/m-comment/index.js
 Component({
   /**
@@ -20,7 +20,25 @@ Component({
    * 组件的初始数据
    */
   data: {
-    value: ''
+    value: '',
+    bottom: 100
+  },
+
+  lifetimes: {
+    attached() {
+      const { workInfo } = app.globalData;
+      if(workInfo && workInfo.model) {
+        const { model } = workInfo;
+        if (model.search('iPhone X') != -1 || 
+          model.search('iPhone 11') != -1 ||
+          model.search('unknown<iPhone12,1>') != -1
+        ) {
+          this.setData({
+            bottom: 150,
+          })
+        }
+      }
+    },
   },
 
   /**

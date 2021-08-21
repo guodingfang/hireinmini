@@ -1,0 +1,68 @@
+@import "/assets/style/global.wxss";
+
+.item {
+  display: flex;
+  padding: 20rpx 30rpx;
+  background-color: #ffffff;
+}
+
+.product-img {
+  width: 225rpx;
+  height: 160rpx;
+  border-radius: 30rpx;
+  margin-right: 10rpx;
+  border-radius: 12rpx;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 32rpx;
+  color: #1A1A1A;
+  max-height: 80rpx;
+  line-height: 40rpx;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+.company-name {
+  color: #999999;
+  font-size: 22rpx;
+}
+
+.price-browse {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.browse {
+  display: flex;
+  align-items: center;
+}
+
+.icon-browse {
+  width: 32rpx;
+  height: 30rpx;
+}
+
+.browse-val {
+  margin-left: 10rpx;
+  color: #999999;
+  font-size: 22rpx;
+}

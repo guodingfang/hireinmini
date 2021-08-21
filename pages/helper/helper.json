@@ -1,5 +1,13 @@
 {
   "usingComponents": {
-    "v-card": "/components/helper/card-model"
-  }
+    "v-header": "/components/header",
+    "v-helper-header": "/components/helper/header",
+    "v-skip": "/components/public/skip-image",
+    "m-header": "/components/public/m-header",
+    "v-knowledge": "/components/helper/knowledge-model",
+    "v-questions": "/components/helper/questions-model",
+    "v-fixed": "/components/public/fixed-image",
+    "v-tabbar": "/components/tabbar"
+  },
+  "navigationStyle": "custom"
 }

@@ -14,9 +14,9 @@ Component({
       type: Number,
       value: 0,
     },
-    Radius: {
+    radius: {
       type: Number,
-      value: 24
+      value: 0
     }
   },
 

@@ -1,11 +1,11 @@
 <view class="search m-search" bind:tap="onSearch">
   <block wx:if="{{search === 'block'}}">
-    <image class="icon-search" src="/images/icon-search.png"></image>
+    <image class="icon-search" src="/images/icon/search.png"></image>
     <view class="search-text">{{placeholder}}</view>
   </block>
   <block wx:if="{{search === 'input'}}">
     <view class="search-input">
-      <image class="icon-search" src="/images/icon-search.png"></image>
+      <image class="icon-search" src="/images/icon/search.png"></image>
       <input
         class="input-val"
         value="{{value}}"

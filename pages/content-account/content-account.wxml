@@ -1,0 +1,34 @@
+
+<view style="height: {{headerBlock}}rpx">
+  <v-header
+    fixed="{{true}}"
+    m-header="m-header"
+    isTopTitle="{{true}}"
+    isHeaderContent="{{false}}"
+  >
+    <view slot="top-header-content" class="header-title">内容账号</view>
+  </v-header>
+</view>
+
+<view class="fixed-header-bg" style="height: {{headerBlock}}rpx">
+	<image class="fixed-header-bg-img" mode="widthFix" src="/images/public/user-bg-big.png"></image>
+</view>
+
+<view class="user-bg">
+	<view class="user-mask" style="top: {{headerBlock + 250}}rpx"></view>
+	<image class="user-bg-img" mode="widthFix" src="/images/public/user-bg-big.png"></image>
+</view>
+
+<v-info userinfo="{{userinfo}}" />
+
+<view class="content" id="container">
+  <m-sticky container="{{container}}" offset-top="{{headerBlock / ratio - 2}}">
+    <view class="list">
+      <view class="item {{item.select ? 'select-item' : ''}}" wx:for="{{tabList}}" wx:key="id">{{item.name}}</view>
+    </view>
+  </m-sticky>
+
+  <block wx:for="{{ releaseList }}" wx:key="id">
+    <v-item info="{{item}}" />
+  </block>
+</view>

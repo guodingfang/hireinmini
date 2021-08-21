@@ -1,6 +1,4 @@
-const { fa } = require("../../../utils/pinYin")
-
-// components/tab/index.js
+const app = getApp();
 Component({
   options: {
     multipleSlots: true
@@ -9,13 +7,17 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    fixed: {
+      type: Boolean,
+      value: false
+    },
     list: {
       type: Array,
       value: [],
     },
     height: {
       type: Number,
-      value: 88,
+      value: 80,
     }
   },
 
@@ -23,7 +25,18 @@ Component({
    * 组件的初始数据
    */
   data: {
+    
+  },
 
+  
+  lifetimes: {
+    attached() {
+      const { statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;
+      console.log(' statusBarHeight, headerTopHeader, headerSearchHeader ',  statusBarHeight, headerTopHeader, headerSearchHeader )
+      this.setData({
+        headerBlock: statusBarHeight + headerTopHeader + headerSearchHeader - 2
+      })
+    }
   },
 
   /**

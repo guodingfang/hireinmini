@@ -1,11 +1,15 @@
 {
   "usingComponents": {
-    "v-header": "/components/user/card-header",
-    "v-order": "/components/user/card-order",
-    "v-company": "/components/user/card-company",
-    "v-knowledge": "/components/user/card-knowledge",
-    "v-lease-order": "/components/user/card-lease-order",
-    "v-organization": "/components/user/card-organization"
+    "v-header": "/components/header",
+    "v-info": "/components/user/info",
+    "v-order": "/components/user/order",
+    "v-company": "/components/user/company",
+    "v-knowledge": "/components/user/knowledge",
+    "v-group": "/components/user/group",
+    "v-advert": "/components/user/advert",
+    "v-skip": "/components/public/skip-image",
+    "v-tabbar": "/components/tabbar"
   },
+  "navigationStyle": "custom",
   "navigationBarTitleText": "个人中心"
 }

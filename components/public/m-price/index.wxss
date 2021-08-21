@@ -1,0 +1,14 @@
+.price {
+  color: #FE0A00;
+  font-size: 20rpx;
+  display: flex;
+  align-items: baseline;
+}
+
+.price .decorate {
+  font-weight: bold;
+}
+
+.price .val {
+  font-weight: bold;
+}

@@ -3,12 +3,13 @@ import { login } from '../../models/user'
 import { getDiscoverMsgList } from '../../models/release'
 import { getCarousel, getRecommendAccountList } from '../../models/util'
 import { getAttentionedList } from '../../models/user'
-
-// login Template
+import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import loginPage from '../../template/login'
 
+const app = getApp();
 Page({
 	data: {
+		headerBlock: 0,
 		loadingHidden: false,
 		releaseList: [],
 		cityname: '全国',
@@ -35,17 +36,25 @@ Page({
         id: '3',
 				name: '全国',
 				type: 'country',
-      },
-      {
-        id: '4',
-				name: '本地',
-				type: 'native'
       }
     ]
 	},
 
-	async onLoad() {
-		loginPage.init.apply(this, [])
+	onLoad() {
+		const { userid = '' } = getUserInfo(['userid'])
+		if(!userid) {
+			loginPage.init.apply(this, [])
+		}
+		this.getHeaderBlock()
+	},
+
+	getHeaderBlock() {
+		const { workInfo, statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;
+		const { tabHeight } = judgeTabBarHeight(workInfo);
+		this.setData({
+			headerBlock: statusBarHeight + headerTopHeader + headerSearchHeader,
+			tabHeight,
+		})
 	},
 
 	// 关注账号列表
@@ -57,6 +66,7 @@ Page({
 			this.setData({
 				interest: {
 					title: '我的关注',
+					isHaveInterest: true,
 					list,
 				}
 			})
@@ -68,7 +78,8 @@ Page({
 		const list = await getRecommendAccountList({})
 		this.setData({
 			interest: {
-				title: '为你推荐',
+				title: '值得关注',
+				isHaveInterest: false,
 				list,
 			}
 		})
@@ -99,17 +110,21 @@ Page({
 		if (tabname === 'focus') {
 			await this.getAttentionedList()
 		}
-		const { data, page } = await getDiscoverMsgList({
+		const { data = [], page = 0 } = await getDiscoverMsgList({
 			pagenum,
 			cityname,
 			keyword: '',
 			tabname
 		})
+		if(data instanceof Array && data.length > 0) {
+			this.setData({
+				releaseList: reset ? data : [ ...releaseList, ...data ],
+				pagenum: page.page + 1,
+				moreHidden: false
+			})
+		}
 		this.setData({
-			releaseList: reset ? data : [ ...releaseList, ...data ],
 			loadingHidden: true,
-			pagenum: page.page + 1,
-			moreHidden: false
 		})
 	},
 
@@ -125,19 +140,19 @@ Page({
 	},
 
 	// 入驻
-	skipCompany(e) {
-		const { companyid } = wx.getStorageSync('userinfo')
-		if (companyid > 0) {
-			// 有公司跳转公司详情页
-			wx.navigateTo({
-				url: '/pages/companydetails/companydetails?typeid=1&companyid=' + companyid,
-			})
-		} else { // 无公司跳转创建公司或绑定公司页
-			wx.navigateTo({
-				url: '/pages/company_select/company_select',
-			})
-		}
-	},
+	// skipCompany(e) {
+	// 	const { companyid } = wx.getStorageSync('userinfo')
+	// 	if (companyid > 0) {
+	// 		// 有公司跳转公司详情页
+	// 		wx.navigateTo({
+	// 			url: '/pages/companydetails/companydetails?typeid=1&companyid=' + companyid,
+	// 		})
+	// 	} else { // 无公司跳转创建公司或绑定公司页
+	// 		wx.navigateTo({
+	// 			url: '/pages/company_select/company_select',
+	// 		})
+	// 	}
+	// },
 
 	getCityInfo() {
 		const { cityname = '' } = wx.getStorageSync('cityinfo')
@@ -145,15 +160,19 @@ Page({
 	},
 
 	// 客服消息
-	handleContact(e) {
-		console.log('e', e)
-	},
+	// handleContact(e) {
+	// 	console.log('e', e)
+	// },
 
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
 	async onShow () {
-		await this.login();
+		const { userid = '' } = getUserInfo(['userid'])
+		if(!userid) {
+			await this.login();
+			return
+		} 
 		const cityname = this.getCityInfo()
 		if(cityname === this.data.cityname && this.data.releaseList.length !== 0) return
 		this.setData({

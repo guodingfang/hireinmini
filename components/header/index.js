@@ -1,11 +1,31 @@
-const { fa } = require("../../utils/pinYin")
+const { fa } = require("../../utils/pinYin");
 
-// components/header/index.js
+const app = getApp();
+
 Component({
+  options: {
+    multipleSlots: true,
+  },
   /**
    * 组件的属性列表
    */
   properties: {
+    fixed: {
+      type: Boolean,
+      value: false
+    },
+    isTopTitle: {
+      type: Boolean,
+      value: false
+    },
+    isHeaderContent: {
+      type: Boolean,
+      value: true
+    },
+    currentPage: {
+      type: String,
+      value: ''
+    },
     isLocation: {
       type: Boolean,
       value: true
@@ -26,13 +46,16 @@ Component({
     }
   },
 
-  externalClasses: ['header-fixed'],
+  /**
+   * 外部样式
+   */
+  externalClasses: ['m-header'],
 
   /**
    * 组件的初始数据
    */
   data: {
-
+    statusBarHeight: app.globalData.statusBarHeight,
   },
 
   /**
@@ -46,7 +69,7 @@ Component({
     },
     onSearch() {
       wx.navigateTo({
-        url: '/pages/searchgood/searchgood',
+        url: '/pages/search-goods/search-goods',
       })
     },
     onChange(e) {

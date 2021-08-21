@@ -1,0 +1,34 @@
+<view class="card">
+  <view class="header">
+    <image class="portrait" src="{{userinfo.userpic}}"></image>
+    <view class="btn btn-1">合作交流</view>
+    <view class="btn btn-2">关注</view>
+  </view>
+  <view class="introduce">
+    <text class="user-name">韩小颖</text>
+    <text class="introduce-val">介绍：试听设备技术专业炮</text>
+    <text class="company">认证：嗨应</text>
+  </view>
+  <view class="popularity-list">
+    <view class="item">
+      <text class="label">动态</text>
+      <text class="val">1679</text>
+    </view>
+    <view class="item">
+      <text class="label">合作关注</text>
+      <text class="val">1679</text>
+    </view>
+    <view class="item">
+      <text class="label">获赞</text>
+      <text class="val">1679</text>
+    </view>
+  </view>
+  <view class="advert">
+    <v-skip
+      src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+      width="650"
+      height="168"
+      radius="30"
+    />
+  </view>
+</view>

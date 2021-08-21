@@ -1,0 +1,68 @@
+.company {
+  width: 335rpx;
+  height: 408rpx;
+  border-radius: 30rpx;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.m-header {
+  padding: 20rpx !important;
+  height: 83rpx !important;
+}
+
+
+.list {
+  height: 300rpx;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.list::after,
+.list::before {
+  content: '';
+  position: absolute;
+  background-color: #E5E5E5;
+}
+
+.list::after {
+  left: 45rpx;
+  right: 45rpx;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 1rpx;
+}
+
+.list::before {
+  width: 1rpx;
+  top: 20rpx;
+  bottom: 20rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.item {
+  flex: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 78rpx;
+  height: 78rpx;
+}
+
+.label {
+  font-size: 24rpx;
+  color: #666666;
+  margin-top: 10rpx;
+}

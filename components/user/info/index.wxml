@@ -1,0 +1,36 @@
+<view class="card">
+  <view class="portrait" bind:tap="onSkipContent">
+    <image
+      wx:if="{{userinfo.userpic}}"
+      class="portrait-img"
+      src="{{userinfo.userpic}}"
+    ></image>
+  </view>
+  <view class="info">
+    <view class="content">
+      <view class="username">
+        <text>{{userinfo.nickname}}</text>
+        <image class="icon-more" src="/images/icon/more-2.png"></image>
+      </view>
+      <view class="tool">
+        <image class="icon-message" src="/images/icon/message.png"></image>
+        <image class="icon-setup" src="/images/icon/setup.png"></image>
+      </view>
+    </view>
+
+    <view class="info-data">
+      <view class="data-item">
+        <text class="label">动态</text>
+        <text class="val">90</text>
+      </view>
+      <view class="data-item">
+        <text class="label">关注</text>
+        <text class="val">80</text>
+      </view>
+      <view class="data-item">
+        <text class="label">粉丝</text>
+        <text class="val">75</text>
+      </view>
+    </view>
+  </view>
+</view>

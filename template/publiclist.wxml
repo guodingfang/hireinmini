@@ -1,6 +1,5 @@
 <!-- 公共列表start -->
 <template name='publiclist'>
-    <!-- <block wx:for='{{list}}' wx:for-item='item' wx:key='key'> -->
         <view class='content-list'>
             <view>
                 <view class='flex'>

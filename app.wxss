@@ -1,3 +1,4 @@
+@import '/assets/style/global.wxss';
 @import "/common/lib/iconfont.wxss";
 
 page {

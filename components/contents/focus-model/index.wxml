@@ -1,0 +1,6 @@
+<scroll-view scroll-x enable-flex class="focus-list {{ !isHaveInterest ? 'not-focus' : ''}}">
+  <view wx:for="{{list}}" wx:key="id" class="focus-item">
+    <image class="focus-pic" src="{{item.userpic}}"></image>
+    <text class="focus-name single-row-overstep">{{item.nickname}}</text>
+  </view>
+</scroll-view>

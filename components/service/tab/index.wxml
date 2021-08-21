@@ -1,0 +1,12 @@
+<view class="list">
+	<view
+    class="item"
+    wx:for="{{list}}"
+    wx:key="id"
+    data-type="{{item.type}}"
+    bind:tap="onSelectTab"
+  >
+		<image class="icon" src="./images/{{item.type}}.png"></image>
+		<text class="name">{{ item.name }}</text>
+	</view>
+</view>

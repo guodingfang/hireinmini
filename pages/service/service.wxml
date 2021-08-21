@@ -1,63 +1,52 @@
-<v-header
-	cityname="{{ cityname }}"
-	header-fixed="header-fixed"
-	placeholder="请输入关键词搜索"
-	search="input"
-	value="{{keyword}}"
-	rightText="搜索"
-	bind:change="onSearch"
-	bind:clear="onInputClear"
-/>
+<view style="height: {{headerBlock}}rpx">
+	<v-header
+		fixed="{{true}}"
+		isLocation="{{false}}"
+		placeholder="搜索资源/服务"
+		currentPage="service"
+		isTopTitle="{{true}}"
+	/>
+</view>
 
-<view class="block"></view>
+<view class="carousel">
+	<v-carousel m-carousel="m-carousel" images="{{ carouselList }}"/>
+</view>
 
-<v-carousel m-carousel="m-carousel" images="{{carouselList}}" />
-
-<v-tab list="{{tabList}}" bind:select="onSelect" />
+<view class="tab">
+	<v-tab list="{{tabList}}" bind:select="onSelect" />
+</view>
 
 <v-skip
-	src="https://wxapp.ilinking.com.cn/Public/pics/looping/20210630/60dc30894fb12.jpg"
-	width="710"
-	height="250"
+	src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+	width="690"
+	height="160"
+	radius="80"
 />
 
-<!-- <block wx:for="{{ releaseList }}" wx:key="id">
-	<v-itemlist info="{{item}}" />
-</block> -->
-
 <view class="model" wx:if="{{hotProductList.length > 0}}">
-	<view class="header">
-		<view class="title">热租产品</view>
+	<m-header title="热租产品" bind:more="onMore"/>
+	<view class="product-item" wx:key="id" wx:for="{{hotProductList}}">
+		<v-product />
 	</view>
-	<block wx:key="id" wx:for="{{hotProductList}}">
-		<v-item />
-	</block>
 </view>
 
 <view class="model" wx:if="{{schemeList.length > 0}}">
-	<view class="header">
-		<view class="title">牛设计</view>
+	<m-header title="大咖牛设计" bind:more="onMore"/>
+	<view class="design-list">
+		<view class="design-item" wx:key="id" wx:for="{{schemeList}}">
+			<v-design />
+		</view>
 	</view>
-	<block wx:key="id" wx:for="{{schemeList}}">
-		<v-item />
-	</block>
 </view>
 
 <view class="model" wx:if="{{topSellList.length > 0}}">
-	<view class="header">
-		<view class="title">品质二手</view>
-	</view>
+	<m-header title="品质二手" bind:more="onMore" />
 	<block wx:key="id" wx:for="{{topSellList}}">
-		<v-item />
+		<v-used />
 	</block>
 </view>
 
-<view class="weui-loadmore" wx:if="{{moreHidden}}">
-	<view class="weui-loading"></view>
-	<view class="weui-loadmore__tips">正在加载</view>
-</view>
-
-<v-fixed>
+<!-- <v-fixed>
 	<view slot="list">
 		<view class="fixed-item">
 			<button class='fixed-button' open-type="share">
@@ -69,4 +58,8 @@
 			<text>发布</text>
 		</view>
 	</view>
-</v-fixed>
+</v-fixed> -->
+
+<view style="height: {{tabHeight}}rpx">
+	<v-tabbar />
+</view>

@@ -1,0 +1,21 @@
+<view class="company">
+  <m-header title="租赁公司" m-header="m-header" />
+  <view class="list">
+    <view class="item">
+      <image class="icon" src="/images/user/company-order.png"></image>
+      <text class="label">订单</text>
+    </view>
+    <view class="item">
+      <image class="icon" src="/images/user/company-users.png"></image>
+      <text class="label">客户</text>
+    </view>
+    <view class="item">
+      <image class="icon" src="/images/user/company-deal.png"></image>
+      <text class="label">成交</text>
+    </view>
+    <view class="item">
+      <image class="icon" src="/images/user/company-finance.png"></image>
+      <text class="label">财务</text>
+    </view>
+  </view>
+</view>

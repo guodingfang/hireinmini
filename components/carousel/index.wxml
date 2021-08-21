@@ -9,15 +9,22 @@
   >
     <block wx:key="id" wx:for-index="index" wx:for="{{images}}">
       <swiper-item class="carousel-item">
-        <v-skip src="{{imgUrl}}{{item.picfile}}" url="{{item.url}}" width="710" height="300"></v-skip>
+        <v-skip
+          src="{{imgUrl}}{{item.picfile}}"
+          url="{{item.url}}"
+          width="690"
+          height="330"
+          radius="20"  
+        ></v-skip>
       </swiper-item>
     </block>
   </swiper>
-  <view
-    class="num"
-    wx:if="{{configure.numDisplay}}"
-    style="right: {{configure.numRight || 20}}rpx; bottom: {{configure.numBottom || 20}}rpx"
-  >
-    {{current}}/{{total}}
+  <view class="indicator" wx:if="{{displayIndicator}}">
+    <view
+      wx:for="{{images}}"
+      wx:for-index="index"
+      wx:key="id"
+      class="indicator-item {{ current === index + 1 ? 'current-indicator-item' : '' }}"
+    ></view>
   </view>
 </view>

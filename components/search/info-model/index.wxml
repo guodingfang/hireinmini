@@ -1,17 +1,5 @@
-<view class="info-model">
-	<view class="model">
-		<view class="header">
-			<view class="title">内容</view>
-			<view class="more" bind:tap="onSkipTool">
-				<text>更多</text>
-				<text class="iconfont icon-gengduo"></text>
-			</view>
-		</view>
-		<view class="model-content">
-			<block wx:for="{{ releaseList }}" wx:key="id">
-				<v-item info="{{item}}" />
-			</block>
-		</view>
+<view class="model">
+	<view class="content-item" wx:for="{{ releaseList }}" wx:key="id">
+		<v-item info="{{item}}" />
 	</view>
-
 </view>

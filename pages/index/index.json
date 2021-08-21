@@ -3,10 +3,13 @@
 		"v-header": "/components/header",
 		"v-tab": "/components/contents/tab",
 		"v-carousel": "/components/carousel",
+		"m-header": "/components/public/m-header",
+		"v-focus": "/components/contents/focus-model",
 		"v-item": "/components/contents/list-item",
-		"v-fixed": "/components/public/fixed-image"
-  },
-	"enablePullDownRefresh": true,
+		"v-fixed": "/components/public/fixed-image",
+		"v-tabbar": "/components/tabbar"
+	},
+	"navigationStyle": "custom",
 	"backgroundTextStyle": "dark",
 	"onReachBottomDistance": 450
 }

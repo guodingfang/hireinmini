@@ -1,0 +1,23 @@
+<view class="item">
+  <image
+    class="product-img"
+    src="https://wxapp.ilinking.com.cn/Public/pics/goods/20210501/2.png"
+  ></image>
+  <view class="info">
+    <view class="val two-row-overstep">利亚德紧急驰援河南，首批救灾物资预计今日抵达</view>
+    <view class="company">
+      <image
+        class="company-logo"
+        src="https://mobile.ilinking.com.cn/Public/pics/userphoto/20210418/607c225db3d68.jpg"
+      ></image>
+      <text class="company-name">利亚的集团</text>
+    </view>
+    <view class="price-browse">
+      <m-price price="{{99999}}" />
+      <view class="browse">
+        <image class="icon-browse" src="/images/icon/browse.png"></image>
+        <text class="browse-val">999+</text>
+      </view>
+    </view>
+  </view>
+</view>

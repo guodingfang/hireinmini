@@ -1,18 +1,24 @@
 <view class="model">
-		<view class="header">
-			<view class="title">服务</view>
-			<view class="more" bind:tap="onSkipTool">
-				<text>更多</text>
-				<text class="iconfont icon-gengduo"></text>
+	<view class="info-item" wx:key="id" wx:for="{{5}}">
+		<image class="item-img" src="/images/default.png"></image>
+		<view class="item-content">
+			<view class="item-label two-row-overstep">
+				利亚德紧急驰援河南，首批救灾物资预计今日抵达首批救灾物资预计今天123二手.
 			</view>
-		</view>
-		<view class="model-content">
-			<view class="info-item" wx:key="id" wx:for="{{2}}">
-				<image class="item-img" src="/images/default.png"></image>
-				<view class="item-content">
-					<view class="item-label">北京：货车限行时段</view>
-					<view class="item-val">下午16:00-20:00五环内</view>
+			<view class="info">
+				<view class="company-price">
+					<view class="company">
+						<image class="logo" src="https://mobile.ilinking.com.cn/Public/pics/userphoto/20210407/606d7683aebbf.png"></image>
+						<text class="company-val">利亚的集团</text>
+					</view>
+					<m-price price="{{99999}}" />
+				</view>
+
+				<view class="browse">
+					<image class="icon-browse" src="/images/icon/browse.png"></image>
+					<text class="browse-val">999+</text>
 				</view>
 			</view>
 		</view>
 	</view>
+</view>

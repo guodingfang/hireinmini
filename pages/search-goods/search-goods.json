@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "v-header": "/components/header",
+    "v-search": "/components/public/search",
+    "m-header": "/components/public/m-header",
+    "v-tab": "/components/contents/tab",
+    "v-info": "/components/search/info-model",
+    "v-service": "/components/search/service-model"
+  },
+  "navigationBarTitleText": "搜索"
+}

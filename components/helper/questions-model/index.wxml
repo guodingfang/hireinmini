@@ -1,0 +1,13 @@
+<view class="model">
+  <view
+    wx:for="{{list}}"
+    wx:key="id"
+    class="item"
+  >
+    <image class="icon-consult" src="/images/public/icon-consult.png"></image>
+    <view class="info">
+      <text class="val">鹏远控制：M2控台技术现场应用</text>
+      <text class="tips">8个回答</text>
+    </view>
+  </view>
+</view>

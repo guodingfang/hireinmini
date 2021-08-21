@@ -1,5 +1,5 @@
 .fixed {
   position: fixed;
   right: 24rpx;
-  bottom: 50rpx;
+  bottom: 170rpx;
 }

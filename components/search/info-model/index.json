@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "v-item": "/components/contents/list-item"
+    "v-item": "/components/contents/list-item",
+    "m-header": "/components/public/m-header"
   }
 }

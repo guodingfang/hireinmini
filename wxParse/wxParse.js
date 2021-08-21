@@ -33,12 +33,10 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
   var transData = {};//存放转化后的数据
   if (type == 'html') {
     transData = HtmlToJson.html2json(data, bindName);
-    console.log(JSON.stringify(transData, ' ', ' '));
   } else if (type == 'md' || type == 'markdown') {
     var converter = new showdown.Converter();
     var html = converter.makeHtml(data);
     transData = HtmlToJson.html2json(html, bindName);
-    console.log(JSON.stringify(transData, ' ', ' '));
   }
   transData.view = {};
   transData.view.imagePadding = 0;
@@ -47,6 +45,7 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
   }
   var bindData = {};
   bindData[bindName] = transData;
+  console.log('bindData------------------------------------------', bindData)
   that.setData(bindData)
   that.wxParseImgLoad = wxParseImgLoad;
   that.wxParseImgTap = wxParseImgTap;
@@ -123,7 +122,10 @@ function wxAutoImageCal(originalWidth, originalHeight,that,bindName) {
     results.imageWidth = originalWidth;
     results.imageheight = originalHeight;
   }
-  return results;
+  return {
+    imageWidth: results.imageWidth - 20,
+    imageheight: results.imageheight - 20
+  };
 }
 
 function wxParseTemArray(temArrayName,bindNameReg,total,that){

@@ -1,98 +1,72 @@
 <import src="../../template/login.wxml" />
 <!--个人头像-->
 
-<v-header userinfo="{{userinfo}}" />
+<view style="height: {{headerBlock}}rpx">
+  <v-header
+		m-header="m-header"
+    fixed="{{true}}"
+    currentPage="user"
+    isTopTitle="{{true}}"
+    isHeaderContent="{{false}}"
+  />
+</view>
+
+<v-info userinfo="{{userinfo}}" />
+
+<view class="fixed-header-bg" style="height: {{headerBlock}}rpx">
+	<image class="fixed-header-bg-img" mode="widthFix" src="/images/public/user-bg.png"></image>
+</view>
+
+<view class="user-bg">
+	<view class="user-mask"></view>
+	<image class="user-bg-img" src="/images/public/user-bg.png"></image>
+</view>
+
+<view class="vip-model">
+	<text class="explain">成为VIP会员享更多福利权益</text>
+	<view class="btn">成为VIP会员</view>
+</view>
 
 <v-order orderaudit="{{orderaudit}}" ordernum="{{ordernum}}" />
 
-<v-lease-order />
-
-<v-knowledge />
-
-<v-company info="{{companyinfo}}" />
-
-<v-organization />
-
-<view wx:if='{{pageshow}}'>
-	<!-- <view class='head'>
-        <view class='col-3 head-left' bindtap="modifyInfo">
-            <image class='head-img' src='{{userinfo.userpic}}'></image>
-        </view>
-        <view class='col-9 head-right'>
-            <view>
-                <view class='username' wx:if='{{userinfo.username}}'>{{userinfo.username}}</view>
-                <view class='username' wx:else>{{userinfo.nickname}}</view>
-                <view class='user-phone'>{{userinfo.phone}}</view>
-            </view>
-            <view class='examine' wx:if='{{companyinfo == "audit"}}'>您的申请已提交，等待审核</view>
-            <view class='conpamyname' wx:elif='{{companyinfo}}'>{{companyinfo.companyname}}</view>
-        </view>
-    </view> -->
-
-	<!--我的任务-->
-	<view class='title tap top' bindtap='toServerPage'>
-		<image class='title-icon' src='../../images/user/user-9.png'></image>
-		<view class='title1'>服务主页</view>
-		<view class='title-more1'>
-			<image src='../../images/user/user-13.png'></image>
-		</view>
-	</view>
-	<view class='title tap' bindtap='toAttestation'>
-		<image class='title-icon' src='../../images/user/user-9.png'></image>
-		<view class='title1'>认证</view>
-		<view class='title-more1'>
-			<image src='../../images/user/user-13.png'></image>
-		</view>
-	</view>
-	<view class='title tap' bindtap='toProjection'>
-		<image class='title-icon' src='../../images/user/user-9.png'></image>
-		<view class='title1'>投影</view>
-		<view class='title-more1'>
-			<image src='../../images/user/user-13.png'></image>
-		</view>
-	</view>
-	<view class='title tap top' bindtap='toDiscern'>
-		<image class='title-icon' src='../../images/user/user-9.png'></image>
-		<view class='title1'>人脸识别</view>
-		<view class='title-more1'>
-			<image src='../../images/user/user-13.png'></image>
-		</view>
-	</view>
-	<view class='title tap' bindtap='toCreateOrganize'>
-		<image class='title-icon' src='../../images/user/user-9.png'></image>
-		<view class='title1'>创建组织</view>
-		<view class='title-more1'>
-			<image src='../../images/user/user-13.png'></image>
-		</view>
-	</view>
-	<view class='title tap top' bindtap='mytask'>
-		<image class='title-icon' src='../../images/user/user-9.png'></image>
-		<view class='title1'>我的任务</view>
-		<view class='title-more1'>
-			<image src='../../images/user/user-13.png'></image>
-		</view>
-	</view>
-	<view bindtap='mylease' class='title tap'>
-		<image class='title-icon' src='../../images/user/user-8.png'></image>
-		<view class='title1'>我的发布</view>
-		<view class='title-more1'>
-			<image src='../../images/user/user-13.png'></image>
-		</view>
-	</view>
-	<view class='title tap no-bottom' bindtap='mymain'>
-		<image class='title-icon' src='../../images/user/user-12.png'></image>
-		<view class='title1'>主营产品</view>
-		<view class='title-more1'>
-			<image src='../../images/user/user-13.png'></image>
-		</view>
-	</view>
-	<view class='title tap top no-bottom' bindtap="setup" style='margin-bottom:40rpx;'>
-		<view class='cancel'>注销登录</view>
-	</view>
+<view class="advert">
+	<v-skip
+		src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+		width="690"
+		height="168"
+		radius="20"
+	/>
 </view>
-<view wx:else>
-	<template is='login' data='{{userinfo,verification,phone,logourl,canGetUserProfile}}'></template>
+
+<view class="advert">
+	<v-skip
+		src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+		width="690"
+		height="200"
+		radius="20"
+	/>
 </view>
+
+
+<view class="model">
+	<v-knowledge />
+	<v-company />
+	<v-group />
+	<v-advert />
+</view>
+
+<view class="">
+	<v-skip
+		src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+		width="690"
+		height="200"
+		radius="20"
+	/>
+</view>
+
+
+<template is='login' data='{{userinfo,verification,phone,logourl,canGetUserProfile}}'></template>
+
 
 <!-- 遮罩 -->
 <view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>
@@ -100,3 +74,7 @@
 <loading hidden="{{loadingHidden}}">
 	加载中...
 </loading>
+
+<view style="height: {{tabHeight}}rpx">
+	<v-tabbar />
+</view>

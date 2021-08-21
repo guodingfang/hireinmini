@@ -56,14 +56,14 @@
         },
         {
           "name": "搜索页",
-          "pathName": "pages/searchgood/searchgood",
+          "pathName": "pages/search-goods/search-goods",
           "query": "",
           "scene": null
         },
         {
           "name": "详情页",
           "pathName": "pages/detail/detail",
-          "query": "msgid=4639",
+          "query": "msgid=4659",
           "scene": null
         },
         {
@@ -94,6 +94,24 @@
           "name": "工具页",
           "pathName": "pages/tool/tool",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "登录",
+          "pathName": "pages/login/login",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "内容账号",
+          "pathName": "pages/content-account/content-account",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "详情页",
+          "pathName": "pages/detail/detail",
+          "query": "msgid=4663",
           "scene": null
         }
       ]

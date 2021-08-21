@@ -3,12 +3,31 @@ import {
   getTopNQuestions
 } from '../../models/helper'
 
+import { judgeTabBarHeight } from '../../utils/util'
+
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    headerBlock: 0,
+    tools: [{
+        type: 'power',
+        val: '功耗公式',
+      }, {
+        type: 'led',
+        val: 'LED公式',
+      }, {
+        type: 'rhea',
+        val: '雷亚架公式',
+      }, {
+        type: 'open',
+        val: '开窗公式',
+      }
+    ],
     knowledgeList: [],
     questionsList: [],
   },
@@ -17,9 +36,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.getHeaderBlock()
     this.getknowledgeRecommend()
     this.getTopNQuestions()
   },
+
+	getHeaderBlock() {
+		const { workInfo, statusBarHeight, headerTopHeader } = app.globalData;
+    const { tabHeight } = judgeTabBarHeight(workInfo);
+    console.log('statusBarHeight, headerTopHeader', statusBarHeight, headerTopHeader)
+		this.setData({
+			headerBlock: statusBarHeight + headerTopHeader - 2,
+			tabHeight,
+		})
+	},
 
   // 知识推荐
   async getknowledgeRecommend() {

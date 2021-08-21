@@ -1,25 +1,21 @@
-@import "../../common/lib/weui.wxss";
-
-page {
-	font-size: 30rpx;
+Page {
+  background-color: #ffffff;
 }
 
-.header-fixed {
-	position: fixed !important;
-	z-index: 999 !important;
-	background-color: #ffffff !important;
-}
-
-
-.block {
-	height: 100rpx;
+.carousel {
+	padding-top: 30rpx;
 }
 
 /* 轮播图 */
 .m-carousel {
 	width: 750rpx;
-	height: 300rpx;
+	height: 330rpx;
 	margin: auto;
+}
+
+.tab {
+  width: 690rpx;
+  margin: 20rpx auto;
 }
 
 .fixed-item {
@@ -56,32 +52,38 @@ page {
 
 .model {
 	background-color: #ffffff;
-	margin: 24rpx;
 	border-radius: 24rpx;
 	overflow: hidden;
 }
 
-.model .header {
-  padding: 24rpx;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1rpx solid #e5e5e5;
-  margin-bottom: 12rpx;
-}
-
-.model .header .title {
+.product-item {
   position: relative;
-  font-size: 36rpx;
-  color: #333333;
-  padding-left: 12rpx;
 }
 
-.header .title::after {
+.product-item:not(:last-child)::after {
   content: '';
   position: absolute;
+  width: 650rpx;
+  margin: auto;
+  height: 1rpx;
   left: 0;
-  width: 6rpx;
-  height: 100%;
-  border-radius: 6rpx;
-  background-color: tomato;
+  right: 0;
+  bottom: 0;
+  background-color: #E5E5E5;
+  z-index: 9;
+}
+
+.design-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 30rpx;
+  justify-content: space-between;
+}
+
+.design-item {
+  margin-bottom: 20rpx;
+}
+
+.tabbar {
+	height: 110rpx;
 }
