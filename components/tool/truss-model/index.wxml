@@ -1,0 +1,61 @@
+<view class="container">
+  <view class="model">
+    <v-tab list="{{tabList}}" bind:select="onSelectTab"  />
+    <view>
+      <m-header title="Truss规格(mm)" more="{{false}}" />
+      <view class="specs-list">
+        <view
+          wx:for="{{specsList}}"
+          wx:key="id"
+          class="specs-item {{item.id === selectSpecs.id ? 'select-specs-item' : ''}}"
+          data-item="{{item}}"
+          data-type="selectSpecs"
+          bind:tap="onSelectItem"
+        >{{item.size}}</view>
+      </view>
+      <m-header title="承重方式" more="{{false}}" />
+      <view class="truss-way">
+        <image
+          class="truss-img {{trussWay === 'center' ? 'select-truss-img' : ''}}"
+          data-type="center"
+          bind:tap="onSelectTrussWay"
+          src="{{remoteImagesUrl}}/tool/truss-center.png"
+        ></image>
+        <image
+          class="truss-img {{trussWay === 'distribute' ? 'select-truss-img' : ''}}"
+          data-type="distribute"
+          bind:tap="onSelectTrussWay"
+          src="{{remoteImagesUrl}}/tool/truss-distribute.png"
+        ></image>
+      </view>
+
+
+      <m-header title="跨度(m)" more="{{false}}" />
+      <view class="span-list">
+        <view
+          wx:for="{{spanList}}"
+          wx:key="id"
+          class="span-item {{item.id === selectSpan.id ? 'select-span-item' : ''}}"
+          data-item="{{item}}"
+          data-type="selectSpan"
+          bind:tap="onSelectItem"
+        >{{item.span}}</view>
+      </view>
+
+      <m-header title="计算结果" more="{{false}}">
+        <view slot="tips" class="header-tips">（结果仅供参考）</view>
+      </m-header>
+    </view>
+
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">承重(公斤)：</text>
+        <text class="col-val">{{ selectSpan ? trussWay === 'center' ? selectSpan.cpl : selectSpan.dl : '' }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">下沉值(mm)：</text>
+        <text class="col-val">{{ selectSpan ? trussWay === 'center' ? selectSpan.cpl_d : selectSpan.dl_d : '' }}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -48,9 +48,6 @@ Page({
             var newEquipmentList = [];
             var getEquipmentList = res.data.data.data;
             newEquipmentList = equipmentList.concat(getEquipmentList);
-            console.log("旧的list",equipmentList)
-            console.log("获取到的list",getEquipmentList)
-            console.log("新的list",newEquipmentList)
             that.setData({
               total: res.data.data.page.pagecount,
               equipmentList: newEquipmentList
@@ -62,9 +59,6 @@ Page({
   },
   // 点击租
   rentClick(e){
-    // console.log("e==",e);
-    // console.log("e==",this.data.recommendEquipment);
-    // var type = e.currentTarget.dataset.type;
     var index = e.currentTarget.dataset.index;
     var equipmentList = this.data.equipmentList;
     var number = this.data.number;

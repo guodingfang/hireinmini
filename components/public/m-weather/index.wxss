@@ -1,0 +1,44 @@
+.model {
+  display: flex;
+  align-items: center;
+  height: 88rpx;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather-val {
+  font-size: 40rpx;
+  width: 60rpx;
+  height: 50rpx;
+  font-weight: bold;
+}
+
+.weather-type {
+  font-size: 20rpx;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  height: 80rpx;
+  justify-content: space-between;
+}
+
+.location, .aqi {
+  display: flex;
+  font-size: 20rpx;
+}
+
+.location-val {
+  white-space: nowrap;
+  margin-top: 14rpx;
+}
+
+.location-val, .aqi-val {
+  margin-right: 6rpx;
+}

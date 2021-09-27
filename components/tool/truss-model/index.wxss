@@ -1,0 +1,61 @@
+@import '../common.wxss';
+
+.specs-list, .span-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 30rpx;
+}
+
+.specs-item {
+  width: 198rpx;
+  height: 60rpx;
+  background-color: #F5F5F5;
+  border-radius: 20rpx;
+  margin: 15rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.specs-item:not(:nth-child(3n + 1)) {
+  margin-left: 18rpx;
+}
+
+.span-item {
+  width: 110rpx;
+  height: 60rpx;
+  background-color: #F5F5F5;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+  font-size: 24rpx;
+  margin: 0 20rpx 30rpx 0;
+}
+
+.span-item:nth-child(5n) {
+  margin-right: 0;
+}
+
+.select-specs-item,
+.select-span-item {
+  color: #0400E6;
+  font-weight: bold;
+  background-color: #E6EDFF;
+}
+
+.truss-img {
+  margin-left: 30rpx;
+  width: 300rpx;
+  height: 140rpx;
+  box-sizing: border-box;
+  border-radius: 20rpx;
+  padding: 2rpx;
+}
+
+.select-truss-img {
+  background-color: #0400E6;
+}

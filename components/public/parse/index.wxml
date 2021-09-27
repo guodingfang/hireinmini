@@ -1,0 +1,4 @@
+
+<view class="parse-detail">
+  <rich-text nodes="{{parseHtml}}"></rich-text>
+</view>

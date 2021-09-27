@@ -1,0 +1,26 @@
+<view class="footer">
+  <view class="footer-item info-comment" catchtap="onComment">
+    <image class="footer-item-icon" src="/images/tool/icon-comment.png"></image>
+    <text class="footer-item-label">{{ info.discusscount || '评论' }}</text>
+  </view>
+  
+  <view class="footer-item info-share" catchtap="onShare">
+    <image class="footer-item-icon" src="/images/tool/icon-share.png"></image>
+    <text class="footer-item-label">{{ info.forwardcount || '分享' }}</text>
+  </view>
+
+  <view class="footer-item info-like" catchtap="onLike">
+    <image class="footer-item-icon" src="{{ !info.praised ? '/images/tool/icon-notLike.png' : '/images/tool/icon-like.png' }}"></image>
+    <text class="footer-item-label">{{ info.praisecount || '点赞' }}</text>
+  </view>
+
+  <view class="footer-item info-browse">
+    <image class="footer-item-icon" src="/images/tool/icon-browse.png"></image>
+    <text class="footer-item-label">{{ info.viewcount > 999 ? '999+' : info.viewcount }}</text>
+  </view>
+
+  <view class="footer-item info-phone" catchtap="onDial">
+    <image class="footer-item-icon icon-dial" src="/images/tool/icon-dial.png"></image>
+    <text class="footer-item-label">电话</text>
+  </view>
+</view>

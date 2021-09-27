@@ -1,0 +1,41 @@
+@import '../common.wxss';
+
+.scal-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30rpx;
+}
+
+.scal-item {
+  background-color: #F5F5F5;
+  width: 198rpx;
+  height: 60rpx;
+  color: #666666;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+}
+
+.scal-select-item {
+  background-color: #E6EDFF;
+  color: #0400E6;
+  font-weight: bold;
+}
+
+.label {
+  width: 90rpx;
+}
+
+.row {
+  display: flex;
+}
+
+.row .label {
+  width: 54rpx;
+}
+
+.size-row .label {
+  width: 74rpx;
+}

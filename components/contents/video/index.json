@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "m-video": "/components/public/m-video"
+  }
+}

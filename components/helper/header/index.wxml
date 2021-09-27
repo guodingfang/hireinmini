@@ -2,7 +2,7 @@
 <view class="header">
   <view class="location">
     <image class="icon-location" src="/images/icon/location.png"></image>
-    <text class="location-val">呼和浩特试试市</text>
+    <text class="location-val">{{ city }}</text>
   </view>
   <button class="dial-button" open-type="contact" bindcontact="handleContact">
     <image class="icon-dial" src="/images/icon/dial.png"></image>

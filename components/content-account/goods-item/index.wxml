@@ -1,0 +1,11 @@
+<view class="item">
+  <image src="https://wxapp.ilinking.com.cn/Public/pics/goods/20210501/2.png" class="goods-logo"></image>
+  <view class="info">
+    <view class="name single-row-overstep">名称最多显1行，多余...</view>
+    <m-company />
+    <view class="price-browse">
+      <m-price price="{{9999}}" />
+      <m-browse browse="{{999}}" />
+    </view>
+  </view>
+</view>

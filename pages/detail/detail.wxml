@@ -1,210 +1,69 @@
-<import src="../../template/publiclist.wxml" />
-<import src="../../wxParse/wxParse.wxml" />
+<view class="details-title" wx:if="{{info.msgtitle}}">{{info.msgtitle}}</view>
 
-<view class="details-title">{{item.msgtitle}}</view>
+<view class="video" wx:if="{{type === 'video'}}">
+  <v-video videoUrlStatic="{{videoUrlStatic}}" videoUrlDynamic="{{videoUrlDynamic}}" />
+  <view class="video-content">{{ content }}</view>
+  <view class="play-num">
+    <image class="icon-paly" src="/images/icon/play-2.png"></image>
+    <text class="paly-num-val">33.7w</text>
+  </view>
+</view>
 
-<view class="content-accont">
-	<image class="content-accont-log" src="{{item.userpic}}"></image>
-	<view class="info">
-		<view class="content-accont-name">{{companyinfo.contacter}}</view>
-		<view class="content-accont-des">利亚的集团文化艺术传...</view>
-	</view>
-	<view class="attention">
-		关注
+<m-content-accont-card info="{{contentAccont}}" />
+
+<block wx:if="{{type === 'img'}}">
+  <view class="imgs-content">{{ content }}</view>
+  <view class="imgs">
+    <image
+      class="img-item"
+      mode="widthFix"
+      wx:for="{{imgs}}"
+      wx:key="id"
+      src="{{imgUrl}}{{item.picurl_thumbnails}}"
+    ></image>
+  </view>
+</block>
+
+<block wx:if="{{type === 'html'}}">
+  <v-parse html="{{content}}" />
+</block>
+
+<v-tool info="{{info}}" />
+
+<view class="advert">
+  <v-skip
+    src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+    width="690"
+    height="200"
+    radius="20"
+  />
+</view>
+
+<m-header title="为你推荐" more="{{false}}" />
+
+<view class="list">
+	<view class="item" wx:key="id" wx:for="{{otherList}}">
+		<v-item info="{{item}}" />
 	</view>
 </view>
 
-<view class="padding-bottom">
-	<!-- 公司信息 start -->
-	<view class='company relative' wx:if='{{companyinfo.length != 0}}' bindtap='company'
-		data-companyid='{{companyinfo.companyid}}'>
-		<view class='flex'>
-			<view>
-				<image src="{{companyinfo.logopic==''?'../../images/none.png':companyinfo.logopic}}" class='company-pic'>
-				</image>
-			</view>
-			<view class='company-info'>
-				<view class='company-name'>{{companyinfo.companyname}}</view>
-				<view class='company-address'>
-					<image src='../../images/address1.png' class='icon-thumb icon-dial'></image>
-					<text class='word-wrap address-info'>{{companyinfo.address}}</text>
-				</view>
-			</view>
-		</view>
-		<image src='../../images/arrows-r.png' class='company-right'></image>
-	</view>
-	<!-- 公司信息 end -->
-	<!-- 引用模板start -->
-	<view class='page-content'>
-		<view wx:if="{{item.picsign==3}}" class="detail_title">{{item.msgtitle}}</view>
-		<!--模板文件 start-->
-		<view class='content-list'>
-			<view class='flex'>
-				<view data-msgid="{{item.msgid}}" bindtap="recommendurl">
-					<image src="{{item.userpic==''?'../../images/img-header.png':item.userpic}}" class='list-portrait'></image>
-				</view>
-				<view class='list-info col-10'>
-					<view class='info-head' data-hostuserid="{{item.userid}}" data-msgid="{{item.msgid}}" bindtap="recommendurl"
-						data-urltype="{{urltype}}">
-						<view>
-							<text class='info-username display-inlineblock'>{{item.contacter}}</text>
-							<text class='info-city'>[{{item.cityname}}]</text>
-						</view>
-						<text class='info-time info-item1 display-inlineblock'>{{item.updateinfo}}</text>
-					</view>
-				</view>
-			</view>
-			<view wx:if="{{item.picsign!=3}}" class='info-imgs'>
-				<block wx:for='{{item.pics}}' wx:for-item='item1' wx:key='key1' wx:for-index="idx">
-					<image mode='aspectFill' src='{{imgurls}}{{item1.picurl_thumbnails}}' data-src="{{imgurls}}{{item1.picurl}}"
-						data-imglist="{{item.pics}}" class='img' catchtap="prevPublicImg" wx:if="{{item.picsign!=2}}"></image>
-					<view class="video-wrap"
-						style="width:{{item1.width}}rpx;height:{{item1.height}}rpx;position:relative;z-index:10;"
-						wx:if="{{item.picsign==2}}">
-						<image wx:if="{{item.picsign==2}}"
-							src="{{videourl}}{{item1.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{item1.width}},h_{{item1.height}},m_fast"
-							style="width:{{item1.width}}rpx;height:{{item1.height}}rpx;" data-src="{{videourl}}{{item1.videourl}}"
-							bindtap="playVideo" data-vid="video{{index}}" hidden="{{ currentVid == 'video' }}" class="videoimg">
-						</image>
-						<image src="../../images/icon-video.png" class="icon-video" wx:if="{{item.picsign==2}}"
-							bindtap="playVideo" data-vid="video{{index}}" hidden="{{ currentVid == 'video'}}"></image>
-
-						<video src="{{videourl}}{{item1.videourl}}#t=2" class="listvideo" wx:if="{{item.picsign==2}}"
-							poster="{{videourl}}{{item1.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{item1.width}},h_{{item1.height}},m_fast"
-							style="width:{{item1.width}}rpx;height:{{item1.height}}rpx;" id="video" data-vv="{{currentVid}}"
-							hidden="{{ currentVid != 'video' }}" direction="{{item1.width > item1.height?90:0}}" objectFit="cover"
-							loop="{{true}}" bindfullscreenchange="exitfullscreenfunc" />
-					</view>
-				</block>
-			</view>
-			<view open-type="redirect">
-				<text wx:if="{{item.picsign!=3}}" class='info-content info-content-detail'>{{item.content}}</text>
-				<view wx:else class='wxparsecontent'>
-					<template is="wxParse" data="{{wxParseData:msgarticle.nodes}}" />
-				</view>
-			</view>
-			<view style="margin-top:20rpx;" class='info-bottom info-bottom1'>
-				<view class='info-phone' bindtap="clickPhone" data-phone="{{item.contactphone}}">
-					<image src='../../images/dial.png' class='icon-thumb icon-dial'></image>
-					<text>拨打电话</text>
-				</view>
-				<view class='info-browse' wx:if='{{item.viewcount}}'>
-					<image src='../../images/browse.png' class='browse-img'></image>{{item.viewcount}}
-				</view>
-				<view class="info-comment" bindtap="editPraiseDetail" data-msgid="{{item.msgid}}"
-					data-userid="{{item.userid}}" data-praised='{{item.praised}}'>
-					<image src="../../images/thumb.png" class="icon-thumb" wx:if="{{item.praised == 0}}"></image>
-					<image src="../../images/thumb-select.png" class="icon-thumb" wx:if="{{item.praised == 1}}"></image>
-					<text>{{item.praisecount==0?'点赞':item.praisecount}}</text>
-				</view>
-				<view class="info-comment" bindtap="commentboxFunc" data-ctusername="{{item.contacter}}">
-					<image src="../../images/icon-comment.png" class="icon-thumb"></image>
-					<text>{{item.discusscount==0?'评论':item.discusscount}}</text>
-				</view>
-			</view>
-			<!--点赞和评论 start-->
-			<view class="comment-wrap comment-wrap1" wx:if="{{item.praisecount > 0 || item.discusscount > 0}}">
-				<image src="../../images/sanjiao.png" class="icon-sanjiao"></image>
-				<view wx:if="{{item.praisecount > 0}}" class="pulist">
-					<image src="../../images/thumb.png" class="icon-thumb"></image>
-					<block wx:for="{{item.praiser}}" wx:for-item="uitem" wx:for-index="idx" wx:key="idx">
-						<text bindtap='reurlFunc' data-companyid='{{uitem.companyid}}'
-							data-userid='{{uitem.userid}}'>{{uitem.username}} <text
-								wx:if="{{idx != (item.praiser.length-1)}}">,</text> </text>
-					</block>
-				</view>
-				<view class="commitlist" wx:if="{{item.discusscount > 0}}">
-					<block wx:for="{{item.discuss}}" wx:for-item="citem" wx:for-index="cidx" wx:key="cidx">
-						<view class="commit-item" wx:if="{{item.userid==citem.userid_receiver}}"
-							data-fuserid="{{citem.userid_sender}}" data-tuserid="{{citem.userid_receiver}}"
-							data-msguserid="{{item.userid}}" data-tusername="{{citem.touser}}" data-fusername="{{citem.sender}}"
-							bindtap="replyComment">
-							<text class="color-link" catchtap='reurlFunc' data-companyid='{{citem.companyid_sender}}'
-								data-userid='{{citem.userid_sender}}'>{{citem.sender}}:</text>{{citem.content}}
-						</view>
-						<view class="commit-item" wx:if="{{item.userid!=citem.userid_receiver}}"
-							data-fuserid="{{citem.userid_sender}}" data-tuserid="{{citem.userid_receiver}}"
-							data-msguserid="{{item.userid}}" data-tusername="{{citem.touser}}" data-fusername="{{citem.sender}}"
-							bindtap="replyComment">
-							<text class="color-link" catchtap='reurlFunc' data-companyid='{{citem.companyid_sender}}'
-								data-userid='{{citem.userid_sender}}'>{{citem.sender}}</text>
-							<text>回复</text>
-							<text class="color-link" catchtap='reurlFunc' data-companyid='{{citem.companyid_receiver}}'
-								data-userid='{{citem.userid_receiver}}'>{{citem.touser}}:</text> {{citem.content}}
-						</view>
-					</block>
-				</view>
-			</view>
-			<!--点赞和评论 end-->
-		</view>
-		<!--模板文件 end-->
-		<view class="item-operation" wx:if="{{operationFlag}}">
-			<view class="item-pub item-edit" wx:if='{{item.picsign != 2}}'
-				data-url="../release/release?msgid={{item.msgid}}" bindtap="editmsg">修改</view>
-			<view class="item-pub item-del" data-msgid="{{item.msgid}}" bindtap="delmsg">删除</view>
-		</view>
-	</view>
-	<!-- 引用模板end -->
-	<!--货主相关信息 start-->
-	<view class="othermes" wx:if='{{list.length > 0}}'>
-		<view class="o-title-wrap">
-			<view class="o-title">相关信息</view>
-		</view>
-		<view class="o-cont">
-			<block wx:for="{{list}}" wx:key="index">
-				<template is='publiclist' data="{{item,imgurls,videourl,currentVid,index}}"></template>
-			</block>
-		</view>
-	</view>
-	<!--货主相关信息 end-->
+<view class="advert">
+  <v-skip
+    src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+    width="690"
+    height="200"
+    radius="20"
+  />
 </view>
-<!--联系电话 start-->
-<view class="fixed-phone flex">
-	<navigator class="col-6" url="../service/service" open-type="switchTab">
-		<view class='fixed-item more-btn'>
-			<image src="../../images/icon-mes.png" class="icon-public"></image>
-			<text>更多信息</text>
-		</view>
-	</navigator>
-	<view class="col-6" bindtap="clickPhone" data-phone="{{item.contactphone}}">
-		<view class='fixed-item phone-btn'>
-			<image src="../../images/phone1.png" class="icon-public"></image>
-			<text class="color-main">一键拨号</text>
-		</view>
-	</view>
+
+<m-header title="精选留言" more="{{false}}" />
+
+<view class="message-item" wx:key="id" wx:for="{{messageList}}">
+	<v-message info="{{item}}" />
 </view>
-<!--联系电话 end-->
 
-<!--分享朋友圈 start-->
-<view class="share-wrap">
-	<canvas canvas-id="myCanvas" class="canvas"></canvas>
-	<!-- 预览分享图 这里就是上图展示的效果   -->
-	<!-- 刚开始是隐藏的 生成分享图之后显示, 用一个布尔变量来控制 这里的样式大家看图就写出来了 -->
-	<view hidden='{{hidden}}' class='preview' bindtap="closemask">
-		<image src='{{prurl}}' mode='widthFix' class="makeimg"></image>
-		<view catchtap='save' class="btn-save">
-			<image src="../../images/icon-save.png" class="icon-save"></image>保存图片
-		</view>
-	</view>
+<m-comment commentShow="{{commentShow}}" bind:send="onSendComment"></m-comment>
+
+<view style="height: 100rpx">
+	<v-footer info="{{info}}" bind:input="onInput" bind:live="onLike" />
 </view>
-<!--分享朋友圈 end-->
-
-<!--评论框 start-->
-
-<!-- <view class="misk-wrap" bindtap="hideCommentBox" wx:if="{{commentShow}}"></view> -->
-<!-- <form wx:if="{{commentShow}}" catchsubmit="sendComment">
-	<view class="com-wrap flex">
-		<view class="col-10">
-			<input type="text" name="content" confirm-type="send" class="com-textarea" cursor-spacing="7" focus="{{true}}"
-				bindconfirm='sendComment' placeholder="{{placeInput}}"></input>
-			<input type="text" hidden="{{true}}" name="tuserid" value="{{com_tuserid}}" />
-			<input type="text" hidden="{{true}}" name="fuserid" value="{{com_fuserid}}" />
-			<input type="text" hidden="{{true}}" name="tusername" value="{{com_tusername}}" />
-			<input type="text" hidden="{{true}}" name="fusername" value="{{com_fusername}}" />
-			<input type="text" hidden="{{true}}" name="msgid" value="{{item.msgid}}" />
-		</view>
-		<view class="col-2">
-			<button class="btn-send active" formType="submit">发送</button>
-		</view>
-	</view>
-</form> -->

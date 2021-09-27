@@ -1,0 +1,30 @@
+
+.tool {
+	display: flex;
+	height: 70rpx;
+	padding: 0 0 10rpx 0;
+	margin: 0 30rpx 20rpx 30rpx;
+	align-items: center;
+	border-bottom: 1rpx solid #E5E5E5;
+}
+
+.tool-item {
+	display: flex;
+	align-items: center;
+	margin-right: 20rpx;
+}
+
+.tool-share {
+	margin-left: auto;
+}
+
+.tool-icon {
+	width: 32rpx;
+	height: 32rpx;
+	margin-right: 10rpx;
+}
+
+.tool-val {
+	font-size: 24rpx;
+	color: #999999;
+}

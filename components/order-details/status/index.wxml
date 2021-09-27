@@ -1,0 +1,11 @@
+<view class="status-model">
+  <view class="status">待付款</view>
+  <view class="time">
+    <text class="time-label">剩余支付时间:</text>
+    <text class="time-val">15:30</text>
+  </view>
+  <view class="btn">
+    <image class="btn-bg" src="/images/public/btn-white.png"></image>
+    <text class="btn-val">去支付</text>
+  </view>
+</view>

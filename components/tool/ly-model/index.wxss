@@ -1,0 +1,5 @@
+@import '../common.wxss';
+
+.model {
+  padding-top: 20rpx;
+}

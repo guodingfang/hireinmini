@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "v-tab": "/components/contents/tab",
+    "v-item": "/components/order-list/item",
+    "v-not-content": "/components/content-account/not-content"
+  }
+}

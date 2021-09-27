@@ -2,37 +2,39 @@
 <view style="height: {{headerBlock}}rpx">
   <v-header
     fixed="{{true}}"
+    cityname="{{cityname}}"
     currentPage="helper"
     isTopTitle="{{true}}"
     isHeaderContent="{{false}}"
+    bind:getLocation="getLocation"
   />
 </view>
 
 <view style="height: 88rpx">
-  <v-helper-header />
+  <v-helper-header city="{{cityname}}" />
 </view>
 
 
 <view class="advert">
   <v-skip
-    src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+    src="/images/advert/open-vip.png"
     width="690"
     height="200"
-    radius="100"
+    bind:skip="onSkipVip"
   />
 </view>
 
 <view class="model tool">
-  <m-header title="租赁常用工具" bind:more="onMore"/>
-
-  <view class="content tool-content">
+  <m-header title="租赁常用工具" bind:more="onSkipTool" />
+  <view class="content tool-content" bind:tap="onSkipTool">
     <view class="tool-item" wx:for="{{tools}}" wx:key="id">
       <image class="tool-img" src="./images/{{item.type}}.png"></image>
       <text class="label">{{item.val}}</text>
     </view>
   </view>
-  
 </view>
+
+<!-- 
 <view class="model knowledge"> 
   <m-header title="租赁学院" bind:more="onMore"/>
   <view class="content knowledge-content">
@@ -43,9 +45,8 @@
 <view class="model questions">
   <m-header title="租赁技术在线问答（100+）" bind:more="onMore"/>
   <view class="content questions-content">
-    <!-- <v-questions list="{{questionsList}}" wx:if="{{questionsList.length == 0}}"/> -->
-    <v-questions />
-    <!-- <text class="content-not" wx:else>暂未有问答内容</text> -->
+    <v-questions list="{{questionsList}}" wx:if="{{questionsList.length == 0}}"/>
+    <text class="content-not" wx:else>暂未有问答内容</text>
   </view>
 </view>
 
@@ -55,7 +56,7 @@
       <image class="consult" src="/images/public/consult.png"></image>
     </view>
   </view>
-</v-fixed>
+</v-fixed> -->
 
 <view style="height: {{tabHeight}}rpx">
   <v-tabbar />

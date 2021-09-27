@@ -1,0 +1,64 @@
+
+.title-container {
+  position: relative;
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.title-container .title {
+  position: relative;
+  color: #1A1A1A;
+  font-size: 30rpx;
+}
+
+.title-container .title::after,
+.title-container .title::before {
+  content: '';
+  position: absolute;
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 50%;
+  background-color: #1A1A1A;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.title-container .title::before {
+  left: -20rpx;
+}
+
+.title-container .title::after {
+  right: -20rpx;
+}
+
+.title-container .decorate {
+  position: absolute;
+  z-index: -1;
+  background-color: #CCDAFF;
+  width: 220rpx;
+  height: 20rpx;
+}
+
+.title-container .decorate::after,
+.title-container .decorate::before {
+  position: absolute;
+  content: '';
+  width: 30rpx;
+  height: 1rpx;
+  background-color: #1A1A1A;
+  top: 0;
+  bottom: 0;
+  margin: auto
+}
+
+.title-container .decorate::before {
+  left: 0;
+}
+
+.title-container .decorate::after {
+  right: 0;
+}

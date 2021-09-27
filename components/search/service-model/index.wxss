@@ -1,5 +1,5 @@
 @import "/assets/style/global.wxss";
-
+/* 
 .info-item {
   position: relative;
   display: flex;
@@ -30,12 +30,18 @@
   border-radius: 20rpx;
 }
 
+.item-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .item-label {
   width: 455rpx;
   font-size: 28rpx;
   color: #1A1A1A;
   height: 80rx;
   line-height: 40rpx;
+  margin-bottom: auto;
 }
 
 .info {
@@ -75,4 +81,69 @@
 .browse-val {
   color: #999999;
   font-size: 22rpx;
+} */
+
+
+/* 租赁商列表 */
+.company-item {
+  position: relative;
+  display: flex;
+  height: 200rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.company-item::after {
+  content: '';
+  position: absolute;
+  height: 0.5rpx;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 690rpx;
+  margin: auto;
+  background-color: #e5e5e5; 
+}
+
+.company-logo {
+  width: 225rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-right: 12rpx;
+}
+
+.company-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.company-name {
+  color: #1A1A1A;
+  font-size: 30rpx;
+}
+
+.lables {
+  display: flex;
+  height: 30rpx;
+}
+
+.label {
+  color: #FFA12C;
+  font-size: 22rpx;
+  background-color: #FFEED9;
+  height: 30rpx;
+  max-width: 120rpx;
+  padding: 0 10rpx;
+}
+
+.label + .label  {
+  margin-left: 6rpx;
+}
+
+.address {
+  margin-top: auto;
+  color: #666666;
+  font-size: 24rpx;
 }

@@ -1,0 +1,15 @@
+
+<block wx:if="{{!isConcern}}">
+  <view class="status" bind:tap="onConcern">关注</view>
+</block>
+
+<block wx:else>
+  <view class="concern-users">
+    <view class="user-logos" style="width: {{34 + concernUsers.length * 20}}rpx">
+      <block wx:for="{{concernUsers}}" wx:key="index" wx:for-index="index">
+        <image style="left: {{index * 20}}rpx" class="logo" src="{{item}}"></image>
+      </block>
+    </view>
+    <text class="num">{{amount}}</text>
+  </view>
+</block>

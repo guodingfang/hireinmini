@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "m-price": "/components/public/m-price",
+    "m-spec": "/components/public/m-spec"
+  }
+}

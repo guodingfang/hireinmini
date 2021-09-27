@@ -1,7 +1,9 @@
 {
   "component": true,
   "usingComponents": {
-    "m-video": "/components/public/m-video",
-    "m-comment": "/components/public/m-comment"
+    "m-opertion": "/components/public/m-item-operation",
+    "m-comment": "/components/public/m-comment",
+    "m-concern": "/components/public/concern-btn",
+    "m-footer": "/components/public/footer-tool"
   }
 }

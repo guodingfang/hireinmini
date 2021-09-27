@@ -1,5 +1,5 @@
 <view class="group">
-  <m-header title="租赁公司" m-header="m-header" bgColor="yellow" />
+  <m-header title="我的广告" m-header="m-header" bgColor="yellow" />
   <view class="list">
     <view class="item">
       <image class="icon" src="/images/user/advert-publicity.png"></image>

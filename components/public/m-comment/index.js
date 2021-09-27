@@ -21,7 +21,7 @@ Component({
    */
   data: {
     value: '',
-    bottom: 100
+    bottom: 0
   },
 
   lifetimes: {
@@ -34,7 +34,7 @@ Component({
           model.search('unknown<iPhone12,1>') != -1
         ) {
           this.setData({
-            bottom: 150,
+            bottom: 0,
           })
         }
       }

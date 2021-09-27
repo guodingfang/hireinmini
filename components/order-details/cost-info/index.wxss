@@ -1,0 +1,72 @@
+
+.model {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+}
+
+.title {
+  color: #1A1A1A;
+  font-size: 30rpx;
+  font-weight: bold;
+  padding: 30rpx 0 10rpx 20rpx;
+}
+
+.content {
+  margin: 0 20rpx;
+  background: #F7F7F7;
+  padding: 20rpx;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item + .item {
+  margin-top: 12rpx;
+}
+
+.lable {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.val {
+  color: #1A1A1A;
+  font-size: 24rpx;
+}
+
+.total-price {
+  display: flex;
+  align-items: center;
+  margin-right: 20rpx;
+  height: 83rpx;
+}
+
+.total-price-label {
+  margin-left: auto;
+  color: #333333;
+  font-size: 26rpx
+}
+
+.footer {
+  border-top: 1rpx solid #E5E5E5;
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: #1A1A1A;
+  font-weight: bold;
+}
+
+.btn + .btn {
+  border-left: 1rpx solid #E5E5E5;
+}

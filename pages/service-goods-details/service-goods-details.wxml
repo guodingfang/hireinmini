@@ -1,0 +1,22 @@
+<view class="carousel">
+  <v-carousel
+    m-carousel="m-carousel"
+    images="{{ carouselList }}"
+    image-configs="{{imageConfigs}}"
+  />
+</view>
+
+<view class="info">
+  <view class="price" wx:key="id" wx:for="{{ detail.rent }}">
+    <m-price price="{{ item.rprice }}" configs="{{ priceConfigs }}" />
+    <m-spec spec="{{ item.unit }}" />
+  </view>
+  <view class="name">{{ detail.prodname }}</view>
+
+ <m-content-accont-card info="{{contentAccont}}" />
+
+  <m-title title="产品描述" />
+  <view class="details-val">
+    {{ detail.remarks }}
+  </view>
+</view>

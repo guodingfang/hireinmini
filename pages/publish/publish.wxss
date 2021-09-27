@@ -1,0 +1,89 @@
+
+Page {
+  background-color: #ffffff;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-input {
+  height: 190rpx;
+  padding: 20rpx 30rpx;
+  width: 750rpx;
+  box-sizing: border-box;
+}
+
+.middle-line {
+  width: 690rpx;
+  height: 1rpx;
+  background-color: #E5E5E5;
+  margin: auto;
+}
+
+.upload-container {
+  display: flex;
+}
+
+.pl-input {
+  font-size: 28rpx;
+  color: #999999;
+  font-weight: normal;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  width: 750rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 50rpx;
+  box-sizing: border-box;
+}
+
+.icon {
+  width: 22rpx;
+  height: 26rpx;
+}
+
+.icon-more {
+  margin-left: auto;
+  width: 16rpx;
+  height: 24rpx;
+  padding: 24rpx;
+}
+
+.val {
+  color: #1A1A1A;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  width: 600rpx;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer .btn {
+  width: 640rpx;
+  height: 70rpx;
+  background-color: #0400E6;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+}

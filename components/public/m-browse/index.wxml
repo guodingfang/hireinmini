@@ -1,0 +1,4 @@
+<view class="browse">
+  <image src="/images/icon/browse.png" class="icon-browse"></image>
+  <text class="browse-val">{{ browseVal }}</text>
+</view>

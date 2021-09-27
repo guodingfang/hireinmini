@@ -1,0 +1,30 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 30rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+
+}
+
+.user-logo {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+}
+
+.user-name {
+  margin-left: 16rpx;
+  margin-right: auto;
+  color: #000000;
+  font-size: 26rpx;
+}
+
+.comment-info {
+  margin-top: 20rpx;
+  color: #1A1A1A;
+  font-size: 24rpx;
+}

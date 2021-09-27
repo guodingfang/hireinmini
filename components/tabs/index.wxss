@@ -1,0 +1,48 @@
+
+.tabs {
+  display: flex;
+  border-bottom: 1rpx solid #E5E5E5;
+  overflow: hidden;
+}
+
+.tab-item {
+  padding: 0 40rpx;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color--);
+}
+
+.tab-item-select {
+  color: var(--selectColor--);
+  font-weight: bold;
+  position: relative;
+  font-size: 34rpx;
+}
+
+.tab-item-select::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  content: '';
+  width: 40rpx;
+  height: 6rpx;
+  background-color: #0400E6;
+}
+
+.tabs-content {
+  height: calc(100vh - var(--tabHeight--));
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.tabs-scroll-item {
+  height: calc(100vh - var(--tabHeight--));
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}

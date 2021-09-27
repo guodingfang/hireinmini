@@ -1,0 +1,38 @@
+
+<view style="height: 92rpx;"></view>
+<view class="card">
+  <view class="header">
+    <image class="portrait" src="{{userinfo.userpic}}"></image>
+    <view class="btn btn-1" bind:tap="onInterflow">合作交流</view>
+    <view class="btn btn-2" wx:if="{{!isCurrentUser}}">关注</view>
+    <view class="btn btn-2" wx:else bind:tap="onApproveCompany">认证</view> 
+  </view>
+  <view class="introduce">
+    <text class="user-name">{{ userinfo.nickname }}</text>
+    <text class="introduce-val">介绍：{{ userinfo.remark || '暂无介绍' }}</text>
+    <text class="company">认证：{{ userinfo.authenticationstatus === '0' ? '未认证' : '已认证'}}</text>
+  </view>
+  <view class="popularity-list">
+    <view class="item">
+      <text class="val">{{ userinfo.dynamic }}</text>
+      <text class="label">动态</text>
+    </view>
+    <view class="item">
+      <text class="val">{{ userinfo.focus }}</text>
+      <text class="label">合作关注</text>
+    </view>
+    <view class="item">
+      <text class="val">{{ userinfo.fans }}</text>
+      <text class="label">获赞</text>
+    </view>
+  </view>
+</view>
+
+<view class="advert">
+  <v-skip
+    src="/images/advert/open-service-account.png"
+    width="710"
+    height="168"
+    url="{{skipCompanyUrl}}"
+  />
+</view>

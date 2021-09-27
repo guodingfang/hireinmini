@@ -1,5 +1,5 @@
 <view class="group">
-  <m-header title="租赁公司" m-header="m-header" bgColor="orange" />
+  <m-header title="租赁组织" m-header="m-header" bgColor="orange" />
   <view class="list">
     <view class="item">
       <image class="icon" src="/images/user/group-add.png"></image>

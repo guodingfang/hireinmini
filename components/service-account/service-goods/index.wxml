@@ -1,0 +1,14 @@
+<view class="item" bind:tap="skipGoodsDetails">
+  <image src="{{imgUrl}}{{info.prodpic}}" class="goods-logo"></image>
+  <view class="info">
+    <view class="name">{{ info.prodname }}</view>
+    <view class="location">
+      <image class="icon-location" src="/images/icon/location-2.png"></image>
+      <text class="location-val">{{ info.address }}</text>
+    </view>
+    <view class="price">
+      <m-price price="{{ info.rents ? info.rents.rprice : 0 }}" />
+      <m-spec spec="{{ info.rents ? info.rents.unit: '' }}" />
+    </view>
+  </view>
+</view>

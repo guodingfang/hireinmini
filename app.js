@@ -1,7 +1,8 @@
-import {
-	Config
-} from 'utils/config.js';
+import { Config } from 'utils/config.js';
 var config = new Config();
+
+
+
 App({
 	onLaunch: function () {},
 	globalData: {
@@ -29,7 +30,7 @@ App({
 
 	onShow(options) {
     // 判断运行环境
-    this.judgeWork(options);
+		this.judgeWork(options);
   },
 
 	judgeWork(options) {

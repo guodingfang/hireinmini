@@ -1,0 +1,14 @@
+<view class="footer">
+  <button class="dial-button" open-type="contact" bindcontact="handleContact">
+    <image class="icon-dial" src="/images/icon/dial.png"></image>
+    <text class="dial-val">咨询</text>
+  </button>
+  <view class="btns">
+    <view
+      class="btn btn-{{index+1}} {{btns.length === 1 ? 'alone-btn': ''}}"
+      wx:for="{{btns}}"
+      wx-for-index="index"
+      wx:key="index"
+    >{{item}}</view>
+  </view>
+</view>

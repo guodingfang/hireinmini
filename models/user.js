@@ -1,4 +1,3 @@
-import { nu } from '../utils/pinYin'
 import request from '../utils/request'
 import { promisic } from '../utils/util'
 
@@ -29,13 +28,26 @@ const login = async (option = {}) => {
   }
 }
 
-const getLocation = () => {
+// 获取用户当前经纬度
+const getLocation = (success, fail) => {
   promisic(wx.getLocation)({
     type: 'wgs84',
   }).then(res => {
     console.log('res', res)
+    success && success(res)
   }).catch(err => {
     console.log('err', err)
+    fail && fail
+  })
+}
+
+/**
+ * 上传访问日志
+ * @param {*} option 
+ */
+const uploadAccessLog = (option = {}) => {
+  return request.post('/User/accessLog', {
+    ...option
   })
 }
 
@@ -80,12 +92,46 @@ const getAttentionedList = (option = {}) => {
   })
 }
 
+/**
+ * 我的页动态、关注以及订单的数量、角标
+ * @param {*} option 
+ */
+const getUserBaseInfo = (option = {}) => {
+  return request.post('/User/getUserBaseInfo', {
+    ...option
+  })
+}
+
+/**
+ * 我的-厂家页面，动态/文章/视频/小视频…(店铺除外)，账号信息流列表
+ * @param {*} option 
+ */
+const getMsgDynamics = (option = {}) => {
+  return request.post('/Release/getMsgDynamics', {
+    ...option
+  })
+}
+
+/**
+ * 获取服务号信息
+ * @param {*} option 
+ */
+const getCompanyInfo = (option = {}) => {
+  return request.post('/Company/getCompanyInfo', {
+    ...option
+  })
+}
+
 
 export {
   login,
   getLocation,
+  uploadAccessLog,
   getMyCompanyInfo,
   getMyOrderForAuditNum,
   addAttention,
-  getAttentionedList
+  getAttentionedList,
+  getUserBaseInfo,
+  getMsgDynamics,
+  getCompanyInfo
 }

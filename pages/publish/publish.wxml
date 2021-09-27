@@ -1,0 +1,69 @@
+
+<view class="content">
+  <textarea
+    class="content-input"
+    placeholder-class="pl-input"
+    placeholder="分享新鲜事哦~"
+    data-type="content"
+    bindinput="onInputChange"
+  />
+  <view class="middle-line"></view>
+  <view class="upload-container">
+    <m-upload
+      wx:if="{{selectUploadType !== 'video'}}"
+      uploadType="img"
+      triggerUpload="{{triggerUpload}}"
+      uploadId="{{uploadId}}"
+      bind:isUpload="isUpload"
+      bind:uploadComplete="onUploadComplete"
+    />
+    <m-upload
+      wx:if="{{selectUploadType !== 'img'}}"
+      uploadType="video"
+      triggerUpload="{{triggerUpload}}"
+      uploadId="{{uploadId}}"
+      bind:isUpload="isUpload"
+      bind:uploadComplete="onUploadComplete"
+    />
+  </view>
+</view>
+
+<view class="user-info">
+  <view class="item">
+    <image class="icon" src="/images/icon/user-2.png"></image>
+    <input
+      type="text"
+      class="val"
+      value="{{userName}}"
+      placeholder="请输入昵称"
+      data-type="userName"
+      bindinput="onInputChange"
+    />
+  </view>
+  <view class="item">
+    <image class="icon" src="/images/icon/tel-3.png"></image>
+    <input
+      type="number"
+      class="val"
+      value="{{ tel }}"
+      placeholder="请输入电话"
+      data-type="tel"
+      bindinput="onInputChange"
+    />
+  </view>
+  <view class="item">
+    <image class="icon" src="/images/icon/location-2.png"></image>
+    <text class="val">{{ city }}</text>
+    <image bind:tap="onLocation" class="icon-more" src="/images/icon/more.png"></image>
+  </view>
+  <!-- <view class="item">
+    <image class="icon" src="/images/icon/tag.png"></image>
+    <text class="val">标签</text>
+  </view>
+  <m-tags /> -->
+
+</view>
+
+<view class="footer">
+  <view class="btn" bind:tap="onPublish">发布</view>
+</view>

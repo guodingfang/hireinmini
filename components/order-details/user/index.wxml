@@ -1,0 +1,38 @@
+<view class="user-module">
+  <block wx:if="{{type === 'goods'}}">
+    <view class="item">
+      <image src="/images/icon/location-3.png" class="icon icon-location"></image>
+      <view class="content">
+        <view class="user-info">
+          <view class="user-name">韩小颖</view>
+          <view class="tel">13666666612</view>
+        </view>
+        <view class="address">显示门店地址,一行显示不下换行,最多两行,下边间距一致</view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{type === 'lease'}}">
+    <view class="row">
+      <image src="/images/icon/user.png" class="icon icon-user"></image>
+      <view class="row-info">
+        <text class="label">租赁人：</text>
+        <text class="val row-user-name">韩小颖</text>
+      </view>
+    </view>
+    <view class="row">
+      <image src="/images/icon/tel-2.png" class="icon icon-user"></image>
+      <view class="row-info">
+        <text class="label">联系电话：</text>
+        <text class="val">13666666612</text>
+      </view>
+    </view>
+    <view class="row">
+      <image src="/images/icon/des.png" class="icon icon-user"></image>
+      <view class="row-info">
+        <text class="label">订单说明：</text>
+        <text class="val">显示门店地址,一行显示不下换行,最多两行,下边间距一致</text>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,3 +1,16 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "v-tab": "/components/tabs",
+    "v-power": "/components/tool/power-model",
+    "v-led": "/components/tool/led-model",
+    "v-led-mini": "/components/tool/led-mini-model",
+    "v-truss": "/components/tool/truss-model",
+    "v-ly": "/components/tool/ly-model",
+    "v-projection": "/components/tool/projection-model",
+    "v-stage": "/components/tool/stage-model",
+    "v-delay": "/components/tool/delay-model",
+    "v-scal": "/components/tool/scal-model"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTitleText": "租赁常用工具"
 }

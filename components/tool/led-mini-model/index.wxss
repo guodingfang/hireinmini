@@ -1,0 +1,65 @@
+@import '../common.wxss';
+@import '../led-model/index.wxss';
+
+.space-input, .spec-input {
+  padding: 0 30rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+}
+
+.dpi-info {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 30rpx ;
+  border-radius: 20rpx;
+  border: 1rpx solid #e5e5ee;
+  overflow: hidden;
+}
+
+.dpi-title {
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+  font-size: 24rpx;
+  background-color: #FFFFFF;
+}
+
+.dpi-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.dpi-row {
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666666;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.dpi-row:nth-child(odd) {
+  background-color: #FDF6ED;
+}
+
+.dpi-row:nth-child(even) {
+  background-color: #FFFFFF;
+}
+
+.dpi-row .dpi-col:nth-child(1) {
+  width: 160rpx;
+  border-right: 1rpx solid #E5E5E5;
+}
+
+.dpi-row .dpi-col:nth-child(2) {
+  width: 190rpx;
+  border-right: 1rpx solid #E5E5E5;
+}
+
+.dpi-row .dpi-col:nth-child(3) {
+  flex: 1;
+}

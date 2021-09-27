@@ -1,0 +1,18 @@
+<view class="item">
+  <view class="info" bind:tap="onSkipDetail">
+    <text class="content three-row-overstep">
+      {{ info.content }}
+    </text>
+    <view class="video">
+      <view class="video-mask">
+        <image class="icon-play" src="/images/icon/play.png"></image>
+      </view>
+      <image
+        class="big-img"
+        mode="aspectFill"
+        src="{{bigImgAndVideoUrl}}"
+      ></image>
+    </view>
+  </view>
+  <m-footer />
+</view>

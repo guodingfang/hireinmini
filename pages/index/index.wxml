@@ -3,10 +3,10 @@
 <view style="height: {{headerBlock + 80}}rpx">
 	<v-header
 		fixed="{{true}}"
-		cityname="{{ cityname }}"
 		placeholder="搜索资源/服务"
 		currentPage="index"
 		isTopTitle="{{true}}"
+		bind:getLocation="getLocation"
 	/>
 	<v-tab fixed="{{true}}" list="{{tabList}}" bind:select="onSelectTab" />
 </view>
@@ -16,12 +16,12 @@
 </view>
 
 <block wx:if="{{tabname === 'focus'}}">
-	<m-header title="{{ interest.title }}" />
+	<m-header title="{{ interest.title }}" bind:more="onSkipFocus" />
 	<v-focus list="{{interest.list}}" isHaveInterest="{{interest.isHaveInterest}}" />
 </block>
 
 
-<m-header title="我的关注" more="{{false}}" />
+<!-- <m-header title="我的关注" more="{{false}}" /> -->
 <block wx:for="{{ releaseList }}" wx:key="id">
 	<v-item info="{{item}}" />
 </block>

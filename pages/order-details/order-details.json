@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "v-status": "/components/order-details/status",
+    "v-user": "/components/order-details/user",
+    "v-company": "/components/order-details/company",
+    "v-item": "/components/order-details/goods-item",
+    "m-title": "/components/public/m-title",
+    "v-cost": "/components/order-details/cost-info",
+    "v-lease-item": "/components/product-manage/item"
+  },
+  "navigationStyle": "custom"
+}

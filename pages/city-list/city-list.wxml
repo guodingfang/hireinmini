@@ -1,0 +1,11 @@
+<view>
+
+<scroll-view
+  class="city-list"
+  scroll-y
+>
+
+</scroll-view>
+
+</view>
+

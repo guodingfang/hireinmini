@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "v-header": "/components/header",
     "v-search": "/components/public/search",
     "m-header": "/components/public/m-header",
     "v-tab": "/components/contents/tab",

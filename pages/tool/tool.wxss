@@ -1,1 +1,51 @@
-/* pages/tool/tool.wxss */
+Page {
+  background-color: #F5F4F9;
+}
+
+
+.header {
+  color: #ffffff;
+  font-size: 34rpx;
+	font-weight: 800;
+	display: flex;
+  align-items: center;
+  padding-left: 24rpx;
+}
+
+.icon-back {
+	width: 24rpx;
+	height: 36rpx;
+	margin-right: 30rpx;
+}
+
+
+.user-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 750rpx;
+	height: 470rpx;
+	z-index: -1;
+}
+
+.user-mask {
+  top: 150rpx;
+	position: absolute;
+	width: 750rpx;
+  height: 470rpx;
+  background-image: linear-gradient(180deg, transparent, #F5F4F9 65%, #F5F4F9);
+}
+
+.user-bg-img {
+	width: 750rpx;
+	height: 470rpx;
+}
+
+.tabs scroll-view {
+  border: none !important;
+}
+
+.tabs-item {
+  padding-bottom: 26rpx;
+}

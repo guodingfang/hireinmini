@@ -1,7 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "v-location": "/components/public/location",
+    "m-weather": "/components/public/m-weather",
     "v-search": "/components/public/search"
   }
 }

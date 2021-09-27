@@ -7,10 +7,10 @@ import loginPage from '../../template/login'
 var config = new Config();
 
 import { checkFrontPower } from '../../models/util'
-import { getMyCompanyInfo, getMyOrderForAuditNum } from '../../models/user'
+import { getMyCompanyInfo, getUserBaseInfo, getMyOrderForAuditNum } from '../../models/user'
 
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
-
+import { remoteImagesUrl } from '../../config'
 const app = getApp()
 
 Page({
@@ -30,6 +30,8 @@ Page({
 		verificationCode: '',
 		logourl: '',
 		canGetUserProfile: false, //使用getUserProfile取用户信息
+		bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
+		skipCompanyUrl: '/pages/company_select/company_select',
 	},
 
 	/**
@@ -46,7 +48,7 @@ Page({
 			pageshow: true
 		})
 		this.getHeaderBlock();
-		await this.getInfo();
+		await this.getUserBaseInfo();
 		await this.getCheckOrder()
 		await this.getMyCompanyInfo()
 		await this.getMyOrderForAuditNum()
@@ -64,12 +66,18 @@ Page({
 		})
 	},
 
-	getInfo() {
-		const info = wx.getStorageSync('logininfo')
-		this.setData({
-			userinfo: info
-		})
-	},
+	async getUserBaseInfo() {
+    const { user, dynamic, fans, focus, company } = await getUserBaseInfo({})
+    this.setData({
+      company: company instanceof Array ? null : company,
+      userinfo: {
+        ...user,
+        dynamic,
+        fans,
+        focus
+      }
+    })
+  },
 
 	// 跳转到我的订单审核
 	async getCheckOrder() {
@@ -103,6 +111,14 @@ Page({
 		})
 		this.setData({
 			ordernum
+		})
+	},
+
+	onSVip() {
+		wx.showToast({
+			title: '敬请期待',
+			icon: 'none',
+			duration: 2000
 		})
 	},
 
@@ -141,11 +157,7 @@ Page({
 			url: '/pages/discern/discern',
 		})
 	},
-	toProjection() {
-		wx.navigateTo({
-			url: '/pages/projection/projection',
-		})
-	},
+
 	toCreateOrganize() {
 		wx.navigateTo({
 			url: '/pages/createOrganize/createOrganize',

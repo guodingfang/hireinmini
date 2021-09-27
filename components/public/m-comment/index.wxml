@@ -1,7 +1,7 @@
 <view class="comment" wx:if="{{commentShow}}">
   <view class="mask" bind:tap="onClose"></view>
   <view class="form-info" style="bottom: {{ bottom }}rpx">
-    <input
+    <textarea
       type="text" 
       name="content"
       confirm-type="send"
@@ -10,7 +10,8 @@
       focus="{{true}}"
       bindinput="onInput"
       placeholder="{{placeholder}}"
+      placeholder-class="comment-input-pl"
     />
-    <view class="send-btn" catch:tap="onSend">发送</view>
+    <view class="send-btn" catch:tap="onSend">发表</view>
   </view>
 </view>

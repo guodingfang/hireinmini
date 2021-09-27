@@ -76,7 +76,6 @@ Page({
  */
 function getOrderInfo(that, options) {
     var types = options.type;
-    console.info(types);
     if (types < 4 && types > 0) {
         var url = Config.baseUrl + 'Order/getOrderInfo';
     } else {

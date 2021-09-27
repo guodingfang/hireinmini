@@ -1,0 +1,4 @@
+<view class="footer">
+  <view class="btn">进入公司</view>
+  <view class="btn" bind:tap="onProductManage">公司管理</view>
+</view>

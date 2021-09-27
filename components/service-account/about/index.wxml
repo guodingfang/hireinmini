@@ -1,0 +1,22 @@
+<view class="about">
+  <view class="about-item">
+    <text class="label">公司名称：</text>
+    <text class="val">{{ info.companyname }}</text>
+  </view>
+  <view class="about-item">
+    <text class="label">联系人：</text>
+    <text class="val">{{ info.contact }}</text>
+  </view>
+  <view class="about-item">
+    <text class="label">联系电话：</text>
+    <text class="val">{{ info.phone }}</text>
+  </view>
+  <view class="about-item">
+    <text class="label">所在地方：</text>
+    <text class="val">{{ info.cityname }}</text>
+  </view>
+  <view class="about-item">
+    <text class="label">详细地址：</text>
+    <text class="val">{{ info.address }}</text>
+  </view>
+</view> 

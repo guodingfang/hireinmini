@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "m-price": "/components/public/m-price",
+    "m-browse": "/components/public/m-browse",
+    "m-company": "/components/public/m-company"
+  }
+}

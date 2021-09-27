@@ -25,8 +25,14 @@ Component({
    */
   methods: {
     onSkipContent() {
+      const { userinfo } = this.properties
       wx.navigateTo({
-        url: '/pages/content-account/content-account',
+        url: `/pages/content-account/content-account?userid=${userinfo.userid}`,
+      })
+    },
+    onSetup() {
+      wx.navigateTo({
+        url: `/pages/userInfoDetail/userInfoDetail`,
       })
     }
   }

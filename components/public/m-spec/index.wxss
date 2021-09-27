@@ -1,0 +1,4 @@
+.spec {
+  font-size: 28rpx;
+  color: #FE0A00;
+}

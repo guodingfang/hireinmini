@@ -8,13 +8,13 @@
     bindchange="onChange"
   >
     <block wx:key="id" wx:for-index="index" wx:for="{{images}}">
-      <swiper-item class="carousel-item">
+      <swiper-item class="carousel-item m-carousel-item">
         <v-skip
           src="{{imgUrl}}{{item.picfile}}"
           url="{{item.url}}"
-          width="690"
-          height="330"
-          radius="20"  
+          width="{{imageConfigs.width}}"
+          height="{{imageConfigs.height}}"
+          radius="{{imageConfigs.radius}}"  
         ></v-skip>
       </swiper-item>
     </block>

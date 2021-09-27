@@ -24,7 +24,7 @@ const getRecommendSchemeList = (option = {}) => {
  * @param {*} option 
  */
 const getTopSell = (option = {}) => {
-  return request.post('/SecondHandMarket/getTopNSell2ndList', {
+  return request.post('/Shop/quality2ndHandTopN', {
     ...option
   })
 }

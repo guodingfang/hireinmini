@@ -1,0 +1,71 @@
+.message {
+  display: flex;
+  padding: 6rpx 30rpx 0 30rpx;
+}
+
+.portrait {
+  position: relative;
+  top: -6rpx;
+  width: 52rpx;
+  height: 52rpx;
+  margin-right: 14rpx;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  display: flex;
+  min-height: 40rpx;
+  align-items: center;
+}
+
+.name, .time {
+  font-size: 28rpx;
+  color: #808080;
+}
+
+.name {
+  padding-right: 20rpx;
+  margin-right: 20rpx;
+  position: relative;
+}
+
+.name::after {
+  position: absolute;
+  content: '';
+  height: 20rpx;
+  width: 1rpx;
+  background-color: #808080;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 1;
+}
+
+.like {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.icon-like {
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 10rpx;
+}
+
+.like .val {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.content {
+  margin-top: 10rpx;
+  color: #1A1A1A;
+  font-size: 28rpx;
+  width: 624rpx;
+}

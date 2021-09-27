@@ -1,0 +1,9 @@
+<view class="star">
+  <image
+    class="icon-start"
+    src="./images/star.png"
+    wx:for="{{scoreArr}}"
+    wx:key="id"  
+  ></image>
+  <text class="val" style="color: {{configs.fontColor}}">{{scoreVal}}分</text>
+</view>

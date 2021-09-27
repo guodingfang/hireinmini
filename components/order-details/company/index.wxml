@@ -1,0 +1,27 @@
+<view class="company">
+  <view class="header">
+    <image src="https://thirdwx.qlogo.cn/mmopen/vi_32/wvB4rZ5jJo3ZibSByZO058HmRpyPricQUpyA4QHGVXesISs2c704icFCatHGW7EeG1mLVVT1IWNP54ibO1YnRNUZ2A/132" class="company-logo"></image>
+    <view class="company-name">利亚的集团</view>
+    <image src="/images/icon/more.png" class="icon-more"></image>
+    <block wx:if="{{type === 'goods'}}">
+      <view class="tel">
+        <image class="icon-tel" src="/images/icon/tel.png"></image>
+        <text class="tel-val">电话</text>
+      </view>
+    </block>
+  </view>
+  <view class="content">
+    <view class="location-info">
+      <image class="location-img" src="/images/public/location.png"></image>
+      <view class="info">
+        <view class="address">山西省太原市小店区万科</view>
+        <view class="dist">驾车3.0km，需约20分钟</view>
+      </view>
+    </view>
+    <view class="tel">
+      <image class="icon-tel" src="/images/icon/tel.png"></image>
+      <text class="tel-val">电话</text>
+    </view>
+  </view>
+</view>
+

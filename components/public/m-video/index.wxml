@@ -1,5 +1,6 @@
 <view class="video-container m-video">
   <video
+    muted="{{true}}"
     class="default-video"
     src="{{src}}"
     show-center-play-btn="{{false}}"

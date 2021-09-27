@@ -1,0 +1,191 @@
+<view class="container">
+  <view class="model">
+    <m-header title="小间距(mm)" more="{{false}}" />
+    <view class="space-input">
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入间距"
+        value="{{selectSpace}}"
+        type="number"
+        data-type="selectSpace"
+        bindinput="onInputChange"
+      />
+    </view>
+    <view class="list space">
+      <view
+        class="item {{ selectSpace === item ? 'select-item' : ''}}"
+        wx:for="{{spaceList}}"
+        wx:key="id"
+        data-item="{{item}}"
+        data-type="selectSpace"
+        bind:tap="onSelectTab"
+      >{{item}}</view>
+    </view>
+
+    <m-header title="规格(mm)" more="{{false}}" />
+    <view class="spec-input">
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入宽度"
+        type="number"
+        value="{{spaceWidth}}"
+        data-type="spaceWidth"
+        bindinput="onInputChange"
+      />
+      <text class="sign">×</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入高度"
+        type="number"
+        value="{{spaceHeight}}"
+        data-type="spaceHeight"
+        bindinput="onInputChange"
+      />
+    </view>
+
+    <view class="list spec">
+      <view
+        class="item {{ selectSpecId === index ? 'select-item' : ''}}"
+        wx:for="{{specList}}"
+        wx:key="id"
+        wx:for-index="index"
+        data-index="{{index}}"
+        data-spacewidth="{{item.width}}"
+        data-spaceheight="{{item.length}}"
+        data-type="selectSpecId"
+        bind:tap="onSelectSpecTab"
+      >{{item.length}}*{{item.width}}</view>
+    </view>
+
+    <view class="input-item">
+      <text class="label">横向块数：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入横向块数"
+        type="number"
+        data-type="xCorss"
+        bindinput="onInputChange"
+      />
+      <text class="unit">块</text>
+    </view>
+    <view class="input-item">
+      <text class="label">纵向块数：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入纵向块数"
+        type="number"
+        data-type="yCorss"
+        bindinput="onInputChange"
+      />
+      <text class="unit">块</text>
+    </view>
+
+    
+  </view>
+
+  <view class="model">
+    <m-header title="计算结果" more="{{false}}">
+      <view slot="tips" class="header-tips">（结果仅供参考）</view>
+    </m-header>
+
+    <view class="input-title">面积(㎡)</view>
+    <view class="input-container">
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入宽度"
+        type="number"
+        data-type="width"
+        bindinput="onInputChange"
+      />
+      <text class="sign">×</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入高度"
+        type="number"
+        data-type="height"
+        bindinput="onInputChange"
+      />
+      <text class="sign">=</text>
+      <view class="result">
+        <text class="val">{{area}}</text>
+        <text class="unit-symbol">㎡</text>
+      </view>
+    </view>
+
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">像素密度/㎡：</text>
+        <text class="col-val">{{ pixel }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">单个箱体点数：</text>
+        <text class="col-val">{{ point }}</text>
+      </view>
+    </view>
+
+    <view class="input-title">屏幕总点数(宽度点数 × 高度点数)：</view>
+    <view class="input-container">
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl not-tool-item-input"
+        placeholder="宽度点数"
+        disabled="true"
+        value="{{widthPoint}}"
+        type="number"
+      />
+      <text class="sign">×</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl not-tool-item-input"
+        placeholder="高度点数"
+        disabled="true"
+        value="{{heightPoint}}"
+        type="number"
+      />
+      <text class="sign">=</text>
+      <view class="result">
+        <text class="val">{{areaPoint}}</text>
+        <text class="unit-symbol">点</text>
+      </view>
+    </view>
+    <view class="input-title input-title-middle">推荐信息源分辨率</view>
+    
+    <view class="dpi-info">
+      <view class="dpi-title">常用分辨率</view>
+      <view class="dpi-table">
+        <view class="dpi-row">
+          <view class="dpi-col">720P</view>
+          <view class="dpi-col">1280*720</view>
+          <view class="dpi-col">921600像素点</view>
+        </view>
+        <view class="dpi-row">
+          <view class="dpi-col">1080P</view>
+          <view class="dpi-col">1920*1080</view>
+          <view class="dpi-col">2073600像素点</view>
+        </view>
+        <view class="dpi-row">
+          <view class="dpi-col">2K</view>
+          <view class="dpi-col">2560*1440</view>
+          <view class="dpi-col">3686400像素点</view>
+        </view>
+        <view class="dpi-row">
+          <view class="dpi-col">4K</view>
+          <view class="dpi-col">4096*2160</view>
+          <view class="dpi-col">8847360像素点</view>
+        </view>
+        <view class="dpi-row">
+          <view class="dpi-col">8K</view>
+          <view class="dpi-col">7680*4320</view>
+          <view class="dpi-col">33177600像素点</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

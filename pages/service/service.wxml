@@ -1,10 +1,12 @@
 <view style="height: {{headerBlock}}rpx">
 	<v-header
+		cityname="{{cityname}}"
 		fixed="{{true}}"
-		isLocation="{{false}}"
-		placeholder="搜索资源/服务"
+		isWeather="{{true}}"
+		placeholder="搜索全国资源/本地服务"
 		currentPage="service"
 		isTopTitle="{{true}}"
+		bind:getLocation="onGetLocation"
 	/>
 </view>
 
@@ -12,6 +14,39 @@
 	<v-carousel m-carousel="m-carousel" images="{{ carouselList }}"/>
 </view>
 
+
+<block wx:if="{{showRecommendCompanyList}}">
+	<block wx:if="{{nationwideCompanyList.length}}">
+		<m-header title="全国推荐" more="{{false}}"/>
+		<view class="company-item" wx:key="id" wx:for="{{nationwideCompanyList}}">
+			<image class="company-logo" src="{{imgUrl}}{{item.logopic}}"></image>
+			<view class="company-info">
+				<view class="company-name">{{item.companyname}}</view>
+				<view class="lables" wx:if="{{item.label.length}}">
+					<text class="label single-row-overstep" wx:for="{{item.label}}" wx:key="id" wx:for-item="label">{{label.labelname}}</text>
+				</view>
+				<view class="address">{{item.address}}</view>
+			</view>
+		</view>
+	</block>
+
+	<block wx:if="{{thisLocalityCompanyList.length}}">
+		<m-header title="本地推荐" more="{{false}}"/>
+		<view class="company-item" wx:key="id" wx:for="{{thisLocalityCompanyList}}">
+			<image class="company-logo" src="{{imgUrl}}{{item.logopic}}"></image>
+			<view class="company-info">
+				<view class="company-name">{{item.companyname}}</view>
+				<view class="lables" wx:if="{{item.label.length}}">
+					<text class="label single-row-overstep" wx:for="{{item.label}}" wx:key="id" wx:for-item="label">{{label.labelname}}</text>
+				</view>
+				<view class="address">{{item.address}}</view>
+			</view>
+		</view>
+	</block>
+	
+</block>
+
+<block wx:if="{{!showRecommendCompanyList}}">
 <view class="tab">
 	<v-tab list="{{tabList}}" bind:select="onSelect" />
 </view>
@@ -59,7 +94,7 @@
 		</view>
 	</view>
 </v-fixed> -->
-
+</block>
 <view style="height: {{tabHeight}}rpx">
 	<v-tabbar />
 </view>

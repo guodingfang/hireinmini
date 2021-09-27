@@ -1,0 +1,44 @@
+
+.item {
+  display: flex;
+  padding: 20rpx 30rpx;
+}
+
+.goods-logo {
+  width: 225rpx;
+  height: 160rpx;
+  margin-right: 10rpx;
+  border-radius: 20rpx;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  color: #1A1A1A;
+  font-size: 28rpx;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+}
+
+.icon-location {
+  width: 22rpx;
+  height: 26rpx;
+  margin-right: 10rpx;
+}
+
+.location-val {
+  font-size: 22rpx;
+  color: #666666;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+}

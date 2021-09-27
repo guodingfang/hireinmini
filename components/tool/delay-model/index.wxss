@@ -1,0 +1,53 @@
+@import '../common.wxss';
+
+
+.delay-img {
+  width: 100%;
+  height: 275rpx;
+}
+
+.model {
+  position: relative;
+}
+
+.empty {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100rpx;
+  padding: 37rpx 30rpx 21rpx 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.icon-empty {
+  width: 26rpx;
+  height: 25rpx;
+}
+
+.empty-val {
+  color: #1A1A1A;
+  font-size: 24rpx;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+}
+
+.result-list {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 30rpx;
+}
+
+.result-label {
+  color: #1A1A1A;
+  font-size: 28rpx;
+}
+
+.result-val {
+  color: #FE0A00;
+  font-size: 28rpx;
+}

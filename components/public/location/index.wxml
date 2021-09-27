@@ -1,4 +1,0 @@
-<view class="location m-location" bind:tap="onChangeLocation">
-  <image class="icon-location" src="/images/icon/location.png"></image>
-  <text class="city-name single-row-overstep">{{ cityname }}</text>
-</view>

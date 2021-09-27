@@ -1,0 +1,64 @@
+@import '../common.wxss';
+
+
+
+.row {
+  display: flex;
+  margin: 0 30rpx;
+  padding: 15rpx 0;
+  align-items: center;
+}
+
+.row-border-top {
+  border-top: 1rpx solid #E5E5E5;
+}
+
+.col {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row .middle-line {
+  height: 50rpx;
+  width: 40rpx;
+  position: relative;
+}
+
+.middle-line::after {
+  content: '';
+  position: absolute;
+  width: 1rpx;
+  height: 50rpx;
+  background-color: #E5E5E5;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.col .label {
+  color: #1A1A1A;
+  font-size: 28rpx;
+  margin-right: 10rpx;
+  min-width: 112rpx;
+}
+
+.col .val {
+  margin-left: auto;
+  color: #FE0A00;
+  min-width: 76rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-item-input {
+  min-width: 290rpx;
+  font-size: 28rpx;
+}
+
+.picker-select .tool-item-input {
+  display: flex;
+  align-items: center;
+}

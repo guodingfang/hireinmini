@@ -1,0 +1,31 @@
+
+.item {
+  display: flex;
+  padding: 20rpx 30rpx;
+}
+
+.goods-logo {
+  width: 225rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+}
+
+.info {
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.goods-name {
+  color: #1A1A1A;
+  font-size: 28rpx;
+}
+
+.specs {
+  color: #999999;
+  font-size: 22rpx;
+}
+
+.price {
+  margin-top: auto;
+}

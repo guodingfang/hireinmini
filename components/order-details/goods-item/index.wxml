@@ -1,0 +1,10 @@
+<view class="item">
+  <image src="https://wxapp.ilinking.com.cn/Public/pics/goods/20210501/2.png" class="goods-logo"></image>
+  <view class="info">
+    <view class="goods-name">舞台灯光cob面光灯影视婚庆大型...</view>
+    <view class="specs">品牌：恩美灯光</view>
+    <view class="price">
+      <m-price price="{{999}}" />
+    </view>
+  </view>
+</view>

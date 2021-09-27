@@ -1,24 +1,34 @@
 <view class="model">
-	<view class="info-item" wx:key="id" wx:for="{{5}}">
+	<!-- <view class="info-item" wx:key="id" wx:for="{{list}}">
 		<image class="item-img" src="/images/default.png"></image>
 		<view class="item-content">
 			<view class="item-label two-row-overstep">
-				利亚德紧急驰援河南，首批救灾物资预计今日抵达首批救灾物资预计今天123二手.
+				{{ item.servicename }}
 			</view>
 			<view class="info">
 				<view class="company-price">
 					<view class="company">
-						<image class="logo" src="https://mobile.ilinking.com.cn/Public/pics/userphoto/20210407/606d7683aebbf.png"></image>
-						<text class="company-val">利亚的集团</text>
+						<image class="logo" src="{{imgUrl}}{{item.company.logopic}}"></image>
+						<text class="company-val">{{item.company ? item.company.companyname : ''}}</text>
 					</view>
-					<m-price price="{{99999}}" />
+					<m-price price="{{item.price}}" />
 				</view>
 
 				<view class="browse">
 					<image class="icon-browse" src="/images/icon/browse.png"></image>
-					<text class="browse-val">999+</text>
+					<text class="browse-val">{{item.viewcount}}</text>
 				</view>
 			</view>
+		</view>
+	</view> -->
+	<view class="company-item" wx:key="id" wx:for="{{list}}">
+		<image class="company-logo" src="{{imgUrl}}{{item.logopic}}"></image>
+		<view class="company-info">
+			<view class="company-name">{{item.companyname}}</view>
+			<view class="lables" wx:if="{{item.label.length}}">
+				<text class="label single-row-overstep" wx:for="{{item.label}}" wx:for-item="label">{{label.labelname}}</text>
+			</view>
+			<view class="address">{{item.address}}</view>
 		</view>
 	</view>
 </view>

@@ -1,0 +1,15 @@
+<view class="model" bind:tap="onChange">
+  <view class="weather">
+    <view class="weather-val">{{degree}}°</view>
+    <view class="weather-type">{{weather}}</view>
+  </view>
+  <view class="info">
+    <view class="location">
+      <view class="location-val">{{location}}</view>
+    </view>
+    <view class="aqi">
+      <view class="aqi-val">{{aqi}}</view>
+      <view class="aqi-level">{{aqiLevel}}</view>
+    </view>
+  </view>
+</view>

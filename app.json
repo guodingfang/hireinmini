@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/calculator/calculator",
     "pages/product_derails/product_derails",
     "pages/company-manage/company-manage",
     "pages/companylist/companylist",
@@ -84,7 +83,6 @@
     "pages/equipmentList/equipmentList",
     "pages/equipmentDetail/equipmentDetail",
     "pages/attestation/attestation",
-    "pages/projection/projection",
     "pages/discern/discern",
     "pages/createOrganize/createOrganize",
     "pages/banquet/banquet",
@@ -94,7 +92,16 @@
     "pages/used-center/used-center",
     "pages/service-center/service-center",
     "pages/tool/tool",
-    "pages/content-account/content-account"
+    "pages/content-account/content-account",
+    "pages/service-account/service-account",
+    "pages/service-goods-details/service-goods-details",
+    "pages/custom-service-account/custom-service-account",
+    "pages/custom-service-goods-details/custom-service-goods-details",
+    "pages/order-list/order-list",
+    "pages/order-details/order-details",
+    "pages/publish/publish",
+    "pages/focus-list/focus-list",
+    "pages/city-list/city-list"
   ],
   "permission": {
     "scope.userLocation": {
@@ -141,6 +148,9 @@
     "color": "#666",
     "borderStyle": "black",
     "position": "bottom"
+  },
+  "useExtendedLib": {
+    "weui": true
   },
   "sitemapLocation": "sitemap.json"
 }

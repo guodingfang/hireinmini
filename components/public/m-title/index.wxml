@@ -1,0 +1,4 @@
+<view class="title-container">
+  <view class="decorate"></view>
+  <text class="title">{{title}}</text>
+</view>

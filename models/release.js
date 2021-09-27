@@ -1,15 +1,5 @@
-import { re } from '../utils/pinYin'
 import request from '../utils/request'
 
-/**
- * 获取发现页-租赁列表
- * @param {*} option 
- */
-const getReleaseList = (option = {}) => {
-  return request.post('/Release/newRelease', {
-    ...option
-  })
-}
 /**
  * 根据关键字获取服务页-租赁列表
  * @param {*} option 
@@ -60,6 +50,10 @@ const addComment = (option = {}) => {
   })
 }
 
+/**
+ * 发现页信息流查询接口
+ * @param {*} option 
+ */
 const getDiscoverMsgList = (option = {}) => {
   return request.post('/Release/getDiscoverMsgList', {
     ...option
@@ -75,21 +69,36 @@ const getReleaseDetail = (option = {}) => {
     ...option,
   })
 }
-
+// 其他热门
 const getOtherHosList = (option = {}) => {
   return request.post('/Release/otherHostMsgList', {
     ...option
   })
 }
 
+// 增加发布信息流
+const addMsgRelease = (option = {}) => {
+  return request.post('/Release/addMsgRelease', {
+    ...option
+  })
+}
+
+// 推荐租赁商列表
+const getRecommendCompanyList = (option = {}) => {
+  return request.post('/Company/getRecommendCompanyList', {
+    ...option
+  })
+}
+
 export {
   getDiscoverMsgList,
-  getReleaseList,
   getKeyWordReleaseList,
   addUserDialRecord,
   addLikeRelease,
   deleteLikeRelease,
   addComment,
   getReleaseDetail,
-  getOtherHosList
+  getOtherHosList,
+  addMsgRelease,
+  getRecommendCompanyList
 }

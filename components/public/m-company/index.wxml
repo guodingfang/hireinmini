@@ -1,0 +1,4 @@
+<view class="company">
+  <image src="https://mobile.ilinking.com.cn/Public/pics/userphoto/20210419/607cea6aaaf2a.jpg" class="company-logo"></image>
+  <text class="company-val">利亚的集团</text>
+</view>

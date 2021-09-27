@@ -1,0 +1,7 @@
+
+.not-content-img {
+	display: flex;
+	margin: 130rpx auto 0 auto;
+	width: 500rpx;
+	height: 300rpx;
+}

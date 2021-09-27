@@ -1,0 +1,165 @@
+.header {
+  background-color: rgb(53, 88, 224);
+  height: 465rpx;
+  position: relative;
+}
+
+.status {
+  position: absolute;
+  top: 176rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.user {
+  position: relative;
+  z-index: 99;
+  margin: -84rpx 30rpx 0 30rpx;
+
+}
+
+.goods-list {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border-radius: 20rpx;
+  margin: 20rpx 30rpx;
+  overflow: hidden;
+}
+
+.order-info {
+  margin: 20rpx 30rpx;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 20rpx 30rpx;
+}
+
+.info-item {
+  display: flex;
+  color: #666666;
+  font-size: 26rpx;
+}
+
+.info-item + .info-item {
+  margin-top: 12rpx;
+}
+
+.rule-model {
+  margin: 20rpx 30rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 20rpx 30rpx;
+}
+
+.rule-title,
+.goods-title {
+  font-size: 30rpx;
+  color: #1A1A1A;
+  font-weight: bold;
+}
+
+.rule-content {
+  margin-top: 10rpx;
+  color: #1A1A1A;
+  font-size: 28rpx;
+}
+
+.cost-model, .company-model {
+  margin: 20rpx 30rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.lease-goods-list {
+  padding-top: 30rpx;
+
+}
+
+.goods-title {
+  margin-left: 20rpx;
+}
+
+.goods-title .address {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  color: #666666;
+  font-weight: 400;
+}
+
+.use-time {
+  margin: 20rpx;
+  background-color: #FFF4E6;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.startTime, .endTime {
+  color: #1A1A1A;
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.intervalTime {
+  position: relative;
+  margin: 0 20rpx;
+  color: #1A1A1A;
+  font-size: 22rpx;
+  padding: 0 11rpx;
+  height: 36rpx;
+  border-radius: 18rpx;
+  background-color: #ffffff;
+  border: 1rpx solid #FFA12C;
+  box-sizing: border-box;
+}
+
+.intervalTime::after,
+.intervalTime::before {
+  content: '';
+  position: absolute;
+  width: 10rpx;
+  height: 2rpx;
+  background: #FFA12C;
+  top: 17rpx;
+}
+
+.intervalTime::after {
+  left: -10rpx;
+}
+
+.intervalTime::before {
+  right: -10rpx;
+}
+
+
+.footer {
+  border-top: 1rpx solid #e5e5e5;
+  height: 100rpx;
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: row-reverse;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.btn {
+  margin-left: 15rpx;
+  width: 172rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid #666666;
+  border-radius: 20rpx;
+  color: #666666;
+}

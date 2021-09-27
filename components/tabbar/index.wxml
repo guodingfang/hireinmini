@@ -22,8 +22,9 @@
         class="tab-icon tab-icon-custom"
         style="width: {{ item.width }}; height: {{ item.height }}"
         src="{{ item.iconPath }}"
-        mode="aspectFit">
-      </image>
+        mode="aspectFit"
+        bind:tap="onSkipCustom"
+      ></image>
     </view>
   </block>
   

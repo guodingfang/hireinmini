@@ -35,6 +35,11 @@ Component({
           url: `/pages/myorder/myorder?type=${type}`,
         })
       }
+    },
+    onSkipOrderDetails() {
+      wx.navigateTo({
+        url: '/pages/order-list/order-list',
+      })
     }
   }
 })

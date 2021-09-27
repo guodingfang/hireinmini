@@ -1,0 +1,20 @@
+
+<view style="height: 160rpx">
+  <v-tab list="{{tabList}}" fixed="{{true}}" isTop="{{false}}" />
+  <view class="status-list">
+    <view class="status-item" wx:for="{{statusList}}" wx:key="id">{{item.name}}</view>
+  </view>
+</view>
+
+<view class="order-list">
+  <block wx:if="{{goodsList.length}}">
+    <v-item wx:for="{{goodsList}}" wx:key="id"/>
+  </block>
+
+  <view wx:else>
+    <v-not-content>
+      <text class="not-text" slot="text">暂无订单...</text>
+    </v-not-content>
+  </view>
+
+</view>

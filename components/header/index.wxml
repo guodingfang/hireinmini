@@ -14,14 +14,8 @@
   </view>
   
   <view class="header-content" wx:if="{{isHeaderContent}}">
-    <v-location
-      wx:if="{{isLocation}}"
-      cityname="{{ cityname }}"
-      bind:change="onChangeLocation"
-      m-location="m-location"
-    ></v-location>
     <v-search
-      m-search="{{isLocation ? 'm-search' : 'm-search-xl' }}"
+      m-search="{{isWeather ? 'm-search' : 'm-search-xl' }}"
       placeholder="{{placeholder}}"
       search="{{search}}"
       value="{{value}}"
@@ -30,5 +24,10 @@
       bind:clear="onClear"
       bind:change="onChange"
     ></v-search>
+    <m-weather
+      wx:if="{{isWeather}}"
+      locationInfo="{{locationInfo}}"
+      bind:change="onChangeLocation"
+    />
   </view>
 </view>

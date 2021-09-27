@@ -1,0 +1,46 @@
+@import '../common.wxss';
+
+.tab {
+  display: flex;
+  height: 260rpx;
+  padding-top: 33rpx;
+  box-sizing: border-box;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tab-img {
+  width: 260rpx;
+  height: 172rpx;
+}
+
+.tab-val {
+  color: #666666;
+  font-size: 32rpx;
+}
+
+.tab-item-select {
+  position: relative;
+}
+
+.tab-item-select::after {
+  content: '';
+  position: absolute;
+  width: 40rpx;
+  height: 6rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: #0400E6;
+}
+
+.tab-item-select .tab-val{
+  color: #1A1A1A;
+  font-weight: 800;
+}

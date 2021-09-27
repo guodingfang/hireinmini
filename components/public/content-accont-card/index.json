@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "m-concern": "/components/public/concern-btn"
+  }
+}

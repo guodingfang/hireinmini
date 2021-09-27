@@ -6,29 +6,100 @@
     isTopTitle="{{true}}"
     isHeaderContent="{{false}}"
   >
-    <view slot="top-header-content" class="header-title">内容账号</view>
+    <view slot="top-header-content" class="header-title" wx:if="{{opacity === 0}}">
+      <image class="icon-back" src="/images/icon/back.png" bind:tap="onBack"></image>
+      <text>内容账号</text>
+    </view>
+    <view
+      wx:else
+      slot="top-header-content"
+      class="header-contnt"
+      style="opacity: {{opacity}}"
+      bind:tap="onTop"
+    >
+      <image class="icon-back" src="/images/icon/back.png" bind:tap="onBack"></image>
+      <image class="small-user-img" src="{{userinfo.userpic}}"></image>
+      <view class="user-info">
+        <view class="user-name">{{userinfo.nickname}}</view>
+      </view>
+    </view>
   </v-header>
 </view>
 
 <view class="fixed-header-bg" style="height: {{headerBlock}}rpx">
-	<image class="fixed-header-bg-img" mode="widthFix" src="/images/public/user-bg-big.png"></image>
+	<image class="fixed-header-bg-img" mode="widthFix" src="{{bgImagesUrl}}"></image>
 </view>
 
-<view class="user-bg">
-	<view class="user-mask" style="top: {{headerBlock + 250}}rpx"></view>
-	<image class="user-bg-img" mode="widthFix" src="/images/public/user-bg-big.png"></image>
-</view>
+<scroll-view
+  class="content-account-container"
+  scroll-y="{{!isScroll}}"
+  style="--topHeader--: {{headerBlock}}rpx"
+  bindscroll="onScroll"
+  scroll-top="{{scrollTop}}"
+  scroll-with-animation="{{openAnimation}}"
+>
+  <view class="user-bg">
+    <view class="user-mask"></view>
+    <image class="user-bg-img" style="top: {{-headerBlock}}rpx" mode="widthFix" src="{{bgImagesUrl}}"></image>
+  </view>
 
-<v-info userinfo="{{userinfo}}" />
+  <v-info userinfo="{{userinfo}}" company="{{company}}" isCurrentUser="{{isCurrentUser}}" />
 
-<view class="content" id="container">
-  <m-sticky container="{{container}}" offset-top="{{headerBlock / ratio - 2}}">
-    <view class="list">
-      <view class="item {{item.select ? 'select-item' : ''}}" wx:for="{{tabList}}" wx:key="id">{{item.name}}</view>
+  <m-tabs
+    list="{{tabList}}"
+    top="{{headerBlock}}"
+    isScroll="{{isScroll}}"
+    openScrollControl="{{true}}"
+    bind:select="onSelectTabs"
+  >
+    <view slot="item-1">
+      <block wx:if="{{allList && allList.length}}">
+        <v-item
+          info="{{item}}"
+          wx:for="{{ allList }}"
+          showConcern="{{false}}"
+          isCurrentUser="{{isCurrentUser}}"
+          wx:key="id"
+        />
+      </block>
+      <block wx:else>
+        <v-not-content />
+      </block>
     </view>
-  </m-sticky>
+    <view slot="item-2">
+      <!-- <block wx:if="{{dynamicList && dynamicList.length}}"> -->
+        <block wx:if="{{allList && allList.length}}">
+        <!-- <v-dynamic-item info="{{item}}" wx:for="{{ dynamicList }}" wx:key="id"/> -->
+        <v-dynamic-item info="{{item}}" wx:for="{{ allList }}" wx:key="id"/>
+      </block>
+      <block wx:else>
+        <v-not-content />
+      </block>
+    </view>
+    <view slot="item-3">
+      <block wx:if="{{videoList && videoList.length}}">
+        <v-video-item info="{{item}}" wx:for="{{ videoList }}" wx:key="id"/>
+      </block>
+      <block wx:else>
+        <v-not-content />
+      </block>
+    </view>
+    <view class="mini-video-list" slot="item-4">
+      <block wx:if="{{smallvideoList && smallvideoList.length}}">
+        <v-mini-video-item wx:for="{{ smallvideoList }}" wx:key="id" />
+      </block>
+      <block wx:else>
+        <v-not-content />
+      </block>
+    </view>
+    <view class="goods-list" slot="item-5">
+      <block wx:if="{{stroeList && stroeList.length}}">
+        <v-goods-item wx:for="{{ stroeList }}" wx:key="id"/>
+      </block>
+      <block wx:else>
+        <v-not-content />
+      </block>
+    </view>
+  </m-tabs>
+</scroll-view>
 
-  <block wx:for="{{ releaseList }}" wx:key="id">
-    <v-item info="{{item}}" />
-  </block>
-</view>

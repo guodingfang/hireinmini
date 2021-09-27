@@ -1,0 +1,12 @@
+<view class="item">
+  <image src="https://wxapp.ilinking.com.cn/Public/pics/goods/20210501/2.png" class="product-logo"></image>
+  <view class="info">
+    <view class="name">利亚德紧急驰援河南，首批救灾物资预计今日抵达</view>
+    <view class="specs">
+      <view class="specs-item">规格：55寸</view>
+      <view class="specs-item">单位：台</view>
+      <view class="specs-item">品牌：小米</view>
+      <view class="specs-item"></view>
+    </view>
+  </view>
+</view>

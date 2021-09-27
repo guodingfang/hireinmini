@@ -1,0 +1,19 @@
+
+.company {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  width: 30rpx;
+  height: 30rpx;
+  box-shadow: 0 0 10rpx rgba(4, 0, 230, 0.2);
+  border: 1rpx solid #F5F5F5;
+  border-radius: 50%;
+}
+
+.company-val {
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  color: #666666;
+}

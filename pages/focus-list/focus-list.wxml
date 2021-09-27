@@ -1,0 +1,16 @@
+<view class="list">
+  <view
+    bind:tap="onSkipUserInfo"
+    class="item"
+    data-userid="{{item.userid}}"
+    wx:for="{{list}}"
+    wx:key="id"
+  >
+    <image class="user-logo" src="{{item.userpic}}"></image>
+    <view class="info">
+      <view class="name">{{item.nickname}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="not-more">没有更多了</view>

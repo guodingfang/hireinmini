@@ -1,0 +1,18 @@
+<view class="operation-model">
+  <image class="icon-more" src="/images/icon/more-3.png" bind:tap="onMore"></image>
+
+  <view class="operation" wx:if="{{isOperation}}">
+    <view class="operation-item">
+      <image class="icon-operation" src="/images/icon/delete.png"></image>
+      <text class="val">删除</text>
+    </view>
+    <view class="operation-item">
+      <image class="icon-operation" src="/images/icon/edit.png"></image>
+      <text class="val">编辑</text>
+    </view>
+    <view class="operation-item">
+      <image class="icon-operation" src="/images/icon/top.png"></image>
+      <text class="val">置顶</text>
+    </view>
+  </view>
+</view>

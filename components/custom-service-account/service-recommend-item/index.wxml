@@ -1,0 +1,14 @@
+<view class="item" bind:tap="onSkipDetails">
+  <image class="img" src="/images/none.png"></image>
+  <view class="info">
+    <view class="name">舞台音响15寸户外演...</view>
+    <view class="explain">尺寸：500mm*500mm</view>
+    <view class="price-btn">
+      <view class="price">
+        <m-price price="{{9999}}" />
+        <m-spec spec="/㎡/2天" />
+      </view>
+      <image class="btn" src="/images/public/hire-btn.png"></image>
+    </view>
+  </view>
+</view>

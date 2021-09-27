@@ -1,3 +1,5 @@
+import { getHitoryList, getHotList } from '../../models/map'
+
 import { Config } from '../../utils/config.js';
 var util = require('../../utils/util.js');
 var config = new Config();
@@ -62,11 +64,29 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        //获取历史城市列表
-        getHitoryList(this);
-        //获取热门城市列表
-        getHotList(this);
-    },
+			//获取历史城市列表
+			this.getHitoryList();
+			//获取热门城市列表
+			this.getHotList();
+		},
+		// async getCityList() {
+		// 	const cityList = await getCityList()
+		// 	this.setData({
+		// 		cityList: cityList,
+		// 	})
+		// },
+		async getHitoryList() {
+			const hisList = await getHitoryList()
+			this.setData({
+				history: hisList,
+			})
+		},
+		async getHotList() {
+			const hotlist = await getHotList()
+			this.setData({
+				hotlist: hotlist,
+			})
+		},
     clickLetter: function (e) {
         var showLetter = e.currentTarget.dataset.letter;
         this.setData({
@@ -92,7 +112,14 @@ Page({
         var rurl = this.data.rurl;
         var pages = getCurrentPages();
         var prevPage = pages[pages.length - 2]; //上一个页面
-        if (rurl == "index") {
+
+				if (rurl === 'service') {
+					wx.setStorageSync('cityinfo', event.currentTarget.dataset)
+					prevPage.updateCity(event.currentTarget.dataset)
+					wx.navigateBack({
+						delta: 1,
+					})
+				} else if (rurl == "index") {
             //直接调用上一个页面的setData()方法，把数据存到上一个页面中去
             wx.setStorageSync('cityinfo', event.currentTarget.dataset);//城市详情缓存
             //新增用户城市
@@ -196,26 +223,6 @@ function getCityList(that) {
 }
 
 /**
- * 获取历史城市列表
- */
-function getHitoryList(that) {
-    wx.request({
-        url: Config.baseUrl + 'Index/getHitoryList',
-        header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        data: { userid: userid },
-        method: 'POST',
-        success: function (data) {
-            var hisList = data.data;
-            that.setData({
-                history: hisList,
-            })
-        }
-    })
-}
-
-/**
  * 新增用户城市
  */
 function addUserCity(callback) {
@@ -230,25 +237,6 @@ function addUserCity(callback) {
             if (res.data.result == true) {
                 callback();
             }
-        }
-    })
-}
-
-/**
- * 热门城市列表
- */
-function getHotList(that) {
-    wx.request({
-        url: Config.baseUrl + 'Index/getHotList',
-        header: {
-            "Content-Type": "application/x-www-form-urlencoded"
-        },
-        method: 'POST',
-        success: function (data) {
-            var hotlist = data.data;
-            that.setData({
-                hotcityList: hotlist,
-            })
         }
     })
 }

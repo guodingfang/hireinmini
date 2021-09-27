@@ -36,6 +36,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    const { cityname = '' } = wx.getStorageSync('cityinfo')
+    this.setData({ cityname })
     this.getHeaderBlock()
     this.getknowledgeRecommend()
     this.getTopNQuestions()
@@ -69,8 +71,19 @@ Page({
 
   onSkipTool() {
     wx.navigateTo({
-      url: '/pages/calculator/calculator',
+      url: '/pages/tool/tool',
     })
+  },
+
+  onSkipVip() {
+    wx.showToast({
+      title: '敬请期待',
+      icon: 'none'
+    })
+  },
+
+  getLocation(e) {
+    this.setData({ cityname: e.detail.city })
   },
 
   /**
@@ -84,7 +97,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const { cityname = '' } = wx.getStorageSync('cityinfo')
+    if(cityname !== this.data.cityname) {
+      this.setData({
+        cityname
+      })
+    }
   },
 
   /**

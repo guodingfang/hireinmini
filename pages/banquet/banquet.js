@@ -158,8 +158,6 @@ Page({
     var monthIndex = value[1];
     var year = yearsArr[0][yearIndex];
     var month = yearsArr[1][monthIndex];
-    // console.log("选择的年月1", year);
-    // console.log("选择的年月2", month, monthIndex);
     this.getDayList(year, month);
     this.setData({
       yearsArrIndex: value
@@ -171,7 +169,6 @@ Page({
     var yearsArrIndex = this.data.yearsArrIndex;
     var month = yearsArrIndex[1];
     if(month < 11){
-      // console.log("小于12", month)
       month = month + 1;
       yearsArrIndex[1] = month;
       this.setData({
@@ -190,10 +187,9 @@ Page({
     var yearsArrIndex = this.data.yearsArrIndex;
     var month = yearsArrIndex[1];    
     if(month >= curMonth){
-      // console.log("小于12", curMonth, month)
+
       month = month - 1;
       yearsArrIndex[1] = month;
-      // console.log("1111", month, yearsArrIndex)
       this.setData({
         yearsArrIndex: yearsArrIndex
       })

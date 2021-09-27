@@ -4,6 +4,7 @@ import { getDiscoverMsgList } from '../../models/release'
 import { getCarousel, getRecommendAccountList } from '../../models/util'
 import { getAttentionedList } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
+
 import loginPage from '../../template/login'
 
 const app = getApp();
@@ -12,7 +13,7 @@ Page({
 		headerBlock: 0,
 		loadingHidden: false,
 		releaseList: [],
-		cityname: '全国',
+		cityname: '',
 		pagenum: 0,
 		moreHidden: false,
 		tabname: 'recommend',
@@ -21,22 +22,10 @@ Page({
 			list: [],
 		},
 		tabList: [
-      {
-        id: '1',
-				name: '关注',
-				type: 'focus',
-      },
-      {
-        id: '2',
-				name: '推荐',
-				type: 'recommend',
-				select: true
-      },
-      {
-        id: '3',
-				name: '全国',
-				type: 'country',
-      }
+      { id: '1', name: '关注', type: 'focus' },
+      { id: '2', name: '推荐', type: 'recommend', select: true },
+      { id: '3', name: '全部', type: 'country' },
+			{ id: '4', name: '本地', type: 'native' }
     ]
 	},
 
@@ -46,6 +35,13 @@ Page({
 			loginPage.init.apply(this, [])
 		}
 		this.getHeaderBlock()
+	},
+
+	// 根据经纬度获取位置信息
+	getLocation(e) {
+		this.setData({
+			cityName: e.detail.city
+		})
 	},
 
 	getHeaderBlock() {
@@ -85,6 +81,12 @@ Page({
 		})
 	},
 
+	onSkipFocus() {
+		wx.navigateTo({
+			url: '/pages/focus-list/focus-list',
+		})
+	},
+
 	async onSelectTab(e) {
 		const { tabList } = this.data
 		const { type } = e.detail
@@ -106,6 +108,7 @@ Page({
 	},
 
 	async getDiscoverMsgList({ reset = false }) {
+		console.log('@@')
 		const { pagenum, cityname, releaseList, tabname = '' } = this.data
 		if (tabname === 'focus') {
 			await this.getAttentionedList()
@@ -139,31 +142,6 @@ Page({
 		})
 	},
 
-	// 入驻
-	// skipCompany(e) {
-	// 	const { companyid } = wx.getStorageSync('userinfo')
-	// 	if (companyid > 0) {
-	// 		// 有公司跳转公司详情页
-	// 		wx.navigateTo({
-	// 			url: '/pages/companydetails/companydetails?typeid=1&companyid=' + companyid,
-	// 		})
-	// 	} else { // 无公司跳转创建公司或绑定公司页
-	// 		wx.navigateTo({
-	// 			url: '/pages/company_select/company_select',
-	// 		})
-	// 	}
-	// },
-
-	getCityInfo() {
-		const { cityname = '' } = wx.getStorageSync('cityinfo')
-		return cityname
-	},
-
-	// 客服消息
-	// handleContact(e) {
-	// 	console.log('e', e)
-	// },
-
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
@@ -173,11 +151,8 @@ Page({
 			await this.login();
 			return
 		} 
-		const cityname = this.getCityInfo()
-		if(cityname === this.data.cityname && this.data.releaseList.length !== 0) return
 		this.setData({
 			pagenum: 0,
-			cityname: cityname || this.data.cityname,
 		})
 		this.getCarousel()
 		this.getDiscoverMsgList({ reset: true })
@@ -187,14 +162,7 @@ Page({
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage(e) {
-		if (e.from === 'button') {
-			let { msgid, url } = e.target.dataset;
-			return {
-				title: '赁客+',
-				path: `/pages/detail/detail?msgid=${msgid}`,
-				imageUrl: url
-			}
-		}
+
 	},
 
 	/* 下拉刷新 */

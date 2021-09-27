@@ -1,0 +1,20 @@
+<view class="item" bind:tap="onSkipDetail">
+  <view class="content">
+    <view class="info two-row-overstep">{{ info.content }}</view>
+    <view class="company-browse">
+      <view class="company">
+        <image class="company-logo" src="{{ info.userpic }}"></image>
+        <text class="val">{{ info.contacter }}</text>
+      </view>
+      <view class="browse">
+        <image class="icon-browse" src="/images/icon/browse.png"></image>
+        <text class="val">{{ info.viewcount > 999 ? '999+' : info.viewcount }}</text>
+      </view>
+    </view>
+  </view>
+  <image
+    wx:if="{{info.picsign !== '1' && info.pics.length}}"
+    class="big-img"
+    src="{{imgUrl}}{{info.pics[0].picurl}}"
+  ></image>
+</view>

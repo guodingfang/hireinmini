@@ -1,0 +1,161 @@
+<view class="container">
+  <view class="model">
+    <m-header title="间距(mm)" more="{{false}}" />
+    <view class="list space">
+      <view
+        class="item {{ selectSpaceId === item.id ? 'select-item' : ''}}"
+        wx:for="{{spaceList}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        data-type="selectSpaceId"
+        bind:tap="onSelectTab"
+      >{{item.spacing}}</view>
+    </view>
+
+    <m-header title="规格(mm)" more="{{false}}" />
+    <view class="list spec">
+      <view
+        class="item {{ selectSpecId === item.id ? 'select-item' : ''}}"
+        wx:for="{{specList}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        data-type="selectSpecId"
+        bind:tap="onSelectTab"
+      >{{item.specifications}}</view>
+    </view>
+
+    <m-header title="面积(㎡)" more="{{false}}" />
+    <view class="input-container">
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入宽度"
+        type="number"
+        data-type="width"
+        bindinput="onInputChange"
+      />
+      <text class="sign">×</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入高度"
+        type="number"
+        data-type="height"
+        bindinput="onInputChange"
+      />
+      <text class="sign">=</text>
+      <view class="result">
+        <text class="val">{{area}}</text>
+        <text class="unit-symbol">㎡</text>
+      </view>
+    </view>
+
+    <view class="input-title">屏幕纵横比</view>
+    <view class="list">
+      <view
+        class="item {{selectScreen === item ? 'select-item' : ''}}"
+        wx:for="{{screenRatioList}}"
+        wx:key="id"
+        data-item="{{item}}"
+        bind:tap="onSelectScreenRatio"
+      >{{item}}</view>
+    </view>
+    
+    <view class="screen-ratio-size">
+      <view class="size-item">
+        <text class="label">高度：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入高度"
+          type="number"
+          value="{{screenHeight}}"
+          data-type="screenHeight"
+          bindinput="onInputScreenChange"
+        />
+      </view>
+      <image class="icon-transition" src="/images/icon/transition.png"></image>
+      <view class="size-item">
+        <text class="label">宽度：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入宽度"
+          type="number"
+          value="{{screenWidth}}"
+          data-type="screenWidth"
+          bindinput="onInputScreenChange"
+        />
+      </view>
+    </view>
+  </view>
+
+  <view class="model">
+    <m-header title="计算结果" more="{{false}}">
+      <view slot="tips" class="header-tips">（结果仅供参考）</view>
+    </m-header>
+
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">像素密度/㎡：</text>
+        <text class="col-val">{{ pixel }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">单个箱体点数：</text>
+        <text class="col-val">{{ point }}</text>
+      </view>
+    </view>
+
+    <view class="input-title">屏幕总点数(宽度点数 × 高度点数)：</view>
+    <view class="input-container">
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl not-tool-item-input"
+        placeholder="宽度点数"
+        disabled="true"
+        value="{{widthPoint}}"
+        type="number"
+      />
+      <text class="sign">×</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl not-tool-item-input"
+        placeholder="高度点数"
+        disabled="true"
+        value="{{heightPoint}}"
+        type="number"
+      />
+      <text class="sign">=</text>
+      <view class="result">
+        <text class="val">{{areaPoint}}</text>
+        <text class="unit-symbol">点</text>
+      </view>
+    </view>
+    <view class="input-title input-title-middle">推荐信息源分辨率</view>
+    <view class="input-title">箱体数量(宽的块数 × 高的块数)：</view>
+    <view class="input-container">
+      <input
+        class="tool-item-input not-tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="宽的块数"
+        disabled="true"
+        type="number"
+        value="{{widthBlock}}"
+      />
+      <text class="sign">×</text>
+      <input
+        class="tool-item-input not-tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="高的块数"
+        disabled="true"
+        type="number"
+        value="{{heightBlock}}"
+      />
+      <text class="sign">=</text>
+      <view class="result">
+        <text class="val">{{sumBlock}}</text>
+        <text class="unit-symbol">块</text>
+      </view>
+    </view>
+  </view>
+</view>

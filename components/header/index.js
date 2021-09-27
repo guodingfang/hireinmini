@@ -1,4 +1,5 @@
-const { fa } = require("../../utils/pinYin");
+import { getLocation } from '../../models/user'
+import { getMap } from '../../models/map'
 
 const app = getApp();
 
@@ -26,11 +27,17 @@ Component({
       type: String,
       value: ''
     },
-    isLocation: {
+    isWeather: {
       type: Boolean,
-      value: true
+      value: false
     },
-    cityname: String,
+    cityname: {
+      type: String,
+      value: '',
+      observer() {
+        this.addressGetinfo()
+      }
+    },
     placeholder: String,
     search: {
       type: String,
@@ -56,17 +63,64 @@ Component({
    */
   data: {
     statusBarHeight: app.globalData.statusBarHeight,
+    locationInfo: null,
+    currentCity: '',
+  },
+
+  lifetimes: {
+    ready() {
+      this.getLocation()
+    }
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
-    onChangeLocation() {
-      wx.navigateTo({
-        url: '/pages/citylist/citylist?rurl=index',
+    // 根据城市名获取位置信息
+    addressGetinfo() {
+      const { cityname } = this.properties
+      console.log('cityname', cityname)
+      if (!cityname) return
+      const that = this
+      getMap().geocoder({
+        address: cityname,
+        success({ result }) {
+          const { province, city, district } = result.address_components
+          const locationInfo = { province, city, county: district }
+          that.setData({
+            locationInfo,
+          })
+          that.triggerEvent('getLocation', { city }, {})
+        }
       })
     },
+    // 根据经纬度获取位置信息
+    getLocation() {
+      if (this.properties.cityname) return
+      const that = this
+      getLocation(({latitude, longitude}) => {
+        getMap().reverseGeocoder({
+          location: `${latitude},${longitude}`,
+          success({ result }) {
+            const { province, city, district: county } = result.address_component
+            const locationInfo = { province, city, county }
+            that.setData({
+              locationInfo,
+              currentCity: city,
+            })
+            that.triggerEvent('getLocation', { city }, {})
+          }
+        })
+      }, () => {})
+    },
+
+    onChangeLocation() {
+      wx.navigateTo({
+        url: '/pages/citylist/citylist?rurl=service',
+      })
+    },
+
     onSearch() {
       wx.navigateTo({
         url: '/pages/search-goods/search-goods',

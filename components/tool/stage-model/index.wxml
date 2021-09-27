@@ -1,0 +1,75 @@
+<view class="container">
+  <view class="model">
+
+    <view class="tab">
+      <block wx:for="{{tabList}}" wx:key="id">
+        <view
+          class="tab-item {{ item.select ? 'tab-item-select' : ''}}"
+          data-type="{{item.type}}"
+          bind:tap="onSelectType"
+        >
+          <image src="{{remoteImagesUrl}}/tool/{{item.type}}-stage-{{item.select ? 'select' : 'not-select'}}.png" class="tab-img"></image>
+          <text class="tab-val">{{item.name}}</text>
+        </view>
+      </block>
+    </view>
+
+    <m-header title="舞台板块数" more="{{false}}">
+      <view slot="tips" class="header-tips">（单位：块）</view>
+    </m-header>
+
+    <view class="input-item">
+      <text class="label">横向块数：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入横向块数"
+        type="number"
+        data-type="xCross"
+        value="{{xCross}}"
+        bindinput="onInputChange"
+      />
+      <text class="unit">块</text>
+    </view>
+    <view class="input-item">
+      <text class="label">纵向块数：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入纵向块数"
+        type="number"
+        data-type="yCross"
+        value="{{yCross}}"
+        bindinput="onInputChange"
+      />
+      <text class="unit">块</text>
+    </view>
+  </view>
+
+
+  <view class="model">
+    <m-header title="舞台板块数" more="{{false}}">
+      <view slot="tips" class="header-tips">（结果仅供参考）</view>
+    </m-header>
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">舞台板数(块)：</text>
+        <text class="col-val">{{ plateAmount }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">立柱数量(个)：</text>
+        <text class="col-val">{{ columnAmount }}</text>
+      </view>
+    </view>
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">侧片数量(个)：</text>
+        <text class="col-val">{{ pleuritesAmount }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">调节脚数(个)：</text>
+        <text class="col-val">{{ footAmount }}</text>
+      </view>
+    </view>
+  </view>
+</view>

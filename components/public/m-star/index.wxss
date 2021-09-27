@@ -1,0 +1,17 @@
+.star {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+}
+
+.icon-start {
+  width: 18rpx;
+  height: 18rpx;
+  margin-right: 4rpx;
+}
+
+.val {
+  color: #ffffff;
+  font-size: 22rpx;
+  margin-left: 10rpx;
+}

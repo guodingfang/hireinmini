@@ -96,5 +96,10 @@ Component({
         url: `/${taburl}`,
       })
     },
+    onSkipCustom() {
+      wx.navigateTo({
+        url: '/pages/publish/publish',
+      })
+    }
   }
 })

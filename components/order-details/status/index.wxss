@@ -1,0 +1,48 @@
+
+.status-model {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.status {
+  color: #ffffff;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.time {
+  margin-top: 10rpx;
+  display: flex;
+  color: #ffffff;
+  font-size: 26rpx
+}
+
+.time-label {
+
+}
+
+.btn {
+  margin-top: 10rpx;
+  width: 200rpx;
+  height: 60rpx;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-bg {
+  position: absolute;
+  width: 200rpx;
+  height: 60rpx;
+  z-index: -1;
+}
+
+.btn-val {
+  color: #0400E6;
+  font-size: 26rpx;
+  font-weight: bold;
+}

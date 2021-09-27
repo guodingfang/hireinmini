@@ -1,0 +1,67 @@
+
+.upload-img-container,
+.upload-video-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx 30rpx;
+}
+
+.upload-item {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+}
+
+.upload-item:not(:nth-child(4n)) {
+  margin-right: 16rpx;
+}
+
+.upload-image {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
+  background-color: rgba(0, 0, 0, .8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-delete {
+  width: 24rpx;
+  height: 25rpx;
+}
+
+.add-upload {
+  box-sizing: border-box;
+  border: 2rpx solid #E5E5E5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.icon-add {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.add-text {
+  color: #999999;
+  margin-top: 12rpx;
+  font-size: 24rpx;
+}
+
+.upload-video-img {
+  width: 690rpx;
+}

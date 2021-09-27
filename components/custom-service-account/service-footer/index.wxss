@@ -1,0 +1,74 @@
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 100rpx;
+  display: flex;
+  background-color: #FFFFFF;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.dial-button {
+  margin: 0;
+  width: 146rpx;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFEED9;
+  border-radius: 20rpx;
+  border: 0 solid transparent;
+}
+
+.dial-button::after{
+  border: 0;
+}
+
+.icon-dial {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.dial-val {
+  margin-left: 12rpx;
+  color: #1A1A1A;
+  font-size: 24rpx;
+}
+
+.btns {
+  min-width: 345rpx;
+  display: flex;
+  height: 70rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  display: flex;
+}
+
+.btn {
+  min-width: 220rpx;
+  max-width: 345rpx;
+  flex: 0 0 1;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.alone-btn {
+  width: 345rpx;
+}
+
+.btn-1 {
+  background-color: #FFA12C;
+}
+
+.btn-2 {
+  background-color: #FE0A00;
+}

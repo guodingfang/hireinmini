@@ -1,0 +1,219 @@
+<view class="container">
+  <view class="model">
+    <m-header title="比例参考" more="{{false}}" />
+    <view class="scal-list">
+      <view
+        bind:tap="selectScalType"
+        class="scal-item {{item.select ? 'scal-select-item' : ''}}"
+        wx:for="{{scalList}}"
+        data-id="{{item.id}}"
+        wx:key="id"
+      >{{item.name}}</view>
+    </view>
+
+    <view class="input-item">
+      <text class="label">宽度：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入宽度"
+        data-type="scaleWidth"
+        value="{{scaleWidth}}"
+        type="number"
+        bindinput="onScaleInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+
+    <view class="input-item">
+      <text class="label">高度：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入高度"
+        data-type="scaleHeight"
+        value="{{scaleHeight}}"
+        type="number"
+        bindinput="onScaleInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+
+    <m-header title="源分辨率" more="{{false}}">
+      <view slot="tips" class="header-tips">（输出至LED的总分辨率）</view>
+    </m-header>
+
+    <view class="row">
+      <view class="input-item">
+        <text class="label">宽：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入宽度"
+          data-type="dpiWidth"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">像素</text>
+      </view>
+      <view class="input-item">
+        <text class="label">高：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入高度"
+          data-type="dpiHeight"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">像素</text>
+      </view>
+    </view>
+
+    <m-header title="LED屏实际尺寸" more="{{false}}" />
+    <view class="row">
+      <view class="input-item">
+        <text class="label">宽：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入宽度"
+          data-type="ledWidth"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">米</text>
+      </view>
+      <view class="input-item">
+        <text class="label">高：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入高度"
+          data-type="ledHeight"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">米</text>
+      </view>
+    </view>
+
+    <m-header title="开窗大小" more="{{false}}" />
+    <view class="row size-row">
+      <view class="input-item">
+        <text class="label">A宽：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入宽度"
+          data-type="aWidth"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">米</text>
+      </view>
+      <view class="input-item">
+        <text class="label">高：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入高度"
+          data-type="aHeight"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">米</text>
+      </view>
+    </view>
+
+    <view class="row size-row">
+      <view class="input-item">
+        <text class="label">B宽：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入宽度"
+          data-type="bWidth"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">米</text>
+      </view>
+      <view class="input-item">
+        <text class="label">高：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入高度"
+          data-type="bHeight"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">米</text>
+      </view>
+    </view>
+
+    <view class="row size-row">
+      <view class="input-item">
+        <text class="label">C宽：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入宽度"
+          data-type="cWidth"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">米</text>
+      </view>
+      <view class="input-item">
+        <text class="label">高：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="输入高度"
+          data-type="cHeight"
+          type="number"
+          bindinput="onInputChange"
+        />
+        <text class="unit">米</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="model">
+    <m-header title="窗口参数计算结果" more="{{false}}">
+      <view slot="tips" class="header-tips">（结果仅供参考）</view>
+    </m-header>
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">A宽(像素)：</text>
+        <text class="col-val">{{ aWidthPixel }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">A高(像素)：</text>
+        <text class="col-val">{{ aHeightPixel }}</text>
+      </view>
+    </view>
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">B宽(像素)：</text>
+        <text class="col-val">{{ bWidthPixel }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">B高(像素)：</text>
+        <text class="col-val">{{ bHeightPixel }}</text>
+      </view>
+    </view>
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">C宽(像素)：</text>
+        <text class="col-val">{{ cWidthPixel }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">C高(像素)：</text>
+        <text class="col-val">{{ cHeightPixel }}</text>
+      </view>
+    </view>
+  </view>
+</view>

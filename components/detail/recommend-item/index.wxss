@@ -1,0 +1,59 @@
+@import '/assets/style/global.wxss';
+
+.item {
+  display: flex;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10rpx;
+  justify-content: space-between;
+}
+
+.info {
+  width: 100%;
+  color: #1A1A1A;
+  font-size: 30rpx;
+  max-height: 100rpx;
+  line-height: 50rpx;
+}
+
+.company-browse {
+  display: flex;
+}
+
+.company, .browse {
+  display: flex;
+  align-items: center;
+}
+
+.browse {
+  margin-left: 20rpx;
+}
+
+.val {
+  color: #666666;
+  font-size: 22rpx;
+  margin-left: 10rpx;
+}
+
+.big-img {
+  width: 225rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+}
+
+.company-logo {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+}
+
+.icon-browse {
+  width: 32rpx;
+  height: 32rpx;
+}

@@ -1,7 +1,7 @@
 <image
   class="skip-image"
   src="{{src}}"
-  bind:tap="onSkip"
+  catchtap="onSkip"
   style="width: {{width}}rpx; height: {{height}}rpx; border-radius: {{radius}}rpx"
   webp
   lazy-load

@@ -1,0 +1,14 @@
+<view class="item" bind:tap="onSkipDetails">
+  <image class="img" src="https://wxapp.ilinking.com.cn/Public/pics/goods/20210501/2.png"></image>
+  <view class="info">
+    <view class="name">舞台灯光cob面光灯影视婚庆大型...</view>
+    <view class="explain">品牌：恩美灯光</view>
+    <view class="price-btn">
+      <view class="price">
+        <m-price price="{{9999}}" />
+        <m-spec spec="/㎡/2天" />
+      </view>
+      <image class="btn" src="/images/public/hire-btn.png"></image>
+    </view>
+  </view>
+</view>

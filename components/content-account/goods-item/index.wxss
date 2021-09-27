@@ -1,0 +1,31 @@
+@import "../../../assets/style/global.wxss";
+
+.item {
+  width: 335rpx;
+  height: 410rpx;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20rpx;
+  border: 1rpx solid #E5E5E5;
+  margin-bottom: 20rpx;
+}
+
+.goods-logo {
+  width: 335rpx;
+  height: 250rpx;
+}
+
+.info {
+  padding: 10rpx 15rpx 15rpx 15rpx;
+}
+
+.name {
+  color: #1A1A1A;
+  font-size: 28rpx;
+}
+
+.price-browse {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

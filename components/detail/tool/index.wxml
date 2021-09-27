@@ -1,0 +1,15 @@
+
+<view class="tool">
+	<view class="tool-item">
+		<image class="tool-icon" src="/images/tool/icon-browse.png"></image>
+		<text class="tool-val">{{ info.viewcount > 999 ? '999+' : info.viewcount }}</text>
+	</view>
+	<view class="tool-item tool-share">
+		<image class="tool-icon" src="/images/tool/icon-share.png"></image>
+		<text class="tool-val">{{ info.forwardcount || '分享' }}</text>
+	</view>
+	<view class="tool-item">
+		<image class="tool-icon" src="{{ !info.praised ? '/images/tool/icon-notLike.png' : '/images/tool/icon-like.png' }}"></image>
+		<text class="tool-val">{{ info.praisecount || '点赞' }}</text>
+	</view>
+</view>

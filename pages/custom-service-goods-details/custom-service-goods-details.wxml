@@ -1,0 +1,46 @@
+<view class="carousel">
+  <v-carousel
+    m-carousel="m-carousel"
+    images="{{ carouselList }}"
+    image-configs="{{imageConfigs}}"
+  />
+</view>
+
+<view class="info">
+  <view class="price">
+    <m-price price="{{999}}" configs="{{ priceConfigs }}" />
+    <m-spec />
+  </view>
+  <view class="name">酒吧Madrix麦爵士3D方框立方体幻彩像素灯带</view>
+  <view class="introduce">
+    长租：￥30/㎡/3天；￥20/㎡/5天
+  </view>
+  <view class="note">
+    <text class="note-title">注意</text>
+    <view class="content">
+      <text>1. 出租方负责出入库装卸车</text>
+      <text>2. 出租设备含税</text>
+      <text>3. 设备出库半小时以上不退租金</text>
+    </view>
+  </view>
+
+  <m-title title="设备详情" />
+  <view class="details-val">
+    <view class="details-item">
+      <text>设备参数：</text>
+      <text>P3.91</text>
+    </view>
+    <view class="details-item">
+      <text>物理点数：</text>
+      <text>128*128</text>
+    </view>
+    <view class="details-item">
+      <text>显示亮度：</text>
+      <text>800ccd</text>
+    </view>
+  </view>
+</view>
+
+<view style="height: 100px">
+  <v-footer btns="{{['加入租赁订单', '立即租赁']}}" />
+</view>

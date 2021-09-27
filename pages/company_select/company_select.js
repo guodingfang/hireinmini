@@ -120,10 +120,10 @@ Page({
  * 获取信息
  */
 function getInfo(that) {
-    if (wx.getStorageSync('userinfo').userid > 0) {
+    if (wx.getStorageSync('logininfo').userid > 0) {
         /* 查询用户信息缓存是否失效 */
         app.judgeLogoNBrace(function() {
-            var companyid = wx.getStorageSync('userinfo').companyid;
+            var companyid = wx.getStorageSync('logininfo').companyid;
             if (companyid > 0) {
                 // config.permission('companydetails/companydetails', function () {
                 wx.redirectTo({

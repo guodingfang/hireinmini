@@ -1,0 +1,85 @@
+
+<view class="header">
+  <view class="status">
+    <v-status />
+  </view>
+</view>
+
+<block wx:if="{{type === 'goods'}}">
+  <view class="user">
+    <v-user type="{{type}}" />
+  </view>
+  <view class="goods-list">
+    <v-company type="{{type}}" />
+    <block wx:for="{{4}}" wx:key="id">
+      <v-item />
+    </block>
+  </view>
+</block>
+
+<block wx:if="{{type === 'lease'}}">
+  <view class="user">
+    <v-user type="{{type}}" />
+  </view>
+
+  <view class="rule-model">
+    <view class="rule-title">取消订单规则</view>
+    <view class="rule-content">预定成功后不可取消</view>
+  </view>
+
+  <view class="cost-model">
+    <v-cost />
+  </view>
+
+  <view class="company-model">
+    <v-company type="{{type}}" />
+  </view>
+
+  <view class="goods-list lease-goods-list">
+    <view class="goods-title">
+      <text>四季酒店</text>
+      <text class="address">(设备使用地址)</text>
+    </view>
+    <view class="use-time">
+      <text class="startTime">9月02日</text>
+      <text class="intervalTime">2天</text>
+      <text class="endTime">9月04日</text>
+    </view>
+    <block wx:for="{{2}}">
+      <v-lease-item />
+    </block>
+  </view>
+
+  <view class="goods-list">
+    <m-title title="设备详情" />
+    <block wx:for="{{4}}" wx:key="id">
+      <v-item />
+    </block>
+  </view>
+</block>
+
+
+
+
+<view class="order-info">
+  <view class="info-item">
+    <text class="label">订单编号: </text>
+    <text class="val">SP2021083100099</text>
+  </view>
+  <view class="info-item">
+    <text class="label">支付方式: </text>
+    <text class="val"> 微信支付</text>
+  </view>
+  <view class="info-item">
+    <text class="label">下单时间: </text>
+    <text class="val">2019-03-22 12:41:00</text>
+  </view>
+</view>
+
+
+<view style="height: 100rpx">
+  <view class="footer">
+    <view class="btn">取消订单</view>
+    <view class="btn">继续支付</view>
+  </view>
+</view>

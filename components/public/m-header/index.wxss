@@ -3,6 +3,7 @@
 	display: flex;
 	padding: 37rpx 30rpx 21rpx 30rpx;
 	box-sizing: border-box;
+	align-items: center;
 }
 
 .model-header .title {

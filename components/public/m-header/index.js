@@ -2,6 +2,9 @@ const { fa } = require("../../../utils/pinYin");
 
 // components/public/m-header/index.js
 Component({
+  options: {
+    multipleSlots: true,
+  },
   /**
    * 组件的属性列表
    */
@@ -17,6 +20,10 @@ Component({
     more: {
       type: Boolean,
       value: true,
+    },
+    moreText: {
+      type: String,
+      value: '更多'
     },
     bgColor: {
       type: String,

@@ -1,0 +1,30 @@
+<view class="item" bind:tap="onSkipDetails">
+  <view class="header">
+    <text class="code">订单编号：ZL2021083100080</text>
+    <text class="status">已付款</text>
+  </view>
+  <view class="content">
+    <view class="img-container">
+      <view class="img-list">
+        <image
+          src="https://wxapp.ilinking.com.cn/Public/pics/goods/20210501/2.png"
+          class="img-item"
+          wx:for="{{3}}"
+          wx:key="id"
+        ></image>
+      </view>
+      <view class="total">
+        <text class="total-val">共4件</text>
+        <image class="icon-more" src="/images/icon/more.png"></image>
+      </view>
+    </view>
+    <view class="price">
+      <text class="price-label">总合计：</text>
+      <m-price price="{{999}}" />
+    </view>
+  </view>
+  <view class="footer">
+      <view class="btn">继续支付</view>
+      <view class="btn">取消订单</view>
+    </view>
+</view>

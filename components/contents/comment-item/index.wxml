@@ -1,0 +1,10 @@
+<view class="comment">
+  <view class="user-info">
+    <image src="https://thirdwx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJiaOCnl2jzfGg57pbrIV0me23ULoImibt3B7c35gWbgeojZMI4m9SwubVbjXQkpkGxLqP5kicba6J2Q/132" class="user-logo"></image>
+    <view class="user-name">星**型</view>
+    <m-star configs="{{starConfigs}}" />
+  </view>
+  <view class="comment-info">
+    <view class="comment-content">在他家租得东西就是很新的那种，不错不错</view>
+  </view>
+</view>

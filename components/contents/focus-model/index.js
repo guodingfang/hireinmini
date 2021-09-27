@@ -25,6 +25,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onSkipUserAccount(e) {
+      const { userid } = e.currentTarget.dataset
+      wx.navigateTo({
+        url: `/pages/content-account/content-account?userid=${userid}`
+      })
+    }
   }
 })

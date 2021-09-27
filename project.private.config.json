@@ -105,13 +105,85 @@
         {
           "name": "内容账号",
           "pathName": "pages/content-account/content-account",
-          "query": "",
+          "query": "userid=7548",
           "scene": null
         },
         {
           "name": "详情页",
           "pathName": "pages/detail/detail",
-          "query": "msgid=4663",
+          "query": "msgid=4362",
+          "scene": null
+        },
+        {
+          "name": "服务号",
+          "pathName": "pages/service-account/service-account",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "服务号商品详情页",
+          "pathName": "pages/service-goods-details/service-goods-details",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "定制服务号",
+          "pathName": "pages/custom-service-account/custom-service-account",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "定制服务商品详情页",
+          "pathName": "pages/custom-service-goods-details/custom-service-goods-details",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "产品管理",
+          "pathName": "pages/product-manage/product-manage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "添加产品",
+          "pathName": "pages/add-product/add-product",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "订单列表",
+          "pathName": "pages/order-list/order-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "订单详情",
+          "pathName": "pages/order-details/order-details",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "发布",
+          "pathName": "pages/publish/publish",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "关注列表",
+          "pathName": "pages/focus-list/focus-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "城市列表",
+          "pathName": "pages/city-list/city-list",
+          "query": "rurl=index",
+          "scene": null
+        },
+        {
+          "name": "pages/citylist/citylist",
+          "pathName": "pages/citylist/citylist",
+          "query": "rurl=index",
           "scene": null
         }
       ]

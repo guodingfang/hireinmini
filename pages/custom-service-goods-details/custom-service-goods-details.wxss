@@ -1,0 +1,66 @@
+Page {
+  background-color: #FFFFFF;
+}
+
+/* 轮播图 */
+.m-carousel {
+	width: 750rpx;
+	height: 600rpx;
+	margin: auto;
+}
+
+.m-carousel image {
+  border-bottom-right-radius: 100rpx !important;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 30rpx 0 30rpx;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+}
+
+.name {
+  font-size: 34rpx;
+  color: #1A1A1A;
+  font-weight: 800;
+}
+
+.introduce {
+  margin-top: 20rpx;
+  color: #FFA12C;
+  font-size: 28rpx;
+}
+
+.note {
+  margin-top: 20rpx;
+  background-color: #F5F4F9;
+  border-radius: 20rpx;
+  display: flex;
+  padding: 20rpx;
+}
+
+.note-title {
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.content {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  color: #1A1A1A;
+  font-size: 24rpx;
+}
+
+.details-val {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #F5F4F9;
+  justify-content: space-between;
+  padding: 20rpx;
+}

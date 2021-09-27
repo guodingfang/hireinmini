@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "m-star": "/components/public/m-star"
+  }
+}

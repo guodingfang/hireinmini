@@ -18,6 +18,10 @@ Component({
     height: {
       type: Number,
       value: 80,
+    },
+    isTop: {
+      type: Boolean,
+      value: true,
     }
   },
 
@@ -32,7 +36,6 @@ Component({
   lifetimes: {
     attached() {
       const { statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;
-      console.log(' statusBarHeight, headerTopHeader, headerSearchHeader ',  statusBarHeight, headerTopHeader, headerSearchHeader )
       this.setData({
         headerBlock: statusBarHeight + headerTopHeader + headerSearchHeader - 2
       })

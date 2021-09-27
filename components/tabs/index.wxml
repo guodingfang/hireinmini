@@ -1,0 +1,39 @@
+<view class="scroll-swiper">
+  <slot name="header"></slot>
+  <scroll-view
+    enable-flex
+    class="tabs"
+    scroll-x
+    scroll-left="{{sLeft}}"
+    scroll-with-animation
+    bind:tap="onSelectTab"
+    style="height: {{tabHeight}}rpx;background: {{tabsBgColor}}"
+  >
+    <view
+      wx:for="{{tabList}}"
+      wx:for-index="index"
+      wx:key="index"
+      data-index="{{index}}"
+      style="--width--: {{100 / tabList.length}}%; --selectColor--: {{tabSelectColor}}; --color--: {{tabColor}}"
+      class="tab-item {{ item.select ? 'tab-item-select': '' }}"
+    >{{ item.name }}</view>
+  </scroll-view>
+
+  <swiper
+    class="tabs-content"
+    style="--tabHeight--: {{tabHeight + top}}rpx; background: {{backgroundColor}};"
+    bindchange="onSwiperChange"
+    current="{{current}}"
+  >
+    <swiper-item  wx:for="{{tabList}}" wx:key="title">
+      <scroll-view
+        class="tabs-scroll-item"
+        style="--tabHeight--: {{tabHeight + top}}rpx"
+        scroll-y="{{allowScroll}}"
+        scroll-top="{{scrollTop}}"
+      >
+        <slot name="item-{{index + 1}}"></slot>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

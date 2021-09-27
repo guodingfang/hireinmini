@@ -1,0 +1,34 @@
+.operation-model {
+  width: 70rpx;
+  height: 52rpx;
+}
+
+.icon-more {
+  margin-left: auto;
+  width: 70rpx;
+  height: 52rpx;
+}
+
+.operation {
+  position: absolute;
+  right: 0;
+  top: 52rpx;
+  background-color: #ffffff;
+  border-radius: 30rpx;
+  width: 178rpx;
+  z-index: 999;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, .1);
+}
+
+.operation-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+}
+
+.icon-operation {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 10rpx;
+}

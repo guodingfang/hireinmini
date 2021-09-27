@@ -1,7 +1,7 @@
 import config from '../../../config'
 import { addUserDialRecord, addLikeRelease, deleteLikeRelease, addComment } from '../../../models/release'
 import { addAttention } from '../../../models/user'
-import { getUserInfo } from '../../../utils/util'
+import { fa } from '../../../utils/pinYin'
 
 Component({
   /**
@@ -12,9 +12,20 @@ Component({
       type: Object,
       value: null,
       observer (newVal) {
-        // console.log('newVal', newVal)
         this.getInfo()
       }
+    },
+    showConcern: {
+      type: Boolean,
+      value: true,
+    },
+    showOpertion: {
+      type: Boolean,
+      value: false,
+    },
+    isCurrentUser: {
+      type: Boolean,
+      value: false,
     }
   },
 
@@ -68,17 +79,9 @@ Component({
       })
     },
 
-    // 播放视频
-    onOpenVideo() {
-      this.setData({
-        openVideo: true,
-      })
-    },
-
     // 拨打电话
     async onDial(e) {
       const { contactphone: phone } = this.data.item
-      console.log('phone', phone)
 
       if(!phone) {
         wx.showToast({
@@ -88,12 +91,12 @@ Component({
         return
       }
 
-			const res = await addUserDialRecord({
+			await addUserDialRecord({
 				phone: phone,
       })
       
       wx.makePhoneCall({
-          phoneNumber: phone,
+        phoneNumber: phone,
       })
     },
     // 点赞
@@ -124,46 +127,29 @@ Component({
           }
         })
       }
-    },
-    // 评论
-    onComment() {
-      console.log('评论')
-      this.setData({
-        commentShow: true,
-      })
+      this.onSkipDetail()
     },
 
-    // 发送评论内容
-    async onSendComment(e) {
-      const { msgid, userid: tuserid, contacter } = this.data.item
-      const userinfo = getUserInfo(['nickname', 'userid'])
-      await addComment({
-        content: e.detail.value,
-        tuserid,
-        fuserid: userinfo.userid,
-        tusername: contacter,
-        fusername: userinfo.nickname,
-        msgid,
-      })
-      this.setData({
-        item: {
-          ...this.data.item,
-          discusscount: this.data.item.discusscount + 1
-        }
-      })
+    onShare() {
+      this.onSkipDetail()
+    },
+
+    onComment() {
+      this.onSkipDetail();
     },
 
     async onAttention() {
       const { userid: targetuserid, focused } = this.data.item
-      console.log('focused', focused);
-      await addAttention({
+      const { fans, fansnum } = await addAttention({
         targetuserid,
         focused: focused === 1 ? 0 : 1
       })
       this.setData({
         item: {
           ...this.data.item,
-          focused: focused === 1 ? 0 : 1
+          focused: focused === 1 ? 0 : 1,
+          fans,
+          fansnum
         }
       })
     },
@@ -172,28 +158,17 @@ Component({
     onSkipUser(e) {
       const { userid =  '', companyid } = this.properties.item;
       wx.navigateTo({
-        url: "../recommend/recommend?userid=" + userid + '&companyid=' + companyid
-      })
-    },
-
-    // 跳转企业页
-    onSkipCompany(e) {
-      const { userid =  '', companyid } = this.properties.item;
-      wx.navigateTo({
-        url: "../recommend/recommend?userid=" + userid + '&companyid=' + companyid
+        url: `/pages/content-account/content-account?userid=${userid}`
       })
     },
 
     // 跳转详情页
     onSkipDetail(e) {
-      const { type = 'img' } = e.currentTarget.dataset
-      const { target = '' } = e.target.dataset;
       const { msgid = '' } = this.properties.item;
-      if(type === 'img' || target === 'info') {
-        wx.navigateTo({
-          url: "/pages/detail/detail?msgid=" + msgid
-        })
-      }
+      wx.navigateTo({
+        url: `/pages/detail/detail?msgid=${msgid}`
+      })
     },
+
   }
 })

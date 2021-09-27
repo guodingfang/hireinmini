@@ -3,15 +3,22 @@
     <image class="portrait" src="{{ item.userpic }}" bind:tap="onSkipUser"></image>
     <view class="header-info">
       <view class="username single-row-overstep">{{ item.contacter }}</view>
-      <view class="explain">
+      <view class="explain" bind:tap="onSkipUser">
         <!-- <text class="time">{{ item.updateinfo }}</text> -->
-        <text class="company single-row-overstep" bind:tap="onSkipCompany">{{ item.companyname }}</text>
+        <text class="company single-row-overstep">{{ item.companyname }}</text>
       </view>
     </view>
-    <view class="status" bind:tap="onAttention">{{ item.focused === 1 ? '已关注' : '关注' }}</view>
+    <m-opertion wx:if="{{showOpertion}}" />
+    <m-concern
+      wx:if="{{!isCurrentUser && showConcern}}"
+      isConcern="{{item.focused === 1}}"
+      concernUsers="{{item.fans}}"
+      amount="{{item.fansnum}}"
+      bind:concern="onAttention"
+    />
   </view>
-  <view class="content" data-type="{{type}}" bind:tap="onSkipDetail">
-    <view class="content-info three-row-overstep" data-target="info">{{ item.content }}</view>
+  <view class="content" data-type="{{type}}" catch:tap="onSkipDetail">
+    <view class="content-info three-row-overstep">{{ item.content }}</view>
     <view class="imgs" wx:if="{{ imgShow }}">
       <block wx:if="{{type === 'img'}}">
         <block wx:if="{{ imgShow === 1 }}">
@@ -35,56 +42,25 @@
         </block>      
       </block>
       <block wx:if="{{type === 'video'}}">
-        <view class="video-mask" catch:tap="onOpenVideo">
-          <text class="iconfont icon-ziyuan play-icon"></text>
+        <view class="video-mask">
+          <image class="icon-play" src="/images/icon/play.png"></image>
         </view>
         <image
           class="big-img"
           mode="aspectFill"
           src="{{bigImgAndVideoUrl}}"
-          catch:tap="onOpenVideo"
         ></image>
-        <m-video
-          wx:if="{{openVideo}}"
-          m-video="big-video"
-          src="{{videoUrl}}{{imgs[0].videourl}}"
-        ></m-video>
       </block>
     </view>
   </view>
-  <view class="footer">
-    <view class="footer-item info-comment" catchtap="onComment">
-      <image class="footer-item-icon" src="./images/icon-comment.png"></image>
-      <text class="footer-item-label">{{ item.discusscount || '评论' }}</text>
-    </view>
-    
-    <view class="footer-item info-share" catchtap="onShare">
-      <button
-        open-type="share"
-        data-msgid="{{item.msgid}}"
-        data-url="{{bigImgAndVideoUrl}}"
-        class="info-share-content"
-      >
-        <image class="footer-item-icon" src="./images/icon-share.png"></image>
-        <text class="footer-item-label">{{ item.forwardcount || '分享' }}</text>
-      </button>
-    </view>
 
-    <view class="footer-item info-like" catchtap="onLike">
-      <image class="footer-item-icon" src="{{ !item.praised ? './images/icon-notLike.png' : './images/icon-like.png' }}"></image>
-      <text class="footer-item-label">{{ item.praisecount || '点赞' }}</text>
-    </view>
-
-    <view class="footer-item info-browse">
-      <image class="footer-item-icon" src="./images/icon-browse.png"></image>
-      <text class="footer-item-label">{{ item.viewcount > 999 ? '999+' : item.viewcount }}</text>
-    </view>
-
-    <view class="footer-item info-phone" catchtap="onDial">
-      <image class="footer-item-icon icon-dial" src="./images/icon-dial.png"></image>
-      <text class="footer-item-label">电话</text>
-    </view>
-  </view>
+  <m-footer
+    info="{{item}}"
+    catch:like="onLike"
+    catch:dial="onDial"
+    catch:share="onShare"
+    catch:comment="onComment"
+  />
 </view>
 
-<m-comment commentShow="{{commentShow}}" bind:send="onSendComment"></m-comment>
+<view class="middle-line"></view>

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "m-footer": "/components/public/footer-tool",
+    "m-operation": "/components/public/m-item-operation"
+  }
+}

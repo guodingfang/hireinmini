@@ -1,0 +1,10 @@
+<view class="content-accont">
+	<image class="log" src="{{info.logo}}" bind:tap="onSkipAccont"></image>
+	<view class="info" bind:tap="onSkipAccont">
+		<view class="name">{{info.name}}</view>
+		<view class="des single-row-overstep">{{info.des}}</view>
+	</view>
+	<view class="btn">
+		<m-concern isConcern="{{item.focused === 1}}" bind:concern="onAttention" />
+	</view>
+</view>

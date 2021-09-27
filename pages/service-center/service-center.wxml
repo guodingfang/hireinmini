@@ -1,5 +1,4 @@
 <v-header
-  isLocation="{{false}}"
 	header-fixed="header-fixed"
 	placeholder="请输入关键词搜索"
 	search="input"

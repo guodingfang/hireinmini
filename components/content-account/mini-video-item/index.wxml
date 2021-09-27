@@ -1,0 +1,11 @@
+<view class="min-video">
+  <image
+    src="https://wxapp.ilinking.com.cn/upload/wood/20210717/60f29fa0db5db_thumbs.jpg"
+    class="video-img"
+    lazy-load
+  ></image>
+  <view class="operation">
+    <image src="/images/icon/play-3.png" class="icon-play"></image>
+    <text class="play-num">33.7w</text>
+  </view>
+</view>

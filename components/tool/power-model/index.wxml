@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="model">
+    <v-tab list="{{tabList}}" bind:select="onSelectTab"  />
+    
+    <view>
+      <m-header title="功耗计算" more="{{false}}" />
+      <view class="row">
+        <view class="col">
+          <input
+            class="tool-item-input"
+            placeholder-class="tool-item-input-pl"
+            placeholder="输入空开大小(整数)"
+            type="number"
+            bindinput="onInputChange"
+          />
+          <text class="unit-symbol">A</text>
+        </view>
+        <view class="middle-line"></view>
+        <view class="col">
+          <text class="label">带载功率</text>
+          <text class="val">{{ loadPower }}</text>
+          <text class="unit-symbol">KW</text>
+        </view>
+      </view>
+      <view class="row row-border-top">
+        <view class="col">
+          <input
+            class="tool-item-input"
+            placeholder-class="tool-item-input-pl"
+            placeholder="输入功率大小(整数)"
+            type="number"
+            bindinput="onInpuPowertChange"
+          />
+          <text class="unit-symbol">KW</text>
+        </view>
+        <view class="middle-line"></view>
+        <view class="col">
+          <text class="label">所需空开</text>
+          <text class="val">{{airSwitch2}}</text>
+          <text class="unit-symbol">A</text>
+        </view>
+      </view>
+      <view class="row">
+        <view class="col">
+          <text class="label">建议线径</text>
+          <text class="val">{{line}}</text>
+          <text class="unit-symbol">m㎡</text>
+        </view>
+      </view>
+
+      <m-header title="电缆带载" more="{{false}}" />
+      <view class="row">
+        <view class="col">
+          <picker
+            class="picker-select"
+            mode="selector"
+            bindchange="getDiameter"
+            value="{{diameterIndex}}"
+            range="{{objectArray}}"
+            range-key="crossarea"
+          >
+            <input
+              class="tool-item-input"
+              placeholder-class="tool-item-input-pl"
+              placeholder="选择线径"
+              type="number"
+              disabled="true"
+              value="{{objectArray[diameterIndex]['crossarea']}}"
+            />
+          </picker>
+          <text class="unit-symbol">m㎡</text>
+        </view>
+        <view class="middle-line"></view>
+        <view class="col">
+          <text class="label">带载功率</text>
+          <text class="val">{{objectArray[diameterIndex]['power' + type]}}</text>
+          <text class="unit-symbol">KW</text>
+        </view>
+      </view>
+
+      <view class="tips">
+        注：本公式基于铜缆常温下计算，结果仅供参考
+      </view>
+    </view>
+  </view>
+</view>

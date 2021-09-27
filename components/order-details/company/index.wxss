@@ -1,0 +1,75 @@
+
+.company {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.header {
+  display: flex;
+  padding: 0 30rpx;
+  align-items: center;
+  height: 70rpx;
+}
+
+.company-logo {
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50%;
+}
+
+.company-name {
+  margin-left: 20rpx;
+  color: #1A1A1A;
+  font-size: 30rpx;
+}
+
+.icon-more {
+  margin-left: 10rpx;
+  width: 16rpx;
+  height: 24rpx;
+}
+
+.tel {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-tel {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.tel-val {
+  font-size: 22rpx;
+  color: #1A1A1A;
+}
+
+.content {
+  display: flex;
+  padding: 10rpx 30rpx 30rpx 30rpx;
+}
+
+.location-info {
+  display: flex;
+
+}
+
+.location-img {
+  width: 104rpx;
+  height: 84rpx;
+  margin-right: 20rpx;
+}
+
+.address {
+  font-size: 28rpx;
+  color: #1A1A1A;
+}
+
+.dist {
+  font-size: 24rpx;
+  color: #999999;
+}

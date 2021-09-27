@@ -1,11 +1,13 @@
 import { getCarousel } from '../../models/util'
-import { getLocation } from '../../models/user'
 import { judgeTabBarHeight } from '../../utils/util'
+import config from '../../config'
 import {
 	getHighRentRateProduct,
   getRecommendSchemeList,
   getTopSell
 } from '../../models/service'
+
+import { getRecommendCompanyList } from '../../models/release'
 
 const app = getApp();
 
@@ -15,46 +17,82 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		imgUrl: config.imgUrl,
 		headerBlock: 0,
-		cityname: '全国', // 筛选城市
+		cityname: '',
 		keyword: '',
 		carouselList: [],
 		hotProductList: [],
 		schemeList: [],
 		topSellList: [],
+		showRecommendCompanyList: true,
 		tabList: [
-			{
-				type: 'design-centre',
-				name: '设计中心'
-			},
-			{
-				type: 'banquet',
-				name: '场地服务'
-			},
-			{
-				type: 'service-center',
-				name: '服务中心'
-			},
-			{
-				type: 'maintain-center',
-				name: '维修中心'
-			},
-			{
-				type: 'used-center',
-				name: '二手直卖'
-			}
-		]
+			{ type: 'design-centre', name: '设计中心' },
+			{ type: 'banquet', name: '场地服务' },
+			{ type: 'service-center', name: '服务中心' },
+			{ type: 'maintain-center', name: '维修中心' },
+			{ type: 'used-center', name: '二手直卖' }
+		],
+		// 本地推荐 && 全国推荐
+		thisLocalityCompanyList: [],
+		nationwideCompanyList: [],
+		pagesize: 10,
+		currentPage: 2,
+		notMoreData: false,
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad (options) {
+		const { cityname = '' } = wx.getStorageSync('cityinfo')
+		this.setData({ cityname })
 		this.getHeaderBlock()
 		this.getCarousel()
-		this.getInfo()
-		this.getLocation()
+		// this.getInfo()
 	},
+
+	async getNationwideCompanyList() {
+		const { pagesize, currentPage, cityname } = this.data
+		this.setData({
+			thisLocalityCompanyList: [],
+			pagesize: 10,
+			currentPage: 2,
+			notMoreData: false,
+		})
+		const { data } = await getRecommendCompanyList({
+			page: currentPage,
+			pagesize,
+			city: cityname
+		})
+		this.setData({
+			nationwideCompanyList: data.map(item => ({
+				...item,
+				label: item.label.slice(0, 3)
+			})),
+
+		})
+		this.getRecommendCompanyList()
+	},
+
+		// 获取租赁商列表
+		async getRecommendCompanyList() {
+			const { pagesize, currentPage, cityname } = this.data
+			const { data, page } = await getRecommendCompanyList({
+				page: currentPage,
+				pagesize,
+				city: cityname
+			})
+			const thisLocalityCompanyList = data.map(item => ({
+				...item,
+				label: item.label.slice(0, 3)
+			}));
+			this.setData({
+				thisLocalityCompanyList: [...this.data.thisLocalityCompanyList, ...thisLocalityCompanyList],
+				currentPage: page.pagecount,
+				notMoreData: page.pagecount === page.page,
+			})
+		},
 
 	getHeaderBlock() {
 		const { workInfo, statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;
@@ -63,10 +101,6 @@ Page({
 			headerBlock: statusBarHeight + headerTopHeader + headerSearchHeader,
 			tabHeight,
 		})
-	},
-
-	getLocation() {
-		getLocation()
 	},
 
 	getInfo() {
@@ -121,36 +155,22 @@ Page({
 		})
 	},
 
-	getCityInfo() {
-		const { cityname = '' } = wx.getStorageSync('cityinfo')
-		return cityname
+	onGetLocation(e) {
+		this.setData({
+			cityname: e.detail.city
+		})
+		this.getNationwideCompanyList()
+	},
+
+	updateCity(e) {
+		const { cityname } = e
+		this.setData({ cityname })
 	},
 
 	onShow () {
-		const cityname = this.getCityInfo()
-		if(cityname === this.data.cityname && this.data.releaseList.length !== 0) return
-		this.setData({
-			loadingHidden: false,
-			pagenum: 0,
-			cityname: cityname || this.data.cityname,
-		})
+
 	},
-	/**
-	 * 跳转到主页
-	 */
-	returnindex: function (e) {
-		config.permission('index/index', function () {
-			wx.switchTab({
-				url: '../index/index'
-			})
-		})
-	},
-	/*跳转到消息列表*/
-	jumpreplylist: function (e) {
-		wx.navigateTo({
-			url: "../replylist/replylist"
-		})
-	},
+
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
@@ -162,54 +182,7 @@ Page({
 	 * 页面上拉触底事件的处理函数
 	 */
 	async onReachBottom () {
-
+		if(this.data.notMoreData) return
+		await this.getRecommendCompanyList()
 	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-
-	// onShareAppMessage(e) {
-	// 	if (e.from === 'button') {
-	// 		let { msgid, url } = e.target.dataset;
-	// 		return {
-	// 			title: '服务',
-	// 			path: `/pages/detail/detail?msgid=${msgid}`,
-	// 			imageUrl: url
-	// 		}
-	// 	}
-	// },
-
-	/**
-	 * 跳转发布
-	 */
-	// issue: function () {
-	// 	wx.navigateTo({
-	// 		url: '../release/release',
-	// 	})
-	// 	// config.permission('release/release', function() {
-	// 	// })
-	// },
-
-	/**
-	 * 点击进入城市列表、
-	 */
-	citylist: function (event) {
-		var url = config.getDataSet(event, 'url');
-		wx.navigateTo({
-			url: '../citylist/citylist?rurl=' + url,
-		})
-		// config.permission(url, function() {
-		// })
-	},
-	/**
-	 * 跳转到主页
-	 */
-	returnindex: function (e) {
-		config.permission('index/index', function () {
-			wx.switchTab({
-				url: '../index/index'
-			})
-		})
-	}
 })

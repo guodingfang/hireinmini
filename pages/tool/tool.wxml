@@ -1,0 +1,49 @@
+<view class="header" style="height: {{headerBlock}}rpx;margin-top: {{headerTop}}rpx;">
+  <image class="icon-back" src="/images/icon/back.png" bind:tap="onBack"></image>
+  <text>租赁常用工具</text>
+</view>
+
+<view class="user-bg">
+	<view class="user-mask"></view>
+	<image class="user-bg-img" src="{{bgImagesUrl}}"></image>
+</view>
+
+
+<v-tab
+  class="tabs"
+  list="{{tabList}}"
+  top="{{headerBlock + headerTop}}"
+  bind:select="onSelectTab"
+  tabsBgColor="transparent"
+  backgroundColor="transparent"
+  tabColor="#e5e5e5"
+  tabSelectColor="#fff"
+>
+  <view class="tabs-item" slot="item-1">
+    <v-power />
+  </view>
+  <view class="tabs-item" slot="item-2">
+    <v-led />
+  </view>
+  <view class="tabs-item" slot="item-3">
+    <v-led-mini />
+  </view>
+  <view class="tabs-item" slot="item-4">
+    <v-truss />
+  </view>
+  <view class="tabs-item" slot="item-5">
+    <v-ly />
+  </view>
+  <view class="tabs-item" slot="item-6">
+    <v-projection />
+  </view>
+  <view class="tabs-item" slot="item-7">
+    <v-stage />
+  </view>
+  <view class="tabs-item" slot="item-8">
+    <v-delay />
+  </view>
+  <view class="tabs-item" slot="item-9">
+    <v-scal />
+  </view>
+</v-tab>

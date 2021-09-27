@@ -16,13 +16,29 @@ Component({
           current: newVal.length === 0 ? 0 : 1,
         })
       }
+    },
+    configs: {
+      type: Object,
+      value: {
+        indicatorDots: false,
+        indicatorColor: 'rgba(0, 0, 0, .3)',
+        autoplay: false
+      }
+    },
+    imageConfigs: {
+      type: Object,
+      value: {
+        width: 690,
+        height: 330,
+        radius: 20
+      }
     }
   },
 
   /**
    * 外部样式
    */
-  externalClasses: ['m-carousel'],
+  externalClasses: ['m-carousel', 'm-carousel-item'],
 
   /**
    * 组件的初始数据

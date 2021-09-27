@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="model">
+    <view class="input-item">
+      <text class="label">距离A：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入A距离"
+        data-type="distA"
+        type="number"
+        bindinput="onInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+    <view class="input-item">
+      <text class="label">距离B：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入B距离"
+        data-type="distB"
+        type="number"
+        bindinput="onInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+    <image class="delay-img" src="{{remoteImagesUrl}}/tool/delay.png"></image>
+  </view>
+
+  <view class="model">
+    <m-header title="计算结果" more="{{false}}">
+      <view slot="tips" class="header-tips">（结果仅供参考）</view>
+    </m-header>
+    <view class="empty" bind:tap="onEmpty">
+      <image class="icon-empty" src="/images/icon/delete.png"></image>
+      <text class="empty-val">清空</text>
+    </view>
+    <view class="input-item input-item-result">
+      <text class="label">Delay值(音箱B)：</text>
+      <view class="tool-item-input result">{{ result }}</view>
+      <text class="unit">ms</text>
+    </view>
+
+    <view class="result-list">
+      <view class="result-item" wx:for="{{resultList}}" wx:for-index="index" wx:key="id">
+        <text class="result-label">记录{{index + 1}}：</text>
+        <text class="result-val">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="tips">注：本公式基于常温下，声音的传播速度340米/秒计算，结果仅供参考。</view>
+  </view>
+</view>

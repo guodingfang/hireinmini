@@ -6,6 +6,7 @@ import {
 } from '../../models/search'
 
 import { getDiscoverMsgList } from '../../models/release'
+import { remoteImagesUrl } from '../../config'
 
 import { promisic } from '../../utils/util'
 
@@ -35,6 +36,9 @@ Page({
 			type: 'service'
 		}],
 		releaseList: [],
+		serviceList: [],
+		miniServiceList: [],
+		notContentImagesUrl: `${remoteImagesUrl}/not-content.png`
 	},
 
 	/**
@@ -107,13 +111,16 @@ Page({
 		const { keyword } = this.data
 		const { 
 			content,
-			designscheme
+			serviceprovider
 		 } = await getSearchList({
 			keyword,
 		})
 		const hislist = this.data.hislist.filter(his => his.searchtext !== keyword)
+		const serviceList = serviceprovider.map(item => ({...item, label: item.label.slice(0, 3)}))
 		this.setData({
 			releaseList: content,
+			serviceList,
+			miniServiceList: serviceList.slice(0, 3),
 			hislist: [
 				{ searchtext: keyword },
 				...hislist,	

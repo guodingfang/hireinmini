@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "v-carousel": "/components/carousel",
+    "m-price": "/components/public/m-price",
+    "m-spec": "/components/public/m-spec",
+    "v-footer": "/components/custom-service-account/service-footer",
+    "m-title": "/components/public/m-title"
+  },
+  "navigationBarTitleText": "商品详情"
+}

@@ -4,7 +4,7 @@
   scroll-x
   scroll-with-animation
   bind:tap="onSelectTab"
-  style="height: {{height}}rpx; top: {{ fixed ? headerBlock : 0}}rpx"
+  style="height: {{height}}rpx; top: {{ fixed && isTop ? headerBlock : 0}}rpx"
 >
   <view
     wx:for="{{list}}"

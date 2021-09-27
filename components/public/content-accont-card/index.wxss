@@ -1,0 +1,42 @@
+@import "/assets/style/global.wxss";
+
+.content-accont {
+	display: flex;
+	background-color: #F7F7F7;
+	border-radius: 20rpx;
+	width: 690rpx;
+	height: 120rpx;
+	align-items: center;
+	padding: 20rpx 30rpx;
+	box-sizing: border-box;
+	margin: auto auto 20rpx auto;
+}
+
+.log {
+	width: 80rpx;
+	height: 80rpx;
+  border-radius: 50%;
+}
+
+.info {
+	display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+  justify-content: space-between;
+}
+
+.name {
+  color: #1A1A1A;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.des {
+  color: #666666;
+	font-size: 24rpx;
+	width: 360rpx;
+}
+
+.btn {
+	margin-left: auto;
+}

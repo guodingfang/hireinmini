@@ -1,0 +1,79 @@
+
+.user-module {
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+}
+
+.item {
+  display: flex;
+  padding: 0 10rpx;
+  align-items: center;
+}
+
+.icon {
+  width: 30rpx;
+  height: 36rpx;
+}
+
+.content {
+  margin-left: 25rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info {
+  display: flex;
+  align-content: center;
+}
+
+.user-name {
+  color: #333333;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.tel {
+  color: #666666;
+  font-size: 24rpx;
+  margin-left: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.address {
+  margin-top: 10rpx;
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.row {
+  display: flex;
+  padding: 0 20rpx;
+}
+
+.row + .row {
+  margin-top: 12rpx;
+}
+
+.row-info {
+  display: flex;
+}
+
+.row-info .label {
+  color: #808080;
+  font-size: 28rpx;
+  margin-left: 24rpx;
+  min-width: 140rpx;
+}
+
+.row-info .val {
+  color: #1A1A1A;
+  font-size: 24rpx;
+}
+
+.row-info .val.row-user-name {
+  font-size: 30rpx;
+  color: #333333;
+  font-weight: bold;
+}

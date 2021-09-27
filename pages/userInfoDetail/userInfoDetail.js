@@ -33,7 +33,7 @@ Page({
     // 获取个人信息
     getUserInfo(){
         var that = this;
-        var userInfo = wx.getStorageSync('userinfo');
+        var userInfo = wx.getStorageSync('logininfo');
         wx.request({
             url: Config.baseUrl + 'User/getUserEditableInfo',
             data: {

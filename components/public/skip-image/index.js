@@ -33,10 +33,10 @@ Component({
   methods: {
     onSkip() {
       const { url } = this.properties;
-      wx.navigateTo({
-        url,
-      })
       this.triggerEvent('skip', {}, {});
+      if (url) {
+        wx.navigateTo({ url })
+      }
     }
   }
 })

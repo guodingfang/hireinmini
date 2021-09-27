@@ -31,14 +31,12 @@
   justify-content: space-between;
 }
 
-.m-location {
-  width: 150rpx !important;
-}
-
 .m-search {
   width: 550rpx !important;
+  border: 1rpx solid #aaa;
 }
 
 .m-search-xl {
   width: 710rpx !important;
+  border: 1rpx solid #aaa;
 }

@@ -8,28 +8,28 @@
   </view>
   <view class="info">
     <view class="content">
-      <view class="username">
+      <view class="username" bind:tap="onSkipContent">
         <text>{{userinfo.nickname}}</text>
         <image class="icon-more" src="/images/icon/more-2.png"></image>
       </view>
       <view class="tool">
-        <image class="icon-message" src="/images/icon/message.png"></image>
-        <image class="icon-setup" src="/images/icon/setup.png"></image>
+        <image wx:if="{{false}}" class="icon-message" src="/images/icon/message.png" bind:tap="onMessage"></image>
+        <image class="icon-setup" src="/images/icon/setup.png" bind:tap="onSetup"></image>
       </view>
     </view>
 
     <view class="info-data">
       <view class="data-item">
         <text class="label">动态</text>
-        <text class="val">90</text>
+        <text class="val">{{userinfo.dynamic}}</text>
       </view>
       <view class="data-item">
-        <text class="label">关注</text>
-        <text class="val">80</text>
+        <text class="label">合作关注</text>
+        <text class="val">{{userinfo.focus}}</text>
       </view>
       <view class="data-item">
-        <text class="label">粉丝</text>
-        <text class="val">75</text>
+        <text class="label">获赞</text>
+        <text class="val">{{userinfo.fans}}</text>
       </view>
     </view>
   </view>
