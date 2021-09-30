@@ -5,7 +5,6 @@
     <image
       wx:if="{{currentPage}}"
       class="title-logo"
-      wx:if="{{currentPage}}"
       src="/images/title/{{currentPage}}.png"
     ></image>
     <view wx:else>
@@ -26,7 +25,7 @@
     ></v-search>
     <m-weather
       wx:if="{{isWeather}}"
-      locationInfo="{{locationInfo}}"
+      isCity="{{isCity}}"
       bind:change="onChangeLocation"
     />
   </view>

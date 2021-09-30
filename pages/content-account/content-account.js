@@ -23,7 +23,7 @@ Page({
       { name: '文章',type: 'article' },
       {	name: '视频', type: 'video' },
       { name: '小视频', type: 'smallvideo' },
-      { name: '我的店', type: 'stroe' }
+      // { name: '我的店', type: 'stroe' }
     ],
     allList: [],
     articleList: [],

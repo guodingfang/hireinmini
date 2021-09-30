@@ -101,7 +101,9 @@
     "pages/order-details/order-details",
     "pages/publish/publish",
     "pages/focus-list/focus-list",
-    "pages/city-list/city-list"
+    "pages/city-list/city-list",
+    "pages/login-2/login-2",
+    "pages/set-up/set-up"
   ],
   "permission": {
     "scope.userLocation": {

@@ -355,7 +355,7 @@ function dataSubmit(that, url, content) {
         method: 'post',
         success: function (res) {
             if (res.data.result == true) {
-                wx.removeStorageSync('logininfo');
+                wx.removeStorageSync('userinfo');
                 if (content.companyid == '') {
                     var companyid = res.data.companyid;
                     var employeeid = res.data.employeeid;

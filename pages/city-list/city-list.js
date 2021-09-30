@@ -1,4 +1,4 @@
-import { getCityList, getHitoryList, getHotList } from '../../models/map'
+import { getLocationInfo, addressGetinfo, getCityList, getHitoryList, getHotList } from '../../models/map'
 
 Page({
 
@@ -7,15 +7,23 @@ Page({
    */
   data: {
     searchLetter: ["A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "W", "X", "Y", "Z"],
+    selectLetter: '',
     cityList: [],
     hitoryList: [],
     hotlist: [],
+    currentCity: null,
+    // 需要触发重新加载的页面路径
+    againLoadList: [
+      'pages/index/index',
+      'pages/set-up/set-up'
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getLocationInfo()
     // 获取城市列表
     this.getCityList()
     // 获取历史城市列表
@@ -23,6 +31,13 @@ Page({
     // 获取热门城市列表
     this.getHotList();
   },
+
+  async getLocationInfo() {
+    const info = await getLocationInfo()
+    this.setData({
+      currentCity: info
+    })
+	},
 
   // 获取城市列表
   async getCityList() {
@@ -51,6 +66,35 @@ Page({
     this.setData({
       hotlist: hotlist,
     })
+  },
+
+  onSelectLetter(e) {
+    const { letter } = e.target.dataset
+    this.setData({
+      selectLetter: letter
+    })
+  },
+
+  async onSelectCity(e) {
+    const { item } = e.target.dataset
+    if(item && item.cityname) {
+      await addressGetinfo({
+        city: item.cityname
+      })
+      const pages = getCurrentPages();
+      const prevPage = pages[pages.length - 2]; //上一个页面
+      const { route = '' } = prevPage
+      const { againLoadList = [] } = this.data
+      const existRoute = againLoadList.find(item => item === route)
+      if(existRoute) {
+        prevPage.onAgainLocationComplete({
+          city: item.cityname
+        })
+      }
+      wx.navigateBack({
+        delta: 1,
+      })
+    }
   },
 
   /**

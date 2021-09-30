@@ -1,8 +1,8 @@
-import { getLocation } from '../../models/user'
 import { getMap } from '../../models/map'
-
+import { getLocationInfo } from '../../models/map'
 import { addMsgRelease } from '../../models/release'
-import { fa } from '../../utils/pinYin';
+
+const app = getApp();
 
 Page({
 
@@ -25,31 +25,28 @@ Page({
    */
   onLoad: function (options) {
     const userinfo = wx.getStorageSync('userinfo');
-    console.log('userinfo', userinfo)
     this.setData({
       userName: userinfo.nickname,
       tel: userinfo.phone
     })
-    this.getLocation()
+    this.getHeaderBlock()
+    this.getLocationInfo()
   },
 
-  	// 根据经纬度获取位置信息
-	getLocation() {
-    const that = this
-		getLocation(({latitude, longitude}) => {
-			getMap().reverseGeocoder({
-				location: `${latitude},${longitude}`,
-				success({ result }) {
-          console.log('result', result)
-          const { city = '', city_code } = result.ad_info
-					that.setData({
-            city,
-            cityCode: city_code
-          })
-				}
-			})
-		}, () => {})
+  getHeaderBlock() {
+		const { statusBarHeight, headerTopHeader } = app.globalData;
+		this.setData({
+			headerBlock: statusBarHeight + headerTopHeader - 2,
+		})
   },
+  
+	async getLocationInfo() {
+    const info = await getLocationInfo()
+    this.setData({
+      city: info.city,
+      locationLoading: false,
+    })
+	},
 
   onInputChange(e) {
     const { type = '' } = e.target.dataset

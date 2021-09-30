@@ -1,3 +1,11 @@
+<view style="height: {{headerBlock}}rpx">
+  <v-header
+    fixed="{{true}}"
+    currentPage="default"
+    isTopTitle="{{true}}"
+    isHeaderContent="{{false}}"
+  />
+</view>
 
 <view class="content">
   <textarea

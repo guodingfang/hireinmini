@@ -1,12 +1,18 @@
+import { fa } from "../../../utils/pinYin";
+
 // components/helper/header/index.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    city: {
-      type: String,
-      value: ''
+    isCity: {
+      type: Boolean,
+      value: false
+    },
+    locationInfo: {
+      type: Object,
+      value: null
     }
   },
 

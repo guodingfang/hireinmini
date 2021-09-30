@@ -1,4 +1,3 @@
-/**user.wxss**/
 @import "../../common/lib/weui.wxss";
 @import "../../common/css/publiclist.wxss";
 
@@ -90,4 +89,13 @@ Page {
 	margin-top: 20rpx;
 }
 
-/* **************** */
+.demo-model {
+	background-color: #ffffff;
+	width: 690rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: auto;
+	height: 100rpx;
+	
+}

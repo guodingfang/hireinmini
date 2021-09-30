@@ -36,7 +36,7 @@ const getUserInfo = (params = []) => {
 	const result = {};
 	if(params.length === 0) return result
 
-	const info = wx.getStorageSync('logininfo')
+	const info = wx.getStorageSync('userinfo')
 	params.forEach(param => {
 		result[param] = info[param]
 	})

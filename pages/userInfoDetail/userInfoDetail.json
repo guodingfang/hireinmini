@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "v-header": "/components/header"
+  },
+  "navigationStyle": "custom"
 }

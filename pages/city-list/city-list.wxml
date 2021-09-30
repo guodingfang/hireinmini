@@ -1,11 +1,81 @@
-<view>
+<view class="letter-list" bind:tap="onSelectLetter">
+  <view class="letter-item" data-letter="current">当前</view>
+  <view class="letter-item" data-letter="hot">热门</view>
+  <view
+    class="letter-item"
+    wx:for="{{searchLetter}}"
+    wx:for-item="letter"
+    wx:key="letter"
+    data-letter="{{letter}}"
+  >
+    {{letter}}
+  </view>
+</view>
 
 <scroll-view
   class="city-list"
+  scroll-into-view="{{selectLetter}}"
+  scroll-with-animation
   scroll-y
 >
+  <view id="current" wx:if="{{currentCity}}">
+    <view class="title">当前选择城市</view>
+    <view class="city-current">
+      <view class="current-item">{{currentCity.city}}</view>
+    </view>
+  </view>
 
+  <view id="history">
+    <view class="title">历史城市</view>
+    <view class="city-history">
+      <view
+        class="history-item"
+        wx:for="{{hitoryList}}"
+        wx:for-item="city"
+        wx:key="citycode"
+        data-item="{{city}}"
+        catch:tap="onSelectCity"
+      >
+        {{city.cityname}}
+      </view>
+    </view>
+  </view>
+
+  <view id="hot">
+    <view class="title">热门城市</view>
+    <view class="city-hot">
+      <view
+        class="hot-item"
+        wx:for="{{hotlist}}"
+        wx:for-item="city"
+        wx:key="citycode"
+        data-item="{{city}}"
+        catch:tap="onSelectCity"
+      >
+        {{city.cityname}}
+      </view>
+    </view>
+  </view>
+
+
+  <view
+    wx:for="{{cityList}}"
+    wx:for-item="content"
+    wx:key="letter"
+    class="city-classify"
+    id="{{content.letter}}"
+    catch:tap="onSelectCity"
+  >
+    <view class="title">{{content.letter}}</view>
+    <view
+      class="city-item"
+      wx:for="{{content.list}}"
+      wx:for-item="city"
+      wx:key="citycode"
+      data-item="{{city}}"
+    >
+      <view>{{city.cityname}}</view>
+    </view>
+  </view>
 </scroll-view>
-
-</view>
 

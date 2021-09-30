@@ -28,12 +28,22 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        this.getHeaderBlock();
         this.getUserInfo();
     },
+
+    getHeaderBlock() {
+		const { statusBarHeight, headerTopHeader } = app.globalData;
+		this.setData({
+			headerBlock: statusBarHeight + headerTopHeader - 2,
+		})
+	},
+
+
     // 获取个人信息
     getUserInfo(){
         var that = this;
-        var userInfo = wx.getStorageSync('logininfo');
+        var userInfo = wx.getStorageSync('userinfo');
         wx.request({
             url: Config.baseUrl + 'User/getUserEditableInfo',
             data: {

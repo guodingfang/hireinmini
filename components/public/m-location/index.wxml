@@ -1,0 +1,17 @@
+<view class="container" wx:if="{{loading}}">
+  <view class="location-loading" wx:if="{{!errLoading}}">
+    <image class="loading-img" src="/images/public/logo.png"></image>
+    <view class="content">定位中..</view>
+  </view>
+
+  <view class="location-fail" wx:if="{{errLoading}}">
+    <image class="sorry-img" src="/images/public/logo.png"></image>
+    <view class="content">
+      <text class="explain">定位失败</text>
+      <view class="btn-container">
+        <view class="manual" bind:tap="onManualLocation">手动选址</view>
+        <view class="again" bind:tap="onAgainLocation">重新定位</view>
+      </view>
+    </view>
+  </view>
+</view>

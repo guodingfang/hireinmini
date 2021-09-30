@@ -1,0 +1,80 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: rgba(247, 247, 247, 1);
+}
+
+.location-loading {
+  margin: 389rpx auto;
+  width: 131rpx;
+  height: 100rpx;
+}
+
+.location-loading .loading-img {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.location-loading>.content {
+  color: #666;
+  font-size: 28rpx;
+  margin-top: 14rpx;
+}
+
+.location-fail {
+  margin: 264rpx auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.location-fail .sorry-img {
+  width: 220rpx;
+  height: 220rpx;
+}
+
+.location-fail>.content {
+  margin-top: 14rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.explain {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40rpx;
+}
+
+.manual, .again {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280rpx;
+  height: 70rpx;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  box-sizing: border-box;
+}
+
+.manual {
+  background: linear-gradient(90deg, rgba(0, 61, 152, 1) 0%, rgba(0, 98, 209, 1) 100%);
+  color: #fff;
+}
+
+.again {
+  margin-top: 20rpx;
+  background-color: #FFFFFF;
+  border: 2rpx solid rgba(0, 77, 201, 1);
+  color: #0063df;
+}

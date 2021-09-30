@@ -4,16 +4,18 @@ import { getDiscoverMsgList } from '../../models/release'
 import { getCarousel, getRecommendAccountList } from '../../models/util'
 import { getAttentionedList } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
-
-import loginPage from '../../template/login'
+import { getLocationInfo } from '../../models/map'
+import { promisic } from '../../utils/util'
 
 const app = getApp();
 Page({
 	data: {
+		locationLoading: true,
+		locationErrLoading: false,
 		headerBlock: 0,
 		loadingHidden: false,
 		releaseList: [],
-		cityname: '',
+		city: '',
 		pagenum: 0,
 		moreHidden: false,
 		tabname: 'recommend',
@@ -29,19 +31,44 @@ Page({
     ]
 	},
 
-	onLoad() {
-		const { userid = '' } = getUserInfo(['userid'])
-		if(!userid) {
-			loginPage.init.apply(this, [])
-		}
+	async onLoad() {
 		this.getHeaderBlock()
+		await this.getLocationInfo()
 	},
 
-	// 根据经纬度获取位置信息
-	getLocation(e) {
-		this.setData({
-			cityName: e.detail.city
-		})
+	async getLocationInfo() {
+		try {
+			const info = await getLocationInfo()
+			this.setData({
+				city: info.city,
+				locationLoading: false,
+			})
+		} catch (err) {
+			this.setData({
+				locationErrLoading: true,
+			})
+			console.log('err', err)
+		}
+	},
+
+	// 重新定位
+	async onAgainLocation() {
+    const res = await promisic(wx.openSetting)()
+    if (res.authSetting["scope.userLocation"]) {
+      this.getLocationInfo();
+    }
+	},
+
+	// 手动选择位置
+	onManualLocation() {
+    wx.navigateTo({
+      url: `/pages/city-list/city-list`,
+    });
+	},
+
+	// 重新选择地址完成触发
+	onAgainLocationComplete() {
+		this.getLocationInfo();
 	},
 
 	getHeaderBlock() {
@@ -108,14 +135,13 @@ Page({
 	},
 
 	async getDiscoverMsgList({ reset = false }) {
-		console.log('@@')
-		const { pagenum, cityname, releaseList, tabname = '' } = this.data
+		const { pagenum, city, releaseList, tabname = '' } = this.data
 		if (tabname === 'focus') {
 			await this.getAttentionedList()
 		}
 		const { data = [], page = 0 } = await getDiscoverMsgList({
 			pagenum,
-			cityname,
+			cityname: city,
 			keyword: '',
 			tabname
 		})
@@ -150,7 +176,7 @@ Page({
 		if(!userid) {
 			await this.login();
 			return
-		} 
+		}
 		this.setData({
 			pagenum: 0,
 		})

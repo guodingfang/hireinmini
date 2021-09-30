@@ -32,7 +32,7 @@ Component({
     },
     onSetup() {
       wx.navigateTo({
-        url: `/pages/userInfoDetail/userInfoDetail`,
+        url: `/pages/set-up/set-up`,
       })
     }
   }

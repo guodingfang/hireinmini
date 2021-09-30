@@ -7,6 +7,7 @@
 		"v-focus": "/components/contents/focus-model",
 		"v-item": "/components/contents/list-item",
 		"v-fixed": "/components/public/fixed-image",
+		"m-location": "/components/public/m-location",
 		"v-tabbar": "/components/tabbar"
 	},
 	"navigationStyle": "custom",

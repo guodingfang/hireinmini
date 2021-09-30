@@ -49,6 +49,13 @@
 	加载中...
 </loading>
 
+<m-location
+	loading="{{locationLoading}}"
+	errLoading="{{locationErrLoading}}"
+	bind:again="onAgainLocation"
+	bind:manual="onManualLocation" 	
+/>
+
 <view style="height: {{tabHeight}}rpx">
 	<v-tabbar />
 </view>

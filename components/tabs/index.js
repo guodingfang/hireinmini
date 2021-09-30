@@ -14,6 +14,15 @@ Component({
         this.initTabList()
       }
     },
+    defaultIndex: {
+      type: Number,
+      value: 0,
+      observer(val) {
+        val && this.setData({
+          current: val
+        })
+      }
+    },
     top: {
       type: Number,
       value: 0,
@@ -58,7 +67,7 @@ Component({
     tabList: [],  // tab分类
     current: 0,   // 当前tab
     screenWidth: 0, // 屏幕宽度
-    tabWidth: 0,  // 一个tab宽度
+    tabElement: [], // tab Dom数据
     sLeft: 0, // tab 滚动
     allowScroll: true,  // 允许内容滚动
     scrollTop: 0, // 滚动距离
@@ -89,22 +98,17 @@ Component({
       const { screenWidth = 0 } = app.globalData.workInfo
       this.setData({ screenWidth })
       const query = wx.createSelectorQuery().in(this)
-      query.select('.tab-item').boundingClientRect((element) => {
+      query.selectAll('.tab-item').boundingClientRect((element) => {
         if (element) {
           this.setData({
-            tabWidth: element.width || 100
+            tabElement: element,
           })
+          this._change()
         }
       }).exec()
     },
     initTabList() {
       const { list } = this.properties
-      const { current } = this.data
-      list[current] = {
-        ...list[current],
-        select: true
-      }
-      console.log('list', list)
       this.setData({
         tabList: list
       })
@@ -115,6 +119,14 @@ Component({
     },
     onSwiperChange(e) {
       const { current } = e.detail
+      this.setData({
+        current
+      })
+      this._change()
+    },
+
+    _change() {
+      const { current } = this.data
       let type = ''
       const tabList = this.data.tabList.map((tab, index) => {
         if (index ===  current) {
@@ -124,9 +136,8 @@ Component({
           return { ...tab, select: false}
         }
       })
-      const { tabWidth, screenWidth } = this.data
-      const sLeft = current * tabWidth - screenWidth / 2 + tabWidth / 2
-
+      const { tabElement, screenWidth } = this.data
+      const sLeft = tabElement[current].left - screenWidth / 2 + tabElement[current].width / 2
       this.setData({ tabList, sLeft, current })
       this.isSelectType(type)
     },

@@ -1,12 +1,11 @@
 <view style="height: {{headerBlock}}rpx">
 	<v-header
-		cityname="{{cityname}}"
+		isCity="{{!!city}}"
 		fixed="{{true}}"
 		isWeather="{{true}}"
 		placeholder="搜索全国资源/本地服务"
 		currentPage="service"
 		isTopTitle="{{true}}"
-		bind:getLocation="onGetLocation"
 	/>
 </view>
 

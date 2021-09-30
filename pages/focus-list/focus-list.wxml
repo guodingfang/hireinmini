@@ -10,6 +10,12 @@
     <view class="info">
       <view class="name">{{item.nickname}}</view>
     </view>
+
+    <view
+      class="btn"
+      data-userid="{{item.userid}}"
+      catch:tap="onUnFocus"
+    >取消关注</view>
   </view>
 </view>
 

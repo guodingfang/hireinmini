@@ -25,18 +25,20 @@ Component({
     },
     currentPage: {
       type: String,
-      value: ''
+      value: '',
     },
     isWeather: {
       type: Boolean,
       value: false
     },
-    cityname: {
-      type: String,
+    // 是否获取城市
+    isCity: {
+      type: Boolean,
       value: '',
-      observer() {
-        this.addressGetinfo()
-      }
+    },
+    locationInfo: {
+      type: Object,
+      value: null,
     },
     placeholder: String,
     search: {
@@ -63,13 +65,11 @@ Component({
    */
   data: {
     statusBarHeight: app.globalData.statusBarHeight,
-    locationInfo: null,
-    currentCity: '',
   },
 
   lifetimes: {
     ready() {
-      this.getLocation()
+
     }
   },
 
@@ -77,47 +77,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    // 根据城市名获取位置信息
-    addressGetinfo() {
-      const { cityname } = this.properties
-      console.log('cityname', cityname)
-      if (!cityname) return
-      const that = this
-      getMap().geocoder({
-        address: cityname,
-        success({ result }) {
-          const { province, city, district } = result.address_components
-          const locationInfo = { province, city, county: district }
-          that.setData({
-            locationInfo,
-          })
-          that.triggerEvent('getLocation', { city }, {})
-        }
-      })
-    },
-    // 根据经纬度获取位置信息
-    getLocation() {
-      if (this.properties.cityname) return
-      const that = this
-      getLocation(({latitude, longitude}) => {
-        getMap().reverseGeocoder({
-          location: `${latitude},${longitude}`,
-          success({ result }) {
-            const { province, city, district: county } = result.address_component
-            const locationInfo = { province, city, county }
-            that.setData({
-              locationInfo,
-              currentCity: city,
-            })
-            that.triggerEvent('getLocation', { city }, {})
-          }
-        })
-      }, () => {})
-    },
 
     onChangeLocation() {
       wx.navigateTo({
-        url: '/pages/citylist/citylist?rurl=service',
+        url: '/pages/city-list/city-list',
       })
     },
 

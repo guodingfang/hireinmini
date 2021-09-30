@@ -37,6 +37,6 @@
 }
 
 .m-search-xl {
-  width: 710rpx !important;
+  width: 700rpx !important;
   border: 1rpx solid #aaa;
 }

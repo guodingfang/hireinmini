@@ -1,6 +1,8 @@
 .card {
   display: flex;
   padding: 20rpx 30rpx;
+  height: 176rpx;
+  box-sizing: border-box;
 }
 
 .portrait {

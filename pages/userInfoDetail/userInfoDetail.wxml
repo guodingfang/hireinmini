@@ -1,4 +1,13 @@
-<!--pages/userInfoDetail/userInfoDetail.wxml-->
+<view style="height: {{headerBlock}}rpx">
+  <v-header
+    fixed="{{true}}"
+    currentPage="default"
+    isTopTitle="{{true}}"
+    isHeaderContent="{{false}}"
+    bind:getLocation="getLocation"
+  />
+</view>
+
 <view class="userinfo_wrap">
     <view class="userinfo_box_logo">
         <view class="userinfo_logo" bindtap="choosePhoto">

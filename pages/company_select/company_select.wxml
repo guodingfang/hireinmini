@@ -3,12 +3,12 @@
     <view class='pad-fill'></view>
     <view bindtap='aboutcompany' data-url='establish_company/establish_company' class='title'>
         <view class='name'>
-            <image src='../../images/establish.png' class='img'></image>创建公司</view>
+            <image src='../../images/establish.png' class='img'></image>开通租赁商服务账号</view>
     </view>
     <view  bindtap='aboutcompany' data-url='binding_company/binding_company' class='title'>
         <view class='name'>
             <image src='../../images/binding.png' class='img'></image>
-            <view class='val'>绑定公司</view>
+            <view class='val'>加入租赁商参与服务</view>
         </view>
     </view>
 </view>

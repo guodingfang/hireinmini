@@ -1,6 +1,8 @@
 {
   "usingComponents": {
+    "v-header": "/components/header",
     "m-upload": "/components/public/m-upload",
     "m-tags": "/components/public/m-tags"
-  }
+  },
+  "navigationStyle": "custom"
 }

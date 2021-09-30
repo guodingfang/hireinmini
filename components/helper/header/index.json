@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "m-weather": "/components/public/m-weather"
+  }
 }

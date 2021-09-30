@@ -6,6 +6,7 @@
   overflow: hidden;
   box-sizing: border-box;
   padding-bottom: 20rpx;
+  height: 230rpx;
 }
 
 .list {

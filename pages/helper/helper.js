@@ -2,8 +2,9 @@ import {
   getknowledgeRecommend,
   getTopNQuestions
 } from '../../models/helper'
-
+import { getLocationInfo } from '../../models/map'
 import { judgeTabBarHeight } from '../../utils/util'
+
 
 const app = getApp();
 
@@ -21,24 +22,24 @@ Page({
         type: 'led',
         val: 'LED公式',
       }, {
-        type: 'rhea',
+        type: 'ly',
         val: '雷亚架公式',
       }, {
-        type: 'open',
+        type: 'scal',
         val: '开窗公式',
       }
     ],
     knowledgeList: [],
     questionsList: [],
+    locationInfo: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    const { cityname = '' } = wx.getStorageSync('cityinfo')
-    this.setData({ cityname })
     this.getHeaderBlock()
+    this.getLocationInfo()
     this.getknowledgeRecommend()
     this.getTopNQuestions()
   },
@@ -46,12 +47,19 @@ Page({
 	getHeaderBlock() {
 		const { workInfo, statusBarHeight, headerTopHeader } = app.globalData;
     const { tabHeight } = judgeTabBarHeight(workInfo);
-    console.log('statusBarHeight, headerTopHeader', statusBarHeight, headerTopHeader)
 		this.setData({
 			headerBlock: statusBarHeight + headerTopHeader - 2,
 			tabHeight,
 		})
+  },
+  
+  async getLocationInfo() {
+		const info = await getLocationInfo()
+		this.setData({
+			city: info.city,
+		})
 	},
+
 
   // 知识推荐
   async getknowledgeRecommend() {
@@ -69,9 +77,10 @@ Page({
     })
   },
 
-  onSkipTool() {
+  onSkipTool(e) {
+    const { type } = e.currentTarget.dataset
     wx.navigateTo({
-      url: '/pages/tool/tool',
+      url: `/pages/tool/tool?type=${type}`,
     })
   },
 
@@ -83,7 +92,7 @@ Page({
   },
 
   getLocation(e) {
-    this.setData({ cityname: e.detail.city })
+    this.setData({ locationInfo: e.detail.locationInfo })
   },
 
   /**

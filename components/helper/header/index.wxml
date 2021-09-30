@@ -1,11 +1,8 @@
 
 <view class="header">
-  <view class="location">
-    <image class="icon-location" src="/images/icon/location.png"></image>
-    <text class="location-val">{{ city }}</text>
-  </view>
+  <m-weather isCity="{{isCity}}" />
   <button class="dial-button" open-type="contact" bindcontact="handleContact">
     <image class="icon-dial" src="/images/icon/dial.png"></image>
-    <text class="dial-val">呼叫我的助手</text>
+    <text class="dial-val">呼叫本地助手</text>
   </button>
 </view>

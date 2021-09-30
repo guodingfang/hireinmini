@@ -12,6 +12,7 @@ Page({
   data: {
     type: 'power',
     bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
+    defaultIndex: 0,
     tabList: [
       {
         name: '功耗',
@@ -56,8 +57,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const { type = '' } = options
+    this.getDefaultIndex(type)
     this.uploadAccessLog()
     this.getHeaderBlock()
+  },
+
+  getDefaultIndex(type) {
+    let defaultIndex = 0
+    this.data.tabList.map((item, index) => {
+      if(item.type === type) {
+        defaultIndex = index
+      }
+    })
+    this.setData({ 
+      defaultIndex
+    })
   },
 
   async uploadAccessLog() {

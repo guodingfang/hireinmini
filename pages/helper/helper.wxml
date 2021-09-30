@@ -2,16 +2,15 @@
 <view style="height: {{headerBlock}}rpx">
   <v-header
     fixed="{{true}}"
-    cityname="{{cityname}}"
+    isCity="{{!!city}}"
     currentPage="helper"
     isTopTitle="{{true}}"
     isHeaderContent="{{false}}"
-    bind:getLocation="getLocation"
   />
 </view>
 
 <view style="height: 88rpx">
-  <v-helper-header city="{{cityname}}" />
+  <v-helper-header city="{{cityname}}" locationInfo="{{locationInfo}}" />
 </view>
 
 
@@ -26,8 +25,14 @@
 
 <view class="model tool">
   <m-header title="租赁常用工具" bind:more="onSkipTool" />
-  <view class="content tool-content" bind:tap="onSkipTool">
-    <view class="tool-item" wx:for="{{tools}}" wx:key="id">
+  <view class="content tool-content">
+    <view
+      class="tool-item"
+      wx:for="{{tools}}"
+      wx:key="id"
+      data-type="{{item.type}}"
+      bind:tap="onSkipTool"
+    >
       <image class="tool-img" src="./images/{{item.type}}.png"></image>
       <text class="label">{{item.val}}</text>
     </view>

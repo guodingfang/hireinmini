@@ -12,15 +12,16 @@ const login = async (option = {}) => {
   })
   console.log('info', info)
   if(info.code === 0 && info.result) {
-    wx.setStorageSync('logininfo', info.userinfo)
+    wx.setStorageSync('userinfo', info.userinfo)
     return {
       code: 0,
       userinfo: info.userinfo
     }
   } else {
-    wx.navigateTo({
-      url: '/pages/login/login',
+    const navTo = await wx.navigateTo({
+      url: `/pages/login-2/login-2?status=${info.code === 1 ? 'userInfo' : 'baseInfo'}`,
     })
+    navTo.eventChannel.emit('getUserBaseInfo', { userinfo: info.userinfo })
     return {
       code: -1,
       userinfo: null
@@ -28,16 +29,44 @@ const login = async (option = {}) => {
   }
 }
 
+/**
+ * 用户注册
+ * @param {*} option 
+ */
+const registerUser = (option = {}) => {
+  return request.post('/WXAppLogin/userRegByUserinfo', {
+    ...option
+  })
+}
+
+/**
+ * 获取微信手机号
+ * @param {*} option 
+ */
+const getUserPhone = (option = {}) => {
+  return request.post('/WXAppLogin/getWxUserPhoneNumber', {
+    ...option
+  })
+}
+
+/**
+ * 注销账户
+ * @param {*} option 
+ */
+const unRegisterUser = (option = {}) => {
+  return request.post('/WXAppLogin/unregister', {
+    ...option
+  })
+}
+
 // 获取用户当前经纬度
 const getLocation = (success, fail) => {
   promisic(wx.getLocation)({
     type: 'wgs84',
   }).then(res => {
-    console.log('res', res)
     success && success(res)
   }).catch(err => {
-    console.log('err', err)
-    fail && fail
+    fail && fail(err)
   })
 }
 
@@ -122,9 +151,32 @@ const getCompanyInfo = (option = {}) => {
   })
 }
 
+/**
+ * 获取用户编辑信息
+ * @param {*} option 
+ */
+const getUserEditableInfo = (option = {}) => {
+  return request.post('/User/getUserEditableInfo', {
+    ...option
+  })
+}
+
+
+/**
+ * 改变用户信息
+ * @param {*} option 
+ */
+const setUserInfo = (option = {}) => {
+  return request.post('/User/changeUserInfo', {
+    ...option
+  })
+}
 
 export {
   login,
+  registerUser,
+  getUserPhone,
+  unRegisterUser,
   getLocation,
   uploadAccessLog,
   getMyCompanyInfo,
@@ -133,5 +185,7 @@ export {
   getAttentionedList,
   getUserBaseInfo,
   getMsgDynamics,
-  getCompanyInfo
+  getCompanyInfo,
+  getUserEditableInfo,
+  setUserInfo
 }

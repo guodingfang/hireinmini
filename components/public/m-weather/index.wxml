@@ -1,11 +1,12 @@
 <view class="model" bind:tap="onChange">
   <view class="weather">
     <view class="weather-val">{{degree}}°</view>
-    <view class="weather-type">{{weather}}</view>
+    <text class="iconfont iconfont-weather {{weather}}" wx:if="{{weather}}"></text>
+    <view class="weather-type" wx:else>{{weatherText}}</view>
   </view>
   <view class="info">
     <view class="location">
-      <view class="location-val">{{location}}</view>
+      <view class="location-val single-row-overstep">{{location}}</view>
     </view>
     <view class="aqi">
       <view class="aqi-val">{{aqi}}</view>

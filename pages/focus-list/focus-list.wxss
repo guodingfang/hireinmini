@@ -17,10 +17,26 @@ Page {
   border-radius: 50%;
 }
 
+.info {
+  margin-right: auto;
+}
+
 .name {
   margin-left: 24rpx;
   font-size: 24rpx;
   color: #1a1a1a;
+}
+
+.btn {
+  width: 130rpx;
+  height: 50rpx;
+  background-color: #FFEED9;
+  color: #FFA12C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  border-radius: 12rpx;
 }
 
 .not-more {

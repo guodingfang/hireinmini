@@ -93,7 +93,7 @@ class Config {
         var that = this;
         getApp().wxLogin(callback);return;
         wx.getStorage({
-            key: 'logininfo',
+            key: 'userinfo',
             success: function (res) { //有登录缓存
                 callback();
             },

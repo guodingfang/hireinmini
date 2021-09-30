@@ -346,67 +346,6 @@ page {
 	opacity: 0.5;
 }
 
-/* 未登录样式 */
-
-.notLogin {
-	position: relative;
-	padding-top: 80rpx;
-	text-align: center;
-	font-size: 36rpx;
-}
-
-.notLogin image {
-	padding-bottom: 67rpx;
-	width: 170rpx;
-	height: 170rpx;
-}
-
-/* 未注册样式 */
-.not-register {
-	position: relative;
-	text-align: center;
-	font-size: 36rpx;
-}
-
-.not-register image {
-	padding-bottom: 40rpx;
-	width: 100%;
-	height: 300rpx;
-}
-
-.login {
-	padding-top: 200rpx;
-}
-
-.button {
-	display: inline-block;
-	width: 90%;
-	height: 90rpx;
-	line-height: 90rpx;
-	border-radius: 10rpx;
-	color: #fff;
-	background: #2ab7ff;
-	font-size: 34rpx;
-}
-
-.bg-shade {
-	position: fixed;
-	width: 100%;
-	height: 100%;
-	background: #fff;
-}
-
-.register {
-	padding-top: 10rpx;
-	font-size: 30rpx;
-	text-align: center;
-	color: #576b95;
-}
-
-.annotation {
-	padding-bottom: 40rpx;
-}
-
 
 /* 生成图片 */
 .share-wrap {

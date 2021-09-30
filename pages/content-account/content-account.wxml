@@ -92,14 +92,14 @@
         <v-not-content />
       </block>
     </view>
-    <view class="goods-list" slot="item-5">
+    <!-- <view class="goods-list" slot="item-5">
       <block wx:if="{{stroeList && stroeList.length}}">
         <v-goods-item wx:for="{{ stroeList }}" wx:key="id"/>
       </block>
       <block wx:else>
         <v-not-content />
       </block>
-    </view>
+    </view> -->
   </m-tabs>
 </scroll-view>
 

@@ -1,5 +1,3 @@
-<import src="../../template/login.wxml" />
-<!--个人头像-->
 
 <view style="height: {{headerBlock}}rpx">
   <v-header
@@ -28,6 +26,11 @@
 </view>
 
 <v-order orderaudit="{{orderaudit}}" ordernum="{{ordernum}}" />
+
+<view class="demo-model" bind:tap="onUnRegisterUser">
+	注销账户
+</view>
+
 <!-- 
 <view class="advert">
 	<v-skip
@@ -55,7 +58,7 @@
 	<v-advert />
 </view>
  -->
-<view class="">
+<view style="margin-top: 20rpx;">
 	<v-skip
 		src="/images/advert/open-service-account.png"
 		width="690"
@@ -63,11 +66,6 @@
 		url="{{skipCompanyUrl}}"
 	/>
 </view>
-
-<view style="height: 34vh;"></view>
-
-<template is='login' data='{{userinfo,verification,phone,logourl,canGetUserProfile}}'></template>
-
 
 <!-- 遮罩 -->
 <view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>

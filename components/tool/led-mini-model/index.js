@@ -11,7 +11,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    spaceList: ['0.9375', '1.25', '1.34', '1.56', '1.704', '1.875'],
+    spaceList: [],
     selectSpace: '',
     specList: [],
     pixel: '',

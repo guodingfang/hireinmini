@@ -69,8 +69,8 @@ App({
 								})
 							} else {
 								if (res.data.code == 0) {
-									wx.removeStorageSync('logininfo');
-									wx.setStorageSync('logininfo', res.data.userinfo);
+									wx.removeStorageSync('userinfo');
+									wx.setStorageSync('userinfo', res.data.userinfo);
 								}
 								wx.removeStorageSync('userinfo');
 								wx.setStorageSync('userinfo', res.data.userinfo);
@@ -185,7 +185,7 @@ App({
 		var date = Date.parse(new Date()); //当前时间
 		var LogoDate = wx.getStorageSync('twoHourLogoDate'); //两小时后的时间
 		if (date > LogoDate) {
-			wx.removeStorageSync('logininfo');
+			wx.removeStorageSync('userinfo');
 			getApp().wxLogin(function () {
 				callback();
 			})

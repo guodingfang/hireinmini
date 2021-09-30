@@ -54,7 +54,7 @@
     height: 80rpx;
     line-height: 80rpx;
     margin: 30rpx;
-    background: #2ab7ff;
+    background: #0400E6;
     border-radius: 10rpx;
     font-size: 30rpx;
     color: #fff;

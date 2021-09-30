@@ -18,6 +18,7 @@
   backgroundColor="transparent"
   tabColor="#e5e5e5"
   tabSelectColor="#fff"
+  defaultIndex="{{defaultIndex}}"
 >
   <view class="tabs-item" slot="item-1">
     <v-power />

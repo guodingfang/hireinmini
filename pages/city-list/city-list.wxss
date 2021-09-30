@@ -1,1 +1,71 @@
-/* pages/city-list/city-list.wxss */
+Page {
+  background-color: #ffffff;
+}
+
+.letter-list {
+  position: fixed;
+  top: 16rpx;
+  right: 16rpx;
+  z-index: 9999;
+  font-size: 24rpx;
+  width: 60rpx;
+  height: 90vh;
+  max-height: 1150rpx;
+  padding: 12rpx 0;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  box-shadow: 0 0 30rpx rgba(0, 0, 0, .15);
+  border-radius: 30rpx;
+}
+
+.letter-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.city-list {
+  height: 100vh;
+  font-size: 26rpx;
+}
+
+.title {
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #1a1a1a;
+  background-color: #f5f5f5;
+  align-items: center;
+  padding-left: 24rpx;
+}
+
+
+.city-current, .city-history, .city-hot {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 24rpx;
+  padding-right: 76rpx;
+}
+
+.current-item, .history-item, .hot-item {
+  height: 60rpx;
+  padding: 0 24rpx;
+  border: 0.5rpx solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  border-radius: 6rpx;
+  margin-left: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.city-item {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 24rpx;
+}
+
+.city-item + .city-item {
+  border-top: 0.5rpx solid #f5f5f5;
+}

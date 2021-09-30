@@ -1,0 +1,67 @@
+<view class="set-up">
+  <view class="item head-item">
+    <view class="label">头像</view>
+    <image class="head-portrait" src="{{userpic}}" bind:tap="onChooseImage"></image>
+    <view class="more">
+      <image class="icon-more" src="/images/icon/more.png"></image>
+    </view>
+  </view>
+  <view class="item">
+    <view class="label">用户名</view>
+    <view class="content">
+      <input
+        class="val"
+        type="text"
+        placeholder="{{nickname === '' ? '请填写用户名' : nickname}}"
+        data-type="nickname"
+        bindinput="onChangeInput"
+      />
+      <view class="more">
+        <image class="icon-more" src="/images/icon/more.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="label">简介</view>
+    <view class="content">
+      <input
+        class="val"
+        type="text"
+        placeholder="{{remark === '' ? '这个人很懒，什么也没留下' : remark}}"
+        data-type="remark"
+        bindinput="onChangeInput"
+      />
+      <view class="more">
+        <image class="icon-more" src="/images/icon/more.png"></image>
+      </view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="label">性别</view>
+    <picker
+      bindchange="onGenderChange"
+      mode="selector"
+      range="{{genderList}}"
+      range-key="label"
+      value="{{gender}}"
+    >
+      <view class="content">
+        <view class="val">{{ genderList[gender].label || '待完善' }}</view>
+        <view class="more">
+          <image class="icon-more" src="/images/icon/more.png"></image>
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="item" bind:tap="onSelectCity">
+    <view class="label">地区选择</view>
+    <view class="content">
+      <view class="val">{{ city || '待完善' }}</view>
+      <view class="more">
+        <image class="icon-more" src="/images/icon/more.png"></image>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="btn" bind:tap="onSubmit">提交</view>

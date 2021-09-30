@@ -26,8 +26,15 @@ Component({
     onInputChange(e) {
       const { value } = e.detail
       const { type } = e.target.dataset
+      if (value % 2 !== 0) {
+        wx.showToast({
+          title: '输入值必须为2的倍数',
+          icon: 'none'
+        })
+      }
+      const _val = value % 2 !== 0 ? +value + 1 : value
       this.setData({
-        [type]: value
+        [type]: _val
       })
       this.computeResult()
     },
@@ -36,7 +43,7 @@ Component({
       if(width && thickness && height) {
         this.setData({
           verticalAmount: ((width / 2 + 1) * (thickness / 2 + 1) * (height / 2)).toFixed(2),
-          acrossAmount: (((thickness / 2 + 1) * (width / 2) + (width / 2 + 1) * (width / 2)) * (height / 2 + 1)).toFixed(2),
+          acrossAmount: (((thickness / 2 + 1) * (width / 2) + (width / 2 + 1) * (thickness / 2)) * (height / 2 + 1)).toFixed(2),
           slantingAmount: (((width / 2) * (thickness / 2 + 1) + (thickness / 2) * (width / 2 + 1)) * (height / 2)).toFixed(2),
         })
       } else {

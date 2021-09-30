@@ -8,6 +8,7 @@ import {
 } from '../../models/service'
 
 import { getRecommendCompanyList } from '../../models/release'
+import { getLocationInfo } from '../../models/map'
 
 const app = getApp();
 
@@ -19,7 +20,7 @@ Page({
 	data: {
 		imgUrl: config.imgUrl,
 		headerBlock: 0,
-		cityname: '',
+		city: '',
 		keyword: '',
 		carouselList: [],
 		hotProductList: [],
@@ -45,15 +46,27 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad (options) {
-		const { cityname = '' } = wx.getStorageSync('cityinfo')
-		this.setData({ cityname })
 		this.getHeaderBlock()
 		this.getCarousel()
 		// this.getInfo()
+		this.getLocationInfo()
+	},
+
+	async getLocationInfo() {
+		try {
+			const info = await getLocationInfo()
+			console.log('info', info)
+			this.setData({
+				city: info.city,
+			})
+			await this.getNationwideCompanyList()
+		} catch (err) {
+			console.log('err', err)
+		}
 	},
 
 	async getNationwideCompanyList() {
-		const { pagesize, currentPage, cityname } = this.data
+		const { pagesize, currentPage, city } = this.data
 		this.setData({
 			thisLocalityCompanyList: [],
 			pagesize: 10,
@@ -63,7 +76,7 @@ Page({
 		const { data } = await getRecommendCompanyList({
 			page: currentPage,
 			pagesize,
-			city: cityname
+			city: city
 		})
 		this.setData({
 			nationwideCompanyList: data.map(item => ({
@@ -77,11 +90,11 @@ Page({
 
 		// 获取租赁商列表
 		async getRecommendCompanyList() {
-			const { pagesize, currentPage, cityname } = this.data
+			const { pagesize, currentPage, city } = this.data
 			const { data, page } = await getRecommendCompanyList({
 				page: currentPage,
 				pagesize,
-				city: cityname
+				city: city
 			})
 			const thisLocalityCompanyList = data.map(item => ({
 				...item,
@@ -153,18 +166,6 @@ Page({
 		this.setData({
 			carouselList: list
 		})
-	},
-
-	onGetLocation(e) {
-		this.setData({
-			cityname: e.detail.city
-		})
-		this.getNationwideCompanyList()
-	},
-
-	updateCity(e) {
-		const { cityname } = e
-		this.setData({ cityname })
 	},
 
 	onShow () {
