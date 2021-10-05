@@ -1,4 +1,4 @@
-@import "/common/lib/iconfont.wxss";
+@import "/assets/style/global.wxss";
 
 .item {
   display: flex;

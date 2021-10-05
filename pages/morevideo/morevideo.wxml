@@ -1,4 +1,0 @@
-<!--pages/morevideo/morevideo.wxml-->
-<view class='vi-vo' wx:for='{{list}}' wx:for-item='item' wx:key="{{index}}">
-    <video src="{{item.videourl}}"></video>
-</view>

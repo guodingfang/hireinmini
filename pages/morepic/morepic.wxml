@@ -1,8 +1,0 @@
-<!--pages/morepic/morepic.wxml-->
-<view class='com-border'>
-    <view class='com-cont1' wx:for='{{list}}' wx:for-item='item' wx:key="{{index}}">
-        <view class='com-pro'>
-            <image class='img' src="{{baseurl}}{{item.picture}}" data-src='{{baseurl}}{{item.picture}}' catchtap="seeImage"></image>
-        </view>
-    </view>
-</view>

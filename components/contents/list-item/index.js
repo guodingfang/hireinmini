@@ -1,7 +1,6 @@
 import config from '../../../config'
 import { addUserDialRecord, addLikeRelease, deleteLikeRelease, addComment } from '../../../models/release'
 import { addAttention } from '../../../models/user'
-import { fa } from '../../../utils/pinYin'
 
 Component({
   /**

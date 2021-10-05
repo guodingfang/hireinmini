@@ -1,5 +1,4 @@
 import { getWeather } from '../../../models/util'
-import { re } from '../../../utils/pinYin'
 
 Component({
   /**

@@ -1,4 +1,3 @@
-import { fa } from "../../../utils/pinYin";
 
 // components/helper/header/index.js
 Component({

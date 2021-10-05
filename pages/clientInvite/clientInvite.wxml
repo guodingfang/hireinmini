@@ -1,7 +1,0 @@
-<!--pages/clientInvite/clientInvite.wxml-->
-<view class='inv-top'>
-    <image src='../../images/invite-icon-1.png'></image>
-    <view class='inv-name'>{{companyname}}</view>
-    <view class='inv-mem'>邀请您成为合作伙伴</view>
-</view>
-<button class='btn-add' open-type="share">邀请</button> 

@@ -1,4 +1,5 @@
-@import "/common/lib/iconfont.wxss";
+@import "/assets/style/global.wxss";
+
 .model {
   display: flex;
   flex-direction: column;

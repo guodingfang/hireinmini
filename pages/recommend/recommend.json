@@ -1,6 +1,0 @@
-{
-    "enablePullDownRefresh": true,
-    "usingComponents": {
-        "painter": "/components/painter/painter"
-    }
-}

@@ -5,27 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    formList: [
-      {
-        label: '规格',
-        placeholder: '输入产品规格'
-      }, {
-        label: '数量',
-        placeholder: '输入产品库存数量'
-      }, {
-        label: '单位',
-        placeholder: '输入产品单位'
-      }, {
-        label: '天数',
-        placeholder: '输入产品租赁天数'
-      }, {
-        label: '价格',
-        placeholder: '输入产品价格'
-      }, {
-        label: '品牌',
-        placeholder: '输入产品品牌'
-      }
-    ]
+
   },
 
   /**

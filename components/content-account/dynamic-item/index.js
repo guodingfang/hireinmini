@@ -1,5 +1,3 @@
-const { ne, a, fa } = require("../../../utils/pinYin")
-
 import config from '../../../config'
 
 Component({

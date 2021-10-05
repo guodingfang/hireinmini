@@ -11,17 +11,6 @@ App({
 		// 设置全局header搜索框高度：rpx
 		headerSearchHeader: 100,
 	},
-	/**
-	 * 获取微信code
-	 */
-	getWxCode: function () {
-		wx.login({
-			success: function (res) {
-				var date = new Date;
-				wx.setStorageSync('wxcode', res);
-			}
-		})
-	},
 
 	onShow(options) {
     // 判断运行环境

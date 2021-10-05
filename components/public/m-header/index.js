@@ -1,4 +1,3 @@
-const { fa } = require("../../../utils/pinYin");
 
 // components/public/m-header/index.js
 Component({

@@ -1,5 +1,3 @@
-const { fa } = require("../../../utils/pinYin");
-
 // components/public/concern-btn/index.js
 Component({
   /**

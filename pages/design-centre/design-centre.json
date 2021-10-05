@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "v-carousel": "/components/carousel",
-    "v-item": "/components/contents/simple-item"
-  },
-  "navigationBarTitleText": "设计中心"
-}
