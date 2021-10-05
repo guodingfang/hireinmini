@@ -1,4 +1,5 @@
 import { promisic } from '../../../utils/util.js'
+import { upload } from '../../../models/util'
 import config from '../../../config'
 
 Component({
@@ -112,18 +113,15 @@ Component({
       console.log('file', file)
       const { uploadId } = this.properties
       const { uploadUrl, formDataParams } = this.data
-      await promisic(wx.uploadFile)({
+      const res = await upload({
         url: uploadUrl,
-        filePath: file,
-        name: 'file',
+        file,
         formData: {
           msgid: uploadId,
           ...formDataParams,
-        },
-        header: {
-          'content-type': 'multipart/form-data'
         }
       })
+      console.log('res@@@', res)
     },
 
     // 关闭删除图片

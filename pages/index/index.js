@@ -175,7 +175,6 @@ Page({
 		const { userid = '' } = getUserInfo(['userid'])
 		if(!userid) {
 			await this.login();
-			return
 		}
 		this.setData({
 			pagenum: 0,

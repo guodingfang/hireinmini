@@ -1,5 +1,60 @@
-<!--pages/login/login.wxml-->
-<import src="../../template/login.wxml" />
 <view>
-	<template is='login' data='{{userinfo,verification,phone,logourl,canGetUserProfile}}'></template>
+  <view wx:if="{{!phoneModel}}">
+    <view class="not-register">
+      <image class="logo" src="/images/public/logo.png"></image>
+      <button
+        wx:if="{{canGetUserProfile}}"
+        class="button"
+        type="primary"
+        bindtap="getUserInfo"
+      >微信登录</button>
+      <button
+        wx:else
+        class="button"
+        bindgetuserinfo="getUserInfo"
+        type="primary"
+        open-type="getUserInfo"
+      >微信登录</button>
+    </view>
+  </view>
+  <view wx:else>
+    <view class='user-info'>
+      <image class="user-logo" src="{{userinfo.avatarurl}}"></image>
+      <view class="user-name">{{userinfo.nickname}}</view>
+    </view>
+    <button
+      class="button"
+      type="primary"
+      open-type="getPhoneNumber"
+      bindgetphonenumber="getUserPhone"
+    >微信用户快速登录</button>
+
+    <view class="phone-register" wx:if="{{false}}">
+      <view class="title">输入手机号注册</view>
+      <view class="input-model">
+        <image class="icon" src="../../images/phone2.png" />
+        <text class="label">手机号</text>
+        <input
+          class="input-val"
+          type="number"
+          name="phone"
+          bindinput="getPhone"
+          placeholder="请输入手机号"
+          placeholder-class='pl-input'
+        />
+      </view>
+      <view class="input-model">
+        <image class="icon" src="../../images/verification.png" />
+        <text class="label">验证码</text>
+        <input
+          class="input-val"
+          type="number"
+          name="verification"
+          placeholder="请输入短信验证码"
+          placeholder-class='pl-input'
+        />
+        <view class="code-btn" bindtap="getVerification">获取验证码</view>
+      </view>
+    </view>
+  </view>
 </view>

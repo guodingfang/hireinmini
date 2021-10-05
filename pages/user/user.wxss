@@ -95,7 +95,7 @@ Page {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin: auto;
 	height: 100rpx;
-	
+	margin: 30rpx;
+	border-radius: 12rpx;
 }

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "m-upload" : "/components/public/m-upload",
+    "m-tags": "/components/public/m-tags"
+  }
+}

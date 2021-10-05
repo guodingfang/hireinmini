@@ -1,7 +1,16 @@
 <view class="tags">
-  <view class="tag-item">二手直卖</view>
-  <view class="tag-item">设计中心</view>
-  <view class="tag-item add">
+  <view
+    class="tag-item {{item.select ? 'select-tag-item' : ''}}"
+    wx:for="{{list}}"
+    wx:key="id"
+    data-id="{{item.id}}"
+    bind:tap="onSelectLabel"
+  >{{ item.label }}</view>
+  <view
+    class="tag-item add"
+    wx:if="{{showBtn}}"
+    bind:tap="onAddLabel"
+  >
     <image class="icon-add" src="./images/icon-add.png"></image>
   </view>
 </view>

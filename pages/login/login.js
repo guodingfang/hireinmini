@@ -1,127 +1,141 @@
-// pages/login/login.js
-import {
-    Config
-} from '../../utils/config.js';
-import emoji from '../../utils/emoji';
-var login = require('../../template/login.js');
-var config = new Config();
-const app = getApp()
+import { registerUser, getUserPhone } from '../../models/user'
+import { promisic } from '../../utils/util'
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        accesstoken: '',
-        userid: 0,
-        unionid: 0,
-        userinfo: [],
-        verification: "获取验证码",
-        phone: '',
-        logourl: '',
-        canGetUserProfile: false,  //使用getUserProfile取用户信息
-    },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    canGetUserProfile: false,
+    code: '',
+    userinfo: null,
+    phoneModel: false,
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function(options) {
-        login.init.apply(this, []); // this关键字必须传进去 这样才能使header.js中的数据和函数注入到这个模块
-        var userinfo = wx.getStorageSync('userinfo');
-        this.setData({
-            userinfo: userinfo,
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad (options) {
+    const { status = '' } = options
+    if(status === 'userInfo') {
+      this.setData({
+        phoneModel: true,
+      })
+      this._getUserBaseInfo()
+    }
+    this.initUser()
+  },
+
+  // 获取用户基本信息
+  _getUserBaseInfo() {
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('getUserBaseInfo', ({ userinfo }) => {
+      this.setData({
+        userinfo
+      })
+    })
+  },
+
+  async initUser() {
+    if(wx.getUserProfile) {
+      this.setData({
+        canGetUserProfile: true
+      })
+    }
+  },
+
+  // 获取用户信息并登陆
+  async getUserInfo() {
+    try {
+      const { encryptedData = '', iv } = await wx.getUserProfile({
+        desc: '用于完善会员资料',
+      })
+      const { code } = await promisic(wx.login)();
+      // 注册用户
+      const userinfo = await registerUser({
+        encryptedData,
+        iv,
+        code
+      })
+      this.setData({
+        userinfo,
+        phoneModel: userinfo.code === 1,
+      })
+    } catch (err) {
+      console.log('err', err)
+    }
+  },
+
+  async getUserPhone(e) {
+    const { errMsg, encryptedData, iv } = e.detail
+    if (errMsg == 'getPhoneNumber:ok'){
+      const { userinfo } = this.data
+      const { code } = await promisic(wx.login)();
+      const data = await getUserPhone({
+        encryptedData,
+        iv,
+        code,
+        reguserid: userinfo.reguserid
+      })
+      // 注册成功
+      if(data.code === 0) {
+        console.log('data', data)
+        wx.setStorageSync('userinfo', data)
+        wx.navigateBack({
+          delta: 1,
         })
-        if (wx.getUserProfile){
-            this.setData({
-                canGetUserProfile: true,
-            });
-        }
-        this.getLogoUrl();
-    },
+      } else {
+        console.log('手机号注册失败')
+      }
+    }
+  },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
 
-    },
+  },
 
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-        // 判断用户登录信息是否缓存
-        config.userLogin(function() {
-            var userinfo = wx.getStorageSync('userinfo');
-            var userid = userinfo.userid ? userinfo.userid : 0;
-            var code = userinfo.code ? userinfo.code : 2;
-            if (userid > 0) {
-                wx.navigateBack({
-                    delta: 1
-                })
-            } else {
-                app.getWxCode();
-            }
-        })
-    },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
+  },
 
-    },
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
 
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
+  },
 
-    },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
 
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
+  },
 
-    },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
 
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
+  },
 
-    },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
+  },
 
-    },
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
 
-    /*取系统logo*/
-    getLogoUrl: function(e) {
-        var that = this;
-        wx.request({
-            url: Config.baseUrl + "WXAppLogin/getWxMiniLogo",
-            data: {
-                userid: that.data.userid,
-                accesstoken: that.data.accesstoken,
-                unionid: that.data.unionid
-            },
-            header: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            method: "post",
-            success: function(res) {
-                console.log('logo url:',res);
-                if (res.data.logo.length>0) {
-                    that.setData({
-                        logourl: Config.imgUrl + res.data.logo
-                    })
-                }
-            }
-        })
-    },
+  }
 })

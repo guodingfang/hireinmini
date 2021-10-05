@@ -1,4 +1,4 @@
-import { getSpacingList, getSpecList } from '../../../models/util'
+import { getSpacingList, getSpecList } from '../../../models/tool'
 Component({
   /**
    * 组件的属性列表

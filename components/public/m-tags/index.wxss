@@ -11,10 +11,17 @@
   color: #666666;
   font-size: 24rpx;
   margin-left: 20rpx;
+  margin-bottom: 12rpx;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20rpx;
+}
+
+.select-tag-item {
+  background-color: #E6EDFF;
+  color: #0400E6;
+  font-weight: bold;
 }
 
 .icon-add {

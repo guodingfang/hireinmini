@@ -19,7 +19,7 @@ const login = async (option = {}) => {
     }
   } else {
     const navTo = await wx.navigateTo({
-      url: `/pages/login-2/login-2?status=${info.code === 1 ? 'userInfo' : 'baseInfo'}`,
+      url: `/pages/login/login?status=${info.code === 1 ? 'userInfo' : 'baseInfo'}`,
     })
     navTo.eventChannel.emit('getUserBaseInfo', { userinfo: info.userinfo })
     return {

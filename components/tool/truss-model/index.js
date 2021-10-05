@@ -1,4 +1,4 @@
-import { getTrussSpec, getTrussSpan } from '../../../models/util'
+import { getTrussSpec, getTrussSpan } from '../../../models/tool'
 import { remoteImagesUrl } from '../../../config'
 Component({
   /**

@@ -1,4 +1,10 @@
-import { getLocationInfo, addressGetinfo, getCityList, getHitoryList, getHotList } from '../../models/map'
+import {
+  getLocationInfo,
+  addressGetinfo,
+  getCityList,
+  getHitoryList,
+  getHotList
+} from '../../models/map'
 
 Page({
 
@@ -12,11 +18,6 @@ Page({
     hitoryList: [],
     hotlist: [],
     currentCity: null,
-    // 需要触发重新加载的页面路径
-    againLoadList: [
-      'pages/index/index',
-      'pages/set-up/set-up'
-    ]
   },
 
   /**
@@ -83,14 +84,11 @@ Page({
       })
       const pages = getCurrentPages();
       const prevPage = pages[pages.length - 2]; //上一个页面
-      const { route = '' } = prevPage
-      const { againLoadList = [] } = this.data
-      const existRoute = againLoadList.find(item => item === route)
-      if(existRoute) {
-        prevPage.onAgainLocationComplete({
-          city: item.cityname
-        })
-      }
+
+      prevPage.onAgainLocationComplete && prevPage.onAgainLocationComplete({
+        city: item.cityname,
+        code: item.citycode
+      })
       wx.navigateBack({
         delta: 1,
       })

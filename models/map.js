@@ -1,6 +1,5 @@
 
 import request from '../utils/request'
-import { promisic } from '../utils/util'
 
 import QQMapWX from '../libs/qqmap-wx-jssdk.min.js';
 import { qqMapkey } from '../config.js';

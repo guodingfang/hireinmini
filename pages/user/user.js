@@ -22,7 +22,7 @@ Page({
 		logourl: '',
 		canGetUserProfile: false, //使用getUserProfile取用户信息
 		bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
-		skipCompanyUrl: '/pages/company_select/company_select',
+		skipCompanyUrl: '/pages/company-setup/company-setup',
 	},
 
 	/**
@@ -111,6 +111,14 @@ Page({
 	// 注销账户
 	async onUnRegisterUser() {
 		await unRegisterUser({})
+		wx.clearStorageSync({})
+		wx.showToast({
+			title: '注销完毕',
+			icon: 'none'
+		})
+		wx.switchTab({
+			url: '/pages/index/index'
+		})
 	},
 
 	/**

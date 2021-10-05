@@ -1,6 +1,5 @@
-import { getMap } from '../../models/map'
-import { getLocationInfo } from '../../models/map'
 import { addMsgRelease } from '../../models/release'
+import { getUserInfo } from '../../utils/util'
 
 const app = getApp();
 
@@ -13,7 +12,7 @@ Page({
     userName: '',
     tel: '',
     city: '',
-    cityCode: '',
+    citycode: '',
     content: '',
     triggerUpload: false,
     exitUpload: false,
@@ -24,13 +23,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const userinfo = wx.getStorageSync('userinfo');
-    this.setData({
-      userName: userinfo.nickname,
-      tel: userinfo.phone
-    })
     this.getHeaderBlock()
-    this.getLocationInfo()
+    const { city, cityCode: citycode } = wx.getStorageSync('locationInfo')
+    const { nickname: userName, phone: tel } = getUserInfo(['nickname', 'phone'])
+    this.setData({
+      city,
+      citycode,
+      userName,
+      tel
+    })
   },
 
   getHeaderBlock() {
@@ -39,14 +40,7 @@ Page({
 			headerBlock: statusBarHeight + headerTopHeader - 2,
 		})
   },
-  
-	async getLocationInfo() {
-    const info = await getLocationInfo()
-    this.setData({
-      city: info.city,
-      locationLoading: false,
-    })
-	},
+
 
   onInputChange(e) {
     const { type = '' } = e.target.dataset
@@ -57,7 +51,7 @@ Page({
   
   // 发布内容
   async onPublish() {
-    const { userName, tel, city, content = '', cityCode } = this.data
+    const { userName, tel, city, content = '', citycode } = this.data
     
     if (!content) {
       wx.showToast({
@@ -87,7 +81,7 @@ Page({
       contacter: userName,
       contactphone: tel,
       cityname: city,
-      citycode: cityCode,
+      citycode,
       msgid: '',
       content,
       picsign,
@@ -122,7 +116,15 @@ Page({
 
   onLocation() {
     wx.navigateTo({
-      url: '/pages/citylist/citylist?rurl=index',
+      url: '/pages/city-list/city-list',
+    })
+  },
+
+  onAgainLocationComplete(e) {
+    console.log(e)
+    this.setData({
+      city: e.city,
+      citycode: e.code,
     })
   },
 

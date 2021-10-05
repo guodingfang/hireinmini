@@ -187,14 +187,14 @@
           "scene": null
         },
         {
-          "name": "pages/login-2/login-2",
-          "pathName": "pages/login-2/login-2",
+          "name": "账号设置",
+          "pathName": "pages/set-up/set-up",
           "query": "",
           "scene": null
         },
         {
-          "name": "账号设置",
-          "pathName": "pages/set-up/set-up",
+          "name": "公司设置",
+          "pathName": "pages/company-setup/company-setup",
           "query": "",
           "scene": null
         }

@@ -26,7 +26,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    skipCompanyUrl: '/pages/company_select/company_select',
+    skipCompanyUrl: '/pages/company-setup/company-setup',
   },
 
   /**

@@ -3,7 +3,7 @@
 .upload-video-container {
   display: flex;
   flex-wrap: wrap;
-  padding: 20rpx 30rpx;
+  padding: 15rpx 20rpx;
 }
 
 .upload-item {

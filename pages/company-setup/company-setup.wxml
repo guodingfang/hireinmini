@@ -1,0 +1,130 @@
+
+
+<view class="model">
+  <view class="setup-item setup-company">
+    <image class="icon-img" src="/images/icon/company-logo.png"></image>
+    <view class="label">公司logo</view>
+    <image class="company-logo" src="/images/public/logo.png"></image>
+    <image class="icon-more" src="/images/icon/more-4.png"></image>
+  </view>
+  <view class="setup-item">
+    <image class="icon-img" src="/images/icon/company.png"></image>
+    <view class="label">公司名称</view>
+    <input
+      class="input-val"
+      type="text"
+      value="{{companyname}}"
+      placeholder="必填，输入公司名称"
+      placeholder-class="pl-input-val"
+      data-type="companyname"
+      bindinput="onChanageInput"
+    />
+  </view>
+
+  <view class="setup-item">
+    <image class="icon-img" src="/images/icon/user-2.png"></image>
+    <view class="label">联系人</view>
+    <input
+      class="input-val"
+      type="text"
+      value="{{contact}}"
+      placeholder="必填，输入联系人"
+      placeholder-class="pl-input-val"
+      data-type="contact"
+      bindinput="onChanageInput"
+    />
+  </view>
+
+  <view class="setup-item">
+    <image class="icon-img" src="/images/icon/tel-3.png"></image>
+    <view class="label">联系电话</view>
+    <input
+      class="input-val"
+      type="text"
+      value="{{phone}}"
+      placeholder="必填，输入联系电话"
+      placeholder-class="pl-input-val"
+      data-type="phone"
+      bindinput="onChanageInput"
+    />
+  </view>
+
+  <view class="setup-item">
+    <image class="icon-img" src="/images/icon/user-2.png"></image>
+    <view class="label">城市</view>
+    <view class="right-val" bind:tap="onSelectCity">
+        <view class="location">{{ city }}</view>
+        <image class="icon-more" src="/images/icon/more-4.png"></image>
+      </view>
+  </view>
+
+  <view class="address-item">
+    <view class="setup-item">
+      <image class="icon-img" src="/images/icon/location-2.png"></image>
+      <view class="label">详细地址</view>
+      <view class="right-val" bind:tap="onAddress">
+        <view class="address">
+          <text class="address-val">定位</text>
+          <image class="icon-gps" src="/images/icon/gps.png"></image>
+        </view>
+      </view>
+    </view>
+    <textarea
+      class="address-content"
+      placeholder="输入详细地址(如楼号、楼层)"
+      placeholder-class="pl-input-val"
+      value="{{address}}"
+      data-type="address"
+      bindinput="onChanageInput"
+    ></textarea>
+  </view>
+</view>
+
+<view class="model">
+  <view class="imgs-item">
+    <view class="setup-item">
+      <image class="icon-img" src="/images/icon/img.png"></image>
+      <view class="label">公司相册</view>
+    </view> 
+    <view class="upload-imgs">
+      <m-upload
+        uploadType="img"
+        triggerUpload="{{triggerUpload}}"
+        uploadId="{{uploadId}}"
+        bind:isUpload="isUpload"
+        bind:uploadComplete="onUploadComplete"
+      />
+    </view>
+  </view>
+
+  <view class="tags-item">
+    <view class="setup-item">
+      <image class="icon-img" src="/images/icon/tag.png"></image>
+      <view class="label">主营业务标签</view>
+    </view>
+    <view class="tags">
+      <m-tags list="{{tags}}" bind:select="onSelectLabel" />
+    </view>
+  </view>
+
+  <view class="introductory-item">
+    <view class="setup-item">
+      <image class="icon-img" src="/images/icon/introductory.png"></image>
+      <view class="label">公司简介</view>
+    </view>
+    <textarea
+      class="company-introductory"
+      placeholder="输入公司简介"
+      placeholder-class="pl-input-val"
+      value="{{introduction}}"
+      data-type="introduction"
+      bindinput="onChanageInput"
+    ></textarea>
+  </view>
+</view>
+
+<view style="height: 100rpx">
+  <view class="btn-container">
+    <view class="btn" bind:tap="onSubmit">提交</view>
+  </view>
+</view>

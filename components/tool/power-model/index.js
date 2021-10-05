@@ -1,4 +1,4 @@
-import { getAirSwitch, getDiameterList } from '../../../models/util'
+import { getAirSwitch, getDiameterList } from '../../../models/tool'
 Component({
   /**
    * 组件的属性列表

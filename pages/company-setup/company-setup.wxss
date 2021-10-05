@@ -1,0 +1,134 @@
+
+.model {
+  margin: 20rpx 30rpx;
+  background-color: #ffffff;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+
+.setup-item {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.setup-company {
+  height: 168rpx;
+}
+
+.company-logo {
+  margin-left: auto;
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+
+.icon-img {
+  width: 22rpx;
+  height: 26rpx;
+}
+
+.label {
+  margin-left: 20rpx;
+  color: #1A1A1A;
+  font-size: 28rpx;
+  font-weight: bold;
+  min-width: 110rpx;
+}
+
+.input-val {
+  flex: 1;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  padding: 10rpx;
+}
+
+.pl-input-val {
+  color: #999999;
+}
+
+.address-item, .introductory-item {
+  overflow: hidden;
+}
+
+.address-item .setup-item,
+.imgs-item .setup-item,
+.introductory-item .setup-item,
+.tags-item .setup-item {
+  margin-top: 30rpx;
+  height: auto;
+}
+
+.right-val {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.icon-more {
+  margin-left: 30rpx;
+  width: 16rpx;
+  height: 24rpx;
+}
+
+.address-content,
+.company-introductory {
+  margin: 15rpx auto 30rpx 62rpx;
+  padding: 10rpx 20rpx;
+  background-color: #F5F5F5;
+  border-radius: 20rpx;
+  height: 120rpx;
+  width: 562rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  border: 0.5rpx solid #e5e5e5;
+  border-radius: 35rpx;
+}
+
+.address-val {
+  padding: 0 10rpx 0 20rpx;
+  font-size: 26rpx;
+}
+
+.icon-gps {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.upload-imgs, .tags {
+  margin-top: 15rpx;
+  margin-left: 42rpx;
+}
+
+.btn-container {
+  border-top: 0.5rpx solid #e5e5e5;
+  position: fixed;
+  height: 100rpx;
+  bottom: 0;
+  width: 750rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-container .btn {
+  background-color: #0400E6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 640rpx;
+  height: 70rpx;
+  border-radius: 20rpx;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: bold;
+}
