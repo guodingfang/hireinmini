@@ -51,53 +51,71 @@
     isScroll="{{isScroll}}"
     openScrollControl="{{true}}"
     bind:select="onSelectTabs"
+    bind:scrollbottom="onScrollBottom"
   >
+    <!-- 动态 -->
     <view slot="item-1">
       <block wx:if="{{allList && allList.length}}">
+        <v-dynamic-item info="{{item}}" wx:for="{{ allList }}" wx:key="id"/>
+      </block>
+      <block wx:else>
+        <m-not-content />
+      </block>
+    </view>
+
+    <!-- 文章 -->
+    <view slot="item-2">
+      <block wx:if="{{articleList && articleList.length}}">
         <v-item
           info="{{item}}"
-          wx:for="{{ allList }}"
+          wx:for="{{ articleList }}"
           showConcern="{{false}}"
           isCurrentUser="{{isCurrentUser}}"
           wx:key="id"
         />
       </block>
       <block wx:else>
-        <v-not-content />
+        <m-not-content />
       </block>
     </view>
-    <view slot="item-2">
-      <!-- <block wx:if="{{dynamicList && dynamicList.length}}"> -->
-        <block wx:if="{{allList && allList.length}}">
-        <!-- <v-dynamic-item info="{{item}}" wx:for="{{ dynamicList }}" wx:key="id"/> -->
-        <v-dynamic-item info="{{item}}" wx:for="{{ allList }}" wx:key="id"/>
+
+    <!-- 图片 -->
+    <view slot="item-3">
+      <block wx:if="{{pictureList && pictureList.length}}">
+        <v-picture-item info="{{item}}" wx:for="{{ pictureList }}" wx:key="id"/>
       </block>
       <block wx:else>
-        <v-not-content />
+        <m-not-content />
       </block>
     </view>
-    <view slot="item-3">
+
+    <!-- 视频 -->
+    <view slot="item-4">
       <block wx:if="{{videoList && videoList.length}}">
         <v-video-item info="{{item}}" wx:for="{{ videoList }}" wx:key="id"/>
       </block>
       <block wx:else>
-        <v-not-content />
+        <m-not-content />
       </block>
     </view>
-    <view class="mini-video-list" slot="item-4">
+
+    <!-- 小视频 -->
+    <view class="mini-video-list" slot="item-5">
       <block wx:if="{{smallvideoList && smallvideoList.length}}">
         <v-mini-video-item wx:for="{{ smallvideoList }}" wx:key="id" />
       </block>
       <block wx:else>
-        <v-not-content />
+        <m-not-content />
       </block>
     </view>
-    <!-- <view class="goods-list" slot="item-5">
+    
+    <!-- 商品 -->
+    <!-- <view class="goods-list" slot="item-6">
       <block wx:if="{{stroeList && stroeList.length}}">
         <v-goods-item wx:for="{{ stroeList }}" wx:key="id"/>
       </block>
       <block wx:else>
-        <v-not-content />
+        <m-not-content />
       </block>
     </view> -->
   </m-tabs>

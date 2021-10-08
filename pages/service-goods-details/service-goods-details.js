@@ -1,5 +1,5 @@
 import { getGoodsDetail } from '../../models/goods'
-import { getCompanyInfo } from '../../models/user'
+import { getCompanyInfo } from '../../models/company'
 import config from '../../config'
 
 Page({

@@ -12,7 +12,7 @@
 </view>
 
 <view class="carousel">
-	<v-carousel m-carousel="m-carousel" images="{{ carouselList }}"/>
+	<v-carousel m-carousel="m-carousel" autoplay="{{true}}" images="{{ carouselList }}"/>
 </view>
 
 <block wx:if="{{tabname === 'focus'}}">
@@ -31,20 +31,6 @@
 	<view class="weui-loadmore__tips">正在加载</view>
 </view>
 
-<!-- <v-fixed>
-	<view slot="list">
-		<view class="fixed-item" bind:tap="skipCompany">入驻</view>
-		<view class="fixed-item">
-			<button class="fixed-button" open-type="contact" bindcontact="handleContact">
-				客服
-			</button>
-		</view>
-	</view>
-</v-fixed> -->
-
-<!-- 遮罩 -->
-<view class='shade' hidden='{{loadingHidden}}'>
-</view>
 <loading hidden="{{loadingHidden}}">
 	加载中...
 </loading>

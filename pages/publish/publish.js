@@ -1,5 +1,6 @@
 import { addMsgRelease } from '../../models/release'
 import { getUserInfo } from '../../utils/util'
+import { upload } from '../../models/util'
 
 const app = getApp();
 
@@ -14,9 +15,10 @@ Page({
     city: '',
     citycode: '',
     content: '',
-    triggerUpload: false,
-    exitUpload: false,
+    uploadImages: [],
+
     selectUploadType: '',
+    exitUpload: false
   },
 
   /**
@@ -24,7 +26,7 @@ Page({
    */
   onLoad: function (options) {
     this.getHeaderBlock()
-    const { city, cityCode: citycode } = wx.getStorageSync('locationInfo')
+    const { city, cityCode: citycode } = wx.getStorageSync('cityinfo')
     const { nickname: userName, phone: tel } = getUserInfo(['nickname', 'phone'])
     this.setData({
       city,
@@ -91,26 +93,42 @@ Page({
       icon: 'none',
     })
     if (result) {
-      this.setData({
-        triggerUpload: true,
-        uploadId: pk,
-      })
+      const { selectUploadType } = this.data
+      if (selectUploadType === 'img') {
+        const { uploadImages = [] } = this.data
+        await upload({
+          url: '/Release/addMsgPicture',
+          files: uploadImages
+        }, {
+          formData: {
+            msgid: pk
+          }
+        })
+      } else {
+        const { formDataParams, uploadVideo } = this.data
+        await upload({
+          url: '/Release/addMsgPicture',
+          files: [uploadVideo]
+        }, {
+          formData: {
+            msgid: pk,
+            ...formDataParams,
+          }
+        })
+      }
       wx.navigateBack();
     }
   },
   
-  isUpload(e) {
-    console.log('e', e.detail)
-    const { type = '', upload = false } = e.detail
+  onUploadComplete(e) {
+    console.log('e', e)
+    const { type = '',  uploadImages = [], uploadVideo = '', formDataParams = null } = e.detail
     this.setData({
       selectUploadType: type,
-      exitUpload: upload,
-    })
-  },
-
-  onUpdateComplete() {
-    this.setData({
-      onUpdateComplete: false,
+      uploadImages,
+      uploadVideo,
+      formDataParams,
+      exitUpload: true,
     })
   },
 

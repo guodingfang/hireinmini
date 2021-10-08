@@ -1,0 +1,19 @@
+
+<view
+  class="model-container {{ animateShow ? 'animated fadeIn' : 'animated fadeOut' }}"
+  wx:if="{{showModel}}"  
+>
+  <view class="model">
+    <view class="item" bind:tap="onOpenCompany">
+      <text>开通租赁商服务账号</text>
+    </view>
+
+    <view class="item" bind:tap="onAddCompany">
+      <text>加入租赁商参与服务</text>
+    </view>
+  </view>
+
+  <view class="close-btn" bind:tap="onClose">
+    <image class="icon-close" src="/images/icon/close.png"></image>
+  </view>
+</view>

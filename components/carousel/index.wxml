@@ -4,7 +4,7 @@
     circular="{{true}}"
     indicator-dots="{{configure.indicatorDots}}"
     indicator-color="{{configure.indicatorColor}}"
-    autoplay="{{configure.autoplay}}"
+    autoplay="{{autoplay}}"
     bindchange="onChange"
   >
     <block wx:key="id" wx:for-index="index" wx:for="{{images}}">

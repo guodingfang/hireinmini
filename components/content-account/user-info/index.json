@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "v-skip": "/components/public/skip-image"
+    "v-skip": "/components/public/skip-image",
+    "v-company-select": "/components/public/company-select"
   }
 }

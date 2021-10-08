@@ -20,6 +20,8 @@ App({
 	judgeWork(options) {
 		const workInfo = wx.getSystemInfoSync();
 		console.log('环境', workInfo);
+		const { screenWidth } = workInfo
+		this.ratio = 667/375
 		this.globalData.workInfo = workInfo;
 	},
 })

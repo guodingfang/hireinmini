@@ -4,7 +4,11 @@
   <view class="setup-item setup-company">
     <image class="icon-img" src="/images/icon/company-logo.png"></image>
     <view class="label">公司logo</view>
-    <image class="company-logo" src="/images/public/logo.png"></image>
+    <image
+      class="company-logo"
+      src="{{ logo ? logo : '/images/public/logo.png' }}"
+      bind:tap="uploadLogo"
+    ></image>
     <image class="icon-more" src="/images/icon/more-4.png"></image>
   </view>
   <view class="setup-item">
@@ -89,10 +93,10 @@
     <view class="upload-imgs">
       <m-upload
         uploadType="img"
-        triggerUpload="{{triggerUpload}}"
-        uploadId="{{uploadId}}"
-        bind:isUpload="isUpload"
-        bind:uploadComplete="onUploadComplete"
+        images="{{images}}"
+        maxCount="9"
+        bind:complete="onUploadComplete"
+        bind:delete="onDeleteUpload"
       />
     </view>
   </view>
@@ -103,7 +107,12 @@
       <view class="label">主营业务标签</view>
     </view>
     <view class="tags">
-      <m-tags list="{{tags}}" bind:select="onSelectLabel" />
+      <m-tags
+        list="{{tags}}"
+        showBtn="{{true}}"
+        bind:select="onSelectLabel"
+        bind:add="onAddLabel"
+      />
     </view>
   </view>
 
@@ -123,8 +132,6 @@
   </view>
 </view>
 
-<view style="height: 100rpx">
-  <view class="btn-container">
-    <view class="btn" bind:tap="onSubmit">提交</view>
-  </view>
-</view>
+<v-footer>
+  <view class="footer-btn" bind:tap="onSubmit">提交</view>
+</v-footer>

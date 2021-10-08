@@ -1,6 +1,7 @@
 import {
   getLocationInfo,
   addressGetinfo,
+  addUserCity,
   getCityList,
   getHitoryList,
   getHotList
@@ -82,6 +83,11 @@ Page({
       await addressGetinfo({
         city: item.cityname
       })
+      await addUserCity({
+        cityname: item.cityname,
+        citycode: item.citycode
+      })
+
       const pages = getCurrentPages();
       const prevPage = pages[pages.length - 2]; //上一个页面
 

@@ -25,7 +25,7 @@
     </view>
   </view>
 
-  <view id="history">
+  <view id="history" wx:if="{{hitoryList.length}}">
     <view class="title">历史城市</view>
     <view class="city-history">
       <view
@@ -41,7 +41,7 @@
     </view>
   </view>
 
-  <view id="hot">
+  <view id="hot" wx:if="{{hotlist.length}}">
     <view class="title">热门城市</view>
     <view class="city-hot">
       <view
@@ -74,7 +74,7 @@
       wx:key="citycode"
       data-item="{{city}}"
     >
-      <view>{{city.cityname}}</view>
+      <view data-item="{{city}}">{{city.cityname}}</view>
     </view>
   </view>
 </scroll-view>

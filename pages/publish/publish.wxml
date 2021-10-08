@@ -20,18 +20,15 @@
     <m-upload
       wx:if="{{selectUploadType !== 'video'}}"
       uploadType="img"
-      triggerUpload="{{triggerUpload}}"
-      uploadId="{{uploadId}}"
+      maxCount="9"
       bind:isUpload="isUpload"
-      bind:uploadComplete="onUploadComplete"
+      bind:complete="onUploadComplete"
     />
     <m-upload
       wx:if="{{selectUploadType !== 'img'}}"
       uploadType="video"
-      triggerUpload="{{triggerUpload}}"
-      uploadId="{{uploadId}}"
       bind:isUpload="isUpload"
-      bind:uploadComplete="onUploadComplete"
+      bind:complete="onUploadComplete"
     />
   </view>
 </view>
@@ -46,6 +43,7 @@
       placeholder="请输入昵称"
       data-type="userName"
       bindinput="onInputChange"
+      disabled
     />
   </view>
   <view class="item">
@@ -57,12 +55,13 @@
       placeholder="请输入电话"
       data-type="tel"
       bindinput="onInputChange"
+      disabled
     />
   </view>
-  <view class="item">
+  <view class="item" bind:tap="onLocation">
     <image class="icon" src="/images/icon/location-2.png"></image>
     <text class="val">{{ city }}</text>
-    <image bind:tap="onLocation" class="icon-more" src="/images/icon/more.png"></image>
+    <image class="icon-more" src="/images/icon/more.png"></image>
   </view>
   <!-- <view class="item">
     <image class="icon" src="/images/icon/tag.png"></image>
@@ -72,6 +71,6 @@
 
 </view>
 
-<view class="footer">
-  <view class="btn" bind:tap="onPublish">发布</view>
-</view>
+<v-footer>
+  <view class="footer-btn" bind:tap="onPublish">发 布</view>
+</v-footer>

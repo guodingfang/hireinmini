@@ -57,6 +57,10 @@ Component({
     backgroundColor: {
       type: String,
       value: '#ffffff'
+    },
+    borderColor: {
+      type: String,
+      value: '#0400E6'
     }
   },
 
@@ -144,6 +148,10 @@ Component({
     
     isSelectType(type) {
       this.triggerEvent('select', { type }, {})
+    },
+
+    onScrollBottom() {
+      this.triggerEvent('scrollbottom', {}, {})
     }
   }
 })

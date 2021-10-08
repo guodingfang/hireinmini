@@ -7,6 +7,10 @@ Component({
     src: {
       type: String,
       value: ''
+    },
+    autoplay: {
+      type: Boolean,
+      value: true
     }
   },
 

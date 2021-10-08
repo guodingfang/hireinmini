@@ -24,12 +24,12 @@ Component({
     location: '',
     aqi: '',
     aqiLevel: '',
-    currentCity: null
+    currentCity: null,
+    aloneShowCity: false
   },
   
   pageLifetimes: {
     show() {
-
       this.getWeather()
     },
   },
@@ -39,7 +39,7 @@ Component({
    */
   methods: {
     async getWeather() {
-      const locationInfo = wx.getStorageSync('locationInfo')
+      const locationInfo = wx.getStorageSync('cityinfo')
       if(locationInfo && locationInfo.city !== this.data.currentCity) {
         const { data } = await getWeather({
           source: 'pc',
@@ -49,15 +49,24 @@ Component({
           weathertype: 'observe|air'
         })
         const { air, observe } = data
-        this.setData({
-          currentCity: locationInfo.city,
-          degree: observe.degree,
-          weatherText: observe.weather,
-          weather: this._getWeather(observe.weather),
-          location: locationInfo.city,
-          aqi: air.aqi,
-          aqiLevel: air.aqi_name,
-        })
+        if(observe.weather) {
+          this.setData({
+            currentCity: locationInfo.city,
+            degree: observe.degree,
+            weatherText: observe.weather,
+            weather: this._getWeather(observe.weather),
+            location: locationInfo.city,
+            aqi: air.aqi,
+            aqiLevel: air.aqi_name,
+            aloneShowCity: false
+          })
+        } else {
+          this.setData({
+            currentCity: locationInfo.city,
+            location: locationInfo.city,
+            aloneShowCity: true
+          })
+        }
       }
     },
     _getWeather(weather) {
@@ -70,6 +79,7 @@ Component({
         case '阴天':
           return 'icon-yintian'
         case '小雨':
+        case '雨':
           return 'icon-xiaoyu'
         case '中雨':
           return 'icon-zhongyu'

@@ -1,9 +1,0 @@
-<view class="footer">
-	<view class="footer-input" bind:tap="onInput">在这里发表你的评论</view>
-	<view class="tool">
-		<image class="tool-icon" src="{{ !info.praised ? '/images/tool/icon-notLike.png' : '/images/tool/icon-like.png' }}" bind:tap="onLike"></image>
-		<button class="share-btn" open-type="share">
-			<image class="tool-icon" src="/images/tool/icon-share.png"></image>
-		</button>
-	</view>
-</view>

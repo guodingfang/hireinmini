@@ -105,7 +105,7 @@
         {
           "name": "内容账号",
           "pathName": "pages/content-account/content-account",
-          "query": "userid=7548",
+          "query": "userid=3592",
           "scene": null
         },
         {
@@ -196,6 +196,18 @@
           "name": "公司设置",
           "pathName": "pages/company-setup/company-setup",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "搜索企业",
+          "pathName": "pages/search-company/search-company",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "加入企业",
+          "pathName": "pages/add-company/add-company",
+          "query": "companyid=2223",
           "scene": null
         }
       ]

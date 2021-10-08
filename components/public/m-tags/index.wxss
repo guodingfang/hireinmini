@@ -1,4 +1,4 @@
-
+@import '/assets/style/animate.wxss';
 .tags {
   display: flex;
   flex-wrap: wrap;
@@ -27,4 +27,83 @@
 .icon-add {
   width: 16rpx;
   height: 16rpx;
+}
+
+
+
+.model-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 999999999;
+}
+
+.model {
+  margin: 360rpx auto;
+  background-color: #FFFFFF;
+  width: 546rpx;
+  height: 360rpx;
+  border-radius: 26rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.model-header {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-top: 24rpx;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24rpx
+}
+
+
+.input-val {
+  flex: 1;
+  font-size: 28rpx;
+  padding: 10rpx;
+  background-color: #F5F4F9;
+  height: 70rpx;
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #aaaaaa;
+  text-align: left;
+}
+
+.pl-input-val {
+  color: #999999;
+}
+
+.model-footer {
+  height: 100rpx;
+  display: flex;
+  border-top: 0.5rpx solid #e5e5e5;
+}
+
+.model-footer .btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1a1a11;
+  font-size: 28rpx;
+}
+
+.model-footer .btn.cancel-btn {
+  border-right: 0.5rpx solid #e5e5e5;
+}
+
+.model-footer .btn.add-btn {
+  color: #0400E6;
 }

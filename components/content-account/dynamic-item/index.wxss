@@ -1,3 +1,5 @@
+@import '/assets/style/global.wxss';
+
 .item {
   background-color: #ffffff;
   display: flex;
@@ -5,8 +7,9 @@
 }
 
 .logo {
-  width: 52rpx;
-  height: 52rpx;
+  margin-top: 6rpx;
+  width: 64rpx;
+  height: 64rpx;
   border-radius: 50%;
 }
 
@@ -23,11 +26,15 @@
   position: relative;
 }
 
+.header-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
 .name {
   color: #1A1A1A;
   font-size: 28rpx;
-  padding-right: 20rpx;
-  margin-right: 20rpx;
   position: relative;
 }
 
@@ -55,7 +62,7 @@
 }
 
 .content {
-  margin: 30rpx 0 10rpx 0;
+  margin: 10rpx 0 10rpx 0;
 }
 
 .content-val {

@@ -1,5 +1,11 @@
 <view class="upload-img-container" wx:if="{{uploadType === 'img'}}">
-  <block wx:key="id" wx:for="{{showImages}}" wx:for-item="img" wx:for-index="idx" wx:for-item="img">
+  <block
+    wx:for="{{showImages}}"
+    wx:for-item="img"
+    wx:for-index="idx"
+    wx:for-item="img"
+    wx:key="id"
+  >
     <view class="upload-item" data-idx="{{idx}}" bind:tap="onShowImage">
       <image class="upload-image" mode="aspectFill" src="{{img}}"></image>
       <view class="delete-btn" data-idx="{{idx}}" catch:tap="onCloseImage">
@@ -10,23 +16,21 @@
   <view
     bind:tap="onChooseImage"
     class="add-upload upload-item"
-    wx:if="{{images.length < maxCount }}"
+    wx:if="{{showImages.length < maxCount }}"
   >
-    <image class="icon-add" src="./images/icon-add.png"></image>
-    <text class="add-text">添加图片</text>
+    <image class="icon-add" src="./images/icon-add-img.png"></image>
   </view>
 </view>
 
 <view class="upload-video-container" wx:if="{{uploadType === 'video'}}">
-  <view class="upload-video" wx:if="{{showVideo}}">
-    <image class="upload-video-img" mode="aspectFill" src="{{showVideo}}"></image>
+  <view class="upload-video" wx:if="{{uploadVideo}}">
+    <m-video autoplay="{{false}}" m-video="m-video" src="{{uploadVideo}}" />
   </view>
   <view
     wx:else
     bind:tap="onChooseVideo"
     class="add-upload upload-item"
   >
-    <image class="icon-add" src="./images/icon-add.png"></image>
-    <text class="add-text">添加视频</text>
+    <image class="icon-add" src="./images/icon-add-video.png"></image>
   </view>
 </view>

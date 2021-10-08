@@ -6,7 +6,7 @@ Component({
   properties: {
     list: {
       type: Array,
-      value: []
+      value: [],
     },
     showBtn: {
       type: Boolean,
@@ -18,7 +18,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    showModel: false,
+    animateShow: false
   },
 
   /**
@@ -26,13 +27,39 @@ Component({
    */
   methods: {
     onSelectLabel(e) {
-      const { id } = e.currentTarget.dataset
+      const { index } = e.currentTarget.dataset
       this.triggerEvent('select', {
-        id
+        index
       }, {})
     },
     onAddLabel(e) {
-      this.triggerEvent('add', {}, {})
+      this.setData({
+        showModel: true,
+        animateShow: true
+      })
+    },
+    onChanageInput(e) {
+      const { type } = e.currentTarget.dataset
+      const { value } = e.detail
+      this.setData({
+        [type]: value
+      })
+    },
+    onModelCancel() {
+      this.setData({
+        animateShow: false,
+      })
+      setTimeout(() => {
+        this.setData({
+          showModel: false,
+        })
+      }, 400)
+    },
+    onModelAdd() {
+      this.triggerEvent('add', {
+        label: this.data.label
+      }, {})
+      this.onModelCancel()
     }
   }
 })

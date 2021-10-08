@@ -27,6 +27,7 @@ Page {
 }
 
 .city-list {
+  width: calc(100vw - 76rpx);
   height: 100vh;
   font-size: 26rpx;
 }
@@ -38,6 +39,7 @@ Page {
   background-color: #f5f5f5;
   align-items: center;
   padding-left: 24rpx;
+  margin-right: -76rpx;
 }
 
 
@@ -45,7 +47,6 @@ Page {
   display: flex;
   flex-wrap: wrap;
   padding-top: 24rpx;
-  padding-right: 76rpx;
 }
 
 .current-item, .history-item, .hot-item {

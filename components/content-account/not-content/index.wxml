@@ -1,2 +1,0 @@
-<image class="not-content-img" src="{{notContentImagesUrl}}"></image>
-<slot name="text"></slot>

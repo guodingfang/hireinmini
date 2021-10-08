@@ -1,4 +1,5 @@
 import request from '../utils/request'
+import { storageSet } from '../utils/storage'
 import { promisic } from '../utils/util'
 
 /**
@@ -11,8 +12,8 @@ const login = async (option = {}) => {
     code,
   })
   console.log('info', info)
-  if(info.code === 0 && info.result) {
-    wx.setStorageSync('userinfo', info.userinfo)
+  if(info && info.code === 0 && info.result) {
+    storageSet('userinfo', info.userinfo)
     return {
       code: 0,
       userinfo: info.userinfo
@@ -141,15 +142,6 @@ const getMsgDynamics = (option = {}) => {
   })
 }
 
-/**
- * 获取服务号信息
- * @param {*} option 
- */
-const getCompanyInfo = (option = {}) => {
-  return request.post('/Company/getCompanyInfo', {
-    ...option
-  })
-}
 
 /**
  * 获取用户编辑信息
@@ -185,7 +177,6 @@ export {
   getAttentionedList,
   getUserBaseInfo,
   getMsgDynamics,
-  getCompanyInfo,
   getUserEditableInfo,
   setUserInfo
 }

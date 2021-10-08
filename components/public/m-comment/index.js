@@ -1,4 +1,4 @@
-import { trim } from '../../../utils/util'
+import { trim } from '../../../utils/tool'
 const app = getApp();
 // components/public/m-comment/index.js
 Component({

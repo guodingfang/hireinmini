@@ -1,0 +1,39 @@
+const formatTime = date => {
+	const year = date.getFullYear()
+	const month = date.getMonth() + 1
+	const day = date.getDate()
+	const hour = date.getHours()
+	const minute = date.getMinutes()
+	const second = date.getSeconds()
+
+	return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+//获取当前时间，格式YYYY-MM-DD
+const getNowFormatDate = () => {
+	var date = new Date();
+	var seperator1 = "-";
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var strDate = date.getDate();
+	if (month >= 1 && month <= 9) {
+		month = "0" + month;
+	}
+	if (strDate >= 0 && strDate <= 9) {
+		strDate = "0" + strDate;
+	}
+	var currentdate = year + seperator1 + month + seperator1 + strDate;
+	return currentdate;
+}
+
+
+// 去字符串首位空格
+const trim = (str) => {
+	return str.replace(/(^\s*)|(\s*$)/g, "");
+}
+
+export {
+	formatTime,
+	getNowFormatDate,
+	trim,
+}

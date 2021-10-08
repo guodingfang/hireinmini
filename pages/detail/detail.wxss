@@ -1,0 +1,100 @@
+Page {
+	background-color: #ffffff;
+}
+
+.details-title {
+	color: #1A1A1A;
+	font-size: 40rpx;
+	line-height: 60rpx;
+	font-weight: 800rpx;
+	padding: 20rpx 30rpx 40rpx 30rpx;
+}
+
+.item {
+	margin-bottom: 40rpx;
+}
+
+.message-item {
+	margin-bottom: 20rpx;
+}
+
+.video-content {
+	margin: 20rpx 30rpx 10rpx 30rpx;
+}
+
+.play-num {
+	display: flex;
+	margin: 0 30rpx;
+}
+
+.icon-paly {
+	width: 32rpx;
+	height: 32rpx;
+}
+
+.paly-num-val {
+	color: #999999;
+	font-size: 22rpx;
+}
+
+.imgs-content {
+	margin: 20rpx;
+}
+
+.imgs {
+	width: 710rpx;
+	margin: 20rpx;
+}
+
+.img-item {
+	width: 100%;
+}
+
+
+.footer-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.footer-input {
+  width: 510rpx;
+  height: 60rpx;
+  background-color: #F5F4F9;
+  color: #666666;
+  line-height: 60rpx;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.tool {
+  margin-left: 20rpx;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.tool-icon {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.tool-icon + .tool-icon  {
+  margin-left: 40rpx;
+}
+
+.share-btn {
+  margin: 0;
+  height: 70rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 30rpx;
+  border: 0 solid transparent;
+  padding-left: 40rpx;
+  background-color: transparent;
+}
+
+.share-btn::after{
+  border: 0;
+}

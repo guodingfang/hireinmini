@@ -2,8 +2,9 @@
   <view
     class="tag-item {{item.select ? 'select-tag-item' : ''}}"
     wx:for="{{list}}"
-    wx:key="id"
-    data-id="{{item.id}}"
+    wx:for-index="index"
+    wx:key="index"
+    data-index="{{index}}"
     bind:tap="onSelectLabel"
   >{{ item.label }}</view>
   <view
@@ -12,5 +13,28 @@
     bind:tap="onAddLabel"
   >
     <image class="icon-add" src="./images/icon-add.png"></image>
+  </view>
+</view>
+
+<view
+  class="model-container {{ animateShow ? 'animated fadeIn' : 'animated fadeOut' }}"
+  wx:if="{{showModel}}"  
+>
+  <view class="model">
+    <view class="model-header">新增标签</view>
+    <view class="content">
+      <input
+        class="input-val"
+        type="text"
+        placeholder="请输入标签"
+        placeholder-class="pl-input-val"
+        data-type="label"
+        bindinput="onChanageInput"
+      />
+    </view>
+    <view class="model-footer">
+      <view class="btn cancel-btn" bind:tap="onModelCancel">取消</view>
+      <view class="btn add-btn" bind:tap="onModelAdd">添加</view>
+    </view>
   </view>
 </view>

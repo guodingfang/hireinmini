@@ -1,2 +1,82 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<view class="details-title" wx:if="{{info.msgtitle}}">{{info.msgtitle}}</view>
+
+<view class="video" wx:if="{{type === 'video'}}">
+  <v-video videoUrlStatic="{{videoUrlStatic}}" videoUrlDynamic="{{videoUrlDynamic}}" />
+  <view class="video-content">{{ content }}</view>
+  <view class="play-num">
+    <image class="icon-paly" src="/images/icon/play-2.png"></image>
+    <text class="paly-num-val">33.7w</text>
+  </view>
+</view>
+
+<m-content-accont-card info="{{contentAccont}}" />
+
+<block wx:if="{{type === 'img'}}">
+  <view class="imgs-content">{{ content }}</view>
+  <view class="imgs">
+    <image
+      class="img-item"
+      mode="widthFix"
+      wx:for="{{imgs}}"
+      wx:key="id"
+      src="{{imgUrl}}{{item.picurl_thumbnails}}"
+    ></image>
+  </view>
+</block>
+
+<block wx:if="{{type === 'html'}}">
+  <v-parse html="{{content}}" />
+</block>
+
+<v-tool info="{{info}}" />
+
+<view class="advert">
+  <v-skip
+    src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+    width="690"
+    height="200"
+    radius="20"
+  />
+</view>
+
+<m-header title="为你推荐" more="{{false}}" />
+
+<view class="list">
+	<view class="item" wx:key="id" wx:for="{{otherList}}">
+		<v-item info="{{item}}" />
+	</view>
+</view>
+
+<view class="advert">
+  <v-skip
+    src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+    width="690"
+    height="200"
+    radius="20"
+  />
+</view>
+
+<m-header title="精选留言" more="{{false}}" />
+
+<view class="message-item" wx:key="id" wx:for="{{messageList}}">
+	<v-message info="{{item}}" />
+</view>
+
+<m-comment commentShow="{{commentShow}}" bind:send="onSendComment"></m-comment>
+
+<v-footer>
+  <view class="footer-content">
+    <view class="footer-input" bind:tap="onInput">在这里发表你的评论</view>
+    <view class="tool">
+      <image class="tool-icon" src="/images/tool/icon-dial.png" catchtap="onDial"></image>
+      <image
+        class="tool-icon"
+        src="{{ !info.praised ? '/images/tool/icon-notLike.png' : '/images/tool/icon-like.png' }}" 
+        catchtap="onLike"
+      ></image>
+      <button class="share-btn" open-type="share">
+        <image class="tool-icon" src="/images/tool/icon-share.png"></image>
+      </button>
+    </view>
+  </view>
+</v-footer>

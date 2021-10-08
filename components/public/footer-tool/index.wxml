@@ -19,8 +19,8 @@
     <text class="footer-item-label">{{ info.viewcount > 999 ? '999+' : info.viewcount }}</text>
   </view>
 
-  <view class="footer-item info-phone" catchtap="onDial">
+  <!-- <view class="footer-item info-phone" catchtap="onDial">
     <image class="footer-item-icon icon-dial" src="/images/tool/icon-dial.png"></image>
     <text class="footer-item-label">电话</text>
-  </view>
+  </view> -->
 </view>

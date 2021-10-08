@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "m-upload" : "/components/public/m-upload",
-    "m-tags": "/components/public/m-tags"
+    "m-tags": "/components/public/m-tags",
+    "v-footer": "/components/footer"
   }
 }

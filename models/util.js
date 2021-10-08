@@ -1,11 +1,12 @@
 import request from '../utils/request'
 import { getUserInfo, promisic } from '../utils/util'
+import config from '../config'
 
 /**
  * 获取轮播
  * @param {*} option 
  */
-const getCarousel = (option = {}) => {
+export const getCarousel = (option = {}) => {
   return request.post('/Index/getSlideshow', {
     ...option
   })
@@ -15,7 +16,7 @@ const getCarousel = (option = {}) => {
  * 权限控制
  * @param {*} option 
  */
-const checkFrontPower = (option = {}) => {
+export const checkFrontPower = (option = {}) => {
   const { employeeid = 0 } = getUserInfo(['employeeid'])
   console.log('employeeid', employeeid)
   return request.post('/Base/checkFrontPower', {
@@ -28,7 +29,7 @@ const checkFrontPower = (option = {}) => {
  * 推荐账号列表
  * @param {*} option 
  */
-const getRecommendAccountList = (option = {}) => {
+export const getRecommendAccountList = (option = {}) => {
   return request.post('/User/getRecommendAccountList', {
     ...option
   })
@@ -38,7 +39,7 @@ const getRecommendAccountList = (option = {}) => {
  * 页面广告
  * @param {*} option 
  */
-const getPageAdvertsment = (option = {}) => {
+export const getPageAdvertsment = (option = {}) => {
   return request.post(`/Advert/getPageAdvertsment`, {
     ...option
   })
@@ -48,40 +49,46 @@ const getPageAdvertsment = (option = {}) => {
  * 获取天气
  * @param {*} option 
  */
-const getWeather = (option = {}) => {
+export const getWeather = (option = {}) => {
   return request.post(`/Assistant/weatherforecast`, {
     ...option
   })
 }
+
 /**
  * 上传文件
+ * @param {*} params 
  * @param {*} option 
  */
-const upload = (option = {}) => {
+export const upload = async (params = {}, option = {}) => {
+  const { prefixUrl = config.baseUrl, url = '', files = [] } = params
+  console.log('files', files)
   const {
-    url = '',
-    file = [],
     formData = null,
-    headerConfig = {
+    header = {
       'content-type': 'multipart/form-data'
     }
   } = option
-  return promisic(wx.uploadFile)({
-    url,
-    filePath: file,
-    name: 'file',
-    formData,
-    header: {
-      ...headerConfig,
-    }
-  })
+
+  for (let [index, file] of files.entries()) {
+    await promisic(wx.uploadFile)({
+      url: `${prefixUrl}${url}`,
+      filePath: file,
+      name: 'file',
+      formData,
+      header: {
+        ...header,
+      }
+    })
+  }
 }
 
-export {
-  getCarousel,
-  checkFrontPower,
-  getRecommendAccountList,
-  getPageAdvertsment,
-  getWeather,
-  upload
+/**
+ * 获取天气
+ * @param {*} option 
+ */
+export const getNLoginList = (option = {}) => {
+  return request.post(`/WXAppLogin/getNLoginList`, {
+    ...option
+  })
 }

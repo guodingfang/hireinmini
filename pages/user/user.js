@@ -22,7 +22,8 @@ Page({
 		logourl: '',
 		canGetUserProfile: false, //使用getUserProfile取用户信息
 		bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
-		skipCompanyUrl: '/pages/company-setup/company-setup',
+		skipCompanyUrl: '',
+		showModel: false,
 	},
 
 	/**
@@ -39,6 +40,10 @@ Page({
 		})
 	},
 
+	async onAgainRequestCompany() {
+		await this.getUserBaseInfo()
+	},
+
 	getHeaderBlock() {
 		const { workInfo, statusBarHeight, headerTopHeader } = app.globalData;
 		const { tabHeight } = judgeTabBarHeight(workInfo);
@@ -49,9 +54,13 @@ Page({
 	},
 
 	async getUserBaseInfo() {
-    const { user, dynamic, fans, focus, company } = await getUserBaseInfo({})
+		const { user, dynamic, fans, focus, company } = await getUserBaseInfo({})
+		const companyInfo =  company instanceof Array ? null : company;
     this.setData({
-      company: company instanceof Array ? null : company,
+			company: companyInfo,
+			skipCompanyUrl: companyInfo && companyInfo.companyid
+				? `/pages/service-account/service-account?companyid=${companyInfo.companyid}`
+				: '',
       userinfo: {
         ...user,
         dynamic,
@@ -116,8 +125,40 @@ Page({
 			title: '注销完毕',
 			icon: 'none'
 		})
-		wx.switchTab({
+		wx.reLaunch({
 			url: '/pages/index/index'
+		})
+	},
+
+	onSelectCompany() {
+		const { skipCompanyUrl } = this.data
+		if(skipCompanyUrl) return
+		this.setData({
+			showModel: true
+		})
+	},
+
+	onOpenCompany() {
+		wx.navigateTo({
+			url: '/pages/company-setup/company-setup',
+		})
+		this.setData({
+			showModel: false
+		})
+	},
+
+	onAddCompany() {
+		wx.navigateTo({
+			url: '/pages/search-company/search-company',
+		})
+		this.setData({
+			showModel: false
+		})
+	},
+
+	onCloseModel() {
+		this.setData({
+			showModel: false
 		})
 	},
 

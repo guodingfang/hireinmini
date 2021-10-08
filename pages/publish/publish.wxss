@@ -9,7 +9,7 @@ Page {
 }
 
 .content-input {
-  height: 190rpx;
+  height: 350rpx;
   padding: 20rpx 30rpx;
   width: 750rpx;
   box-sizing: border-box;
@@ -65,17 +65,7 @@ Page {
   width: 600rpx;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 100rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.footer .btn {
+.footer-btn {
   width: 640rpx;
   height: 70rpx;
   background-color: #0400E6;

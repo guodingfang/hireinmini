@@ -1,5 +1,6 @@
 import errorHandle from './errorHandle'
 import { getUserInfo } from './util'
+import { storageGet } from './storage'
 
 class HttpRequest {
   constructor (baseURL) {
@@ -7,7 +8,8 @@ class HttpRequest {
   }
   
   httpRequest(options) {
-
+    // const isNeedLogin = this.judgeIsNeedNotLogin(options.url)
+    // if(!isNeedLogin) return 
     const newOptions = Object.assign(this.getInsideConfig(), options)
     return new Promise((resolve, reject) => {
       this.request({
@@ -17,6 +19,15 @@ class HttpRequest {
       })
     })
   }
+
+  // judgeIsNeedNotLogin(url) {
+  //   const { userid = '' } = storageGet('userinfo')
+  //   if (userid) {
+  //     return true
+  //   }
+  //   const notLoginList = storageGet('notLoginList') || []
+  //   return notLoginList.find(item => item === `/${url}`)
+  // }
 
   getInsideConfig() {
     return {

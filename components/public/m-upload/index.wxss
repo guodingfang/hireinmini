@@ -15,7 +15,7 @@
   margin-bottom: 16rpx;
 }
 
-.upload-item:not(:nth-child(4n)) {
+.upload-item {
   margin-right: 16rpx;
 }
 
@@ -52,16 +52,15 @@
 }
 
 .icon-add {
-  width: 30rpx;
-  height: 30rpx;
-}
-
-.add-text {
-  color: #999999;
-  margin-top: 12rpx;
-  font-size: 24rpx;
+  width: 100%;
+  height: 100%;
 }
 
 .upload-video-img {
   width: 690rpx;
+}
+
+.m-video {
+  width: 710rpx;
+  height: 422rpx;
 }

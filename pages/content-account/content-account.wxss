@@ -1,4 +1,3 @@
-
 .header-title {
   color: #ffffff;
   font-size: 34rpx;
@@ -83,7 +82,7 @@
   display: flex;
   flex-wrap: wrap;
   padding: 20rpx 30rpx;
-  justify-content: space-between;
+	justify-content: center;
   background-color: #ffffff;
 }
 

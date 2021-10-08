@@ -1,6 +1,7 @@
 @import "/assets/style/global.wxss";
 
-.model {
+.model,
+.alone-city {
   display: flex;
   align-items: center;
   height: 88rpx;
@@ -27,6 +28,7 @@
 
 .weather-type {
   font-size: 20rpx;
+  margin-left: 6rpx;
 }
 
 .info {
@@ -44,9 +46,20 @@
 .location-val {
   white-space: nowrap;
   margin-top: 14rpx;
-  max-width: 80rpx;
+  max-width: 100rpx;
 }
 
 .location-val, .aqi-val {
   margin-right: 6rpx;
+}
+
+.icon-location {
+  width: 25rpx;
+  height: 30rpx;
+}
+
+.alone-city-val {
+  margin-left: 12rpx;
+  font-size: 24rpx;
+  max-width: 150rpx;
 }

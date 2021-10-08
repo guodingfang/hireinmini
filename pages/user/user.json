@@ -8,6 +8,7 @@
     "v-group": "/components/user/group",
     "v-advert": "/components/user/advert",
     "v-skip": "/components/public/skip-image",
+    "v-company-select": "/components/public/company-select",
     "v-tabbar": "/components/tabbar"
   },
   "navigationStyle": "custom",

@@ -1,0 +1,27 @@
+<view class="header">
+  <view class="search">
+    <image class="icon-search" src="/images/icon/search.png"></image>
+    <input
+      placeholder="请输入公司名称"
+      class="search-input"
+      placeholder-class="pl-input"
+      confirm-type="search"
+      bindconfirm="onSearchCompanyList"
+      bindinput="onChanageInput"
+    ></input>
+  </view>
+  <view class="search-btn" bind:tap="onSearchCompanyList">搜索</view>
+</view>
+
+<scroll-view
+  class="search-list"
+  scroll-y
+>
+  <view
+    class="search-item"
+    wx:for="{{list}}"
+    wx:key="id"
+    data-companyid="{{item.companyid}}"
+    bind:tap="onSelect"
+  >{{item.companyname}}</view>
+</scroll-view>

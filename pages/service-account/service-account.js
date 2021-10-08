@@ -1,4 +1,4 @@
-import { getCompanyInfo } from '../../models/user'
+import { getCompanyInfo } from '../../models/company'
 import { getCompanyGoodsList } from '../../models/goods'
 import config from '../../config'
 
@@ -45,6 +45,11 @@ Page({
     this.getCompanyGoodsList()
   },
 
+  async onAgainRequestCompany() {
+    this.getCompanyInfo()
+    this.getCompanyGoodsList()
+  },
+
   async getCompanyInfo() {
     const info = await getCompanyInfo({ id: this.data.companyid })
     this.setData({
@@ -66,7 +71,6 @@ Page({
     this.setData({
       goodsList: data.data
     })
-    console.log('data', data)
   },
 
   onSelectTab(e) {
@@ -74,6 +78,18 @@ Page({
     this.setData({
       type,
       tabList: this.data.tabList.map(tab => tab.type === type ? {...tab, select: true} : {...tab, select: false})
+    })
+  },
+
+  onEnterCompany() {
+    const { companyid = '' } = this.data
+    wx.navigateTo({
+      url: `/pages/company-setup/company-setup?companyid=${companyid}`,
+    })
+  },
+  onCompanyManage() {
+    wx.navigateTo({
+      url: '/pages/product-manage/product-manage',
     })
   },
 

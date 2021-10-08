@@ -14,7 +14,7 @@
       wx:for-index="index"
       wx:key="index"
       data-index="{{index}}"
-      style="--width--: {{100 / tabList.length}}%; --selectColor--: {{tabSelectColor}}; --color--: {{tabColor}}"
+      style="--width--: {{100 / tabList.length}}%; --selectColor--: {{tabSelectColor}}; --color--: {{tabColor}}; --borderColor--: {{borderColor}}"
       class="tab-item {{ item.select ? 'tab-item-select': '' }}"
     >{{ item.name }}</view>
   </scroll-view>
@@ -31,6 +31,8 @@
         style="--tabHeight--: {{tabHeight + top}}rpx"
         scroll-y="{{allowScroll}}"
         scroll-top="{{scrollTop}}"
+        lower-threshold="150"
+        bindscrolltolower="onScrollBottom"
       >
         <slot name="item-{{index + 1}}"></slot>
       </scroll-view>

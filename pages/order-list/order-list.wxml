@@ -12,9 +12,9 @@
   </block>
 
   <view wx:else>
-    <v-not-content>
+    <m-not-content>
       <text class="not-text" slot="text">暂无订单...</text>
-    </v-not-content>
+    </m-not-content>
   </view>
 
 </view>

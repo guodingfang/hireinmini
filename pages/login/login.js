@@ -1,5 +1,6 @@
 import { registerUser, getUserPhone } from '../../models/user'
 import { promisic } from '../../utils/util'
+import { storageSet } from '../../utils/storage'
 Page({
 
   /**
@@ -79,8 +80,7 @@ Page({
       })
       // 注册成功
       if(data.code === 0) {
-        console.log('data', data)
-        wx.setStorageSync('userinfo', data)
+        storageSet('userinfo', data)
         wx.navigateBack({
           delta: 1,
         })

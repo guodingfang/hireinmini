@@ -1,6 +1,5 @@
 import { judgeTabBarHeight } from '../../utils/util'
 
-const app = getApp()
 Component({
   /**
    * 组件的属性列表
@@ -59,11 +58,7 @@ Component({
 
   lifetimes: {
     attached() {
-      const { workInfo } = app.globalData;
-      const {
-        tabHeight,
-        paddingBottom,
-      } = judgeTabBarHeight(workInfo);
+      const { tabHeight, paddingBottom } = judgeTabBarHeight();
       this.setData({
         tabHeight,
         paddingBottom,

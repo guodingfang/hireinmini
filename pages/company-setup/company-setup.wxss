@@ -76,12 +76,12 @@
 
 .address-content,
 .company-introductory {
-  margin: 15rpx auto 30rpx 62rpx;
+  margin: 15rpx auto 30rpx auto;
   padding: 10rpx 20rpx;
   background-color: #F5F5F5;
   border-radius: 20rpx;
   height: 120rpx;
-  width: 562rpx;
+  width: 640rpx;
   box-sizing: border-box;
   font-size: 28rpx;
 }
@@ -108,19 +108,7 @@
   margin-left: 42rpx;
 }
 
-.btn-container {
-  border-top: 0.5rpx solid #e5e5e5;
-  position: fixed;
-  height: 100rpx;
-  bottom: 0;
-  width: 750rpx;
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-container .btn {
+.footer-btn {
   background-color: #0400E6;
   display: flex;
   align-items: center;

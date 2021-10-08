@@ -1,66 +1,175 @@
-// pages/detail/detail.js
+import {
+	getReleaseDetail,
+	getOtherHosList,
+	addLikeRelease,
+	deleteLikeRelease,
+	addComment,
+	addUserDialRecord
+} from '../../models/release'
+import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
+import config from '../../config'
+
 Page({
+	data: {
+		tabHeight: 100,
+		content: '',
+		imgUrl: config.imgUrls,
+		type: '',
+		videoUrl: config.videoUrl,
+		otherList: [],
+		messageList: [],
+	},
+	async onLoad (options) {
+		const { tabHeight } = judgeTabBarHeight();
+		this.setData({
+			msgid: options.msgid,
+			tabHeight
+		})
+		await this.getReleaseDetail()
+		await this.getOtherHosList()
+	},
 
-  /**
-   * 页面的初始数据
-   */
-  data: {
+	// 获取详情
+	async getReleaseDetail() {
+		const { msgid } = this.data;
+		let { info } = await getReleaseDetail({ msgid })
+		
+		const contentAccont = {
+			logo: info.userpic,
+			name: info.contacter,
+			userid: info.userid,
+			des: info.msgtitle || '',
+		}
+		let type = info.picsign === '1' ? 'img' : info.picsign === '2' ? 'video' : 'html'
+		this.setData({
+			info,
+			imgs: info.pics,
+			contentAccont,
+			content: info.content,
+			messageList: info.discuss || [],
+			type,
+		})
+		this.getVideoUrl()
+	},
 
-  },
+	// 获取大图及视频图片
+	getVideoUrl() {
+		const { videoUrl, imgs, type } = this.data
+		let url = ''
+		if(imgs.length === 0) return
+		if (type === 'video') {
+			url = `${videoUrl}${imgs[0].videourl}?x-oss-process=video/snapshot,t_1000,f_jpg,w_${imgs[0].width},h_${imgs[0].height},m_fast`
+			this.setData({
+				videoUrlStatic: url,
+				videoUrlDynamic: `${videoUrl}${imgs[0].videourl}`,
+			})
+		}
+	},
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+	async getOtherHosList() {
+		const { msgid, info } = this.data;
+		const { data = [] } = await getOtherHosList({
+			msgid,
+			userids: info.userid,
+		})
+		this.setData({
+			otherList: data
+		})
+	},
 
-  },
+	onInput() {
+		this.setData({
+			commentShow: true,
+		})
+	},
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+	// 点赞
+	async onLike() {
+		const { msgid, praised = 0, userid: tuserid, praisecount = 0 } = this.data.info
+		if(praised === 0) {
+			await addLikeRelease({
+				msgid,
+				tuserid
+			})
+			this.setData({
+				info: {
+					...this.data.info,
+					praised: 1,
+					praisecount: praisecount + 1
+				}
+			})
+		} else if(praised === 1) {
+			await deleteLikeRelease({
+				msgid,
+				tuserid
+			})
+			this.setData({
+				info: {
+					...this.data.info,
+					praised: 0,
+					praisecount: praisecount - 1
+				}
+			})
+		}
+	},
 
-  },
+	// 拨打电话
+	async onDial(e) {
+		console.log('this.data.info', this.data.info)
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+		const { contactphone: phone } = this.data.info	
+		if(!phone) {
+			wx.showToast({
+				title: '该用户未提供电话',
+				icon: 'none'
+			})
+			return
+		}
 
-  },
+		await addUserDialRecord({
+			phone,
+		})
+		
+		wx.makePhoneCall({
+			phoneNumber: phone,
+		})
+	},
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+	async onSendComment(e) {
+		const { msgid, userid: tuserid, contacter } = this.data.info
+		const userinfo = getUserInfo(['nickname', 'userid'])
+		await addComment({
+			content: e.detail.value,
+			tuserid,
+			fuserid: userinfo.userid,
+			tusername: contacter,
+			fusername: userinfo.nickname,
+			msgid,
+		})
+		this.setData({
+			info: {
+				...this.data.info,
+				discusscount: this.data.info.discusscount + 1
+			}
+		})
+		this.getReleaseDetail()
+	},
 
-  },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
+	onShow: function () {
 
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+	},
+	/**
+	 * 用户点击右上角分享
+	 */
+	onShareAppMessage: function (e) {
+		if (e.from === 'button') {
+			let { msgid, url } = e.target.dataset;
+			return {
+				title: '赁客+',
+				path: `/pages/detail/detail?msgid=${msgid}`,
+				imageUrl: url
+			}
+		}
+	},
 })

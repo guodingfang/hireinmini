@@ -1,13 +1,15 @@
-<view class="item">
+<view class="item" bind:tap="onSkipDetail">
   <image class="logo" src="{{info.userpic}}"></image>
   <view class="info">
     <view class="header">
-      <text class="name">{{info.contacter}}</text>
-      <text class="time">{{info.publishtime}}</text>
-      <m-operation />
+      <view class="header-info">
+        <text class="name">{{info.contacter}}</text>
+        <text class="time">{{info.publishtime}}</text>
+      </view>
+      <m-operation wx:if="{{false}}" />
     </view>
     <view class="content">
-      <text class="content-val">{{info.content}}</text>
+      <text class="content-val two-row-overstep">{{info.content}}</text>
       <view class="video" wx:if="{{type === 'video'}}">
         <view class="video-mask">
           <image class="icon-play" src="/images/icon/play.png"></image>
@@ -25,7 +27,7 @@
           </block>
           <view class="small-img-list" wx:else>
             <block wx:for="{{imgs}}" wx:for-index="index" wx:key="index">
-              <image style="margin-top: {{index > 3 ? '12rpx' : ''}};margin-right: {{(index + 1) % 3 === 0 ? '' : '12rpx'}}" mode="aspectFill" class="small-img" src="{{imgUrl}}{{item.picurl_thumbnails}}"></image>
+              <image style="margin-top: {{index + 1 > 3 ? '12rpx' : ''}};margin-right: {{(index + 1) % 3 === 0 ? '' : '12rpx'}}" mode="aspectFill" class="small-img" src="{{imgUrl}}{{item.picurl_thumbnails}}"></image>
             </block>
           </view>
         </view>

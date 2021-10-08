@@ -4,7 +4,7 @@ import request from '../utils/request'
  * 知识推荐
  * @param {*} option 
  */
-const getknowledgeRecommend = (option = {}) => {
+export const getknowledgeRecommend = (option = {}) => {
   return request.post('/Assistant/leasingKnowledgeRecommend', {
     ...option
   })
@@ -14,7 +14,7 @@ const getknowledgeRecommend = (option = {}) => {
  * 租赁知识分类列表
  * @param {*} option 
  */
-const getKnowledgeList = (option = {}) => {
+export const getKnowledgeList = (option = {}) => {
   return request.post('/Assistant/leasingKnowledgeList', {
     ...option
   })
@@ -24,7 +24,7 @@ const getKnowledgeList = (option = {}) => {
  * 在线问答推荐
  * @param {*} option 
  */
-const getTopNQuestions = (option = {}) => {
+export const getTopNQuestions = (option = {}) => {
   return request.post('/QuestionAnswer/getTopNQuestions', {
     ...option
   })
@@ -34,7 +34,7 @@ const getTopNQuestions = (option = {}) => {
  * 在线问答列表
  * @param {*} option 
  */
-const getQuestionsList = (option = {}) => {
+export const getQuestionsList = (option = {}) => {
   return request.post('/QuestionAnswer/getQuestionsList', {
     ...option
   })
@@ -44,16 +44,8 @@ const getQuestionsList = (option = {}) => {
  * 在线问答详情
  * @param {*} option 
  */
-const getQuestionAndAnswerDetail = (option = {}) => {
+export const getQuestionAndAnswerDetail = (option = {}) => {
   return request.post('/QuestionAnswer/getQuestionAndAnswerDetail', {
     ...option
   })
-}
-
-export {
-  getknowledgeRecommend,
-  getKnowledgeList,
-  getTopNQuestions,
-  getQuestionsList,
-  getQuestionAndAnswerDetail
 }

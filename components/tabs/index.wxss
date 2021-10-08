@@ -18,7 +18,7 @@
   color: var(--selectColor--);
   font-weight: bold;
   position: relative;
-  font-size: 34rpx;
+  font-size: 36rpx;
 }
 
 .tab-item-select::after {
@@ -30,7 +30,7 @@
   content: '';
   width: 40rpx;
   height: 6rpx;
-  background-color: #0400E6;
+  background-color: var(--borderColor--);
 }
 
 .tabs-content {

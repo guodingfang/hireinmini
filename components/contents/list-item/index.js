@@ -1,5 +1,10 @@
 import config from '../../../config'
-import { addUserDialRecord, addLikeRelease, deleteLikeRelease, addComment } from '../../../models/release'
+import {
+  addUserDialRecord,
+  addLikeRelease,
+  deleteLikeRelease,
+  addComment
+} from '../../../models/release'
 import { addAttention } from '../../../models/user'
 
 Component({
@@ -10,8 +15,8 @@ Component({
     info: {
       type: Object,
       value: null,
-      observer (newVal) {
-        this.getInfo()
+      observer (val) {
+        val && this.getInfo()
       }
     },
     showConcern: {

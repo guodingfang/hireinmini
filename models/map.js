@@ -1,13 +1,13 @@
 
 import request from '../utils/request'
-
+import { storageSet } from '../utils/storage'
 import QQMapWX from '../libs/qqmap-wx-jssdk.min.js';
 import { qqMapkey } from '../config.js';
 
 import { getLocation } from './user'
 
 // 获取QQ地图实例对象
-const getMap = () => {
+export const getMap = () => {
   return new QQMapWX({key: qqMapkey})
 }
 
@@ -15,36 +15,36 @@ const getMap = () => {
  * 获取城市列表
  * @param {*} option 
  */
-const getCityList = (option = {}) => {
+export const getCityList = (option = {}) => {
   return request.post('/Index/getCityList', {
     ...option
   })
 }
 
 // 根据经纬度获取位置信息
-const getLocationInfo = (params = {}) => {
+export const getLocationInfo = (params = {}) => {
   const { againLocation = false } = params
   return new Promise((resolve, reject) => {
     // 如果已经有位置信息，并且不需要重新定位的话，直接拿缓存中的数据
-    if(wx.getStorageSync('locationInfo') && !againLocation) {
-      resolve(wx.getStorageSync('locationInfo'))
+    if(wx.getStorageSync('cityinfo') && !againLocation) {
+      resolve(wx.getStorageSync('cityinfo'))
       return
     }
-    
     getLocation(({latitude, longitude}) => {
       getMap().reverseGeocoder({
         location: `${latitude},${longitude}`,
         success({ result }) {
+          console.log('result', result)
           const { ad_info = null, address } = result
           const info = {
-            cityCode: ad_info.city_code,
+            cityCode: ad_info.adcode,
             city: ad_info.city,
             province: ad_info.province,
             district: ad_info.district,
             location: ad_info.location,
             address,
           }
-          wx.setStorageSync('locationInfo', info)
+          storageSet('cityinfo', info)
           resolve(info)
         }
       })
@@ -56,7 +56,7 @@ const getLocationInfo = (params = {}) => {
 }
 
 // 根据城市名获取位置信息
-const addressGetinfo = (params) => {
+export const addressGetinfo = (params) => {
  const { city = '' } = params
  if(!city) return
   return new Promise((resolve, reject) => {
@@ -72,7 +72,7 @@ const addressGetinfo = (params) => {
           location: location,
           address: '',
         }
-        wx.setStorageSync('locationInfo', info)
+        storageSet('cityinfo', info)
         resolve(info)
       }
     })
@@ -80,10 +80,20 @@ const addressGetinfo = (params) => {
 }
 
 /**
+ * 添加历史城市记录
+ * @param {*} option 
+ */
+export const addUserCity =  (option = {}) => {
+  return request.post('/Index/addUserCity', {
+    ...option
+  })
+}
+
+/**
  * 获取历史城市
  * @param {*} option 
  */
-const getHitoryList = (option = {}) => {
+export const getHitoryList = (option = {}) => {
   return request.post('/Index/getHitoryList', {
     ...option
   })
@@ -93,17 +103,8 @@ const getHitoryList = (option = {}) => {
  * 获取热门城市
  * @param {*} option 
  */
-const getHotList = (option = {}) => {
+export const getHotList = (option = {}) => {
   return request.post('/Index/getHotList', {
     ...option,
   })
-}
-    
-export {
-  getMap,
-  getLocationInfo,
-  addressGetinfo,
-  getCityList,
-  getHitoryList,
-  getHotList,
 }

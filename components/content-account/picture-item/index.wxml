@@ -1,0 +1,15 @@
+<view class="item">
+  <view class="info" bind:tap="onSkipDetail">
+    <text class="content three-row-overstep">
+      {{ info.content }}
+    </text>
+    <view class="picture">
+      <image
+        class="big-img"
+        mode="aspectFill"
+        src="{{bigImgUrl}}"
+      ></image>
+    </view>
+  </view>
+  <m-footer />
+</view>

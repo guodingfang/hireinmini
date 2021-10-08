@@ -4,7 +4,6 @@
     class="default-video"
     src="{{src}}"
     show-center-play-btn="{{false}}"
-    autoplay="{{true}}"
-    catch:
+    autoplay="{{autoplay}}"
   ></video>
 </view>

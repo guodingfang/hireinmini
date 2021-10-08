@@ -33,7 +33,7 @@ Component({
       const { pics = [], picsign } = info;
       this.setData({
         isBigImg: pics.length === 1,
-        imgs: pics,
+        imgs: pics.splice(0, 9),
         type: picsign == '2' ? 'video' : 'img',
       })
       this.getVideo()
@@ -43,6 +43,14 @@ Component({
       if(type !== 'video') return
       this.setData({
         bigImgAndVideoUrl: `${videoUrl}${imgs[0].videourl}?x-oss-process=video/snapshot,t_1000,f_jpg,w_${imgs[0].width},h_${imgs[0].height},m_fast`
+      })
+    },
+    
+    // 跳转详情页
+    onSkipDetail(e) {
+      const { msgid = '' } = this.properties.info;
+      wx.navigateTo({
+        url: `/pages/detail/detail?msgid=${msgid}`
       })
     },
   }

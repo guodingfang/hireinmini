@@ -1,4 +1,3 @@
-import { getDiscoverMsgList } from '../../models/release'
 import { remoteImagesUrl } from '../../config'
 import { getUserBaseInfo, getMsgDynamics } from '../../models/user'
 import { getUserInfo } from '../../utils/util'
@@ -16,22 +15,23 @@ Page({
     userinfo: null,
     company: null,
     headerBlock: 0,
-    ratio: 2,
     type: 'all',
     tabList: [
       { name: '动态', type: 'all' },
       { name: '文章',type: 'article' },
+      { name: '图片',type: 'picture' },
       {	name: '视频', type: 'video' },
       { name: '小视频', type: 'smallvideo' },
       // { name: '我的店', type: 'stroe' }
     ],
     allList: [],
     articleList: [],
+    pictureList: [],
     videoList: [],
     smallvideoList: [],
     stroeList: [],
 
-    current: 0,
+    current: null,
     isScroll: false,
     openAnimation: true,
     scrollTop: 0,
@@ -42,21 +42,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad(options) {
     const { userid = '' } = options
     const { userid: myUserId } = getUserInfo(['userid'])
-    console.log('myUserId', myUserId, 'userid', userid)
-    if ({})
 
     this.setData({
       userid,
       isCurrentUser: userid === myUserId
     })
     this.getHeaderBlock()
-    // this.getInfo()
     this.getUserBaseInfo()
-    this.getMsgDynamics()
-    this.getDiscoverMsgList();
+    // this.getMsgDynamics()
   },
 
   async getUserBaseInfo() {
@@ -84,30 +80,25 @@ Page({
 
   async getMsgDynamics() {
     const { type, current, userid } = this.data
+    console.log('current', current)
+    const currentPage = current ? current[type] || 0 : 0
     const {
       data = [],
+      page,
     } = await getMsgDynamics({
       account_userid: userid,
-      page: current,
+      page: currentPage,
       msgtype: type
     })
+    const currentList = this.data[`${type}List`] || []
     this.setData({
-      [`${type}List`]: data
+      [`${type}List`]: [ ...currentList, ...data ],
+      [`current.${type}`]: currentPage + 1,
     })
   },
 
-  async getDiscoverMsgList() {
-		const { data = [], page = 0 } = await getDiscoverMsgList({
-			pagenum: 0,
-			cityname: '全国',
-			keyword: '',
-			tabname: 'recommend'
-		})
-		if(data instanceof Array && data.length > 0) {
-			this.setData({
-				releaseList: data,
-			})
-		}
+  onScrollBottom() {
+    this.getMsgDynamics()
   },
   
   onSelectTabs(e) {
@@ -120,9 +111,9 @@ Page({
   onScroll(e) {
     const { scrollTop } = e.detail
     this.setData({
-      opacity: scrollTop ? scrollTop / 350 : 0,
+      opacity: scrollTop ? scrollTop / 200 : 0,
     })
-    if(scrollTop >= 325 && !this.data.isScroll) {
+    if(scrollTop >= 200 && !this.data.isScroll) {
       this.setData({
         openAnimation: false,
         scrollTop: 400,
@@ -154,6 +145,7 @@ Page({
       delta: 1,
     })
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

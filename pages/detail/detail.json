@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "m-content-accont-card": "/components/public/content-accont-card",
+    "v-parse": "/components/public/parse",
+    "v-tool": "/components/detail/tool",
+    "v-skip": "/components/public/skip-image",
+    "m-header": "/components/public/m-header",
+    "v-item": "/components/detail/recommend-item",
+    "v-message": "/components/detail/message-item",
+    "v-video": "/components/contents/video",
+    "m-comment": "/components/public/m-comment",
+    "v-footer": "/components/footer"
+  },
+  "navigationBarTitleText": "详情"
+}

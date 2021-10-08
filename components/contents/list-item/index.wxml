@@ -12,8 +12,8 @@
     <m-concern
       wx:if="{{!isCurrentUser && showConcern}}"
       isConcern="{{item.focused === 1}}"
-      concernUsers="{{item.fans}}"
-      amount="{{item.fansnum}}"
+      concernUsers="{{item.fans || []}}"
+      amount="{{item.fansnum || ''}}"
       bind:concern="onAttention"
     />
   </view>
@@ -55,7 +55,7 @@
   </view>
 
   <m-footer
-    info="{{item}}"
+    info="{{item || null}}"
     catch:like="onLike"
     catch:dial="onDial"
     catch:share="onShare"

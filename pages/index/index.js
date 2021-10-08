@@ -1,11 +1,12 @@
 
 import { login } from '../../models/user'
 import { getDiscoverMsgList } from '../../models/release'
-import { getCarousel, getRecommendAccountList } from '../../models/util'
+import { getCarousel, getRecommendAccountList, getNLoginList } from '../../models/util'
 import { getAttentionedList } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { getLocationInfo } from '../../models/map'
 import { promisic } from '../../utils/util'
+import { storageSet } from '../../utils/storage'
 
 const app = getApp();
 Page({
@@ -26,14 +27,20 @@ Page({
 		tabList: [
       { id: '1', name: '关注', type: 'focus' },
       { id: '2', name: '推荐', type: 'recommend', select: true },
-      { id: '3', name: '全部', type: 'country' },
+      { id: '3', name: '全国', type: 'country' },
 			{ id: '4', name: '本地', type: 'native' }
     ]
 	},
 
 	async onLoad() {
 		this.getHeaderBlock()
+		// await this.getNLoginList()
 		await this.getLocationInfo()
+	},
+
+	async getNLoginList() {
+		const { data = [] } = await getNLoginList()
+		storageSet('notLoginList', data)
 	},
 
 	async getLocationInfo() {
@@ -47,7 +54,6 @@ Page({
 			this.setData({
 				locationErrLoading: true,
 			})
-			console.log('err', err)
 		}
 	},
 
@@ -72,8 +78,8 @@ Page({
 	},
 
 	getHeaderBlock() {
-		const { workInfo, statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;
-		const { tabHeight } = judgeTabBarHeight(workInfo);
+		const { statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;
+		const { tabHeight } = judgeTabBarHeight();
 		this.setData({
 			headerBlock: statusBarHeight + headerTopHeader + headerSearchHeader,
 			tabHeight,

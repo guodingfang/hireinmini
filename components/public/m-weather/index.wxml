@@ -1,4 +1,4 @@
-<view class="model" bind:tap="onChange">
+<view class="model" bind:tap="onChange" wx:if="{{!aloneShowCity}}">
   <view class="weather">
     <view class="weather-val">{{degree}}°</view>
     <text class="iconfont iconfont-weather {{weather}}" wx:if="{{weather}}"></text>
@@ -13,4 +13,9 @@
       <view class="aqi-level">{{aqiLevel}}</view>
     </view>
   </view>
+</view>
+
+<view class="alone-city" bind:tap="onChange" wx:else>
+  <image class="icon-location" src="/images/icon/location-2.png"></image>
+  <view class="alone-city-val single-row-overstep">{{location}}</view>
 </view>

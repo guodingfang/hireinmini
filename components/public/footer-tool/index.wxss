@@ -41,8 +41,8 @@
   text-align: left;
 }
 
-.footer-item.info-phone {
-  margin-left: auto;
+.info-browse {
+  margin-right: auto;
 }
 
 .footer-item.info-phone .footer-item-label{

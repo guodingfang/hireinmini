@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "m-footer": "/components/public/footer-tool"
+  }
+}

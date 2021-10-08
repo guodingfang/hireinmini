@@ -60,16 +60,21 @@
  -->
 <view style="margin-top: 20rpx;">
 	<v-skip
-		src="/images/advert/open-service-account.png"
+		src="{{ !skipCompanyUrl ? '/images/advert/open-service-account.png' : '/images/advert/enter-service-account.png'}}"
 		width="690"
 		height="168"
+		bind:skip="onSelectCompany"
 		url="{{skipCompanyUrl}}"
 	/>
 </view>
 
-<!-- 遮罩 -->
-<view class='shade' bindtap='shadehide' hidden='{{loadingHidden}}'>
-</view>
+<v-company-select
+	showModel="{{showModel}}"
+	bind:close="onCloseModel"	
+	bind:open="onOpenCompany"
+	bind:add="onAddCompany"
+/>
+
 <loading hidden="{{loadingHidden}}">
 	加载中...
 </loading>

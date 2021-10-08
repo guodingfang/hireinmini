@@ -22,7 +22,10 @@
     "pages/focus-list/focus-list",
     "pages/city-list/city-list",
     "pages/set-up/set-up",
-    "pages/company-setup/company-setup"
+    "pages/company-setup/company-setup",
+    "pages/company-select/company-select",
+    "pages/search-company/search-company",
+    "pages/add-company/add-company"
   ],
   "permission": {
     "scope.userLocation": {

@@ -17,12 +17,15 @@ Component({
         })
       }
     },
+    autoplay: {
+      type: Boolean,
+      value: false
+    },
     configs: {
       type: Object,
       value: {
         indicatorDots: false,
         indicatorColor: 'rgba(0, 0, 0, .3)',
-        autoplay: false
       }
     },
     imageConfigs: {

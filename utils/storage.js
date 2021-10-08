@@ -3,5 +3,13 @@ export const storageGet = (key) => {
 }
 
 export const storageSet = (key, value) => {
-  return wx.getStorageSync(key, value)
+  return wx.setStorageSync(key, value)
+}
+
+export const storageRemove = (key) => {
+  return wx.removeStorageSync(key)
+}
+
+export const storageClear = () => {
+  return wx.clearStorageSync()
 }

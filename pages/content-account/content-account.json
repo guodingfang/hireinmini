@@ -4,11 +4,12 @@
     "v-info": "/components/content-account/user-info",
     "v-item": "/components/contents/list-item",
     "v-dynamic-item": "/components/content-account/dynamic-item",
+    "v-picture-item": "/components/content-account/picture-item",
     "v-video-item": "/components/content-account/video-item",
     "v-mini-video-item": "/components/content-account/mini-video-item",
     "v-goods-item": "/components/content-account/goods-item",
     "m-tabs": "/components/tabs",
-    "v-not-content": "/components/content-account/not-content"
+    "m-not-content": "/components/public/m-not-content"
   },
   "navigationStyle": "custom"
 }

@@ -1,6 +1,4 @@
 import { promisic } from '../../../utils/util.js'
-import { upload } from '../../../models/util'
-import config from '../../../config'
 
 Component({
   /**
@@ -11,8 +9,6 @@ Component({
       type: String,
       value: 'img'
     },
-    prefixUri: String,
-    productcode: String,
     images: {
       type: Array,
       value: [],
@@ -23,35 +19,21 @@ Component({
       } 
     },
     maxCount: {
-      type: Number,
-      value: 4
-    },
-    triggerUpload: {
-      type: Boolean,
-      value: false,
-      observer(val) {
-        this.uploadContent()
-      }
-    },
-    uploadId: {
       type: String,
-      value: ''
-    }
+      value: '4',
+    },
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    uploadUrl: `${config.baseUrl}/Release/addMsgPicture`,
-    imagesIngos: [],
+    // 上传图片
     showImages: [],
     uploadImages: [],
 
     // 上传视频
-    showVideo: '',
     uploadVideo: '',
-    formDataParams: null,
   },
 
   /**
@@ -60,26 +42,51 @@ Component({
   methods: {
     // 图片上传
     async onChooseImage(event) {
-      const { maxCount, images } = this.properties;
+      const { maxCount } = this.properties;
+      const { showImages, uploadImages } = this.data
+
       const { tempFilePaths = [] } = await promisic(wx.chooseImage)({
-        count: maxCount - images.length,
+        count: maxCount - showImages.length,
         sourceType: ['album', 'camera'],
       });
+      const _showImages = [...showImages, ...tempFilePaths]
+      const _uploadImages = [...uploadImages, ...tempFilePaths]
+      this.setData({
+        showImages: _showImages,
+        uploadImages: _uploadImages
+      })
+      this.triggerEvent('complete', {
+        type: 'img',
+        uploadImages: _uploadImages,
+      }, {})
+    },
+
+    async onChooseVideo() {
       wx.showToast({
         title: '正在上传...',
         icon: 'loading',
         mask: true,
-        duration: 1000
-      }).then(() => {
-        this.setData({
-          showImages: [...this.data.showImages, ...tempFilePaths],
-          uploadImages: [...this.data.uploadImages, ...tempFilePaths]
-        })
-        this.triggerEvent('isUpload', {
-          upload: true,
-          type: 'img'
-        }, {})
+        duration: 3000
       })
+      const res = await promisic(wx.chooseVideo)({
+        sourceType: ['album', 'camera'],
+      });
+      wx.hideToast()
+      const { tempFilePath } = res
+      this.setData({
+        uploadVideo: tempFilePath,
+      })
+      this.triggerEvent('complete', {
+        type: 'video',
+        uploadVideo: tempFilePath,
+        formDataParams: {
+          duration: res.duration,
+          width: res.width,
+          height: res.height,
+          videotime: res.duration,
+          imgsign: 1,
+        }
+      }, {})
     },
 
     onShowImage(event) {
@@ -91,73 +98,19 @@ Component({
       })
     },
 
-    // 上传内容
-    async uploadContent() {
-      const { triggerUpload, uploadType } = this.properties
-      const { uploadImages, uploadVideo } = this.data
-      if (!triggerUpload) return
-      console.log('uploadType', uploadType)
-      if (uploadType === 'img') {
-        for (let [index, value] of uploadImages.entries()) {
-          await this._upload(value)
-        }
-      } else if (uploadType === 'video') {
-        await this._upload(uploadVideo)
-      }
-
-      this.triggerEvent('uploadComplete', {}, {})
-    },
-
-    // 上传
-    async _upload(file) {
-      console.log('file', file)
-      const { uploadId } = this.properties
-      const { uploadUrl, formDataParams } = this.data
-      const res = await upload({
-        url: uploadUrl,
-        file,
-        formData: {
-          msgid: uploadId,
-          ...formDataParams,
-        }
-      })
-      console.log('res@@@', res)
-    },
-
     // 关闭删除图片
     onCloseImage(event) {
-      const { showImages, uploadImages } = this.data;
-      const { uploadId } = this.properties
-      if(!uploadId) {
-        const { idx } = event.currentTarget.dataset;
-        this.setData({
-          showImages: showImages.splice(idx, 1),
-          uploadImages: uploadImages.splice(idx, 1),
-        })
-      }
-    },
-
-    async onChooseVideo() {
-      const res = await promisic(wx.chooseVideo)({
-        sourceType: ['album', 'camera'],
-      });
-      console.log('res', res)
-      const { tempFilePath, thumbTempFilePath, size } = res
+      let { showImages, uploadImages } = this.data;
+      const { idx } = event.currentTarget.dataset;
+      const deleteItem =  showImages.splice(idx, 1)
+      uploadImages.splice(idx, 1)
       this.setData({
-        showVideo: thumbTempFilePath,
-        uploadVideo: tempFilePath,
-        formDataParams: {
-          duration: res.duration,
-          width: res.width,
-          height: res.height,
-          videotime: res.duration,
-          imgsign: 1,
-        }
+        showImages,
+        uploadImages,
       })
-      this.triggerEvent('isUpload', {
-        upload: true,
-        type: 'video'
+      this.triggerEvent('delete', {
+        item: deleteItem
       }, {})
-    }
+    },
   }
 })
