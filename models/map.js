@@ -34,7 +34,6 @@ export const getLocationInfo = (params = {}) => {
       getMap().reverseGeocoder({
         location: `${latitude},${longitude}`,
         success({ result }) {
-          console.log('result', result)
           const { ad_info = null, address } = result
           const info = {
             cityCode: ad_info.adcode,
@@ -63,6 +62,7 @@ export const addressGetinfo = (params) => {
     getMap().geocoder({
       address: city,
       success({ result }) {
+        console.log('result', result)
         const { address_components, ad_info, location } = result
         const info = {
           cityCode: ad_info.adcode,

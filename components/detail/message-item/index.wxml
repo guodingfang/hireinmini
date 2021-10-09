@@ -1,9 +1,9 @@
 <view class="message">
-  <image class="portrait" src="https://mobile.ilinking.com.cn/Public/pics/userphoto/20210407/606d7683aebbf.png"></image>
+  <image class="portrait" src="{{ info.userpic_receiver }}"></image>
   <view class="info">
     <view class="user">
       <view class="name">{{ info.sender }}</view>
-      <view class="time">2020.08.09 18:50</view>
+      <view class="time">{{ info.discusstime }}</view>
       <view class="like">
         <image class="icon-like" src="/images/tool/icon-notLike.png"></image>
         <text class="val">点赞</text>

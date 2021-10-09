@@ -13,8 +13,8 @@
     </view>
   </view>
   <image
-    wx:if="{{info.picsign !== '1' && info.pics.length}}"
+    wx:if="{{showImg}}"
     class="big-img"
-    src="{{imgUrl}}{{info.pics[0].picurl}}"
+    src="{{showImg}}"
   ></image>
 </view>

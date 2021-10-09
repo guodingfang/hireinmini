@@ -9,6 +9,10 @@ Component({
       type: Boolean,
       value: false,
     },
+    isAttention: {
+      type: Boolean,
+      value: false
+    },
     userinfo: {
       type: Object,
       value: null,
@@ -43,20 +47,15 @@ Component({
       })
     },
     async onAttention() {
-      console.log('this.properties.userinfo', this.properties.userinfo)
-      const { userid: targetuserid, focused } = this.properties.userinfo
-      // const { fans, fansnum } = await addAttention({
-      //   targetuserid,
-      //   focused: focused === 1 ? 0 : 1
-      // })
-      // this.setData({
-      //   item: {
-      //     ...this.data.item,
-      //     focused: focused === 1 ? 0 : 1,
-      //     fans,
-      //     fansnum
-      //   }
-      // })
+      const { userinfo, isAttention } = this.properties
+      const { userid: targetuserid, focused } = userinfo
+      await addAttention({
+        targetuserid,
+        focused: isAttention ? 0 : 1
+      })
+      this.setData({
+        isAttention: !isAttention
+      })
     },
     onSetUp() {
       wx.navigateTo({

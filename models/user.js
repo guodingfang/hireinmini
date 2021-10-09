@@ -6,7 +6,7 @@ import { promisic } from '../utils/util'
  * 用户登录
  * @param {*} option 
  */
-const login = async (option = {}) => {
+export const login = async (option = {}) => {
   const { code = '' } = await promisic(wx.login)()
   const info = await request.post('/WXAppLogin/WXAppLogins', {
     code,
@@ -34,7 +34,7 @@ const login = async (option = {}) => {
  * 用户注册
  * @param {*} option 
  */
-const registerUser = (option = {}) => {
+export const registerUser = (option = {}) => {
   return request.post('/WXAppLogin/userRegByUserinfo', {
     ...option
   })
@@ -44,7 +44,7 @@ const registerUser = (option = {}) => {
  * 获取微信手机号
  * @param {*} option 
  */
-const getUserPhone = (option = {}) => {
+export const getUserPhone = (option = {}) => {
   return request.post('/WXAppLogin/getWxUserPhoneNumber', {
     ...option
   })
@@ -54,14 +54,14 @@ const getUserPhone = (option = {}) => {
  * 注销账户
  * @param {*} option 
  */
-const unRegisterUser = (option = {}) => {
+export const unRegisterUser = (option = {}) => {
   return request.post('/WXAppLogin/unregister', {
     ...option
   })
 }
 
 // 获取用户当前经纬度
-const getLocation = (success, fail) => {
+export const getLocation = (success, fail) => {
   promisic(wx.getLocation)({
     type: 'wgs84',
   }).then(res => {
@@ -75,7 +75,7 @@ const getLocation = (success, fail) => {
  * 上传访问日志
  * @param {*} option 
  */
-const uploadAccessLog = (option = {}) => {
+export const uploadAccessLog = (option = {}) => {
   return request.post('/User/accessLog', {
     ...option
   })
@@ -85,7 +85,7 @@ const uploadAccessLog = (option = {}) => {
  * 获取我的公司信息
  * @param {*} option 
  */
-const getMyCompanyInfo = (option = {}) => {
+export const getMyCompanyInfo = (option = {}) => {
   return request.post('/Company/getMyCompanyInfo', {
     ...option
   })
@@ -95,7 +95,7 @@ const getMyCompanyInfo = (option = {}) => {
  * 获取待审批订单
  * @param {*} option 
  */
-const getMyOrderForAuditNum = (option = {}) => {
+export const getMyOrderForAuditNum = (option = {}) => {
   return request.post('/Order/myOrderForAuditNum', {
     ...option
   })
@@ -106,7 +106,7 @@ const getMyOrderForAuditNum = (option = {}) => {
  * @param {*} option 
  */
 
-const addAttention = (option = {}) => {
+export const addAttention = (option = {}) => {
   return request.post('/User/addAttention', {
     ...option
   })
@@ -116,7 +116,7 @@ const addAttention = (option = {}) => {
  * 已关注用户列表
  * @param {*} option 
  */
-const getAttentionedList = (option = {}) => {
+export const getAttentionedList = (option = {}) => {
   return request.post('/User/getAttentionedList', {
     ...option
   })
@@ -126,7 +126,7 @@ const getAttentionedList = (option = {}) => {
  * 我的页动态、关注以及订单的数量、角标
  * @param {*} option 
  */
-const getUserBaseInfo = (option = {}) => {
+export const getUserBaseInfo = (option = {}) => {
   return request.post('/User/getUserBaseInfo', {
     ...option
   })
@@ -136,7 +136,7 @@ const getUserBaseInfo = (option = {}) => {
  * 我的-厂家页面，动态/文章/视频/小视频…(店铺除外)，账号信息流列表
  * @param {*} option 
  */
-const getMsgDynamics = (option = {}) => {
+export const getMsgDynamics = (option = {}) => {
   return request.post('/Release/getMsgDynamics', {
     ...option
   })
@@ -147,7 +147,7 @@ const getMsgDynamics = (option = {}) => {
  * 获取用户编辑信息
  * @param {*} option 
  */
-const getUserEditableInfo = (option = {}) => {
+export const getUserEditableInfo = (option = {}) => {
   return request.post('/User/getUserEditableInfo', {
     ...option
   })
@@ -158,25 +158,18 @@ const getUserEditableInfo = (option = {}) => {
  * 改变用户信息
  * @param {*} option 
  */
-const setUserInfo = (option = {}) => {
+export const setUserInfo = (option = {}) => {
   return request.post('/User/changeUserInfo', {
     ...option
   })
 }
 
-export {
-  login,
-  registerUser,
-  getUserPhone,
-  unRegisterUser,
-  getLocation,
-  uploadAccessLog,
-  getMyCompanyInfo,
-  getMyOrderForAuditNum,
-  addAttention,
-  getAttentionedList,
-  getUserBaseInfo,
-  getMsgDynamics,
-  getUserEditableInfo,
-  setUserInfo
+/**
+ * 用户A是否关注了用户B
+ * @param {*} option 
+ */
+export const isAFocusB = (option = {}) => {
+  return request.post('/User/isAFocusB', {
+    ...option
+  })
 }

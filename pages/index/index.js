@@ -33,6 +33,7 @@ Page({
 	},
 
 	async onLoad() {
+		console.log("@")
 		this.getHeaderBlock()
 		// await this.getNLoginList()
 		await this.getLocationInfo()
@@ -46,6 +47,7 @@ Page({
 	async getLocationInfo() {
 		try {
 			const info = await getLocationInfo()
+			console.log('info', info)
 			this.setData({
 				city: info.city,
 				locationLoading: false,
@@ -151,7 +153,7 @@ Page({
 			keyword: '',
 			tabname
 		})
-		if(data instanceof Array && data.length > 0) {
+		if(data instanceof Array) {
 			this.setData({
 				releaseList: reset ? data : [ ...releaseList, ...data ],
 				pagenum: page.page + 1,

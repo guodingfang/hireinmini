@@ -73,7 +73,7 @@ Page({
 			userids: info.userid,
 		})
 		this.setData({
-			otherList: data
+			otherList: data.splice(0, 5)
 		})
 	},
 

@@ -6,7 +6,7 @@ Component({
   properties: {
     info: {
       type: Object,
-      value: null
+      value: null,
     }
   },
 

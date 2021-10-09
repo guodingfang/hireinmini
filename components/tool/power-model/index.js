@@ -43,6 +43,7 @@ Component({
   methods: {
     async getDiameterList() {
       const objectArray = await getDiameterList()
+      console.log('objectArray', objectArray)
       this.setData({
         objectArray
       })

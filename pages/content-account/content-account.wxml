@@ -43,7 +43,12 @@
     <image class="user-bg-img" style="top: {{-headerBlock}}rpx" mode="widthFix" src="{{bgImagesUrl}}"></image>
   </view>
 
-  <v-info userinfo="{{userinfo}}" company="{{company}}" isCurrentUser="{{isCurrentUser}}" />
+  <v-info
+    userinfo="{{userinfo}}"
+    company="{{company}}"
+    isCurrentUser="{{isCurrentUser}}"
+    isAttention="{{isAttention}}"
+  />
 
   <m-tabs
     list="{{tabList}}"
@@ -65,6 +70,7 @@
 
     <!-- 文章 -->
     <view slot="item-2">
+      
       <block wx:if="{{articleList && articleList.length}}">
         <v-item
           info="{{item}}"
@@ -110,14 +116,20 @@
     </view>
     
     <!-- 商品 -->
-    <!-- <view class="goods-list" slot="item-6">
+    <view class="goods-list" slot="item-6">
+      <v-skip
+        src="/images/advert/account-goods.png"
+        width="690"
+        height="200"
+        radius="20"
+      />
       <block wx:if="{{stroeList && stroeList.length}}">
         <v-goods-item wx:for="{{ stroeList }}" wx:key="id"/>
       </block>
       <block wx:else>
         <m-not-content />
       </block>
-    </view> -->
+    </view>
   </m-tabs>
 </scroll-view>
 

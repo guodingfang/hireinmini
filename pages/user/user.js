@@ -1,5 +1,11 @@
 import { checkFrontPower } from '../../models/util'
-import { unRegisterUser, getMyCompanyInfo, getUserBaseInfo, getMyOrderForAuditNum } from '../../models/user'
+import {
+	login,
+	unRegisterUser,
+	getMyCompanyInfo,
+	getUserBaseInfo,
+	getMyOrderForAuditNum
+} from '../../models/user'
 
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { remoteImagesUrl } from '../../config'
@@ -70,8 +76,9 @@ Page({
     })
 	},
 	
-	onSetUserInfo() {
-		this.getUserBaseInfo()
+	async onSetUserInfo() {
+		await login()
+		await this.getUserBaseInfo()
 	},
 
 	// 跳转到我的订单审核

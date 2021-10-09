@@ -9,7 +9,7 @@
     </block>
     <block wx:else>
       <view class="btn btn-1" bind:tap="onInterflow">合作交流</view>
-      <view class="btn btn-2" bind:tap="onAttention">关注</view>
+      <view class="btn btn-2" bind:tap="onAttention">{{ isAttention ? '已关注' : '关注'}}</view>
     </block>
   </view>
   <view class="introduce">

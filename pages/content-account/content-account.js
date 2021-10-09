@@ -1,5 +1,5 @@
 import { remoteImagesUrl } from '../../config'
-import { getUserBaseInfo, getMsgDynamics } from '../../models/user'
+import { getUserBaseInfo, getMsgDynamics, isAFocusB } from '../../models/user'
 import { getUserInfo } from '../../utils/util'
 
 const app = getApp()
@@ -12,6 +12,7 @@ Page({
   data: {
     userid: '',
     isCurrentUser: false,
+    isAttention: false,
     userinfo: null,
     company: null,
     headerBlock: 0,
@@ -22,7 +23,7 @@ Page({
       { name: '图片',type: 'picture' },
       {	name: '视频', type: 'video' },
       { name: '小视频', type: 'smallvideo' },
-      // { name: '我的店', type: 'stroe' }
+      { name: '我的店', type: 'stroe' }
     ],
     allList: [],
     articleList: [],
@@ -50,9 +51,21 @@ Page({
       userid,
       isCurrentUser: userid === myUserId
     })
+    this.isAFocusB()
     this.getHeaderBlock()
     this.getUserBaseInfo()
     // this.getMsgDynamics()
+  },
+
+  async isAFocusB() {
+    const { isCurrentUser, userid: targetuserid } = this.data
+    if(isCurrentUser) return
+    const { focused } = await isAFocusB({
+      targetuserid
+    })
+    this.setData({
+      isAttention: focused === 1
+    })
   },
 
   async getUserBaseInfo() {

@@ -6,11 +6,12 @@ page {
 	height: 88rpx;
 	display: flex;
 	align-items: center;
-	padding-left: 30rpx;
+	padding: 0 30rpx;
 }
 
 .m-search {
-	width: 610rpx !important;
+	width: 590rpx !important;
+	border-radius: 12rpx 0 0 12rpx !important;
 }
 
 .search-btn {
@@ -19,8 +20,13 @@ page {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: #1A1A1A;
+	/* color: #1A1A1A; */
 	font-size: 26rpx;
+	height: 70rpx;
+	background-color: rgb(14, 40, 201);
+	color: #fff;
+	box-sizing: border-box;
+	border-radius: 0 12rpx 12rpx 0;
 }
 
 .model {

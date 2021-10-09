@@ -3,13 +3,11 @@
 <view class="video" wx:if="{{type === 'video'}}">
   <v-video videoUrlStatic="{{videoUrlStatic}}" videoUrlDynamic="{{videoUrlDynamic}}" />
   <view class="video-content">{{ content }}</view>
-  <view class="play-num">
+  <view class="play-num" wx:if="{{false}}">
     <image class="icon-paly" src="/images/icon/play-2.png"></image>
     <text class="paly-num-val">33.7w</text>
   </view>
 </view>
-
-<m-content-accont-card info="{{contentAccont}}" />
 
 <block wx:if="{{type === 'img'}}">
   <view class="imgs-content">{{ content }}</view>
@@ -29,6 +27,8 @@
 </block>
 
 <v-tool info="{{info}}" />
+
+<m-content-accont-card info="{{contentAccont}}" />
 
 <view class="advert">
   <v-skip

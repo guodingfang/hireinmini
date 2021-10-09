@@ -65,7 +65,7 @@
               placeholder="选择线径"
               type="number"
               disabled="true"
-              value="{{objectArray[diameterIndex]['crossarea']}}"
+              value="{{diameterIndex ? objectArray[diameterIndex]['crossarea'] : ''}}"
             />
           </picker>
           <text class="unit-symbol">m㎡</text>
@@ -73,7 +73,7 @@
         <view class="middle-line"></view>
         <view class="col">
           <text class="label">带载功率</text>
-          <text class="val">{{objectArray[diameterIndex]['power' + type]}}</text>
+          <text class="val">{{diameterIndex ? objectArray[diameterIndex]['power' + type] : ''}}</text>
           <text class="unit-symbol">KW</text>
         </view>
       </view>
