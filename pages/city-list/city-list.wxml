@@ -19,15 +19,15 @@
   scroll-y
 >
   <view id="current" wx:if="{{currentCity}}">
-    <view class="title">当前选择城市</view>
-    <view class="city-current">
-      <view class="current-item">{{currentCity.city}}</view>
-    </view>
-  </view>
-
-  <view id="history" wx:if="{{hitoryList.length}}">
-    <view class="title">历史城市</view>
+    <view class="title">定位 / 最近访问</view>
     <view class="city-history">
+      <view
+        class="current-item"
+        catch:tap="onAginLocation"
+      >
+        <image class="icon-location" src="/images/icon/location-3.png"></image>
+        <text>{{currentCity.city}}</text>
+      </view>
       <view
         class="history-item"
         wx:for="{{hitoryList}}"

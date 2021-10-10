@@ -1,9 +1,11 @@
+import { login } from '../../models/user'
 import {
 	getReleaseDetail,
 	getOtherHosList,
 	addLikeRelease,
 	deleteLikeRelease,
 	addComment,
+	addShareRelease,
 	addUserDialRecord
 } from '../../models/release'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
@@ -18,6 +20,7 @@ Page({
 		videoUrl: config.videoUrl,
 		otherList: [],
 		messageList: [],
+		loading: true,
 	},
 	async onLoad (options) {
 		const { tabHeight } = judgeTabBarHeight();
@@ -25,20 +28,17 @@ Page({
 			msgid: options.msgid,
 			tabHeight
 		})
-		await this.getReleaseDetail()
-		await this.getOtherHosList()
 	},
 
 	// 获取详情
 	async getReleaseDetail() {
 		const { msgid } = this.data;
-		let { info } = await getReleaseDetail({ msgid })
-		
+		let { companyinfo = null, info = null } = await getReleaseDetail({ msgid })
 		const contentAccont = {
 			logo: info.userpic,
 			name: info.contacter,
 			userid: info.userid,
-			des: info.msgtitle || '',
+			des: companyinfo ? companyinfo.companyname || '' : '',
 		}
 		let type = info.picsign === '1' ? 'img' : info.picsign === '2' ? 'video' : 'html'
 		this.setData({
@@ -48,6 +48,7 @@ Page({
 			content: info.content,
 			messageList: info.discuss || [],
 			type,
+			loading: false,
 		})
 		this.getVideoUrl()
 	},
@@ -95,7 +96,7 @@ Page({
 				info: {
 					...this.data.info,
 					praised: 1,
-					praisecount: praisecount + 1
+					praisecount: +praisecount + 1
 				}
 			})
 		} else if(praised === 1) {
@@ -107,7 +108,7 @@ Page({
 				info: {
 					...this.data.info,
 					praised: 0,
-					praisecount: praisecount - 1
+					praisecount: +praisecount - 1
 				}
 			})
 		}
@@ -115,8 +116,6 @@ Page({
 
 	// 拨打电话
 	async onDial(e) {
-		console.log('this.data.info', this.data.info)
-
 		const { contactphone: phone } = this.data.info	
 		if(!phone) {
 			wx.showToast({
@@ -156,19 +155,29 @@ Page({
 	},
 
 
-	onShow: function () {
-
+	async onShow () {
+		await login()
+		await this.getReleaseDetail()
+		await this.getOtherHosList()
 	},
 	/**
 	 * 用户点击右上角分享
 	 */
-	onShareAppMessage: function (e) {
+	async onShareAppMessage (e) {
 		if (e.from === 'button') {
-			let { msgid, url } = e.target.dataset;
+			const { msgid } = this.data
+			const { forwardcount = '' } = await addShareRelease({
+				msgid
+			})
+			this.setData({
+				info: {
+					...this.data.info,
+					forwardcount,
+				}
+			})
 			return {
-				title: '赁客+',
+				title: '携手开启数字租赁服务新生态',
 				path: `/pages/detail/detail?msgid=${msgid}`,
-				imageUrl: url
 			}
 		}
 	},

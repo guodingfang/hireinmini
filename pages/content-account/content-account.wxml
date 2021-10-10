@@ -117,18 +117,14 @@
     
     <!-- 商品 -->
     <view class="goods-list" slot="item-6">
-      <v-skip
-        src="/images/advert/account-goods.png"
-        width="690"
-        height="200"
-        radius="20"
-      />
-      <block wx:if="{{stroeList && stroeList.length}}">
+      <!-- <block wx:if="{{stroeList && stroeList.length}}">
         <v-goods-item wx:for="{{ stroeList }}" wx:key="id"/>
-      </block>
-      <block wx:else>
-        <m-not-content />
-      </block>
+      </block> -->
+      <!-- <block wx:else> -->
+        <m-not-content>
+          <view class="not-content-text" slot="text">敬请期待...</view>
+        </m-not-content>
+      <!-- </block> -->
     </view>
   </m-tabs>
 </scroll-view>

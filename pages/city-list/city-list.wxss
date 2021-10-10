@@ -43,7 +43,7 @@ Page {
 }
 
 
-.city-current, .city-history, .city-hot {
+.city-history, .city-hot {
   display: flex;
   flex-wrap: wrap;
   padding-top: 24rpx;
@@ -65,6 +65,12 @@ Page {
   display: flex;
   align-items: center;
   padding-left: 24rpx;
+}
+
+.icon-location {
+  width: 30rpx;
+  height: 35rpx;
+  margin-right: 12rpx;
 }
 
 .city-item + .city-item {

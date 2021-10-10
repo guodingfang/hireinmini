@@ -85,7 +85,10 @@ Page({
           delta: 1,
         })
       } else {
-        console.log('手机号注册失败')
+        wx.showToast({
+          title: data.message,
+          icon: 'none'
+        })
       }
     }
   },

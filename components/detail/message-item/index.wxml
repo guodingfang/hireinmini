@@ -1,13 +1,13 @@
 <view class="message">
-  <image class="portrait" src="{{ info.userpic_receiver }}"></image>
+  <image class="portrait" src="{{ info.userpic_sender }}"></image>
   <view class="info">
     <view class="user">
       <view class="name">{{ info.sender }}</view>
       <view class="time">{{ info.discusstime }}</view>
-      <view class="like">
+      <!-- <view class="like">
         <image class="icon-like" src="/images/tool/icon-notLike.png"></image>
         <text class="val">点赞</text>
-      </view>
+      </view> -->
     </view>
     <view class="content">
       {{ info.content }}

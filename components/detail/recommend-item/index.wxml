@@ -1,4 +1,9 @@
 <view class="item" bind:tap="onSkipDetail">
+  <image
+    wx:if="{{showImg}}"
+    class="big-img"
+    src="{{showImg}}"
+  ></image>
   <view class="content">
     <view class="info two-row-overstep">{{ info.content }}</view>
     <view class="company-browse">
@@ -12,9 +17,4 @@
       </view>
     </view>
   </view>
-  <image
-    wx:if="{{showImg}}"
-    class="big-img"
-    src="{{showImg}}"
-  ></image>
 </view>

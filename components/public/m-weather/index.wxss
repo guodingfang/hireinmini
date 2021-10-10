@@ -46,7 +46,7 @@
 .location-val {
   white-space: nowrap;
   margin-top: 14rpx;
-  max-width: 100rpx;
+  /* max-width: 100rpx; */
 }
 
 .location-val, .aqi-val {
@@ -61,5 +61,5 @@
 .alone-city-val {
   margin-left: 12rpx;
   font-size: 24rpx;
-  max-width: 150rpx;
+  /* max-width: 150rpx; */
 }

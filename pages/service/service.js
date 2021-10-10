@@ -37,8 +37,8 @@ Page({
 		// 本地推荐 && 全国推荐
 		thisLocalityCompanyList: [],
 		nationwideCompanyList: [],
-		pagesize: 10,
-		currentPage: 2,
+		pagesize: 18,
+		currentPage: 1,
 		notMoreData: false,
 	},
 
@@ -55,7 +55,6 @@ Page({
 	async getLocationInfo() {
 		try {
 			const info = await getLocationInfo()
-			console.log('info', info)
 			this.setData({
 				city: info.city,
 			})
@@ -65,12 +64,20 @@ Page({
 		}
 	},
 
+	async onAgainLocationComplete({city}) {
+		this.setData({
+			city,
+			nationwideCompanyList: [],
+			thisLocalityCompanyList: [],
+			currentPage: 1,
+		})
+		await this.getNationwideCompanyList()
+	},
+
 	async getNationwideCompanyList() {
 		const { pagesize, currentPage, city } = this.data
 		this.setData({
 			thisLocalityCompanyList: [],
-			pagesize: 10,
-			currentPage: 2,
 			notMoreData: false,
 		})
 		const { data } = await getRecommendCompanyList({
@@ -83,29 +90,36 @@ Page({
 				...item,
 				label: item.label.slice(0, 3)
 			})),
-
+			currentPage: 2,
 		})
 		this.getRecommendCompanyList()
 	},
 
-		// 获取租赁商列表
-		async getRecommendCompanyList() {
-			const { pagesize, currentPage, city } = this.data
-			const { data, page } = await getRecommendCompanyList({
-				page: currentPage,
-				pagesize,
-				city: city
-			})
-			const thisLocalityCompanyList = data.map(item => ({
-				...item,
-				label: item.label.slice(0, 3)
-			}));
-			this.setData({
-				thisLocalityCompanyList: [...this.data.thisLocalityCompanyList, ...thisLocalityCompanyList],
-				currentPage: page.pagecount,
-				notMoreData: page.pagecount === page.page,
-			})
-		},
+	// 获取租赁商列表
+	async getRecommendCompanyList() {
+		const { pagesize, currentPage, city } = this.data
+		const { data, page } = await getRecommendCompanyList({
+			page: currentPage,
+			pagesize,
+			city: city
+		})
+		const thisLocalityCompanyList = data.map(item => ({
+			...item,
+			label: item.label.slice(0, 3)
+		}));
+		this.setData({
+			thisLocalityCompanyList: [...this.data.thisLocalityCompanyList, ...thisLocalityCompanyList],
+			currentPage: page.pagecount,
+			notMoreData: page.pagecount === page.page,
+		})
+	},
+
+	onSkipService(e) {
+		const { companyid } = e.currentTarget.dataset
+		wx.navigateTo({
+			url: `/pages/service-account/service-account?companyid=${companyid}`,
+		})
+	},
 
 	getHeaderBlock() {
 		const { workInfo, statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;

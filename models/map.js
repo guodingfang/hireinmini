@@ -21,6 +21,12 @@ export const getCityList = (option = {}) => {
   })
 }
 
+export const getCityInfo = (option = {}) => {
+  return request.post('/Index/getCityCounty', {
+    ...option
+  })
+}
+
 // 根据经纬度获取位置信息
 export const getLocationInfo = (params = {}) => {
   const { againLocation = false } = params
@@ -36,13 +42,14 @@ export const getLocationInfo = (params = {}) => {
         success({ result }) {
           const { ad_info = null, address } = result
           const info = {
-            cityCode: ad_info.adcode,
+            cityCode: ad_info.city_code.slice(3),
             city: ad_info.city,
             province: ad_info.province,
             district: ad_info.district,
             location: ad_info.location,
             address,
           }
+          storageSet('locationCity', info)
           storageSet('cityinfo', info)
           resolve(info)
         }
@@ -56,13 +63,13 @@ export const getLocationInfo = (params = {}) => {
 
 // 根据城市名获取位置信息
 export const addressGetinfo = (params) => {
- const { city = '' } = params
+ const { city = '', code = '' } = params
  if(!city) return
   return new Promise((resolve, reject) => {
     getMap().geocoder({
       address: city,
+      region: city,
       success({ result }) {
-        console.log('result', result)
         const { address_components, ad_info, location } = result
         const info = {
           cityCode: ad_info.adcode,

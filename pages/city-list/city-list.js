@@ -3,9 +3,12 @@ import {
   addressGetinfo,
   addUserCity,
   getCityList,
+  getCityInfo,
   getHitoryList,
   getHotList
 } from '../../models/map'
+
+import { storageSet, storageGet } from '../../utils/storage'
 
 Page({
 
@@ -18,7 +21,6 @@ Page({
     cityList: [],
     hitoryList: [],
     hotlist: [],
-    currentCity: null,
   },
 
   /**
@@ -36,8 +38,9 @@ Page({
 
   async getLocationInfo() {
     const info = await getLocationInfo()
+    const currentCity = storageGet('locationCity')
     this.setData({
-      currentCity: info
+      currentCity
     })
 	},
 
@@ -77,12 +80,44 @@ Page({
     })
   },
 
+  onAginLocation() {
+    const cityInfo = storageGet('locationCity')
+    storageSet('cityinfo', cityInfo)
+
+    const pages = getCurrentPages();
+    const prevPage = pages[pages.length - 2]; //上一个页面
+
+    prevPage.onAgainLocationComplete && prevPage.onAgainLocationComplete({
+      city: cityInfo.city,
+      code: cityInfo.cityCode
+    })
+    wx.navigateBack({
+      delta: 1,
+    })
+  },
+
   async onSelectCity(e) {
     const { item } = e.target.dataset
     if(item && item.cityname) {
-      await addressGetinfo({
-        city: item.cityname
+      const { data } = await getCityInfo({
+        cityname: item.cityname,
+        citycode: item.citycode
       })
+
+      const info = {
+        cityCode: item.citycode,
+        city: item.cityname,
+        province: data.provincename,
+        district: data.countyname,
+        location: '',
+        address: '',
+      }
+      storageSet('cityinfo', info)
+
+      // await addressGetinfo({
+      //   city: item.cityname,
+      //   code: item.citycode
+      // })
       await addUserCity({
         cityname: item.cityname,
         citycode: item.citycode

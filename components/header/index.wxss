@@ -32,7 +32,7 @@
 }
 
 .m-search {
-  width: 500rpx !important;
+  width: 560rpx !important;
   border: 1rpx solid #aaa;
 }
 

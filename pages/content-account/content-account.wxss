@@ -89,3 +89,11 @@
 .content-account-container {
   height: calc(100vh - var(--topHeader--));
 }
+
+.not-content-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #aaaaaa;
+	margin-top: 24rpx;
+}

@@ -12,6 +12,6 @@
     data-id="{{item.id}}"
     data-type="{{item.type}}"
     style="--width--: {{100 / list.length}}%"
-    class="tab-item {{ item.select ? 'tab-item-select': '' }}"
+    class="tab-item single-row-overstep {{ item.select ? 'tab-item-select': '' }}"
   >{{ item.name }}</view>
 </scroll-view>

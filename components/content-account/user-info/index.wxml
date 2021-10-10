@@ -14,7 +14,7 @@
   </view>
   <view class="introduce">
     <text class="user-name">{{ userinfo.nickname }}</text>
-    <text class="introduce-val">介绍：{{ userinfo.remark || '暂无介绍' }}</text>
+    <text class="introduce-val">介绍：{{ userinfo.remark || '该用户未开通服务账号' }}</text>
     <text class="company">认证：{{ userinfo.authenticationstatus === '0' ? '未认证' : '已认证'}}</text>
   </view>
   <view class="popularity-list">
@@ -33,7 +33,7 @@
   </view>
 </view>
 
-<view class="advert" wx:if="{{isCurrentUser}}">
+<view class="advert" wx:if="{{isCurrentUser || (skipCompanyUrl && !isCurrentUser)}}">
   <v-skip
     src="{{ !skipCompanyUrl ? '/images/advert/open-service-account.png' : '/images/advert/enter-service-account.png' }}"
     width="710"

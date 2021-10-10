@@ -41,12 +41,13 @@
           bind:tap="onSelectItem"
         >{{item.span}}</view>
       </view>
-
-      <m-header title="计算结果" more="{{false}}">
-        <view slot="tips" class="header-tips">（结果仅供参考）</view>
-      </m-header>
     </view>
+  </view>
 
+  <view class="model">
+    <m-header title="计算结果" more="{{false}}">
+      <view slot="tips" class="header-tips">（结果仅供参考）</view>
+    </m-header>
     <view class="result-row">
       <view class="result-col col-column">
         <text class="col-label">承重(公斤)：</text>

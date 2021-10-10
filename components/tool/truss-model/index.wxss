@@ -53,9 +53,8 @@
   height: 140rpx;
   box-sizing: border-box;
   border-radius: 20rpx;
-  padding: 2rpx;
 }
 
 .select-truss-img {
-  background-color: #0400E6;
+  border: 1rpx solid #0400E6;
 }

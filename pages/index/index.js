@@ -6,11 +6,12 @@ import { getAttentionedList } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { getLocationInfo } from '../../models/map'
 import { promisic } from '../../utils/util'
-import { storageSet } from '../../utils/storage'
+import { storageSet, storageGet } from '../../utils/storage'
 
 const app = getApp();
 Page({
 	data: {
+		initEnter: true,
 		locationLoading: true,
 		locationErrLoading: false,
 		headerBlock: 0,
@@ -33,9 +34,7 @@ Page({
 	},
 
 	async onLoad() {
-		console.log("@")
 		this.getHeaderBlock()
-		// await this.getNLoginList()
 		await this.getLocationInfo()
 	},
 
@@ -46,10 +45,9 @@ Page({
 
 	async getLocationInfo() {
 		try {
-			const info = await getLocationInfo()
-			console.log('info', info)
+			await getLocationInfo()
+			this.getCityInfo()
 			this.setData({
-				city: info.city,
 				locationLoading: false,
 			})
 		} catch (err) {
@@ -65,6 +63,21 @@ Page({
     if (res.authSetting["scope.userLocation"]) {
       this.getLocationInfo();
     }
+	},
+
+	getCityInfo() {
+		const { city: oldCity, tabname, tabList } = this.data
+		const cityinfo = storageGet('cityinfo')
+		if(cityinfo && cityinfo.city) {
+			const city = cityinfo.city
+			this.setData({
+				city,
+				tabList: tabList.map(tab => tab.type === 'native' ? {...tab, name: city} : tab)
+			})
+			if(tabname === 'native' && oldCity !== city) {
+				this.getDiscoverMsgList({ reset: true })
+			}
+		}
 	},
 
 	// 手动选择位置
@@ -157,7 +170,7 @@ Page({
 			this.setData({
 				releaseList: reset ? data : [ ...releaseList, ...data ],
 				pagenum: page.page + 1,
-				moreHidden: false
+				moreHidden: false,
 			})
 		}
 		this.setData({
@@ -180,15 +193,22 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	async onShow () {
+		this.getCityInfo()
+		if (!this.data.initEnter) return
 		const { userid = '' } = getUserInfo(['userid'])
 		if(!userid) {
 			await this.login();
+		} else {
+			this.setData({
+				initEnter: false
+			})
 		}
 		this.setData({
 			pagenum: 0,
 		})
-		this.getCarousel()
-		this.getDiscoverMsgList({ reset: true })
+		await this.getCarousel()
+		await this.getDiscoverMsgList({ reset: true })
+
 	},
 
 	/**

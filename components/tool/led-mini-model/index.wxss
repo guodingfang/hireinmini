@@ -11,7 +11,8 @@
 .dpi-info {
   display: flex;
   flex-direction: column;
-  padding: 20rpx 30rpx ;
+  padding: 20rpx 0;
+  margin: 0 30rpx 20rpx 30rpx;
   border-radius: 20rpx;
   border: 1rpx solid #e5e5ee;
   overflow: hidden;

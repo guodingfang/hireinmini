@@ -6,7 +6,7 @@
   </view>
   <view class="info">
     <view class="location">
-      <view class="location-val single-row-overstep">{{location}}</view>
+      <view class="location-val">{{showLocation}}{{location.length > 3 ? '.' : ''}}</view>
     </view>
     <view class="aqi">
       <view class="aqi-val">{{aqi}}</view>
@@ -17,5 +17,5 @@
 
 <view class="alone-city" bind:tap="onChange" wx:else>
   <image class="icon-location" src="/images/icon/location-2.png"></image>
-  <view class="alone-city-val single-row-overstep">{{location}}</view>
+  <view class="alone-city-val">{{showLocation}}{{location.length > 3 ? '.' : ''}}</view>
 </view>

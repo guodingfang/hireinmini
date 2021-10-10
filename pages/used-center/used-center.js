@@ -16,7 +16,6 @@ Page({
   },
 
   onSelectTab(e) {
-    console.log('e', e)
     const { type = '' } = e.target.dataset
     if (type) {
       this.setData({

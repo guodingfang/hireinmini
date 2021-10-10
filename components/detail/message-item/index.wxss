@@ -5,9 +5,8 @@
 
 .portrait {
   position: relative;
-  top: -6rpx;
-  width: 52rpx;
-  height: 52rpx;
+  width: 60rpx;
+  height: 60rpx;
   border-radius: 50%;
   margin-right: 14rpx;
 }
@@ -20,31 +19,12 @@
 .user {
   display: flex;
   min-height: 40rpx;
-  align-items: center;
+  flex-direction: column;
 }
 
 .name, .time {
-  font-size: 28rpx;
+  font-size: 24rpx;
   color: #808080;
-}
-
-.name {
-  padding-right: 20rpx;
-  margin-right: 20rpx;
-  position: relative;
-}
-
-.name::after {
-  position: absolute;
-  content: '';
-  height: 20rpx;
-  width: 1rpx;
-  background-color: #808080;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 1;
 }
 
 .like {

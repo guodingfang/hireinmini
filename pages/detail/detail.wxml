@@ -1,4 +1,8 @@
+<view class="mask" wx:if="{{loading}}"></view>
+
 <view class="details-title" wx:if="{{info.msgtitle}}">{{info.msgtitle}}</view>
+
+<m-content-accont-card info="{{contentAccont}}" />
 
 <view class="video" wx:if="{{type === 'video'}}">
   <v-video videoUrlStatic="{{videoUrlStatic}}" videoUrlDynamic="{{videoUrlDynamic}}" />
@@ -28,11 +32,11 @@
 
 <v-tool info="{{info}}" />
 
-<m-content-accont-card info="{{contentAccont}}" />
+<view class="border"></view> 
 
 <view class="advert">
   <v-skip
-    src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+    src="/images/advert/details-1.png"
     width="690"
     height="200"
     radius="20"
@@ -49,7 +53,7 @@
 
 <view class="advert">
   <v-skip
-    src="https://wxapp.ilinking.com.cn/Public/pics/looping/20201113/5fad642ca8131.jpg"
+    src="/images/advert/details-2.png"
     width="690"
     height="200"
     radius="20"

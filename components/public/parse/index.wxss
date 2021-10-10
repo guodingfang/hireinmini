@@ -1,3 +1,5 @@
-.parse-detail{
+.parse-detail {
   width: 750rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
 }

@@ -29,7 +29,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   async onLoad(options) {
-    console.log('options', options)
     const { prodid = '' } = options
     this.setData({
       prodid,
@@ -42,7 +41,6 @@ Page({
     const detail = await getGoodsDetail({
       prodid: this.data.prodid
     })
-    console.log('detail', detail)
     this.setData({
       detail,
       carouselList: detail.pics

@@ -1,6 +1,7 @@
-import { uploadAccessLog } from '../../models/user'
+import { uploadAccessLog } from '../../models/util'
 
 import { remoteImagesUrl } from '../../config'
+import { getUserInfo, getCityInfo } from '../../utils/util'
 
 const app = getApp()
 
@@ -24,7 +25,7 @@ Page({
       },
       {
         name: 'LED屏小间距',
-        type: 'led',
+        type: 'ledmini',
       },
       {
         name: 'Truss承重',
@@ -58,6 +59,9 @@ Page({
    */
   onLoad: function (options) {
     const { type = '' } = options
+    this.setData({
+      type: type,
+    })
     this.getDefaultIndex(type)
     this.uploadAccessLog()
     this.getHeaderBlock()
@@ -76,8 +80,15 @@ Page({
   },
 
   async uploadAccessLog() {
+    const { tabList, type } = this.data
+    const tab = tabList.find(tab => tab.type === type)
+    const { userid, unionid } = getUserInfo(['userid', 'unionid'])
+    const { city } = getCityInfo(['city'])
     await uploadAccessLog({
-      page: 'tool'
+      page: tab ? tab.name : '',
+      loginuserid: userid,
+      loginunionid: unionid,
+      city,
     })
   },
 
@@ -96,7 +107,10 @@ Page({
   },
 
   onSelectTab(e) {
-
+    this.setData({
+      type: e.detail.type
+    })
+    this.uploadAccessLog()
   },
 
   /**

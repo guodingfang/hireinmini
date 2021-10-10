@@ -93,7 +93,6 @@ Page({
 
   async getMsgDynamics() {
     const { type, current, userid } = this.data
-    console.log('current', current)
     const currentPage = current ? current[type] || 0 : 0
     const {
       data = [],

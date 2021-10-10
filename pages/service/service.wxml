@@ -16,8 +16,14 @@
 
 <block wx:if="{{showRecommendCompanyList}}">
 	<block wx:if="{{nationwideCompanyList.length}}">
-		<m-header title="全国推荐" more="{{false}}"/>
-		<view class="company-item" wx:key="id" wx:for="{{nationwideCompanyList}}">
+		<m-header title="全国推荐" more="{{false}}" />
+		<view
+			class="company-item"
+			wx:key="id"
+			wx:for="{{nationwideCompanyList}}"
+			data-companyid="{{item.companyid}}"
+			bind:tap="onSkipService"
+		>
 			<image class="company-logo" src="{{imgUrl}}{{item.logopic}}"></image>
 			<view class="company-info">
 				<view class="company-name">{{item.companyname}}</view>
@@ -30,8 +36,14 @@
 	</block>
 
 	<block wx:if="{{thisLocalityCompanyList.length}}">
-		<m-header title="本地推荐" more="{{false}}"/>
-		<view class="company-item" wx:key="id" wx:for="{{thisLocalityCompanyList}}">
+		<m-header title="本地服务商" more="{{false}}" />
+		<view
+			class="company-item"
+			wx:key="id"
+			wx:for="{{thisLocalityCompanyList}}"
+			data-companyid="{{item.companyid}}"
+			bind:tap="onSkipService"
+		>
 			<image class="company-logo" src="{{imgUrl}}{{item.logopic}}"></image>
 			<view class="company-info">
 				<view class="company-name">{{item.companyname}}</view>

@@ -54,7 +54,7 @@ Page({
   },
   
   async getLocationInfo() {
-		const info = await getLocationInfo()
+    const info = await getLocationInfo()
 		this.setData({
 			city: info.city,
 		})
@@ -86,7 +86,7 @@ Page({
 
   onSkipVip() {
     wx.showToast({
-      title: '敬请期待',
+      title: '试用版本，该功能敬请期待',
       icon: 'none'
     })
   },

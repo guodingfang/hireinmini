@@ -1,5 +1,8 @@
 import { getCompanyInfo } from '../../models/company'
 import { getCompanyGoodsList } from '../../models/goods'
+import { addUserDialRecord } from '../../models/release'
+import { isAFocusB, addAttention } from '../../models/user'
+import { getUserInfo } from '../../utils/util'
 import config from '../../config'
 
 const app = getApp();
@@ -24,12 +27,14 @@ Page({
       select: true
     }, {
       type: 'service',
-      name: '服务'
+      name: '产品/服务'
     }, {
       type: 'comment',
       name: '评论'
     }],
     companyid: '',
+    isCurrentUser: false,
+    isAttention: false,
     imgUrl: config.imgUrl,
   },
   
@@ -39,7 +44,7 @@ Page({
   onLoad: function (options) {
     const { companyid = '' } = options
     this.setData({
-      companyid
+      companyid,
     })
     this.getCompanyInfo()
     this.getCompanyGoodsList()
@@ -51,13 +56,38 @@ Page({
   },
 
   async getCompanyInfo() {
+    const { userid } = getUserInfo(['userid'])
     const info = await getCompanyInfo({ id: this.data.companyid })
     this.setData({
       info,
       carouselList: info.compamypiclist.map(item => ({
         ...item,
         picfile: item.picfilename
-      }))
+      })),
+      isCurrentUser: info.createdby === userid
+    })
+    await this.isAFocusB()
+  },
+
+  async isAFocusB() {
+    const { info, isCurrentUser } = this.data
+    if(isCurrentUser) return
+    const { focused } = await isAFocusB({
+      targetuserid: info.createdby
+    })
+    this.setData({
+      isAttention: focused === 1
+    })
+  },
+
+  async onAttention() {
+    const { info, isAttention } = this.data
+    await addAttention({
+      targetuserid: info.createdby,
+      focused: isAttention ? 0 : 1
+    })
+    this.setData({
+      isAttention: !isAttention
     })
   },
 
@@ -88,9 +118,33 @@ Page({
     })
   },
   onCompanyManage() {
-    wx.navigateTo({
-      url: '/pages/product-manage/product-manage',
+    wx.showToast({
+      title: '试用版本，敬请期待',
+      icon: 'none'
     })
+    // wx.navigateTo({
+    //   url: '/pages/product-manage/product-manage',
+    // })
+  },
+
+  async onDial() {
+    const { phone } = this.data.info
+
+		if(!phone) {
+			wx.showToast({
+				title: '该用户未提供电话',
+				icon: 'none'
+			})
+			return
+		}
+
+		await addUserDialRecord({
+			phone,
+		})
+		
+		wx.makePhoneCall({
+			phoneNumber: phone,
+		})
   },
 
   /**

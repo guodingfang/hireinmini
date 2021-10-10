@@ -2,6 +2,16 @@ Page {
 	background-color: #ffffff;
 }
 
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #ffffff;
+  z-index: 99999;
+}
+
 .details-title {
 	color: #1A1A1A;
 	font-size: 40rpx;
@@ -52,24 +62,26 @@ Page {
 
 
 .footer-content {
-  width: 100%;
+  width: 750rpx;
   display: flex;
   align-items: center;
   padding: 0 30rpx;
+  box-sizing: border-box;
 }
 
 .footer-input {
-  width: 510rpx;
+  width: 450rpx;
   height: 60rpx;
   background-color: #F5F4F9;
   color: #666666;
   line-height: 60rpx;
   padding-left: 20rpx;
   box-sizing: border-box;
+  border-radius: 20rpx;
 }
 
 .tool {
-  margin-left: 20rpx;
+  margin-left: 40rpx;
   flex: 1;
   display: flex;
   align-items: center;
@@ -85,16 +97,21 @@ Page {
 }
 
 .share-btn {
-  margin: 0;
-  height: 70rpx;
+  margin: 0 0 0 40rpx;
+  padding: 0;
   display: flex;
   align-items: center;
-  border-radius: 30rpx;
   border: 0 solid transparent;
-  padding-left: 40rpx;
   background-color: transparent;
 }
 
 .share-btn::after{
   border: 0;
+}
+
+.border {
+  width: 690rpx;
+  height: 0.5rpx;
+  background-color: #e5e5ee;
+  margin: auto auto 20rpx auto;
 }

@@ -19,4 +19,8 @@
     <text class="label">详细地址：</text>
     <text class="val">{{ info.address }}</text>
   </view>
+  <view class="about-item">
+    <text class="label">公司简介：</text>
+    <text class="val">{{ info.briefintroduction }}</text>
+  </view>
 </view> 

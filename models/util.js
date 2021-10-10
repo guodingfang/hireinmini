@@ -18,7 +18,6 @@ export const getCarousel = (option = {}) => {
  */
 export const checkFrontPower = (option = {}) => {
   const { employeeid = 0 } = getUserInfo(['employeeid'])
-  console.log('employeeid', employeeid)
   return request.post('/Base/checkFrontPower', {
     ...option,
     employeeid
@@ -62,7 +61,6 @@ export const getWeather = (option = {}) => {
  */
 export const upload = async (params = {}, option = {}) => {
   const { prefixUrl = config.baseUrl, url = '', files = [] } = params
-  console.log('files', files)
   const {
     formData = null,
     header = {
@@ -89,6 +87,17 @@ export const upload = async (params = {}, option = {}) => {
  */
 export const getNLoginList = (option = {}) => {
   return request.post(`/WXAppLogin/getNLoginList`, {
+    ...option
+  })
+}
+
+
+/**
+ * 上传访问日志
+ * @param {*} option 
+ */
+export const uploadAccessLog = (option = {}) => {
+  return request.post('/User/accessLog', {
     ...option
   })
 }

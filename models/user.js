@@ -11,7 +11,6 @@ export const login = async (option = {}) => {
   const info = await request.post('/WXAppLogin/WXAppLogins', {
     code,
   })
-  console.log('info', info)
   if(info && info.code === 0 && info.result) {
     storageSet('userinfo', info.userinfo)
     return {
@@ -68,16 +67,6 @@ export const getLocation = (success, fail) => {
     success && success(res)
   }).catch(err => {
     fail && fail(err)
-  })
-}
-
-/**
- * 上传访问日志
- * @param {*} option 
- */
-export const uploadAccessLog = (option = {}) => {
-  return request.post('/User/accessLog', {
-    ...option
   })
 }
 

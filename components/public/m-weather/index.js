@@ -56,6 +56,7 @@ Component({
             weatherText: observe.weather,
             weather: this._getWeather(observe.weather),
             location: locationInfo.city,
+            showLocation: locationInfo.city.slice(0, 3),
             aqi: air.aqi,
             aqiLevel: air.aqi_name,
             aloneShowCity: false
@@ -64,6 +65,7 @@ Component({
           this.setData({
             currentCity: locationInfo.city,
             location: locationInfo.city,
+            showLocation: locationInfo.city.slice(0, 3),
             aloneShowCity: true
           })
         }

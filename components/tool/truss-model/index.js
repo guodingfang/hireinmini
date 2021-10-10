@@ -62,7 +62,6 @@ Component({
       })
     },
     onSelectItem(e) {
-      console.log('e', e)
       const { type, item } = e.currentTarget.dataset
       this.setData({
         [type]: item

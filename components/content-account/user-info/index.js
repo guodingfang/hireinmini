@@ -48,7 +48,7 @@ Component({
     },
     async onAttention() {
       const { userinfo, isAttention } = this.properties
-      const { userid: targetuserid, focused } = userinfo
+      const { userid: targetuserid } = userinfo
       await addAttention({
         targetuserid,
         focused: isAttention ? 0 : 1
@@ -64,13 +64,13 @@ Component({
     },
     onInterflow() {
       wx.showToast({
-        title: '暂未开通，敬请期待',
+        title: '试用版本，敬请期待',
         icon: 'none'
       })
     },
     onApproveCompany() {
       wx.showToast({
-        title: '暂未开通，敬请期待',
+        title: '试用版本，敬请期待',
         icon: 'none'
       })
     },

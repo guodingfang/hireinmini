@@ -1,3 +1,5 @@
+@import "/assets/style/global.wxss"
+
 .tab {
   display: flex;
   background-color: #FFFFFF;

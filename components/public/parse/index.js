@@ -27,8 +27,9 @@ Component({
     getParseHtml() {
       const { html } = this.properties; 
       if (!html) return;
+      let parseHtml = html.replace(/\<img/gi, '<img style="width:100%;height:auto"')
       this.setData({
-        parseHtml: html.replace(/\<img/gi, '<img style="width:calc(100% - 32px);margin:0 16px;height:auto"'),
+        parseHtml,
       })
     }
   }
