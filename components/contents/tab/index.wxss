@@ -14,9 +14,11 @@
 .tab-item {
   min-width: 180rpx;
   width: var(--width--);
-  display: flex;
+  line-height: 90rpx;
+  text-align: center;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
   color: #808080;
 }
 

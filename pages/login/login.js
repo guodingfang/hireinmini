@@ -80,7 +80,7 @@ Page({
       })
       // 注册成功
       if(data.code === 0) {
-        storageSet('userinfo', data)
+        // storageSet('userinfo', data)
         wx.navigateBack({
           delta: 1,
         })

@@ -59,11 +59,10 @@ Page({
    */
   onLoad: function (options) {
     const { type = '' } = options
-    this.setData({
-      type: type,
-    })
+    if(type) {
+      this.setData({ type })
+    }
     this.getDefaultIndex(type)
-    this.uploadAccessLog()
     this.getHeaderBlock()
   },
 
@@ -82,12 +81,13 @@ Page({
   async uploadAccessLog() {
     const { tabList, type } = this.data
     const tab = tabList.find(tab => tab.type === type)
-    const { userid, unionid } = getUserInfo(['userid', 'unionid'])
+    const { userid, unionid, wxappid } = getUserInfo(['userid', 'unionid', 'wxappid'])
     const { city } = getCityInfo(['city'])
     await uploadAccessLog({
       page: tab ? tab.name : '',
       loginuserid: userid,
       loginunionid: unionid,
+      openid: wxappid,
       city,
     })
   },

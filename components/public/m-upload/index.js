@@ -62,16 +62,9 @@ Component({
     },
 
     async onChooseVideo() {
-      wx.showToast({
-        title: '正在上传...',
-        icon: 'loading',
-        mask: true,
-        duration: 3000
-      })
       const res = await promisic(wx.chooseVideo)({
         sourceType: ['album', 'camera'],
       });
-      wx.hideToast()
       const { tempFilePath } = res
       this.setData({
         uploadVideo: tempFilePath,
