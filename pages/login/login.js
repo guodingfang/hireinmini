@@ -81,6 +81,11 @@ Page({
       // 注册成功
       if(data.code === 0) {
         // storageSet('userinfo', data)
+        const pages = getCurrentPages();
+        const prevPage = pages[pages.length - 2]; //上一个页面
+    
+        prevPage.onAgainGetUserInfo && prevPage.onAgainGetUserInfo({})
+
         wx.navigateBack({
           delta: 1,
         })

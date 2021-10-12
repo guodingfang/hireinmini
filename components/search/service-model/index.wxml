@@ -21,12 +21,17 @@
 			</view>
 		</view>
 	</view> -->
-	<view class="company-item" wx:key="id" wx:for="{{list}}">
+	<view class="company-item"
+		bind:tap="onSkipService"
+		data-companyid="{{item.companyid}}"
+		wx:key="id"
+		wx:for="{{list}}"
+	>
 		<image class="company-logo" src="{{imgUrl}}{{item.logopic}}"></image>
 		<view class="company-info">
 			<view class="company-name">{{item.companyname}}</view>
 			<view class="lables" wx:if="{{item.label.length}}">
-				<text class="label single-row-overstep" wx:for="{{item.label}}" wx:for-item="label">{{label.labelname}}</text>
+				<text class="label single-row-overstep" wx:key="id" wx:for="{{item.label}}" wx:for-item="label">{{label.labelname}}</text>
 			</view>
 			<view class="address">{{item.address}}</view>
 		</view>

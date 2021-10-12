@@ -1,4 +1,4 @@
-// components/user/card-header/index.js
+import { isLogin } from '../../../utils/util'
 Component({
   /**
    * 组件的属性列表
@@ -25,12 +25,16 @@ Component({
    */
   methods: {
     onSkipContent() {
+      const login = isLogin()
+      if(!login) return
       const { userinfo } = this.properties
       wx.navigateTo({
         url: `/pages/content-account/content-account?userid=${userinfo.userid}`,
       })
     },
     onSetup() {
+      const login = isLogin()
+      if(!login) return
       wx.navigateTo({
         url: `/pages/set-up/set-up`,
       })

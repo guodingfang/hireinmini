@@ -6,6 +6,7 @@ import {
 } from '../../models/search'
 
 import { getDiscoverMsgList } from '../../models/release'
+import { login } from '../../models/user'
 import { remoteImagesUrl } from '../../config'
 
 import { promisic } from '../../utils/util'
@@ -49,6 +50,10 @@ Page({
 		this.getSearchHotList();
 	},
 
+	async onAgainGetUserInfo() {
+		await login()
+	},
+
 	// 获取历史搜索
 	async getSearchHistoryList() {
 		const hislist = await getSearchHistoryList({})
@@ -90,6 +95,9 @@ Page({
 	onSelectTab(e) {
 		const { type = '' } = e.detail
 		this._selectTab(type)
+		wx.pageScrollTo({
+			scrollTop: 0
+		})
 	},
 
 	_selectTab(type) {
@@ -137,11 +145,14 @@ Page({
 			tabname: 'search'
 		})
 		this.setData({
-			releaseList: reset ? data : [ releaseList, ...data ],
-			loadingHidden: true,
-			pagenum: page.page + 1,
 			moreHidden: false
 		})
+		if(data.length) {
+			this.setData({
+				releaseList: reset ? data : [ ...releaseList, ...data ],
+				pagenum: page.page + 1,
+			})
+		}
 	},
 
 	getSearchService() {

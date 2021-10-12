@@ -2,11 +2,34 @@ page {
     background: #FFFFFF;
 }
 
+.header-container {
+	height: 88rpx;
+}
+
 .header {
 	height: 88rpx;
 	display: flex;
 	align-items: center;
 	padding: 0 30rpx;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	background-color: #FFFFFF;
+	z-index: 9999;
+}
+
+.tab-container {
+	height: 80rpx;
+}
+
+.tab {
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 88rpx;
+	background-color: #FFFFFF;
+	z-index: 9999;
 }
 
 .m-search {

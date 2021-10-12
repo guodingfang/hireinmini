@@ -6,6 +6,7 @@ import {
   addComment
 } from '../../../models/release'
 import { addAttention } from '../../../models/user'
+import { isLogin } from '../../../utils/util'
 
 Component({
   /**
@@ -104,33 +105,7 @@ Component({
       })
     },
     // 点赞
-    async onLike() {
-      const { msgid, praised = 0, userid: tuserid, praisecount = 0 } = this.data.item
-      if(praised === 0) {
-        await addLikeRelease({
-          msgid,
-          tuserid
-        })
-        this.setData({
-          item: {
-            ...this.data.item,
-            praised: 1,
-            praisecount: praisecount + 1
-          }
-        })
-      } else if(praised === 1) {
-        await deleteLikeRelease({
-          msgid,
-          tuserid
-        })
-        this.setData({
-          item: {
-            ...this.data.item,
-            praised: 0,
-            praisecount: praisecount - 1
-          }
-        })
-      }
+    onLike() {
       this.onSkipDetail()
     },
 
@@ -143,6 +118,8 @@ Component({
     },
 
     async onAttention() {
+      const login = isLogin()
+      if(!login) return
       const { userid: targetuserid, focused } = this.data.item
       const { fans, fansnum } = await addAttention({
         targetuserid,
@@ -168,6 +145,8 @@ Component({
 
     // 跳转详情页
     onSkipDetail(e) {
+      const login = isLogin()
+      if(!login) return
       const { msgid = '' } = this.properties.item;
       wx.navigateTo({
         url: `/pages/detail/detail?msgid=${msgid}`

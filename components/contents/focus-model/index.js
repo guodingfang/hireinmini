@@ -1,4 +1,4 @@
-// components/contents/focus-model/index.js
+import { isLogin } from '../../../utils/util'
 Component({
   /**
    * 组件的属性列表
@@ -26,6 +26,8 @@ Component({
    */
   methods: {
     onSkipUserAccount(e) {
+      const login = isLogin()
+      if(!login) return
       const { userid } = e.currentTarget.dataset
       wx.navigateTo({
         url: `/pages/content-account/content-account?userid=${userid}`

@@ -37,7 +37,7 @@ Page({
 	 */
 	async onLoad (options) {
 		this.getHeaderBlock();
-		await this.getUserBaseInfo();
+		// await this.getUserBaseInfo();
 		await this.getCheckOrder()
 		await this.getMyCompanyInfo()
 		await this.getMyOrderForAuditNum()
@@ -47,7 +47,7 @@ Page({
 	},
 
 	async onAgainRequestCompany() {
-		await this.getUserBaseInfo()
+		// await this.getUserBaseInfo()
 	},
 
 	getHeaderBlock() {
@@ -74,6 +74,11 @@ Page({
         focus
       }
     })
+	},
+
+	async onAgainGetUserInfo() {
+		await login()
+		await this.getUserBaseInfo()
 	},
 	
 	async onSetUserInfo() {
@@ -132,9 +137,7 @@ Page({
 			title: '注销完毕',
 			icon: 'none'
 		})
-		wx.reLaunch({
-			url: '/pages/index/index'
-		})
+		await this.getUserBaseInfo()
 	},
 
 	onSelectCompany() {
@@ -172,8 +175,8 @@ Page({
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () {
-
+	async onShow () {
+		await this.getUserBaseInfo()
 	},
 
 	/**

@@ -1,15 +1,14 @@
 <view class="card">
   <view class="portrait" bind:tap="onSkipContent">
     <image
-      wx:if="{{userinfo.userpic}}"
       class="portrait-img"
-      src="{{userinfo.userpic}}"
+      src="{{userinfo.userpic || '/images/public/logo.png'}}"
     ></image>
   </view>
   <view class="info single-row-overstep">
     <view class="content">
       <view class="username single-row-overstep" bind:tap="onSkipContent">
-        <text class="single-row-overstep">{{userinfo.nickname}}</text>
+        <text class="single-row-overstep">{{userinfo.nickname || '立即登录'}}</text>
         <image class="icon-more" src="/images/icon/more-2.png"></image>
       </view>
       <view class="tool">

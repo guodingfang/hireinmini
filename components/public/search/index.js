@@ -36,7 +36,6 @@ Component({
    */
   methods: {
     onInput(e) {
-      console.log('e', e.detail.value)
       const { value } = e.detail
       this.triggerEvent('change', {
         value

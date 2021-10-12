@@ -36,9 +36,9 @@
 
 <view class="advert">
   <v-skip
-    src="/images/advert/details-1.png"
+    src="/images/advert/open-service-account.png"
     width="690"
-    height="200"
+    height="180"
     radius="20"
   />
 </view>
@@ -53,7 +53,7 @@
 
 <view class="advert">
   <v-skip
-    src="/images/advert/details-2.png"
+    src="/images/advert/details-1.png"
     width="690"
     height="200"
     radius="20"

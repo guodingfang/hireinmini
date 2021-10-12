@@ -24,6 +24,7 @@
   border-radius: 50%;
   border: 6rpx solid #FFFFFF;
   box-sizing: border-box;
+  background-color: #FFFFFF
 }
 
 .btn {

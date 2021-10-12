@@ -1,4 +1,12 @@
 import { storageGet, storageSet } from './storage'
+import { login } from '../models/user'
+
+export const isLogin = () => {
+	const { userid = '' } = getUserInfo(['userid'])
+	if(userid) return true
+	login();
+	return false
+}
 
 // 获取Storage存储的userinfo信息
 export const getUserInfo = (params = []) => {

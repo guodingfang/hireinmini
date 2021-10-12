@@ -23,7 +23,6 @@ Component({
   methods: {
     onSkipAccont() {
       const { userid =  '' } = this.properties.info;
-      console.log('userid', userid)
       wx.navigateTo({
         url: `/pages/content-account/content-account?userid=${userid}`
       })

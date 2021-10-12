@@ -1,17 +1,20 @@
-<view class="header">
-	<v-search
-		m-search="m-search"
-		placeholder="搜索资源/服务"
-		value="{{keyword}}"
-		search="input"
-		bind:clear="onInputClear"
-		bind:change="onInput"
-	/>
-	<view class="search-btn" bindtap='onSearch'>搜索</view>
+<view class="header-container">
+	<view class="header">
+		<v-search
+			m-search="m-search"
+			placeholder="搜索资源/服务"
+			value="{{keyword}}"
+			search="input"
+			bind:clear="onInputClear"
+			bind:change="onInput"
+		/>
+		<view class="search-btn" bindtap='onSearch'>搜索</view>
+	</view>
 </view>
 
 
-<view hidden="{{search}}">
+
+<view class="search-tips-container" hidden="{{search}}">
 	<view class="model">
 		<m-header title="热门搜索" more="{{false}}" />
 		<view class="content">
@@ -46,24 +49,32 @@
 </view>
 
 <view class="info" hidden="{{ !search }}">
-	<v-tab list="{{tabList}}"  bind:select="onSelectTab" />
+	<view class="tab-container">
+		<view class="tab">
+			<v-tab list="{{tabList}}"  bind:select="onSelectTab" />
+		</view>
+	</view>
 
-	<block wx:if="{{ type !== 'service' }}">
+	<block wx:if="{{ type !== 'service' && releaseList.length }}">
 		<m-header wx:if="{{ type !== 'content' }}" title="内容" data-type="content" bind:more="onSkipMore" />
 		<v-info releaseList="{{releaseList}}" />
 	</block>
-	<block wx:if="{{ type !== 'content' }}">
+	<block wx:if="{{ type !== 'content' && miniServiceList.length }}">
 		<m-header wx:if="{{ type !== 'service' }}" title="服务" data-type="service" bind:more="onSkipMore" />
-		<v-service list="{{miniServiceList}}" bind:more="skipMore" />
+		<block wx:if="{{type === 'service'}}">
+			<v-service list="{{serviceList}}" bind:more="skipMore" />
+		</block>
+		<block wx:else>
+			<v-service list="{{miniServiceList}}" bind:more="skipMore" />
+		</block>
 	</block>
 
 
-	<view class="weui-loadmore" wx:if="{{moreHidden}}">
-		<view class="weui-loading"></view>
-		<view class="weui-loadmore__tips">正在加载</view>
-	</view>
+<loading hidden="{{!moreHidden}}">
+	加载中...
+</loading>
 
-	<block wx:if="{{releaseList.length === 0}}">
+	<block wx:if="{{type === 'content' && releaseList.length === 0}}">
 		<view class="not-list">
 			<image src='{{notContentImagesUrl}}' class="not-list-img"></image>
 			<view class="not-list-val">该查询条件下，暂无信息</view>

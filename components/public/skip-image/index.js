@@ -1,4 +1,4 @@
-// components/public/skip-image/index.js
+import { isLogin } from '../../../utils/util'
 Component({
   /**
    * 组件的属性列表
@@ -32,6 +32,8 @@ Component({
    */
   methods: {
     onSkip() {
+      const { login } = isLogin()
+      if(!login) return
       const { url } = this.properties;
       this.triggerEvent('skip', {}, {});
       if (url) {

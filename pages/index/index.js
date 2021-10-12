@@ -11,6 +11,7 @@ import { storageSet, storageGet } from '../../utils/storage'
 const app = getApp();
 Page({
 	data: {
+		lastUserId: 0,
 		initEnter: true,
 		locationLoading: true,
 		locationErrLoading: false,
@@ -92,6 +93,15 @@ Page({
 		this.getLocationInfo();
 	},
 
+	// 详情页点赞
+	onDetailsLike({ info }) {
+		this.setData({
+			releaseList: this.data.releaseList.map(item => item.msgid === info.msgid
+				? {...item, praised: info.praised, praisecount: info.praisecount} 
+				: item)
+		})
+	},
+
 	getHeaderBlock() {
 		const { statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;
 		const { tabHeight } = judgeTabBarHeight();
@@ -147,12 +157,14 @@ Page({
 		await this.getDiscoverMsgList({ reset: true })
 	},
 
-	// 用户登录
-	async login() {
+	async onAgainGetUserInfo() {
 		const { code, userinfo } = await login()
 		if(code === 0) {
 			this.setData({ userinfo })
 		}
+		this.setData({ pagenum: 0 })
+		await this.getCarousel()
+		await this.getDiscoverMsgList({ reset: true })
 	},
 
 	async getDiscoverMsgList({ reset = false }) {
@@ -189,25 +201,33 @@ Page({
 		})
 	},
 
-	/**
-	 * 生命周期函数--监听页面显示
-	 */
-	async onShow () {
-		this.getCityInfo()
-		if (!this.data.initEnter) return
-		const { userid = '' } = getUserInfo(['userid'])
-		if(!userid) {
-			await this.login();
-		} else {
-			this.setData({
-				initEnter: false
-			})
-		}
+	async getInitInfo() {
 		this.setData({
 			pagenum: 0,
 		})
 		await this.getCarousel()
 		await this.getDiscoverMsgList({ reset: true })
+	},
+
+	/**
+	 * 生命周期函数--监听页面显示
+	 */
+	async onShow () {
+		this.getCityInfo()
+		const { lastUserId } = this.data
+		const { userid = 0 } = getUserInfo(['userid'])
+		if(lastUserId !== userid) {
+			this.getInitInfo()
+		}
+		this.setData({
+			lastUserId: userid
+		})
+
+		if (!this.data.initEnter) return
+		this.setData({
+			initEnter: false
+		})
+		this.getInitInfo()
 
 	},
 

@@ -3,7 +3,8 @@ import {
   getTopNQuestions
 } from '../../models/helper'
 import { getLocationInfo } from '../../models/map'
-import { judgeTabBarHeight } from '../../utils/util'
+import { login } from '../../models/user'
+import { judgeTabBarHeight, isLogin } from '../../utils/util'
 
 
 const app = getApp();
@@ -58,8 +59,11 @@ Page({
 		this.setData({
 			city: info.city,
 		})
+  },
+  
+  async onAgainGetUserInfo() {
+		await login()
 	},
-
 
   // 知识推荐
   async getknowledgeRecommend() {
@@ -78,6 +82,8 @@ Page({
   },
 
   onSkipTool(e) {
+    const login = isLogin()
+    if(!login) return
     const { type } = e.currentTarget.dataset
     wx.navigateTo({
       url: `/pages/tool/tool?type=${type}`,

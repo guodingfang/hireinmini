@@ -1,4 +1,4 @@
-import { judgeTabBarHeight } from '../../utils/util'
+import { judgeTabBarHeight, isLogin } from '../../utils/util'
 
 Component({
   /**
@@ -92,6 +92,8 @@ Component({
       })
     },
     onSkipCustom() {
+      const login = isLogin()
+      if(!login) return
       wx.navigateTo({
         url: '/pages/publish/publish',
       })

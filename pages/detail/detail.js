@@ -112,6 +112,12 @@ Page({
 				}
 			})
 		}
+		const pages = getCurrentPages();
+		const prevPage = pages[pages.length - 2]; //上一个页面
+		console.log('prevPage', prevPage)
+		prevPage.onDetailsLike && prevPage.onDetailsLike({
+			info: this.data.info
+		})
 	},
 
 	// 拨打电话

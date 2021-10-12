@@ -1,5 +1,6 @@
 import { getCarousel } from '../../models/util'
 import { judgeTabBarHeight } from '../../utils/util'
+import { login } from '../../models/user'
 import config from '../../config'
 import {
 	getHighRentRateProduct,
@@ -51,6 +52,11 @@ Page({
 		// this.getInfo()
 		this.getLocationInfo()
 	},
+
+	async onAgainGetUserInfo() {
+		await login()
+	},
+
 
 	async getLocationInfo() {
 		try {
@@ -107,11 +113,13 @@ Page({
 			...item,
 			label: item.label.slice(0, 3)
 		}));
-		this.setData({
-			thisLocalityCompanyList: [...this.data.thisLocalityCompanyList, ...thisLocalityCompanyList],
-			currentPage: page.pagecount,
-			notMoreData: page.pagecount === page.page,
-		})
+		if(thisLocalityCompanyList.length) {
+			this.setData({
+				thisLocalityCompanyList: [...this.data.thisLocalityCompanyList, ...thisLocalityCompanyList],
+				currentPage: page.pagecount,
+				notMoreData: page.pagecount === page.page,
+			})
+		}
 	},
 
 	onSkipService(e) {

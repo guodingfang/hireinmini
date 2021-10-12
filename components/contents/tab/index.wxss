@@ -1,4 +1,4 @@
-@import "/assets/style/global.wxss"
+@import "/assets/style/global.wxss";
 
 .tab {
   display: flex;

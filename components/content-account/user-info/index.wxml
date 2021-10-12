@@ -14,7 +14,7 @@
   </view>
   <view class="introduce">
     <text class="user-name">{{ userinfo.nickname }}</text>
-    <text class="introduce-val">介绍：{{ userinfo.remark || '该用户未开通服务账号' }}</text>
+    <text class="introduce-val">公司：{{ company.companyname || '该用户未开通服务账号' }}</text>
     <text class="company">认证：{{ userinfo.authenticationstatus === '0' ? '未认证' : '已认证'}}</text>
   </view>
   <view class="popularity-list">

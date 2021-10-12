@@ -6,5 +6,6 @@
     "v-info": "/components/search/info-model",
     "v-service": "/components/search/service-model"
   },
-  "navigationBarTitleText": "搜索"
+  "navigationBarTitleText": "搜索",
+  "onReachBottomDistance": 100
 }

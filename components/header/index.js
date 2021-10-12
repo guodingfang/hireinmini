@@ -1,6 +1,3 @@
-import { getLocation } from '../../models/user'
-import { getMap } from '../../models/map'
-
 const app = getApp();
 
 Component({
@@ -77,7 +74,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
     onChangeLocation() {
       wx.navigateTo({
         url: '/pages/city-list/city-list',

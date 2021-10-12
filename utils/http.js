@@ -77,7 +77,7 @@ class HttpRequest {
     return this.httpRequest(options)
   }
   post(url, data) {
-    const commonParams = getUserInfo([
+    const {userid = 0, ...commonParams} = getUserInfo([
       'accesstoken',
       'userid',
       'unionid'
@@ -87,6 +87,7 @@ class HttpRequest {
       method: 'POST',
       url,
       data: {
+        userid,
         ...commonParams,
         ...data,
       }

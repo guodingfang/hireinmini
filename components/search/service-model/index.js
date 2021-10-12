@@ -21,6 +21,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onSkipService(e) {
+      const { companyid } = e.currentTarget.dataset
+      wx.navigateTo({
+        url: `/pages/service-account/service-account?companyid=${companyid}`,
+      })
+    },
   }
 })

@@ -38,18 +38,6 @@
   position: relative;
 }
 
-.name::after {
-  content: '';
-  position: absolute;
-  width: 1rpx;
-  height: 20rpx;
-  background-color: #E5E5E5;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-}
-
 .time {
   color: #666666;
   font-size: 28rpx;
