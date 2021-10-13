@@ -35,7 +35,6 @@ Component({
     scoreCompute() {
       const { score } = this.properties;
       let scoreArr = Array.apply(null, Array(5))
-      console.log.log('scoreArr', scoreArr)
       return {
         scoreArr,
         scoreVal: 5

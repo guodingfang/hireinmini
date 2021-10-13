@@ -1,4 +1,4 @@
-import { registerUser, getUserPhone } from '../../models/user'
+import { login, registerUser, getUserPhone } from '../../models/user'
 import { promisic } from '../../utils/util'
 import { storageSet } from '../../utils/storage'
 Page({
@@ -80,7 +80,10 @@ Page({
       })
       // 注册成功
       if(data.code === 0) {
-        // storageSet('userinfo', data)
+
+        const { code = -1 } = await login()
+        if(code !== 0) return
+        
         const pages = getCurrentPages();
         const prevPage = pages[pages.length - 2]; //上一个页面
     

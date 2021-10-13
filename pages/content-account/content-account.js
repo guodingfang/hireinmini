@@ -57,6 +57,10 @@ Page({
     // this.getMsgDynamics()
   },
 
+  async onAgainRequestCompany() {
+    this.getUserBaseInfo()
+  },
+
   async isAFocusB() {
     const { isCurrentUser, userid: targetuserid } = this.data
     if(isCurrentUser) return

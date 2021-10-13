@@ -4,53 +4,62 @@
 .alone-city {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 88rpx;
+  width: 160rpx;
+  margin-left: 10rpx;
 }
 
-.weather {
+.temp {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 12rpx;
+  margin-right: 10rpx;
 }
 
-.weather-val {
-  font-size: 40rpx;
-  width: 60rpx;
-  height: 50rpx;
+.temp-val {
+  font-size: 56rpx;
   font-weight: bold;
+  display: flex;
+  color: #0400E6;
 }
 
-.iconfont-weather {
-  color: #1a1a1a;
-  margin-left: 6rpx;
-}
-
-.weather-type {
-  font-size: 20rpx;
-  margin-left: 6rpx;
+.temp-decorate {
+  font-size: 35rpx;
+  width: 18rpx;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  height: 80rpx;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 }
 
-.location, .aqi {
+
+.weather {
+  
+}
+
+.iconfont-weather {
+  color: #1a1a1a;
+  margin-left: 6rpx;
+  position: relative;
+  top: -6rpx;
+}
+
+.weather-type {
+  font-size: 20rpx;
+}
+
+.location {
   display: flex;
   font-size: 20rpx;
 }
 
 .location-val {
   white-space: nowrap;
-  margin-top: 14rpx;
   /* max-width: 100rpx; */
-}
-
-.location-val, .aqi-val {
-  margin-right: 6rpx;
 }
 
 .icon-location {

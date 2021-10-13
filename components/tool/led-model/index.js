@@ -150,7 +150,6 @@ Component({
     },
 
     onInputScreenChange(e) {
-      console.log('e', e)
       const { type } = e.currentTarget.dataset
       const { value } = e.detail
       this.setData({

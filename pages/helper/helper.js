@@ -60,10 +60,6 @@ Page({
 			city: info.city,
 		})
   },
-  
-  async onAgainGetUserInfo() {
-		await login()
-	},
 
   // 知识推荐
   async getknowledgeRecommend() {

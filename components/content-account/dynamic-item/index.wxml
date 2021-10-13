@@ -33,6 +33,6 @@
         </view>
       </block>
     </view>
-    <m-footer />
+    <m-footer info="{{info}}" />
   </view>
 </view>

@@ -1,17 +1,20 @@
 <view class="model" bind:tap="onChange" wx:if="{{!aloneShowCity}}">
-  <view class="weather">
-    <view class="weather-val">{{degree}}°</view>
-    <text class="iconfont iconfont-weather {{weather}}" wx:if="{{weather}}"></text>
-    <view class="weather-type" wx:else>{{weatherText}}</view>
+  <view class="temp">
+    <view class="temp-val">
+    <text>{{degree}}</text>
+    <text class="temp-decorate">°</text>
+    </view>
   </view>
   <view class="info">
     <view class="location">
       <view class="location-val">{{showLocation}}{{location.length > 3 ? '.' : ''}}</view>
     </view>
-    <view class="aqi">
+    <!-- <text class="iconfont iconfont-weather {{weather}}" wx:if="{{weather}}"></text> -->
+    <view class="weather-type">{{weatherText}}</view>
+    <!-- <view class="aqi">
       <view class="aqi-val">{{aqi}}</view>
       <view class="aqi-level">{{aqiLevel}}</view>
-    </view>
+    </view> -->
   </view>
 </view>
 

@@ -2,7 +2,7 @@
 
 <view class="details-title" wx:if="{{info.msgtitle}}">{{info.msgtitle}}</view>
 
-<m-content-accont-card info="{{contentAccont}}" />
+<m-content-accont-card info="{{contentAccont}}" bind:attention="onAttention" />
 
 <view class="video" wx:if="{{type === 'video'}}">
   <v-video videoUrlStatic="{{videoUrlStatic}}" videoUrlDynamic="{{videoUrlDynamic}}" />

@@ -28,7 +28,7 @@ Component({
       })
     },
     onAttention() {
-      console.log('onAttention')
+      this.triggerEvent('attention', {}, {})
     }
   }
 })

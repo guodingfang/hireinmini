@@ -32,7 +32,7 @@ Component({
    */
   methods: {
     onSkip() {
-      const { login } = isLogin()
+      const login = isLogin()
       if(!login) return
       const { url } = this.properties;
       this.triggerEvent('skip', {}, {});

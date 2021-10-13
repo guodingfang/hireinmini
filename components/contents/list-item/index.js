@@ -1,10 +1,5 @@
 import config from '../../../config'
-import {
-  addUserDialRecord,
-  addLikeRelease,
-  deleteLikeRelease,
-  addComment
-} from '../../../models/release'
+import { addUserDialRecord } from '../../../models/release'
 import { addAttention } from '../../../models/user'
 import { isLogin } from '../../../utils/util'
 
@@ -145,8 +140,6 @@ Component({
 
     // 跳转详情页
     onSkipDetail(e) {
-      const login = isLogin()
-      if(!login) return
       const { msgid = '' } = this.properties.item;
       wx.navigateTo({
         url: `/pages/detail/detail?msgid=${msgid}`

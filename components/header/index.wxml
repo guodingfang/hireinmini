@@ -2,6 +2,7 @@
 
 <view class="header m-header {{ fixed ? 'header-f' : ''}}" style="padding-top:{{statusBarHeight}}rpx">
   <view class="top-header" wx:if="{{isTopTitle}}">
+    <image wx:if="{{isBack}}" class="icon-back" src="/images/icon/back-2.png" bind:tap="onBack"></image>
     <image
       wx:if="{{currentPage}}"
       class="title-logo"

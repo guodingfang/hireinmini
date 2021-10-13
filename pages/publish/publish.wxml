@@ -1,5 +1,6 @@
 <view style="height: {{headerBlock}}rpx">
   <v-header
+    isBack="{{true}}"
     fixed="{{true}}"
     currentPage="default"
     isTopTitle="{{true}}"

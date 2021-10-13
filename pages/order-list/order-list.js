@@ -26,6 +26,14 @@ Page({
     goodsList: [],
   },
 
+  onSelectTab(e) {
+    this.setData({
+      tabList: this.data.tabList.map(tab => tab.type === e.detail.type 
+        ? {...tab, select: true} 
+        : {...tab, select: false})
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

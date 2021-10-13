@@ -7,19 +7,19 @@
     </view>
     <view class="item" data-type="1" bind:tap="onSkipOrder">
       <image class="icon" src="/images/user/goods-complete.png">
-        <text class="num">99</text>
+        <!-- <text class="num">99</text> -->
       </image>
       <text class="label">已付款</text>
     </view>
     <view class="item" data-type="2" bind:tap="onSkipOrder">
       <image class="icon" src="/images/user/goods-complete.png">
-        <text class="num">5</text>
+        <!-- <text class="num">5</text> -->
       </image>
       <text class="label">已完成</text>
     </view>
     <view class="item" data-type="2" bind:tap="onSkipOrder">
       <image class="icon" src="/images/user/goods-after.png">
-        <text class="num">5</text>
+        <!-- <text class="num">5</text> -->
       </image>
       <text class="label">售后</text>
     </view>

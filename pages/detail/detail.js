@@ -1,4 +1,3 @@
-import { login } from '../../models/user'
 import {
 	getReleaseDetail,
 	getOtherHosList,
@@ -8,8 +7,10 @@ import {
 	addShareRelease,
 	addUserDialRecord
 } from '../../models/release'
+import { addAttention, isAFocusB } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import config from '../../config'
+import { isLogin } from '../../utils/util'
 
 Page({
 	data: {
@@ -67,6 +68,10 @@ Page({
 		}
 	},
 
+	async onAttention() {
+		
+	},
+
 	async getOtherHosList() {
 		const { msgid, info } = this.data;
 		const { data = [] } = await getOtherHosList({
@@ -79,6 +84,8 @@ Page({
 	},
 
 	onInput() {
+		const login = isLogin()
+		if(!login) return
 		this.setData({
 			commentShow: true,
 		})
@@ -86,6 +93,8 @@ Page({
 
 	// 点赞
 	async onLike() {
+		const login = isLogin()
+		if(!login) return
 		const { msgid, praised = 0, userid: tuserid, praisecount = 0 } = this.data.info
 		if(praised === 0) {
 			await addLikeRelease({
@@ -114,7 +123,6 @@ Page({
 		}
 		const pages = getCurrentPages();
 		const prevPage = pages[pages.length - 2]; //上一个页面
-		console.log('prevPage', prevPage)
 		prevPage.onDetailsLike && prevPage.onDetailsLike({
 			info: this.data.info
 		})
@@ -122,6 +130,8 @@ Page({
 
 	// 拨打电话
 	async onDial(e) {
+		const login = isLogin()
+		if(!login) return
 		const { contactphone: phone } = this.data.info	
 		if(!phone) {
 			wx.showToast({
@@ -162,7 +172,6 @@ Page({
 
 
 	async onShow () {
-		await login()
 		await this.getReleaseDetail()
 		await this.getOtherHosList()
 	},

@@ -12,6 +12,10 @@ Component({
       type: Boolean,
       value: false
     },
+    isBack: {
+      type: Boolean,
+      value: false
+    },
     isTopTitle: {
       type: Boolean,
       value: false
@@ -74,6 +78,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onBack() {
+      wx.navigateBack({
+        delta: 1,
+      })
+    },
     onChangeLocation() {
       wx.navigateTo({
         url: '/pages/city-list/city-list',

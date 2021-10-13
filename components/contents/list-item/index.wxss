@@ -9,7 +9,7 @@
 
 .middle-line {
   width: 690rpx;
-  height: 1rpx;
+  height: .5rpx;
   background-color: #e5e5e5;
   margin: 0 auto;
 }

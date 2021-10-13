@@ -13,6 +13,10 @@ export const login = async (option = {}) => {
   })
   if(info && info.code === 0 && info.result) {
     storageSet('userinfo', info.userinfo)
+    const pages = getCurrentPages();
+    const currentPage = pages[pages.length - 1]
+    console.log('currentPage', currentPage)
+    currentPage.onRegainGetUserInfo && currentPage.onRegainGetUserInfo()
     return {
       code: 0,
       userinfo: info.userinfo

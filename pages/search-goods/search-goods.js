@@ -50,10 +50,6 @@ Page({
 		this.getSearchHotList();
 	},
 
-	async onAgainGetUserInfo() {
-		await login()
-	},
-
 	// 获取历史搜索
 	async getSearchHistoryList() {
 		const hislist = await getSearchHistoryList({})

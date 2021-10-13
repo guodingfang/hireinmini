@@ -76,8 +76,11 @@ Page({
     })
 	},
 
+	async onRegainGetUserInfo() {
+		this.onAgainGetUserInfo()
+	},
+
 	async onAgainGetUserInfo() {
-		await login()
 		await this.getUserBaseInfo()
 	},
 	

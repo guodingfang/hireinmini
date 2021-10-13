@@ -53,11 +53,6 @@ Page({
 		this.getLocationInfo()
 	},
 
-	async onAgainGetUserInfo() {
-		await login()
-	},
-
-
 	async getLocationInfo() {
 		try {
 			const info = await getLocationInfo()

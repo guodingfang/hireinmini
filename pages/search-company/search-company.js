@@ -37,7 +37,6 @@ Page({
   },
 
   onSelect(e) {
-    console.log('e', e)
     const { companyid } = e.currentTarget.dataset
     wx.navigateTo({
       url: `/pages/add-company/add-company?companyid=${companyid}`,

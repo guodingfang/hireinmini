@@ -4,6 +4,7 @@ import { addUserDialRecord } from '../../models/release'
 import { isAFocusB, addAttention } from '../../models/user'
 import { getUserInfo } from '../../utils/util'
 import config from '../../config'
+import { isLogin } from '../../utils/util'
 
 const app = getApp();
 Page({
@@ -81,6 +82,8 @@ Page({
   },
 
   async onAttention() {
+    const login = isLogin()
+    if(!login) return
     const { info, isAttention } = this.data
     await addAttention({
       targetuserid: info.createdby,
@@ -128,8 +131,10 @@ Page({
   },
 
   async onDial() {
-    const { phone } = this.data.info
+    const login = isLogin()
+    if(!login) return
 
+    const { phone } = this.data.info
 		if(!phone) {
 			wx.showToast({
 				title: '该用户未提供电话',

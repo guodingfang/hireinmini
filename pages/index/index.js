@@ -22,6 +22,7 @@ Page({
 		pagenum: 0,
 		moreHidden: false,
 		tabname: 'recommend',
+		notAgainLoading: false,
 		interest: {
 			title: '',
 			list: [],
@@ -157,12 +158,15 @@ Page({
 		await this.getDiscoverMsgList({ reset: true })
 	},
 
+	async onRegainGetUserInfo() {
+		this.onAgainGetUserInfo()
+	},
+
 	async onAgainGetUserInfo() {
-		const { code, userinfo } = await login()
-		if(code === 0) {
-			this.setData({ userinfo })
-		}
-		this.setData({ pagenum: 0 })
+		this.setData({
+			pagenum: 0,
+			notAgainLoading: true
+		})
 		await this.getCarousel()
 		await this.getDiscoverMsgList({ reset: true })
 	},
@@ -214,9 +218,9 @@ Page({
 	 */
 	async onShow () {
 		this.getCityInfo()
-		const { lastUserId } = this.data
+		const { lastUserId, notAgainLoading } = this.data
 		const { userid = 0 } = getUserInfo(['userid'])
-		if(lastUserId !== userid) {
+		if(lastUserId !== userid && !notAgainLoading) {
 			this.getInitInfo()
 		}
 		this.setData({

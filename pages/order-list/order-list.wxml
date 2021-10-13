@@ -1,6 +1,6 @@
 
 <view style="height: 160rpx">
-  <v-tab list="{{tabList}}" fixed="{{true}}" isTop="{{false}}" />
+  <v-tab list="{{tabList}}" fixed="{{true}}" isTop="{{false}}" bind:select="onSelectTab" />
   <view class="status-list">
     <view class="status-item" wx:for="{{statusList}}" wx:key="id">{{item.name}}</view>
   </view>

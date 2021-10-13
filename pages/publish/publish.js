@@ -121,7 +121,6 @@ Page({
   },
   
   onUploadComplete(e) {
-    console.log('e', e)
     const { type = '',  uploadImages = [], uploadVideo = '', formDataParams = null } = e.detail
     this.setData({
       selectUploadType: type,
@@ -139,7 +138,6 @@ Page({
   },
 
   onAgainLocationComplete(e) {
-    console.log(e)
     this.setData({
       city: e.city,
       citycode: e.code,

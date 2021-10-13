@@ -9,7 +9,8 @@
 .icon-back {
 	width: 24rpx;
 	height: 36rpx;
-	margin-right: 30rpx;
+  padding: 30rpx;
+  margin-left: -30rpx;
 }
 
 .header-contnt {

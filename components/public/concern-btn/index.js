@@ -10,7 +10,7 @@ Component({
     },
     concernUsers: {
       type: Array,
-      value: []
+      value: [],
     },
     amount: {
       type: String,
