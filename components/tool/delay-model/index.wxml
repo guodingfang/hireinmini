@@ -7,7 +7,7 @@
         placeholder-class="tool-item-input-pl"
         placeholder="输入A距离"
         data-type="distA"
-        type="number"
+        type="digit"
         bindinput="onInputChange"
       />
       <text class="unit">米</text>
@@ -19,7 +19,7 @@
         placeholder-class="tool-item-input-pl"
         placeholder="输入B距离"
         data-type="distB"
-        type="number"
+        type="digit"
         bindinput="onInputChange"
       />
       <text class="unit">米</text>

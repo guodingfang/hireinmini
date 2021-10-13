@@ -19,7 +19,7 @@
         placeholder="输入宽度"
         data-type="scaleWidth"
         value="{{scaleWidth}}"
-        type="number"
+        type="digit"
         bindinput="onScaleInputChange"
       />
       <text class="unit">米</text>
@@ -33,7 +33,7 @@
         placeholder="输入高度"
         data-type="scaleHeight"
         value="{{scaleHeight}}"
-        type="number"
+        type="digit"
         bindinput="onScaleInputChange"
       />
       <text class="unit">米</text>
@@ -51,7 +51,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入宽度"
           data-type="dpiWidth"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">像素</text>
@@ -63,7 +63,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入高度"
           data-type="dpiHeight"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">像素</text>
@@ -79,7 +79,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入宽度"
           data-type="ledWidth"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">米</text>
@@ -91,7 +91,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入高度"
           data-type="ledHeight"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">米</text>
@@ -107,7 +107,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入宽度"
           data-type="aWidth"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">米</text>
@@ -119,7 +119,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入高度"
           data-type="aHeight"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">米</text>
@@ -134,7 +134,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入宽度"
           data-type="bWidth"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">米</text>
@@ -146,7 +146,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入高度"
           data-type="bHeight"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">米</text>
@@ -161,7 +161,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入宽度"
           data-type="cWidth"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">米</text>
@@ -173,7 +173,7 @@
           placeholder-class="tool-item-input-pl"
           placeholder="输入高度"
           data-type="cHeight"
-          type="number"
+          type="digit"
           bindinput="onInputChange"
         />
         <text class="unit">米</text>

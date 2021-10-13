@@ -6,10 +6,10 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入宽度"
-        type="number"
+        type="digit"
         value="{{width}}"
         data-type="width"
-        bindinput="onInputChange"
+        bindblur="onInputChange"
       />
       <text class="unit">米</text>
     </view>
@@ -20,10 +20,10 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入厚度"
-        type="number"
+        type="digit"
         value="{{thickness}}"
         data-type="thickness"
-        bindinput="onInputChange"
+        bindblur="onInputChange"
       />
       <text class="unit">米</text>
     </view>
@@ -34,10 +34,10 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入高度"
-        type="number"
+        type="digit"
         value="{{height}}"
         data-type="height"
-        bindinput="onInputChange"
+        bindblur="onInputChange"
       />
       <text class="unit">米</text>
     </view>

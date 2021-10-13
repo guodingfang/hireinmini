@@ -24,6 +24,7 @@ Component({
    */
   methods: {
     onInputChange(e) {
+      console.log('e', e)
       const { value } = e.detail
       const { type } = e.target.dataset
       if (value % 2 !== 0) {

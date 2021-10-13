@@ -20,7 +20,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入宽度"
-        type="number"
+        type="digit"
         value="{{spaceWidth}}"
         data-type="spaceWidth"
         bindinput="onInputChange"
@@ -30,7 +30,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入高度"
-        type="number"
+        type="digit"
         value="{{spaceHeight}}"
         data-type="spaceHeight"
         bindinput="onInputChange"
@@ -44,7 +44,7 @@
         placeholder-class="tool-item-input-pl"
         placeholder="输入间距"
         value="{{selectSpace}}"
-        type="number"
+        type="digit"
         data-type="selectSpace"
         bindinput="onInputChange"
       />
@@ -66,7 +66,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入横向块数"
-        type="number"
+        type="digit"
         data-type="xCorss"
         bindinput="onInputChange"
       />
@@ -78,7 +78,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入纵向块数"
-        type="number"
+        type="digit"
         data-type="yCorss"
         bindinput="onInputChange"
       />
@@ -99,7 +99,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入宽度"
-        type="number"
+        type="digit"
         data-type="width"
         bindinput="onInputChange"
       />
@@ -108,7 +108,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入高度"
-        type="number"
+        type="digit"
         data-type="height"
         bindinput="onInputChange"
       />
@@ -138,7 +138,7 @@
         placeholder="宽度点数"
         disabled="true"
         value="{{widthPoint}}"
-        type="number"
+        type="digit"
       />
       <text class="sign">×</text>
       <input
@@ -147,7 +147,7 @@
         placeholder="高度点数"
         disabled="true"
         value="{{heightPoint}}"
-        type="number"
+        type="digit"
       />
       <text class="sign">=</text>
       <view class="result">

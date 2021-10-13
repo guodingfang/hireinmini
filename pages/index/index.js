@@ -147,8 +147,9 @@ Page({
 	},
 
 	async onSelectTab(e) {
-		const { tabList } = this.data
+		const { tabname, tabList } = this.data
 		const { type } = e.detail
+		if(tabname === type) return
 		this.setData({
 			pagenum: 0,
 			tabList: tabList.map(tab => tab.type === type ? { ...tab, select: true } : { ...tab, select: false }),

@@ -30,7 +30,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入宽度"
-        type="number"
+        type="digit"
         data-type="width"
         bindinput="onInputChange"
       />
@@ -39,7 +39,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入高度"
-        type="number"
+        type="digit"
         data-type="height"
         bindinput="onInputChange"
       />
@@ -68,7 +68,7 @@
           class="tool-item-input"
           placeholder-class="tool-item-input-pl"
           placeholder="输入高度"
-          type="number"
+          type="digit"
           value="{{screenHeight}}"
           data-type="screenHeight"
           bindinput="onInputScreenChange"
@@ -81,7 +81,7 @@
           class="tool-item-input"
           placeholder-class="tool-item-input-pl"
           placeholder="输入宽度"
-          type="number"
+          type="digit"
           value="{{screenWidth}}"
           data-type="screenWidth"
           bindinput="onInputScreenChange"
@@ -114,7 +114,7 @@
         placeholder="宽度点数"
         disabled="true"
         value="{{widthPoint}}"
-        type="number"
+        type="digit"
       />
       <text class="sign">×</text>
       <input
@@ -123,7 +123,7 @@
         placeholder="高度点数"
         disabled="true"
         value="{{heightPoint}}"
-        type="number"
+        type="digit"
       />
       <text class="sign">=</text>
       <view class="result">
@@ -139,7 +139,7 @@
         placeholder-class="tool-item-input-pl"
         placeholder="宽的块数"
         disabled="true"
-        type="number"
+        type="digit"
         value="{{widthBlock}}"
       />
       <text class="sign">×</text>
@@ -148,7 +148,7 @@
         placeholder-class="tool-item-input-pl"
         placeholder="高的块数"
         disabled="true"
-        type="number"
+        type="digit"
         value="{{heightBlock}}"
       />
       <text class="sign">=</text>
