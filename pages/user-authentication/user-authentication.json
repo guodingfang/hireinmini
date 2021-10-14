@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "m-header": "/components/public/m-header",
+    "form-item": "/components/form-item",
+    "v-footer": "/components/footer"
+  },
+  "navigationStyle": "custom"
+}

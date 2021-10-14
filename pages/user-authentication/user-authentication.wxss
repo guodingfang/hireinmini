@@ -1,0 +1,21 @@
+
+.model {
+  background-color: #ffffff;
+  margin: 30rpx;
+  border-radius: 30rpx;
+  padding: 20rpx 0;
+}
+
+
+.footer-btn {
+  width: 640rpx;
+  height: 70rpx;
+  background-color: #0400E6;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+}

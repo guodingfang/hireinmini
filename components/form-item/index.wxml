@@ -1,0 +1,11 @@
+<view class="input-item {{item.flex}}">
+  <text class="label">{{item.label}}：</text>
+  <input
+    class="item-input"
+    placeholder-class="item-input-pl"
+    placeholder="{{item.placeholder}}"
+    value="{{item.value}}"
+    data-type="{{item.type}}"
+    bindinput="onInputChange"
+  />
+</view>

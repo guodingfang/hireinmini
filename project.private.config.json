@@ -181,12 +181,6 @@
           "scene": null
         },
         {
-          "name": "pages/citylist/citylist",
-          "pathName": "pages/citylist/citylist",
-          "query": "rurl=index",
-          "scene": null
-        },
-        {
           "name": "账号设置",
           "pathName": "pages/set-up/set-up",
           "query": "",
@@ -208,6 +202,12 @@
           "name": "加入企业",
           "pathName": "pages/add-company/add-company",
           "query": "companyid=2223",
+          "scene": null
+        },
+        {
+          "name": "用户认证",
+          "pathName": "pages/user-authentication/user-authentication",
+          "query": "",
           "scene": null
         }
       ]

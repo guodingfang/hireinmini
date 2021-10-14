@@ -1,0 +1,18 @@
+<view class="model">
+  <m-header title="身份信息" more="{{false}}" />
+
+  <block wx:for="{{formData}}" wx:key="id">
+    <form-item item="{{item}}" bind:change="onChangeInput" />
+  </block>
+</view>
+
+<view class="model">
+  <m-header title="上传证件材料" more="{{false}}" />
+
+  
+</view>
+
+
+<v-footer>
+  <view class="footer-btn" bind:tap="onPublish">提交实名认证</view>
+</v-footer>

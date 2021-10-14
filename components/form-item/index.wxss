@@ -1,0 +1,41 @@
+
+.input-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30rpx;
+  height: 100rpx;
+  box-sizing: border-box;
+}
+
+/* flex column 布局 */
+.input-item.column {
+  flex-direction: column;
+  height: 150rpx;
+  align-items: stretch;
+  padding: 15rpx 30rpx;
+}
+
+.input-item.column .label {
+  margin-bottom: 10rpx;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #808080;
+}
+
+.item-input {
+  flex: 1;
+  background-color: #F5F4F9;
+  padding-left: 20rpx;
+  height: 70rpx;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+}
+
+.item-input-pl {
+  color: #999999;
+  font-size: 28rpx;
+}
