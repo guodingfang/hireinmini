@@ -67,13 +67,23 @@ export const upload = async (params = {}, option = {}) => {
       'content-type': 'multipart/form-data'
     }
   } = option
-
+  const {userid = 0, accesstoken = '', unionid = ''} = getUserInfo([
+    'accesstoken',
+    'userid',
+    'unionid'
+  ])
   for (let [index, file] of files.entries()) {
     await promisic(wx.uploadFile)({
       url: `${prefixUrl}${url}`,
       filePath: file,
       name: 'file',
-      formData,
+      formData: {
+        userid,
+        loginuserid: userid,
+        accesstoken,
+        loginunionid: unionid,
+        ...formData,
+      },
       header: {
         ...header,
       }

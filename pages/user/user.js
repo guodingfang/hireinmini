@@ -42,7 +42,7 @@ Page({
 		// await this.getUserBaseInfo();
 		await this.getCheckOrder()
 		await this.getMyCompanyInfo()
-		await this.getMyOrderForAuditNum()
+		// await this.getMyOrderForAuditNum()
 		this.setData({
 			loadingHidden: true
 		})

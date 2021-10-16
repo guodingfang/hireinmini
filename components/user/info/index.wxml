@@ -3,6 +3,8 @@
     <image
       class="portrait-img"
       src="{{userinfo.userpic || '/images/public/logo.png'}}"
+      binderror="onPortraitError"
+      bindload="onPortraitLoad"
     ></image>
   </view>
   <view class="info single-row-overstep">

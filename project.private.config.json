@@ -209,6 +209,12 @@
           "pathName": "pages/user-authentication/user-authentication",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "企业管理",
+          "pathName": "pages/company-manage/company-manage",
+          "query": "",
+          "scene": null
         }
       ]
     }

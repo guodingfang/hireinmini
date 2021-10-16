@@ -1,7 +1,7 @@
 import { uploadAccessLog } from '../../models/util'
 
 import { remoteImagesUrl } from '../../config'
-import { getUserInfo, getCityInfo } from '../../utils/util'
+import { getUserInfo, getStorageInfo } from '../../utils/util'
 
 const app = getApp()
 
@@ -82,7 +82,7 @@ Page({
     const { tabList, type } = this.data
     const tab = tabList.find(tab => tab.type === type)
     const { userid, unionid, wxappid } = getUserInfo(['userid', 'unionid', 'wxappid'])
-    const { city } = getCityInfo(['city'])
+    const { city } = getStorageInfo('locationCity', ['city'])
     await uploadAccessLog({
       page: tab ? tab.name : '',
       loginuserid: userid,

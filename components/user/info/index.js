@@ -24,6 +24,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onPortraitError(err) {
+      console.log(err)
+    },
+    onPortraitLoad(e) {
+      console.log('e', e)
+    },
     onSkipContent() {
       const login = isLogin()
       if(!login) return

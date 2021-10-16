@@ -26,7 +26,8 @@
     "pages/company-select/company-select",
     "pages/search-company/search-company",
     "pages/add-company/add-company",
-    "pages/user-authentication/user-authentication"
+    "pages/user-authentication/user-authentication",
+    "pages/company-manage/company-manage"
   ],
   "permission": {
     "scope.userLocation": {

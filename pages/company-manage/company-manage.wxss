@@ -1,0 +1,48 @@
+Page {
+  background-color: #ffffff;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20rpx 30rpx;
+  justify-content: space-between;
+}
+
+.item {
+  display: flex;
+  width: 336rpx;
+  height: 160rpx;
+  border-radius: 24rpx;
+  padding: 30rpx 40rpx 30rpx 30rpx;
+  margin-bottom: 18rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.title {
+  color: #1A1A1A;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.btn {
+  margin-top: 12rpx;
+  width: 78rpx;
+  height: 40rpx;
+  border-radius: 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-go {
+  width: 50rpx;
+  height: 16rpx;
+}
+
+.item-img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}

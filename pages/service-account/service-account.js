@@ -1,7 +1,6 @@
 import { getCompanyInfo } from '../../models/company'
 import { getCompanyGoodsList } from '../../models/goods'
 import { addUserDialRecord } from '../../models/release'
-import { isAFocusB, addAttention } from '../../models/user'
 import { getUserInfo } from '../../utils/util'
 import config from '../../config'
 import { isLogin } from '../../utils/util'
@@ -67,30 +66,21 @@ Page({
       })),
       isCurrentUser: info.createdby === userid
     })
-    await this.isAFocusB()
   },
 
-  async isAFocusB() {
-    const { info, isCurrentUser } = this.data
-    if(isCurrentUser) return
-    const { focused } = await isAFocusB({
-      targetuserid: info.createdby
-    })
-    this.setData({
-      isAttention: focused === 1
+  onSkipContent() {
+    const { createdby = '' } = this.data.info
+    wx.navigateTo({
+      url: `/pages/content-account/content-account?userid=${createdby}`,
     })
   },
 
-  async onAttention() {
+  async onApprove() {
     const login = isLogin()
     if(!login) return
-    const { info, isAttention } = this.data
-    await addAttention({
-      targetuserid: info.createdby,
-      focused: isAttention ? 0 : 1
-    })
-    this.setData({
-      isAttention: !isAttention
+    wx.showToast({
+      title: '测试功能，敬请期待',
+      icon: 'none'
     })
   },
 
@@ -116,6 +106,9 @@ Page({
 
   onEnterCompany() {
     const { companyid = '' } = this.data
+    // wx.navigateTo({
+    //   url: `/pages/company-manage/company-manage?companyid=${companyid}`,
+    // })
     wx.navigateTo({
       url: `/pages/company-setup/company-setup?companyid=${companyid}`,
     })

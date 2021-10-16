@@ -1,0 +1,18 @@
+<view class="list">
+  <view
+    class="item"
+    wx:for="{{list}}"
+    wx:key="id"
+    style="background-color: {{item.backgroundColor}};"
+    data-type="{{item.type}}"
+    bind:tap="onSkipModel"
+  >
+    <view class="info">
+      <view class="title">{{item.title}}</view>
+      <view class="btn" style="background-color: {{item.btnColor}};">
+        <image class="icon-go" src="/images/icon/go.png"></image>
+      </view>
+    </view>
+    <image class="item-img" src="/images/public/company-{{item.type}}.png"></image>
+  </view>
+</view>

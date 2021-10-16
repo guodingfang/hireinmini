@@ -20,7 +20,7 @@
     <view class="item-title">身份证正面</view>
     <image
       class="item-img"
-      data-type="idCradObverse"
+      data-type="idcard_front"
       bind:tap="onUpload"
       src="{{remoteImagesUrl}}/authentication/idCrad-obverse.png"
     ></image>
@@ -30,7 +30,7 @@
     <view class="item-title">身份证反面</view>
     <image
       class="item-img"
-      data-type="idCradReverse"
+      data-type="idcard_back"
       bind:tap="onUpload"
       src="{{remoteImagesUrl}}/authentication/idCrad-reverse.png"
     ></image>
@@ -40,7 +40,7 @@
     <view class="item-title">手持身份证</view>
     <image
       class="item-img"
-      data-type="handIdCrad"
+      data-type="holdidcardphoto"
       bind:tap="onUpload"
       src="{{remoteImagesUrl}}/authentication/hand-idCrad.png"
     ></image>
@@ -57,7 +57,7 @@
     <view class="item-title">营业执照副本</view>
     <image
       class="item-img"
-      data-type="charter"
+      data-type="businesslicense"
       bind:tap="onUpload"
       src="{{remoteImagesUrl}}/authentication/charter.png"
     ></image>

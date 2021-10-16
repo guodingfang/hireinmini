@@ -35,6 +35,10 @@ Page({
 	},
 
 	async onLoad() {
+		const { userid = 0 } = getUserInfo(['userid'])
+		this.setData({
+			lastUserId: userid
+		})
 		this.getHeaderBlock()
 		await this.getLocationInfo()
 	},
@@ -254,7 +258,7 @@ Page({
 	 */
 	async onShow () {
 		this.getCityInfo()
-		const { lastUserId, notAgainLoading } = this.data
+		const { lastUserId, notAgainLoading, initEnter } = this.data
 		const { userid = 0 } = getUserInfo(['userid'])
 		if(lastUserId !== userid && !notAgainLoading) {
 			await this.getInitInfo()
@@ -263,8 +267,8 @@ Page({
 			lastUserId: userid
 		})
 
-		if (!this.data.initEnter) return
-		await this.getInitInfo()
+		if (!initEnter) return
+		await this.getInitInfo(initEnter)
 		this.setData({
 			initEnter: false
 		})

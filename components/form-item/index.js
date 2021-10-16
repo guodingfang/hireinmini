@@ -11,7 +11,7 @@ Component({
         label: '标题',
         placeholder: '提示文字',
         value: '',
-        require: false,
+        need: false,
       }
     }
   },

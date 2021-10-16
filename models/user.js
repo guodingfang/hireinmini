@@ -157,7 +157,6 @@ export const getMsgDynamics = (option = {}) => {
   })
 }
 
-
 /**
  * 获取用户编辑信息
  * @param {*} option 
@@ -167,7 +166,6 @@ export const getUserEditableInfo = (option = {}) => {
     ...option
   })
 }
-
 
 /**
  * 改变用户信息
@@ -185,6 +183,16 @@ export const setUserInfo = (option = {}) => {
  */
 export const isAFocusB = (option = {}) => {
   return request.post('/User/isAFocusB', {
+    ...option
+  })
+}
+
+/**
+ * 用户认证信息提交
+ * @param {*} option 
+ */
+export const userAuthentication = (option = {}) => {
+  return request.post('/User/userAuthentication', {
     ...option
   })
 }
