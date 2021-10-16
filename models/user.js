@@ -2,6 +2,23 @@ import request from '../utils/request'
 import { storageSet } from '../utils/storage'
 import { promisic } from '../utils/util'
 
+export const initUserInfo = async (option = {}) => {
+  const { code = '' } = await promisic(wx.login)()
+  const info = await request.post('/WXAppLogin/WXAppLogins', { code })
+  if(info && info.code === 0 && info.result) {
+    storageSet('userinfo', info.userinfo)
+    return {
+      code: 0,
+      userinfo: info.userinfo
+    }
+  } else {
+    return {
+      code: -1,
+      userinfo: null
+    }
+  }
+}
+
 /**
  * 用户登录
  * @param {*} option 
