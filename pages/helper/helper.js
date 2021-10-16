@@ -3,9 +3,8 @@ import {
   getTopNQuestions
 } from '../../models/helper'
 import { getLocationInfo } from '../../models/map'
-import { login } from '../../models/user'
 import { judgeTabBarHeight, isLogin } from '../../utils/util'
-
+import { remoteImagesUrl } from '../../config'
 
 const app = getApp();
 
@@ -15,6 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    remoteImagesUrl,
     headerBlock: 0,
     tools: [{
         type: 'power',
@@ -32,7 +32,7 @@ Page({
     ],
     knowledgeList: [],
     questionsList: [],
-    locationInfo: null
+    locationInfo: null,
   },
 
   /**
@@ -143,11 +143,4 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

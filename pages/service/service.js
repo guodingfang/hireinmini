@@ -41,6 +41,7 @@ Page({
 		currentPage: 1,
 		notMoreData: false,
 		triggered: false,
+		moreHidden: false,
 	},
 
 	/**
@@ -111,8 +112,9 @@ Page({
 		if(thisLocalityCompanyList.length) {
 			this.setData({
 				thisLocalityCompanyList: [...this.data.thisLocalityCompanyList, ...thisLocalityCompanyList],
-				currentPage: page.pagecount,
+				currentPage: page.page + 1,
 				notMoreData: page.pagecount === page.page,
+				moreHidden: false
 			})
 		}
 		setTimeout(() => {
@@ -203,6 +205,9 @@ Page({
 
 	async onScrollEnd(e) {
 		if(this.data.notMoreData) return
+		this.setData({
+			moreHidden: true
+		})
 		await this.getRecommendCompanyList()
 	},
 

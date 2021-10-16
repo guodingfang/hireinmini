@@ -60,7 +60,7 @@
  -->
 <view style="margin-top: 20rpx;">
 	<v-skip
-		src="{{ !skipCompanyUrl ? '/images/advert/open-service-account.png' : '/images/advert/enter-service-account.png'}}"
+		src="{{ !skipCompanyUrl ? openServiceImg : enterServiceImg }}"
 		width="690"
 		height="168"
 		bind:skip="onSelectCompany"

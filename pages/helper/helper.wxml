@@ -16,7 +16,7 @@
 
 <view class="advert">
   <v-skip
-    src="/images/advert/open-vip.png"
+    src="{{remoteImagesUrl}}/advert/open-vip.png"
     width="690"
     height="200"
     bind:skip="onSkipVip"

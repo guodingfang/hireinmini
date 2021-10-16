@@ -1,6 +1,6 @@
 import { getDiscoverMsgList } from '../../models/release'
 import { getCarousel, getRecommendAccountList, getNLoginList } from '../../models/util'
-import { getAttentionedList } from '../../models/user'
+import { initUserInfo, getAttentionedList } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { getLocationInfo } from '../../models/map'
 import { promisic } from '../../utils/util'
@@ -216,14 +216,18 @@ Page({
 			pagenum: 0,
 		})
 		if (this.data.initEnter) {
-			setTimeout(async () => {
-				await this.getCarousel()
-				await this.getDiscoverMsgList({ reset: true })
-			}, 350)
+			await this.initUserInfo()
+			await this.getCarousel()
+			await this.getDiscoverMsgList({ reset: true })
 			return
 		}
 		await this.getCarousel()
 		await this.getDiscoverMsgList({ reset: true })
+	},
+
+	async initUserInfo(options) {
+		const { code, userinfo } = await initUserInfo()
+		console.log('初始化获取userinfo数据', userinfo)
 	},
 
 	// 上拉触发
@@ -264,13 +268,6 @@ Page({
 		this.setData({
 			initEnter: false
 		})
-	},
-
-	/**
-	 * 用户点击右上角分享
-	 */
-	onShareAppMessage(e) {
-
 	},
 
 	/* 下拉刷新 */

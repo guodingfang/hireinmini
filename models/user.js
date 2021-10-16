@@ -12,6 +12,11 @@ export const initUserInfo = async (option = {}) => {
       userinfo: info.userinfo
     }
   } else {
+    const { unionid, accesstoken } = info.userinfo
+    storageSet('userinfo', {
+      unionid,
+      accesstoken
+    })
     return {
       code: -1,
       userinfo: null

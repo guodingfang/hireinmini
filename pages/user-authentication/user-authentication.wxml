@@ -1,6 +1,13 @@
+
+<view class="header-container">
+  <view class="header">
+    <image class="bg-img" src="{{remoteImagesUrl}}/authentication/bg.png"></image>
+    <image class="title-img" src="{{remoteImagesUrl}}/authentication/title.png"></image>
+  </view>
+</view>
+
 <view class="model">
   <m-header title="身份信息" more="{{false}}" />
-
   <block wx:for="{{formData}}" wx:key="id">
     <form-item item="{{item}}" bind:change="onChangeInput" />
   </block>
@@ -9,7 +16,52 @@
 <view class="model">
   <m-header title="上传证件材料" more="{{false}}" />
 
+  <view class="model-item">
+    <view class="item-title">身份证正面</view>
+    <image
+      class="item-img"
+      data-type="idCradObverse"
+      bind:tap="onUpload"
+      src="{{remoteImagesUrl}}/authentication/idCrad-obverse.png"
+    ></image>
+  </view>
   
+  <view class="model-item">
+    <view class="item-title">身份证反面</view>
+    <image
+      class="item-img"
+      data-type="idCradReverse"
+      bind:tap="onUpload"
+      src="{{remoteImagesUrl}}/authentication/idCrad-reverse.png"
+    ></image>
+  </view>
+
+  <view class="model-item">
+    <view class="item-title">手持身份证</view>
+    <image
+      class="item-img"
+      data-type="handIdCrad"
+      bind:tap="onUpload"
+      src="{{remoteImagesUrl}}/authentication/hand-idCrad.png"
+    ></image>
+  </view>
+
+  <view class="model-item">
+    <image
+      class="item-img-require"
+      src="{{remoteImagesUrl}}/authentication/require.png"
+    ></image>
+  </view>
+
+  <view class="model-item">
+    <view class="item-title">营业执照副本</view>
+    <image
+      class="item-img"
+      data-type="charter"
+      bind:tap="onUpload"
+      src="{{remoteImagesUrl}}/authentication/charter.png"
+    ></image>
+  </view>
 </view>
 
 

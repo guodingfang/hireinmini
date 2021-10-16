@@ -1,5 +1,6 @@
 
 import { addAttention } from '../../../models/user'
+import { remoteImagesUrl } from '../../../config'
 Component({
   /**
    * 组件的属性列表
@@ -30,6 +31,8 @@ Component({
    * 组件的初始数据
    */
   data: {
+    openServiceImg: `${remoteImagesUrl}/advert/open-service-account.png`,
+    enterServiceImg: `${remoteImagesUrl}/advert/enter-service-account.png`,
     skipCompanyUrl: '',
     showModel: false,
   },

@@ -1,8 +1,6 @@
-import { initUserInfo } from './models/user'
 
 App({
 	onLaunch (options) {
-		this.initUserInfo(options)
 		// 判断更新
 		this.judgeUpdate()
 		// 判断运行环境
@@ -18,11 +16,6 @@ App({
 		headerTopHeader: 88,
 		// 设置全局header搜索框高度：rpx
 		headerSearchHeader: 100,
-	},
-
-	async initUserInfo(options) {
-		const { code, userinfo } = await initUserInfo()
-		console.log('初始化获取userinfo数据', userinfo)
 	},
 
 	// 判断小程序更新

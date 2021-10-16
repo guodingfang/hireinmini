@@ -1,10 +1,12 @@
-
+import { remoteImagesUrl } from '../../config'
+import { promisic } from '../../utils/util.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    remoteImagesUrl,
     formData: [
       {
         type: 'username',
@@ -68,6 +70,13 @@ Page({
     })
   },
 
+  async onUpload(e) {
+    const { tempFilePaths = [] } = await promisic(wx.chooseImage)({
+      count: 1,
+      sourceType: ['album', 'camera'],
+    });
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -109,11 +118,4 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

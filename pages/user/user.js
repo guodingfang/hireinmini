@@ -17,6 +17,8 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		openServiceImg: `${remoteImagesUrl}/advert/open-service-account.png`,
+    enterServiceImg: `${remoteImagesUrl}/advert/enter-service-account.png`,
 		companyinfo: null,
 		userinfo: null,
 		ordernumber: '',

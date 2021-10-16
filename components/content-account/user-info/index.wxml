@@ -35,7 +35,7 @@
 
 <view class="advert" wx:if="{{isCurrentUser || (skipCompanyUrl && !isCurrentUser)}}">
   <v-skip
-    src="{{ !skipCompanyUrl ? '/images/advert/open-service-account.png' : '/images/advert/enter-service-account.png' }}"
+    src="{{ !skipCompanyUrl ? openServiceImg : enterServiceImg }}"
     width="710"
     height="168"
     url="{{skipCompanyUrl}}"

@@ -6,7 +6,7 @@
     isTopTitle="{{true}}"
     isHeaderContent="{{false}}"
   >
-    <view slot="top-header-content" class="header-title" wx:if="{{opacity === 0}}">
+    <view slot="top-header-content" class="header-title" wx:if="{{opacity <= 0.1}}">
       <image class="icon-back" src="/images/icon/back.png" bind:tap="onBack"></image>
       <text>内容账号</text>
     </view>

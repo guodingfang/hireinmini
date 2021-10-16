@@ -7,8 +7,9 @@ import {
 	addShareRelease,
 	addUserDialRecord
 } from '../../models/release'
-import { addAttention, isAFocusB } from '../../models/user'
+import { initUserInfo, addAttention, isAFocusB } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
+import { remoteImagesUrl } from '../../config'
 import config from '../../config'
 import { isLogin } from '../../utils/util'
 
@@ -16,6 +17,7 @@ Page({
 	data: {
 		tabHeight: 100,
 		content: '',
+		remoteImagesUrl,
 		imgUrl: config.imgUrls,
 		type: '',
 		videoUrl: config.videoUrl,
@@ -172,16 +174,19 @@ Page({
 		this.getReleaseDetail()
 	},
 
+	async initUserInfo(options) {
+		const { code, userinfo } = await initUserInfo()
+		console.log('初始化获取userinfo数据', userinfo)
+	},
 
 	async onShow () {
 		if(this.data.isShare) {
 			this.setData({
 				isShare: false
 			})
-			setTimeout(async () => {
-				await this.getReleaseDetail()
-				await this.getOtherHosList()
-			}, 500)
+			await this.initUserInfo()
+			await this.getReleaseDetail()
+			await this.getOtherHosList()
 			return
 		}
 		await this.getReleaseDetail()
