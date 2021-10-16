@@ -11,27 +11,39 @@
 	<v-tab fixed="{{true}}" list="{{tabList}}" bind:select="onSelectTab" />
 </view>
 
-<view class="carousel">
-	<v-carousel m-carousel="m-carousel" autoplay="{{true}}" images="{{ carouselList }}"/>
-</view>
+<scroll-view
+	class="content"
+	style="--topHeader--:{{headerBlock + 88}}rpx"
+	scroll-y
+	lower-threshold="150"
+	refresher-enabled="{{true}}"
+	refresher-triggered="{{triggered}}"
+	bindscrolltolower="onScrollEnd"
+	bindrefresherrefresh="onScrollRefresh"
+>
+	<view class="carousel">
+		<v-carousel m-carousel="m-carousel" autoplay="{{true}}" images="{{ carouselList }}"/>
+	</view>
 
-<block wx:if="{{tabname === 'focus'}}">
-	<m-header title="{{ interest.title }}" bind:more="onSkipFocus" />
-	<v-focus list="{{interest.list}}" isHaveInterest="{{interest.isHaveInterest}}" />
-</block>
+	<block wx:if="{{tabname === 'focus'}}">
+		<m-header title="{{ interest.title }}" bind:more="onSkipFocus" />
+		<v-focus list="{{interest.list}}" isHaveInterest="{{interest.isHaveInterest}}" />
+	</block>
 
-<block wx:for="{{ releaseList }}" wx:key="id">
-	<v-item info="{{item}}" />
-</block>
+	<block wx:for="{{ releaseList }}" wx:key="id">
+		<v-item info="{{item}}" />
+	</block>
 
-<view class="weui-loadmore" wx:if="{{moreHidden}}">
-	<view class="weui-loading"></view>
-	<view class="weui-loadmore__tips">正在加载</view>
-</view>
+	<view class="weui-loadmore" wx:if="{{moreHidden}}">
+		<view class="weui-loading"></view>
+		<view class="weui-loadmore__tips">正在加载</view>
+	</view>
 
-<loading hidden="{{loadingHidden}}">
-	加载中...
-</loading>
+	<loading hidden="{{loadingHidden}}">
+		加载中...
+	</loading>
+</scroll-view>
+
 
 <m-location
 	loading="{{locationLoading}}"

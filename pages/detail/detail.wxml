@@ -1,4 +1,8 @@
-<view class="mask" wx:if="{{loading}}"></view>
+<view class="mask" wx:if="{{loading}}">
+  <loading>
+		加载中...
+	</loading>
+</view>
 
 <view class="details-title" wx:if="{{info.msgtitle}}">{{info.msgtitle}}</view>
 

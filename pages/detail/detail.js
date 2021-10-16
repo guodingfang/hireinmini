@@ -22,11 +22,13 @@ Page({
 		otherList: [],
 		messageList: [],
 		loading: true,
+		isShare: false,
 	},
 	async onLoad (options) {
 		const { tabHeight } = judgeTabBarHeight();
 		this.setData({
 			msgid: options.msgid,
+			isShare: options.isShare === 'share',
 			tabHeight
 		})
 	},
@@ -172,6 +174,16 @@ Page({
 
 
 	async onShow () {
+		if(this.data.isShare) {
+			this.setData({
+				isShare: false
+			})
+			setTimeout(async () => {
+				await this.getReleaseDetail()
+				await this.getOtherHosList()
+			}, 500)
+			return
+		}
 		await this.getReleaseDetail()
 		await this.getOtherHosList()
 	},
@@ -192,7 +204,7 @@ Page({
 			})
 			return {
 				title: '携手开启数字租赁服务新生态',
-				path: `/pages/detail/detail?msgid=${msgid}`,
+				path: `/pages/detail/detail?msgid=${msgid}&isShare=share`,
 			}
 		}
 	},

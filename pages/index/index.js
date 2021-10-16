@@ -30,7 +30,8 @@ Page({
       { id: '2', name: '推荐', type: 'recommend', select: true },
       { id: '3', name: '全国', type: 'country' },
 			{ id: '4', name: '本地', type: 'native' }
-    ]
+		],
+		triggered: false,
 	},
 
 	async onLoad() {
@@ -191,6 +192,12 @@ Page({
 		this.setData({
 			loadingHidden: true,
 		})
+		
+		setTimeout(() => {
+			this.setData({
+				triggered: false
+			})
+		}, 1000)
 	},
 
 	// 获取首页轮播
@@ -208,8 +215,34 @@ Page({
 		this.setData({
 			pagenum: 0,
 		})
+		if (this.data.initEnter) {
+			setTimeout(async () => {
+				await this.getCarousel()
+				await this.getDiscoverMsgList({ reset: true })
+			}, 350)
+			return
+		}
 		await this.getCarousel()
 		await this.getDiscoverMsgList({ reset: true })
+	},
+
+	// 上拉触发
+	async onScrollRefresh() {
+		this.setData({
+			triggered: true,
+			loadingHidden: false,
+			pagenum: 0,
+		})
+		await this.getDiscoverMsgList({ reset: true });
+	},
+
+	// 下拉触发
+	async onScrollEnd() {
+		this.setData({
+			moreHidden: true,
+		})
+		//上拉
+		await this.getDiscoverMsgList({})
 	},
 
 	/**
@@ -220,18 +253,17 @@ Page({
 		const { lastUserId, notAgainLoading } = this.data
 		const { userid = 0 } = getUserInfo(['userid'])
 		if(lastUserId !== userid && !notAgainLoading) {
-			this.getInitInfo()
+			await this.getInitInfo()
 		}
 		this.setData({
 			lastUserId: userid
 		})
 
 		if (!this.data.initEnter) return
+		await this.getInitInfo()
 		this.setData({
 			initEnter: false
 		})
-		this.getInitInfo()
-
 	},
 
 	/**
@@ -243,23 +275,13 @@ Page({
 
 	/* 下拉刷新 */
 	async onPullDownRefresh () {
-		this.setData({
-			loadingHidden: false,
-			pagenum: 0,
-		})
-		await this.getDiscoverMsgList({ reset: true });
-		//停止刷新
-		wx.stopPullDownRefresh();
+
 	},
 	
 	/**
 	 * 页面上拉触底事件的处理函数
 	 */
 	async onReachBottom () {
-		this.setData({
-			moreHidden: true,
-		})
-		//上拉
-		await this.getDiscoverMsgList({})
+
 	},
 })

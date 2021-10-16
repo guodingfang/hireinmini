@@ -91,7 +91,6 @@ Page({
 				...item,
 				label: item.label.slice(0, 3)
 			})),
-			triggered: false,
 			currentPage: 2,
 		})
 		this.getRecommendCompanyList()
@@ -116,6 +115,11 @@ Page({
 				notMoreData: page.pagecount === page.page,
 			})
 		}
+		setTimeout(() => {
+			this.setData({
+				triggered: false,
+			}, 1000)
+		})
 	},
 
 	onSkipService(e) {
@@ -204,7 +208,7 @@ Page({
 
 	async onScrollRefresh(e) {
 		this.setData({
-			triggered: false,
+			triggered: true,
 			nationwideCompanyList: [],
 			thisLocalityCompanyList: [],
 			currentPage: 1,

@@ -2,11 +2,11 @@ import { initUserInfo } from './models/user'
 
 App({
 	onLaunch (options) {
+		this.initUserInfo(options)
 		// 判断更新
 		this.judgeUpdate()
 		// 判断运行环境
 		this.judgeWork(options);
-		this.initUserInfo()
 	},
 	globalData: {
 		userInfo: null,
@@ -20,7 +20,7 @@ App({
 		headerSearchHeader: 100,
 	},
 
-	async initUserInfo() {
+	async initUserInfo(options) {
 		const { code, userinfo } = await initUserInfo()
 		console.log('初始化获取userinfo数据', userinfo)
 	},

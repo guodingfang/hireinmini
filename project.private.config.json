@@ -63,7 +63,7 @@
         {
           "name": "详情页",
           "pathName": "pages/detail/detail",
-          "query": "msgid=4659",
+          "query": "msgid=4659&isShare=share",
           "scene": null
         },
         {
