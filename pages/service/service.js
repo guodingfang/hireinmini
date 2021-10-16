@@ -1,6 +1,5 @@
 import { getCarousel } from '../../models/util'
 import { judgeTabBarHeight } from '../../utils/util'
-import { login } from '../../models/user'
 import config from '../../config'
 import {
 	getHighRentRateProduct,
@@ -41,6 +40,7 @@ Page({
 		pagesize: 18,
 		currentPage: 1,
 		notMoreData: false,
+		triggered: false,
 	},
 
 	/**
@@ -91,6 +91,7 @@ Page({
 				...item,
 				label: item.label.slice(0, 3)
 			})),
+			triggered: false,
 			currentPage: 2,
 		})
 		this.getRecommendCompanyList()
@@ -196,11 +197,25 @@ Page({
 
 	},
 
+	async onScrollEnd(e) {
+		if(this.data.notMoreData) return
+		await this.getRecommendCompanyList()
+	},
+
+	async onScrollRefresh(e) {
+		this.setData({
+			triggered: false,
+			nationwideCompanyList: [],
+			thisLocalityCompanyList: [],
+			currentPage: 1,
+		})
+		await this.getNationwideCompanyList()
+	},
+
 	/**
 	 * 页面上拉触底事件的处理函数
 	 */
 	async onReachBottom () {
-		if(this.data.notMoreData) return
-		await this.getRecommendCompanyList()
+
 	},
 })

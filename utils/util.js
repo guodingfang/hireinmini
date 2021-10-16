@@ -57,7 +57,6 @@ export const judgeTabBarHeight = () => {
 	const app = getApp();
 	const { workInfo } = app.globalData;
 	if(workInfo && workInfo.model) {
-		console.log('workInfo', workInfo)
 		const { model } = workInfo;
 		if (model.search('iPhone X') != -1 || 
 			model.search('iPhone 11') != -1 ||

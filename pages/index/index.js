@@ -1,5 +1,3 @@
-
-import { login } from '../../models/user'
 import { getDiscoverMsgList } from '../../models/release'
 import { getCarousel, getRecommendAccountList, getNLoginList } from '../../models/util'
 import { getAttentionedList } from '../../models/user'

@@ -20,8 +20,6 @@
 	<v-focus list="{{interest.list}}" isHaveInterest="{{interest.isHaveInterest}}" />
 </block>
 
-
-<!-- <m-header title="我的关注" more="{{false}}" /> -->
 <block wx:for="{{ releaseList }}" wx:key="id">
 	<v-item info="{{item}}" />
 </block>

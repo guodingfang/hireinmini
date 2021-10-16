@@ -1,7 +1,12 @@
+import { initUserInfo } from './models/user'
+
 App({
-	onLaunch: function () {
+	onLaunch (options) {
 		// 判断更新
-		this.judgeUpdate();
+		this.judgeUpdate()
+		// 判断运行环境
+		this.judgeWork(options);
+		this.initUserInfo()
 	},
 	globalData: {
 		userInfo: null,
@@ -13,6 +18,11 @@ App({
 		headerTopHeader: 88,
 		// 设置全局header搜索框高度：rpx
 		headerSearchHeader: 100,
+	},
+
+	async initUserInfo() {
+		const { code, userinfo } = await initUserInfo()
+		console.log('初始化获取userinfo数据', userinfo)
 	},
 
 	// 判断小程序更新
@@ -55,15 +65,13 @@ App({
 	},
 
 	onShow(options) {
-    // 判断运行环境
-		this.judgeWork(options);
+
   },
 
 	judgeWork(options) {
 		const workInfo = wx.getSystemInfoSync();
 		console.log('环境', workInfo);
-		const { screenWidth } = workInfo
-		this.ratio = 667/375
 		this.globalData.workInfo = workInfo;
+		return workInfo
 	},
 })
