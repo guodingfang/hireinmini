@@ -105,7 +105,7 @@
         {
           "name": "内容账号",
           "pathName": "pages/content-account/content-account",
-          "query": "userid=3592",
+          "query": "userid=7979",
           "scene": null
         },
         {
@@ -117,7 +117,7 @@
         {
           "name": "服务号",
           "pathName": "pages/service-account/service-account",
-          "query": "",
+          "query": "companyid=2268",
           "scene": null
         },
         {

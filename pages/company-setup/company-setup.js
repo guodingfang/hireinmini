@@ -5,7 +5,7 @@ import {
   editCompany
 } from '../../models/company'
 import { upload } from '../../models/util'
-import { getUserInfo, getCityInfo, promisic } from '../../utils/util'
+import { getUserInfo, getCityInfo, getStorageInfo, promisic } from '../../utils/util'
 import config from '../../config'
 import { formVerify } from './verify'
 
@@ -25,6 +25,10 @@ Page({
     phone: '',
     city: '',
     citycode: '',
+    countyname: '',
+    provincename: '',
+    lat: '',
+    lng: '',
     address: '',
     introduction: '',
     havImages: [],
@@ -81,22 +85,37 @@ Page({
       city: info.cityname,
       citycode: info.citycode,
       address: info.address,
+      countyname: info.countyname,
+      provincename: info.provincename,
+      lat: info.lat,
+      lng: info.lng,
       havImages,
       introduction: info.briefintroduction,
       images: havImages.map(item => item.img),
-      tags: newTags
+      tags: newTags,
+      userid: info.createdby
     })
   },
 
   getInfo() {
     const { userid, nickname: contact, phone } = getUserInfo(['userid', 'nickname', 'phone'])
-    const { city, cityCode: citycode } = getCityInfo(['city', 'cityCode'])
+    const {
+      city,
+      cityCode: citycode,
+      province: provincename,
+      district: countyname,
+      location,
+    } = getStorageInfo('locationCity', ['city', 'cityCode', 'district', 'province', 'location'])
     this.setData({
       userid,
       contact,
       phone,
       city,
-      citycode
+      citycode,
+      countyname,
+      provincename,
+      lat: location.lat,
+      lng: location.lng
     })
   },
 
@@ -199,6 +218,10 @@ Page({
       introduction = '',
       tags = [],
       picidstr = '',
+      countyname = '',
+      provincename = '',
+      lat = '',
+      lng = '',
     } = this.data
 
     let mainbusiness = {}
@@ -215,6 +238,10 @@ Page({
       contact,
       phone,
       citycode,
+      countyname,
+      provincename,
+      lat,
+      lng,
       address,
       introduction,
       userid,

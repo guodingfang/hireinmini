@@ -35,7 +35,7 @@
       src="{{remoteImagesUrl}}/authentication/idCrad-reverse.png"
     ></image>
   </view>
-
+<!-- 
   <view class="model-item">
     <view class="item-title">手持身份证</view>
     <image
@@ -44,7 +44,7 @@
       bind:tap="onUpload"
       src="{{remoteImagesUrl}}/authentication/hand-idCrad.png"
     ></image>
-  </view>
+  </view> -->
 
   <view class="model-item">
     <image

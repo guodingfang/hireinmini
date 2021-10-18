@@ -236,12 +236,14 @@ Page({
 
 	// 上拉触发
 	async onScrollRefresh() {
-		this.setData({
-			triggered: true,
-			loadingHidden: false,
-			pagenum: 0,
-		})
-		await this.getDiscoverMsgList({ reset: true });
+		if(this.data.loadingHidden) {
+			this.setData({
+				triggered: true,
+				loadingHidden: false,
+				pagenum: 0,
+			})
+			await this.getDiscoverMsgList({ reset: true });
+		}
 	},
 
 	// 下拉触发

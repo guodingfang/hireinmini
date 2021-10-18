@@ -27,6 +27,12 @@ Component({
     }
   },
 
+  lifetimes: {
+    attached() {
+      // this.getCompany()
+    },
+  },
+
   /**
    * 组件的初始数据
    */

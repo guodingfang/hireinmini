@@ -37,7 +37,7 @@
             mode="aspectFill"
             src="{{imgUrl}}{{item.picurl_thumbnails}}"
           >
-            <view class="mask" wx:if="{{ imgShow > 3 && imgs.length === index + 1 }}">+{{imgShow - 3}}</view>
+            <!-- <view class="mask" wx:if="{{ imgShow > 3 && imgs.length === index + 1 }}">+{{imgShow - 3}}</view> -->
           </image>
         </block>      
       </block>
