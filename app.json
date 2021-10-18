@@ -27,7 +27,8 @@
     "pages/search-company/search-company",
     "pages/add-company/add-company",
     "pages/user-authentication/user-authentication",
-    "pages/company-manage/company-manage"
+    "pages/company-manage/company-manage",
+    "pages/cooperation-exchange/cooperation-exchange"
   ],
   "permission": {
     "scope.userLocation": {

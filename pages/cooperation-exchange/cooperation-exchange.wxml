@@ -1,0 +1,28 @@
+<view class="message">
+  <view class="time">2021年8月9日 13:59:21</view>
+  <view class="message-item message-left">
+    <image class="head-portrait" src="/images/public/logo.png"></image>
+    <view class="content">
+      1234567654312345676543123
+    </view>
+  </view>
+
+  <view class="message-item message-right">
+    <view class="content">
+      1234567654312345676543123
+    </view>
+    <image class="head-portrait" src="/images/public/logo.png"></image>
+  </view>
+</view>
+
+<v-footer>
+  <view class="message-footer">
+    <input
+      class="message-val"
+      type="text"
+      cursor-spacing="12"
+      confirm-type="send"
+    />
+    <view class="message-btn">发送</view>
+  </view>
+</v-footer>

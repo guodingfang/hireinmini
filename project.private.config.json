@@ -215,6 +215,12 @@
           "pathName": "pages/company-manage/company-manage",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "合作交流",
+          "pathName": "pages/cooperation-exchange/cooperation-exchange",
+          "query": "",
+          "scene": null
         }
       ]
     }
