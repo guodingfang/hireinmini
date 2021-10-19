@@ -70,7 +70,7 @@
 .small-img-list {
   display: flex;
   flex-wrap: wrap;
-  width: 620rpx;
+  width: 624rpx;
   /* justify-content: space-between; */
   border-radius: 20rpx;
   overflow: hidden;
