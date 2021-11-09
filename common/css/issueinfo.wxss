@@ -1,0 +1,167 @@
+@import "../lib/weui.wxss";
+
+page {
+    font-size: 30rpx;
+}
+
+.pad-fill {
+    padding-top: 10rpx;
+}
+
+.pad-t100 {
+    padding-top: 100rpx;
+}
+
+.order-title {
+    width: auto;
+    padding: 0 25rpx;
+    background: #fff;
+}
+
+.order-title .title {
+    height: 80rpx;
+    line-height: 80rpx;
+    max-width: 75%;
+    font-size: 36rpx;
+}
+
+.share {
+    text-align: right;
+    height: 80rpx;
+    line-height: 80rpx;
+}
+
+.share .share-btn {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    color: #ff9a00;
+    background: #fff;
+    line-height: 80rpx;
+    font-size: 30rpx;
+}
+
+.share .share-btn::after {
+    border: none;
+}
+
+.order-title .share-img {
+    padding-left: 16rpx;
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: -3rpx;
+}
+
+.carousel-img {
+    width: 100%;
+    height: 170px;
+}
+
+.position-r {
+    position: relative;
+}
+
+.order-info {
+    margin-top: 20rpx;
+    padding: 0 25rpx;
+    background: #fff;
+}
+
+.order-info-title {
+    padding: 25rpx 0;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.order-info .img {
+    padding-right: 16rpx;
+    width: 26rpx;
+    height: 30rpx;
+    vertical-align: -3rpx;
+}
+
+.order-info .img1 {
+    padding-right: 16rpx;
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: -3rpx;
+}
+
+.order-info-title .title {
+    display: inline-block;
+}
+
+.order-info-name {
+    margin: 16rpx 0;
+    color: #acacac;
+}
+
+.content {
+    margin: 16rpx 0;
+    max-width: 75%;
+}
+
+.title-name {
+    position: absolute;
+    top: 25rpx;
+    right: 0;
+    color: #ff9a00;
+}
+
+.equipment-info {
+    display: -webkit-flex;
+    display: flex;
+    line-height: 60rpx;
+}
+
+.equipment-info .val {
+    width: 100%;
+}
+
+.personnel-name {
+    display: inline-block;
+    padding-right: 26rpx;
+}
+
+.orange {
+    color: #ff9a00;
+}
+
+.personnel-name image {
+    padding-left: 18rpx;
+}
+
+.prcture-img-list {
+    display: -webkit-flex;
+    display: flex;
+    padding: 10rpx 0;
+}
+
+.prcture-img {
+    padding: 5rpx;
+    flex: 1;
+    height: 167rpx;
+}
+
+.evaluate-content {
+    display: inline-block;
+    padding: 16rpx 0;
+    width: 77%;
+}
+
+.evaluate-name {
+    vertical-align: top;
+}
+
+.order-info .comments {
+    padding: 16rpx 0;
+    overflow: hidden;
+    word-break: break-word;
+    text-indent: 2em;
+}
+
+.img2{
+    width: 30rpx;
+    height: 30rpx;
+    vertical-align: -2rpx;
+    margin-left: 30rpx;
+}

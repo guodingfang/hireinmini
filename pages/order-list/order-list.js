@@ -23,7 +23,7 @@ Page({
       { type: 'complete', name: '已完成' },
       { type: 'after', name: '售后' },
     ],
-    goodsList: [],
+    goodsList: [1],
   },
 
   onSelectTab(e) {

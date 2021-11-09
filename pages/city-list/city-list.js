@@ -7,7 +7,7 @@ import {
   getHitoryList,
   getHotList
 } from '../../models/map'
-
+import { promisic } from '../../utils/util'
 import { storageSet, storageGet } from '../../utils/storage'
 
 Page({
@@ -21,6 +21,7 @@ Page({
     cityList: [],
     hitoryList: [],
     hotlist: [],
+    isLocation: false
   },
 
   /**
@@ -37,12 +38,27 @@ Page({
   },
 
   async getLocationInfo() {
-    const info = await getLocationInfo()
+    this._getLocationCity()
+    try {
+      const info = await getLocationInfo({ againLocation: true })
+      this.setData({
+        isLocation: true
+      })
+    } catch (e) {
+      this.setData({
+        isLocation: false
+      })
+    }
+    this._getLocationCity()
+  },
+  
+  _getLocationCity() {
     const currentCity = storageGet('locationCity')
+    console.log('currentCity', currentCity)
     this.setData({
       currentCity
     })
-	},
+  },
 
   // 获取城市列表
   async getCityList() {
@@ -80,7 +96,15 @@ Page({
     })
   },
 
-  onAginLocation() {
+  async onAginLocation() {
+    const { isLocation } = this.data
+    if (!isLocation) {
+      const res = await promisic(wx.openSetting)()
+      if (res.authSetting["scope.userLocation"]) {
+        this.getLocationInfo();
+      }
+      return
+    }
     const cityInfo = storageGet('locationCity')
     storageSet('cityinfo', cityInfo)
 
