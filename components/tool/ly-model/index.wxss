@@ -1,5 +1,11 @@
 @import '../common.wxss';
 
 .model {
-  padding-top: 20rpx;
+  padding-top: 20rpx 20rpx 0 20rpx;
+}
+
+.advert-title {
+  color: #666;
+  font-size: 24rpx;
+  padding: 24rpx;
 }

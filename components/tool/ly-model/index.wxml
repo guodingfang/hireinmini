@@ -69,3 +69,13 @@
     </view>
   </view>
 </view>
+
+<view class="advert">
+  <view class="advert-title">广告</view>
+  <v-skip
+    src="/images/advert/tool-advert.gif"
+    width="710"
+    height="300"
+    radius="20"
+  />
+</view>
