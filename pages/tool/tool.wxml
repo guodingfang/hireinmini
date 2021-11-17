@@ -48,4 +48,10 @@
   <view class="tabs-item" slot="item-9">
     <v-scal />
   </view>
+  <view class="tab-item" slot="item-10">
+    <v-truss-prints />
+  </view>
+  <view class="tab-item" slot="item-11">
+    <v-truss-compute />
+  </view>
 </v-tab>

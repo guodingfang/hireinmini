@@ -9,7 +9,9 @@
     "v-projection": "/components/tool/projection-model",
     "v-stage": "/components/tool/stage-model",
     "v-delay": "/components/tool/delay-model",
-    "v-scal": "/components/tool/scal-model"
+    "v-scal": "/components/tool/scal-model",
+    "v-truss-prints": "/components/tool/truss-prints-model",
+    "v-truss-compute": "/components/tool/truss-compute-model"
   },
   "navigationStyle": "custom",
   "navigationBarTitleText": "租赁常用工具"

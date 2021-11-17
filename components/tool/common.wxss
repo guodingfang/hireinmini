@@ -66,6 +66,16 @@
   white-space: nowrap
 }
 
+.input-title {
+  color: #1A1A1A;
+  font-size: 28rpx;
+  padding-left: 30rpx;
+}
+
+.input-title-middle {
+  padding-bottom: 12rpx;
+}
+
 .tips {
   padding: 30rpx;
   font-size: 22rpx;
