@@ -50,13 +50,14 @@ Component({
       this.computeResult()
     },
     computeResult() {
-      const { spaceWidth = 0, spaceHeight = 0, selectSpace = 0, xCorss = 0, yCorss = 0 } = this.data
+      const { spaceWidth = 0, spaceHeight = 0, selectSpace = 0, xCorss = 0, yCorss = 0, height = 0, width = 0 } = this.data
       if (selectSpace) {
         const widthPoint = spaceWidth && xCorss ? (spaceWidth / selectSpace * xCorss).toFixed(0) : ''
         const heightPoint = spaceHeight && yCorss ? (spaceHeight / selectSpace * yCorss).toFixed(0) : ''
         this.setData({
           widthPoint,
           heightPoint,
+          area: height * width,
           areaPoint: widthPoint && heightPoint ? widthPoint * heightPoint : '',
         })
       } else {

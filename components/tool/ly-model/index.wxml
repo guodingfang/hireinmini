@@ -6,7 +6,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入宽度"
-        type="digit"
+        type="number"
         value="{{width}}"
         data-type="width"
         bindblur="onInputChange"
@@ -20,7 +20,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入厚度"
-        type="digit"
+        type="number"
         value="{{thickness}}"
         data-type="thickness"
         bindblur="onInputChange"
@@ -34,7 +34,7 @@
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入高度"
-        type="digit"
+        type="number"
         value="{{height}}"
         data-type="height"
         bindblur="onInputChange"
@@ -65,7 +65,7 @@
     </view>
 
     <view class="tips">
-      注：此计算结果基于横杆2米（间距1.5米），立柱2米，斜拉2.5米，普通搭建要求。异形搭建以实际情况为准，数据仅供参考，不作为备货依据。
+      注：此计算结果基于跨距2米（步距1.5米），立柱2米，斜拉2.5米，普通搭建要求。异形搭建以实际情况为准，数据仅供参考，不作为备货依据。
     </view>
   </view>
 </view>
