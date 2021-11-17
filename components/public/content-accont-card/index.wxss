@@ -7,7 +7,7 @@
 	width: 690rpx;
 	height: 120rpx;
 	align-items: center;
-	padding: 20rpx 30rpx;
+	padding: 20rpx 20rpx;
 	box-sizing: border-box;
 	margin: auto auto 20rpx auto;
 }

@@ -5,7 +5,7 @@ import {
   editCompany
 } from '../../models/company'
 import { upload } from '../../models/util'
-import { getUserInfo, getCityInfo, getStorageInfo, promisic } from '../../utils/util'
+import { getUserInfo, getLocationCityInfo, promisic } from '../../utils/util'
 import config from '../../config'
 import { formVerify } from './verify'
 
@@ -99,13 +99,15 @@ Page({
 
   getInfo() {
     const { userid, nickname: contact, phone } = getUserInfo(['userid', 'nickname', 'phone'])
+
     const {
       city,
       cityCode: citycode,
       province: provincename,
       district: countyname,
-      location,
-    } = getStorageInfo('locationCity', ['city', 'cityCode', 'district', 'province', 'location'])
+      location = {},
+    } = getLocationCityInfo(['city', 'cityCode', 'district', 'province', 'location'])
+    
     this.setData({
       userid,
       contact,
@@ -232,7 +234,7 @@ Page({
       }
     })
 
-    const params = {
+    let params = {
       companyid,
       companyname,
       contact,
@@ -240,13 +242,16 @@ Page({
       citycode,
       countyname,
       provincename,
-      lat,
-      lng,
       address,
       introduction,
       userid,
       mainbusiness: JSON.stringify(mainbusiness),
       picidstr
+    }
+
+    if (lat && lng) {
+      params.lat = lat
+      params.lng = lng
     }
 
     const verify = formVerify(params)

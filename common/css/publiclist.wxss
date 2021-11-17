@@ -1,0 +1,576 @@
+/* 列表start */
+
+page {
+    font-size: 30rpx;
+}
+
+.content-list {
+    padding-top: 26rpx;
+    padding-bottom: 28rpx;
+    border-bottom: 1rpx solid #f0f0f0;
+}
+
+.content-list:last-child {
+    border: none;
+}
+
+.list-portrait {
+    margin-top: 4rpx;
+    width: 88rpx;
+    height: 88rpx;
+    border-radius: 50%;
+}
+
+.list-info {
+    padding-left: 15rpx;
+}
+
+.info-head {
+    position: relative;
+    padding: 10rpx 0;
+    line-height: 40rpx;
+}
+
+.info-username {
+    display:inline-block;
+    max-width: 515rpx;
+    color: #576b95;
+    font-size: 32rpx;
+}
+
+.info-city {
+    position: absolute;
+    top: 12rpx;
+    right: -16rpx;
+    color: #ffb426;
+    font-size: 28rpx;
+}
+
+.info-content {
+    word-break: break-all;
+    line-height: 44rpx;
+    color: #3d3d3d;
+    font-size: 32rpx;
+}
+
+.info-fulltext {
+    color: #7c8aab;
+}
+
+.info-imgs {
+    padding: 15rpx 0;
+    font-size: 32rpx;
+    line-height: 32rpx;
+}
+
+.info-imgs .img {
+    width: 32.5%;
+    height: 190rpx;
+    margin-left: 1.25%;
+}
+
+.info-imgs .img:nth-child(3n){
+    border-top-right-radius: 16rpx;
+    border-bottom-right-radius: 16rpx;
+}
+.info-imgs .img:first-child, .info-imgs .img:nth-child(4n), .info-imgs .img:nth-child(7n){
+    border-top-left-radius: 16rpx;
+    border-bottom-left-radius: 16rpx;
+    margin-left: 0;
+}
+.info-imgs .img:last-child{
+    border-top-right-radius: 16rpx;
+    border-bottom-right-radius: 16rpx;
+}
+.info-imgs .image1 {
+    width: 100%;
+    height: 360rpx;
+    border-radius: 16rpx;
+}
+
+.info-imgs .img:last-child {
+    padding: 0;
+}
+
+.info-bottom {
+    position: relative;
+    /* padding-left: 14%; */
+}
+
+.info-time {
+    color: #8f8f8f;
+    font-size: 26rpx;
+    /* display:block; */
+    position: relative;
+    /* top:-2rpx; *//* margin-left:20rpx; */
+}
+
+.info-time .company-name{
+    padding-left: 20rpx;
+    color: #576b95;
+}
+
+.info-phone {
+    display: inline-block;
+    color: #576b95;
+}
+
+.info-phone .icon-dial {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.info-browse {
+    display: inline-block;
+    range: 0;
+    width: 132rpx;
+    text-align: right;
+    color: #576b95;
+    font-size: 28rpx;
+}
+
+.browse-img {
+    padding-right: 6rpx;
+    width: 36rpx;
+    height: 24rpx;
+}
+
+.word-wrap-line4 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+}
+/* 评论点赞 :start */
+.comment-wrap {
+    /* margin-left: 14%; */
+    color: #576b95;
+    background: #eee;
+    font-size: 28rpx;
+    margin-top: 20rpx;
+    position: relative;
+}
+
+.comment-wrap .icon-sanjiao {
+    width: 30rpx;
+    height: 14rpx;
+    position: absolute;
+    top: -12rpx;
+    left: 16rpx;
+}
+
+.comment-wrap .pulist {
+    padding:20rpx;
+    border-bottom:1rpx solid #d6d6d6;
+}
+
+.com-wrap {
+    width: 100%;
+    min-height: 80rpx;
+    background: #ebebeb;
+    position: fixed;
+    z-index: 51;
+    bottom: 0;
+    left: 0;
+    padding-top: 6rpx;
+    padding-bottom: 8rpx;
+}
+
+.com-wrap .btn-send {
+    width: 76%;
+    border: 1rpx solid #d4d4d4;
+    background: #ebebeb;
+    color: #d4d4d4;
+    padding: 0;
+    margin: 12rpx auto;
+    text-align: center;
+    height: 66rpx;
+    line-height: 66rpx;
+    border-radius: 6rpx;
+    font-size: 30rpx;
+}
+
+.com-wrap .btn-send.active {
+    background: #d43d3d;
+    color: #fff;
+    border: 0;
+}
+
+.com-wrap .com-textarea {
+    width: 98%;
+    min-height: 80rpx;
+    height: auto;
+    border-bottom: 1px solid #d4d4d4;
+    line-height: 80rpx;
+    text-indent: 4rpx;
+    margin-left: 2%;
+}
+
+.misk-wrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 50;
+}
+
+.commitlist {
+    padding: 20rpx;
+}
+
+.commitlist .commit-item {
+    color: #333;
+    font-size: 30rpx;
+    line-height: 36rpx;
+    margin-top: 8rpx;
+}
+
+.commitlist .commit-item:first-child {
+    margin-top: 0;
+}
+
+.commitlist .commit-item .color-link {
+    color: #576b95;
+    margin: 0 2rpx;
+}
+/* 评论点赞 :end */
+
+/* 列表end */
+
+/* 转发、朋友圈、我要发布start */
+
+.opertion {
+    position: fixed;
+    right: 20rpx;
+    bottom: 308rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.oper-btn {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20rpx;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    color: #fff;
+    background: #000;
+    opacity: 0.8;
+    text-align: center;
+    vertical-align: 10rpx;
+}
+
+.share {
+    line-height: 48rpx;
+}
+
+.oper-img {
+    padding-top: 18rpx;
+    width: 44rpx;
+    height: 44rpx;
+}
+
+.share .share-img{
+    padding-top: 16rpx;
+    width: 44rpx;
+    height: 44rpx;
+}
+
+.share-name {
+    line-height: 26rpx;
+    font-size: 26rpx;
+}
+
+.pyq-name {
+    line-height: 26rpx;
+    font-size: 22rpx;
+}
+
+.puhlish-btn {
+    background: #ff891f;
+}
+
+.publish-name {
+    display: inline-block;
+    padding-top: 14rpx;
+    width: 56rpx;
+    height: 60rpx;
+    line-height: 30rpx;
+    font-size: 26rpx;
+}
+
+.btn-msgrelease {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20rpx;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    color: #fff;
+    opacity: 0.8;
+    text-align: center;
+    vertical-align: 10rpx;
+    position: relative;
+    right: 10rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-msgrelease .publish-name {
+    padding-top: 0;
+    width: 34px;
+    height: 33px;
+    line-height: 16px;
+    font-size: 28rpx;
+}
+
+/* 转发、朋友圈、我要发布end */
+
+/* 登录注册start */
+
+/* 未注册样式 */
+
+.not-register {
+    position: relative;
+    text-align: center;
+    font-size: 36rpx;
+}
+
+.not-register image {
+    padding: 100rpx 0;
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.login {
+    padding-top: 200rpx;
+}
+
+.button {
+    display: inline-block;
+    width: 90%;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-radius: 10rpx;
+    color: #fff;
+    background: #2ab7ff;
+    font-size: 34rpx;
+}
+
+.bg-shade {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+
+.register {
+    padding-top: 10rpx;
+    font-size: 30rpx;
+    text-align: center;
+    color: #576b95;
+}
+
+.annotation {
+    padding-bottom: 40rpx;
+}
+
+.info-bg {
+    margin-bottom: 60rpx;
+    height: 156rpx;
+    background: #fff;
+}
+
+.info-img {
+    padding: 18rpx 30rpx;
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 70rpx;
+}
+
+.info-name {
+    display: inline-block;
+    padding-top: 54rpx;
+    padding-left: 30rpx;
+    font-size: 32rpx;
+    vertical-align: top;
+}
+
+.phone-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+}
+
+/* 登录注册end */
+
+/* 点赞 */
+
+.info-thumb {
+    width: 166rpx;
+    display: inline-block;
+    color: #576b95;
+    text-align: right;
+    font-size: 28rpx;
+}
+
+.info-comment {
+    width: 128rpx;
+    display: inline-block;
+    color: #576b95;
+    text-align: right;
+    font-size: 28rpx;
+}
+
+.icon-thumb {
+    width: 28rpx;
+    height: 26rpx;
+    position: relative;
+    top: 4rpx;
+    margin-right: 10rpx;
+}
+
+.info-comment button{
+    height: 44rpx;
+    float: right;
+    padding: 0;
+    font-size: 28rpx;
+    background: none;
+    border: 0;
+    outline: none;
+    line-height: 44rpx;
+    color: #576b95;
+    border-radius: 0;
+}
+.info-comment button::after{
+    border: 0;
+}
+
+.showpiccount {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 54rpx;
+    text-align: center;
+    line-height: 180rpx;
+}
+
+/*手机号注册start*/
+
+view.phone-register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 88rpx;
+}
+
+view.phone-register view.title {
+    display: flex;
+    align-items: center;
+    color: #7c8baa;
+    margin-bottom: 53rpx;
+}
+
+view.phone-register view.title .line {
+    width: 100rpx;
+    height: 2rpx;
+    background-color: #7c8baa;
+}
+
+view.phone-register view.title text {
+    margin: 16rpx;
+}
+
+view.phone-register view.input {
+    width: 100%;
+}
+
+view.phone-register view.input form  view.con {
+    width: 100%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+view.phone-register view.input view.section {
+    position: relative;
+    width: 710rpx;
+    height: 98rpx;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 16rpx;
+    /*border-left: 20rpx solid #fff;*//*border-right: 20rpx solid #fff;*/
+}
+
+view.phone-register view.input view.section:first-child {
+    border-bottom: 1rpx solid #e5e5e5;
+}
+
+view.phone-register view.input view.section image {
+    width: 22rpx;
+    height: 30rpx;
+    margin-right: 24rpx;
+}
+
+.img-veri {
+    width: 18rpx !important;
+}
+
+view.phone-register view.input view.section text {
+    display: inline-block;
+    width: 120rpx;
+    color: #707070;
+    margin-right: 40rpx;
+}
+
+.login-input{
+    width: 260rpx;
+}
+
+.placeholder-input-color {
+    color: #bcbcbc;
+}
+
+view.phone-register view.input view.section view.verification {
+    position: absolute;
+    right: 20rpx;
+    margin-right: auto;
+    width: 150rpx;
+    text-align: center;
+    color: #2ab7ff;
+    font-size: 24rpx;
+    padding: 17rpx 0;
+    border: 2rpx solid #2ab7ff;
+    border-radius: 6rpx;
+    box-sizing: border-box;
+}
+
+view.phone-register view.input view.btn-area {
+    margin-top: 64rpx;
+}
+
+view.phone-register view.input view.btn-area button {
+    width: 200rpx;
+    background-color: #2ab7ff;
+    font-size: 30rpx;
+    color: #fff;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 6rpx;
+}
+
+/*手机号注册end*/

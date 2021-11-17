@@ -18,7 +18,7 @@
   scroll-with-animation
   scroll-y
 >
-  <view id="current" wx:if="{{currentCity}}">
+  <view id="current">
     <view class="title">定位 / 最近访问</view>
     <view class="city-history">
       <view
@@ -26,7 +26,7 @@
         catch:tap="onAginLocation"
       >
         <image class="icon-location" src="/images/icon/location-3.png"></image>
-        <text>{{currentCity.city}}</text>
+        <text>{{currentCity.city || '重新定位'}}</text>
       </view>
       <view
         class="history-item"

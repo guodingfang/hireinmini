@@ -1,7 +1,6 @@
 import { uploadAccessLog } from '../../models/util'
-
 import { remoteImagesUrl } from '../../config'
-import { getUserInfo, getStorageInfo } from '../../utils/util'
+import { getUserInfo, getStorageInfo, getLocationCityInfo } from '../../utils/util'
 
 const app = getApp()
 
@@ -65,7 +64,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  async onLoad (options) {
     const { type = '' } = options
     if(type) {
       this.setData({ type })
@@ -90,13 +89,13 @@ Page({
     const { tabList, type } = this.data
     const tab = tabList.find(tab => tab.type === type)
     const { userid, unionid, wxappid } = getUserInfo(['userid', 'unionid', 'wxappid'])
-    const { city } = getStorageInfo('locationCity', ['city'])
+    const { city } = getLocationCityInfo(['city'])
     await uploadAccessLog({
       page: tab ? tab.name : '',
       loginuserid: userid,
       loginunionid: unionid,
       openid: wxappid,
-      city,
+      city
     })
   },
 

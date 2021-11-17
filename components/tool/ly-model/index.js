@@ -24,7 +24,6 @@ Component({
    */
   methods: {
     onInputChange(e) {
-      console.log('e', e)
       const { value } = e.detail
       const { type } = e.target.dataset
       if (value % 2 !== 0) {
@@ -42,10 +41,11 @@ Component({
     computeResult() {
       const { width, thickness, height } = this.data
       if(width && thickness && height) {
+        const _height = (height / 1.5).toFixed(0)
         this.setData({
           verticalAmount: ((width / 2 + 1) * (thickness / 2 + 1) * (height / 2)).toFixed(2),
-          acrossAmount: (((thickness / 2 + 1) * (width / 2) + (width / 2 + 1) * (thickness / 2)) * (height / 2 + 1)).toFixed(2),
-          slantingAmount: (((width / 2) * (thickness / 2 + 1) + (thickness / 2) * (width / 2 + 1)) * (height / 2)).toFixed(2),
+          acrossAmount: (((thickness / 2 + 1) * (width / 2) + (width / 2 + 1) * (thickness / 2)) * (+_height + 1)).toFixed(2),
+          slantingAmount: (((width / 2) * (thickness / 2 + 1) + (thickness / 2) * (width / 2 + 1)) * (+_height / 1.5)).toFixed(2),
         })
       } else {
         this.setData({

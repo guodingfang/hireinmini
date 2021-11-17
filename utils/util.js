@@ -18,8 +18,17 @@ export const getCityInfo = (params = []) => {
 	return getStorageInfo('cityinfo', params)
 }
 
+// 获取Storage存储的locationCityInfo信息
+export const getLocationCityInfo = (params = []) => {
+	if (storageGet('locationCity')) {
+		return getStorageInfo('locationCity', params)
+	} else {
+		return getStorageInfo('cityinfo', params)
+	}
+}
+
 // 获取Storage存储的信息
-export const getStorageInfo = (key, params) => {
+export const getStorageInfo = (key, params = []) => {
 	const result = {};
 	if(params.length === 0) return result
 	const info = storageGet(key)
