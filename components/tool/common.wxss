@@ -112,3 +112,12 @@
   font-size: 28rpx;
   min-height: 46rpx;
 }
+
+.result-btn {
+  background-color: #0400E6;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70rpx;
+}

@@ -60,6 +60,10 @@
   </view>
 
   <view class="model">
+    <view class="result-btn">计算结果</view>
+  </view>
+
+  <view class="model">
     <m-header title="Truss计算结果" more="{{false}}">
       <view slot="tips" class="header-tips">（结果仅供参考）</view>
     </m-header>
@@ -69,35 +73,40 @@
         <text class="col-label">数量(米)：</text>
         <text class="col-val">{{ verticalAmount }}</text>
       </view>
-      <view class="result-col col-column">
-        <text class="col-label">顶棚画面(m²)：</text>
-        <text class="col-val">{{ acrossAmount }}</text>
-      </view>
+      <block wx:if="{{ type === 'haveTop' }}">
+        <view class="result-col col-column">
+          <text class="col-label">顶棚画面(m²)：</text>
+          <text class="col-val">{{ acrossAmount }}</text>
+        </view>
+      </block>
     </view>
 
-    <view class="input-title input-title-middle">三角区域尺寸：</view>
-    <view class="result-row">
-      <view class="result-col col-column">
-        <text class="col-label">长(米)：</text>
-        <text class="col-val">{{ verticalAmount }}</text>
+    <block wx:if="{{ type === 'haveTop' }}">
+      <view class="input-title input-title-middle">三角区域尺寸：</view>
+      <view class="result-row">
+        <view class="result-col col-column">
+          <text class="col-label">长(米)：</text>
+          <text class="col-val">{{ verticalAmount }}</text>
+        </view>
+        <view class="result-col col-column">
+          <text class="col-label">高(米)：</text>
+          <text class="col-val">{{ acrossAmount }}</text>
+        </view>
       </view>
-      <view class="result-col col-column">
-        <text class="col-label">高(米)：</text>
-        <text class="col-val">{{ acrossAmount }}</text>
-      </view>
-    </view>
 
-    <view class="input-title input-title-middle">顶棚尺寸：</view>
-    <view class="result-row">
-      <view class="result-col col-column">
-        <text class="col-label">长(米)：</text>
-        <text class="col-val">{{ verticalAmount }}</text>
+      <view class="input-title input-title-middle">顶棚尺寸：</view>
+      <view class="result-row">
+        <view class="result-col col-column">
+          <text class="col-label">长(米)：</text>
+          <text class="col-val">{{ verticalAmount }}</text>
+        </view>
+        <view class="result-col col-column">
+          <text class="col-label">宽(米)：</text>
+          <text class="col-val">{{ acrossAmount }}</text>
+        </view>
       </view>
-      <view class="result-col col-column">
-        <text class="col-label">宽(米)：</text>
-        <text class="col-val">{{ acrossAmount }}</text>
-      </view>
-    </view>
+    </block>
+   
 
     <view class="tips">
       <view>1、为保证画面质量，单个桁架宽度不宜超过10米</view>

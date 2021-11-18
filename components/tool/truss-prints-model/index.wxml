@@ -1,5 +1,6 @@
 <view class="container">
   <view class="model">
+    <v-tab list="{{tabList}}" bind:select="onSelectTab"  />
     <view class="input-item">
       <text class="label">宽度：</text>
       <input
@@ -67,6 +68,10 @@
     </view>
   </view>
 
+  <view class="model">
+    <view class="result-btn">计算结果</view>
+  </view>
+  
   <view class="model">
     <m-header title="计算结果" more="{{false}}">
       <view slot="tips" class="header-tips">（结果仅供参考）</view>

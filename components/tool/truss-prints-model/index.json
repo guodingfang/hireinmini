@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
+    "v-tab": "/components/contents/tab",
     "m-header": "/components/public/m-header"
   }
 }

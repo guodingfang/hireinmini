@@ -23,6 +23,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    onSelectRadio (e) {
+      console.log('e', e)
+    },
     onInputChange(e) {
       const { value } = e.detail
       const { type } = e.target.dataset
