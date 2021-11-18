@@ -1,6 +1,8 @@
 import { uploadAccessLog } from '../../models/util'
 import { remoteImagesUrl } from '../../config'
 import { getUserInfo, getStorageInfo, getLocationCityInfo } from '../../utils/util'
+import { getLocationInfo } from '../../models/map'
+import { promisic } from '../../utils/util'
 
 const app = getApp()
 
@@ -10,6 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    locationLoading: false,
+		locationErrLoading: false,
     type: 'power',
     bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
     defaultIndex: 0,
@@ -66,17 +70,15 @@ Page({
    */
   async onLoad (options) {
     const { type = '' } = options
-    if(type) {
-      this.setData({ type })
-    }
-    this.getDefaultIndex(type)
+    this.setData({ type })
+    await this.getLocationInfo()
     this.getHeaderBlock()
   },
 
-  getDefaultIndex(type) {
+  getDefaultIndex() {
     let defaultIndex = 0
     this.data.tabList.map((item, index) => {
-      if(item.type === type) {
+      if(item.type === this.data.type) {
         defaultIndex = index
       }
     })
@@ -120,6 +122,40 @@ Page({
     this.uploadAccessLog()
   },
 
+  async getLocationInfo() {
+    const { city = '' } = getLocationCityInfo(['city'])
+    if (city) {
+      this.setData({
+        locationLoading: false,
+      })
+      this.getDefaultIndex()
+      return
+    } else {
+      this.setData({
+        locationLoading: true,
+      })
+    }
+		try {
+			await getLocationInfo()
+			this.setData({
+				locationLoading: false,
+      })
+      this.getDefaultIndex()
+		} catch (err) {
+			this.setData({
+				locationErrLoading: true,
+			})
+		}
+	},
+
+	// 重新定位
+	async onAgainLocation() {
+    const res = await promisic(wx.openSetting)()
+    if (res.authSetting["scope.userLocation"]) {
+      this.getLocationInfo();
+    }
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -166,6 +202,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '携手开启数字租赁服务新生态',
+      path: `/pages/index/index`,
+    }
   }
 })

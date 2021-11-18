@@ -15,6 +15,7 @@
 	class="content"
 	style="--topHeader--:{{headerBlock + 88}}rpx"
 	scroll-y
+	scroll-top="{{scrollTop}}"
 	lower-threshold="250"
 	refresher-enabled="{{true}}"
 	refresher-triggered="{{triggered}}"

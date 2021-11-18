@@ -55,3 +55,10 @@
     <v-truss-compute />
   </view>
 </v-tab>
+
+<m-location
+	loading="{{locationLoading}}"
+	errLoading="{{locationErrLoading}}"
+	bind:again="onAgainLocation"
+	bind:manual="onManualLocation" 	
+/>

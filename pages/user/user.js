@@ -41,7 +41,7 @@ Page({
 		this.getHeaderBlock();
 		// await this.getUserBaseInfo();
 		await this.getCheckOrder()
-		await this.getMyCompanyInfo()
+		// await this.getMyCompanyInfo()
 		// await this.getMyOrderForAuditNum()
 		this.setData({
 			loadingHidden: true
@@ -103,7 +103,8 @@ Page({
 
 	// 获取我的企业信息
 	async getMyCompanyInfo() {
-		const { phone, companyid } = getUserInfo(['phone', 'companyid'])
+		const { phone = '', companyid = '' } = getUserInfo(['phone', 'companyid'])
+		if (!companyid) return
 		const { data } = await getMyCompanyInfo({
 			companyid,
 			phone

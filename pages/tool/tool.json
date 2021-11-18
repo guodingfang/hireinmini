@@ -11,7 +11,8 @@
     "v-delay": "/components/tool/delay-model",
     "v-scal": "/components/tool/scal-model",
     "v-truss-prints": "/components/tool/truss-prints-model",
-    "v-truss-compute": "/components/tool/truss-compute-model"
+    "v-truss-compute": "/components/tool/truss-compute-model",
+    "m-location": "/components/public/m-location"
   },
   "navigationStyle": "custom",
   "navigationBarTitleText": "租赁常用工具"

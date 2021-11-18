@@ -141,9 +141,11 @@ Component({
         }
       })
       const { tabElement, screenWidth } = this.data
-      const sLeft = tabElement[current].left - screenWidth / 2 + tabElement[current].width / 2
-      this.setData({ tabList, sLeft, current })
-      this.isSelectType(type)
+      if (tabElement.length) {
+        const sLeft = tabElement[current].left - screenWidth / 2 + tabElement[current].width / 2
+        this.setData({ tabList, sLeft, current })
+        this.isSelectType(type)
+      }
     },
     
     isSelectType(type) {

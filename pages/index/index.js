@@ -9,6 +9,7 @@ import { storageSet, storageGet } from '../../utils/storage'
 const app = getApp();
 Page({
 	data: {
+		scrollTop: 0,
 		lastUserId: 0,
 		initEnter: true,
 		locationLoading: true,
@@ -155,6 +156,7 @@ Page({
 		if(tabname === type) return
 		this.setData({
 			pagenum: 0,
+			scrollTop: 0,
 			tabList: tabList.map(tab => tab.type === type ? { ...tab, select: true } : { ...tab, select: false }),
 			tabname: type
 		})
@@ -207,8 +209,18 @@ Page({
 	// 获取首页轮播
 	async getCarousel() {
 		const { tabname } = this.data
-		const list = await getCarousel({
+		let params = {
 			tabname
+		}
+		if (tabname === 'native') {
+			const { cityCode = '' } = storageGet('cityinfo')
+			params = {
+				...params,
+				citycode: cityCode 
+			}
+		}
+		const list = await getCarousel({
+			...params
 		})
 		this.setData({
 			carouselList: list
