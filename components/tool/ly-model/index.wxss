@@ -36,3 +36,31 @@
   font-size: 24rpx;
   padding: 24rpx;
 }
+
+.radio-input {
+  min-width: 200rpx;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  border: 1rpx solid #e5e5e5;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.radio-input-item {
+  width: auto;
+  min-width: 100rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-input-item + .radio-input-item {
+  border-left: 1rpx solid #e5e5e5;
+}
+
+.radio-input-item-select {
+  background-color: #0400E6;
+  color: #ffffff;
+}

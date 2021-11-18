@@ -66,6 +66,16 @@
   white-space: nowrap
 }
 
+.input-title {
+  color: #1A1A1A;
+  font-size: 28rpx;
+  padding-left: 30rpx;
+}
+
+.input-title-middle {
+  padding-bottom: 12rpx;
+}
+
 .tips {
   padding: 30rpx;
   font-size: 22rpx;
@@ -101,4 +111,13 @@
   color: #FE0A00;
   font-size: 28rpx;
   min-height: 46rpx;
+}
+
+.result-btn {
+  background-color: #0400E6;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70rpx;
 }

@@ -1,0 +1,116 @@
+<view class="container">
+  <view class="model">
+    <v-tab list="{{tabList}}" bind:select="onSelectTab"  />
+
+    <view class="input-item">
+      <text class="label">正面宽度：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入正面宽度"
+        type="digit"
+        value="{{width}}"
+        data-type="width"
+        bindblur="onInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+
+    <view class="input-item">
+      <text class="label">侧面高度：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入侧面高度"
+        type="digit"
+        value="{{height}}"
+        data-type="height"
+        bindblur="onInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+    
+    <view class="input-item">
+      <text class="label">内部高度：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入内部高度"
+        type="digit"
+        value="{{thickness}}"
+        data-type="thickness"
+        bindblur="onInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+
+    <view class="input-item">
+      <text class="label">立柱数量：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入立柱数量"
+        type="digit"
+        value="{{thickness}}"
+        data-type="thickness"
+        bindblur="onInputChange"
+      />
+      <text class="unit">个</text>
+    </view>
+  </view>
+
+  <view class="model">
+    <view class="result-btn">计算结果</view>
+  </view>
+
+  <view class="model">
+    <m-header title="Truss计算结果" more="{{false}}">
+      <view slot="tips" class="header-tips">（结果仅供参考）</view>
+    </m-header>
+
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">数量(米)：</text>
+        <text class="col-val">{{ verticalAmount }}</text>
+      </view>
+      <block wx:if="{{ type === 'haveTop' }}">
+        <view class="result-col col-column">
+          <text class="col-label">顶棚画面(m²)：</text>
+          <text class="col-val">{{ acrossAmount }}</text>
+        </view>
+      </block>
+    </view>
+
+    <block wx:if="{{ type === 'haveTop' }}">
+      <view class="input-title input-title-middle">三角区域尺寸：</view>
+      <view class="result-row">
+        <view class="result-col col-column">
+          <text class="col-label">长(米)：</text>
+          <text class="col-val">{{ verticalAmount }}</text>
+        </view>
+        <view class="result-col col-column">
+          <text class="col-label">高(米)：</text>
+          <text class="col-val">{{ acrossAmount }}</text>
+        </view>
+      </view>
+
+      <view class="input-title input-title-middle">顶棚尺寸：</view>
+      <view class="result-row">
+        <view class="result-col col-column">
+          <text class="col-label">长(米)：</text>
+          <text class="col-val">{{ verticalAmount }}</text>
+        </view>
+        <view class="result-col col-column">
+          <text class="col-label">宽(米)：</text>
+          <text class="col-val">{{ acrossAmount }}</text>
+        </view>
+      </view>
+    </block>
+   
+
+    <view class="tips">
+      <view>1、为保证画面质量，单个桁架宽度不宜超过10米</view>
+      <view>2、宽度小于1米的单层桁架不适用此计算器</view>
+    </view>
+  </view>
+</view>

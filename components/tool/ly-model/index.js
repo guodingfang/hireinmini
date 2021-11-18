@@ -38,6 +38,9 @@ Component({
         barndList
       })
     },
+    onSelectRadio (e) {
+      console.log('e', e)
+    },
     onInputChange(e) {
       const { value } = e.detail
       const { type } = e.target.dataset

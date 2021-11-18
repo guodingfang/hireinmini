@@ -1,0 +1,102 @@
+<view class="container">
+  <view class="model">
+    <v-tab list="{{tabList}}" bind:select="onSelectTab"  />
+    <view class="input-item">
+      <text class="label">宽度：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入宽度"
+        type="digit"
+        value="{{width}}"
+        data-type="width"
+        bindblur="onInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+
+    <view class="input-item">
+      <text class="label">高度：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入高度"
+        type="digit"
+        value="{{height}}"
+        data-type="height"
+        bindblur="onInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+    
+    <view class="input-item">
+      <text class="label">厚度：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入厚度"
+        type="digit"
+        value="{{thickness}}"
+        data-type="thickness"
+        bindblur="onInputChange"
+      />
+      <text class="unit">米</text>
+    </view>
+
+    <view class="num-list">
+      <view
+        class="num-item {{selectNum === item ? 'select-num-item' : ''}}"
+        wx:for="{{numList}}"
+        wx:key="id"
+        data-item="{{item}}"
+        bind:tap="onSelectNum"
+      >{{item}}</view>
+    </view>
+
+    <view class="input-item">
+      <text class="label">画面单价：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入单价"
+        type="digit"
+        value="{{price}}"
+        data-type="price"
+        bindblur="onInputChange"
+      />
+      <text class="unit">元</text>
+    </view>
+  </view>
+
+  <view class="model">
+    <view class="result-btn">计算结果</view>
+  </view>
+  
+  <view class="model">
+    <m-header title="计算结果" more="{{false}}">
+      <view slot="tips" class="header-tips">（结果仅供参考）</view>
+    </m-header>
+
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">桁架数量(米)：</text>
+        <text class="col-val">{{ verticalAmount }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">画面面积(m²)：</text>
+        <text class="col-val">{{ acrossAmount }}</text>
+      </view>
+    </view>
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">喷绘金额(元)：</text>
+        <text class="col-val">{{ slantingAmount }}</text>
+      </view>
+    </view>
+
+    <view class="tips">
+      <view>1、为保证画面质量，单个桁架宽度不宜超过10米</view>
+      <view>2、宽度小于1米的单层桁架不适用此计算器</view>
+    </view>
+  </view>
+</view>

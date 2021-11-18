@@ -49,6 +49,14 @@ Page({
       {
         name: '开窗比例',
         type: 'scal'
+      },
+      {
+        name: '桁架、喷绘计算器',
+        type: 'truss-prints'
+      },
+      {
+        name: 'Truss计算',
+        type: 'truss-compute'
       }
     ],
   },

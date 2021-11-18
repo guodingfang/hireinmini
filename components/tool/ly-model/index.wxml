@@ -1,16 +1,5 @@
 <view class="container">
   <view class="model">
-    <view class="list">
-      <view
-        class="item {{ selectBrandId === item.brandid ? 'select-item' : ''}}"
-        wx:for="{{barndList}}"
-        wx:key="id"
-        data-id="{{item.brandid}}"
-        data-type="selectSpaceId"
-        bind:tap="onSelectTab"
-      >{{item.brandname}}</view>
-    </view>
-
     <view class="input-item">
       <text class="label">宽度：</text>
       <input
@@ -52,7 +41,103 @@
       />
       <text class="unit">米</text>
     </view>
+
+    <view class="input-item">
+      <text class="label">前排挂灯：</text>
+      <view class="radio-input" bind:tap="onSelectRadio">
+        <text class="radio-input-item radio-input-item-select">是</text>
+        <text class="radio-input-item">否</text>
+      </view>
+    </view>
   </view>
+
+  <view class="model">
+    <m-header title="品牌" more="{{false}}" />
+    <view class="list">
+      <view
+        class="item {{ selectBrandId === item.brandid ? 'select-item' : ''}}"
+        wx:for="{{barndList}}"
+        wx:key="id"
+        data-id="{{item.brandid}}"
+        data-type="selectSpaceId"
+        bind:tap="onSelectTab"
+      >{{item.brandname}}</view>
+    </view>
+    <view class="input-item">
+      <text class="label">立柱重量：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入立柱重量"
+        type="number"
+        value="{{height}}"
+        data-type="height"
+        bindblur="onInputChange"
+      />
+      <text class="unit">kg</text>
+    </view>
+
+    <view class="input-item">
+      <text class="label">横杆重量：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入横杆重量"
+        type="number"
+        value="{{height}}"
+        data-type="height"
+        bindblur="onInputChange"
+      />
+      <text class="unit">kg</text>
+    </view>
+
+    <view class="input-item">
+      <text class="label">斜拉重量：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入斜拉重要"
+        type="number"
+        value="{{height}}"
+        data-type="height"
+        bindblur="onInputChange"
+      />
+      <text class="unit">kg</text>
+    </view>
+
+    <view class="input-item">
+      <text class="label">运输距离：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入运输距离"
+        type="number"
+        value="{{height}}"
+        data-type="height"
+        bindblur="onInputChange"
+      />
+      <text class="unit">km</text>
+    </view>
+
+    <view class="input-item">
+      <text class="label">运输单价：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入斜运输单价"
+        type="number"
+        value="{{height}}"
+        data-type="height"
+        bindblur="onInputChange"
+      />
+      <text class="unit">元</text>
+    </view>
+  </view>
+
+  <view class="model">
+    <view class="result-btn">计算结果</view>
+  </view>
+
   <view class="model">
     <m-header title="计算结果" more="{{false}}">
       <view slot="tips" class="header-tips">（结果仅供参考）</view>
@@ -71,6 +156,24 @@
     <view class="result-row">
       <view class="result-col col-column">
         <text class="col-label">斜拉数量(根)：</text>
+        <text class="col-val">{{ slantingAmount }}</text>
+      </view>
+    </view>
+
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">总重量(kg)：</text>
+        <text class="col-val">{{ slantingAmount }}</text>
+      </view>
+      <view class="result-col col-column">
+        <text class="col-label">总方数(方)：</text>
+        <text class="col-val">{{ slantingAmount }}</text>
+      </view>
+    </view>
+
+    <view class="result-row">
+      <view class="result-col col-column">
+        <text class="col-label">运费总价(元)：</text>
         <text class="col-val">{{ slantingAmount }}</text>
       </view>
     </view>
