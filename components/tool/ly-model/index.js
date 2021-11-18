@@ -1,4 +1,4 @@
-// components/tool/ly-model/index.js
+import { getLyBrand } from '../../../models/tool'
 Component({
   /**
    * 组件的属性列表
@@ -11,6 +11,8 @@ Component({
    * 组件的初始数据
    */
   data: {
+    barndList: [],
+    selectBrandId: '',
     width: '',
     thickness: '',
     height: '',
@@ -19,10 +21,23 @@ Component({
     slantingAmount: '',
   },
 
+  lifetimes: {
+    ready() {
+      this.getLyBrand()
+    }
+  },
+
+
   /**
    * 组件的方法列表
    */
   methods: {
+    async getLyBrand () {
+      const barndList = await getLyBrand({})
+      this.setData({
+        barndList
+      })
+    },
     onInputChange(e) {
       const { value } = e.detail
       const { type } = e.target.dataset

@@ -1,5 +1,16 @@
 <view class="container">
   <view class="model">
+    <view class="list">
+      <view
+        class="item {{ selectBrandId === item.brandid ? 'select-item' : ''}}"
+        wx:for="{{barndList}}"
+        wx:key="id"
+        data-id="{{item.brandid}}"
+        data-type="selectSpaceId"
+        bind:tap="onSelectTab"
+      >{{item.brandname}}</view>
+    </view>
+
     <view class="input-item">
       <text class="label">宽度：</text>
       <input

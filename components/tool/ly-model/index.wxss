@@ -4,6 +4,33 @@
   padding-top: 20rpx 20rpx 0 20rpx;
 }
 
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 30rpx;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F5F5F5;
+  color: #666666;
+  font-size: 24rpx;
+  height: 60rpx;
+  padding: 0 30rpx;
+  margin: 15rpx 20rpx 15rpx 0;
+  border-radius: 20rpx;
+}
+
+.item.select-item {
+  background-color: #E6EDFF;
+  color: #0400E6;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
 .advert-title {
   color: #666;
   font-size: 24rpx;
