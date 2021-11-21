@@ -44,6 +44,8 @@
 }
 
 .model-header .more {
+	margin: -20rpx;
+	padding: 20rpx;
 	display: flex;
 	color: #666666;
 	font-size: 24rpx;

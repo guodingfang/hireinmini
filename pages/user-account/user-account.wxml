@@ -1,0 +1,11 @@
+
+<view style="height: {{headerBlock}}rpx">
+  <v-header
+    fixed="{{true}}"
+    title="我的账号"
+    bgSrc="{{bgImagesUrl}}"
+  />
+</view>
+
+<v-info />
+

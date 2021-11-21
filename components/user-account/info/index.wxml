@@ -1,0 +1,22 @@
+<view class="account-info">
+  <view class="account-total-price">
+    <view class="price-title">
+      <text class="price-title-val">账户余额（元）</text>
+    </view>
+    <view class="total-price">
+      <text>122598793</text>
+      <view>.97</view>
+    </view>
+  </view>
+
+  <view class="operation">
+    <view class="btn">
+      <image src=""></image>
+      <text>提现</text>
+    </view>
+    <view class="btn">
+      <image src=""></image>
+      <text>充值</text>
+    </view>
+  </view>
+</view>

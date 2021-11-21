@@ -2,6 +2,7 @@
   "usingComponents": {
     "v-header": "/components/header",
     "v-info": "/components/user/info",
+    "v-account": "/components/user/account",
     "v-order": "/components/user/order",
     "v-company": "/components/user/company",
     "v-knowledge": "/components/user/knowledge",

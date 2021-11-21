@@ -1,0 +1,48 @@
+
+.header {
+  background-color: #FFFFFF;
+  width: 100vw;
+  height: 88rpx;
+  overflow: hidden;
+}
+
+.header-f {
+  position: fixed;
+  z-index: 9999;
+}
+
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+}
+
+.icon-back {
+  width: 24rpx;
+  height: 36rpx;
+  padding: 30rpx;
+  margin-left: -30rpx;
+}
+
+.title {
+  color: #333333;
+  font-weight: bold;
+  font-size: 34rpx;
+}
+
+.header-white .title {
+  color: #FFFFFF;
+}
+
+.header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.bg-img {
+  width: 100%;
+}

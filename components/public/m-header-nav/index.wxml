@@ -1,0 +1,14 @@
+<view class="header {{ 'header-' + theme }} {{ fixed ? 'header-f' : ''}}" style="padding-top:{{statusBarHeight}}rpx">
+  <view class="header-nav">
+    <image
+      wx:if="{{isBack}}"
+      class="icon-back" src="/images/icon/{{ theme === 'white' ? 'back' : 'back-2'}}.png"
+      bind:tap="onBack"
+    ></image>
+    <view class="title" wx:if="{{title}}">{{title}}</view>
+  </view>
+  <view class="header-bg" wx:if="{{bgSrc}}">
+    <image mode="widthFix" class="bg-img" src="{{bgSrc}}"></image>
+  </view>
+</view>
+

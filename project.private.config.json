@@ -221,6 +221,12 @@
           "pathName": "pages/cooperation-exchange/cooperation-exchange",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "账户页",
+          "pathName": "pages/user-account/user-account",
+          "query": "",
+          "scene": null
         }
       ]
     }

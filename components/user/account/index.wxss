@@ -1,6 +1,6 @@
 @import "/assets/style/global.wxss";
 
-.order {
+.account {
   background-color: #ffffff;
   border-radius: 30rpx;
   overflow: hidden;

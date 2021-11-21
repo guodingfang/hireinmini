@@ -1,0 +1,22 @@
+<view class="account">
+  <m-header title="用户账户" moreText="查看明细" bind:more="onSkipAccountDetails" />
+  <view class="list">
+    <view class="item" data-type="wallet" bind:tap="onSkipAccountDetails">
+      <image class="icon" src="/images/user/wallet.png"></image>
+      <text class="label">钱包</text>
+    </view>
+    <view class="item" data-type="withdraw" bind:tap="onSkipAccountDetails">
+      <image class="icon" src="/images/user/withdraw.png">
+        <!-- <text class="num">99</text> -->
+      </image>
+      <text class="label">提现</text>
+    </view>
+    <view class="item" data-type="recharge" bind:tap="onSkipAccountDetails">
+      <image class="icon" src="/images/user/recharge.png">
+        <!-- <text class="num">5</text> -->
+      </image>
+      <text class="label">充值</text>
+    </view>
+    <view class="item"></view>
+  </view>
+</view>
