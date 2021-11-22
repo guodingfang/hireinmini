@@ -1,4 +1,4 @@
-<view class="header {{ 'header-' + theme }} {{ fixed ? 'header-f' : ''}}" style="padding-top:{{statusBarHeight}}rpx">
+<view class="header m-header {{ 'header-' + theme }} {{ fixed ? 'header-f' : ''}}" style="padding-top:{{statusBarHeight}}rpx">
   <view class="header-nav">
     <image
       wx:if="{{isBack}}"
@@ -10,5 +10,9 @@
   <view class="header-bg" wx:if="{{bgSrc}}">
     <image mode="widthFix" class="bg-img" src="{{bgSrc}}"></image>
   </view>
+</view>
+
+<view class="header-image m-header-image" wx:if="{{bgSrc}}">
+  <image mode="widthFix" class="bg-img" src="{{bgSrc}}"></image>
 </view>
 

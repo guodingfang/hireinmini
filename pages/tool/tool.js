@@ -206,9 +206,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '携手开启数字租赁服务新生态',
-      path: `/pages/index/index`,
-    }
+    // return {
+    //   title: '携手开启数字租赁服务新生态',
+    //   path: `/pages/index/index`,
+    // }
   }
 })

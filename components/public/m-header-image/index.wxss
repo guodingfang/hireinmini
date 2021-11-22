@@ -43,6 +43,12 @@
   z-index: -1;
 }
 
+.header-image {
+  font-size: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
 .bg-img {
   width: 100%;
 }

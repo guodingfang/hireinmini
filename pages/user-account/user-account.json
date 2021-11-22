@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "v-header": "/components/public/m-header-nav",
+    "v-header": "/components/public/m-header-image",
     "v-info": "/components/user-account/info"
   },
   "navigationStyle": "custom",

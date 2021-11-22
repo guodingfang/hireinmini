@@ -1,1 +1,5 @@
-/* pages/user-account/user-account.wxss */
+
+.m-header-image {
+  border-bottom-left-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
+}

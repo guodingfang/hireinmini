@@ -4,6 +4,7 @@
     fixed="{{true}}"
     title="我的账号"
     bgSrc="{{bgImagesUrl}}"
+    m-header-image="m-header-image"
   />
 </view>
 

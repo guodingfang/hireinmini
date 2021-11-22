@@ -27,6 +27,11 @@ Component({
   },
 
   /**
+   * 外部样式
+   */
+  externalClasses: ['m-header', 'm-header-image'],
+
+  /**
    * 组件的初始数据
    */
   data: {
