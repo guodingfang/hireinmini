@@ -34,6 +34,7 @@
       bind:tap="onSkipTool"
     >
       <image class="tool-img" src="./images/{{item.type}}.png"></image>
+      <image wx:if="{{item.isVip}}" class="icon-vip" src="/images/icon/vip-2.png"></image>
       <text class="label">{{item.val}}</text>
     </view>
   </view>

@@ -10,6 +10,7 @@ Page({
    */
   data: {
     remoteImagesUrl,
+    selectAgreement: false,
     formData: [
       {
         type: 'fullname',
@@ -109,7 +110,27 @@ Page({
     }
   },
 
+  onLink(e) {
+    const { type } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `/pages/${type}/${type}`,
+    })
+  },
+
+  onSelectAgreement () {
+    this.setData({
+      selectAgreement: !this.data.selectAgreement
+    })
+  },
+
   async onPublish() {
+    if (!this.data.selectAgreement) {
+      wx.showToast({
+        title: '请先勾选同意《嗨应隐私权政策》、《用户协议》',
+        icon: 'none'
+      })
+      return
+    }
     const { formData } = this.data
     console.log('formData', formData)
     const { code, msg = '' } = this.formVerify(formData)
