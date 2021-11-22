@@ -10,7 +10,7 @@
         type="digit"
         value="{{width}}"
         data-type="width"
-        bindblur="onInputChange"
+        bindinput="onInputChange"
       />
       <text class="unit">米</text>
     </view>
@@ -24,7 +24,7 @@
         type="digit"
         value="{{height}}"
         data-type="height"
-        bindblur="onInputChange"
+        bindinput="onInputChange"
       />
       <text class="unit">米</text>
     </view>
@@ -38,18 +38,18 @@
         type="digit"
         value="{{thickness}}"
         data-type="thickness"
-        bindblur="onInputChange"
+        bindinput="onInputChange"
       />
       <text class="unit">米</text>
     </view>
 
     <view class="num-list">
       <view
-        class="num-item {{selectNum === item ? 'select-num-item' : ''}}"
-        wx:for="{{numList}}"
+        class="num-item {{selectType === item ? 'select-num-item' : ''}}"
+        wx:for="{{typeList}}"
         wx:key="id"
         data-item="{{item}}"
-        bind:tap="onSelectNum"
+        bind:tap="onSelectType"
       >{{item}}</view>
     </view>
 
@@ -62,17 +62,22 @@
         type="digit"
         value="{{price}}"
         data-type="price"
-        bindblur="onInputChange"
+        bindinput="onInputChange"
       />
-      <text class="unit">元</text>
+      <text class="unit">元/m²</text>
+    </view>
+    
+    <view class="tips">
+      <view>1、为保证画面质量，单个桁架宽度不宜超过10米</view>
+      <view>2、宽度小于1米的单层桁架不适用此计算器</view>
     </view>
   </view>
 
   <view class="model">
-    <view class="result-btn">计算结果</view>
+    <view class="result-btn" bind:tap="onResult">计算结果</view>
   </view>
   
-  <view class="model">
+  <view class="model" wx:if="{{amount}}">
     <m-header title="计算结果" more="{{false}}">
       <view slot="tips" class="header-tips">（结果仅供参考）</view>
     </m-header>
@@ -80,23 +85,18 @@
     <view class="result-row">
       <view class="result-col col-column">
         <text class="col-label">桁架数量(米)：</text>
-        <text class="col-val">{{ verticalAmount }}</text>
+        <text class="col-val">{{ amount }}</text>
       </view>
       <view class="result-col col-column">
         <text class="col-label">画面面积(m²)：</text>
-        <text class="col-val">{{ acrossAmount }}</text>
+        <text class="col-val">{{ area }}</text>
       </view>
     </view>
     <view class="result-row">
       <view class="result-col col-column">
         <text class="col-label">喷绘金额(元)：</text>
-        <text class="col-val">{{ slantingAmount }}</text>
+        <text class="col-val">{{ totalPrice }}</text>
       </view>
-    </view>
-
-    <view class="tips">
-      <view>1、为保证画面质量，单个桁架宽度不宜超过10米</view>
-      <view>2、宽度小于1米的单层桁架不适用此计算器</view>
     </view>
   </view>
 </view>

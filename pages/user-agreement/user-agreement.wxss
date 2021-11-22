@@ -1,0 +1,14 @@
+
+.container {
+  padding: 24rpx;
+}
+
+.title {
+  font-weight: bold;
+  padding: 12rpx 0;
+}
+
+.content {
+  padding: 12rpx;
+  text-indent: 50rpx;
+}

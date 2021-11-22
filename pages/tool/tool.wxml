@@ -23,37 +23,49 @@
 >
   <view class="tabs-item" slot="item-1">
     <v-power />
+    <m-advert page="power" />
   </view>
   <view class="tabs-item" slot="item-2">
     <v-led />
+    <m-advert page="led" />
   </view>
   <view class="tabs-item" slot="item-3">
     <v-led-mini />
+    <m-advert page="ledmini" />
   </view>
   <view class="tabs-item" slot="item-4">
     <v-truss />
+    <m-advert page="truss" />
   </view>
-  <view class="tabs-item" slot="item-5">
-    <v-ly />
+  <view class="tab-item" slot="item-5">
+    <v-truss-compute />
+    <m-advert page="truss-compute" />
   </view>
   <view class="tabs-item" slot="item-6">
-    <v-projection />
+    <v-ly />
+    <m-advert page="ly" />
   </view>
   <view class="tabs-item" slot="item-7">
-    <v-stage />
+    <v-projection />
+    <m-advert page="projection" />
   </view>
   <view class="tabs-item" slot="item-8">
-    <v-delay />
+    <v-stage />
+    <m-advert page="stage" />
   </view>
   <view class="tabs-item" slot="item-9">
-    <v-scal />
+    <v-delay />
+    <m-advert page="delay" />
   </view>
-  <view class="tab-item" slot="item-10">
-    <v-truss-prints />
+  <view class="tabs-item" slot="item-10">
+    <v-scal />
+    <m-advert page="scal" />
   </view>
   <view class="tab-item" slot="item-11">
-    <v-truss-compute />
+    <v-truss-prints />
+    <m-advert page="truss-prints" />
   </view>
+
 </v-tab>
 
 <m-location

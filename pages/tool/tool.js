@@ -29,14 +29,21 @@ Page({
       {
         name: 'LED屏小间距',
         type: 'ledmini',
+        tips: 'vip'
       },
       {
         name: 'Truss承重',
         type: 'truss',
       },
       {
+        name: 'Truss计算',
+        type: 'truss-compute',
+        tips: 'vip'
+      },
+      {
         name: '雷亚计算',
         type: 'ly',
+        tips: 'vip'
       },
       {
         name: '投影公式',
@@ -55,12 +62,9 @@ Page({
         type: 'scal'
       },
       {
-        name: '桁架、喷绘计算器',
-        type: 'truss-prints'
-      },
-      {
-        name: 'Truss计算',
-        type: 'truss-compute'
+        name: '桁架喷绘计算',
+        type: 'truss-prints',
+        tips: 'vip'
       }
     ],
   },
