@@ -59,6 +59,36 @@
   height: 330rpx;
 }
 
+.agreement {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 20rpx 20rpx 20rpx;
+}
+
+.agreement-select {
+  width: 36rpx;
+  height: 36rpx;
+  border: 1rpx solid #666666;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.icon-select {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.agreement-val {
+  margin-left: 12rpx;
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.link {
+  color: #0400E6;
+  font-weight: bold;
+}
+
 .footer-btn {
   width: 640rpx;
   height: 70rpx;

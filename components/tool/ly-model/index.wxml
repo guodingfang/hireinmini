@@ -43,67 +43,249 @@
     </view>
 
     <view class="input-item">
-      <text class="label">前排挂灯：</text>
+      <text class="label">步距间隔：</text>
       <view class="radio-input" bind:tap="onSelectRadio">
-        <text class="radio-input-item radio-input-item-select">是</text>
-        <text class="radio-input-item">否</text>
+        <text
+          class="radio-input-item {{step === '1.5' ? 'radio-input-item-select' : ''}}"
+          data-type="step"
+          data-val="1.5"
+          bind:tap="onSelecRadio"
+        >1.5</text>
+        <text
+          class="radio-input-item {{step === '2' ? 'radio-input-item-select' : ''}}"
+          data-type="step"
+          data-val="2"
+          bind:tap="onSelecRadio"
+        >2</text>
       </view>
     </view>
-  </view>
 
+    <view class="input-item">
+      <text class="label">前排挂灯：</text>
+      <view class="radio-input" bind:tap="onSelectRadio">
+        <text
+          class="radio-input-item {{isHangingLamp === '否' ? 'radio-input-item-select' : ''}}"
+          data-type="isHangingLamp"
+          data-val="否"
+          bind:tap="onSelecRadio"
+        >否</text>
+        <text
+          class="radio-input-item {{isHangingLamp === '是' ? 'radio-input-item-select' : ''}}"
+          data-type="isHangingLamp"
+          data-val="是"
+          bind:tap="onSelecRadio"
+        >是</text>
+      </view>
+    </view>
+    <view class="tips">
+      注：此计算结果基于跨距2米（步距1.5米或2米），立柱2米，斜拉2.5米，普通搭建要求。异形搭建以实际情况为准，数据仅供参考，不作为备货依据。
+    </view>
+  </view>
   <view class="model">
     <m-header title="品牌" more="{{false}}" />
-    <view class="list">
-      <view
-        class="item {{ selectBrandId === item.brandid ? 'select-item' : ''}}"
-        wx:for="{{barndList}}"
-        wx:key="id"
-        data-id="{{item.brandid}}"
-        data-type="selectSpaceId"
-        bind:tap="onSelectTab"
-      >{{item.brandname}}</view>
-    </view>
+
+    <picker
+      mode="selector"
+      range="{{brandList}}"
+      range-key="brandname"
+      bindchange="onSelectBrand"
+    >
+      <view class="input-item">
+        <text class="label">选择品牌：</text>
+        <input
+          class="tool-item-input"
+          placeholder-class="tool-item-input-pl"
+          placeholder="选择品牌"
+          type="number"
+          value="{{brand.brandname}}"
+          data-type="brand"
+          disabled
+        />
+        <view class="unit" data-type="from" bind:tap="onLocation">
+          <image class="icon-down" src="/images/icon/down.png"></image>
+        </view>
+      </view>
+    </picker>
+
+    
+    <m-header title="重量" more="{{false}}" />
+
     <view class="input-item">
-      <text class="label">立柱重量：</text>
+      <text class="label">立柱重量（单根）：</text>
       <input
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入立柱重量"
         type="number"
-        value="{{height}}"
-        data-type="height"
-        bindblur="onInputChange"
+        value="{{verticalBarWeight}}"
+        data-type="verticalBarWeight"
+        bindinput="onInputChange"
       />
       <text class="unit">kg</text>
     </view>
 
     <view class="input-item">
-      <text class="label">横杆重量：</text>
+      <text class="label">横杆重量（单根）：</text>
       <input
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
         placeholder="输入横杆重量"
         type="number"
-        value="{{height}}"
-        data-type="height"
-        bindblur="onInputChange"
+        value="{{crossBarWeight}}"
+        data-type="crossBarWeight"
+        bindinput="onInputChange"
       />
       <text class="unit">kg</text>
     </view>
 
     <view class="input-item">
-      <text class="label">斜拉重量：</text>
+      <text class="label">斜拉重量（单根）：</text>
       <input
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"
-        placeholder="输入斜拉重要"
+        placeholder="输入斜拉重量"
         type="number"
-        value="{{height}}"
-        data-type="height"
-        bindblur="onInputChange"
+        value="{{slantingPoleWeight}}"
+        data-type="slantingPoleWeight"
+        bindinput="onInputChange"
       />
       <text class="unit">kg</text>
     </view>
+
+
+    <m-header title="整筐数据" more="{{false}}" />
+
+    <view class="data-table">
+      <view class="table-header">
+        <view class="header-label"></view>
+        <view class="header-label">单筐体积</view>
+        <view class="header-label">单筐数量</view>
+      </view>
+      <view class="row">
+        <view class="label">立杆：</view>
+        <view class="input-item">
+          <input
+            class="tool-item-input"
+            placeholder-class="tool-item-input-pl"
+            placeholder=""
+            type="number"
+            value="{{verticalBarPkVolume}}"
+            data-type="verticalBarPkVolume"
+            bindinput="onInputChange"
+          />
+          <text class="unit">方</text>
+        </view>
+
+        <view class="input-item">
+          <input
+            class="tool-item-input"
+            placeholder-class="tool-item-input-pl"
+            placeholder=""
+            type="number"
+            value="{{verticalBarAmount}}"
+            data-type="verticalBarAmount"
+            bindinput="onInputChange"
+          />
+          <text class="unit">根</text>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="label">横杆：</view>
+        <view class="input-item">
+          <input
+            class="tool-item-input"
+            placeholder-class="tool-item-input-pl"
+            placeholder=""
+            type="number"
+            value="{{crossBarPkVolume}}"
+            data-type="crossBarPkVolume"
+            bindinput="onInputChange"
+          />
+          <text class="unit">方</text>
+        </view>
+
+        <view class="input-item">
+          <input
+            class="tool-item-input"
+            placeholder-class="tool-item-input-pl"
+            placeholder=""
+            type="number"
+            value="{{crossBarAmount}}"
+            data-type="crossBarAmount"
+            bindinput="onInputChange"
+          />
+          <text class="unit">根</text>
+        </view>
+      </view>
+
+      <view class="row">
+        <view class="label">斜拉：</view>
+        <view class="input-item">
+          <input
+            class="tool-item-input"
+            placeholder-class="tool-item-input-pl"
+            placeholder=""
+            type="number"
+            value="{{slantingPolePkVolume}}"
+            data-type="slantingPolePkVolume"
+            bindinput="onInputChange"
+          />
+          <text class="unit">方</text>
+        </view>
+
+        <view class="input-item">
+          <input
+            class="tool-item-input"
+            placeholder-class="tool-item-input-pl"
+            placeholder=""
+            type="number"
+            value="{{slantingPoleAmount}}"
+            data-type="slantingPoleAmount"
+            bindinput="onInputChange"
+          />
+          <text class="unit">根</text>
+        </view>
+      </view>
+    </view>
+   
+
+    <m-header title="运费辅助计算" more="{{false}}" />
+
+    <view class="input-item">
+      <text class="label">始发地：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="选择始发地"
+        type="number"
+        value="{{from.address}}"
+        disabled
+        data-type="from"
+        bind:tap="onLocation"
+      />
+      <view class="unit" data-type="from" bind:tap="onLocation">
+        <image class="icon-location" src="/images/icon/location-3.png"></image>
+      </view>
+    </view>
+
+    <view class="input-item">
+      <text class="label">目的地：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="选择目的地"
+        type="number"
+        value="{{to.address}}"
+        disabled
+        data-type="to"
+        bind:tap="onLocation"
+      />
+      <view class="unit" data-type="from" bind:tap="onLocation">
+        <image class="icon-location" src="/images/icon/location-3.png"></image>
+      </view>
+    </view>
+
 
     <view class="input-item">
       <text class="label">运输距离：</text>
@@ -112,9 +294,9 @@
         placeholder-class="tool-item-input-pl"
         placeholder="输入运输距离"
         type="number"
-        value="{{height}}"
-        data-type="height"
-        bindblur="onInputChange"
+        value="{{distance}}"
+        data-type="distance"
+        bindinput="onInputChange"
       />
       <text class="unit">km</text>
     </view>
@@ -126,19 +308,19 @@
         placeholder-class="tool-item-input-pl"
         placeholder="输入斜运输单价"
         type="number"
-        value="{{height}}"
-        data-type="height"
-        bindblur="onInputChange"
+        value="{{price}}"
+        data-type="price"
+        bindinput="onInputChange"
       />
-      <text class="unit">元</text>
+      <text class="unit">元/km</text>
     </view>
   </view>
 
   <view class="model">
-    <view class="result-btn">计算结果</view>
+    <view class="result-btn"  bind:tap="onResult">计算结果</view>
   </view>
 
-  <view class="model">
+  <view class="model" wx:if="{{verticalAmount}}">
     <m-header title="计算结果" more="{{false}}">
       <view slot="tips" class="header-tips">（结果仅供参考）</view>
     </m-header>
@@ -163,33 +345,20 @@
     <view class="result-row">
       <view class="result-col col-column">
         <text class="col-label">总重量(kg)：</text>
-        <text class="col-val">{{ slantingAmount }}</text>
+        <text class="col-val">{{ totalWeight }}</text>
       </view>
       <view class="result-col col-column">
         <text class="col-label">总方数(方)：</text>
-        <text class="col-val">{{ slantingAmount }}</text>
+        <text class="col-val">{{ totalPkVolume }}</text>
       </view>
     </view>
 
     <view class="result-row">
       <view class="result-col col-column">
         <text class="col-label">运费总价(元)：</text>
-        <text class="col-val">{{ slantingAmount }}</text>
+        <text class="col-val">{{ totalPirce }}</text>
       </view>
-    </view>
-
-    <view class="tips">
-      注：此计算结果基于跨距2米（步距1.5米），立柱2米，斜拉2.5米，普通搭建要求。异形搭建以实际情况为准，数据仅供参考，不作为备货依据。
     </view>
   </view>
 </view>
 
-<view class="advert">
-  <view class="advert-title">广告</view>
-  <v-skip
-    src="/images/advert/tool-advert.gif"
-    width="710"
-    height="300"
-    radius="20"
-  />
-</view>

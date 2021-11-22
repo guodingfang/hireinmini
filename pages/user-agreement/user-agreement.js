@@ -1,37 +1,11 @@
-// pages/order-list/order-list.js
+// pages/user-agreement/user-agreement.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    tabList: [
-      {
-        name: '商品订单',
-        type: 'goods-order',
-        select: true
-      },
-      {
-        name: '租赁订单',
-        type: 'lease-order'
-      }
-    ],
-    statusList: [
-      { type: 'all', name: '全部' },
-      { type: 'notPay', name: '待付款' },
-      { type: 'pay', name: '已付款' },
-      { type: 'complete', name: '已完成' },
-      { type: 'after', name: '售后' },
-    ],
-    goodsList: [],
-  },
 
-  onSelectTab(e) {
-    this.setData({
-      tabList: this.data.tabList.map(tab => tab.type === e.detail.type 
-        ? {...tab, select: true} 
-        : {...tab, select: false})
-    })
   },
 
   /**
@@ -83,4 +57,10 @@ Page({
 
   },
 
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })

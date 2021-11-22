@@ -1,0 +1,9 @@
+<view class="advert" wx:if="{{advertUrl}}">
+  <view class="advert-title">广告</view>
+  <v-skip
+    src="{{imgUrl}}{{advertUrl}}"
+    width="710"
+    height="300"
+    radius="20"
+  />
+</view>

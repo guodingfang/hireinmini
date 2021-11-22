@@ -115,3 +115,23 @@ export const getHotList = (option = {}) => {
     ...option,
   })
 }
+
+/**
+ * 计算两个地址之间距离
+ * @param {*} option 
+ */
+export const calculateDistance = (option = {}) => {
+  console.log('option', option)
+  return new Promise((resolve, reject) => {
+    getMap().calculateDistance({
+      mode: 'driving',
+      from: option.from,
+      to: [{...option.to}],
+      success({ result }) {
+        const distanceData = result.elements[0]
+        console.log('distanceData', distanceData)
+        resolve(distanceData)
+      }
+    })
+  })
+}

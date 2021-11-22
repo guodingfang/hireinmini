@@ -16,7 +16,12 @@
       data-index="{{index}}"
       style="--width--: {{100 / tabList.length}}%; --selectColor--: {{tabSelectColor}}; --color--: {{tabColor}}; --borderColor--: {{borderColor}}"
       class="tab-item {{ item.select ? 'tab-item-select': '' }}"
-    >{{ item.name }}</view>
+    >
+      <view wx:if="{{item.tips}}" class="tips">
+        <image wx:if="{{item.tips === 'vip'}}" class="icon-vip" src="/images/icon/vip.png"></image>
+      </view>
+      {{ item.name }}
+    </view>
   </scroll-view>
 
   <swiper

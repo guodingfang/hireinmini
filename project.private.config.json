@@ -227,6 +227,12 @@
           "pathName": "pages/user-account/user-account",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "用户协议",
+          "pathName": "pages/user-agreement/user-agreement",
+          "query": "",
+          "scene": null
         }
       ]
     }

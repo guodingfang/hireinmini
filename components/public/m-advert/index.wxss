@@ -1,0 +1,6 @@
+
+.advert-title {
+  color: #666;
+  font-size: 24rpx;
+  padding: 24rpx;
+}

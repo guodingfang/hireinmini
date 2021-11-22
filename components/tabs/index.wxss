@@ -6,12 +6,14 @@
 }
 
 .tab-item {
+  position: relative;
   padding: 0 40rpx;
   white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color--);
+  z-index: 99;
 }
 
 .tab-item-select {
@@ -31,6 +33,18 @@
   width: 40rpx;
   height: 6rpx;
   background-color: var(--borderColor--);
+}
+
+.tips {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.icon-vip {
+  width: 60rpx;
+  height: 50rpx;
 }
 
 .tabs-content {

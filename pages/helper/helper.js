@@ -25,6 +25,7 @@ Page({
       }, {
         type: 'ly',
         val: '雷亚架公式',
+        isVip: true
       }, {
         type: 'scal',
         val: '开窗公式',

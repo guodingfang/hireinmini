@@ -10,6 +10,7 @@ Page({
    */
   data: {
     remoteImagesUrl,
+    selectAgreement: false,
     formData: [
       {
         type: 'fullname',
@@ -34,26 +35,26 @@ Page({
       },
       {
         type: 'othercontacter',
-        label: '其他联系人',
-        placeholder: '输入其他联系人',
+        label: '公司名称',
+        placeholder: '输入公司名称',
         value: '',
         need: false
       },
       {
         type: 'companyUser',
-        label: '公司负责人',
-        placeholder: '输入其他输入公司负责人联系人',
+        label: '纳税人识别号',
+        placeholder: '输入纳税人识别号',
         value: '',
         need: false
       },
-      {
-        type: 'companyname',
-        label: '隶属关系或隶属公司',
-        placeholder: '输入隶属关系或隶属公司',
-        value: '',
-        need: false,
-        flex: 'column'
-      }
+      // {
+      //   type: 'companyname',
+      //   label: '隶属关系或隶属公司',
+      //   placeholder: '输入隶属关系或隶属公司',
+      //   value: '',
+      //   need: false,
+      //   flex: 'column'
+      // }
     ]
   },
 
@@ -109,7 +110,27 @@ Page({
     }
   },
 
+  onLink(e) {
+    const { type } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `/pages/${type}/${type}`,
+    })
+  },
+
+  onSelectAgreement () {
+    this.setData({
+      selectAgreement: !this.data.selectAgreement
+    })
+  },
+
   async onPublish() {
+    if (!this.data.selectAgreement) {
+      wx.showToast({
+        title: '请先勾选同意《嗨应隐私权政策》、《用户协议》',
+        icon: 'none'
+      })
+      return
+    }
     const { formData } = this.data
     console.log('formData', formData)
     const { code, msg = '' } = this.formVerify(formData)
