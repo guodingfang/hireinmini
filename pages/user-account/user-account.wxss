@@ -1,4 +1,8 @@
 
+Page {
+  background-color: #F5F4F9;
+}
+
 .m-header-image {
   border-bottom-left-radius: 60rpx;
   border-bottom-right-radius: 60rpx;

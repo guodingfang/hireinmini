@@ -1,0 +1,36 @@
+<view class="categorys">
+  <view class="select-contacter">
+    <view class="select-btn {{ isModel ? 'is-select-btn' : '' }}" bind:tap="onSelect">
+      <text>全部</text>
+      <image class="icon-down" src="/images/icon/down-2.png"></image>
+    </view>
+    <view
+      class="select-model {{ animateShow ? 'animated fadeIn' : 'animated fadeOut' }}"
+      wx:if="{{isModel}}"
+    >
+      <view class="select-item">全部</view>
+      <view class="select-item">消费</view>
+      <view class="select-item">租赁</view>
+      <view class="select-item">问答</view>
+      <view class="select-item">充值</view>
+      <view class="select-item">提现</view>
+    </view>
+  </view>
+
+  <view class="item" wx:key="id" wx:for="{{list}}">
+    <image src="/images/user/recharge-2.png" class="icon"></image>
+    <view class="content">
+      <view class="title">
+        <text class="label">消费</text>
+        <text class="amount">（10笔）</text>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-bar-nav"></view>
+      </view>
+    </view>
+    <view class="price">
+      <text>8778.34</text>
+      <text>元</text>
+    </view>
+  </view>
+</view>

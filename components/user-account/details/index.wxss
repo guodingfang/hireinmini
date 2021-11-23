@@ -1,0 +1,53 @@
+
+.details {
+  position: relative;
+  z-index: 99;
+  height: 100vh;
+  background-color: #ffffff;
+  margin: 0 30rpx;
+}
+
+.details-list {
+  height: calc(100vh - 100rpx);
+  overflow: hidden;
+}
+
+.item {
+  display: flex;
+  height: 128rpx;
+  margin: 0 30rpx;
+  align-items: center;
+}
+
+.item + .item {
+  border-top: 1rpx solid #E5E5E5;
+}
+
+.icon {
+  width: 88rpx;
+  height: 88rpx;
+  margin-right: 24rpx;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.title {
+  color: #1A1A1A;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.date {
+  margin-top: 10rpx;
+  color: #666666;
+  font-size: 24rpx;
+}
+
+.price {
+  color: #FF4545;
+  font-size: 28rpx;
+}

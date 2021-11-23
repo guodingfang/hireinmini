@@ -1,0 +1,21 @@
+
+<view class="details">
+  <view class="header">
+    <m-header title="资金明细" more="{{false}}" />
+  </view>
+
+  <scroll-view
+    class="details-list"
+    scroll-y
+    enable-flex
+  >
+    <view class="item" wx:key="id" wx:for="{{list}}">
+      <image src="/images/icon/consumption.png" class="icon"></image>
+      <view class="content">
+        <view class="title">消费消费消费消费消费消费...</view>
+        <view class="date">2021-11-15 20:20:20</view>
+      </view>
+      <view class="price">+50</view>
+    </view>
+  </scroll-view>
+</view>

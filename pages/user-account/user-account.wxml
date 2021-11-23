@@ -10,4 +10,6 @@
 
 <v-info />
 
+<v-categorys />
 
+<v-details />

@@ -1,7 +1,9 @@
 {
   "usingComponents": {
     "v-header": "/components/public/m-header-image",
-    "v-info": "/components/user-account/info"
+    "v-info": "/components/user-account/info",
+    "v-categorys": "/components/user-account/categorys",
+    "v-details": "/components/user-account/details"
   },
   "navigationStyle": "custom",
   "navigationBarTitleText": "账户"

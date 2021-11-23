@@ -1,0 +1,106 @@
+@import '/assets/style/animate.wxss';
+
+.categorys {
+  position: relative;
+  z-index: 999;
+  background-color: #F2F6FF;
+  border-radius: 30rpx 30rpx 0 0;
+  margin: 20rpx 30rpx 0 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30rpx;
+}
+
+.select-contacter {
+  position: relative;
+}
+
+.select-btn {
+  width: 630rpx;
+  height: 60rpx;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0400E6;
+  font-size: 24rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, .05);
+}
+
+.select-btn.is-select-btn {
+  border-radius: 20rpx 20rpx 0 0;
+}
+
+.icon-down {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.select-model {
+  position: absolute;
+  z-index: 1;
+  background-color: #FFFFFF;
+  border-radius: 0 0 20rpx 20rpx;
+  width: 630rpx;
+  box-shadow: 0 0 10rpx rgba(0, 0, 0, .05);
+}
+
+.select-item {
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666666;
+  font-size: 24rpx;
+  margin: 0 30rpx;
+}
+
+.select-item + .select-item {
+  border-top: 1rpx solid #E5E5E5;
+}
+
+.item {
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+}
+
+.icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 16rpx;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-right: auto;
+}
+
+.title .label {
+  font-size: 30rpx;
+  color: #1A1A1A;
+}
+
+.title .amount {
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.progress-bar {
+  margin-top: 10rpx;
+  width: 330rpx;
+  height: 16rpx;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.progress-bar-nav {
+  height: 16rpx;
+  width: 160rpx;
+  border-radius: 16rpx;
+  background: linear-gradient(270deg, #FFC473 0%, rgba(255, 196, 115, 0.4) 100%);
+}
