@@ -53,7 +53,7 @@
     ></image>
   </view>
 
-  <view class="model-item">
+  <!-- <view class="model-item">
     <view class="item-title">营业执照副本</view>
     <image
       class="item-img"
@@ -61,7 +61,7 @@
       bind:tap="onUpload"
       src="{{remoteImagesUrl}}/authentication/charter.png"
     ></image>
-  </view>
+  </view> -->
   <view class="agreement">
     <view class="agreement-select" bind:tap="onSelectAgreement">
       <image wx:if="{{selectAgreement}}" class="icon-select" src="/images/icon/select.png"></image>
