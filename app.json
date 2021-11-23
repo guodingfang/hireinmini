@@ -29,7 +29,8 @@
     "pages/user-authentication/user-authentication",
     "pages/company-manage/company-manage",
     "pages/cooperation-exchange/cooperation-exchange",
-    "pages/user-agreement/user-agreement"
+    "pages/user-agreement/user-agreement",
+    "pages/privacy-agreement/privacy-agreement"
   ],
   "permission": {
     "scope.userLocation": {

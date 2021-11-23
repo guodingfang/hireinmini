@@ -68,7 +68,7 @@
     </view>
     <view class="agreement-val">
       我已阅读并同意
-      <text class="link" data-type="user-agreement" bind:tap="onLink">《嗨应隐私权政策》</text>、
+      <text class="link" data-type="privacy-agreement" bind:tap="onLink">《嗨应隐私权政策》</text>、
       <text class="link" data-type="user-agreement" bind:tap="onLink">《用户协议》</text>
     </view>
   </view>  

@@ -101,7 +101,7 @@
           data-type="brand"
           disabled
         />
-        <view class="unit" data-type="from" bind:tap="onLocation">
+        <view class="unit" data-type="from">
           <image class="icon-down" src="/images/icon/down.png"></image>
         </view>
       </view>
@@ -255,7 +255,7 @@
     <view class="input-item">
       <text class="label">始发地：</text>
       <input
-        class="tool-item-input"
+        class="tool-item-input location-input single-row-overstep"
         placeholder-class="tool-item-input-pl"
         placeholder="选择始发地"
         type="number"
@@ -272,7 +272,7 @@
     <view class="input-item">
       <text class="label">目的地：</text>
       <input
-        class="tool-item-input"
+        class="tool-item-input location-input single-row-overstep"
         placeholder-class="tool-item-input-pl"
         placeholder="选择目的地"
         type="number"
