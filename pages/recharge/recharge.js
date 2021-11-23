@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isSelect: true
+    isRechargeComplete: false,
+    isSelect: true,
+    price: '',
   },
 
   /**
@@ -18,6 +20,24 @@ Page({
   onSelect (e) {
     this.setData({
       isSelect: true
+    })
+  },
+
+  onChangeInput(e) {
+    this.setData({
+      price: e.detail.value
+    })
+  },
+
+  onClose() {
+    this.setData({
+      price: ''
+    })
+  },
+
+  onRecharge() {
+    this.setData({
+      isRechargeComplete: !this.data.isRechargeComplete
     })
   },
 
@@ -53,13 +73,6 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
   }
 })

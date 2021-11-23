@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isWithdrawComplete: false,
+    price: ''
   },
 
   /**
@@ -13,6 +14,30 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+
+  onChangeInput (e) {
+    this.setData({
+      price: e.detail.value
+    })
+  },
+
+  onClose() {
+    this.setData({
+      price: ''
+    })
+  },
+
+  onAllWithdraw() {
+    this.setData({
+      price: 2000
+    })
+  },
+
+  onWithdraw() {
+    this.setData({
+      isWithdrawComplete: !this.data.isWithdrawComplete
+    })
   },
 
   /**
@@ -49,11 +74,4 @@ Page({
   onPullDownRefresh: function () {
 
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  }
 })

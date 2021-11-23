@@ -32,7 +32,7 @@ Component({
       if(!pics.length) return
       const { imgUrl, videoUrl } = this.data
       let url = ''
-      if(picsign === '1') {
+      if(picsign === '1' || picsign === '3') {
         url = `${imgUrl}${pics[0].picurl_thumbnails}`
       } else if (picsign === '2') {
         url = `${videoUrl}${pics[0].videourl}?x-oss-process=video/snapshot,t_1000,f_jpg,w_${pics[0].width},h_${pics[0].height},m_fast`

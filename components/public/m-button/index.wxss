@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+.is-select {
+  border-color: transparent;
+}
+
 .icon-select {
   width: 36rpx;
   height: 36rpx;

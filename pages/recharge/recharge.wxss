@@ -17,7 +17,6 @@
 
 .sign {
   width: 50rpx;
-  height: 70rpx;
   font-size: 50rpx;
   font-family: PingFang SC;
   font-weight: 400;
@@ -26,8 +25,25 @@
 }
 
 .recharge-input {
+  flex: 1;
   padding-left: 10rpx;
+  font-size: 50rpx;
+  height: 60rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+}
+
+.pl-recharge-input {
   font-size: 28rpx;
+  color: #999999;
+  font-weight: 500;
+}
+
+.icon-close {
+  width: 30rpx;
+  height: 30rpx;
+  padding: 30rpx;
+  margin-right: -30rpx;
 }
 
 .pay-list {
@@ -47,6 +63,12 @@
 .icon-wechat {
   width: 42rpx;
   height: 42rpx;
+}
+
+.recharge-complete {
+  width: 256rpx;
+  height: 204rpx;
+  margin: 147rpx 247rpx 104rpx 247rpx;
 }
 
 .recharge-btn {

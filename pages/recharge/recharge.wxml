@@ -1,20 +1,43 @@
-<view class="model">
-  <m-header title="充值金额（元）" more="{{false}}" />
-  <view class="recharge">
-    <view class="sign">￥</view>
-    <input class="recharge-input" type="number" placeholder="输入充值金额" />
-  </view>
-</view>
 
-<view class="model">
-  <m-header title="付款方式" more="{{false}}" />
-  <view class="pay-list">
-    <view class="pay-item">
-      <image class="icon-wechat" src="/images/icon/wechat.png"></image>
-      <text class="pay-val">微信支付</text>
-      <m-button type="select" is-select="{{isSelect}}" bind:select="onSelect" />
+<block wx:if="{{!isRechargeComplete}}">
+  <view class="model">
+    <m-header title="充值金额（元）" more="{{false}}" />
+    <view class="recharge">
+      <view class="sign">￥</view>
+      <input
+        class="recharge-input"
+        placeholder-class="pl-recharge-input"
+        value="{{price}}"
+        type="number"
+        placeholder="输入充值金额"
+        bindinput="onChangeInput"
+      />
+      <image
+        wx:if="{{price}}"
+        catch:tap="onClose"
+        class="icon-close"
+        src="/images/icon/close-2.png"
+      ></image>
     </view>
   </view>
-</view>
 
-<view class="recharge-btn">确定充值</view>
+  <view class="model">
+    <m-header title="付款方式" more="{{false}}" />
+    <view class="pay-list">
+      <view class="pay-item">
+        <image class="icon-wechat" src="/images/icon/wechat.png"></image>
+        <text class="pay-val">微信支付</text>
+        <m-button type="select" is-select="{{isSelect}}" bind:select="onSelect" />
+      </view>
+    </view>
+  </view>
+</block>
+
+<block wx:else>
+  <image class="recharge-complete" src="/images/public/recharge-complete.png"></image>
+</block>
+
+
+<view class="recharge-btn" bind:tap="onRecharge">
+  {{ !isRechargeComplete ? '确定充值' : '完成' }}
+</view>

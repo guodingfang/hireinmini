@@ -1,2 +1,48 @@
-<!--pages/withdraw/withdraw.wxml-->
-<text>pages/withdraw/withdraw.wxml</text>
+<block wx:if="{{!isWithdrawComplete}}">
+  <view class="model">
+    <view class="bank-card">
+      <input
+        class="bank-card-input"
+        placeholder-class="pl-bank-card-input"
+        type="number"
+        placeholder="必填，填写需要提现到的银行卡账户"
+      />
+    </view>
+  </view>
+
+  <view class="model">
+    <m-header title="提现金额（元）" more="{{false}}" />
+    <view class="withdraw">
+      <view class="sign">￥</view>
+      <input
+        class="withdraw-input"
+        placeholder-class="pl-withdraw-input"
+        value="{{price}}"
+        type="number"
+        placeholder="输入提现金额"
+        bindinput="onChangeInput"
+      />
+      <image
+        wx:if="{{price}}"
+        catch:tap="onClose"
+        class="icon-close"
+        src="/images/icon/close-2.png"
+      ></image>
+    </view>
+    <view class="price-total">
+      <text class="price-val">可提现金额￥2000.00，</text>
+      <text class="btn-all" bind:tap="onAllWithdraw">全部提现</text>
+    </view>
+  </view>
+</block>
+
+<block wx:else>
+  <view class="withdraw-complete">
+    <image class="withdraw-complete-img" src="/images/public/withdraw-complete.png"></image>
+    <text class="withdraw-complete-text">请耐心等待，我们会将您提现的金额在1-5个工作日打款到您的账户</text>
+  </view>
+</block>
+
+<view class="withdraw-btn" bind:tap="onWithdraw">
+  {{ !isWithdrawComplete ? '确定提现' : '完成' }}
+</view>
