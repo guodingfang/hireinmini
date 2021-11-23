@@ -18,6 +18,12 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onSkip(e) {
+      const { type = '' } = e.currentTarget.dataset
+      if (!type) return
+      wx.navigateTo({
+        url: `/pages/${type}/${type}`,
+      })
+    }
   }
 })

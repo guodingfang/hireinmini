@@ -30,7 +30,9 @@
     "pages/company-manage/company-manage",
     "pages/cooperation-exchange/cooperation-exchange",
     "pages/user-account/user-account",
-    "pages/user-agreement/user-agreement"
+    "pages/user-agreement/user-agreement",
+    "pages/recharge/recharge",
+    "pages/withdraw/withdraw"
   ],
   "permission": {
     "scope.userLocation": {

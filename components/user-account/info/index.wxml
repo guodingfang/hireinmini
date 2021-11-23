@@ -2,20 +2,21 @@
   <view class="account-total-price">
     <view class="price-title">
       <text class="price-title-val">账户余额（元）</text>
+      <image class="icon-browse" src="/images/icon/browse-2.png"></image>
     </view>
     <view class="total-price">
-      <text>122598793</text>
-      <view>.97</view>
+      <text class="integer">122598793</text>
+      <text class="digits">.97</text>
     </view>
   </view>
 
   <view class="operation">
-    <view class="btn">
-      <image src=""></image>
+    <view class="btn btn-withdraw" data-type="withdraw" bind:tap="onSkip">
+      <image class="icon-withdraw" src="/images/user/withdraw-2.png"></image>
       <text>提现</text>
     </view>
-    <view class="btn">
-      <image src=""></image>
+    <view class="btn btn-recharge" data-type="recharge" bind:tap="onSkip">
+      <image class="icon-recharge" src="/images/user/recharge-2.png"></image>
       <text>充值</text>
     </view>
   </view>

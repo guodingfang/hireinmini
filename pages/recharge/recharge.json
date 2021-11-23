@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "m-header": "/components/public/m-header",
+    "m-button": "/components/public/m-button"
+  },
+  "navigationBarTitleText": "充值"
+}

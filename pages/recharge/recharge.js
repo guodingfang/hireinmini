@@ -1,32 +1,26 @@
-import { remoteImagesUrl } from '../../config'
-import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
-const app = getApp();
+// pages/recharge/recharge.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
-    categorys: []
+    isSelect: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getHeaderBlock()
+
   },
 
-  getHeaderBlock() {
-		const { workInfo, statusBarHeight, headerTopHeader } = app.globalData;
-		const { tabHeight } = judgeTabBarHeight(workInfo);
-		this.setData({
-			headerBlock: statusBarHeight + headerTopHeader,
-			tabHeight,
-		})
+  onSelect (e) {
+    this.setData({
+      isSelect: true
+    })
   },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -67,5 +61,5 @@ Page({
    */
   onReachBottom: function () {
 
-  },
+  }
 })

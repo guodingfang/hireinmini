@@ -1,0 +1,64 @@
+
+.model {
+  width: 690rpx;
+  background: #FFFFFF;
+  border-radius: 30rpx;
+  margin: 20rpx 30rpx;
+  overflow: hidden;
+}
+
+.recharge {
+  margin: 10rpx 30rpx 30rpx 30rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.sign {
+  width: 50rpx;
+  height: 70rpx;
+  font-size: 50rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  line-height: 50rpx;
+  color: #1A1A1A;
+}
+
+.recharge-input {
+  padding-left: 10rpx;
+  font-size: 28rpx;
+}
+
+.pay-list {
+  padding: 0 30rpx;
+}
+
+.pay-item {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+}
+
+.pay-val {
+  margin: 0 auto 0 20rpx;
+}
+
+.icon-wechat {
+  width: 42rpx;
+  height: 42rpx;
+}
+
+.recharge-btn {
+  width: 640rpx;
+  height: 80rpx;
+  background: #FFB44D;
+  border-radius: 20rpx;
+  margin: 30rpx auto;
+  font-weight: bold;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

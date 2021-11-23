@@ -1,4 +1,70 @@
 
 .account-info {
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.price-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.price-title-val {
+  font-size: 26rpx;
+  color: #ffffff;
+}
+
+.icon-browse {
+  width: 26rpx;
+  height: 16rpx;
+  padding: 12rpx;
+}
+
+.total-price {
+  margin-top: 10rpx;
+  color: #ffffff;
+  font-size: 70rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: baseline;
+}
+
+.digits {
+  font-size: 50rpx;
+}
+
+.operation {
+  margin-top: 20rpx;
+  display: flex;
+}
+
+.btn {
+  width: 180rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.btn-withdraw {
+  color: #0400E6;
+}
+
+.btn-recharge {
+  margin-left: 30rpx;
+  color: #FFB44D;
+}
+
+.icon-withdraw,
+.icon-recharge {
+  width: 38rpx;
+  height: 40rpx;
+  padding-right: 10rpx;
 }

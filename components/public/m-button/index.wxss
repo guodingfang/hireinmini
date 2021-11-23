@@ -1,0 +1,13 @@
+
+.select {
+  width: 36rpx;
+  height: 36rpx;
+  border: 1rpx solid #666666;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.icon-select {
+  width: 36rpx;
+  height: 36rpx;
+}

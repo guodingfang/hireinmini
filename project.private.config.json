@@ -233,6 +233,18 @@
           "pathName": "pages/user-agreement/user-agreement",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "提现",
+          "pathName": "pages/withdraw/withdraw",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "充值",
+          "pathName": "pages/recharge/recharge",
+          "query": "",
+          "scene": null
         }
       ]
     }
