@@ -31,6 +31,7 @@
     "pages/cooperation-exchange/cooperation-exchange",
     "pages/user-account/user-account",
     "pages/user-agreement/user-agreement",
+    "pages/privacy-agreement/privacy-agreement",
     "pages/recharge/recharge",
     "pages/withdraw/withdraw"
   ],

@@ -235,6 +235,12 @@
           "scene": null
         },
         {
+          "name": "隐私权协议",
+          "pathName": "pages/privacy-agreement/privacy-agreement",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "提现",
           "pathName": "pages/withdraw/withdraw",
           "query": "",

@@ -1,3 +1,4 @@
+@import '../../../assets/style/global.wxss';
 @import '../common.wxss';
 
 .model {
@@ -53,4 +54,8 @@
 .icon-down {
   width: 30rpx;
   height: 30rpx;
+}
+
+.location-input {
+  padding-right: 62rpx;
 }

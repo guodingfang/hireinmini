@@ -33,20 +33,20 @@ Page({
         value: '',
         need: true
       },
-      {
-        type: 'othercontacter',
-        label: '公司名称',
-        placeholder: '输入公司名称',
-        value: '',
-        need: false
-      },
-      {
-        type: 'companyUser',
-        label: '纳税人识别号',
-        placeholder: '输入纳税人识别号',
-        value: '',
-        need: false
-      },
+      // {
+      //   type: 'othercontacter',
+      //   label: '公司名称',
+      //   placeholder: '输入公司名称',
+      //   value: '',
+      //   need: false
+      // },
+      // {
+      //   type: 'companyUser',
+      //   label: '纳税人识别号',
+      //   placeholder: '输入纳税人识别号',
+      //   value: '',
+      //   need: false
+      // },
       // {
       //   type: 'companyname',
       //   label: '隶属关系或隶属公司',
