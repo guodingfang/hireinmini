@@ -8,13 +8,17 @@ Page({
    */
   data: {
     bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
-    categorys: []
+    categorys: [],
+    isScroll: false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      page
+    })
     this.getHeaderBlock()
   },
 
@@ -25,6 +29,12 @@ Page({
 			headerBlock: statusBarHeight + headerTopHeader,
 			tabHeight,
 		})
+  },
+
+  onScrollTop () {
+    this.setData({
+      isScroll: false
+    })
   },
   
   /**
@@ -66,6 +76,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      isScroll: true
+    })
   },
 })

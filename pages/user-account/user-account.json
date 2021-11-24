@@ -6,5 +6,6 @@
     "v-details": "/components/user-account/details"
   },
   "navigationStyle": "custom",
+  "onReachBottomDistance": 0,
   "navigationBarTitleText": "账户"
 }

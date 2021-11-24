@@ -2,13 +2,13 @@
 .details {
   position: relative;
   z-index: 99;
-  height: 100vh;
+  height: calc(100vh - var(--top--));
   background-color: #ffffff;
   margin: 0 30rpx;
 }
 
 .details-list {
-  height: calc(100vh - 100rpx);
+  height: calc(100vh - 100rpx - var(--top--));
   overflow: hidden;
 }
 

@@ -1,13 +1,15 @@
 
-<view class="details">
+<view class="details" style="--top--:{{topHeader}}rpx">
   <view class="header">
     <m-header title="资金明细" more="{{false}}" />
   </view>
 
   <scroll-view
     class="details-list"
-    scroll-y
+    style="--top--:{{topHeader}}rpx"
+    scroll-y="{{isScroll}}"
     enable-flex
+    bindscrolltoupper="onScrollTop"
   >
     <view class="item" wx:key="id" wx:for="{{list}}">
       <image src="/images/icon/consumption.png" class="icon"></image>

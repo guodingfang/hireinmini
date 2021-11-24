@@ -1,15 +1,22 @@
+<page-meta
+  page-style="{{ isScroll ? 'overflow: hidden;' : '' }}"
+>
+  <view style="height: {{headerBlock}}rpx">
+    <v-header
+      fixed="{{true}}"
+      title="我的账号"
+      bgSrc="{{bgImagesUrl}}"
+      m-header-image="m-header-image"
+    />
+  </view>
 
-<view style="height: {{headerBlock}}rpx">
-  <v-header
-    fixed="{{true}}"
-    title="我的账号"
-    bgSrc="{{bgImagesUrl}}"
-    m-header-image="m-header-image"
+  <v-info />
+
+  <v-categorys />
+
+  <v-details
+    isScroll="{{isScroll}}"
+    topHeader="{{headerBlock}}"
+    bind:top="onScroll"
   />
-</view>
-
-<v-info />
-
-<v-categorys />
-
-<v-details />
+</page-meta>
