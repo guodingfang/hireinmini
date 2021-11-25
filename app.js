@@ -16,6 +16,8 @@ App({
 		headerTopHeader: 88,
 		// 设置全局header搜索框高度：rpx
 		headerSearchHeader: 100,
+		// 分享后定位是否需要再次跳转
+		againSkip: false
 	},
 
 	// 判断小程序更新

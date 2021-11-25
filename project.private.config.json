@@ -251,6 +251,12 @@
           "pathName": "pages/recharge/recharge",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "发现页",
+          "pathName": "pages/index/index",
+          "query": "path=content-account&needLogin=need&userid=7946",
+          "scene": null
         }
       ]
     }

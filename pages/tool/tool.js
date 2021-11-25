@@ -13,7 +13,8 @@ Page({
    */
   data: {
     locationLoading: false,
-		locationErrLoading: false,
+    locationErrLoading: false,
+    city: '',
     type: 'power',
     bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
     defaultIndex: 0,
@@ -92,10 +93,9 @@ Page({
   },
 
   async uploadAccessLog() {
-    const { tabList, type } = this.data
+    const { tabList, type, city } = this.data
     const tab = tabList.find(tab => tab.type === type)
     const { userid, unionid, wxappid } = getUserInfo(['userid', 'unionid', 'wxappid'])
-    const { city } = getLocationCityInfo(['city'])
     await uploadAccessLog({
       page: tab ? tab.name : '',
       loginuserid: userid,
@@ -131,6 +131,7 @@ Page({
     if (city) {
       this.setData({
         locationLoading: false,
+        city,
       })
       this.getDefaultIndex()
       return
@@ -140,9 +141,10 @@ Page({
       })
     }
 		try {
-			await getLocationInfo()
+      const { city = '' } = await getLocationInfo()
 			this.setData({
-				locationLoading: false,
+        locationLoading: false,
+        city
       })
       this.getDefaultIndex()
 		} catch (err) {
@@ -206,9 +208,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    // return {
-    //   title: '携手开启数字租赁服务新生态',
-    //   path: `/pages/index/index`,
-    // }
+    return {
+      title: '携手开启数字租赁服务新生态',
+      path: `/pages/index/index?path=tool&needLogin=need&type=${this.data.type}`,
+    }
   }
 })

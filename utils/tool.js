@@ -1,4 +1,4 @@
-const formatTime = date => {
+export const formatTime = date => {
 	const year = date.getFullYear()
 	const month = date.getMonth() + 1
 	const day = date.getDate()
@@ -10,7 +10,7 @@ const formatTime = date => {
 }
 
 //获取当前时间，格式YYYY-MM-DD
-const getNowFormatDate = () => {
+export const getNowFormatDate = () => {
 	var date = new Date();
 	var seperator1 = "-";
 	var year = date.getFullYear();
@@ -28,12 +28,15 @@ const getNowFormatDate = () => {
 
 
 // 去字符串首位空格
-const trim = (str) => {
+export const trim = (str) => {
 	return str.replace(/(^\s*)|(\s*$)/g, "");
 }
 
-export {
-	formatTime,
-	getNowFormatDate,
-	trim,
+// 参数{object}拼接为url参数{string}
+export const gainParams = (args) => {
+  let params = '';
+  for(let key in args) {
+    params += `&${key}=${args[key]}`;
+  }
+  return params;
 }

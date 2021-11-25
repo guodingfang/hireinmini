@@ -1,14 +1,17 @@
 import { getDiscoverMsgList } from '../../models/release'
 import { getCarousel, getRecommendAccountList, getNLoginList } from '../../models/util'
-import { initUserInfo, getAttentionedList } from '../../models/user'
+import { initUserInfo, getAttentionedList, login } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { getLocationInfo } from '../../models/map'
 import { promisic } from '../../utils/util'
 import { storageSet, storageGet } from '../../utils/storage'
+import { gainParams } from '../../utils/tool'
 
 const app = getApp();
 Page({
 	data: {
+		havSkip: false,
+		initParams: {},
 		scrollTop: 0,
 		lastUserId: 0,
 		initEnter: true,
@@ -35,13 +38,50 @@ Page({
 		triggered: false,
 	},
 
-	async onLoad() {
+	async onLoad(options = {}) {
+		this.getHeaderBlock()
 		const { userid = 0 } = getUserInfo(['userid'])
+		const { path = '', needLogin = 'notNeed' } = options
+		if (path && needLogin === 'need') {
+			this.setData({
+				havSkip: true
+			})
+		}
+		// 已有缓存地址
+		const cityInfo = wx.getStorageSync('cityinfo')
+		if (cityInfo && cityInfo.city) {
+			this.setData({
+				locationLoading: false
+			})
+		}
 		this.setData({
+			initParams: options,
 			lastUserId: userid
 		})
-		this.getHeaderBlock()
 		await this.getLocationInfo()
+	},
+
+	// 根据path判断是否来自分享页面，获取定位
+	async getLoginPage () {
+		const { path = '', needLogin = 'notNeed', ...args } = this.data.initParams
+		if (path && needLogin === 'need') {
+			const { code = -1 } = await login()
+			if(code === 0) {
+				app.globalData.againSkip = false
+				let otherParams = gainParams(args)
+				wx.navigateTo({
+					url: `/pages/${path}/${path}?${otherParams}`,
+				})
+				setTimeout(() => {
+					// 关闭空白页
+					this.setData({
+						havSkip: false
+					})
+				}, 1000)
+			} else {
+				app.globalData.againSkip = true
+			}
+		}
 	},
 
 	async getNLoginList() {
@@ -52,6 +92,7 @@ Page({
 	async getLocationInfo() {
 		try {
 			await getLocationInfo()
+			await this.getLoginPage()
 			this.getCityInfo()
 			this.setData({
 				locationLoading: false,
@@ -271,6 +312,10 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	async onShow () {
+		if(app.globalData.againSkip) {
+			await this.getLoginPage()
+			return
+		}
 		this.getCityInfo()
 		const { lastUserId, notAgainLoading, initEnter } = this.data
 		const { userid = 0 } = getUserInfo(['userid'])
@@ -299,4 +344,11 @@ Page({
 	async onReachBottom () {
 
 	},
+
+	  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })

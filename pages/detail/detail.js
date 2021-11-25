@@ -7,7 +7,7 @@ import {
 	addShareRelease,
 	addUserDialRecord
 } from '../../models/release'
-import { initUserInfo, addAttention, isAFocusB } from '../../models/user'
+import { addAttention, isAFocusB } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { remoteImagesUrl } from '../../config'
 import config from '../../config'
@@ -24,13 +24,11 @@ Page({
 		otherList: [],
 		messageList: [],
 		loading: true,
-		isShare: false,
 	},
 	async onLoad (options) {
 		const { tabHeight } = judgeTabBarHeight();
 		this.setData({
 			msgid: options.msgid,
-			isShare: options.isShare === 'share',
 			tabHeight
 		})
 	},
@@ -174,21 +172,7 @@ Page({
 		this.getReleaseDetail()
 	},
 
-	async initUserInfo(options) {
-		const { code, userinfo } = await initUserInfo()
-		console.log('初始化获取userinfo数据', userinfo)
-	},
-
 	async onShow () {
-		if(this.data.isShare) {
-			this.setData({
-				isShare: false
-			})
-			await this.initUserInfo()
-			await this.getReleaseDetail()
-			await this.getOtherHosList()
-			return
-		}
 		await this.getReleaseDetail()
 		await this.getOtherHosList()
 	},
@@ -209,7 +193,7 @@ Page({
 			})
 			return {
 				title: '携手开启数字租赁服务新生态',
-				path: `/pages/detail/detail?msgid=${msgid}&isShare=share`,
+				path: `/pages/index/index?path=detail&needLogin=need&msgid=${this.data.msgid}`,
 			}
 		}
 	},
