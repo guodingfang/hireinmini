@@ -1,0 +1,1 @@
+<view class="not-page" wx:if="{{loading}}"></view>
