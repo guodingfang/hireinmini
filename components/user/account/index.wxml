@@ -1,5 +1,5 @@
 <view class="account">
-  <m-header title="用户账户" moreText="查看明细" bind:more="onSkipAccountDetails" />
+  <m-header title="我的帐户" moreText="查看明细" bind:more="onSkipAccountDetails" />
   <view class="list">
     <view class="item" data-type="wallet" bind:tap="onSkipAccountDetails">
       <image class="icon" src="/images/user/wallet.png"></image>

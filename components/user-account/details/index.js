@@ -6,7 +6,19 @@ Component({
   properties: {
     isScroll: {
       type: Boolean,
-      value: false
+      value: false,
+      observer(newVal, oldVal) {
+        if(oldVal && !newVal) {
+          this.setData({
+            scrollTop: 0,
+          })
+        }
+        setTimeout(() => {
+          this.setData({
+            _isScroll: newVal
+          })
+        }, 0)
+      }
     },
     topHeader: {
       type: Number,
@@ -18,6 +30,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    _isScroll: false,
     list: '123456789012'
   },
 
@@ -25,8 +38,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onScrollTop() {
-      this.triggerEvent('top')
+    onScrollTop () {
+      this.triggerEvent('top', {}, {})
     }
   }
 })

@@ -7,8 +7,10 @@
   <scroll-view
     class="details-list"
     style="--top--:{{topHeader}}rpx"
-    scroll-y="{{isScroll}}"
+    scroll-y="{{_isScroll}}"
     enable-flex
+    upper-threshold="0"
+    scroll-top="{{scrollTop}}"
     bindscrolltoupper="onScrollTop"
   >
     <view class="item" wx:key="id" wx:for="{{list}}">
@@ -19,5 +21,6 @@
       </view>
       <view class="price">+50</view>
     </view>
+    <view class="footer-text">已经没有更多啦</view>
   </scroll-view>
 </view>

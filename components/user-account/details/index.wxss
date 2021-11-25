@@ -51,3 +51,12 @@
   color: #FF4545;
   font-size: 28rpx;
 }
+
+.footer-text {
+  height: 60rpx;
+  color: #666666;
+  font-size: 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,6 +1,4 @@
-<page-meta
-  page-style="{{ isScroll ? 'overflow: hidden;' : '' }}"
->
+<page-meta>
   <view style="height: {{headerBlock}}rpx">
     <v-header
       fixed="{{true}}"
@@ -17,6 +15,6 @@
   <v-details
     isScroll="{{isScroll}}"
     topHeader="{{headerBlock}}"
-    bind:top="onScroll"
+    bind:top="onScrollTop"
   />
 </page-meta>
