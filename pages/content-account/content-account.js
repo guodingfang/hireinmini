@@ -197,4 +197,14 @@ Page({
   onPullDownRefresh: function () {
 
   },
+
+    /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+    return {
+      title: '携手开启数字租赁服务新生态',
+      path: `/pages/index/index?path=content-account&needLogin=need&userid=${this.data.userid}`,
+    }
+  }
 })

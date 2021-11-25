@@ -42,6 +42,7 @@ Page({
 		notMoreData: false,
 		triggered: false,
 		moreHidden: false,
+		loading: false,
 	},
 
 	/**
@@ -99,7 +100,11 @@ Page({
 
 	// 获取租赁商列表
 	async getRecommendCompanyList() {
-		const { pagesize, currentPage, city } = this.data
+		const { loading = false, pagesize, currentPage, city } = this.data
+		if(loading) return
+		this.setData({
+			loading: true
+		})
 		const { data, page } = await getRecommendCompanyList({
 			page: currentPage,
 			pagesize,
@@ -114,7 +119,8 @@ Page({
 				thisLocalityCompanyList: [...this.data.thisLocalityCompanyList, ...thisLocalityCompanyList],
 				currentPage: page.page + 1,
 				notMoreData: page.pagecount === page.page,
-				moreHidden: false
+				moreHidden: false,
+				loading: false
 			})
 		}
 		setTimeout(() => {
@@ -206,7 +212,7 @@ Page({
 	async onScrollEnd(e) {
 		if(this.data.notMoreData) return
 		this.setData({
-			moreHidden: true
+			moreHidden: true,
 		})
 		await this.getRecommendCompanyList()
 	},

@@ -26,11 +26,11 @@
 </view>
 
 <v-order orderaudit="{{orderaudit}}" ordernum="{{ordernum}}" />
-<!-- 
-<view class="demo-model" bind:tap="onUnRegisterUser">
+
+<!-- <view class="demo-model" bind:tap="onUnRegisterUser">
 	注销账户
-</view>
- -->
+</view> -->
+
 <!-- 
 <view class="advert">
 	<v-skip
