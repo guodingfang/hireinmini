@@ -1,7 +1,12 @@
 <view class="account">
-  <m-header title="我的帐户" moreText="查看明细" bind:more="onSkipAccountDetails" />
+  <m-header
+    title="我的帐户"
+    moreText="查看明细"
+    data-type="user-account"
+    bind:more="onSkipAccountDetails"
+  />
   <view class="list">
-    <view class="item" data-type="wallet" bind:tap="onSkipAccountDetails">
+    <view class="item" data-type="user-account" bind:tap="onSkipAccountDetails">
       <image class="icon" src="/images/user/wallet.png"></image>
       <text class="label">钱包</text>
     </view>
