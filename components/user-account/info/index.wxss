@@ -30,6 +30,7 @@
   font-weight: bold;
   display: flex;
   align-items: baseline;
+  justify-content: center;
 }
 
 .digits {

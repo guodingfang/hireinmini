@@ -11,24 +11,67 @@
   height: 90rpx;
   border: 1rpx solid #E5E5E5;
   border-radius: 20rpx;
-  margin: 30rpx;
+  margin: 30rpx 30rpx 20rpx 30rpx;
+  display: flex;
+  align-items: center;
   display: flex;
   align-items: center;
 }
 
 .bank-card-input {
-  width: 100%;
+  flex: 1;
   padding-left: 30rpx;
   box-sizing: border-box;
 }
 
-.pl-withdraw-input,
-.pl-bank-card-input {
+.upload-card {
+  width: 112rpx;
+  height: 100%;
+  background-color: #F7F7F7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pl-input {
   font-size: 28rpx;
   color: #999999;
   font-weight: 500;
 }
 
+.tips {
+  color: #666666;
+  margin: 0 0 20rpx 50rpx;
+  font-size: 22rpx;
+}
+
+.input-model {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  padding: 0 30rpx;
+}
+
+.label {
+  min-width: 168rpx;
+  color: #808080;
+  font-size: 28rpx;
+}
+
+.input-item {
+  flex: 1;
+  border: 1rpx solid #E6E6E6;
+  height: 70rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.input-val {
+  flex: 1;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+}
 
 .withdraw {
   margin: 10rpx 30rpx 0 30rpx;

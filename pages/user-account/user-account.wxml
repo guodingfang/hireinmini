@@ -8,13 +8,16 @@
     />
   </view>
 
-  <v-info />
+  <v-info total-price="{{totalPrice}}" />
 
-  <v-categorys />
+  <v-categorys list="{{categorys}}" bind:select="onSelectType" />
 
   <v-details
     isScroll="{{isScroll}}"
     topHeader="{{headerBlock}}"
+    list="{{detailData}}"
+    isLoading="{{isLoading}}"
     bind:top="onScrollTop"
+    bind:load="onLoadDetails"
   />
 </page-meta>

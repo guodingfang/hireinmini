@@ -1,4 +1,7 @@
-// pages/withdraw/withdraw.js
+import { getUserBalance, withdrawBankCard } from '../../models/account'
+import { upload } from '../../models/util'
+import { promisic } from '../../utils/util'
+import { verifyData } from '../../utils/tool'
 Page({
 
   /**
@@ -6,20 +9,73 @@ Page({
    */
   data: {
     isWithdrawComplete: false,
-    price: ''
+    cardno: '',
+    amount: '',
+    cardPaths: [],
+    totalPrice: '0.00'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getUserBalance()
+  },
 
+  async getUserBalance() {
+    const { balance = '0.00' } = await getUserBalance({})
+    this.setData({
+      totalPrice: balance
+    })
   },
 
   onChangeInput (e) {
+    const { type = '' } = e.target.dataset
     this.setData({
-      price: e.detail.value
+      [`${type}`]: e.detail.value
     })
+  },
+
+  async onUploadCard (e) {
+    const { tempFilePaths = [] } = await promisic(wx.chooseImage)({
+      count: 1,
+      sourceType: ['album', 'camera'],
+    });
+    wx.showLoading({
+      title: '上传中',
+    })
+    this.setData({
+      cardPaths: tempFilePaths
+    })
+
+    this._upload()
+  },
+
+  async _upload() {
+    const { cardPaths } = this.data
+    const [ res ] = await upload({
+      url: '/User/getBankCardInfo',
+      files: cardPaths
+    })
+    const {
+      result = false,
+      msg = '',
+      bankinfo = '',
+      cardno = '',
+    } = JSON.parse(res)
+    wx.hideLoading()
+    if (!result) {
+      wx.showToast({
+        title: msg,
+        icon: 'none'
+      })
+      return
+    }
+    this.setData({
+      bank: bankinfo,
+      cardno: cardno
+    })
+
   },
 
   onClose() {
@@ -30,14 +86,44 @@ Page({
 
   onAllWithdraw() {
     this.setData({
-      price: 2000
+      amount: +this.data.totalPrice
     })
   },
 
-  onWithdraw() {
-    this.setData({
-      isWithdrawComplete: !this.data.isWithdrawComplete
+  async onWithdraw() {
+    if(this.data.isWithdrawComplete) {
+      wx.navigateBack({
+        delta: 1,
+      })
+      return
+    }
+    const {
+      amount = '',
+      cardno = '',
+      name = '',
+      bank = ''
+    } = this.data
+
+    const { verify } = verifyData(this.data, [
+      { type: 'amount', label: '金额' },
+      { type: 'cardno', label: '银行卡号' },
+      { type: 'name', label: '真实姓名' },
+      { type: 'bank', label: '开户行' },
+    ])
+
+    if(!verify) return
+
+    const { errcode = 0  } = await withdrawBankCard({
+      amount,
+      cardno,
+      name,
+      bank
     })
+    if(errcode === 0) {
+      this.setData({
+        isWithdrawComplete: !this.data.isWithdrawComplete
+      })
+    }
   },
 
   /**

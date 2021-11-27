@@ -3,10 +3,44 @@
     <view class="bank-card">
       <input
         class="bank-card-input"
-        placeholder-class="pl-bank-card-input"
+        placeholder-class="pl-input"
         type="number"
+        data-type="cardno"
+        value="{{cardno}}"
         placeholder="必填，填写需要提现到的银行卡账户"
+        bindinput="onChangeInput"
       />
+      <view class="upload-card" bind:tap="onUploadCard">上传</view>
+    </view>
+    <view class="tips">账户用于对公转账</view>
+
+    <view class="input-model">
+      <text class="label">真实姓名：</text>
+      <view class="input-item">
+        <input
+          class="input-val"
+          type="text"
+          placeholder="必填，填写银行卡真实姓名"
+          data-type="name"
+          placeholder-class="pl-input"
+          bindinput="onChangeInput"
+        />
+      </view>
+    </view>
+
+    <view class="input-model">
+      <text class="label">银行开户行：</text>
+      <view class="input-item">
+        <input
+          class="input-val"
+          type="text"
+          placeholder="必填，填写银行卡开户行"
+          value="{{bank}}"
+          data-type="bank"
+          placeholder-class="pl-input"
+          bindinput="onChangeInput"
+        />
+      </view>
     </view>
   </view>
 
@@ -16,8 +50,9 @@
       <view class="sign">￥</view>
       <input
         class="withdraw-input"
-        placeholder-class="pl-withdraw-input"
-        value="{{price}}"
+        placeholder-class="pl-input"
+        value="{{amount}}"
+        data-type="amount"
         type="number"
         placeholder="输入提现金额"
         bindinput="onChangeInput"
@@ -30,7 +65,7 @@
       ></image>
     </view>
     <view class="price-total">
-      <text class="price-val">可提现金额￥2000.00，</text>
+      <text class="price-val">可提现金额￥{{totalPrice}}，</text>
       <text class="btn-all" bind:tap="onAllWithdraw">全部提现</text>
     </view>
   </view>

@@ -1,4 +1,5 @@
-// components/user-account/detail/index.js
+import config from '../../../config'
+
 Component({
   /**
    * 组件的属性列表
@@ -23,6 +24,14 @@ Component({
     topHeader: {
       type: Number,
       value: 0
+    },
+    list: {
+      type: Array,
+      value: [],
+    },
+    isLoading: {
+      type: String,
+      value: ''
     }
   },
 
@@ -30,8 +39,8 @@ Component({
    * 组件的初始数据
    */
   data: {
+    imgUrl: config.imgUrl,
     _isScroll: false,
-    list: '123456789012'
   },
 
   /**
@@ -40,6 +49,9 @@ Component({
   methods: {
     onScrollTop () {
       this.triggerEvent('top', {}, {})
+    },
+    onLoadDetails () {
+      this.triggerEvent('load', {}, {})
     }
   }
 })

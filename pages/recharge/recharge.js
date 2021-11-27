@@ -1,4 +1,4 @@
-// pages/recharge/recharge.js
+import { payOrder } from '../../models/account'
 Page({
 
   /**
@@ -35,10 +35,28 @@ Page({
     })
   },
 
-  onRecharge() {
-    this.setData({
-      isRechargeComplete: !this.data.isRechargeComplete
+  async onRecharge() {
+    if(this.data.isRechargeComplete) {
+      wx.navigateBack({
+        delta: 1,
+      })
+      return
+    }
+    const { code = -1, msg = '' } = await payOrder({
+      ordertype: 'recharge',
+      totalfee: this.data.price * 100,
+      goodsdescription: '用户充值'
     })
+    if(code !== 0) {
+      wx.showToast({
+        title: msg,
+        icon: 'none'
+      })
+    } else {
+      this.setData({
+        isRechargeComplete: !this.data.isRechargeComplete
+      })
+    }
   },
 
   /**

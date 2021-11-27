@@ -5,22 +5,32 @@
   </view>
 
   <scroll-view
+    wx:if="{{list.length}}"
     class="details-list"
     style="--top--:{{topHeader}}rpx"
     scroll-y="{{_isScroll}}"
     enable-flex
     upper-threshold="0"
+    lower-threshold="150"
     scroll-top="{{scrollTop}}"
     bindscrolltoupper="onScrollTop"
+    bindscrolltolower="onLoadDetails"
   >
-    <view class="item" wx:key="id" wx:for="{{list}}">
-      <image src="/images/icon/consumption.png" class="icon"></image>
-      <view class="content">
-        <view class="title">消费消费消费消费消费消费...</view>
-        <view class="date">2021-11-15 20:20:20</view>
+    <view class="list-container">
+      <view class="item" wx:key="id" wx:for="{{list}}">
+        <image src="{{imgUrl}}{{item.iconbig}}" class="icon"></image>
+        <view class="content">
+          <view class="title">{{item.dicvalue}}</view>
+          <view class="date">{{item.tradingtime}}</view>
+        </view>
+        <view class="price">
+          <text class="symbol">{{item.inoutsign || '-'}}</text>
+          <text>{{item.balance}}</text>
+        </view>
       </view>
-      <view class="price">+50</view>
+      <view class="footer-text" wx:if="{{isLoading}}">{{ isLoading }}</view>
     </view>
-    <view class="footer-text">已经没有更多啦</view>
   </scroll-view>
+  
+  <m-not-content wx:else />
 </view>

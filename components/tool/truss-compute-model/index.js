@@ -1,4 +1,4 @@
-import { verifyData } from '../common.js'
+import { verifyData } from '../../../utils/tool'
 
 Component({
   /**

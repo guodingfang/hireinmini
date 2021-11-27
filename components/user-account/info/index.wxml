@@ -2,11 +2,11 @@
   <view class="account-total-price">
     <view class="price-title">
       <text class="price-title-val">账户余额（元）</text>
-      <image class="icon-browse" src="/images/icon/browse-2.png"></image>
+      <image class="icon-browse" src="/images/icon/browse-2.png" bind:tap="onBrowsePrice"></image>
     </view>
     <view class="total-price">
-      <text class="integer">122598793</text>
-      <text class="digits">.97</text>
+      <text class="integer">{{isShowPrice ? integerPirce : '**'}}</text>
+      <text class="digits">.{{isShowPrice ? decimalsPrice : '**'}}</text>
     </view>
   </view>
 

@@ -63,17 +63,16 @@ export const upload = async (params = {}, option = {}) => {
   const { prefixUrl = config.baseUrl, url = '', files = [] } = params
   const {
     formData = null,
-    header = {
-      'content-type': 'multipart/form-data'
-    }
+    header = { 'content-type': 'multipart/form-data' },
   } = option
   const {userid = 0, accesstoken = '', unionid = ''} = getUserInfo([
     'accesstoken',
     'userid',
     'unionid'
   ])
+  const resList = Array.apply(null, Array(files.length))
   for (let [index, file] of files.entries()) {
-    await promisic(wx.uploadFile)({
+     const { data } = await promisic(wx.uploadFile)({
       url: `${prefixUrl}${url}`,
       filePath: file,
       name: 'file',
@@ -84,11 +83,12 @@ export const upload = async (params = {}, option = {}) => {
         loginunionid: unionid,
         ...formData,
       },
-      header: {
-        ...header,
-      }
+      header: { ...header },
     })
+
+    resList[index] = data
   }
+  return resList
 }
 
 /**

@@ -1,19 +1,34 @@
-// components/user-account/categorys/index.js
+import config from '../../../config'
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    list: {
+      type: Array,
+      value: [],
+      observer(val = []) {
+        this.setData({
+          categorys: [{
+            balancetype: '',
+            dicvalue: '全部'
+          }, ...val]
+        })
+      }
+    }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    list: '12345',
+    categorys: [],
+    imgUrl: config.imgUrl,
     isModel: false,
-    animateShow: false
+    animateShow: false,
+    selectCategoryName: '全部',
+    selectCategory: '',
   },
 
   /**
@@ -36,7 +51,15 @@ Component({
           isModel: true,
         })
       }
-
+    },
+    onSelectCategory(e) {
+      const { type = '', name = '全部' } = e.currentTarget.dataset
+      this.setData({
+        selectCategory: type,
+        selectCategoryName: name
+      })
+      this.onSelect()
+      this.triggerEvent('select', { type }, {})
     }
   }
 })

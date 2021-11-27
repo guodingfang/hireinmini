@@ -2,14 +2,19 @@
 .details {
   position: relative;
   z-index: 99;
-  height: calc(100vh - var(--top--));
-  background-color: #ffffff;
+  max-height: calc(100vh - var(--top--));
   margin: 0 30rpx;
 }
 
 .details-list {
-  height: calc(100vh - 100rpx - var(--top--));
+  max-height: calc(100vh - 100rpx - var(--top--));
   overflow: hidden;
+}
+
+.list-container {
+  background-color: #ffffff;
+  margin-bottom: 20rpx;
+  border-radius: 24rpx;
 }
 
 .item {
@@ -50,6 +55,10 @@
 .price {
   color: #FF4545;
   font-size: 28rpx;
+}
+
+.price .symbol {
+  padding-right: 10rpx;
 }
 
 .footer-text {
