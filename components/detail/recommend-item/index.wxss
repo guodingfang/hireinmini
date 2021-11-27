@@ -32,7 +32,7 @@
 }
 
 .browse {
-  margin-left: 20rpx;
+  margin-left: auto;
 }
 
 .val {
