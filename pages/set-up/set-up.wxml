@@ -12,7 +12,8 @@
       <input
         class="val"
         type="text"
-        placeholder="{{nickname === '' ? '请填写用户名' : nickname}}"
+        value="{{nickname}}"
+        placeholder="请填写用户名"
         data-type="nickname"
         bindinput="onChangeInput"
       />
@@ -27,7 +28,8 @@
       <input
         class="val"
         type="text"
-        placeholder="{{remark === '' ? '这个人很懒，什么也没留下' : remark}}"
+        value="{{remark}}"
+        placeholder="这个人很懒，什么也没留下"
         data-type="remark"
         bindinput="onChangeInput"
       />
