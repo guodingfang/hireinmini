@@ -1,0 +1,21 @@
+<view class="comment">
+  <view class="title two-row-overstep" wx:if="{{title}}">{{ title }}</view>
+  <view class="user-info" wx:if="{{userInfo}}">
+    <image class="head-portrait" src="/images/public/logo.png"></image>
+    <view class="user">
+      <view class="name">韩小颖</view>
+      <view class="created">2021.11.26 18:50</view>
+    </view>
+  </view>
+  <view class="content">
+    <view class="content-val">
+      广东省惠州市惠东新地Music酒吧Madrix麦爵士3D方框幻彩灯带 12V SPI 幻彩灯带 60珠 1680米 AS_832 Artnet分控 16台 AS_麦爵士脱机主控 2台 Madrix 5加密狗一个 Aoshow翱烁光电 生产，安装指导与Madrix麦爵士调试，或者安装一条龙服务。
+      <view class="more">
+        查看全部<image class="icon-more" src="/images/icon/more.png"></image>
+      </view>
+    </view>
+    <view class="files">
+      <image mode="widthFix" class="file-item" src=""></image>
+    </view>
+  </view>
+</view>

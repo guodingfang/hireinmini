@@ -25,7 +25,7 @@
 	<view class="btn" bind:tap="onSVip">成为VIP会员</view>
 </view>
 
-<v-account orderaudit="{{orderaudit}}" ordernum="{{ordernum}}" />
+<!-- <v-account orderaudit="{{orderaudit}}" ordernum="{{ordernum}}" /> -->
 
 <v-order orderaudit="{{orderaudit}}" ordernum="{{ordernum}}" />
 

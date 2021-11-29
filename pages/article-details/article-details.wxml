@@ -1,0 +1,24 @@
+<view class="details">
+  <view class="user-info">
+    <image class="head-portrait" src="/images/public/logo.png"></image>
+    <view class="user">
+      <view class="name">赁客石强</view>
+      <view class="created-num">
+        <text class="created">2021-11-24</text>
+        <text class="num">999个回答</text>
+      </view>
+    </view>
+  </view>
+
+  <v-comment
+    title="酒吧Madrix麦爵士3D方框立方体幻彩像素灯带"
+  />
+</view>
+
+<view class="comment-list">
+  <v-comment
+    user-info="{{userInfo}}"
+  />
+</view>
+
+<v-edit />

@@ -33,7 +33,8 @@
     "pages/user-agreement/user-agreement",
     "pages/privacy-agreement/privacy-agreement",
     "pages/recharge/recharge",
-    "pages/withdraw/withdraw"
+    "pages/withdraw/withdraw",
+    "pages/article-details/article-details"
   ],
   "permission": {
     "scope.userLocation": {

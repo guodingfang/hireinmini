@@ -1,0 +1,22 @@
+
+.edit-btn {
+  position: fixed;
+  z-index: 9;
+  right: 30rpx;
+  bottom: 70rpx;
+  background-color: #0400E6;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 145rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+}
+
+.icon-edit {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}

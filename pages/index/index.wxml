@@ -8,7 +8,7 @@
 		isTopTitle="{{true}}"
 		bind:getLocation="getLocation"
 	/>
-	<v-tab fixed="{{true}}" list="{{tabList}}" bind:select="onSelectTab" />
+	<v-tab fixed="{{true}}" height="{{70}}" list="{{tabList}}" bind:select="onSelectTab" />
 </view>
 
 <scroll-view

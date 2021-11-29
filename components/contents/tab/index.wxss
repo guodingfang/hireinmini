@@ -14,7 +14,7 @@
 .tab-item {
   min-width: 180rpx;
   width: var(--width--);
-  line-height: 90rpx;
+  line-height: var( --height--);
   text-align: center;
   /* display: flex;
   align-items: center;

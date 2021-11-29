@@ -257,6 +257,12 @@
           "pathName": "pages/index/index",
           "query": "path=content-account&needLogin=need&userid=7946",
           "scene": null
+        },
+        {
+          "name": "文章详情",
+          "pathName": "pages/article-details/article-details",
+          "query": "",
+          "scene": null
         }
       ]
     }

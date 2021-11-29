@@ -1,0 +1,83 @@
+@import '/assets/style/global.wxss';
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 30rpx;
+}
+
+.title {
+  font-size: 40rpx;
+  color: #1A1A1A;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.head-portrait {
+  width: 86rpx;
+  height: 86rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+}
+
+.user .name {
+  color: #1A1A1A;
+  font-size: 28rpx;
+}
+
+.user .created {
+  color: #808080;
+  font-size: 28rpx;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-val {
+  position: relative;
+  color: #333333;
+  font-size: 28rpx;
+}
+
+.more {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 142rpx;
+  height: 40rpx;
+  padding: 0 10rpx;
+  background: linear-gradient(270deg, #F2F2F2 0%, #F2F2F2 73%, rgba(242, 242, 242, 0.1) 100%);
+  border-radius: 40rpx;
+  color: #666666;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.more .icon-more {
+  width: 16rpx;
+  height: 24rpx;
+}
+
+.files {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-item {
+  width: 388rpx;
+}

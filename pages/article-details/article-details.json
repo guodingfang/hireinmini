@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "v-comment": "/components/article/comment-item",
+    "v-edit": "/components/article/edit-btn"
+  }
+}
