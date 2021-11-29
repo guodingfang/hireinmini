@@ -1,4 +1,5 @@
 import { payOrder } from '../../models/account'
+import { verifyData } from '../../utils/tool'
 Page({
 
   /**
@@ -42,6 +43,13 @@ Page({
       })
       return
     }
+
+    const { verify } = verifyData(this.data, [
+      { type: 'price', label: '充值金额' },
+    ])
+
+    if(!verify) return
+
     const { code = -1, msg = '' } = await payOrder({
       ordertype: 'recharge',
       totalfee: this.data.price * 100,

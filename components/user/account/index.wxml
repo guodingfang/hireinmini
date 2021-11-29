@@ -2,6 +2,7 @@
   <m-header
     title="我的帐户"
     moreText="查看明细"
+    m-header="m-header"
     data-type="user-account"
     bind:more="onSkipAccountDetails"
   />

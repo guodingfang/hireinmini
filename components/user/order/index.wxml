@@ -1,5 +1,5 @@
 <view class="order" bind:tap="onSkipOrderDetails">
-  <m-header title="我的订单" moreText="全部" />
+  <m-header title="我的订单" m-header="m-header" moreText="全部" />
   <view class="list">
     <view class="item" data-type="0" bind:tap="onSkipOrder">
       <image class="icon" src="/images/user/goods-not-payment.png"></image>

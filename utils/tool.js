@@ -41,6 +41,12 @@ export const gainParams = (args) => {
   return params;
 }
 
+// 银行卡验证
+export const bankCardFormat = (str = '') => {
+	if(!str) return ''
+	return str.replace(/\D/g, '').replace(/(....)(?=.)/g, '$1 ')
+}
+
 // 验证数据
 export const verifyData = (data, params) => {
   let verify = true

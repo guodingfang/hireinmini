@@ -2,7 +2,7 @@
   <view style="height: {{headerBlock}}rpx">
     <v-header
       fixed="{{true}}"
-      title="我的账号"
+      title="我的账户"
       bgSrc="{{bgImagesUrl}}"
       m-header-image="m-header-image"
     />
@@ -10,7 +10,7 @@
 
   <v-info total-price="{{totalPrice}}" />
 
-  <v-categorys list="{{categorys}}" bind:select="onSelectType" />
+  <v-categorys list="{{categorysDetails}}" categorys="{{categorys}}" bind:select="onSelectType" />
 
   <v-details
     isScroll="{{isScroll}}"

@@ -7,7 +7,7 @@
 
 .tab-item {
   position: relative;
-  padding: 0 40rpx;
+  padding: 0 28rpx;
   white-space: nowrap;
   display: flex;
   align-items: center;

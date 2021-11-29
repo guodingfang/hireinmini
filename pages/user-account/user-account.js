@@ -1,6 +1,6 @@
 import { remoteImagesUrl } from '../../config'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
-import { getUserBalanceLog, getBalanceSum } from '../../models/account'
+import { getAccountType, getUserBalance, getUserBalanceLog, getBalanceSum } from '../../models/account'
 const app = getApp();
 Page({
 
@@ -10,11 +10,14 @@ Page({
   data: {
     bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
     categorys: [],
+    categorysDetails: [],
     isScroll: false,
     detailData: [],
-    page: 0,
+    page: 1,
+    pagesize: 20,
     type: '',
     detailsLoading: false,
+    isLoadingComplete: false,
     isLoading: '下拉加载更多'
   },
 
@@ -23,8 +26,19 @@ Page({
    */
   async onLoad (options) {
     this.getHeaderBlock()
+    this.getAccountType()
     this.getBalanceSum()
     this.getUserBalanceLog()
+  },
+
+  async getAccountType () {
+    const { data = [] } = await getAccountType()
+    this.setData({
+      categorys: [{
+        typecode: '',
+        typename: '全部'
+      }, ...data]
+    })
   },
 
   getHeaderBlock() {
@@ -37,27 +51,27 @@ Page({
   },
 
   async getBalanceSum () {
-    const { balance, data } = await getBalanceSum({
+    const { data } = await getBalanceSum({
       type: this.data.type,
-      userid: 8469
     })
     this.setData({
-      totalPrice: balance,
-      categorys: data
+      categorysDetails: data
     })
   },
 
   async onSelectType (e) {
     this.setData({
       type: e.detail.type,
+      isLoadingComplete: false,
       page: 0,
     })
     await this.getBalanceSum()
-    await this.getUserBalanceLog()
+    await this.getUserBalanceLog({ reset: true })
   },
 
   async onLoadDetails () {
-    if(!this.data.detailsLoading) {
+    console.log('@')
+    if(!this.data.detailsLoading && !this.data.isLoadingComplete) {
       this.setData({
         page: this.data.page + 1,
         detailsLoading: true
@@ -70,16 +84,35 @@ Page({
   },
 
   // 获取流水
-  async getUserBalanceLog () {
+  async getUserBalanceLog (option = {}) {
+    const { reset = false } = option
     const { data, page } = await getUserBalanceLog({
       page: this.data.page,
+      pagesize: this.data.pagesize,
       type: this.data.type,
-      userid: 8469
     })
 
+    if(this.data.page * this.data.pagesize >= page.rowcount) {
+      this.setData({
+        isLoadingComplete: true,
+        isLoading: '已经没有更多啦'
+      })
+    } else {
+      this.setData({
+        isLoadingComplete: false,
+        isLoading: '下拉加载更多'
+      })
+    }
+
     this.setData({
-      detailData: data,
-      isLoading: '已经没有更多啦'
+      detailData: reset ? data : [...this.data.detailData, ...data],
+    })
+  },
+
+  async getUserBalance() {
+    const { balance = '0.00' } = await getUserBalance({})
+    this.setData({
+      totalPrice: balance
     })
   },
 
@@ -100,7 +133,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getUserBalance()
   },
 
   /**
@@ -125,20 +158,21 @@ Page({
   },
 
   onPageScroll (e) {
-    if(this.data.isScroll) {
-      this.setData({
-        isScroll: false
-      })
-    }
-
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    this.setData({
-      isScroll: true
+    const that = this
+    wx.pageScrollTo({
+      scrollTop: 2000,
+      duration: 100,
+      success() {
+        that.setData({
+          isScroll: true
+        })
+      }
     })
   },
 })

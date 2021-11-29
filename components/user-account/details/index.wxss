@@ -9,6 +9,7 @@
 .details-list {
   max-height: calc(100vh - 100rpx - var(--top--));
   overflow: hidden;
+  border-radius: 24rpx 24rpx 0 0;
 }
 
 .list-container {
@@ -41,9 +42,8 @@
 }
 
 .title {
+  font-size: 30rpx;
   color: #1A1A1A;
-  font-size: 32rpx;
-  font-weight: bold;
 }
 
 .date {

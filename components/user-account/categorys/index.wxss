@@ -3,8 +3,8 @@
 .categorys {
   position: relative;
   z-index: 999;
-  background-color: #F2F6FF;
-  border-radius: 30rpx 30rpx 0 0;
+  background-color: #FFFFFF;
+  border-radius: 30rpx;
   margin: 20rpx 30rpx 0 30rpx;
   display: flex;
   flex-direction: column;
@@ -26,9 +26,7 @@
   color: #0400E6;
   font-size: 24rpx;
   border-radius: 20rpx;
-  box-shadow: 0 0 10rpx rgba(0, 0, 0, .05);
-  position: relative;
-  z-index: 9;
+  box-shadow: 0 0 20rpx rgba(0, 0, 0, .1);
 }
 
 .select-btn.is-select-btn {
@@ -46,7 +44,7 @@
   background-color: #FFFFFF;
   border-radius: 0 0 20rpx 20rpx;
   width: 630rpx;
-  box-shadow: 0 0 10rpx rgba(0, 0, 0, .05);
+  box-shadow: 0 10rpx 10rpx rgba(0, 0, 0, .15);
 }
 
 .select-item {
@@ -96,8 +94,9 @@
 }
 
 .title .label {
-  font-size: 30rpx;
   color: #1A1A1A;
+  font-size: 32rpx;
+  font-weight: bold;
 }
 
 .title .amount {
@@ -114,17 +113,24 @@
 }
 
 .progress-bar {
-  width: 330rpx;
+  width: 380rpx;
   height: 16rpx;
-  background-color: #FFFFFF;
+  background-color: #f2f6ffd8;
   border-radius: 16rpx;
   overflow: hidden;
   margin-right: auto;
+  display: flex;
+  align-items: center;
 }
 
-.progress-bar-nav {
+.progress-bar-nav1 {
   height: 16rpx;
-  width: 160rpx;
-  border-radius: 16rpx;
+  width: var(--width--);
   background: linear-gradient(270deg, #FFC473 0%, rgba(255, 196, 115, 0.4) 100%);
+}
+
+.progress-bar-nav2 {
+  height: 16rpx;
+  flex: 1;
+  background: linear-gradient(270deg, #0400E6 0%, rgba(4, 0, 230, 0.4) 100%);
 }

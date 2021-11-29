@@ -9,6 +9,11 @@
   /* height: 230rpx; */
 }
 
+.m-header {
+  padding-top: 17rpx !important;
+  height: 80rpx;
+}
+
 .list {
   display: flex;
   justify-content: center;

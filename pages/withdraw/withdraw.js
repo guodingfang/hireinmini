@@ -1,7 +1,7 @@
 import { getUserBalance, withdrawBankCard } from '../../models/account'
 import { upload } from '../../models/util'
 import { promisic } from '../../utils/util'
-import { verifyData } from '../../utils/tool'
+import { bankCardFormat, verifyData } from '../../utils/tool'
 Page({
 
   /**
@@ -32,8 +32,11 @@ Page({
   onChangeInput (e) {
     const { type = '' } = e.target.dataset
     this.setData({
-      [`${type}`]: e.detail.value
+      [`${type}`]: type === 'cardno'
+        ? bankCardFormat(e.detail.value)
+        : e.detail.value
     })
+
   },
 
   async onUploadCard (e) {
@@ -73,7 +76,7 @@ Page({
     }
     this.setData({
       bank: bankinfo,
-      cardno: cardno
+      cardno: bankCardFormat(cardno)
     })
 
   },
@@ -113,9 +116,18 @@ Page({
 
     if(!verify) return
 
+    const reg = /^([1-9]{1})(\d{15}|\d{16}|\d{18})$/
+    if(!reg.test(cardno.replace(/\s+/g,""))) {
+      wx.showToast({
+        title: '请输入正确的银行卡号',
+        icon: 'none'
+      })
+      return
+    }
+
     const { errcode = 0  } = await withdrawBankCard({
       amount,
-      cardno,
+      cardno: cardno.replace(/\s+/g,""),
       name,
       bank
     })

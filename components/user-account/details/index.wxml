@@ -8,7 +8,7 @@
     wx:if="{{list.length}}"
     class="details-list"
     style="--top--:{{topHeader}}rpx"
-    scroll-y="{{_isScroll}}"
+    scroll-y="{{isScroll}}"
     enable-flex
     upper-threshold="0"
     lower-threshold="150"

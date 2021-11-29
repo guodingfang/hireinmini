@@ -20,7 +20,8 @@
 .icon-browse {
   width: 26rpx;
   height: 16rpx;
-  padding: 12rpx;
+  padding: 24rpx;
+  margin: -12rpx;
 }
 
 .total-price {

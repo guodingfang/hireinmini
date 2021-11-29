@@ -8,18 +8,6 @@ Component({
     isScroll: {
       type: Boolean,
       value: false,
-      observer(newVal, oldVal) {
-        if(oldVal && !newVal) {
-          this.setData({
-            scrollTop: 0,
-          })
-        }
-        setTimeout(() => {
-          this.setData({
-            _isScroll: newVal
-          })
-        }, 0)
-      }
     },
     topHeader: {
       type: Number,
@@ -40,7 +28,6 @@ Component({
    */
   data: {
     imgUrl: config.imgUrl,
-    _isScroll: false,
   },
 
   /**

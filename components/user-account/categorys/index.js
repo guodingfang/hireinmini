@@ -8,14 +8,10 @@ Component({
     list: {
       type: Array,
       value: [],
-      observer(val = []) {
-        this.setData({
-          categorys: [{
-            balancetype: '',
-            dicvalue: '全部'
-          }, ...val]
-        })
-      }
+    },
+    categorys: {
+      type: Array,
+      value: [],
     }
   },
 
@@ -23,7 +19,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    categorys: [],
     imgUrl: config.imgUrl,
     isModel: false,
     animateShow: false,

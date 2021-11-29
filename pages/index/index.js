@@ -112,7 +112,7 @@ Page({
     }
 	},
 
-	getCityInfo() {
+	async getCityInfo() {
 		const { city: oldCity, tabname, tabList } = this.data
 		const cityinfo = storageGet('cityinfo')
 		if(cityinfo && cityinfo.city) {
@@ -122,7 +122,8 @@ Page({
 				tabList: tabList.map(tab => tab.type === 'native' ? {...tab, name: city} : tab)
 			})
 			if(tabname === 'native' && oldCity !== city) {
-				this.getDiscoverMsgList({ reset: true })
+				await this.getCarousel()
+				await this.getDiscoverMsgList({ reset: true })
 			}
 		}
 	},

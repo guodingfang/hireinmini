@@ -52,6 +52,10 @@ export const getLocationInfo = (params = {}) => {
           storageSet('locationCity', info)
           storageSet('cityinfo', info)
           resolve(info)
+        },
+        fail() {
+          console.log('@@@')
+          reject('@@')
         }
       })
     }, (err) => {

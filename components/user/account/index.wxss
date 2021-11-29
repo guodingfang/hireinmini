@@ -6,7 +6,13 @@
   overflow: hidden;
   box-sizing: border-box;
   padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
   /* height: 230rpx; */
+}
+
+.m-header {
+  padding-top: 17rpx !important;
+  height: 80rpx;
 }
 
 .list {

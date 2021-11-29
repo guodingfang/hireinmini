@@ -10,7 +10,9 @@
         placeholder="必填，填写需要提现到的银行卡账户"
         bindinput="onChangeInput"
       />
-      <view class="upload-card" bind:tap="onUploadCard">上传</view>
+      <view class="upload-card" bind:tap="onUploadCard">
+        <image class="icon-scan" src="/images/icon/scan.png"></image>
+      </view>
     </view>
     <view class="tips">账户用于对公转账</view>
 

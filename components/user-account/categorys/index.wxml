@@ -11,17 +11,17 @@
       <view
         wx:for="{{categorys}}"
         wx:key="id"
-        class="select-item {{ selectCategory === item.balancetype ? 'is-select-item' : '' }}"
-        data-type="{{item.balancetype}}"
-        data-name="{{item.dicvalue}}"
+        class="select-item {{ selectCategory === item.typecode ? 'is-select-item' : '' }}"
+        data-type="{{item.typecode}}"
+        data-name="{{item.typename}}"
         bind:tap="onSelectCategory"
       >
         <image
           class="icon-select"
-          wx:if="{{selectCategory === item.balancetype}}"
+          wx:if="{{selectCategory === item.typecode}}"
           src="/images/icon/select-2.png"
         ></image>
-        {{item.dicvalue}}
+        {{item.typename}}
       </view>
     </view>
   </view>
@@ -35,7 +35,16 @@
       </view>
       <div class="price-info">
         <view class="progress-bar">
-          <view class="progress-bar-nav"></view>
+          <view
+            wx:if="{{item.percent_in}}"
+            class="progress-bar-nav1"
+            style="--width--: {{item.percent_in}}%"
+          ></view>
+          <view
+          wx:if="{{item.percent_out}}"
+            class="progress-bar-nav2"
+            style="--width--: {{item.percent_out}}%"
+          ></view>
         </view>
         <view class="price">
           <text>{{item.balance}}</text>
