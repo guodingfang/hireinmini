@@ -126,6 +126,15 @@
         </m-not-content>
       <!-- </block> -->
     </view>
+
+    <view class="ask-list" slot="item-7">
+      <block wx:if="{{true}}">
+        <v-ask-item wx:key="id" isCurrentUser="{{isCurrentUser}}" />
+      </block>
+      <block wx:else>
+        <m-not-content />
+      </block>
+    </view>
   </m-tabs>
 </scroll-view>
 

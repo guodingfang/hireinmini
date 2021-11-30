@@ -263,6 +263,12 @@
           "pathName": "pages/article-details/article-details",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "提问发帖",
+          "pathName": "pages/article-publish/article-publish",
+          "query": "",
+          "scene": null
         }
       ]
     }

@@ -7,7 +7,7 @@ Page({
    */
   data: {
     isRechargeComplete: false,
-    isSelect: true,
+    selectWay: 'wechat',
     price: '',
   },
 
@@ -19,9 +19,7 @@ Page({
   },
 
   onSelect (e) {
-    this.setData({
-      isSelect: true
-    })
+    
   },
 
   onChangeInput(e) {

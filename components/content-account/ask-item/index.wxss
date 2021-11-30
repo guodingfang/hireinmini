@@ -1,0 +1,50 @@
+@import '/assets/style/global.wxss';
+.ask-item {
+  margin: 0 30rpx;
+  padding: 20rpx 0;
+  display: flex;
+  border-bottom: 1rpx solid #E5E5E5;
+}
+
+.consult-img {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 12rpx;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: #1A1A1A;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.info {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #999999;
+  display: flex;
+  align-items: center;
+}
+
+.created {
+  margin-left: 30rpx;
+}
+
+.btn-go {
+  margin-left: auto;
+  width: 145rpx;
+  height: 50rpx;
+  border: 1rpx solid #0400E6;
+  color: #0400E6;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14rpx;
+}

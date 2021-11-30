@@ -1,0 +1,12 @@
+<view class="ask-item" bind:tap="onSkipAskDetails">
+  <image class="consult-img" src="/images/public/icon-consult.png"></image>
+  <view class="content">
+    <view class="title two-row-overstep">优势技术诺瓦系统调试优势技术诺优势技术诺瓦系统调试优势技术诺</view>
+    <view class="info">
+      <text class="created">2021-11-24</text>
+      <text class="num">999个回答</text>
+
+      <view wx:if="{{!isCurrentUser}}" class="btn-go">去回答</view>
+    </view>
+  </view> 
+</view>

@@ -23,13 +23,7 @@
 
   <view class="model">
     <m-header title="付款方式" more="{{false}}" />
-    <view class="pay-list">
-      <view class="pay-item">
-        <image class="icon-wechat" src="/images/icon/wechat.png"></image>
-        <text class="pay-val">微信支付</text>
-        <m-button type="select" is-select="{{isSelect}}" bind:select="onSelect" />
-      </view>
-    </view>
+    <m-pay-way bind:select="onSelect" select-way="{{selectWay}}" />
   </view>
 </block>
 

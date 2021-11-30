@@ -1,0 +1,69 @@
+
+
+Page {
+  background-color: #FFFFFF;
+}
+
+.input-title {
+  height: 100rpx;
+  margin: 0 30rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.input-title-val {
+  width: 100%;
+}
+
+.input-content {
+  height: 350rpx;
+  margin: 0 30rpx;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+
+.input-content-val {
+  width: 100%;
+  height: 100%;
+}
+
+.pl-input {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.upload-container {
+  display: flex;
+}
+
+.pay-price {
+  height: 100rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+/* footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  height: 100rpx;
+  border-top: 1rpx solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer .btn {
+  width: 640rpx;
+  height: 70rpx;
+  background: #0400E6;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font: 30rpx;
+}
