@@ -34,7 +34,8 @@
     "pages/privacy-agreement/privacy-agreement",
     "pages/recharge/recharge",
     "pages/withdraw/withdraw",
-    "pages/article-details/article-details"
+    "pages/article-details/article-details",
+    "pages/article-publish/article-publish"
   ],
   "permission": {
     "scope.userLocation": {

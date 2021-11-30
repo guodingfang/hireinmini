@@ -1,0 +1,19 @@
+
+.pay-way {
+  padding: 0 30rpx;
+}
+
+.pay-item {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+}
+
+.pay-val {
+  margin: 0 auto 0 20rpx;
+}
+
+.icon-wechat {
+  width: 42rpx;
+  height: 42rpx;
+}

@@ -40,7 +40,7 @@
   </view>
 </view>
 
-<!-- 
+
 <view class="model knowledge"> 
   <m-header title="租赁学院" bind:more="onMore"/>
   <view class="content knowledge-content">
@@ -62,7 +62,7 @@
       <image class="consult" src="/images/public/consult.png"></image>
     </view>
   </view>
-</v-fixed> -->
+</v-fixed>
 
 <view style="height: {{tabHeight}}rpx">
   <v-tabbar />

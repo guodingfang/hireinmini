@@ -1,0 +1,50 @@
+<view class="content">
+  <view class="input-title">
+    <input
+      type="text"
+      class="input-title-val"
+      placeholder-class="pl-input"
+      placeholder="输入问题标题并以问号结尾"
+    />  
+  </view>
+
+  <view class="input-content">
+    <textarea
+      class="input-content-val"
+      placeholder-class="pl-input"
+      placeholder="输入问题简短描述"
+      data-type="content"
+      bindinput="onInputChange"
+    />
+  </view>
+
+
+  <view class="upload-container">
+    <m-upload
+      wx:if="{{selectUploadType !== 'video'}}"
+      uploadType="img"
+      maxCount="9"
+      bind:isUpload="isUpload"
+      bind:complete="onUploadComplete"
+    />
+    <m-upload
+      wx:if="{{selectUploadType !== 'img'}}"
+      uploadType="video"
+      bind:isUpload="isUpload"
+      bind:complete="onUploadComplete"
+    />
+  </view>
+</view>
+
+<view class="pay-model">
+  <view class="pay-price">
+    <view class="label">打赏金额（元）：</view>
+    <input type="text" />
+  </view>
+
+  <m-pay-way bind:select="onSelect" haveWay="{{haveWay}}" select-way="{{selectWay}}" />
+</view>
+
+<view class="footer">
+  <view class="btn">发布问题</view>
+</view>

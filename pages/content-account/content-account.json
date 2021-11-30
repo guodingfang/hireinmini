@@ -8,6 +8,7 @@
     "v-video-item": "/components/content-account/video-item",
     "v-mini-video-item": "/components/content-account/mini-video-item",
     "v-goods-item": "/components/content-account/goods-item",
+    "v-ask-item": "/components/content-account/ask-item",
     "m-tabs": "/components/tabs",
     "v-skip": "/components/public/skip-image",
     "m-not-content": "/components/public/m-not-content"

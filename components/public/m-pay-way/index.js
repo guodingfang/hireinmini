@@ -1,0 +1,42 @@
+// components/public/pay-way/index.js
+Component({
+  /**
+   * 组件的属性列表
+   */
+  properties: {
+    selectWay: {
+      type: String,
+      value: 'wechat',
+      observer(val) {
+        console.log('val', val)
+      }
+    },
+    haveWay: {
+      type: Array,
+      value: ['wechat'],
+    }
+  },
+
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    wayText: {
+      "wechat": "微信支付",
+      "wallet": "嗨应钱包支付"
+    }
+  },
+
+  /**
+   * 组件的方法列表
+   */
+  methods: {
+    onSelect(e) {
+      const { type } = e.currentTarget.dataset
+      if(this.properties.selectWay === type) {
+        return
+      }
+      this.triggerEvent('select', { type }, {})
+    }
+  }
+})

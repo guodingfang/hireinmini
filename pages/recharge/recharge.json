@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "m-header": "/components/public/m-header",
+    "m-pay-way": "/components/public/m-pay-way",
     "m-button": "/components/public/m-button"
   },
   "navigationBarTitleText": "充值"

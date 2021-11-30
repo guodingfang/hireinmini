@@ -46,25 +46,6 @@
   margin-right: -30rpx;
 }
 
-.pay-list {
-  padding: 0 30rpx;
-}
-
-.pay-item {
-  height: 90rpx;
-  display: flex;
-  align-items: center;
-}
-
-.pay-val {
-  margin: 0 auto 0 20rpx;
-}
-
-.icon-wechat {
-  width: 42rpx;
-  height: 42rpx;
-}
-
 .recharge-complete {
   width: 256rpx;
   height: 204rpx;

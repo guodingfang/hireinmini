@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "m-button": "/components/public/m-button"
+  }
+}

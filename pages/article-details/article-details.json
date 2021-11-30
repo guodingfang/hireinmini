@@ -2,5 +2,6 @@
   "usingComponents": {
     "v-comment": "/components/article/comment-item",
     "v-edit": "/components/article/edit-btn"
-  }
+  },
+  "navigationBarTitleText": "文章详情"
 }
