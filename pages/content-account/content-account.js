@@ -73,7 +73,7 @@ Page({
   },
 
   async getUserBaseInfo() {
-    const { user, dynamic, fans, focus, company } = await getUserBaseInfo({
+    const { user, dynamic, fans, focus, company, praise } = await getUserBaseInfo({
       userid: this.data.userid
     })
     this.setData({
@@ -82,7 +82,8 @@ Page({
         ...user,
         dynamic,
         fans,
-        focus
+        focus,
+        praise
       }
     })
   },
