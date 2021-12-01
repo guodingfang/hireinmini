@@ -1,5 +1,6 @@
 import { remoteImagesUrl } from '../../config'
 import { getUserBaseInfo, getMsgDynamics, isAFocusB } from '../../models/user'
+import { getArticleList } from '../../models/article'
 import { getUserInfo } from '../../utils/util'
 
 const app = getApp()
@@ -99,21 +100,32 @@ Page({
 
   async getMsgDynamics() {
     const { type, current, userid } = this.data
+    console.log('type', type)
     const currentPage = current ? current[type] || 0 : 0
-    const {
-      data = [],
-      page,
-    } = await getMsgDynamics({
-      account_userid: userid,
-      page: currentPage,
-      msgtype: type
-    })
+
+    let currentData = []
+    if(type === 'ask') {
+     const { data = [], page } = await getArticleList({
+       userid,
+       page: +currentPage + 1
+     })
+     currentData = data
+    } else {
+      const { data = [], page } = await getMsgDynamics({
+        account_userid: userid,
+        page: currentPage,
+        msgtype: type
+      })
+      currentData = data
+    }
     const currentList = this.data[`${type}List`] || []
     this.setData({
-      [`${type}List`]: [ ...currentList, ...data ],
+      [`${type}List`]: [ ...currentList, ...currentData ],
       [`current.${type}`]: currentPage + 1,
     })
   },
+
+
 
   onScrollBottom() {
     this.getMsgDynamics()

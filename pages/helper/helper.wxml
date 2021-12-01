@@ -58,7 +58,7 @@
 
 <v-fixed>
 	<view slot="list">
-    <view class="fixed-item" bind:tap="skipCompany">
+    <view class="fixed-item" bind:tap="onPublishArticle">
       <image class="consult" src="/images/public/consult.png"></image>
     </view>
   </view>

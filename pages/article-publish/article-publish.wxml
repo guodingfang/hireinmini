@@ -1,50 +1,68 @@
-<view class="content">
-  <view class="input-title">
-    <input
-      type="text"
-      class="input-title-val"
-      placeholder-class="pl-input"
-      placeholder="输入问题标题并以问号结尾"
-    />  
+<block wx:if="{{!isComplete}}">
+  <view class="content">
+    <view class="input-title">
+      <input
+        type="text"
+        class="input-title-val"
+        placeholder-class="pl-input"
+        data-type="title"
+        placeholder="输入问题标题并以问号结尾"
+        bindinput="onInputChange"
+      />  
+    </view>
+
+    <view class="input-content">
+      <textarea
+        class="input-content-val"
+        placeholder-class="pl-input"
+        placeholder="输入问题简短描述"
+        data-type="content"
+        bindinput="onInputChange"
+      />
+    </view>
+
+
+    <view class="upload-container">
+      <m-upload
+        wx:if="{{selectUploadType !== 'video'}}"
+        uploadType="img"
+        maxCount="9"
+        bind:isUpload="isUpload"
+        bind:complete="onUploadComplete"
+      />
+      <m-upload
+        wx:if="{{selectUploadType !== 'img'}}"
+        uploadType="video"
+        bind:isUpload="isUpload"
+        bind:complete="onUploadComplete"
+      />
+    </view>
   </view>
 
-  <view class="input-content">
-    <textarea
-      class="input-content-val"
-      placeholder-class="pl-input"
-      placeholder="输入问题简短描述"
-      data-type="content"
-      bindinput="onInputChange"
-    />
+  <view class="pay-model">
+    <view class="pay-price">
+      <view class="label">打赏金额（元）：</view>
+      <input
+        type="number"
+        class="pay-title-val"
+        placeholder-class="pl-input"
+        data-type="price"
+        placeholder="输入打赏金，0为不打赏"
+        bindinput="onInputChange"
+      />
+    </view>
+
+    <m-pay-way bind:select="onSelect" haveWay="{{haveWay}}" select-way="{{selectWay}}" />
   </view>
 
-
-  <view class="upload-container">
-    <m-upload
-      wx:if="{{selectUploadType !== 'video'}}"
-      uploadType="img"
-      maxCount="9"
-      bind:isUpload="isUpload"
-      bind:complete="onUploadComplete"
-    />
-    <m-upload
-      wx:if="{{selectUploadType !== 'img'}}"
-      uploadType="video"
-      bind:isUpload="isUpload"
-      bind:complete="onUploadComplete"
-    />
+  <view class="footer">
+    <view class="btn" bind:tap="onPublishArtic">发布问题</view>
   </view>
-</view>
+</block>
 
-<view class="pay-model">
-  <view class="pay-price">
-    <view class="label">打赏金额（元）：</view>
-    <input type="text" />
+<block wx:else>
+  <view class="publish-complete">
+    <image class="publish-complete-img" src="/images/public/withdraw-complete.png"></image>
   </view>
-
-  <m-pay-way bind:select="onSelect" haveWay="{{haveWay}}" select-way="{{selectWay}}" />
-</view>
-
-<view class="footer">
-  <view class="btn">发布问题</view>
-</view>
+  <view class="btn">提问完成</view>
+</block>

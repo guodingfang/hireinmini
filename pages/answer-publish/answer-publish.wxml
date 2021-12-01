@@ -1,0 +1,43 @@
+<block wx:if="{{true}}">
+  <view class="content">
+    <view class="title two-row-overstep">酒吧Madrix麦爵士3D方框立方体幻彩像素灯带？</view>
+
+    <view class="input-content">
+      <textarea
+        class="input-content-val"
+        placeholder-class="pl-input"
+        placeholder="输入回答描述"
+        data-type="content"
+        bindinput="onInputChange"
+      />
+    </view>
+
+
+    <view class="upload-container">
+      <m-upload
+        wx:if="{{selectUploadType !== 'video'}}"
+        uploadType="img"
+        maxCount="9"
+        bind:isUpload="isUpload"
+        bind:complete="onUploadComplete"
+      />
+      <m-upload
+        wx:if="{{selectUploadType !== 'img'}}"
+        uploadType="video"
+        bind:isUpload="isUpload"
+        bind:complete="onUploadComplete"
+      />
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="btn">发布回答</view>
+  </view>
+</block>
+
+<block wx:else>
+  <view class="publish-complete">
+    <image class="publish-complete-img" src="/images/public/answer-complete.png"></image>
+  </view>
+  <view class="btn">回答完成</view>
+</block>

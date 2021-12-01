@@ -1,25 +1,19 @@
-
+@import '/assets/style/global.wxss';
 
 Page {
   background-color: #FFFFFF;
 }
 
-.input-title {
-  height: 100rpx;
-  margin: 0 30rpx;
-  display: flex;
-  align-items: center;
-  border-bottom: 1rpx solid #e5e5e5;
-}
-
-.input-title-val {
-  width: 100%;
-  font-size: 28rpx;
+.title {
+  margin: 20rpx 30rpx;
+  width: 690rpx;
+  font-size: 40rpx;
   font-weight: bold;
+  color: #1A1A1A;
 }
 
 .input-content {
-  height: 350rpx;
+  height: calc(100vh - 550rpx);
   margin: 0 30rpx;
   padding: 20rpx 0;
   box-sizing: border-box;
@@ -40,27 +34,6 @@ Page {
   display: flex;
 }
 
-.pay-price {
-  height: 100rpx;
-  padding: 0 30rpx;
-  display: flex;
-  align-items: center;
-}
-
-.pay-price .label {
-  font-size: 28rpx;
-  font-weight: bold;
-}
-
-.pay-title-val {
-  flex: 1;
-  background-color: #F5F4F9;
-  border-radius: 20rpx;
-  padding-left: 20rpx;
-  box-sizing: border-box;
-  height: 70rpx;
-}
-
 /* footer */
 .footer {
   position: fixed;
@@ -77,7 +50,7 @@ Page {
   margin: auto;
   width: 640rpx;
   height: 70rpx;
-  background: #0400E6;
+  background: #45E6A7;
   border-radius: 20rpx;
   display: flex;
   align-items: center;

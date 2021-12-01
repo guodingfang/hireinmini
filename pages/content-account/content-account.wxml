@@ -128,8 +128,8 @@
     </view>
 
     <view class="ask-list" slot="item-7">
-      <block wx:if="{{true}}">
-        <v-ask-item wx:key="id" isCurrentUser="{{isCurrentUser}}" />
+      <block wx:if="{{askList && askList.length}}">
+        <v-ask-item wx:for="{{ askList }}" wx:key="id" isCurrentUser="{{isCurrentUser}}" />
       </block>
       <block wx:else>
         <m-not-content />

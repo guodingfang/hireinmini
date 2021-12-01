@@ -1,7 +1,7 @@
 const devUrl = `https://wxmini.ilinking.com.cn`
 const porUrl = `https://wxapp.ilinking.com.cn`
 
-const url = false ? devUrl : porUrl
+const url = true ? devUrl : porUrl
 
 const config = {
   baseUrl: `${url}/index.php/WxMini`,

@@ -98,6 +98,12 @@ Page({
     this.setData({ locationInfo: e.detail.locationInfo })
   },
 
+  onPublishArticle() {
+    wx.navigateTo({
+      url: '/pages/article-publish/article-publish',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
