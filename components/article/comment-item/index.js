@@ -12,6 +12,10 @@ Component({
       type: Object,
       value: null
     },
+    content: {
+      type: String,
+      value: ''
+    },
     isShowAll: {
       type: Boolean,
       value: false

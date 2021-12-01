@@ -33,7 +33,7 @@
 }
 
 .created {
-  margin-left: 30rpx;
+  margin-right: 30rpx;
 }
 
 .btn-go {

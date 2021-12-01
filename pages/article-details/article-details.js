@@ -1,18 +1,33 @@
-// pages/article-details/article-details.js
+import { getArticleDetails } from '../../models/article'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    id: '',
+    userInfo: {},
+    details: {},
+    answerList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const { id = '' } = options
+    this.setData({ id })
+    this.getArticleDetails()
+  },
 
+  async getArticleDetails () {
+    const { q, a = [] } = await getArticleDetails({
+      questionid: this.data.id
+    })
+    this.setData({
+      details: q,
+      answerList: a
+    })
   },
 
   /**

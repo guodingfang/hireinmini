@@ -4,6 +4,10 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    info: {
+      type: Object,
+      value: {}
+    },
     isCurrentUser: {
       type: Boolean,
       value: true
@@ -22,8 +26,9 @@ Component({
    */
   methods: {
     onSkipAskDetails() {
+      const { id = '' } = this.properties.info
       wx.navigateTo({
-        url: `/pages/article-details/article-details`
+        url: `/pages/article-details/article-details?id=${id}`
       })
     }
   }

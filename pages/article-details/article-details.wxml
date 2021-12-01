@@ -11,7 +11,8 @@
   </view>
 
   <v-comment
-    title="酒吧Madrix麦爵士3D方框立方体幻彩像素灯带"
+    title="{{details.qatitle}}"
+    content="{{details.content}}"
   />
 </view>
 
