@@ -18,6 +18,11 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onSkipAnswer() {
+      this.triggerEvent('answer', {}, {})
+      wx.navigateTo({
+        url: '/pages/answer-publish/answer-publish',
+      })
+    }
   }
 })

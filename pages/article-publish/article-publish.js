@@ -1,6 +1,7 @@
 import { publishArtic } from '../../models/article'
 import { verifyData } from '../../utils/tool'
 import { getUserInfo } from '../../utils/util'
+import { upload } from '../../models/util'
 Page({
 
   /**
@@ -11,6 +12,7 @@ Page({
     haveWay: ['wechat', 'wallet'],
     isComplete: false,
     price: 0,
+    exitUpload: false,
   },
 
   onSelect(e) {
@@ -27,6 +29,19 @@ Page({
     })
   },
 
+  onUploadComplete(e) {
+    console.log('e', e)
+    const { type = '',  uploadImages = [], uploadVideo = '', formDataParams = null } = e.detail
+    this.setData({
+      selectUploadType: type,
+      uploadImages,
+      uploadVideo,
+      formDataParams,
+      exitUpload: true,
+    })
+  },
+
+
   async onPublishArtic() {
     const { title = '', content = '', price = 0, selectWay = 'wechat' } = this.data
     const { verify } = verifyData(this.data, [
@@ -35,7 +50,7 @@ Page({
     ])
     if (!verify) return
     const { userid = '', wxappid = '' } = getUserInfo(['userid'])
-    await publishArtic({
+    const { errcode = -1, qaid = '' } = await publishArtic({
       title,
       content,
       price,
@@ -44,6 +59,30 @@ Page({
       paytype: selectWay === 'wechat' ? 'wxpay' : 'wallet',
       openid: wxappid,
     })
+    if (errcode !== 0) return
+    const { selectUploadType } = this.data
+    if (selectUploadType === 'img') {
+      const { uploadImages = [] } = this.data
+      await upload({
+        url: '/QuestionAnswer/uploadQAPicture',
+        files: uploadImages
+      }, {
+        formData: {
+          qaid: qaid
+        }
+      })
+    } else {
+      const { formDataParams, uploadVideo } = this.data
+      await upload({
+        url: '/QuestionAnswer/uploadQAVideo',
+        files: [uploadVideo]
+      }, {
+        formData: {
+          qaid: qaid,
+          ...formDataParams,
+        }
+      })
+    }
   },
 
   /**

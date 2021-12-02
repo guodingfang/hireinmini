@@ -13,6 +13,8 @@
   <v-comment
     title="{{details.qatitle}}"
     content="{{details.content}}"
+    imgList="{{details.picture}}"
+    video="{{details.video}}"
   />
 </view>
 
@@ -22,4 +24,4 @@
   />
 </view>
 
-<v-edit />
+<v-edit bind:answer="onSkipAnswer" />

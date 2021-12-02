@@ -261,7 +261,7 @@
         {
           "name": "文章详情",
           "pathName": "pages/article-details/article-details",
-          "query": "id=1",
+          "query": "id=4",
           "scene": null
         },
         {

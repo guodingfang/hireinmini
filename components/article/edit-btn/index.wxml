@@ -1,5 +1,5 @@
 
-<view class="edit-btn">
+<view class="edit-btn" bind:tap="onSkipAnswer">
   <image class="icon-edit" src="/images/icon/edit-2.png"></image>
   <text>回答</text>
 </view>

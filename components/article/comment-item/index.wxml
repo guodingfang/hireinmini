@@ -15,7 +15,20 @@
       </view>
     </view>
     <view class="files">
-      <image mode="widthFix" class="file-item" src=""></image>
+      <block wx:key="id" wx:for="{{imgList}}">
+        <image
+          mode="widthFix"
+          class="file-item"
+          src="{{imgUrl}}{{item.picurl}}"
+        ></image>
+      </block>
+      <block wx:if="{{video}}">
+        <image
+          mode="widthFix"
+          class="file-item"
+          src="{{videoUrl}}{{video.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{video.width}},h_{{video.height}},m_fast"
+        ></image>
+      </block>
     </view>
   </view>
 </view>

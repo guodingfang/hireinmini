@@ -30,6 +30,12 @@ Page({
     })
   },
 
+  onSkipAnswer() {
+    wx.navigateTo({
+      url: `/pages/answer-publish/answer-publish?id=${this.data.id}`,
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

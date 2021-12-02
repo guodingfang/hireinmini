@@ -10,7 +10,7 @@
   position: relative;
   width: 160rpx;
   height: 160rpx;
-  border-radius: 20rpx;
+  border-radius: 24rpx;
   overflow: hidden;
   margin-bottom: 16rpx;
 }
@@ -19,9 +19,14 @@
   margin-right: 16rpx;
 }
 
+.upload-item .upload-text {
+  font-size: 20rpx;
+}
+
 .upload-image {
   width: 160rpx;
   height: 160rpx;
+  font-size: 20rpx;
 }
 
 .delete-btn {
@@ -51,9 +56,20 @@
   flex-direction: column;
 }
 
+.upload-img {
+  background: #E6FFF5;
+  color: #45E6A7;
+}
+
+.upload-video {
+  background: #FFEDE6;
+  color: #FF8D5D;
+}
+
 .icon-add {
-  width: 100%;
-  height: 100%;
+  width: 70rpx;
+  height: 70rpx;
+  margin-bottom: 6rpx;
 }
 
 .upload-video-img {

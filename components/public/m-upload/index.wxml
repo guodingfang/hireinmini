@@ -15,10 +15,11 @@
   </block>
   <view
     bind:tap="onChooseImage"
-    class="add-upload upload-item"
+    class="add-upload upload-item upload-img"
     wx:if="{{showImages.length < maxCount }}"
   >
     <image class="icon-add" src="./images/icon-add-img.png"></image>
+    <text class="upload-text">上传图片</text>
   </view>
 </view>
 
@@ -29,8 +30,9 @@
   <view
     wx:else
     bind:tap="onChooseVideo"
-    class="add-upload upload-item"
+    class="add-upload upload-item upload-video"
   >
     <image class="icon-add" src="./images/icon-add-video.png"></image>
+    <text class="upload-text">上传视频</text>
   </view>
 </view>

@@ -1,18 +1,34 @@
-// pages/answer-publish/answer-publish.js
+import { publishArtic } from '../../models/article'
+import { verifyData } from '../../utils/tool'
+import { getUserInfo } from '../../utils/util'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    id: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const { id = '' } = options
+    this.setData({ id })
+  },
 
+  async onPublishAnswer() {
+    const { title = '', content = '' } = this.data
+
+    const { userid = '', wxappid = '' } = getUserInfo(['userid'])
+    await publishArtic({
+      topid: this.data.id,
+      qatype: 'a',
+      userid,
+      openid: wxappid
+    })
   },
 
   /**

@@ -31,7 +31,7 @@
   </view>
 
   <view class="footer">
-    <view class="btn">发布回答</view>
+    <view class="btn" bind:tap="onPublishAnswer">发布回答</view>
   </view>
 </block>
 
