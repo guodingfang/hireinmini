@@ -48,10 +48,10 @@
     <text class="content-not" wx:else>暂未有知识提供</text>
   </view>
 </view>
-<view class="model questions">
-  <m-header title="租赁技术在线问答（100+）" bind:more="onMore"/>
+<view class="model article">
+  <m-header title="租赁技术在线问答（{{articleTotal}}）" bind:more="onMore"/>
   <view class="content questions-content">
-    <v-questions list="{{questionsList}}" wx:if="{{questionsList.length == 0}}"/>
+    <v-article list="{{topArticleList}}" wx:if="{{topArticleList.length}}"/>
     <text class="content-not" wx:else>暂未有问答内容</text>
   </view>
 </view>

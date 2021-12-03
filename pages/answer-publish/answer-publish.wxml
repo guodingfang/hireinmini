@@ -39,5 +39,5 @@
   <view class="publish-complete">
     <image class="publish-complete-img" src="/images/public/answer-complete.png"></image>
   </view>
-  <view class="btn">回答完成</view>
+  <view class="btn" bind:tap="onComplete">回答完成</view>
 </block>

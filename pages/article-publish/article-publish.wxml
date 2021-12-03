@@ -64,5 +64,5 @@
   <view class="publish-complete">
     <image class="publish-complete-img" src="/images/public/withdraw-complete.png"></image>
   </view>
-  <view class="btn">提问完成</view>
+  <view class="btn" bind:tap="onComplete">提问完成</view>
 </block>

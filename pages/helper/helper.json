@@ -5,7 +5,7 @@
     "v-skip": "/components/public/skip-image",
     "m-header": "/components/public/m-header",
     "v-knowledge": "/components/helper/knowledge-model",
-    "v-questions": "/components/helper/questions-model",
+    "v-article": "/components/helper/article-model",
     "v-fixed": "/components/public/fixed-image",
     "v-tabbar": "/components/tabbar"
   },

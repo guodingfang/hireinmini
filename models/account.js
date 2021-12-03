@@ -9,7 +9,11 @@ import { promisic, getUserInfo } from '../utils/util'
  */
 export const payOrder = async (option = {}) => {
   const { wxappid: openid } = getUserInfo(['wxappid'])
-  const { jsApiParameters: payResult, msg = '', result = false } =  await request.post('/WxPay/payOrder', {
+  const {
+    jsApiParameters: payResult,
+    msg = '',
+    result = false
+  } =  await request.post('/WxPay/payOrder', {
     ...option,
     openid
   })

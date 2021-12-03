@@ -13,6 +13,16 @@ export const getArticleList = (option = {}) => {
 }
 
 /**
+ * 在线问答推荐
+ * @param {*} option 
+ */
+export const getTopArticleList = (option = {}) => {
+  return request.post('/QuestionAnswer/getTopNQuestions', {
+    ...option
+  })
+}
+
+/**
  * 发布问答
  * @param {*} option 
  */

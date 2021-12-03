@@ -1,4 +1,5 @@
 import { publishArtic } from '../../models/article'
+import { payOrder } from '../../models/account'
 import { verifyData } from '../../utils/tool'
 import { getUserInfo } from '../../utils/util'
 import { upload } from '../../models/util'
@@ -30,7 +31,6 @@ Page({
   },
 
   onUploadComplete(e) {
-    console.log('e', e)
     const { type = '',  uploadImages = [], uploadVideo = '', formDataParams = null } = e.detail
     this.setData({
       selectUploadType: type,
@@ -48,8 +48,25 @@ Page({
       { type: 'title', label: '问答的标题' },
       { type: 'content', label: '问答的内容' },
     ])
+
     if (!verify) return
-    const { userid = '', wxappid = '' } = getUserInfo(['userid'])
+
+    if (price && selectWay === 'wechat') {
+      const { code = -1, msg = '' } = await payOrder({
+        ordertype: 'qa',
+        totalfee: price * 100,
+        goodsdescription: '发布问题'
+      })
+      if(code !== 0) {
+        wx.showToast({
+          title: msg,
+          icon: 'none'
+        })
+        return
+      }
+    }
+
+    const { userid = '', wxappid = '' } = getUserInfo(['userid', 'wxappid'])
     const { errcode = -1, qaid = '' } = await publishArtic({
       title,
       content,
@@ -60,7 +77,7 @@ Page({
       openid: wxappid,
     })
     if (errcode !== 0) return
-    const { selectUploadType } = this.data
+    const { selectUploadType = '' } = this.data
     if (selectUploadType === 'img') {
       const { uploadImages = [] } = this.data
       await upload({
@@ -71,7 +88,7 @@ Page({
           qaid: qaid
         }
       })
-    } else {
+    } else if (selectUploadType === 'video') {
       const { formDataParams, uploadVideo } = this.data
       await upload({
         url: '/QuestionAnswer/uploadQAVideo',
@@ -83,6 +100,16 @@ Page({
         }
       })
     }
+    this.setData({
+      isComplete: true
+    })
+  },
+
+  // 发布完成
+  onComplete () {
+    wx.navigateBack({
+      delta: 1,
+    })
   },
 
   /**

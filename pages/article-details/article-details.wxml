@@ -19,9 +19,14 @@
 </view>
 
 <view class="comment-list">
-  <v-comment
-    user-info="{{userInfo}}"
-  />
+  <block wx:for="{{answerList}}" wx:key="id">
+    <v-comment
+      user-info="{{userInfo}}"
+      content="{{item.content}}"
+      imgList="{{item.picture}}"
+      video="{{item.video}}"
+    />
+  </block>
 </view>
 
 <v-edit bind:answer="onSkipAnswer" />

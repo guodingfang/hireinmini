@@ -1,6 +1,7 @@
 import { publishArtic } from '../../models/article'
 import { verifyData } from '../../utils/tool'
 import { getUserInfo } from '../../utils/util'
+import { upload } from '../../models/util'
 
 Page({
 
@@ -8,7 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id: ''
+    id: '',
+    isComplete: false,
   },
 
   /**
@@ -19,15 +21,73 @@ Page({
     this.setData({ id })
   },
 
-  async onPublishAnswer() {
-    const { title = '', content = '' } = this.data
+  onInputChange(e) {
+    const { value } = e.detail
+    const { type } = e.target.dataset
+    this.setData({
+      [type]: value
+    })
+  },
 
+  onUploadComplete(e) {
+    const { type = '',  uploadImages = [], uploadVideo = '', formDataParams = null } = e.detail
+    this.setData({
+      selectUploadType: type,
+      uploadImages,
+      uploadVideo,
+      formDataParams,
+      exitUpload: true,
+    })
+  },
+
+  async onPublishAnswer() {
+    const { content = '' } = this.data
+    const { verify } = verifyData(this.data, [
+      { type: 'content', label: '回答的内容' },
+    ])
+
+    if (!verify) return
     const { userid = '', wxappid = '' } = getUserInfo(['userid'])
-    await publishArtic({
+    const { errcode = -1, qaid = '' } = await publishArtic({
       topid: this.data.id,
       qatype: 'a',
       userid,
+      content,
       openid: wxappid
+    })
+    if (errcode !== 0) return
+    const { selectUploadType } = this.data
+    if (selectUploadType === 'img') {
+      const { uploadImages = [] } = this.data
+      await upload({
+        url: '/QuestionAnswer/uploadQAPicture',
+        files: uploadImages
+      }, {
+        formData: {
+          qaid: qaid
+        }
+      })
+    } else if (selectUploadType === 'video') {
+      const { formDataParams, uploadVideo } = this.data
+      await upload({
+        url: '/QuestionAnswer/uploadQAVideo',
+        files: [uploadVideo]
+      }, {
+        formData: {
+          qaid: qaid,
+          ...formDataParams,
+        }
+      })
+    }
+    this.setData({
+      isComplete: true
+    })
+  },
+
+  // 回答完成
+  onComplete () {
+    wx.navigateBack({
+      delta: 1,
     })
   },
 

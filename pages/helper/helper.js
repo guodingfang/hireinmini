@@ -1,7 +1,4 @@
-import {
-  getknowledgeRecommend,
-  getTopNQuestions
-} from '../../models/helper'
+import { getTopArticleList } from '../../models/article'
 import { getLocationInfo } from '../../models/map'
 import { judgeTabBarHeight, isLogin } from '../../utils/util'
 import { remoteImagesUrl } from '../../config'
@@ -32,7 +29,8 @@ Page({
       }
     ],
     knowledgeList: [],
-    questionsList: [],
+    topArticleList: [],
+    articleTotal: 0,
     locationInfo: null,
   },
 
@@ -42,8 +40,7 @@ Page({
   onLoad(options) {
     this.getHeaderBlock()
     this.getLocationInfo()
-    this.getknowledgeRecommend()
-    this.getTopNQuestions()
+    this.getTopArticleList()
   },
 
 	getHeaderBlock() {
@@ -62,19 +59,12 @@ Page({
 		})
   },
 
-  // 知识推荐
-  async getknowledgeRecommend() {
-    const list = await getknowledgeRecommend({})
-    this.setData({
-      knowledgeList: list
-    })
-  },
-
   // 问答推荐
-  async getTopNQuestions() {
-    const list = await getTopNQuestions({})
+  async getTopArticleList() {
+    const { data, page } = await getTopArticleList({})
     this.setData({
-      questionsList: list
+      topArticleList: data,
+      articleTotal: page.questioncounts
     })
   },
 
