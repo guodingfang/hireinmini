@@ -12,6 +12,10 @@ Component({
     list: {
       type: Array,
       value: []
+    },
+    direction: {
+      type: String,
+      value: 'right'
     }
   },
 

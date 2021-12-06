@@ -7,16 +7,19 @@ Component({
     selectWay: {
       type: String,
       value: 'wechat',
-      observer(val) {
-        console.log('val', val)
-      }
     },
     haveWay: {
       type: Array,
       value: ['wechat'],
+    },
+    isUseWallet: {
+      type: Boolean,
+      value: true,
     }
   },
-
+  options: {
+    multipleSlots: true
+  },
   /**
    * 组件的初始数据
    */
@@ -33,6 +36,7 @@ Component({
   methods: {
     onSelect(e) {
       const { type } = e.currentTarget.dataset
+      if (type === 'wallet' && !this.properties.isUseWallet) return
       if(this.properties.selectWay === type) {
         return
       }

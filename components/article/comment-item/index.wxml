@@ -1,17 +1,14 @@
 <view class="comment">
   <view class="title two-row-overstep" wx:if="{{title}}">{{ title }}</view>
-  <view class="user-info" wx:if="{{userInfo}}">
-    <image class="head-portrait" src="/images/public/logo.png"></image>
-    <view class="user">
-      <view class="name">韩小颖</view>
-      <view class="created">2021.11.26 18:50</view>
-    </view>
-  </view>
+  <block wx:if="{{userInfo}}">
+    <v-user-info userInfo="{{userInfo}}" isPublishUser="{{isPublishUser}}" />
+  </block>
+
   <view class="content">
     <view class="content-val">
-      {{ content }}
-      <view class="more">
-        查看全部<image class="icon-more" src="/images/icon/more.png"></image>
+      {{ showContent }}
+      <view class="more" wx:if="{{isShowMore && !isShowAllContent}}" bind:tap="onShowMoreContent">
+        展开<image class="icon-more" src="/images/icon/more.png"></image>
       </view>
     </view>
     <view class="files" wx:if="{{imgList.length || (video && video.videourl)}}">
@@ -19,18 +16,42 @@
         <image
           wx:key="id"
           wx:for="{{imgList}}"
-          mode="widthFix"
+          mode="aspectFit"
           class="file-item"
           src="{{imgUrl}}{{item.picurl}}"
         ></image>
       </block>
-      <block wx:if="{{video}}">
-        <image
-          mode="widthFix"
-          class="file-item"
-          src="{{videoUrl}}{{video.videourl}}?x-oss-process=video/snapshot,t_1000,f_jpg,w_{{video.width}},h_{{video.height}},m_fast"
-        ></image>
+      <block wx:if="{{video && video.videourl}}">
+        <v-video
+          m-video="m-video"
+          videoUrlStatic="{{videoUrlStatic}}"
+          videoUrlDynamic="{{videoUrlDynamic}}"
+        />
       </block>
     </view>
   </view>
+
+  <view class="share" wx:if="{{isPublishUser}}">
+    <button
+      class="share-btn"
+      data-type="article"
+      data-id="{{userInfo.shareid}}"
+      open-type="share"
+    >
+      <image class="icon-share" src="/images/tool/icon-share.png"></image>
+      邀请回答
+    </button>
+  </view>
+
+  <view class="reward" wx:if="{{false}}">
+    <view class="reward-item">
+      <image class="icon-reward" src="/images/icon/reward.png"></image>
+      <text>已打赏</text>
+    </view>
+    <view class="reward-item">
+      <image class="icon-reward" src="/images/icon/not-reward.png"></image>
+      <text>打赏</text>
+    </view>
+  </view>
+
 </view>

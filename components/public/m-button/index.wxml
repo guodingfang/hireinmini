@@ -1,6 +1,6 @@
 
 <block wx:if="{{type === 'select'}}">
-  <view class="select {{ isSelect ? 'is-select' : '' }}" bind:tap="onSelect">
+  <view class="select {{ isUse ? isSelect ? 'is-select' : '' : 'is-not-use' }}" bind:tap="onSelect">
     <image wx:if="{{isSelect}}" class="icon-select" src="/images/icon/select.png"></image>
   </view>
 </block>

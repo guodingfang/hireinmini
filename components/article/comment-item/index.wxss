@@ -13,36 +13,10 @@
   font-weight: bold;
 }
 
-.user-info {
-  display: flex;
-  align-items: center;
-}
-
-.head-portrait {
-  width: 86rpx;
-  height: 86rpx;
-  border-radius: 50%;
-  margin-right: 20rpx;
-}
-
-.user {
-  display: flex;
-  flex-direction: column;
-}
-
-.user .name {
-  color: #1A1A1A;
-  font-size: 28rpx;
-}
-
-.user .created {
-  color: #808080;
-  font-size: 28rpx;
-}
-
 .content {
   display: flex;
   flex-direction: column;
+  padding: 12rpx 0;
 }
 
 .content-val {
@@ -52,23 +26,20 @@
 }
 
 .more {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 142rpx;
   height: 40rpx;
   padding: 0 10rpx;
   background: linear-gradient(270deg, #F2F2F2 0%, #F2F2F2 73%, rgba(242, 242, 242, 0.1) 100%);
   border-radius: 40rpx;
-  color: #666666;
+  color: #012ae3;
   font-size: 24rpx;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
 }
 
 .more .icon-more {
+  margin-left: 12rpx;
   width: 16rpx;
   height: 24rpx;
 }
@@ -76,8 +47,39 @@
 .files {
   display: flex;
   flex-direction: column;
+  margin-top: 20rpx;
 }
 
 .file-item {
-  width: 388rpx;
+  width: 690rpx;
+  height: 388rpx;
+  border-radius: 20rpx;
+}
+
+.m-video {
+  width: 690rpx;
+  height: 388rpx;
+}
+
+.share {
+  margin-left: auto;
+}
+
+.share-btn {
+  border: 0 solid transparent;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  color: #333333;
+  font-size: 24rpx;
+}
+
+.share-btn::after{
+  border: 0;
+}
+
+.icon-share {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
 }

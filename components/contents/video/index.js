@@ -13,7 +13,7 @@ Component({
       value: ''
     }
   },
-
+  externalClasses: ['m-video'],
   /**
    * 组件的初始数据
    */

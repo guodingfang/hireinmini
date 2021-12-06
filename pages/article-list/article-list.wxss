@@ -1,0 +1,7 @@
+Page {
+  background-color: #ffffff;
+}
+
+.article-list {
+  height: 100vh;
+}

@@ -1,5 +1,5 @@
 
-<view class="video">
+<view class="video m-video">
   <view class="video-info" wx:if="{{!openVideo}}" bind:tap="onOpenVideo">
     <image class="video-img" src="{{videoUrlStatic}}"></image>
     <image class="video-play" src="/images/icon/play.png"></image>

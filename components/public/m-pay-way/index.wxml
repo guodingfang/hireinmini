@@ -1,9 +1,13 @@
 <view class="pay-way">
   <view class="pay-item" wx:for="{{haveWay}}" wx:key="id">
     <image class="icon-wechat" src="/images/icon/{{item}}.png"></image>
-    <text class="pay-val">{{wayText[item]}}</text>
+    <view class="pay-val">{{wayText[item]}}</view>
+    <view class="explain">
+      <slot name="{{item}}"></slot>
+    </view>
     <m-button
       type="select"
+      isUse="{{!(item === 'wallet' && !isUseWallet)}}"
       is-select="{{selectWay === item}}"
       data-type="{{item}}"
       bind:select="onSelect"

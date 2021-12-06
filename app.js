@@ -1,6 +1,7 @@
 
 App({
 	onLaunch (options) {
+		console.log('options', options)
 		// 判断更新
 		this.judgeUpdate()
 		// 判断运行环境

@@ -1,6 +1,6 @@
-<block wx:if="{{true}}">
+<block wx:if="{{!isComplete}}">
   <view class="content">
-    <view class="title two-row-overstep">酒吧Madrix麦爵士3D方框立方体幻彩像素灯带？</view>
+    <view class="title two-row-overstep">{{ details.qatitle }}</view>
 
     <view class="input-content">
       <textarea
@@ -9,6 +9,7 @@
         placeholder="输入回答描述"
         data-type="content"
         bindinput="onInputChange"
+        maxlength="-1"
       />
     </view>
 

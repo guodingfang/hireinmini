@@ -261,7 +261,7 @@
         {
           "name": "文章详情",
           "pathName": "pages/article-details/article-details",
-          "query": "id=4",
+          "query": "id=46&answerid=47",
           "scene": null
         },
         {
@@ -273,6 +273,12 @@
         {
           "name": "回答发帖",
           "pathName": "pages/answer-publish/answer-publish",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "问答列表",
+          "pathName": "pages/article-list/article-list",
           "query": "",
           "scene": null
         }

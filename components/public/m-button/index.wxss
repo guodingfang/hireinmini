@@ -7,6 +7,10 @@
   box-sizing: border-box;
 }
 
+.is-not-use {
+  background-color: #e5e5e5;
+}
+
 .is-select {
   border-color: transparent;
 }

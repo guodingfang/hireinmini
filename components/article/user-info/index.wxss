@@ -1,0 +1,68 @@
+@import '/assets/style/global.wxss';
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+}
+
+.head-portrait {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.head-portrait.small {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.user.row {
+  flex-direction: row;
+  align-items: center;
+}
+
+.user .name {
+  color: #1A1A1A;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.user.row .name {
+  margin-right: 30rpx;
+}
+
+.created {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.btn {
+  margin-left: auto;
+}
+
+.share-btn {
+  border: 0 solid transparent;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  color: #333333;
+  font-size: 24rpx;
+}
+
+.share-btn::after{
+  border: 0;
+}
+
+.icon-share {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}

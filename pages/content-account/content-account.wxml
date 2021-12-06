@@ -107,7 +107,7 @@
 
     <!-- 小视频 -->
     <view class="mini-video-list" slot="item-5">
-      <block wx:if="{{smallvideoList && smallvideoList.length}}">
+      <block wx:if="{{smallvideoList && smallvideoList.length && false}}">
         <v-mini-video-item wx:for="{{ smallvideoList }}" wx:key="id" />
       </block>
       <block wx:else>

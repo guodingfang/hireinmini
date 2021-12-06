@@ -6,18 +6,20 @@ Page({
    */
   data: {
     id: '',
+    answerid: '',
+    isShowAllAnswerBtn: false,
     userInfo: {},
     details: {},
-    answerList: []
+    answerList: [],
+    showAnswerList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const { id = '' } = options
-    this.setData({ id })
-    this.getArticleDetails()
+    const { id = '', answerid = '' } = options
+    this.setData({ id, answerid })
   },
 
   async getArticleDetails () {
@@ -26,7 +28,43 @@ Page({
     })
     this.setData({
       details: q,
-      answerList: a
+      userInfo: {
+        ...q.user,
+        created: q.qatime,
+        userid: q.userid,
+        shareid: q.id
+      }
+    })
+
+    const answerList = a.map(item => ({
+      ...item,
+      userInfo: {
+        ...item.user,
+        userid: item.userid,
+        created: item.qatime,
+        shareid: item.id
+      }
+    }))
+    if(this.data.answerid) {
+      const showAnswerList = answerList.filter(item => item.id === this.data.answerid)
+      const _answerList = answerList.filter(item => item.id !== this.data.answerid)
+      this.setData({
+        isShowAllAnswerBtn: true,
+        showAnswerList: answerList.filter(item => item.id === this.data.answerid),
+        answerList: [...showAnswerList, ..._answerList]
+      })
+    } else {
+      this.setData({
+        answerList,
+        showAnswerList: answerList,
+      })
+    }
+  },
+
+  onShowAllAnswer () {
+    this.setData({
+      showAnswerList: this.data.answerList,
+      isShowAllAnswerBtn: false  
     })
   },
 
@@ -47,7 +85,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getArticleDetails()
   },
 
   /**
@@ -77,11 +115,21 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
+  	/**
+	 * 用户点击右上角分享
+	 */
+	async onShareAppMessage (e) {
+    console.log('e', e)
+    let path = `/pages/index/index?path=article-details&needLogin=need&id=${this.data.id}`
+		if (e.from === 'button') {
+      const { id, type } = e.target.dataset
+      if (type === 'answer' && id) {
+        path = `${path}&answerid=${id}`
+      }
+    }
+    return {
+      title: '携手开启数字租赁服务新生态',
+      path
+    }
+	},
 })

@@ -49,14 +49,14 @@
   </view>
 </view>
 <view class="model article">
-  <m-header title="租赁技术在线问答（{{articleTotal}}）" bind:more="onMore"/>
+  <m-header title="租赁技术在线问答（{{articleTotal}}）" bind:more="onSkipArticleList"/>
   <view class="content questions-content">
     <v-article list="{{topArticleList}}" wx:if="{{topArticleList.length}}"/>
     <text class="content-not" wx:else>暂未有问答内容</text>
   </view>
 </view>
 
-<v-fixed>
+<v-fixed direction="left">
 	<view slot="list">
     <view class="fixed-item" bind:tap="onPublishArticle">
       <image class="consult" src="/images/public/consult.png"></image>

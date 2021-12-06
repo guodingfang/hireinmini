@@ -3,7 +3,7 @@
 .model {
   display: flex;
   flex-direction: column;
-  width: 690rpx;
+  min-width: 690rpx;
   padding: 0 20rpx;
 }
 
@@ -11,9 +11,9 @@
   position: relative;
   width: 100%;
   display: flex;
-  align-items: center;
-  height: 80rpx;
-  padding: 0 20rpx;
+  flex-direction: column;
+  /* height: 80rpx; */
+  padding: 20rpx;
   box-sizing: border-box;
 }
 
@@ -34,22 +34,38 @@
   height: 40rpx;
 }
 
-.info {
-  flex: 1;
-  margin-left: 12rpx;
-  display: flex;
-}
-
-.val {
-  max-width: 462rpx;
+.title {
   color: #1A1A1A;
-  font-size: 28rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  max-width: 630rpx;
 }
 
 .tips {
   min-width: 100rpx;
-  margin-left: auto;
+  margin-right: auto;
   color: #999999;
   font-size: 24rpx;
-  text-align: right;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.edit-btn {
+  background-color: #0400E6;
+  color: #FFFFFF;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12rpx 16rpx;
+  border-radius: 60rpx;
+}
+
+.icon-edit {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 8rpx;
 }

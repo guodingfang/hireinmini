@@ -6,7 +6,7 @@ import { promisic, getUserInfo } from '../utils/util'
  * 我的在线问答列表
  * @param {*} option 
  */
-export const getArticleList = (option = {}) => {
+export const getMyArticleList = (option = {}) => {
   return request.post('/QuestionAnswer/myQuestionAndAnswer', {
     ...option
   })
@@ -18,6 +18,16 @@ export const getArticleList = (option = {}) => {
  */
 export const getTopArticleList = (option = {}) => {
   return request.post('/QuestionAnswer/getTopNQuestions', {
+    ...option
+  })
+}
+
+/**
+ * 在线问答列表
+ * @param {*} option 
+ */
+export const getArticleList = (option = {}) => {
+  return request.post('/QuestionAnswer/getQuestionsList', {
     ...option
   })
 }

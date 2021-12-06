@@ -18,6 +18,19 @@
   flex-direction: column;
 }
 
+.label {
+  position: relative;
+  top: -5rpx;
+  padding: 3rpx 10rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  background: #E6EDFF;
+  border-radius: 8rpx;
+  color: #0400E6;
+  font-size: 18rpx;
+  box-sizing: border-box;
+}
+
 .title {
   color: #1A1A1A;
   font-size: 28rpx;

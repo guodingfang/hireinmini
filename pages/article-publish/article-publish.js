@@ -1,8 +1,9 @@
 import { publishArtic } from '../../models/article'
-import { payOrder } from '../../models/account'
+import { payment } from '../../models/util'
 import { verifyData } from '../../utils/tool'
 import { getUserInfo } from '../../utils/util'
 import { upload } from '../../models/util'
+import { getUserBalance } from '../../models/account'
 Page({
 
   /**
@@ -12,8 +13,23 @@ Page({
     selectWay: 'wechat',
     haveWay: ['wechat', 'wallet'],
     isComplete: false,
+    balance: 0,
     price: 0,
     exitUpload: false,
+    isUseWallet: true
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  async onLoad (options) {
+    this.getUserBalance()
+  },
+
+  async getUserBalance () {
+    const { balance } = await getUserBalance()
+    this.setData({
+      balance
+    })
   },
 
   onSelect(e) {
@@ -25,6 +41,13 @@ Page({
   onInputChange(e) {
     const { value } = e.detail
     const { type } = e.target.dataset
+    if(type === 'price') {
+      const isUseWallet = +value < +this.data.balance
+      this.setData({
+        isUseWallet,
+        selectWay: isUseWallet ? this.data.selectWay : 'wechat'
+      })
+    }
     this.setData({
       [type]: value
     })
@@ -45,29 +68,13 @@ Page({
   async onPublishArtic() {
     const { title = '', content = '', price = 0, selectWay = 'wechat' } = this.data
     const { verify } = verifyData(this.data, [
-      { type: 'title', label: '问答的标题' },
-      { type: 'content', label: '问答的内容' },
+      { type: 'title', label: '问答的标题' }
     ])
 
     if (!verify) return
 
-    if (price && selectWay === 'wechat') {
-      const { code = -1, msg = '' } = await payOrder({
-        ordertype: 'qa',
-        totalfee: price * 100,
-        goodsdescription: '发布问题'
-      })
-      if(code !== 0) {
-        wx.showToast({
-          title: msg,
-          icon: 'none'
-        })
-        return
-      }
-    }
-
     const { userid = '', wxappid = '' } = getUserInfo(['userid', 'wxappid'])
-    const { errcode = -1, qaid = '' } = await publishArtic({
+    const { errcode = -1, qaid = '', jsApiParameters = null } = await publishArtic({
       title,
       content,
       price,
@@ -100,9 +107,28 @@ Page({
         }
       })
     }
-    this.setData({
-      isComplete: true
-    })
+    if(price && selectWay === 'wechat' && jsApiParameters) {
+      const { code, msg } = await payment({
+        payParams: jsApiParameters,
+        ordertype: 'qa',
+        orderid: qaid,
+      })
+      if(code !== 0) {
+        wx.showToast({
+          title: msg,
+          icon: 'none'
+        })
+        return
+      } else {
+        this.setData({
+          isComplete: true
+        })
+      }
+    } else {
+      this.setData({
+        isComplete: true
+      })
+    }
   },
 
   // 发布完成
@@ -110,13 +136,6 @@ Page({
     wx.navigateBack({
       delta: 1,
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
   },
 
   /**

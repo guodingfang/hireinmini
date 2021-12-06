@@ -1,3 +1,3 @@
-<view class="fixed" style="bottom: {{tabHeight + 20}}rpx">
+<view class="fixed {{ direction === 'right' ? 'fixed-right' : 'fixed-left'}}" style="bottom: {{tabHeight + 20}}rpx">
   <slot name="list"></slot>  
 </view>

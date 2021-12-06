@@ -1,4 +1,5 @@
-import { payOrder } from '../../models/account'
+import { payOrder, walletRecharge } from '../../models/account'
+import { payment } from '../../models/util'
 import { verifyData } from '../../utils/tool'
 Page({
 
@@ -47,12 +48,23 @@ Page({
     ])
 
     if(!verify) return
-
-    const { code = -1, msg = '' } = await payOrder({
-      ordertype: 'recharge',
-      totalfee: this.data.price * 100,
-      goodsdescription: '用户充值'
+    const { errcode = -1, errmsg = '', orderid = '', jsApiParameters = null } = await walletRecharge({
+      totalfee: this.data.price,
     })
+
+    if(errcode !== 0) {
+      wx.showToast({
+        title: errmsg,
+        icon: 'none'
+      })
+    }
+
+    const { code, msg } = await payment({
+      payParams: jsApiParameters,
+      ordertype: 'recharge',
+      orderid: orderid,
+    })
+
     if(code !== 0) {
       wx.showToast({
         title: msg,

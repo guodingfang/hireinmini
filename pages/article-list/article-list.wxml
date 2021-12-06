@@ -1,0 +1,10 @@
+<view>
+  <scroll-view
+    class="article-list"
+    scroll-y
+    lower-threshold="100"
+    bindscrolltolower="onScrollButton"
+  >
+    <v-article list="{{list}}" />
+  </scroll-view>
+</view>

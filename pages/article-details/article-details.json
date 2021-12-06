@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "v-comment": "/components/article/comment-item",
-    "v-edit": "/components/article/edit-btn"
+    "v-edit": "/components/article/edit-btn",
+    "m-not-content": "/components/public/m-not-content"
   },
-  "navigationBarTitleText": "文章详情"
+  "navigationBarTitleText": "问答详情"
 }

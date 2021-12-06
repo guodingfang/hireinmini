@@ -180,21 +180,19 @@ Page({
 	 * 用户点击右上角分享
 	 */
 	async onShareAppMessage (e) {
-		if (e.from === 'button') {
-			const { msgid } = this.data
-			const { forwardcount = '' } = await addShareRelease({
-				msgid
-			})
-			this.setData({
-				info: {
-					...this.data.info,
-					forwardcount,
-				}
-			})
-			return {
-				title: '携手开启数字租赁服务新生态',
-				path: `/pages/index/index?path=detail&needLogin=need&msgid=${this.data.msgid}`,
+		const { msgid } = this.data
+		const { forwardcount = '' } = await addShareRelease({
+			msgid
+		})
+		this.setData({
+			info: {
+				...this.data.info,
+				forwardcount,
 			}
+		})
+		return {
+			title: '携手开启数字租赁服务新生态',
+			path: `/pages/index/index?path=detail&needLogin=need&msgid=${this.data.msgid}`,
 		}
-	},
+	}
 })

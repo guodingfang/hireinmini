@@ -18,6 +18,7 @@
         placeholder="输入问题简短描述"
         data-type="content"
         bindinput="onInputChange"
+        maxlength="-1"
       />
     </view>
 
@@ -52,7 +53,14 @@
       />
     </view>
 
-    <m-pay-way bind:select="onSelect" haveWay="{{haveWay}}" select-way="{{selectWay}}" />
+    <m-pay-way
+      bind:select="onSelect"
+      haveWay="{{haveWay}}"
+      isUseWallet="{{isUseWallet}}"
+      select-way="{{selectWay}}"
+    >
+      <view slot="wallet">余额：{{balance}}</view>
+    </m-pay-way>
   </view>
 
   <view class="footer">

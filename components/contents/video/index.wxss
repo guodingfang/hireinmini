@@ -3,6 +3,8 @@
   position: relative;
   width: 750rpx;
   height: 422rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
 }
 
 .video-info {
@@ -23,8 +25,8 @@
 }
 
 .video-img {
-  width: 750rpx;
-  height: 422rpx;
+  width: 100%;
+  height: 100%;
 }
 
 .video-play {

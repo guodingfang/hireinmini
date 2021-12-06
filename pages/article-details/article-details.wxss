@@ -1,36 +1,55 @@
+.details,
+.comment-list {
+  margin: 12rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
 
-.user-info {
+.comment-list {
+  margin: 30rpx 12rpx;
+}
+
+.comment-header {
+  height: 80rpx;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
-  width: 750rpx;
-  height: 120rpx;
-  background-color: #F7F7F7;
-  padding: 20rpx 30rpx;
-}
-
-.head-portrait {
-  width: 80rpx;
-  height: 80rpx;
-  border-radius: 50%;
-  margin-right: 20rpx;
-}
-
-.user {
-  display: flex;
-  flex-direction: column;
-}
-
-.user .name {
-  color: #1A1A1A;
-  font-size: 30rpx;
+  padding: 30rpx 30rpx 0 30rpx;
+  box-sizing: border-box;
+  font-size: 36rpx;
   font-weight: bold;
+  color: #333333;
 }
 
-.created-num {
-  font-size: 24rpx;
-  color: #666666;
+.comment-item {
+  margin-bottom: 10rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
 }
 
-.created {
-  margin-right: 30rpx;
+.more-comment {
+  height: 80rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-content-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #aaaaaa;
+	margin-top: 24rpx;
+}
+
+.not-comment {
+  background-color: #ffffff;
+  padding: 30rpx;
+  margin: 12rpx;
+  border-radius: 12rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  color: #333333;
+  font-size: 28rpx;
 }

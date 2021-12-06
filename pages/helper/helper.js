@@ -40,7 +40,6 @@ Page({
   onLoad(options) {
     this.getHeaderBlock()
     this.getLocationInfo()
-    this.getTopArticleList()
   },
 
 	getHeaderBlock() {
@@ -88,9 +87,15 @@ Page({
     this.setData({ locationInfo: e.detail.locationInfo })
   },
 
-  onPublishArticle() {
+  onPublishArticle () {
     wx.navigateTo({
       url: '/pages/article-publish/article-publish',
+    })
+  },
+
+  onSkipArticleList () {
+    wx.navigateTo({
+      url: '/pages/article-list/article-list',
     })
   },
 
@@ -104,13 +109,14 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  async onShow () {
     const { cityname = '' } = wx.getStorageSync('cityinfo')
     if(cityname !== this.data.cityname) {
       this.setData({
         cityname
       })
     }
+    await this.getTopArticleList()
   },
 
   /**

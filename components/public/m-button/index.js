@@ -8,6 +8,10 @@ Component({
       type: String,
       value: ''
     },
+    isUse: {
+      type: Boolean,
+      value: true
+    },
     isSelect: {
       type: Boolean,
       value: false

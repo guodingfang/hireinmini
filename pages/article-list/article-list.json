@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "v-article": "/components/helper/article-model"
+  }
+}

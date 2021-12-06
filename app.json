@@ -36,7 +36,8 @@
     "pages/withdraw/withdraw",
     "pages/article-details/article-details",
     "pages/article-publish/article-publish",
-    "pages/answer-publish/answer-publish"
+    "pages/answer-publish/answer-publish",
+    "pages/article-list/article-list"
   ],
   "permission": {
     "scope.userLocation": {

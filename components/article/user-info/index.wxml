@@ -1,0 +1,27 @@
+<view class="user-info">
+  <image
+    class="head-portrait {{ !isPublishUser ? 'small' : '' }}"
+    src="{{userInfo.userpic}}"
+    bind:tap="onSkipAccount"
+  ></image>
+  <view class="user {{ !isPublishUser ? 'row' : '' }}">
+    <view class="name single-row-overstep">{{userInfo.nickname}}</view>
+    <text class="created">{{userInfo.created}}</text>
+  </view>
+  <view class="btn" wx:if="{{isPublishUser}}">
+    <v-attention-btn userid="{{userInfo.userid}}" />
+  </view>
+
+
+  <button
+    wx:if="{{!isPublishUser}}"
+    class="share-btn"
+    data-type="answer"
+    data-id="{{userInfo.shareid}}"
+    open-type="share"
+  >
+    <image class="icon-share" src="/images/tool/icon-share.png"></image>
+    分享回答
+  </button>
+
+</view>

@@ -1,4 +1,4 @@
-import { publishArtic } from '../../models/article'
+import { getArticleDetails, publishArtic } from '../../models/article'
 import { verifyData } from '../../utils/tool'
 import { getUserInfo } from '../../utils/util'
 import { upload } from '../../models/util'
@@ -10,6 +10,7 @@ Page({
    */
   data: {
     id: '',
+    details: null,
     isComplete: false,
   },
 
@@ -19,6 +20,16 @@ Page({
   onLoad: function (options) {
     const { id = '' } = options
     this.setData({ id })
+    this.getArticleDetails()
+  },
+  
+  async getArticleDetails() {
+    const { q = {} } = await getArticleDetails({
+      questionid: this.data.id
+    })
+    this.setData({
+      details: q,
+    })
   },
 
   onInputChange(e) {
@@ -130,13 +141,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
   }
 })

@@ -107,7 +107,61 @@ export const getNLoginList = (option = {}) => {
  * @param {*} option 
  */
 export const uploadAccessLog = (option = {}) => {
-  return request.post('/User/accessLog', {
-    ...option
+  const launchInfo = wx.getLaunchOptionsSync()
+  const enterInfo = wx.getEnterOptionsSync()
+  request.post('/User/accessLog', {
+    ...option,
+    launchscene: launchInfo.scene,
+    enterscene: enterInfo.scene,
+  })
+}
+
+/**
+ * 支付統一接口
+ * @param {*} option 
+ */
+export const payment = async (option = {}) => {
+  const { payParams, ...args } = option
+  const prepay_id = payParams.package.split('=')[1]
+  try {
+    await promisic(wx.requestPayment)({
+      timeStamp: payParams.timeStamp,
+      nonceStr: payParams.nonceStr,
+      package: payParams.package,
+      signType: payParams.signType,
+      paySign: payParams.paySign,
+    })
+    await paymentCallBack({
+      ...args,
+      status: 'success',
+      prepay_id
+    })
+    return { code: 0, msg: '支付成功' }
+  } catch (e) {
+    await paymentCallBack({
+      ...args,
+      status: 'fail',
+      prepay_id
+    })
+    return { code: -1, msg: '取消支付' }
+  }
+}
+
+/**
+ * 支付回调
+ * @param {*} option 
+ */
+export const paymentCallBack = (option = {}) => {
+  const { ordertype = '' } = option
+  const prefixUrls = {
+    'consume': '',
+    'lease': '',
+    'qa': 'QuestionAnswer',
+    'recharge': 'User'
+  }
+  const { userid } = getUserInfo(['userid'])
+  return request.post(`/${prefixUrls[ordertype]}/payCallBack`, {
+    ...option,
+    userid
   })
 }

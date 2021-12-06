@@ -44,6 +44,8 @@ Page {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #FFFFFF;
+  z-index: 99;
 }
 
 .btn {

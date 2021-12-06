@@ -70,7 +70,7 @@ Component({
       let url = ''
       if(imgs.length === 0) return
       if(type === 'img') {
-        url = `${imgUrl}${imgs[0].picurl_thumbnails}`
+        url = `${imgUrl}${imgs[0].picurl}`
       } else if (type === 'video') {
         url = `${videoUrl}${imgs[0].videourl}?x-oss-process=video/snapshot,t_1000,f_jpg,w_${imgs[0].width},h_${imgs[0].height},m_fast`
       }

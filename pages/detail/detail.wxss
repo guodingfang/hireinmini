@@ -17,7 +17,7 @@ Page {
 	color: #1A1A1A;
 	font-size: 40rpx;
 	line-height: 60rpx;
-	font-weight: 800rpx;
+	font-weight: 800;
 	padding: 20rpx 30rpx 40rpx 30rpx;
 }
 

@@ -36,6 +36,18 @@ export const payOrder = async (option = {}) => {
 }
 
 /**
+ * 余额钱包充值
+ * @param {*} option 
+ */
+export const walletRecharge = (option = {}) => {
+  const { wxappid: openid } = getUserInfo(['wxappid'])
+  return request.post('/User/walletRecharge', {
+    ...option,
+    openid
+  })
+}
+
+/**
  * 提现到银行卡
  * @param {*} option 
  */

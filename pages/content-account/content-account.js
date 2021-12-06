@@ -1,6 +1,6 @@
 import { remoteImagesUrl } from '../../config'
 import { getUserBaseInfo, getMsgDynamics, isAFocusB } from '../../models/user'
-import { getArticleList } from '../../models/article'
+import { getMyArticleList } from '../../models/article'
 import { getUserInfo } from '../../utils/util'
 
 const app = getApp()
@@ -100,12 +100,11 @@ Page({
 
   async getMsgDynamics() {
     const { type, current, userid } = this.data
-    console.log('type', type)
     const currentPage = current ? current[type] || 0 : 0
 
     let currentData = []
     if(type === 'ask') {
-     const { data = [], page } = await getArticleList({
+     const { data = [], page } = await getMyArticleList({
        userid,
        page: +currentPage + 1
      })

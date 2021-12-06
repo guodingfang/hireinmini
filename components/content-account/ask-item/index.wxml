@@ -1,7 +1,10 @@
 <view class="ask-item" bind:tap="onSkipAskDetails">
   <image class="consult-img" src="/images/public/icon-consult.png"></image>
   <view class="content">
-    <view class="title two-row-overstep">{{ info.qatitle }}</view>
+    <view class="title two-row-overstep">
+      <text class="label" wx:if="{{info.isowner === '1'}}">我的</text>
+      {{ info.qatitle }}
+    </view>
     <view class="info">
       <text class="created">{{ info.qadate }}</text>
       <text class="num">{{ info.answernum }}个回答</text>

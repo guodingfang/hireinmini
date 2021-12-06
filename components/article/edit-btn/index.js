@@ -20,9 +20,6 @@ Component({
   methods: {
     onSkipAnswer() {
       this.triggerEvent('answer', {}, {})
-      wx.navigateTo({
-        url: '/pages/answer-publish/answer-publish',
-      })
     }
   }
 })

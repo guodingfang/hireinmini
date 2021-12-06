@@ -1,5 +1,12 @@
 .fixed {
   position: fixed;
-  right: 24rpx;
   bottom: 170rpx;
+}
+
+.fixed-right {
+  right: 24rpx;
+}
+
+.fixed-left {
+  left: 24rpx;
 }

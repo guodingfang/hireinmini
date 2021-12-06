@@ -1,0 +1,6 @@
+
+<block wx:if="{{showAttentionBtn}}">
+  <view class="attention-btn" catch:tap="onAttention">
+    {{ isAttention ? '已关注' : '关注'}}
+  </view>
+</block>

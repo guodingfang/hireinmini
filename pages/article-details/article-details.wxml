@@ -1,16 +1,7 @@
 <view class="details">
-  <view class="user-info">
-    <image class="head-portrait" src="/images/public/logo.png"></image>
-    <view class="user">
-      <view class="name">赁客石强</view>
-      <view class="created-num">
-        <text class="created">2021-11-24</text>
-        <text class="num">999个回答</text>
-      </view>
-    </view>
-  </view>
-
   <v-comment
+    user-info="{{userInfo}}"
+    isPublishUser="{{true}}"
     title="{{details.qatitle}}"
     content="{{details.content}}"
     imgList="{{details.picture}}"
@@ -18,15 +9,31 @@
   />
 </view>
 
-<view class="comment-list">
-  <block wx:for="{{answerList}}" wx:key="id">
-    <v-comment
-      user-info="{{userInfo}}"
+<view class="comment-list" wx:if="{{answerList.length}}">
+  <view class="comment-header">
+    <view class="answer-total">回答 {{answerList.length}}</view>
+  </view>
+  <block wx:for="{{showAnswerList}}" wx:key="id">
+    <view class="comment-item">
+      <v-comment
+      user-info="{{item.userInfo}}"
       content="{{item.content}}"
       imgList="{{item.picture}}"
       video="{{item.video}}"
     />
+    </view>
   </block>
+
+  <view class="more-comment" wx:if="{{isShowAllAnswerBtn}}" bind:tap="onShowAllAnswer">
+    显示全部回答
+  </view>
+
+</view>
+
+<view class="not-comment" wx:else>
+  <m-not-content>
+    <view class="not-content-text" slot="text">暂无评论...</view>
+  </m-not-content>
 </view>
 
 <v-edit bind:answer="onSkipAnswer" />

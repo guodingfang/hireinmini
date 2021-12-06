@@ -4,7 +4,8 @@
 		<view class="name">{{info.name}}</view>
 		<view class="des single-row-overstep">{{info.des}}</view>
 	</view>
+
 	<view class="btn">
-		<view class="status" bind:tap="onAttention">{{ isAttention ? '已关注' : '关注'}}</view>
+		<v-attention-btn userid="{{info.userid}}" />
 	</view>
 </view>
