@@ -2,10 +2,10 @@
 <view style="height: 92rpx;"></view>
 <view class="card">
   <view class="header">
-    <image class="portrait" src="{{userinfo.userpic}}"></image>
+    <image mode="aspectFill" class="portrait" src="{{userinfo.userpic}}"></image>
     <block wx:if="{{isCurrentUser}}">
       <view class="btn btn-1" bind:tap="onSetUp">设置</view>
-      <view class="btn btn-2" bind:tap="onApproveCompany">认证</view> 
+      <view class="btn btn-2" bind:tap="onApproveCompany">{{ userinfo.authenticationstatus === '0' ? '认证' : '已认证'}}</view> 
     </block>
     <block wx:else>
       <view class="btn btn-1" bind:tap="onInterflow">合作交流</view>
@@ -14,8 +14,8 @@
   </view>
   <view class="introduce">
     <text class="user-name single-row-overstep">{{ userinfo.nickname }}</text>
-    <text class="introduce-val">公司：{{ company.companyname || '该用户未开通服务账号' }}</text>
-    <text class="company">认证：{{ userinfo.authenticationstatus === '0' ? '未认证' : '已认证'}}</text>
+    <text class="introduce-val">服务账号：{{ company.companyname || '该用户未开通服务账号' }}</text>
+    <text class="company">企业认证：未认证</text>
   </view>
   <view class="popularity-list">
     <view class="item">

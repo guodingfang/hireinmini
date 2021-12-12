@@ -261,7 +261,7 @@
         {
           "name": "文章详情",
           "pathName": "pages/article-details/article-details",
-          "query": "id=46&answerid=47",
+          "query": "id=3",
           "scene": null
         },
         {
@@ -279,6 +279,12 @@
         {
           "name": "问答列表",
           "pathName": "pages/article-list/article-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "钱包密码",
+          "pathName": "pages/wallet-password/wallet-password",
           "query": "",
           "scene": null
         }

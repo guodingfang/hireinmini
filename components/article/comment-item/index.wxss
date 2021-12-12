@@ -11,6 +11,35 @@
   font-size: 40rpx;
   color: #1A1A1A;
   font-weight: bold;
+  line-height: 60rpx;
+}
+
+.label {
+  margin-left: 10rpx;
+  height: 30rpx;
+  padding: 0 10rpx;
+  font-size: 18rpx;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8rpx;
+  font-weight: 400;
+}
+
+.label-solve,
+.label-reward {
+  background-color: #FFEDE6;
+  color: #FF9D73;
+}
+
+.label-solve {
+  position: relative;
+  top: -6rpx;
+}
+
+.label-reward-icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 4rpx;
 }
 
 .content {
@@ -53,7 +82,6 @@
 .file-item {
   width: 690rpx;
   height: 388rpx;
-  border-radius: 20rpx;
 }
 
 .m-video {
@@ -72,6 +100,7 @@
   align-items: center;
   color: #333333;
   font-size: 24rpx;
+  padding: 0 12rpx;
 }
 
 .share-btn::after{
@@ -82,4 +111,26 @@
   width: 32rpx;
   height: 32rpx;
   margin-right: 10rpx;
+}
+
+.reward {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  height: 70rpx;
+}
+
+.icon-reward {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.reward-text {
+  color: #FF9D73;
+  font-size: 24rpx;
+  margin-left: 4rpx;
+}
+
+.reward-text.reward-not-text {
+  color: #999999;
 }

@@ -1,5 +1,6 @@
 import { remoteImagesUrl } from '../../config'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
+import { login } from '../../models/user'
 import { getAccountType, getUserBalance, getUserBalanceLog, getBalanceSum } from '../../models/account'
 const app = getApp();
 Page({
@@ -29,6 +30,10 @@ Page({
     this.getAccountType()
     this.getBalanceSum()
     this.getUserBalanceLog()
+  },
+
+  async onSetUserInfo() {
+    await login()
   },
 
   async getAccountType () {
@@ -70,7 +75,6 @@ Page({
   },
 
   async onLoadDetails () {
-    console.log('@')
     if(!this.data.detailsLoading && !this.data.isLoadingComplete) {
       this.setData({
         page: this.data.page + 1,

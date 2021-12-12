@@ -37,7 +37,8 @@
     "pages/article-details/article-details",
     "pages/article-publish/article-publish",
     "pages/answer-publish/answer-publish",
-    "pages/article-list/article-list"
+    "pages/article-list/article-list",
+    "pages/wallet-password/wallet-password"
   ],
   "permission": {
     "scope.userLocation": {

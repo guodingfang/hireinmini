@@ -52,3 +52,14 @@ export const getArticleDetails = (option = {}) => {
   })
 }
 
+
+/**
+ * 答案采纳
+ * @param {*} option 
+ */
+export const acceptAnswer = (option = {}) => {
+  return request.post('/QuestionAnswer/acceptAnswer', {
+    ...option
+  })
+}
+

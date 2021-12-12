@@ -20,4 +20,6 @@
       <text>充值</text>
     </view>
   </view>
+
+  <image bind:tap="onPassWord" class="icon-password" src="/images/icon/password.png"></image>
 </view>

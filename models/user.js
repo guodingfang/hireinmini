@@ -138,7 +138,7 @@ export const getAttentionedList = (option = {}) => {
 }
 
 /**
- * 我的页动态、关注以及订单的数量、角标
+ * 我的信息
  * @param {*} option 
  */
 export const getUserBaseInfo = (option = {}) => {

@@ -1,5 +1,6 @@
 
 .account-info {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -69,4 +70,13 @@
   width: 38rpx;
   height: 40rpx;
   padding-right: 10rpx;
+}
+
+.icon-password {
+  position: absolute;
+  top: 0;
+  right: 12rpx;
+  width: 40rpx;
+  height: 40rpx;
+  padding: 24rpx;
 }

@@ -41,13 +41,14 @@
 </view>
 
 
-<view class="model knowledge"> 
+<!-- <view class="model knowledge"> 
   <m-header title="租赁学院" bind:more="onMore"/>
   <view class="content knowledge-content">
     <v-knowledge list="{{knowledgeList}}" wx:if="{{knowledgeList.length > 0}}" />
     <text class="content-not" wx:else>暂未有知识提供</text>
   </view>
-</view>
+</view> -->
+
 <view class="model article">
   <m-header title="租赁技术在线问答（{{articleTotal}}）" bind:more="onSkipArticleList"/>
   <view class="content questions-content">
@@ -55,6 +56,8 @@
     <text class="content-not" wx:else>暂未有问答内容</text>
   </view>
 </view>
+
+<view class="block"></view>
 
 <v-fixed direction="left">
 	<view slot="list">

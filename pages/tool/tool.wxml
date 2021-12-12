@@ -1,6 +1,11 @@
 <view class="header" style="height: {{headerBlock}}rpx;margin-top: {{headerTop}}rpx;">
   <image class="icon-back" src="/images/icon/back.png" bind:tap="onBack"></image>
   <text>租赁常用工具</text>
+  <view class="tip" bind:tap="onShowTip">
+    <image class="icon-tip" src="/images/icon/tip.png"></image>
+    声明
+  </view>
+
 </view>
 
 <view class="user-bg">
@@ -74,3 +79,14 @@
 	bind:again="onAgainLocation"
 	bind:manual="onManualLocation" 	
 />
+
+<m-model show-model="{{showModel}}" bind:confirm="onConfirmModel">
+  <view slot="header">
+    <view class="model-header">版权声明</view>
+  </view>
+  <view slot="content">
+    <view class="model-content">
+      嗨应平台拥有此工具版权等知识产权，受法律保护。未经书面许可，任何单位及个人不得以任何方式或理由对上述工具的任何部分在其它平台进行使用、复制、修改或与其它产品捆绑、销售。凡侵犯嗨应平台版权等知识产权，本平台必依法追究其法律责任。同时，欢迎志同道合致力于提高改善并服务于行业的合作，本平台将免费提供数据的对接服务。
+    </view>
+  </view>
+</m-model>

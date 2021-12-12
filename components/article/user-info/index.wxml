@@ -2,10 +2,26 @@
   <image
     class="head-portrait {{ !isPublishUser ? 'small' : '' }}"
     src="{{userInfo.userpic}}"
+    mode="aspectFill"
     bind:tap="onSkipAccount"
   ></image>
-  <view class="user {{ !isPublishUser ? 'row' : '' }}">
-    <view class="name single-row-overstep">{{userInfo.nickname}}</view>
+  <view class="user {{ !isPublishUser ? 'small-user' : '' }}">
+    <view class="name single-row-overstep">
+      <text class="single-row-overstep">{{userInfo.nickname}}</text>
+      <block wx:if="{{isPublishUser}}">
+        <view class="label label-my" wx:if="{{isCurrentUser}}">我的</view>
+        <!-- <view class="label label-solve" wx:if="{{userInfo.solved === '1'}}">已解决</view> -->
+      </block>
+      <block wx:else>
+        <view class="label label-answer" wx:if="{{isCurrentUser}}">
+          已答
+        </view>
+        <view class="label label-reward" wx:if="{{userInfo.goldcoin === '1'}}">
+          <image class="label-reward-icon" src="/images/icon/reward.png"></image>
+          已打赏
+        </view>
+      </block>
+    </view>
     <text class="created">{{userInfo.created}}</text>
   </view>
   <view class="btn" wx:if="{{isPublishUser}}">

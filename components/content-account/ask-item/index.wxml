@@ -1,9 +1,20 @@
 <view class="ask-item" bind:tap="onSkipAskDetails">
-  <image class="consult-img" src="/images/public/icon-consult.png"></image>
+  <image class="consult-img" src="/images/public/icon-{{ info.isowner === '1' ? 'consult' : 'answer' }}.png"></image>
   <view class="content">
     <view class="title two-row-overstep">
-      <text class="label" wx:if="{{info.isowner === '1'}}">我的</text>
-      {{ info.qatitle }}
+      <block wx:if="{{info.isowner === '1'}}">
+        <view class="label label-my">我的</view>
+        <view class="label label-solve" wx:if="{{info.solved === '1'}}">已解决</view>
+        <view class="label label-reward" wx:if="{{info.goldcoin === '1' && info.solved === '1'}}">
+          <image class="label-reward-icon" src="/images/icon/reward.png"></image>
+          已打赏
+        </view>
+      </block>
+      <view class="label label-reward" wx:if="{{(info.isowner === '1' && info.goldcoin === '1' && info.solved !== '1') || info.isowner !== '1' && info.goldcoin === '1'}}">
+        <image class="label-reward-icon" src="/images/icon/reward.png"></image>
+        有偿
+      </view>
+      <text>{{ info.qatitle }}</text>
     </view>
     <view class="info">
       <text class="created">{{ info.qadate }}</text>

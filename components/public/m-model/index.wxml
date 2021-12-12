@@ -1,0 +1,17 @@
+
+<view
+  class="container {{ animateShow ? 'animated fadeIn' : 'animated fadeOut' }}"
+  wx:if="{{showModel}}"
+>
+<view class="model" style="width: {{width}}rpx">
+    <view class="model-header">
+      <slot name="header"></slot>
+    </view>
+    <view class="model-content">
+      <slot name="content"></slot>
+    </view>
+    <view class="model-footer">
+      <view class="btn" bind:tap="onConfirm">确定</view>
+    </view>
+  </view>
+</view>

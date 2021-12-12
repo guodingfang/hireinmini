@@ -18,6 +18,7 @@ Page({
     type: 'power',
     bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
     defaultIndex: 0,
+    showModel: false,
     tabList: [
       {
         name: '功耗',
@@ -160,6 +161,18 @@ Page({
     if (res.authSetting["scope.userLocation"]) {
       this.getLocationInfo();
     }
+  },
+
+  onShowTip () {
+    this.setData({
+      showModel: true
+    })
+  },
+
+  onConfirmModel () {
+    this.setData({
+      showModel: false
+    })
   },
   
   /**

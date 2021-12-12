@@ -1,0 +1,53 @@
+@import '/assets/style/animate.wxss';
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+}
+
+.model {
+  margin: 360rpx auto;
+  background-color: #FFFFFF;
+  width: 546rpx;
+  /* height: 230rpx; */
+  border-radius: 26rpx;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: stretch;
+}
+
+.model-content {
+  color: #333333;
+  font-size: 26rpx;
+  font-weight: bold;
+  padding: 12rpx 0;
+  border-bottom: 2rpx solid #E5E5E5;
+}
+
+.model-footer {
+  height: 92rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+
+.model-footer>.btn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 21rpx 0;
+  color: #004DBB;
+  font-weight: bold;
+}
+
+.btn + .btn  {
+  border-left: 0.5rpx solid #E5E5E5;
+}

@@ -23,7 +23,7 @@ Page {
 }
 
 .content-not {
-  margin-top: 12rpx;
+  margin: 24rpx;
 }
 
 .tool-content {
@@ -64,4 +64,8 @@ Page {
 .fixed-item .consult{
   width: 130rpx;
   height: 130rpx;
+}
+
+.block {
+  height: 60rpx;
 }

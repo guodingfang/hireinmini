@@ -1,4 +1,4 @@
-// components/article/user-info/index.js
+import { getUserInfo } from '../../../utils/util'
 Component({
   /**
    * 组件的属性列表
@@ -6,7 +6,15 @@ Component({
   properties: {
     userInfo: {
       type: Object,
-      value: null
+      value: null,
+      observer(val) {
+        if(val) {
+          const { userid = '' } = getUserInfo(['userid'])
+          this.setData({
+            isCurrentUser: userid === val.userid
+          })
+        }
+      }
     },
     isPublishUser: {
       type: Boolean,
@@ -18,7 +26,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-
+    isCurrentUser: false
   },
 
   /**

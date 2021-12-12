@@ -1,5 +1,5 @@
 import { remoteImagesUrl } from '../../config'
-import { getUserBaseInfo, getMsgDynamics, isAFocusB } from '../../models/user'
+import { login, getUserBaseInfo, getMsgDynamics, isAFocusB } from '../../models/user'
 import { getMyArticleList } from '../../models/article'
 import { getUserInfo } from '../../utils/util'
 
@@ -74,10 +74,16 @@ Page({
     })
   },
 
+  async onSetUserInfo() {
+    await login()
+		await this.getUserBaseInfo()
+	},
+
   async getUserBaseInfo() {
     const { user, dynamic, fans, focus, company, praise } = await getUserBaseInfo({
       userid: this.data.userid
     })
+    console.log('user', user)
     this.setData({
       company: company instanceof Array ? null : company,
       userinfo: {

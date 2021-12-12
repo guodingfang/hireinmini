@@ -1,0 +1,24 @@
+<view class="container {{ animateShow ? 'animated fadeIn' : 'animated fadeOut' }}" wx:if="{{showPay}}">
+  <view class="model">
+    <view class="model-header">
+      <image src="/images/icon/close-3.png" bind:tap="onClose"></image>
+      <text>{{title}}</text>
+    </view>
+    
+    <slot name="money"></slot>
+
+    <view class="model-content">
+      <view class="num-list">
+        <block wx:key="id" wx:for="{{codeList}}">
+          <view class="num-item">{{item}}</view>
+        </block>
+      </view>
+      <view class="input-container">
+        <input class="input-num" value="{{code}}" focus="{{true}}" type="number" bindinput="onChange" maxlength="6"></input>
+      </view>
+    </view>
+    <view class="model-footer" wx:if="{{showFooter}}">
+      <view class="footer-btn" bind:tap="onForgetPassword">忘记密码</view>
+    </view>
+  </view>
+</view>

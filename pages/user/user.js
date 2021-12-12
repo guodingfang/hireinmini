@@ -62,7 +62,7 @@ Page({
 	},
 
 	async getUserBaseInfo() {
-		const { user, dynamic, fans, focus, company } = await getUserBaseInfo({})
+		const { user, dynamic, praise, fans, focus, company } = await getUserBaseInfo({})
 		const companyInfo =  company instanceof Array ? null : company;
     this.setData({
 			company: companyInfo,
@@ -73,7 +73,8 @@ Page({
         ...user,
         dynamic,
         fans,
-        focus
+				focus,
+				praise
       }
     })
 	},
@@ -144,6 +145,12 @@ Page({
 			icon: 'none'
 		})
 		await this.getUserBaseInfo()
+	},
+
+	onPassword () {
+		wx.navigateTo({
+			url: '/pages/wallet-password/wallet-password',
+		})
 	},
 
 	onSelectCompany() {

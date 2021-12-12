@@ -1,9 +1,14 @@
 
-<view class="header-container">
-  <view class="header">
-    <image class="bg-img" src="{{remoteImagesUrl}}/authentication/bg.png"></image>
-    <image class="title-img" src="{{remoteImagesUrl}}/authentication/title.png"></image>
-  </view>
+<view style="height: {{headerBlock}}rpx">
+  <v-header
+    fixed="{{true}}"
+    bgSrc="{{remoteImagesUrl}}/authentication/bg.png"
+    m-header-image="m-header-image"
+  />
+</view>
+
+<view class="header">
+  <image class="title-img" src="{{remoteImagesUrl}}/authentication/title.png"></image>
 </view>
 
 <view class="model">
@@ -22,7 +27,8 @@
       class="item-img"
       data-type="idcard_front"
       bind:tap="onUpload"
-      src="{{remoteImagesUrl}}/authentication/idCrad-obverse.png"
+      mode="widthFix"
+      src="{{idcardFrontImg}}"
     ></image>
   </view>
   
@@ -32,7 +38,8 @@
       class="item-img"
       data-type="idcard_back"
       bind:tap="onUpload"
-      src="{{remoteImagesUrl}}/authentication/idCrad-reverse.png"
+      mode="widthFix"
+      src="{{idcardBackImg}}"
     ></image>
   </view>
 <!-- 
@@ -63,7 +70,7 @@
     ></image>
   </view> -->
   <view class="agreement">
-    <view class="agreement-select" bind:tap="onSelectAgreement">
+    <view class="agreement-select {{selectAgreement ? 'not-border' : ''}}" bind:tap="onSelectAgreement">
       <image wx:if="{{selectAgreement}}" class="icon-select" src="/images/icon/select.png"></image>
     </view>
     <view class="agreement-val">

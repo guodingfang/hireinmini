@@ -21,7 +21,7 @@
   position:absolute;
   content: '';
   width: 650rpx;
-  height: 1rpx;
+  height: .5rpx;
   background-color: #E5E5E5;
   bottom: 0;
   left: 0;
@@ -39,6 +39,43 @@
   font-size: 32rpx;
   font-weight: bold;
   max-width: 630rpx;
+  height: 56rpx;
+}
+
+
+.label {
+  margin-right: 10rpx;
+  height: 30rpx;
+  padding: 0 10rpx;
+  font-size: 18rpx;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8rpx;
+  font-weight: 400;
+}
+
+.label-reward {
+  background-color: #FFEDE6;
+  color: #FF9D73;
+}
+
+.label-my {
+  color: #0400E6;
+  background-color: #E6EDFF;
+}
+
+.label-reward-icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 4rpx;
+}
+
+.label-reward-big-icon {
+  position: relative;
+  top: 4rpx;
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
 }
 
 .tips {
@@ -46,11 +83,14 @@
   margin-right: auto;
   color: #999999;
   font-size: 24rpx;
+  position: relative;
+  top: 10rpx;
 }
 
 .content {
   display: flex;
   align-items: center;
+  margin-top: 6rpx;
 }
 
 .edit-btn {
@@ -60,7 +100,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12rpx 16rpx;
+  padding: 6rpx 16rpx;
   border-radius: 60rpx;
 }
 

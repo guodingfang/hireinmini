@@ -48,6 +48,15 @@ Page({
     ])
 
     if(!verify) return
+
+    if(this.data.price == 0) {
+      wx.showToast({
+        title: '充值金额需大于0',
+        icon: 'none'
+      })
+      return
+    }
+
     const { errcode = -1, errmsg = '', orderid = '', jsApiParameters = null } = await walletRecharge({
       totalfee: this.data.price,
     })

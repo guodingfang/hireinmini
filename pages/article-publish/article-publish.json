@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "m-upload": "/components/public/m-upload",
-    "m-pay-way": "/components/public/m-pay-way"
+    "m-pay-way": "/components/public/m-pay-way",
+    "m-wallet-pay": "/components/public/wallet-pay-model"
   },
   "navigationBarTitleText": "提问发帖"
 }

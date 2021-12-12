@@ -1,27 +1,13 @@
 
-.header-container {
-  height: 296rpx;
-}
 
 .header {
-  position: absolute;
-  top: 0;
-  width: 750rpx;
-  height: 436rpx;
-  z-index: 999;
-}
-
-.header .bg-img {
-  width: 750rpx;
-  height: 436rpx;
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header .title-img {
-  position: absolute;
-  z-index: 9999;
-  top: 196rpx;
-  left: 0;
-  right: 0;
   width: 648rpx;
   height: 60rpx;
   margin: auto;
@@ -29,7 +15,7 @@
 
 .model {
   position: relative;
-  z-index: 999999;
+  z-index: 999;
   background-color: #ffffff;
   margin: 30rpx;
   border-radius: 30rpx;
@@ -71,6 +57,10 @@
   border: 1rpx solid #666666;
   border-radius: 50%;
   box-sizing: border-box;
+}
+
+.not-border {
+  border: none;
 }
 
 .icon-select {

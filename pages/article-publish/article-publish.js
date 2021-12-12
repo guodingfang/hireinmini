@@ -3,7 +3,9 @@ import { payment } from '../../models/util'
 import { verifyData } from '../../utils/tool'
 import { getUserInfo } from '../../utils/util'
 import { upload } from '../../models/util'
-import { getUserBalance } from '../../models/account'
+import { getUserBalance, checkPassword } from '../../models/account'
+import { login } from '../../models/user'
+
 Page({
 
   /**
@@ -16,7 +18,8 @@ Page({
     balance: 0,
     price: 0,
     exitUpload: false,
-    isUseWallet: true
+    isUseWallet: true,
+    showPay: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -42,7 +45,7 @@ Page({
     const { value } = e.detail
     const { type } = e.target.dataset
     if(type === 'price') {
-      const isUseWallet = +value < +this.data.balance
+      const isUseWallet = +value <= +this.data.balance
       this.setData({
         isUseWallet,
         selectWay: isUseWallet ? this.data.selectWay : 'wechat'
@@ -64,14 +67,52 @@ Page({
     })
   },
 
+  async onSetUserInfo () {
+    await login()
+  },
 
-  async onPublishArtic() {
-    const { title = '', content = '', price = 0, selectWay = 'wechat' } = this.data
+  async onPublishArtic () {
+    const { price = 0, selectWay = 'wechat' } = this.data
     const { verify } = verifyData(this.data, [
       { type: 'title', label: '问答的标题' }
     ])
 
     if (!verify) return
+
+    if(selectWay === 'wechat') {
+      this._onPublishArtic()
+    } else if(selectWay === 'wallet') {
+      if (price == 0) {
+        wx.showToast({
+          title: '请输入打赏金额',
+          icon: 'none'
+        })
+        return
+      }
+      
+      const { resetpaypass = '1' } = getUserInfo(['resetpaypass'])
+      if (resetpaypass === '1') {
+        const { confirm = false } = await wx.showModal({
+          title: '设置支付密码',
+          content: '未设置过支付密码，请先设置',
+          confirmText: '设置',
+        })
+        if(confirm) {
+          wx.navigateTo({
+            url: '/pages/wallet-password/wallet-password',
+          })
+          return
+        }
+        return
+      }
+      this.setData({
+        showPay: true
+      })
+    }
+  },
+
+  async _onPublishArtic() {
+    const { title = '', content = '', price = 0, selectWay = 'wechat' } = this.data
 
     const { userid = '', wxappid = '' } = getUserInfo(['userid', 'wxappid'])
     const { errcode = -1, qaid = '', jsApiParameters = null } = await publishArtic({
@@ -135,6 +176,35 @@ Page({
   onComplete () {
     wx.navigateBack({
       delta: 1,
+    })
+  },
+  
+  onClosePay () {
+    this.setData({
+      showPay: false
+    })
+  },
+
+  async onCheckingPay (e) {
+    const { code = '' } = e.detail
+    const { errcode = -1, errmsg = '' } = await checkPassword({
+      password: code
+    })
+    if(errcode !== 0) {
+      wx.showToast({
+        title: errmsg,
+        icon: 'none'
+      })
+      return
+    } else {
+      this.onClosePay()
+      this._onPublishArtic()
+    }
+  },
+
+  onForgetPassword () {
+    wx.navigateTo({
+      url: `/pages/wallet-password/wallet-password?reset=reset`,
     })
   },
 

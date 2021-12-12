@@ -13,7 +13,8 @@
     "v-truss-prints": "/components/tool/truss-prints-model",
     "v-truss-compute": "/components/tool/truss-compute-model",
     "m-location": "/components/public/m-location",
-    "m-advert": "/components/public/m-advert"
+    "m-advert": "/components/public/m-advert",
+    "m-model": "/components/public/m-model"
   },
   "navigationStyle": "custom",
   "navigationBarTitleText": "租赁常用工具"

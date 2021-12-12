@@ -25,12 +25,20 @@
 	<view class="btn" bind:tap="onSVip">成为VIP会员</view>
 </view>
 
-<v-account orderaudit="{{orderaudit}}" ordernum="{{ordernum}}" />
+<v-account
+	userinfo="{{userinfo}}"
+	orderaudit="{{orderaudit}}"
+	ordernum="{{ordernum}}"
+/>
 
 <v-order orderaudit="{{orderaudit}}" ordernum="{{ordernum}}" />
 
 <!-- <view class="demo-model" bind:tap="onUnRegisterUser">
 	注销账户
+</view> -->
+
+<!-- <view class="demo-model" bind:tap="onPassword">
+	进入电子钱包密码设置
 </view> -->
 
 <!-- 

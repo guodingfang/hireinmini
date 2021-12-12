@@ -1,7 +1,7 @@
 
 import request from '../utils/request'
 import { promisic, getUserInfo } from '../utils/util'
-
+import md5 from '../libs/md5.js';
 
 /**
  * 统一下单支付接口
@@ -94,5 +94,37 @@ export const getBalanceSum = (option = {}) => {
 export const getUserBalanceLog = (option = {}) => {
   return request.post('/User/getUserBalanceLog', {
     ...option
+  })
+}
+
+/**
+ * 发送重置密码的短信验证码
+ * @param {*} option 
+ */
+export const sendSMSCode = (option = {}) => {
+  return request.post('/User/sendSMSCode', {
+    ...option
+  })
+}
+
+/**
+ * 重置/修改密码
+ * @param {*} option 
+ */
+export const resetPassword = (option = {}) => {
+  const { password, ...agrs } = option
+  return request.post('/User/resetPassword', {
+    ...agrs,
+    newpassword: md5(password)
+  })
+}
+
+/**
+ * 密码验证
+ * @param {*} option 
+ */
+export const checkPassword = ({ password }) => {
+  return request.post('/User/checkPassword', {
+    password: md5(password)
   })
 }

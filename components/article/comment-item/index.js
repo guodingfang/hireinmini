@@ -1,10 +1,19 @@
 import config from '../../../config'
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
     isPublishUser: {
+      type: Boolean,
+      value: false
+    },
+    isCurrentUser: {
+      type: Boolean,
+      value: false
+    },
+    isEnd: {
       type: Boolean,
       value: false
     },
@@ -73,6 +82,12 @@ Component({
         showContent: this.properties.content,
         isShowAllContent: true
       })
+    },
+    onAcceptAnswer () {
+      const { shareid } = this.properties.userInfo
+      this.triggerEvent('accept', {
+        answerid: shareid
+      }, {})
     },
   }
 })

@@ -25,8 +25,9 @@ Component({
    */
   data: {
     wayText: {
-      "wechat": "微信支付",
-      "wallet": "嗨应钱包支付"
+      "wechat": "微信",
+      "wallet": "嗨应钱包",
+      "bank": "银行卡"
     }
   },
 

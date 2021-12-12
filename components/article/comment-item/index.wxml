@@ -1,5 +1,12 @@
 <view class="comment">
-  <view class="title two-row-overstep" wx:if="{{title}}">{{ title }}</view>
+  <view class="title two-row-overstep" wx:if="{{title}}">
+    <text>{{ title }}</text>
+    <view class="label label-reward" wx:if="{{userInfo.goldcoin === '1'}}">
+      <image class="label-reward-icon" src="/images/icon/reward.png"></image>
+      有偿
+    </view>
+    <view class="label label-solve" wx:if="{{userInfo.solved === '1'}}">已解决</view>
+  </view>
   <block wx:if="{{userInfo}}">
     <v-user-info userInfo="{{userInfo}}" isPublishUser="{{isPublishUser}}" />
   </block>
@@ -16,7 +23,7 @@
         <image
           wx:key="id"
           wx:for="{{imgList}}"
-          mode="aspectFit"
+          mode="widthFix"
           class="file-item"
           src="{{imgUrl}}{{item.picurl}}"
         ></image>
@@ -43,15 +50,23 @@
     </button>
   </view>
 
-  <view class="reward" wx:if="{{false}}">
-    <view class="reward-item">
-      <image class="icon-reward" src="/images/icon/reward.png"></image>
-      <text>已打赏</text>
-    </view>
-    <view class="reward-item">
-      <image class="icon-reward" src="/images/icon/not-reward.png"></image>
-      <text>打赏</text>
-    </view>
-  </view>
 
+  <block wx:if="{{!isPublishUser}}">
+    <block wx:if="{{isEnd}}">
+      <view class="reward" wx:if="{{userInfo.solved === '1'}}">
+        <image class="icon-reward" src="/images/icon/reward.png"></image>
+        <text class="reward-text">已打赏</text>
+      </view>
+    </block>
+    <block wx:else>
+      <view
+        class="reward"
+        wx:if="{{isCurrentUser}}"
+        bind:tap="onAcceptAnswer"
+      >
+        <image class="icon-reward" src="/images/icon/not-reward.png"></image>
+        <text class="reward-text reward-not-text">打赏</text>
+      </view>
+    </block>  
+  </block>
 </view>

@@ -1,6 +1,7 @@
 import { getUserBalance, withdrawBankCard } from '../../models/account'
 import { upload } from '../../models/util'
-import { promisic } from '../../utils/util'
+import { promisic, getUserInfo } from '../../utils/util'
+import { login } from '../../models/user'
 import { bankCardFormat, verifyData } from '../../utils/tool'
 Page({
 
@@ -8,6 +9,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    selectWay: 'bank',
+    haveWay: ['bank', 'wechat'],
     isWithdrawComplete: false,
     cardno: '',
     amount: '',
@@ -36,7 +39,6 @@ Page({
         ? bankCardFormat(e.detail.value)
         : e.detail.value
     })
-
   },
 
   async onUploadCard (e) {
@@ -78,7 +80,19 @@ Page({
       bank: bankinfo,
       cardno: bankCardFormat(cardno)
     })
+  },
 
+  onSelect (e) {
+    if (e.detail.type === 'wechat') {
+      wx.showToast({
+        title: '试用版本，敬请期待',
+        icon: 'none'
+      })
+      return
+    }
+    this.setData({
+      selectWay: e.detail.type
+    })
   },
 
   onClose() {
@@ -93,7 +107,30 @@ Page({
     })
   },
 
-  async onWithdraw() {
+  async onSetUserInfo () {
+    await login()
+  },
+
+  async onWithdraw () {
+    const { resetpaypass = '1' } = getUserInfo(['resetpaypass'])
+    if (resetpaypass === '1') {
+      const { confirm = false } = await wx.showModal({
+        title: '设置支付密码',
+        content: '未设置过支付密码，请先设置',
+        confirmText: '设置',
+      })
+      if(confirm) {
+        wx.navigateTo({
+          url: '/pages/wallet-password/wallet-password',
+        })
+        return
+      }
+      return
+    }
+    this._onWithdraw()
+  },
+
+  async _onWithdraw() {
     if(this.data.isWithdrawComplete) {
       wx.navigateBack({
         delta: 1,
@@ -120,6 +157,14 @@ Page({
     if(!reg.test(cardno.replace(/\s+/g,""))) {
       wx.showToast({
         title: '请输入正确的银行卡号',
+        icon: 'none'
+      })
+      return
+    }
+
+    if(amount < 200) {
+      wx.showToast({
+        title: '提现金额需大于200',
         icon: 'none'
       })
       return

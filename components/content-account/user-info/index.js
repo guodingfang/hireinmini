@@ -81,13 +81,12 @@ Component({
       // })
     },
     onApproveCompany() {
-      wx.showToast({
-        title: '试用版本，敬请期待',
-        icon: 'none'
-      })
-      // wx.navigateTo({
-      //   url: '/pages/user-authentication/user-authentication',
-      // })
+      const { userinfo } = this.properties
+      if(userinfo && userinfo.authenticationstatus === '0') {
+        wx.navigateTo({
+          url: '/pages/user-authentication/user-authentication',
+        })
+      }
     },
       
     onSelectCompany() {

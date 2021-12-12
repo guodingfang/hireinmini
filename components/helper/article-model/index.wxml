@@ -7,7 +7,16 @@
     bind:tap="onSkipAskDetails"
   >
 
-    <view class="title single-row-overstep">{{item.qatitle}}</view>
+    <view class="title single-row-overstep">
+    
+<!--      <view class="label label-my">我的</view> -->
+
+      <view class="label label-reward" wx:if="{{item.goldcoin === '1'}}">
+        <image class="label-reward-icon" src="/images/icon/reward.png"></image>
+        有偿
+      </view>
+      <text>{{item.qatitle}}</text>
+    </view>
 
     <view class="content">
       <text class="tips">{{item.answernum}}个回答</text>

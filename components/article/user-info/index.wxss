@@ -14,8 +14,8 @@
 }
 
 .head-portrait.small {
-  width: 60rpx;
-  height: 60rpx;
+  width: 64rpx;
+  height: 64rpx;
 }
 
 .user {
@@ -24,19 +24,51 @@
   flex: 1;
 }
 
-.user.row {
-  flex-direction: row;
-  align-items: center;
+.user.small-user .name {
+  font-size: 24rpx;
+  width: 420rpx;
 }
 
 .user .name {
   color: #1A1A1A;
   font-size: 30rpx;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  width: 440rpx;
 }
 
-.user.row .name {
-  margin-right: 30rpx;
+.label {
+  margin-left: 10rpx;
+  height: 30rpx;
+  padding: 0 10rpx;
+  font-size: 18rpx;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8rpx;
+  font-weight: 400;
+}
+
+.label-answer {
+  background-color: #E6FFF5;
+  color: #45E6A7;
+}
+
+.label-my {
+  color: #0400E6;
+  background-color: #E6EDFF;
+}
+
+.label-solve,
+.label-reward {
+  background-color: #FFEDE6;
+  color: #FF9D73;
+}
+
+.label-reward-icon {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 4rpx;
 }
 
 .created {
@@ -55,6 +87,7 @@
   align-items: center;
   color: #333333;
   font-size: 24rpx;
+  padding: 0 12rpx;
 }
 
 .share-btn::after{

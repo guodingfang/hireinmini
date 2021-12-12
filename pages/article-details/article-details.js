@@ -1,4 +1,5 @@
-import { getArticleDetails } from '../../models/article'
+import { getArticleDetails, acceptAnswer } from '../../models/article'
+import { getUserInfo } from '../../utils/util'
 Page({
 
   /**
@@ -8,6 +9,8 @@ Page({
     id: '',
     answerid: '',
     isShowAllAnswerBtn: false,
+    isCurrentUser: false,
+    isEnd: false,
     userInfo: {},
     details: {},
     answerList: [],
@@ -26,13 +29,18 @@ Page({
     const { q, a = [] } = await getArticleDetails({
       questionid: this.data.id
     })
+    const { userid = '' } = getUserInfo(['userid'])
     this.setData({
       details: q,
+      isCurrentUser: userid === q.userid,
+      isEnd: q.solved === '1',
       userInfo: {
         ...q.user,
         created: q.qatime,
         userid: q.userid,
-        shareid: q.id
+        shareid: q.id,
+        goldcoin: q.goldcoin,
+        solved: q.solved
       }
     })
 
@@ -42,7 +50,9 @@ Page({
         ...item.user,
         userid: item.userid,
         created: item.qatime,
-        shareid: item.id
+        shareid: item.id,
+        goldcoin: item.goldcoin,
+        solved: item.solved
       }
     }))
     if(this.data.answerid) {
@@ -72,6 +82,33 @@ Page({
     wx.navigateTo({
       url: `/pages/answer-publish/answer-publish?id=${this.data.id}`,
     })
+  },
+
+  async onAcceptAnswer (e)  {
+    const { answerid } = e.detail
+    const { userInfo, details } = this.data
+    if(details.solved === '1') return
+    const { errcode } = await acceptAnswer({
+      questionid: userInfo.shareid,
+      userid: userInfo.userid,
+      answerid
+    })
+    if (errcode === 0) {
+      wx.showToast({
+        title: '已采纳',
+        icon: 'none'
+      })
+      this.setData({
+        details: {
+          ...details,
+          solved: '1'
+        },
+        isEnd: true,
+        showAnswerList: this.data.showAnswerList.map(item => item.id === answerid
+          ? {...item, userInfo: {...item.userInfo, solved: '1'}}
+          : item)
+      })
+    }
   },
 
   /**
@@ -119,7 +156,6 @@ Page({
 	 * 用户点击右上角分享
 	 */
 	async onShareAppMessage (e) {
-    console.log('e', e)
     let path = `/pages/index/index?path=article-details&needLogin=need&id=${this.data.id}`
 		if (e.from === 'button') {
       const { id, type } = e.target.dataset
@@ -131,5 +167,5 @@ Page({
       title: '携手开启数字租赁服务新生态',
       path
     }
-	},
+  },
 })

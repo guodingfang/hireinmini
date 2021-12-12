@@ -1,5 +1,15 @@
 <block wx:if="{{!isWithdrawComplete}}">
+
   <view class="model">
+    <m-header title="提现方式" more="{{false}}" />
+    <m-pay-way
+      bind:select="onSelect"
+      select-way="{{selectWay}}"
+      have-way="{{haveWay}}"
+    />
+  </view>
+
+  <view class="model" wx:if="{{selectWay === 'bank'}}">
     <view class="bank-card">
       <input
         class="bank-card-input"

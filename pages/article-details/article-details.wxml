@@ -2,6 +2,8 @@
   <v-comment
     user-info="{{userInfo}}"
     isPublishUser="{{true}}"
+    isCurrentUser="{{isCurrentUser}}"
+    isEnd="{{isEnd}}"
     title="{{details.qatitle}}"
     content="{{details.content}}"
     imgList="{{details.picture}}"
@@ -17,9 +19,12 @@
     <view class="comment-item">
       <v-comment
       user-info="{{item.userInfo}}"
+      isCurrentUser="{{isCurrentUser}}"
+      isEnd="{{isEnd}}"
       content="{{item.content}}"
       imgList="{{item.picture}}"
       video="{{item.video}}"
+      bind:accept="onAcceptAnswer"
     />
     </view>
   </block>
