@@ -21,8 +21,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const { id = '', answerid = '' } = options
-    this.setData({ id, answerid })
+    const { id = '', source = 'private', answerid = '' } = options
+    this.setData({ id, source, answerid })
   },
 
   async getArticleDetails () {

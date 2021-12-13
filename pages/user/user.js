@@ -130,7 +130,7 @@ Page({
 
 	onSVip() {
 		wx.showToast({
-			title: '试用版本，该功能敬请期待',
+			title: '试用版本，敬请期待',
 			icon: 'none',
 			duration: 2000
 		})

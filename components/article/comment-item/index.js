@@ -17,6 +17,10 @@ Component({
       type: Boolean,
       value: false
     },
+    source: {
+      type: String,
+      value: ''
+    },
     title: {
       type: String,
       value: ''

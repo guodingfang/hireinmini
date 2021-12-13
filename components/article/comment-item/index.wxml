@@ -1,6 +1,7 @@
 <view class="comment">
-  <view class="title two-row-overstep" wx:if="{{title}}">
+  <view class="title" wx:if="{{title}}">
     <text>{{ title }}</text>
+    <view class="label label-my" wx:if="{{isCurrentUser}}">我的</view>
     <view class="label label-reward" wx:if="{{userInfo.goldcoin === '1'}}">
       <image class="label-reward-icon" src="/images/icon/reward.png"></image>
       有偿
@@ -61,7 +62,7 @@
     <block wx:else>
       <view
         class="reward"
-        wx:if="{{isCurrentUser}}"
+        wx:if="{{isCurrentUser && source === 'private'}}"
         bind:tap="onAcceptAnswer"
       >
         <image class="icon-reward" src="/images/icon/not-reward.png"></image>

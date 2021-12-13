@@ -25,13 +25,21 @@
   font-weight: 400;
 }
 
+.label-my {
+  color: #0400E6;
+  background-color: #E6EDFF;
+  /* margin-left: 0rpx;
+  margin-right: 4rpx; */
+}
+
 .label-solve,
 .label-reward {
   background-color: #FFEDE6;
   color: #FF9D73;
 }
 
-.label-solve {
+.label-solve,
+.label-my {
   position: relative;
   top: -6rpx;
 }

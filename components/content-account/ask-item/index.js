@@ -28,7 +28,7 @@ Component({
     onSkipAskDetails() {
       const { id = '' } = this.properties.info
       wx.navigateTo({
-        url: `/pages/article-details/article-details?id=${id}`
+        url: `/pages/article-details/article-details?id=${id}&source=private`
       })
     }
   }

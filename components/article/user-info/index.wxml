@@ -9,7 +9,7 @@
     <view class="name single-row-overstep">
       <text class="single-row-overstep">{{userInfo.nickname}}</text>
       <block wx:if="{{isPublishUser}}">
-        <view class="label label-my" wx:if="{{isCurrentUser}}">我的</view>
+        <!-- <view class="label label-my" wx:if="{{isCurrentUser}}">我的</view> -->
         <!-- <view class="label label-solve" wx:if="{{userInfo.solved === '1'}}">已解决</view> -->
       </block>
       <block wx:else>

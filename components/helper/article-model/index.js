@@ -30,7 +30,7 @@ Component({
     onSkipAnswer (e) {
       const { id = '' } = e.currentTarget.dataset
       wx.navigateTo({
-        url: `/pages/answer-publish/answer-publish?id=${id}`,
+        url: `/pages/answer-publish/answer-publish?id=${id}&source=public`,
       })
     }
   }
