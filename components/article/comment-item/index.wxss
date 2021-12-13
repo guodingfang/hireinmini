@@ -28,8 +28,8 @@
 .label-my {
   color: #0400E6;
   background-color: #E6EDFF;
-  /* margin-left: 0rpx;
-  margin-right: 4rpx; */
+  margin-left: 0rpx;
+  margin-right: 4rpx;
 }
 
 .label-solve,

@@ -1,7 +1,7 @@
 <view class="comment">
   <view class="title" wx:if="{{title}}">
-    <text>{{ title }}</text>
     <view class="label label-my" wx:if="{{isCurrentUser}}">我的</view>
+    <text>{{ title }}</text>
     <view class="label label-reward" wx:if="{{userInfo.goldcoin === '1'}}">
       <image class="label-reward-icon" src="/images/icon/reward.png"></image>
       有偿

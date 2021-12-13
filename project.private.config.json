@@ -93,7 +93,7 @@
         {
           "name": "工具页",
           "pathName": "pages/tool/tool",
-          "query": "type=ly",
+          "query": "type=ledmini",
           "scene": null
         },
         {
