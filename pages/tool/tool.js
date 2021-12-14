@@ -25,6 +25,10 @@ Page({
         type: 'power',
       },
       {
+        name: '运费计算',
+        type: 'cost',
+      },
+      {
         name: 'LED屏',
         type: 'led',
       },

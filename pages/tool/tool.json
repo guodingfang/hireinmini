@@ -2,6 +2,7 @@
   "usingComponents": {
     "v-tab": "/components/tabs",
     "v-power": "/components/tool/power-model",
+    "v-cost": "/components/tool/cost-model",
     "v-led": "/components/tool/led-model",
     "v-led-mini": "/components/tool/led-mini-model",
     "v-truss": "/components/tool/truss-model",

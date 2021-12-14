@@ -1,0 +1,16 @@
+@import '../../../assets/style/global.wxss';
+@import '../common.wxss';
+
+.icon-location {
+  width: 30rpx;
+  height: 35rpx;
+}
+
+.location-input {
+  padding-right: 62rpx;
+}
+
+.result-col {
+  justify-content: space-between;
+  flex-direction: row;
+}

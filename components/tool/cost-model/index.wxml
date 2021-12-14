@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="model">
+    <m-header title="运费辅助计算" more="{{false}}" />
+
+    <view class="input-item">
+      <text class="label">始发地：</text>
+      <input
+        class="tool-item-input location-input single-row-overstep"
+        placeholder-class="tool-item-input-pl"
+        placeholder="选择始发地"
+        type="number"
+        value="{{from.address}}"
+        disabled
+        data-type="from"
+        bind:tap="onLocation"
+      />
+      <view class="unit" data-type="from" bind:tap="onLocation">
+        <image class="icon-location" src="/images/icon/location-3.png"></image>
+      </view>
+    </view>
+
+    <view class="input-item">
+      <text class="label">目的地：</text>
+      <input
+        class="tool-item-input location-input single-row-overstep"
+        placeholder-class="tool-item-input-pl"
+        placeholder="选择目的地"
+        type="number"
+        value="{{to.address}}"
+        disabled
+        data-type="to"
+        bind:tap="onLocation"
+      />
+      <view class="unit" data-type="to" bind:tap="onLocation">
+        <image class="icon-location" src="/images/icon/location-3.png"></image>
+      </view>
+    </view>
+
+
+    <view class="input-item">
+      <text class="label">运输距离：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入运输距离"
+        type="number"
+        value="{{distance}}"
+        data-type="distance"
+        bindinput="onInputChange"
+      />
+      <text class="unit">km</text>
+    </view>
+
+    <view class="input-item">
+      <text class="label">运输单价：</text>
+      <input
+        class="tool-item-input"
+        placeholder-class="tool-item-input-pl"
+        placeholder="输入斜运输单价"
+        type="number"
+        value="{{price}}"
+        data-type="price"
+        bindinput="onInputChange"
+      />
+      <text class="unit">元/km</text>
+    </view>
+  </view>
+
+  <view class="model">
+    <view class="result-btn"  bind:tap="onResult">计算结果</view>
+  </view>
+
+  <view class="model">
+    <m-header title="计算结果" more="{{false}}">
+      <view slot="tips" class="header-tips">（结果仅供参考）</view>
+    </m-header>
+
+    <view class="result-row">
+      <view class="result-col">
+        <text class="col-label">运费总价(元)：</text>
+        <text class="col-val">{{ totalPirce }}</text>
+      </view>
+    </view>
+  </view>
+</view>
+

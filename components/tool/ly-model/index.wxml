@@ -249,7 +249,7 @@
       </view>
     </view>
    
-
+<!-- 
     <m-header title="运费辅助计算" more="{{false}}" />
 
     <view class="input-item">
@@ -281,7 +281,7 @@
         data-type="to"
         bind:tap="onLocation"
       />
-      <view class="unit" data-type="from" bind:tap="onLocation">
+      <view class="unit" data-type="to" bind:tap="onLocation">
         <image class="icon-location" src="/images/icon/location-3.png"></image>
       </view>
     </view>
@@ -313,7 +313,7 @@
         bindinput="onInputChange"
       />
       <text class="unit">元/km</text>
-    </view>
+    </view> -->
   </view>
 
   <view class="model">
@@ -353,12 +353,12 @@
       </view>
     </view>
 
-    <view class="result-row">
+    <!-- <view class="result-row">
       <view class="result-col col-column">
         <text class="col-label">运费总价(元)：</text>
         <text class="col-val">{{ totalPirce }}</text>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>
 

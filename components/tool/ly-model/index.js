@@ -72,44 +72,44 @@ Component({
       })
     },
     // 位置选择
-    async onLocation(e) {
-      const { type } = e.target.dataset
-      const {
-        address,
-        latitude,
-        longitude,
-      } = await wx.chooseLocation()
-      this.setData({
-        [type]: {
-          address,
-          latitude,
-          longitude,
-        }
-      }),
+    // async onLocation(e) {
+    //   const { type } = e.target.dataset
+    //   const {
+    //     address,
+    //     latitude,
+    //     longitude,
+    //   } = await wx.chooseLocation()
+    //   this.setData({
+    //     [type]: {
+    //       address,
+    //       latitude,
+    //       longitude,
+    //     }
+    //   })
 
-      this.computeDistance()
-    },
+    //   this.computeDistance()
+    // },
 
-    async computeDistance() {
-      const { from, to } = this.data
-      if (from && to) {
-        const {
-          distance = 0
-        } = await calculateDistance({
-          from: {
-            latitude: from.latitude,
-            longitude: from.longitude,
-          },
-          to: {
-            latitude: to.latitude,
-            longitude: to.longitude,
-          },
-        })
-        this.setData({
-          distance: (distance / 1000).toFixed(2)
-        })
-      }
-    },
+    // async computeDistance() {
+    //   const { from, to } = this.data
+    //   if (from && to) {
+    //     const {
+    //       distance = 0
+    //     } = await calculateDistance({
+    //       from: {
+    //         latitude: from.latitude,
+    //         longitude: from.longitude,
+    //       },
+    //       to: {
+    //         latitude: to.latitude,
+    //         longitude: to.longitude,
+    //       },
+    //     })
+    //     this.setData({
+    //       distance: (distance / 1000).toFixed(2)
+    //     })
+    //   }
+    // },
 
     onInputChange(e) {
       const { value } = e.detail

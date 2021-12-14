@@ -17,7 +17,7 @@
     </view>
 
     <view class="input-item">
-      <text class="label">侧面高度：</text>
+      <text class="label">侧面宽度：</text>
       <input
         class="tool-item-input"
         placeholder-class="tool-item-input-pl"

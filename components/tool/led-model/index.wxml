@@ -50,7 +50,7 @@
       </view>
     </view>
 
-    <view class="input-title">屏幕纵横比</view>
+    <view class="input-title">屏幕纵横比辅助参考</view>
     <view class="list">
       <view
         class="item {{selectScreen === item ? 'select-item' : ''}}"

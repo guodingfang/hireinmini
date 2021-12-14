@@ -46,12 +46,13 @@ Component({
       })
       this.setData({
         specsList,
-        selectSpecs: specsList.length ? specsList[0] : null
+        // selectSpecs: specsList.length ? specsList[0] : null
       })
       await this.getTrussSpan()
     },
     async getTrussSpan() {
       const { selectSpecs } = this.data
+
       if (!selectSpecs) return
       const spanList = await getTrussSpan({
         trussid: selectSpecs.id
