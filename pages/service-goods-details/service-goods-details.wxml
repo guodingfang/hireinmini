@@ -3,13 +3,22 @@
     m-carousel="m-carousel"
     images="{{ carouselList }}"
     image-configs="{{imageConfigs}}"
+    autoplay="{{ true }}"
   />
 </view>
 
 <view class="info">
+  <view class="price">
+    <text class="price-label">单价：</text>
+    <m-price price="{{ detail.prodprice }}" configs="{{ priceConfigs }}" />
+  </view>
+ 
   <view class="price" wx:key="id" wx:for="{{ detail.rent }}">
-    <m-price price="{{ item.rprice }}" configs="{{ priceConfigs }}" />
-    <m-spec spec="{{ item.unit }}" />
+    <text class="price-label">区间价格：</text>
+    <view class="spec">
+      <m-spec spec="{{ item.leaseterm }}" />天~<m-spec spec="{{ item.leasetermupper }}" />天：
+    </view>
+    <m-price wx:if="{{item.rprice}}" price="{{ item.rprice }}" configs="{{ priceConfigs }}" />
   </view>
   <view class="name">{{ detail.prodname }}</view>
 
@@ -17,6 +26,6 @@
 
   <m-title title="产品描述" />
   <view class="details-val">
-    {{ detail.remarks }}
+    {{ detail.introduction }}
   </view>
 </view>

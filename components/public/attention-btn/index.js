@@ -1,6 +1,7 @@
 import { addAttention } from '../../../models/user'
 import { isAFocusB } from '../../../models/user'
-import { getUserInfo } from '../../../utils/util'
+import { getUserInfo, isLogin } from '../../../utils/util'
+
 Component({
   /**
    * 组件的属性列表
@@ -43,6 +44,8 @@ Component({
       })
     },
     async onAttention() {
+      const login = isLogin()
+      if(!login) return
       const { isAttention } = this.data
       await addAttention({
         targetuserid: this.properties.userid,

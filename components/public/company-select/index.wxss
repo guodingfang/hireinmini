@@ -13,14 +13,28 @@
 .model {
   margin: 420rpx auto;
   background-color: #FFFFFF;
-  width: 546rpx;
-  height: 360rpx;
+  width: 690rpx;
+  height: 338rpx;
+  padding: 50rpx;
+  box-sizing: border-box;
   border-radius: 26rpx;
   display: flex;
   flex-direction: column;
   text-align: center;
   align-items: stretch;
   justify-content: center;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: #1A1A1A;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
 }
 
 .close-btn {
@@ -41,15 +55,25 @@
 }
 
 .item {
-  margin: 24rpx;
-  height: 120rpx;
+  width: 256rpx;
+  height: 152rpx;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 0.5rpx solid #e5e5e5;
-  font-size: 32rpx;
-  color: #ffffff;
-  background-color: #0400E6;
+  font-size: 24rpx;
+  color: #1A1A1A;
+  background-color: #E6EDFF;
   font-weight: bold;
-  border-radius: 30rpx;
+  border-radius: 20rpx;
+}
+
+.add-item {
+  background-color: #FFF4E6;
+}
+
+.service-img {
+  width: 70rpx;
+  height: 74rpx;
+  margin-bottom: 5rpx;
 }

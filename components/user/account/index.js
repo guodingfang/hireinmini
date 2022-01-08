@@ -1,3 +1,4 @@
+import { isLogin } from '../../../utils/util'
 
 Component({
   /**
@@ -30,6 +31,9 @@ Component({
    */
   methods: {
     async onSkipAccountDetails(e) {
+      const login = isLogin()
+      if(!login) return
+      
       const { type } = e.currentTarget.dataset
       const { userinfo } = this.properties
       if (type === 'withdraw' && userinfo && userinfo.authenticationstatus === '0') {

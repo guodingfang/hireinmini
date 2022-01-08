@@ -1,13 +1,20 @@
-<view class="group">
-  <m-header title="我的广告" m-header="m-header" bgColor="yellow" />
-  <view class="list">
-    <view class="item">
-      <image class="icon" src="/images/user/advert-publicity.png"></image>
-      <text class="label">我要宣传</text>
+<view class="container">
+  <view class="group">
+    <m-header title="我的广告" m-header="m-header" bgColor="yellow" />
+    <view class="list">
+      <view class="item">
+        <image class="icon" src="/images/user/advert-publicity.png"></image>
+        <text class="label">我要宣传</text>
+      </view>
+      <view class="item">
+        <image class="icon" src="/images/user/advert-add.png"></image>
+        <text class="label">接入广告</text>
+      </view>
     </view>
-    <view class="item">
-      <image class="icon" src="/images/user/advert-add.png"></image>
-      <text class="label">接入广告</text>
-    </view>
+  </view>
+
+  <view class="mask">
+    <view class="mask-tips">更多功能</view>
+    <view class="mask-tips">即将开启</view>
   </view>
 </view>

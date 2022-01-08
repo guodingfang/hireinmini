@@ -117,7 +117,7 @@
         {
           "name": "服务号",
           "pathName": "pages/service-account/service-account",
-          "query": "companyid=2268",
+          "query": "companyid=1954",
           "scene": null
         },
         {
@@ -286,6 +286,24 @@
           "name": "钱包密码",
           "pathName": "pages/wallet-password/wallet-password",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "vip",
+          "pathName": "pages/vip/vip",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "服务号-商品列表",
+          "pathName": "pages/product-manage/product-manage",
+          "query": "companyid=2242",
+          "scene": null
+        },
+        {
+          "name": "服务号-主营产品录入",
+          "pathName": "pages/add-product/add-product",
+          "query": "companyid=2242",
           "scene": null
         }
       ]

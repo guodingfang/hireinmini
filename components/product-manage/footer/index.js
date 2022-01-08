@@ -19,9 +19,7 @@ Component({
    */
   methods: {
     onAddProduct() {
-      wx.navigateTo({
-        url: '/pages/add-product/add-product',
-      })
+      this.triggerEvent('add', {}, {})
     }
   }
 })

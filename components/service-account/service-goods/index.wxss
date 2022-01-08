@@ -20,6 +20,7 @@
 .name {
   color: #1A1A1A;
   font-size: 28rpx;
+  margin-bottom: auto;
 }
 
 .location {

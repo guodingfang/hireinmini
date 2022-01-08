@@ -1,5 +1,7 @@
 {
   "usingComponents": {
-    "m-upload": "/components/public/m-upload"
-  }
+    "m-upload": "/components/public/m-upload",
+    "m-header": "/components/public/m-header"
+  },
+  "navigationBarTitleText": "新增产品"
 }

@@ -1,0 +1,40 @@
+
+<view class="container {{ animateShow ? 'animated fadeIn' : 'animated fadeOut' }}" wx:if="{{showModel}}">
+  <view class="model">
+    <view class="layout">
+      <image class="layout-bg" src="./images/layout.png"></image>
+      <image class="layout-title" src="./images/title.png"></image>
+      <view class="date">领取时间：2020 12.21 0:00 ~ 2022 2.1 24:00</view>
+      <view class="footer">
+        <view class="btn" bind:tap="onDraw">2022年1月1日正式上线</view>
+      </view>
+    </view>
+    <view class="info">
+      <scroll-view
+        scroll-y
+        enable-flex
+        class="content"
+      >
+        <view class="list">
+          <view class="item" wx:key="id" wx:for="{{list}}">
+            <image class="item-bg" src="./images/coupon-bg.png"></image>
+            <view class="item-price">
+              <view class="price">
+                <text>{{item.price}}</text>元
+              </view>
+              <!-- <view class="num">x5</view> -->
+            </view>
+            <view class="item-content">
+              <view class="item-title">{{item.couponname}}</view>
+              <view class="item-explain">{{item.remarks}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="close-btn" bind:tap="onClose">
+    <image class="icon-close" src="/images/icon/close.png"></image>
+  </view>
+</view>

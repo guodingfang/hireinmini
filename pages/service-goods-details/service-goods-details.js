@@ -18,6 +18,10 @@ Page({
       bigFontSize: 40,
       smallFontSize: 28
     },
+    priceConfigs2: {
+      bigFontSize: 28,
+      smallFontSize: 24
+    },
     contentAccont: null,
     imgUrl: config.imgUrl,
     prodid: '',

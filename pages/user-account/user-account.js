@@ -9,7 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
+    bgImagesUrl: `${remoteImagesUrl}/user-account.png`,
     categorys: [],
     categorysDetails: [],
     isScroll: false,

@@ -4,12 +4,16 @@
   wx:if="{{showModel}}"  
 >
   <view class="model">
-    <view class="item" bind:tap="onOpenCompany">
-      <text>开通租赁商服务账号</text>
-    </view>
-
-    <view class="item" bind:tap="onAddCompany">
-      <text>加入租赁商参与服务</text>
+    <view class="title">开通服务账号</view>
+    <view class="content">
+      <view class="item" bind:tap="onOpenCompany">
+        <image class="service-img" src="/images/public/open-service.png"></image>
+        <text>开通租赁商服务账号</text>
+      </view>
+      <view class="item add-item" bind:tap="onAddCompany">
+        <image class="service-img" src="/images/public/add-service.png"></image>
+        <text>加入租赁商参与服务</text>
+      </view>
     </view>
   </view>
 

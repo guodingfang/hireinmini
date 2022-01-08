@@ -1,4 +1,5 @@
-// components/helper/questions-model/index.js
+import { isLogin } from '../../../utils/util'
+
 Component({
   /**
    * 组件的属性列表
@@ -28,6 +29,8 @@ Component({
       })
     },
     onSkipAnswer (e) {
+      const login = isLogin()
+      if(!login) return
       const { id = '' } = e.currentTarget.dataset
       wx.navigateTo({
         url: `/pages/answer-publish/answer-publish?id=${id}&source=public`,

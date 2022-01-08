@@ -1,0 +1,181 @@
+
+.select-model {
+  display: flex;
+  width: 750rpx;
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  margin: 20rpx 0;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  /* padding: 10rpx; */
+}
+
+.vip-list {
+  padding: 10rpx;
+}
+
+.list.companyVip {
+  background: linear-gradient(180deg, #FFEDC1 0%, #FDCF81 100%);
+  border-radius: 30rpx;
+  box-sizing: border-box;
+  height: 246rpx;
+}
+
+.list.otherVip {
+  background: linear-gradient(180deg, #525266 0%, #24262B 100%);
+  height: 246rpx;
+}
+
+.content {
+  display: flex;
+  padding: 10rpx;
+  border-radius: 20rpx;
+  justify-content: center;
+}
+
+.otherVip .content {
+  background-color: #ffffff;
+  border: 1rpx solid #FDCF81;
+  width: 540rpx;
+  box-sizing: border-box;
+}
+
+.more-vip-text {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #999999;
+  font-size: 26rpx;
+}
+
+.item {
+  width: 220rpx;
+  height: 275rpx;
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20rpx;
+}
+
+.companyVip .item {
+  width: 162rpx;
+  height: 230rpx;
+}
+
+.item.select-item {
+  position: relative;
+  background: linear-gradient(180deg, #FFE2A3 0%, #FFBE33 100%);
+}
+
+.list:not(.otherVip) .item.select-item:last-child::after {
+  content: "大家都选";
+  position: absolute;
+  top: -20rpx;
+  width: 160rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(90deg, #525266 0%, #24262B 100%);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list.otherVip .item.select-item:first-child:after {
+  content: "大家都选";
+  position: absolute;
+  top: -20rpx;
+  width: 160rpx;
+  height: 40rpx;
+  border-radius: 20rpx;
+  background: linear-gradient(90deg, #525266 0%, #24262B 100%);
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.companyVip .item.select-item {
+  background: linear-gradient(180deg, #525266 0%, #24262B 100%);
+}
+
+.companyVip:not(.otherVip) .item.select-item:last-child::after {
+  width: 92rpx;
+  height: 25rpx;
+  background: linear-gradient(180deg, #FFEDC1 0%, #FDCF81 100%);
+  color: #1A1A1A;
+  font-size: 18rpx;
+  top: 10rpx;
+}
+
+.companyVip.otherVip .item.select-item:first-child::after {
+  width: 92rpx;
+  height: 25rpx;
+  background: linear-gradient(180deg, #FFEDC1 0%, #FDCF81 100%);
+  color: #1A1A1A;
+  font-size: 18rpx;
+  top: 10rpx;
+}
+
+.item + .item {
+  margin-left: 12rpx;
+}
+
+.val {
+  color: #1A1A1A;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.companyVip .val {
+  font-size: 24rpx;
+}
+
+.companyVip .item.select-item .val {
+  color: #FDCF81;
+}
+
+.price {
+  color: #1A1A1A;
+  font-size: 26rpx;
+  font-weight: bold;
+  font-family: San Francisco Display;
+}
+
+.price text {
+  font-size: 60rpx;
+}
+
+.companyVip .item.select-item .price {
+  color: #FDCF81;
+}
+
+.companyVip .price text {
+  font-size: 42rpx;
+}
+
+.explain {
+  color: #808080;
+  font-size: 22rpx;
+  font-family: San Francisco Display;
+}
+
+.companyVip .explain {
+  font-size: 18rpx;
+}
+
+.companyVip .item.select-item .explain {
+  color: #FDCF81;
+}

@@ -1,0 +1,5 @@
+<view class="item">
+  <image class="head-portrait" src="{{info.userpic}}"></image>
+  <text class="name single-row-overstep">@{{info.nickname}}，购买了</text>
+  <text class="type">{{info.vipinfo}}</text>
+</view>

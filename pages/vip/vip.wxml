@@ -1,0 +1,166 @@
+
+<view style="overflow: hidden;">
+  <view class="header" style="height: {{ statusBarHeight + 300 }}rpx;">
+    <view class="nav-header">
+      <v-header
+        fixed="{{true}}"
+        title="嗨应VIP"
+        bgSrc="{{bgImagesUrl}}"
+        m-header-image="m-header-image"
+      />
+    </view>
+    <block wx:if="{{isVip}}">
+      <view class="user" style="margin-top: {{statusBarHeight + 108}}rpx;">
+        <view class="portrait">
+          <image src="{{user.userpic}}" class="portrait-img"></image>
+        </view>
+        <view class="user-info">
+          <view class="user-name">{{user.nickname}}</view>
+          <view class="vip-tag {{expires ? 'expires-vip-tag' : ''}}">
+            <text class="vip-type">{{userVipInfo.title}}</text>
+            <image src="/images/icon/vip-3.png" class="icon-vip"></image>
+            <text class="vip-end-date">{{ !expires ? userVipInfo.endDate + '到期' : '已到期'}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <image style="margin-top: {{statusBarHeight + 108}}rpx;" class="vip-advert" src="/images/advert/vip.png" bind:tap="onShowActivityModel"></image>
+    </block>
+    <view class="shadow"></view>
+  </view>
+</view>
+
+
+<view class="model content">
+  <view class="type-btn">
+    <view
+      class="type-btn-item {{type === 'vip' ? 'type-select-vip' : ''}}"
+      data-type="vip"
+      bind:tap="onSelectVip"
+    >嗨应VIP</view>
+    <view
+      class="type-btn-item {{type === 'companyVip' ? 'type-select-company-vip' : ''}}"
+      data-type="companyVip"
+      bind:tap="onSelectVip"
+    >企服联合VIP</view>
+  </view>
+
+  <swiper
+    wx:if="{{recordList && recordList.length}}"
+    class="record"
+    autoplay
+    vertical  
+  >
+    <swiper-item wx:for="{{recordList}}" wx:key="id">
+      <v-record info="{{item}}" />
+    </swiper-item>
+  </swiper>
+
+    <!-- <view class="more-btn">
+      全部
+      <image class="icon-more" src="/images/icon/more.png"></image>
+    </view> -->
+
+  <v-select type="vip" wx:if="{{type === 'vip'}}" list="{{vipInfo}}" bind:select="onSelectItem" />
+
+  <v-select
+    type="companyVip"
+    wx:if="{{type === 'companyVip'}}"
+    list="{{companyVipInfo}}"
+    bind:select="onSelectItem"
+  >
+    <view slot="left" class="select-left">
+      <text class="company-vip-title">VIP+订单管理</text>
+      <image class="company-vip-img" src="/images/public/company-vip.png"></image>
+      <text class="company-vip-explain">订单接收、收款、管理</text>
+    </view>
+  </v-select>
+</view>
+
+<view class="model" wx:if="{{type === 'vip'}}">
+  <v-privilege />
+</view>
+
+<block wx:if="{{type === 'companyVip'}}">
+  <view class="model">
+    <view class="location" bind:tap="onSkipLocation">
+      <image class="icon-location" src="/images/icon/location-4.png"></image>
+      <text class="location-val">{{ city }}</text>
+      <text class="not-open" wx:if="{{!isOpenFvip}}">（当前城市未开通）</text>
+    </view>
+    <v-select
+      type="financeVip"
+      list="{{financeVipInfo}}"
+      not-select="{{!isOpenFvip}}"
+      bind:select="onSelectItem"
+    >
+      <view slot="left" class="select-left">
+        <text class="company-vip-title other-vip-title">财务</text>
+        <image class="company-vip-img" src="/images/public/finance-vip.png"></image>
+        <text class="company-vip-explain other-vip-explain">代账、报税、购开票</text>
+      </view>
+    </v-select>
+  </view>
+  <view class="model">
+    <v-select type="legalVip" list="{{legalVipInfo}}" bind:select="onSelectItem">
+      <view slot="left" class="select-left">
+        <text class="company-vip-title other-vip-title">法务</text>
+        <image class="company-vip-img" src="/images/public/legal-vip.png"></image>
+        <text class="company-vip-explain other-vip-explain">审合同律师函法律咨询</text>
+      </view>
+    </v-select>
+  </view>
+  <view class="model">
+    <v-select type="moreVip">
+      <view slot="left" class="select-left">
+        <text class="company-vip-title other-vip-title">更多企业服务</text>
+        <text class="company-more-vip-icon">？</text> 
+      </view>
+    </v-select>
+  </view>
+</block>
+
+
+<view class="model">
+  <view class="coupon">
+    <view class="coupon-label">优惠劵：</view>
+    <view class="coupon-val" wx:if="{{selectCoupon}}">
+      {{selectCoupon.couponname}}{{util.changePrice(selectCoupon.denomination)}}
+    </view>
+    <view class="coupon-val" wx:else>无可用劵</view>
+  </view>
+</view>
+
+<view class="model">
+  <m-header title="付款方式" more="{{false}}" />
+  <m-pay-way
+    bind:select="onSelect"
+    haveWay="{{haveWay}}"
+    isUseWallet="{{isUseWallet}}"
+    select-way="{{selectWay}}"
+  >
+    <view slot="wallet">余额：{{balance}}</view>
+  </m-pay-way>
+</view>
+
+<v-footer type="{{type}}" price="{{price}}" bind:submit="onSubmitOrder" />
+
+<v-activity show-model="{{showActivityModel}}" bind:draw="onDraw" bind:close="onCloseModel" />
+
+<m-wallet-pay
+  show-pay="{{showPay}}"
+  bind:close="onClosePay"
+  bind:checking="onCheckingPay"
+  bind:forget="onForgetPassword"
+/>
+
+
+<wxs module="util">
+  var changePrice = function(price) {
+    return parseFloat(price)
+  }
+  module.exports = {
+    changePrice: changePrice
+  }
+</wxs>

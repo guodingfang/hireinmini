@@ -49,7 +49,12 @@ Component({
       const code = event.detail.value
       let codeList = code.padEnd(6, ' ').split('')
       const index = codeList.indexOf(' ')
-      codeList = codeList.map((item, _index) => (_index < index - 1) ? '*' : item)
+      console.log('index', index)
+      if(index === -1) {
+        codeList = codeList.map((item, _index) => '*')
+      } else {
+        codeList = codeList.map((item, _index) => (_index < index - 1) ? '*' : item)
+      }
       this.setData({
         code,
         codeList,

@@ -1,4 +1,5 @@
 import { verifyData } from '../../../utils/tool'
+import { judgeVip } from '../../../utils/util'
 Component({
   /**
    * 组件的属性列表
@@ -55,7 +56,7 @@ Component({
     },
 
     // 计算结构
-    onResult() {
+    async onResult() {
       const {
         type = '',
         width = '',
@@ -73,6 +74,9 @@ Component({
         { type: 'selectType', label: '类型' },
       ])
       if (!verify) return
+
+      const isVip = await judgeVip()
+      if(!isVip) return
 
       // 计算
       let amount = '', area = '', totalPrice = ''

@@ -1,0 +1,10 @@
+
+<view style="height: 100rpx">
+  <view class="footer">
+    <view class="total-price {{type}}">
+      <text class="total-price-text">￥</text><text class="total-price-val">{{price}}</text>
+      <!-- <text class="total-price-text">/7天</text> -->
+    </view>
+    <view class="btn {{type}}" bind:tap="onSubmitOrder">提交订单</view>
+  </view>
+</view>

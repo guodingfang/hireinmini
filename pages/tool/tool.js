@@ -1,6 +1,7 @@
 import { uploadAccessLog } from '../../models/util'
 import { remoteImagesUrl } from '../../config'
 import { getUserInfo, getStorageInfo, getLocationCityInfo } from '../../utils/util'
+import { getUserBaseInfo } from '../../models/user'
 import { getLocationInfo } from '../../models/map'
 import { promisic } from '../../utils/util'
 
@@ -82,7 +83,7 @@ Page({
     const { type = '' } = options
     this.setData({ type })
     await this.getLocationInfo()
-    this.getHeaderBlock()
+    await this.getHeaderBlock()
   },
 
   getDefaultIndex() {

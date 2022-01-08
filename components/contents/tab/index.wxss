@@ -20,6 +20,7 @@
   align-items: center;
   justify-content: center; */
   color: #808080;
+  font-size: var(--size--)
 }
 
 .tab-item-select {

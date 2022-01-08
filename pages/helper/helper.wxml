@@ -13,18 +13,8 @@
   <v-helper-header city="{{cityname}}" locationInfo="{{locationInfo}}" />
 </view>
 
-
-<view class="advert">
-  <v-skip
-    src="{{remoteImagesUrl}}/advert/open-vip.png"
-    width="690"
-    height="200"
-    bind:skip="onSkipVip"
-  />
-</view>
-
 <view class="model tool">
-  <m-header title="租赁常用工具" bind:more="onSkipTool" />
+  <m-header title="常用计算工具" bind:more="onSkipTool" />
   <view class="content tool-content">
     <view
       class="tool-item"
@@ -40,6 +30,14 @@
   </view>
 </view>
 
+<view class="advert">
+  <v-skip
+    src="{{remoteImagesUrl}}/advert/open-vip.png"
+    width="690"
+    height="200"
+    bind:skip="onSkipVip"
+  />
+</view>
 
 <!-- <view class="model knowledge"> 
   <m-header title="租赁学院" bind:more="onMore"/>
@@ -50,7 +48,7 @@
 </view> -->
 
 <view class="model article">
-  <m-header title="租赁技术在线问答（{{articleTotal}}）" bind:more="onSkipArticleList"/>
+  <m-header title="技术在线问答（{{articleTotal}}）" bind:more="onSkipArticleList"/>
   <view class="content questions-content">
     <v-article list="{{topArticleList}}" wx:if="{{topArticleList.length}}"/>
     <text class="content-not" wx:else>暂未有问答内容</text>

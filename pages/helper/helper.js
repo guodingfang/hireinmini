@@ -77,9 +77,14 @@ Page({
   },
 
   onSkipVip() {
-    wx.showToast({
-      title: '试用版本，敬请期待',
-      icon: 'none'
+    // wx.showToast({
+    //   title: '试用版本，敬请期待',
+    //   icon: 'none'
+    // })
+    const login = isLogin()
+    if(!login) return
+    wx.navigateTo({
+      url: '/pages/vip/vip',
     })
   },
 
@@ -88,6 +93,8 @@ Page({
   },
 
   onPublishArticle () {
+    const login = isLogin()
+    if(!login) return
     wx.navigateTo({
       url: '/pages/article-publish/article-publish',
     })

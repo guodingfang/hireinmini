@@ -7,7 +7,7 @@ import {
 	getMyOrderForAuditNum
 } from '../../models/user'
 
-import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
+import { isLogin, getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { remoteImagesUrl } from '../../config'
 const app = getApp()
 
@@ -18,9 +18,13 @@ Page({
 	 */
 	data: {
 		openServiceImg: `${remoteImagesUrl}/advert/open-service-account.png`,
-    enterServiceImg: `${remoteImagesUrl}/advert/enter-service-account.png`,
+		enterServiceImg: `${remoteImagesUrl}/advert/enter-service-account.png`,
+		advertImg: `${remoteImagesUrl}/advert/company-enter.png`,
 		companyinfo: null,
 		userinfo: null,
+		isVip: false,
+		expires: false,
+		userVipInfo: null,
 		ordernumber: '',
 		loadingHidden: false,
 		orderaudit: true,
@@ -57,6 +61,7 @@ Page({
 		const { tabHeight } = judgeTabBarHeight(workInfo);
 		this.setData({
 			headerBlock: statusBarHeight + headerTopHeader,
+			statusBarHeight,
 			tabHeight,
 		})
 	},
@@ -64,6 +69,7 @@ Page({
 	async getUserBaseInfo() {
 		const { user, dynamic, praise, fans, focus, company } = await getUserBaseInfo({})
 		const companyInfo =  company instanceof Array ? null : company;
+		const vip = user.vip
     this.setData({
 			company: companyInfo,
 			skipCompanyUrl: companyInfo && companyInfo.companyid
@@ -75,8 +81,28 @@ Page({
         fans,
 				focus,
 				praise
-      }
-    })
+			},
+			isVip: vip && vip.vipsign > 0,
+			expires: vip && vip.vipexpired === 1,
+		})
+
+		if (vip.evip) {
+      this.setData({
+        userVipInfo: {
+          ...vip.evip,
+          endDate: vip.evip.enddate.split(' ')[0],
+          title: '企服联合'
+        }
+      })
+    } else if (vip.vip) {
+      this.setData({
+        userVipInfo: {
+          ...vip.vip,
+          endDate: vip.vip.enddate.split(' ')[0],
+          title: '嗨应'
+        }
+      })
+    }
 	},
 
 	async onRegainGetUserInfo() {
@@ -129,10 +155,16 @@ Page({
 	},
 
 	onSVip() {
-		wx.showToast({
-			title: '试用版本，敬请期待',
-			icon: 'none',
-			duration: 2000
+
+		// wx.showToast({
+		// 	title: '试用版本，敬请期待',
+		// 	icon: 'none',
+		// 	duration: 2000
+		// })
+		const login = isLogin()
+    if(!login) return
+		wx.navigateTo({
+			url: '/pages/vip/vip',
 		})
 	},
 

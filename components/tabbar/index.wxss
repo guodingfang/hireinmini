@@ -65,7 +65,7 @@
 }
 
 .item-text {
-  display: none;
+  /* display: none; */
 }
 
 .tab-item-select .item-text {

@@ -1,0 +1,57 @@
+
+<view class="select-model m-select">
+  <block wx:if="{{type === 'vip'}}">
+    <view class="list vip-list">
+      <view
+        class="item {{ item.select ? 'select-item' : '' }}"
+        wx:key="index"
+        data-index="{{index}}"
+        wx:for="{{list}}"
+        bind:tap="onSelect"
+      >
+        <view class="val">{{item.servicename}}</view>
+        <view class="price">￥<text>{{util.changePrice(item.price)}}</text></view>
+        <view class="explain">{{item.remarks}}</view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="list companyVip {{type !== 'companyVip' ? 'otherVip' : ''}}">
+      <slot name="left"></slot>
+      <block wx:if="{{type === 'moreVip'}}">
+        <view class="content">
+          <view class="more-vip-text">
+            <text>活动场地押金额度申请等服务</text>
+            <text>即将开启...</text>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="content" wx:if="{{list.length}}">
+          <view
+            class="item {{ item.select ? 'select-item' : '' }}"
+            wx:key="index"
+            data-index="{{index}}"
+            wx:for="{{list}}"
+            bind:tap="onSelect"
+          >
+            <view class="val">{{item.servicename}}</view>
+            <view class="price" wx:if="{{!notSelect}}">￥<text>{{util.changePrice(item.price)}}</text></view>
+            <view class="explain">{{item.remarks}}</view>
+          </view>
+        </view>
+      </block>
+    </view>
+  </block>
+</view>
+
+
+<wxs module="util">
+  var changePrice = function(price) {
+    return parseFloat(price)
+  }
+  module.exports = {
+    changePrice: changePrice
+  }
+</wxs>

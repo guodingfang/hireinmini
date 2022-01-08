@@ -9,7 +9,8 @@
 		"v-fixed": "/components/public/fixed-image",
 		"m-location": "/components/public/m-location",
 		"m-not-page": "/components/public/m-not-page",
-		"v-tabbar": "/components/tabbar"
+		"v-tabbar": "/components/tabbar",
+		"v-activity": "/components/activity/new-people-coupon"
 	},
 	"navigationStyle": "custom",
 	"backgroundTextStyle": "dark",

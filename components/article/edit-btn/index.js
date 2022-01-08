@@ -1,4 +1,5 @@
-// components/article/edit-btn/index.js
+import { isLogin } from '../../../utils/util'
+
 Component({
   /**
    * 组件的属性列表
@@ -19,6 +20,8 @@ Component({
    */
   methods: {
     onSkipAnswer() {
+      const login = isLogin()
+      if(!login) return
       this.triggerEvent('answer', {}, {})
     }
   }

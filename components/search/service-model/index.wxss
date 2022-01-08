@@ -120,6 +120,7 @@
 }
 
 .company-name {
+  max-width: 460rpx;
   color: #1A1A1A;
   font-size: 30rpx;
 }

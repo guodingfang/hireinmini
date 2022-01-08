@@ -1,0 +1,64 @@
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.total-price {
+  height: 100%;
+  width: 500rpx;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  font-family: San Francisco Display;
+}
+
+.total-price-val {
+  font-size: 44rpx;
+}
+
+.total-price-text {
+  margin-left: 4rpx;
+  position: relative;
+  top: 6rpx;
+}
+
+.total-price.vip {
+  background: linear-gradient(90deg, #FFE2A3 0%, #FFBE33 100%);
+  color: #1A1A1A;
+}
+
+.total-price.companyVip {
+  background: linear-gradient(90deg, #525266 0%, #24262B 100%);
+  color: #FDCF81;
+}
+
+.btn {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.btn.vip {
+  background: linear-gradient(90deg, #525266 0%, #24262B 100%);
+  color: #ffffff;
+}
+
+.btn.companyVip {
+  background: linear-gradient(90deg, #FFEFD1 0%, #D3B060 100%);
+  color: #1A1A1A;
+}

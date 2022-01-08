@@ -47,7 +47,7 @@ Page({
       companyid,
     })
     this.getCompanyInfo()
-    this.getCompanyGoodsList()
+    // this.getCompanyGoodsList()
   },
 
   async onAgainRequestCompany() {
@@ -92,7 +92,7 @@ Page({
       pagesize: 10
     })
     this.setData({
-      goodsList: data.data
+      goodsList: data
     })
   },
 
@@ -114,13 +114,14 @@ Page({
     })
   },
   onCompanyManage() {
-    wx.showToast({
-      title: '试用版本，敬请期待',
-      icon: 'none'
-    })
-    // wx.navigateTo({
-    //   url: '/pages/product-manage/product-manage',
+    const { companyid = '' } = this.data
+    // wx.showToast({
+    //   title: '试用版本，敬请期待',
+    //   icon: 'none'
     // })
+    wx.navigateTo({
+      url: `/pages/product-manage/product-manage?companyid=${companyid}`,
+    })
   },
 
   async onDial() {
@@ -156,7 +157,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getCompanyGoodsList()
   },
 
   /**

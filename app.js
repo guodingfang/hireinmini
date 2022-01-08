@@ -1,11 +1,16 @@
+import { login } from '/models/user'
 
 App({
 	onLaunch (options) {
 		console.log('options', options)
+		this.getUserInfo()
 		// 判断更新
 		this.judgeUpdate()
 		// 判断运行环境
-		this.judgeWork(options);
+		this.judgeWork(options)
+		// setInterval(() => {
+		// 	console.log('@@@')
+		// }, 2000)
 	},
 	globalData: {
 		userInfo: null,
@@ -19,6 +24,10 @@ App({
 		headerSearchHeader: 100,
 		// 分享后定位是否需要再次跳转
 		againSkip: false
+	},
+
+	async getUserInfo() {
+		// await login()
 	},
 
 	// 判断小程序更新

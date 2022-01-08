@@ -1,6 +1,7 @@
 import { getLyBrand } from '../../../models/tool'
 import { calculateDistance } from '../../../models/map'
 import { verifyData } from '../../../utils/tool'
+import { judgeVip } from '../../../utils/util'
 Component({
   /**
    * 组件的属性列表
@@ -145,6 +146,9 @@ Component({
         { type: 'thickness', label: '厚度' },
       ])
       if (!verify) return
+
+      const isVip = await judgeVip()
+      if(!isVip) return
 
       const _height = Math.floor(height / step)
       

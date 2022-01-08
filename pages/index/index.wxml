@@ -1,6 +1,6 @@
 
 
-<view style="height: {{headerBlock + 80}}rpx">
+<view style="height: {{headerBlock + 70}}rpx">
 	<v-header
 		fixed="{{true}}"
 		placeholder="搜索资源/服务"
@@ -8,12 +8,18 @@
 		isTopTitle="{{true}}"
 		bind:getLocation="getLocation"
 	/>
-	<v-tab fixed="{{true}}" height="{{70}}" list="{{tabList}}" bind:select="onSelectTab" />
+	<v-tab
+		fixed="{{true}}"
+		height="{{60}}"
+		size="{{22}}"
+		list="{{tabList}}"
+		bind:select="onSelectTab"
+	/>
 </view>
 
 <scroll-view
 	class="content"
-	style="--topHeader--:{{headerBlock + 88}}rpx"
+	style="--topHeader--:{{headerBlock + 72 + tabHeight}}rpx"
 	scroll-y
 	scroll-top="{{scrollTop}}"
 	lower-threshold="250"
@@ -57,3 +63,5 @@
 </view>
 
 <m-not-page loading="{{havSkip}}" />
+
+<v-activity show-model="{{showActivityModel}}" bind:draw="onDraw" />

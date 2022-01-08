@@ -2,7 +2,7 @@
 <view class="header">
   <m-weather isCity="{{isCity}}" />
   <button class="dial-button" open-type="contact" bindcontact="handleContact">
-    <image class="icon-dial" src="/images/icon/dial.png"></image>
-    <text class="dial-val">呼叫本地助手</text>
+    <image class="icon-dial" src="/images/icon/dial-2.png"></image>
+    <text class="dial-val">呼叫我的助手</text>
   </button>
 </view>

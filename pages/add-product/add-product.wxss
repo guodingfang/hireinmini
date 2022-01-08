@@ -53,6 +53,52 @@ Page {
   color: #999999;
 }
 
+.area-header {
+  display: flex;
+  align-items: center;
+}
+
+.add-area {
+  margin-left: auto;
+  margin-right: 30rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+  top: 8rpx;
+  color: #1A1A1A;
+  font-size: 24rpx;
+}
+
+.icon-add {
+  margin-right: 10rpx;
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.area-item {
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.area-label {
+  white-space: nowrap;
+  color: #808080;
+  font-size: 28rpx;
+  padding-left: 12rpx;
+}
+
+.area-label.split {
+  position: relative;
+  top: 12rpx;
+  padding: 12rpx;
+}
+
+.area-price {
+  width: 240rpx;
+}
+
 .footer {
   border-top: 1rpx solid #e5e5ee;
   display: flex;

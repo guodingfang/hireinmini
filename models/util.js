@@ -157,7 +157,8 @@ export const paymentCallBack = (option = {}) => {
     'consume': '',
     'lease': '',
     'qa': 'QuestionAnswer',
-    'recharge': 'User'
+    'recharge': 'User',
+    'vip': 'User'
   }
   const { userid } = getUserInfo(['userid'])
   return request.post(`/${prefixUrls[ordertype]}/payCallBack`, {

@@ -1,5 +1,10 @@
 <view class="img-list">
-  <m-upload />
+  <m-upload
+    uploadType="img"
+    maxCount="9"
+    bind:isUpload="isUpload"
+    bind:complete="onUploadComplete"
+  />
 </view>
 
 <input
@@ -7,13 +12,16 @@
   type="text"
   placeholder="填写产品名称会很快被找到哦~"
   placeholder-class="pl-input"
+  data-type="prodname"
+  bind:input="onChanageInput"
 />
-
 
 <textarea
   class="des-input"
   placeholder-class="pl-input"
   placeholder="添加产品描述"
+  data-type="introduction"
+  bind:input="onChanageInput"
 ></textarea>
 
 <view class="form">
@@ -24,12 +32,60 @@
       type="text"
       placeholder="{{item.placeholder}}"
       placeholder-class="pl-input"
+      data-type="{{item.type}}"
+      bind:input="onChanageInput"
     />
   </view>
 </view>
 
-<view style="height: 100rpx">
+
+<view class="price-area">
+  <view class="area-header">
+    <m-header title="复杂区间价格设置" more="{{flase}}" />
+    <view class="add-area" bind:tap="addArea">
+      <image class="icon-add" src="/images/icon/add.png"></image>
+      新赠价格
+    </view>
+  </view>
+
+  <view class="area">
+    <view class="area-item" wx:key="index" wx:for="{{areaList}}" wx:for-index="index">
+      <text class="area-label">天数区间：</text>
+      <input
+        class="input-val area-price"
+        type="text"
+        placeholder="开始"
+        placeholder-class="pl-input"
+        data-type="start"
+        data-index="{{index}}"
+        bind:input="onChanageAreaInput"
+      />
+      <text class="area-label split">~</text>
+      <input
+        class="input-val area-price"
+        type="text"
+        placeholder="结束"
+        placeholder-class="pl-input"
+        data-type="end"
+        data-index="{{index}}"
+        bind:input="onChanageAreaInput"
+      />
+      <text class="area-label" style="margin-left: 24rpx">价格：</text>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="价格"
+        placeholder-class="pl-input"
+        data-type="price"
+        data-index="{{index}}"
+        bind:input="onChanageAreaInput"
+      />
+    </view>
+  </view>
+</view>
+
+<view style="height: 120rpx">
   <view class="footer">
-    <view class="btn">保存产品</view>
+    <view class="btn" bind:tap="onSaveProduct">保存产品</view>
   </view>
 </view>

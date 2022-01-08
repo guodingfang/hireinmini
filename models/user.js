@@ -196,3 +196,23 @@ export const userAuthentication = (option = {}) => {
     ...option
   })
 }
+
+/**
+ * 优惠券领取接口
+ * @param {*} option 
+ */
+export const receiveCoupons = (option = {}) => {
+  return request.post('/User/receiveCoupons', {
+    ...option
+  })
+}
+
+/**
+ * 我的优惠券列表
+ * @param {*} option 
+ */
+export const getMyCoupon = (option = {}) => {
+  return request.post('/User/getMyCoupon', {
+    ...option
+  })
+}

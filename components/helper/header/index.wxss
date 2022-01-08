@@ -34,8 +34,9 @@
   display: flex;
   align-items: center;
   border-radius: 30rpx;
-  background-color: #E6E6FF;
+  background: linear-gradient(180deg, #6395F9 0%, #0F0CBD 100%);
   border: 0 solid transparent;
+  box-shadow: inset 0 -6rpx 10rpx #0f0f72;
 }
 
 .dial-button::after{
@@ -53,7 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0400E6;
+  color: #FFFFFF;
   font-size: 24rpx;
   font-weight: bold;
 }

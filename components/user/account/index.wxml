@@ -9,7 +9,7 @@
   <view class="list">
     <view class="item" data-type="user-account" bind:tap="onSkipAccountDetails">
       <image class="icon" src="/images/user/wallet.png"></image>
-      <text class="label">钱包</text>
+      <text class="label">余额</text>
     </view>
     <view class="item" data-type="withdraw" bind:tap="onSkipAccountDetails">
       <image class="icon" src="/images/user/withdraw.png">

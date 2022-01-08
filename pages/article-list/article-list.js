@@ -1,5 +1,8 @@
 import { getArticleList } from '../../models/article'
 
+
+const app = getApp()
+
 Page({
 
   /**
@@ -16,7 +19,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getHeaderBlock()
     this.getArticleList()
+  },
+
+  getHeaderBlock() {
+		const { statusBarHeight, headerTopHeader } = app.globalData;
+		this.setData({
+			headerBlock: statusBarHeight + headerTopHeader - 2,
+		})
   },
 
   async getArticleList () {

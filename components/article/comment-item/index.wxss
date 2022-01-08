@@ -39,7 +39,8 @@
 }
 
 .label-solve,
-.label-my {
+.label-my,
+.label-reward {
   position: relative;
   top: -6rpx;
 }

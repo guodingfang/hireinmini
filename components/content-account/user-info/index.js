@@ -73,7 +73,7 @@ Component({
     },
     onInterflow() {
       wx.showToast({
-        title: '试用版本，敬请期待',
+        title: '即将开启，敬请期待',
         icon: 'none'
       })
       // wx.navigateTo({

@@ -2,6 +2,7 @@
   <v-comment
     user-info="{{userInfo}}"
     isPublishUser="{{true}}"
+    publicUser="{{details.userid}}"
     isCurrentUser="{{isCurrentUser}}"
     isEnd="{{isEnd}}"
     source="{{source}}"
@@ -21,6 +22,7 @@
       <v-comment
       user-info="{{item.userInfo}}"
       isCurrentUser="{{isCurrentUser}}"
+      publicUser="{{details.userid}}"
       isEnd="{{isEnd}}"
       source="{{source}}"
       content="{{item.content}}"

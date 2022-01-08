@@ -1,17 +1,24 @@
-<view class="knowledge">
-  <m-header title="租赁知识" m-header="m-header" bgColor="green" />
-  <view class="model">
-    <text class="title">N个正在学习中</text>
-    <view class="btn">立即查看</view>
+
+<view class="container">
+  <view class="knowledge">
+    <m-header title="租赁知识" m-header="m-header" bgColor="green" />
+    <view class="model">
+      <text class="title">N个正在学习中</text>
+      <view class="btn">立即查看</view>
+    </view>
+    <view class="list">
+      <view class="item">
+        <image class="icon" src="/images/user/knowledge-audit.png"></image>
+        <text class="label">审核中</text>
+      </view>
+      <view class="item">
+        <image class="icon" src="/images/user/knowledge-issue.png"></image>
+        <text class="label">已发布</text>
+      </view>
+    </view>
   </view>
-  <view class="list">
-    <view class="item">
-      <image class="icon" src="/images/user/knowledge-audit.png"></image>
-      <text class="label">审核中</text>
-    </view>
-    <view class="item">
-      <image class="icon" src="/images/user/knowledge-issue.png"></image>
-      <text class="label">已发布</text>
-    </view>
+  <view class="mask">
+    <view class="mask-tips">更多功能</view>
+    <view class="mask-tips">即将开启</view>
   </view>
 </view>

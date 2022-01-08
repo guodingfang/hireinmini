@@ -31,7 +31,8 @@ Page({
   async getUserBalance () {
     const { balance } = await getUserBalance()
     this.setData({
-      balance
+      balance,
+      isUseWallet: !!parseFloat(balance)
     })
   },
 

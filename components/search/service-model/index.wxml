@@ -29,7 +29,7 @@
 	>
 		<image class="company-logo" src="{{imgUrl}}{{item.logopic}}"></image>
 		<view class="company-info">
-			<view class="company-name">{{item.companyname}}</view>
+			<view class="company-name single-row-overstep">{{item.companyname}}</view>
 			<view class="lables" wx:if="{{item.label.length}}">
 				<text class="label single-row-overstep" wx:key="id" wx:for="{{item.label}}" wx:for-item="label">{{label.labelname}}</text>
 			</view>

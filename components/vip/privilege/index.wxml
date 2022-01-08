@@ -1,0 +1,9 @@
+
+<view class="title">嗨应VIP特权</view>
+<view class="list">
+  <view class="item" wx:for="{{list}}" wx:key="id">
+    <image class="icon" src="./images/{{item.type}}.png"></image>
+    <text class="name">{{item.name}}</text>
+    <text class="explain">{{item.explain}}</text>
+  </view>
+</view>

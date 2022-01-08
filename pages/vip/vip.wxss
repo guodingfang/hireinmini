@@ -1,0 +1,277 @@
+Page {
+  background-color: #ffffff;
+  width: 100vw;
+  /* display: none; */
+  /* overflow-x: hidden */
+}
+
+.header {
+  position: relative;
+  width: 150%;
+  margin-left: -25%;
+  margin-right: -25%;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  overflow: hidden;
+}
+
+.nav-header {
+  position: absolute;
+  margin: auto;
+  width: 750rpx;
+  left: 0;
+  right: 0;
+}
+
+.user {
+  position: absolute;
+  z-index: 99;
+  left: 0;
+  right: 0;
+  width: 690rpx;
+  height: 200rpx;
+  margin: auto;
+  display: flex;
+}
+
+.portrait {
+  width: 136rpx;
+  height: 136rpx;
+  border: 5rpx solid #fff;
+  border-radius: 70rpx;
+  margin-right: 20rpx;
+  overflow: hidden;
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-name {
+  color: #FFFFFF;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.vip-tag {
+  background: linear-gradient(90deg, #FFEDC1 0%, #FDCF81 100%);
+  border-radius: 20rpx;
+  height: 40rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.expires-vip-tag {
+  background: linear-gradient(90deg, #E5E5E5 0%, #B9B9B9 100%);
+}
+
+.vip-type {
+  color: #1A1A1A;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.icon-vip {
+  width: 60rpx;
+  height: 24rpx;
+}
+
+.vip-end-date {
+  margin-left: 13rpx;
+  color: #666666;
+  font-weight: bold;
+  font-size: 24rpx;
+}
+
+.vip-advert {
+  position: absolute;
+  z-index: 99;
+  width: 690rpx;
+  height: 200rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.shadow {
+  position: absolute;
+  z-index: 99;
+  bottom: 0;
+  height: 30rpx;
+  box-shadow: 0 -6rpx 10rpx 0 rgba(0, 0, 0, .15) inset;
+  width: 100%;
+  border-bottom-left-radius: 45%;
+  border-bottom-right-radius: 45%;
+}
+
+.model {
+  border-bottom: 12rpx solid #F5F4F9;
+}
+
+.content {
+  position: relative;
+  z-index: 9;
+  background-color: #ffffff;
+}
+
+.record {
+  margin: 30rpx auto 20rpx 24rpx;
+  width: 100%;
+  height: 60rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, .1);
+  border-radius: 30rpx;
+  width: 690rpx;
+  overflow: hidden;
+}
+/* 
+.more-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  columns: #666666;
+  font-size: 24rpx;
+}
+
+.icon-more {
+  margin-left: 6rpx;
+  width: 16rpx;
+  height: 24rpx
+} */
+
+.content {
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.type-btn {
+  width: 690rpx;
+  height: 100rpx;
+  background: #F5F4F9;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+}
+
+.type-btn-item {
+  color: #1A1A1A;
+  font-size: 34rpx;
+  font-weight: bold;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.type-select-vip {
+  height: 90rpx;
+  color: #FFA12C;
+  background: #FFFFFF;
+  border: 2rpx solid #E7E4F2;
+  box-shadow: 0 0 10rpx #C3BED5;
+  border-radius: 50rpx;
+}
+
+.type-select-company-vip {
+  height: 90rpx;
+  background: linear-gradient(180deg, #525266 0%, #24262B 100%);
+  color: #FDCF81;
+  border-radius: 50rpx;
+  box-shadow: 0 0 10rpx #C3BED5;
+}
+
+.select-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 194rpx;
+  height: 250rpx;
+}
+
+.company-vip-title {
+  color: #1A1A1A;
+  font-size: 26rpx;
+  font-weight: bold;
+}
+
+.other-vip-title {
+  color: #FDCF81;
+}
+
+.company-vip-img {
+  width: 130rpx;
+  height: 130rpx;
+}
+
+.company-vip-explain {
+  color: #333333;
+  font-size: 18rpx;
+}
+
+.other-vip-explain {
+  color: #999999;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0 0 30rpx;
+}
+
+.icon-location {
+  width: 26rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.location-val {
+  color: #1A1A1A;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+
+.not-open {
+  color: #999999;
+  font-size: 26rpx;
+}
+
+.coupon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+.coupon-label {
+  color: #1A1A1A;
+  font-size: 28rpx;
+}
+
+.coupon-val {
+  color: #FE0A00;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.company-more-vip-icon {
+  color: #FDCF81;
+  font-size: 60rpx;
+  font-weight: bold;
+}

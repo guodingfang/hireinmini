@@ -7,6 +7,9 @@
     isTopTitle="{{true}}"
     isHeaderContent="{{false}}"
   />
+	<button style="top: {{statusBarHeight + 2}}rpx" class="dial-button" open-type="contact" bindcontact="handleContact">
+		<image class="icon-dial" src="/images/icon/dial-3.png"></image>
+  </button>
 </view>
 
 <v-info userinfo="{{userinfo}}" />
@@ -20,9 +23,18 @@
 	<image class="user-bg-img" src="{{bgImagesUrl}}"></image>
 </view>
 
-<view class="vip-model">
-	<text class="explain">成为VIP会员享更多福利权益</text>
-	<view class="btn" bind:tap="onSVip">成为VIP会员</view>
+<view class="vip-model" bind:tap="onSVip">
+	<block wx:if="{{!isVip}}">
+		<text class="explain">成为VIP会员享更多福利权益</text>
+		<view class="btn">成为VIP会员</view>
+	</block>
+	<block wx:else>
+		<view class="vip-tag {{expires ? 'expires-vip-tag' : ''}}">
+			<text class="vip-type">{{userVipInfo.title}}</text>
+			<image src="/images/icon/vip-3.png" class="icon-vip"></image>
+		</view>
+		<text class="vip-end-date">{{ !expires ? userVipInfo.endDate + '到期' : '已到期'}}</text>
+	</block>
 </view>
 
 <v-account
@@ -32,6 +44,16 @@
 />
 
 <v-order orderaudit="{{orderaudit}}" ordernum="{{ordernum}}" />
+
+<view style="margin-top: 20rpx;">
+	<v-skip
+		src="{{ !skipCompanyUrl ? openServiceImg : enterServiceImg }}"
+		width="690"
+		height="168"
+		bind:skip="onSelectCompany"
+		url="{{skipCompanyUrl}}"
+	/>
+</view>
 
 <!-- <view class="demo-model" bind:tap="onUnRegisterUser">
 	注销账户
@@ -59,23 +81,13 @@
 		radius="20"
 	/>
 </view>
-
+ -->
 
 <view class="model">
+	<v-company company="{{company}}" bind:open="onSelectCompany" />
 	<v-knowledge />
-	<v-company />
 	<v-group />
 	<v-advert />
-</view>
- -->
-<view style="margin-top: 20rpx;">
-	<v-skip
-		src="{{ !skipCompanyUrl ? openServiceImg : enterServiceImg }}"
-		width="690"
-		height="168"
-		bind:skip="onSelectCompany"
-		url="{{skipCompanyUrl}}"
-	/>
 </view>
 
 <v-company-select
@@ -85,10 +97,19 @@
 	bind:add="onAddCompany"
 />
 
+<view class="advert">
+	<v-skip
+		src="{{advertImg}}"
+		width="690"
+		height="200"
+		radius="20"
+	/>
+</view>
+
 <loading hidden="{{loadingHidden}}">
 	加载中...
 </loading>
 
-<view style="height: {{tabHeight}}rpx">
+<view style="height: {{tabHeight + 30}}rpx">
 	<v-tabbar />
 </view>

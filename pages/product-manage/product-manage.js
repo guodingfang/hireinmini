@@ -1,18 +1,40 @@
-// pages/product-manage/product-manage.js
+import { getCompanyMainProductList } from '../../models/goods'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    page: 1,
+    pagesize: 10,
+    productList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      companyid: options.companyid
+    })
+  },
 
+  async getCompanyMainProductList() {
+    const { data = [] } = await getCompanyMainProductList({
+      companyid: this.data.companyid,
+      page: this.data.page,
+      pagesize: this.data.pagesize
+    })
+    this.setData({
+      productList: data
+    })
+  },
+  
+  onAddProduct() {
+    wx.navigateTo({
+      url: `/pages/add-product/add-product?companyid=${this.data.companyid}`,
+    })
   },
 
   /**
@@ -26,7 +48,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getCompanyMainProductList()
   },
 
   /**

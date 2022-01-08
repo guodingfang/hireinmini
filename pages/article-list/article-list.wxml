@@ -1,5 +1,15 @@
+<view style="height: {{headerBlock}}rpx">
+  <v-header
+    isBack="{{true}}"
+    fixed="{{true}}"
+    currentPage="ask"
+    isTopTitle="{{true}}"
+    isHeaderContent="{{false}}"
+  />
+</view>
 <view>
   <scroll-view
+    style="--top--:{{headerBlock}}rpx"
     class="article-list"
     scroll-y
     lower-threshold="100"

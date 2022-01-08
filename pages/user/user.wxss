@@ -8,6 +8,30 @@ Page {
 	background-color: transparent !important;
 }
 
+.dial-button {
+	position: fixed;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	width: 80rpx;
+	height: 80rpx;
+	right: 200rpx;
+	z-index: 9999;
+	border: 0 solid transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dial-button::after{
+  border: 0;
+}
+
+.icon-dial {
+	width: 60rpx;
+	height: 60rpx;
+}
+
 .fixed-header-bg {
 	position: fixed;
 	top: 0;
@@ -72,6 +96,38 @@ Page {
 	text-align: center;
 	line-height: 46rpx;
 	font-weight: bold;
+}
+
+
+
+.vip-tag {
+  background: linear-gradient(90deg, #FFEDC1 0%, #FDCF81 100%);
+  border-radius: 20rpx;
+  height: 40rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.expires-vip-tag {
+  background: linear-gradient(90deg, #E5E5E5 0%, #B9B9B9 100%);
+}
+
+.vip-type {
+  color: #1A1A1A;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+
+.icon-vip {
+  width: 60rpx;
+  height: 24rpx;
+}
+
+.vip-end-date {
+	margin-left: auto;
+  color: #F3D7AE;
+  font-size: 24rpx;
 }
 
 .model {

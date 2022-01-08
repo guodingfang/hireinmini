@@ -7,7 +7,7 @@
       <text class="location-val">{{ info.address }}</text>
     </view>
     <view class="price">
-      <m-price price="{{ info.rents ? info.rents.rprice : 0 }}" />
+      <m-price price="{{ info.prodprice }}" />
       <m-spec spec="{{ info.rents ? info.rents.unit: '' }}" />
     </view>
   </view>

@@ -171,9 +171,17 @@ Page({
       identifyCardId,
       identifyName,
     } = this.data
-    console.log('formData', formData)
     const result = this.formVerify(formData)
-    console.log('result', result)
+    
+    const { code, msg = '' } = result
+    if(code !== 0) {
+      wx.showToast({
+        title: msg,
+        icon: 'none'
+      })
+      return
+    }
+
     if(identifyName !== result.fullname) {
       wx.showToast({
         title: '填写的姓名与识别的姓名不一致',
@@ -184,14 +192,6 @@ Page({
     if(identifyCardId !== result.idnumber) {
       wx.showToast({
         title: '填写的身份证号与识别的身份证号不一致',
-        icon: 'none'
-      })
-      return
-    }
-    const { code, msg = '' } = result
-    if(code !== 0) {
-      wx.showToast({
-        title: msg,
         icon: 'none'
       })
       return

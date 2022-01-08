@@ -3,6 +3,7 @@ import { getCarousel, getRecommendAccountList, getNLoginList } from '../../model
 import { initUserInfo, getAttentionedList, login } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { getLocationInfo } from '../../models/map'
+import { isUserHaveCoupon } from '../../models/vip'
 import { promisic } from '../../utils/util'
 import { storageSet, storageGet } from '../../utils/storage'
 import { gainParams } from '../../utils/tool'
@@ -11,6 +12,7 @@ const app = getApp();
 Page({
 	data: {
 		havSkip: false,
+		showActivityModel: false,
 		initParams: {},
 		scrollTop: 0,
 		lastUserId: 0,
@@ -59,6 +61,20 @@ Page({
 			lastUserId: userid
 		})
 		await this.getLocationInfo()
+		await this.isUserHaveCoupon()
+	},
+
+	async isUserHaveCoupon() {
+		const { status = 0 } = await isUserHaveCoupon()
+		this.setData({
+			showActivityModel: !status
+		})
+	},
+
+	onDraw () {
+		this.setData({
+			showActivityModel: false
+		})
 	},
 
 	// 根据path判断是否来自分享页面，获取定位

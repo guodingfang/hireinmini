@@ -8,6 +8,24 @@ export const isLogin = () => {
 	return false
 }
 
+export const judgeVip = async () => {
+	const { vip = '' } = getUserInfo(['vip'])
+	const isVip = vip && vip.vipsign > 0
+	if(!isVip) {
+		const { confirm = false } = await wx.showModal({
+			title: '提示',
+			content: '该功能需要成为VIP才可使用',
+			confirmText: '去开通',
+		})
+		if(confirm) {
+			wx.navigateTo({
+				url: '/pages/vip/vip',
+			})
+		}
+	}
+	return isVip
+}
+
 // 获取Storage存储的userinfo信息
 export const getUserInfo = (params = []) => {
 	return getStorageInfo('userinfo', params)

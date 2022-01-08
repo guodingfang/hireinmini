@@ -9,6 +9,10 @@ Component({
       type: Boolean,
       value: false
     },
+    publicUser: {
+      type: String,
+      value: ''
+    },
     isCurrentUser: {
       type: Boolean,
       value: false

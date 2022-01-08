@@ -1,5 +1,7 @@
 {
   "usingComponents": {
+    "v-header": "/components/header",
     "v-article": "/components/helper/article-model"
-  }
+  },
+  "navigationStyle": "custom"
 }

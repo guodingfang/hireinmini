@@ -25,7 +25,7 @@
       mode="widthFix"
       wx:for="{{imgs}}"
       wx:key="id"
-      src="{{imgUrl}}{{item.picurl_thumbnails}}"
+      src="{{imgUrl}}{{item.picurl}}"
     ></image>
   </view>
 </block>
@@ -40,7 +40,7 @@
 
 <view class="advert">
   <v-skip
-    src="{{remoteImagesUrl}}/advert/open-service-account.png"
+    src="{{imgUrl2}}{{advertUrl}}"
     width="690"
     height="180"
     radius="20"

@@ -40,7 +40,8 @@ Page({
         userid: q.userid,
         shareid: q.id,
         goldcoin: q.goldcoin,
-        solved: q.solved
+        solved: q.solved,
+        price: q.price
       }
     })
 
@@ -88,6 +89,12 @@ Page({
     const { answerid } = e.detail
     const { userInfo, details } = this.data
     if(details.solved === '1') return
+    const { confirm = false } = await wx.showModal({
+      title: '打赏',
+      content: '确定打赏该回答吗？',
+      confirmText: '打赏',
+    })
+    if(!confirm) return
     const { errcode } = await acceptAnswer({
       questionid: userInfo.shareid,
       userid: userInfo.userid,

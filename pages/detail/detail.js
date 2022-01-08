@@ -9,6 +9,7 @@ import {
 } from '../../models/release'
 import { addAttention, isAFocusB } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
+import { getPageAdvertsment } from '../../models/util'
 import { remoteImagesUrl } from '../../config'
 import config from '../../config'
 import { isLogin } from '../../utils/util'
@@ -18,6 +19,7 @@ Page({
 		tabHeight: 100,
 		content: '',
 		remoteImagesUrl,
+		imgUrl2: config.imgUrl,
 		imgUrl: config.imgUrls,
 		type: '',
 		videoUrl: config.videoUrl,
@@ -30,6 +32,16 @@ Page({
 		this.setData({
 			msgid: options.msgid,
 			tabHeight
+		})
+		this.getPageAdvertsment()
+	},
+
+	async getPageAdvertsment() {
+		const { adcontent = '' } = await getPageAdvertsment({
+			page: 'msgdetail'
+		})
+		this.setData({
+			advertUrl: adcontent
 		})
 	},
 

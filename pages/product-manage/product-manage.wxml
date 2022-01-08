@@ -1,7 +1,9 @@
-<view class="">
-  <v-item />
+<view wx:if="{{productList.length}}">
+  <block wx:for="{{productList}}" wx:key="id">
+    <v-item info="{{item}}" />
+  </block>
 </view>
 
 <view style="height: 100rpx">
-  <v-footer />
+  <v-footer bind:add="onAddProduct" />
 </view>

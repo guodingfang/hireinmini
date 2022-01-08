@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "v-header": "/components/public/m-header-image",
+    "v-select": "/components/vip/select",
+    "m-pay-way": "/components/public/m-pay-way",
+    "m-header": "/components/public/m-header",
+    "v-record": "/components/vip/record-item",
+    "v-privilege": "/components/vip/privilege",
+    "v-footer": "/components/vip/footer",
+    "v-activity": "/components/activity/vip-coupon",
+    "m-wallet-pay": "/components/public/wallet-pay-model"
+  },
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white"
+}

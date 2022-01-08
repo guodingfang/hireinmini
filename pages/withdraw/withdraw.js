@@ -170,7 +170,7 @@ Page({
       return
     }
 
-    const { errcode = 0  } = await withdrawBankCard({
+    const { errcode = 0, errmsg = '' } = await withdrawBankCard({
       amount,
       cardno: cardno.replace(/\s+/g,""),
       name,
@@ -180,6 +180,12 @@ Page({
       this.setData({
         isWithdrawComplete: !this.data.isWithdrawComplete
       })
+    } else {
+      wx.showToast({
+        title: errmsg,
+        icon: 'none'
+      })
+      return
     }
   },
 

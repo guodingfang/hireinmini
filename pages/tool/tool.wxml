@@ -1,6 +1,6 @@
 <view class="header" style="height: {{headerBlock}}rpx;margin-top: {{headerTop}}rpx;">
   <image class="icon-back" src="/images/icon/back.png" bind:tap="onBack"></image>
-  <text>租赁常用工具</text>
+  <text>常用计算工具</text>
   <view class="tip" bind:tap="onShowTip">
     <image class="icon-tip" src="/images/icon/tip.png"></image>
     声明

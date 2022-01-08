@@ -66,6 +66,7 @@ Page({
         title: errmsg,
         icon: 'none'
       })
+      return
     }
 
     const { code, msg } = await payment({

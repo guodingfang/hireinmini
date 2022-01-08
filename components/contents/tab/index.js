@@ -22,6 +22,10 @@ Component({
     isTop: {
       type: Boolean,
       value: true,
+    },
+    size: {
+      type: Number,
+      value: 28
     }
   },
 

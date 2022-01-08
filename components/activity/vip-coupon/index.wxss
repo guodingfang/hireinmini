@@ -1,0 +1,171 @@
+@import '/assets/style/animate.wxss';
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.model {
+  margin: auto auto 50rpx auto;
+  position: relative;
+}
+
+
+.close-btn {
+  margin: 0 auto auto auto;
+  z-index: 999;
+  width: 50rpx;
+  height: 50rpx;
+  padding: 24rpx;
+}
+
+.icon-close {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 640rpx;
+  height: 882rpx;
+}
+
+.layout-bg {
+  position: absolute;
+  width: 640rpx;
+  height: 882rpx;
+}
+
+.title {
+  position: absolute;
+  top: 50rpx;
+  left: 0;
+  padding-left: 40rpx;
+  font-size: 58rpx;
+  font-weight: bold;
+  color: #1A1A1A;
+}
+
+.explain {
+  position: absolute;
+  top: 135rpx;
+  left: 0;
+  padding-left: 40rpx;
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.info {
+  position: absolute;
+  top: 227rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  height: 458rpx;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item {
+  display: flex;
+  width: 580rpx;
+  height: 134rpx;
+  border-radius: 30rpx;
+  position: relative;
+  background-color: #FFFFFF;
+}
+
+.item + .item {
+  margin-top: 20rpx;
+}
+
+.item-price {
+  width: 218rpx;
+  height: 94rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FEF2F1;
+  border-radius: 22rpx;
+  margin: auto 0 auto 20rpx;
+}
+
+.price {
+  color: #FE0A00;
+  font-size: 26rpx;
+  font-weight: bold;
+}
+
+.price text {
+  font-size: 60rpx;
+}
+
+.num {
+  margin-left: 8rpx;
+  font-size: 26rpx;
+  color: #FE0A00;
+  position: relative;
+  top: 16rpx;
+}
+
+.item-content {
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item-title {
+  color: #1A1A1A;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.item-explain {
+  color: #808080;
+  font-size: 22rpx;
+}
+
+.footer {
+  position: absolute;
+  bottom: 57rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: bold;
+  width: 460rpx;
+  height: 80rpx;
+  background: linear-gradient(180deg, #FFCE85 0%, #F16800 100%);
+  box-shadow: 0px 5rpx 20rpx rgba(255, 142, 96, 0.6);
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

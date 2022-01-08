@@ -3,6 +3,7 @@
     <view class="label label-my" wx:if="{{isCurrentUser}}">我的</view>
     <text>{{ title }}</text>
     <view class="label label-reward" wx:if="{{userInfo.goldcoin === '1'}}">
+      {{userInfo.price}}
       <image class="label-reward-icon" src="/images/icon/reward.png"></image>
       有偿
     </view>
@@ -62,7 +63,7 @@
     <block wx:else>
       <view
         class="reward"
-        wx:if="{{isCurrentUser && source === 'private'}}"
+        wx:if="{{isCurrentUser && source === 'private' && publicUser !== userInfo.userid}}"
         bind:tap="onAcceptAnswer"
       >
         <image class="icon-reward" src="/images/icon/not-reward.png"></image>

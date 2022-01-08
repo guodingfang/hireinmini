@@ -2,5 +2,6 @@
   "usingComponents": {
     "v-item": "/components/product-manage/item",
     "v-footer": "/components/product-manage/footer"
-  }
+  },
+  "navigationBarTitleText": "产品列表"
 }

@@ -7,7 +7,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    info: {
+    company: {
       type: Object,
       value: null,
     }
@@ -20,91 +20,29 @@ Component({
     companyid: 0,
   },
   lifetimes: {
-    attached: function() {
-      const { companyid = 0 } = getUserInfo(['companyid'])
-      this.setData({
-        companyid,
-      })
-    },
+
   },
   /**
    * 组件的方法列表
    */
   methods: {
-    async onSkipCompany() {
-      const { companyid } = this.data
-      if(companyid === 0) {
-        wx.navigateTo({
-          url: '/pages/company_select/company_select',
+    async onSkip () {
+      console.log('company', this.properties.company)
+      if(!this.properties.company) {
+        const { confirm = false } = await wx.showModal({
+          title: '提示',
+          content: '开通服务账号接收管理订单',
+          confirmText: '去开通',
         })
-        return
-      }
-      const { result = false } = await checkFrontPower({
-        url: 'company-manage',
-      })
-      if(result) {
-        wx.navigateTo({
-          url: `/pages/companydetails/companydetails?typeid=1&companyid=${companyid}`,
-        })
+        if(confirm) {
+          this.triggerEvent('open', {}, {})
+        }
       } else {
-        wx.navigateTo({
-          url: `/pages/companydetails/companydetails?typeid=2&companyid=${companyid}`,
+        wx.showToast({
+          title: '订单接收、收款、管理功能即将上线',
+          icon: 'none'
         })
       }
     },
-    async onSkipClient() {
-      const { companyid } = this.data
-      if(companyid === 0) {
-        const { confirm } = await promisic(wx.showModal)({
-          title: '提示',
-          content: '请先创建或绑定公司',
-        })
-        if(!confirm) return
-        const { result } = await checkFrontPower({
-          url: 'company_select',
-        })
-        if(result) {
-          wx.navigateTo({
-            url: '/pages/company_select/company_select',
-          })
-        }
-        return
-      }
-      const { result } = await checkFrontPower({
-        url: 'client',
-      })
-      if(result) {
-        wx.navigateTo({
-					url: '/pages/client/client',
-				})
-      }
-    },
-    async onMemberManage() {
-      const { companyid } = this.data
-      if(companyid === 0) {
-        const { confirm } = await promisic(wx.showModal)({
-          title: '提示',
-          content: '请先创建或绑定公司',
-        })
-        if(!confirm) return
-        const { result } = await checkFrontPower({
-          url: 'company_select',
-        })
-        if(result) {
-          wx.navigateTo({
-            url: '/pages/company_select/company_select',
-          })
-        }
-        return
-      } 
-      const { result = false } = await checkFrontPower({
-        url: 'member_manage',
-      })
-      if(result) {
-        wx.navigateTo({
-					url: '/pages/member_manage/member_manage',
-				})
-      }
-    }
   }
 })
