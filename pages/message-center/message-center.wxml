@@ -6,8 +6,9 @@
   <block wx:for="{{messageList}}" wx:key="id">
     <view class="message-item" bind:tap="onSkipDetail" data-rid="{{item.userid}}">
       <view class="portrait">
-        <image class="head-portrait" src="{{item.userpic}}"></image>
-        <text class="num" wx:if="{{item.unreadcounts > 0}}">{{item.unreadcounts}}</text>
+        <image class="head-portrait" src="{{item.userpic}}">
+          <text class="num" wx:if="{{item.unreadcounts > 0}}"></text>
+        </image>
       </view>
 
       <view class="message-info">

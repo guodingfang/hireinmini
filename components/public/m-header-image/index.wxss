@@ -49,6 +49,15 @@
   overflow: hidden;
 }
 
+.mask {
+  position: absolute;
+  top: calc(88rpx + var(--top--));
+	width: 100%;
+	height: 500rpx;
+  background-image: linear-gradient(180deg, transparent, #ffffff 45%, #ffffff);
+  z-index: 999;
+}
+
 .bg-img {
   width: 100%;
 }

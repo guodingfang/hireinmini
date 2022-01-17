@@ -23,13 +23,17 @@ Component({
     bgSrc: {
       type: String,
       value: ''
+    },
+    isMask: {
+      type: Boolean,
+      value: false
     }
   },
 
   /**
    * 外部样式
    */
-  externalClasses: ['m-header', 'm-header-image'],
+  externalClasses: ['m-header', 'm-header-image', 'm-mask'],
 
   /**
    * 组件的初始数据

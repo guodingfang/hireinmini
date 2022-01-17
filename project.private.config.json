@@ -323,6 +323,12 @@
           "pathName": "pages/detail/detail",
           "query": "msgid=4735",
           "scene": null
+        },
+        {
+          "name": "需求单",
+          "pathName": "pages/demand-order/demand-order",
+          "query": "",
+          "scene": null
         }
       ]
     }

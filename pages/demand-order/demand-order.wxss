@@ -1,0 +1,94 @@
+.m-mask {
+  background-image: linear-gradient(180deg, transparent, #F5F4F9 45%, #F5F4F9) !important;
+}
+
+.contianer {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  position: relative;
+  z-index: 1000;
+  background: #FFFFFF;
+  width: 690rpx;
+  border-radius: 30rpx;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20rpx;
+  padding: 20rpx 0;
+}
+
+.input-item {
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx 0 0;
+  box-sizing: border-box;
+}
+
+.label {
+  position: relative;
+  margin-left: 30rpx;
+  min-width: 120rpx;
+  color: #808080;
+  font-size: 28rpx;
+}
+
+.input-val {
+  flex: 1;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  background: #F5F4F9;
+  padding: 15rpx 20rpx;
+  height: 70rpx;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+}
+
+.pl-input {
+  color: #999999;
+}
+
+.textarea-item {
+  margin-top: 10rpx;
+  height: 220rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.textarea-val {
+  margin: 10rpx auto 0 auto;
+  width: 630rpx;
+  height: 140rpx;
+}
+
+.footer {
+  position: fixed;
+  z-index: 99999;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  width: 100vw;
+}
+
+.footer .btn {
+  width: 640rpx;
+  height: 70rpx;
+  background-color: #0400E6;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 30rpx;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -40,7 +40,8 @@
     "pages/article-list/article-list",
     "pages/wallet-password/wallet-password",
     "pages/vip/vip",
-    "pages/message-center/message-center"
+    "pages/message-center/message-center",
+    "pages/demand-order/demand-order"
   ],
   "permission": {
     "scope.userLocation": {

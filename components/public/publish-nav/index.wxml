@@ -5,7 +5,7 @@
 >
   <view class="model {{animateShow ? 'animated fadeInUp' : 'animated fadeOutDown'}}">
     <view class="nav">
-      <view class="nav-item" bind:tap="onSkipDemand" wx:if="{{false}}">
+      <view class="nav-item" bind:tap="onSkipDemand">
         <image class="nav-icon demand-icon" src="./images/demand.png"></image>
         <text class="nav-val">发布需求</text>
       </view>

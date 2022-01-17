@@ -1,0 +1,119 @@
+<view style="height: {{headerBlock}}rpx">
+  <v-header
+    fixed="{{true}}"
+    title="需求单"
+    bgSrc="{{bgImagesUrl}}"
+    m-header-image="m-header-image"
+    m-mask="m-mask"
+    isMask="{{true}}"
+  />
+</view>
+
+<view class="contianer">
+
+  <view class="card">
+    <view class="input-item">
+      <view class="label">需求方:</view>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="必填，输入需求方(公司)名称"
+        placeholder-class="pl-input"
+        data-type="companyname"
+        value="{{companyname}}"
+        bind:input="onChanageInput"
+      />
+    </view>
+    <view class="input-item">
+      <view class="label">联系人:</view>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="必填，输入联系人"
+        placeholder-class="pl-input"
+        data-type="contact"
+        value="{{contact}}"
+        bind:input="onChanageInput"
+      />
+    </view>
+    <view class="input-item">
+      <view class="label">联系电话:</view>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="必填，输入联系电话"
+        placeholder-class="pl-input"
+        data-type="phone"
+        value="{{phone}}"
+        bind:input="onChanageInput"
+      />
+    </view>
+    <view class="input-item">
+      <view class="label">活动地点:</view>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="必填，输入活动地点"
+        placeholder-class="pl-input"
+        data-type="actaddress"
+        value="{{actaddress}}"
+        bind:input="onChanageInput"
+      />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="input-item">
+      <view class="label">活动预算:</view>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="必填，输入活动预算"
+        placeholder-class="pl-input"
+        data-type="budget"
+        value="{{budget}}"
+        bind:input="onChanageInput"
+      />
+    </view>
+    <view class="input-item">
+      <view class="label">活动类型:</view>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="必填，输入活动类型"
+        placeholder-class="pl-input"
+        data-type="acttype"
+        value="{{acttype}}"
+        bind:input="onChanageInput"
+      />
+    </view>
+    <view class="input-item textarea-item">
+      <view class="label">需求描述:</view>
+      <textarea
+        class="input-val textarea-val"
+        type="text"
+        placeholder="必填，输入需求描述"
+        placeholder-class="pl-input"
+        data-type="remarks"
+        value="{{remarks}}"
+        bind:input="onChanageInput"
+      ></textarea>
+    </view>
+  </view>
+
+  <view class="card" style="padding-bottom: 0;">
+    <view class="label">上传附件:</view>
+    <m-upload
+      uploadType="img"
+      maxCount="9"
+      bind:isUpload="isUpload"
+      bind:complete="onUploadComplete"
+    />
+  </view>
+</view>
+
+<view style="height: 100rpx;">
+  <view class="footer">
+    <view class="btn" bind:tap="onSubmit">提交需求</view>
+  </view> 
+</view>

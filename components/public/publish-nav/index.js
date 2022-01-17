@@ -27,10 +27,12 @@ Component({
    */
   methods: {
     onSkipDemand () {
-      wx.showToast({
-        title: '即将开启，敬请期待',
-        icon: 'none'
+      wx.navigateTo({
+        url: '/pages/demand-order/demand-order',
       })
+      setTimeout(() => {
+        this.onClose()
+      }, 400)
     },
     onSkipConsult () {
       wx.navigateTo({

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "v-header": "/components/public/m-header-image",
+    "m-upload": "/components/public/m-upload"
+  },
+  "navigationStyle": "custom"
+}

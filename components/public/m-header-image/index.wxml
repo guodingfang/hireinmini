@@ -13,6 +13,7 @@
 </view>
 
 <view class="header-image m-header-image" wx:if="{{bgSrc}}">
-  <image mode="widthFix" class="bg-img" src="{{bgSrc}}"></image>
+  <view wx:if="{{isMask}}" class="mask m-mask" style="--top--:{{statusBarHeight}}rpx"></view>
+  <image mode="widthFix" class="bg-img " src="{{bgSrc}}"></image>
 </view>
 
