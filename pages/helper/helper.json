@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "v-header": "/components/header",
+    "m-fixed-header-image": "/components/public/m-fixed-header-image",
     "v-helper-header": "/components/helper/header",
     "v-skip": "/components/public/skip-image",
     "m-header": "/components/public/m-header",

@@ -54,7 +54,6 @@ Page({
   
   _getLocationCity() {
     const currentCity = storageGet('locationCity')
-    console.log('currentCity', currentCity)
     this.setData({
       currentCity
     })

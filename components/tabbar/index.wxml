@@ -1,4 +1,4 @@
-<view class="tabber-container" style="height: {{tabHeight}}rpx; padding-bottom: {{paddingBottom}}rpx">
+<view class="tabbar-container {{bgImagesUrl ? 'tabbar-show-img' : ''}}" style="height: {{tabHeight}}rpx; padding-bottom: {{paddingBottom}}rpx">
   <block wx:for="{{tabbar.list}}" wx:key="index">
     <view
       wx:if="{{!item.custom}}"
@@ -7,7 +7,7 @@
       data-taburl="{{item.pagePath}}"
     >
       <image
-        class="tab-icon"
+        class="tab-icon tab-icon-default"
         src="{{ curRoute === item.pagePath ? item.selectedIconPath : item.iconPath }}"
         mode="aspectFit">
       </image>
@@ -27,5 +27,14 @@
       ></image>
     </view>
   </block>
-  
 </view>
+
+<view class="fixed-tabbar-bg" style="height: {{tabHeight + 2}}rpx">
+  <image
+    class="fixed-tabbar-bg-img"
+    mode="widthFix"
+    src="{{bgImagesUrl}}"
+  ></image>
+</view>
+
+<publish-nav showModel="{{showModel}}" bind:close="onCloseModel" />

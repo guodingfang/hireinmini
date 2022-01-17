@@ -1,7 +1,8 @@
 import { getTopArticleList } from '../../models/article'
 import { getLocationInfo } from '../../models/map'
+import { getPageHeaderImage } from '../../models/util'
 import { judgeTabBarHeight, isLogin } from '../../utils/util'
-import { remoteImagesUrl } from '../../config'
+import config, { remoteImagesUrl } from '../../config'
 
 const app = getApp();
 
@@ -11,6 +12,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    bgImagesUrl: '',
     remoteImagesUrl,
     headerBlock: 0,
     tools: [{
@@ -39,6 +41,7 @@ Page({
    */
   onLoad(options) {
     this.getHeaderBlock()
+    this.getPageHeaderImage()
     this.getLocationInfo()
   },
 
@@ -50,6 +53,21 @@ Page({
 			tabHeight,
 		})
   },
+
+	async getPageHeaderImage () {
+		const { data, errcode } = await getPageHeaderImage({
+			pagename: 'helper'
+		})
+		if(errcode === 0 && data && data.picurl) {
+			this.setData({
+				bgImagesUrl: `${config.imgUrl}${data.picurl}`
+			})
+		} else {
+			this.setData({
+				bgImagesUrl: ''
+			})
+		}
+	},
   
   async getLocationInfo() {
     const info = await getLocationInfo()

@@ -216,3 +216,54 @@ export const getMyCoupon = (option = {}) => {
     ...option
   })
 }
+
+/**
+ * 发送消息
+ * @param {*} option 
+ */
+export const sendMessage = (option = {}) => {
+  return request.post('/User/addChatMessage', {
+    ...option
+  })
+}
+
+/**
+ * 消息详情
+ * @param {*} option 
+ */
+export const getMessageDetail = (option = {}) => {
+  return request.post('/User/getChatMessage', {
+    ...option
+  })
+}
+
+
+/**
+ * 消息列表
+ * @param {*} option 
+ */
+export const getMessageList = (option = {}) => {
+  return request.post('/User/getChatUserList', {
+    ...option
+  })
+}
+
+/**
+ * 查询指定用户的未读消息数量
+ * @param {*} option 
+ */
+export const getUnReadMsgCount = (option = {}) => {
+  return request.post('/User/getUnReadMsgCount', {
+    ...option
+  })
+}
+
+/**
+ * 标记聊天内容为已读
+ * @param {*} option 
+ */
+export const markMsgRead = (option = {}) => {
+  return request.post('/User/markMsgRead', {
+    ...option
+  })
+}

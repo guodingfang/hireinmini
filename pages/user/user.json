@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "v-header": "/components/header",
+    "m-fixed-header-image": "/components/public/m-fixed-header-image",
     "v-info": "/components/user/info",
     "v-account": "/components/user/account",
     "v-order": "/components/user/order",

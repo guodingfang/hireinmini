@@ -10,6 +10,10 @@ Component({
       observer(newVal) {
 
       }
+    },
+    msgCount: {
+      type: Number,
+      value: 0
     }
   },
 
@@ -43,6 +47,13 @@ Component({
       if(!login) return
       wx.navigateTo({
         url: `/pages/set-up/set-up`,
+      })
+    },
+    onMessage () {
+      const login = isLogin()
+      if(!login) return
+      wx.navigateTo({
+        url: `/pages/message-center/message-center`,
       })
     }
   }

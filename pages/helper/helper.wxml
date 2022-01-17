@@ -1,6 +1,7 @@
 
 <view style="height: {{headerBlock}}rpx">
   <v-header
+    m-header="{{ bgImagesUrl ? 'm-header' : ''}}"
     fixed="{{true}}"
     isCity="{{!!city}}"
     currentPage="helper"
@@ -10,8 +11,18 @@
 </view>
 
 <view style="height: 88rpx">
-  <v-helper-header city="{{cityname}}" locationInfo="{{locationInfo}}" />
+  <v-helper-header
+    m-header="{{ bgImagesUrl ? 'm-header' : ''}}"
+    city="{{cityname}}"
+    locationInfo="{{locationInfo}}"
+  />
 </view>
+
+<m-fixed-header-image
+	wx:if="{{bgImagesUrl}}"
+	height="{{headerBlock + 88}}"
+	bgImagesUrl="{{bgImagesUrl}}"
+/>
 
 <view class="model tool">
   <m-header title="常用计算工具" bind:more="onSkipTool" />
@@ -65,6 +76,6 @@
   </view>
 </v-fixed>
 
-<view style="height: {{tabHeight}}rpx">
-  <v-tabbar />
-</view>
+<view style="height: {{tabHeight}}rpx"></view>
+
+<v-tabbar />

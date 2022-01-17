@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "m-not-content": "/components/public/m-not-content"
+  },
+  "navigationBarTitleText": "消息中心"
+}

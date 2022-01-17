@@ -99,7 +99,6 @@ Page({
       count: 1,
       sourceType: ['album', 'camera'],
     });
-    console.log('tempFilePaths', tempFilePaths)
     const {userid = 0, accesstoken = '', unionid = ''} = getUserInfo([
       'accesstoken',
       'userid',

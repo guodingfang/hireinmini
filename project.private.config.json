@@ -117,7 +117,7 @@
         {
           "name": "服务号",
           "pathName": "pages/service-account/service-account",
-          "query": "companyid=1954",
+          "query": "companyid=768",
           "scene": null
         },
         {
@@ -304,6 +304,24 @@
           "name": "服务号-主营产品录入",
           "pathName": "pages/add-product/add-product",
           "query": "companyid=2242",
+          "scene": null
+        },
+        {
+          "name": "消息中心",
+          "pathName": "pages/message-center/message-center",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "消息详情",
+          "pathName": "pages/message-detail/message-detail",
+          "query": "rid=7558",
+          "scene": null
+        },
+        {
+          "name": "pages/detail/detail",
+          "pathName": "pages/detail/detail",
+          "query": "msgid=4735",
           "scene": null
         }
       ]

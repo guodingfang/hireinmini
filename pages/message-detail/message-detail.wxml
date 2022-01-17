@@ -1,0 +1,56 @@
+<scroll-view
+  scroll-y="{{isScroll}}"
+  style="--keyboardHeight--: {{keyboardHeight}}px"
+  enable-flex
+  class="message"
+  scroll-top="{{ srollTop }}"
+  scroll-with-animation="{{true}}"
+  upper-threshold="0"
+	refresher-enabled="{{true}}"
+	refresher-triggered="{{triggered}}"
+	bindrefresherrefresh="onLoadData"
+>
+  <view
+    class="message-item {{item.send_receive === 'send' ? 'message-right' : 'message-left'}}"
+    wx:for="{{messageList}}"
+    wx:key="index"
+  >
+    <image
+      class="head-portrait"
+      src="{{item.userpic_send}}"
+    ></image>
+    <view class="info">
+      <view class="content">
+        <text
+          class="content-text"
+          wx:if="{{item.filetype === 'chat'}}"
+        >{{ item.content }}</text>
+        <image
+          mode="widthFix"
+          wx:if="{{item.filetype === 'pic'}}"
+          class="content-img"
+          src="{{imgUrl}}{{item.picurl}}"
+        ></image>
+      </view>
+      <view class="time">{{item.chattime}}</view>
+    </view>
+  </view>
+</scroll-view>
+
+<v-footer>
+  <view class="message-footer">
+    <input
+      class="message-val"
+      type="text"
+      cursor-spacing="12"
+      confirm-type="send"
+      confirm-hold
+      adjust-position
+      value="{{messageVal}}"
+      bindconfirm="onSendMessage"
+    />
+    <view class="message-btn" bind:tap="uplodaImg">
+      <image src="/images/icon/pic.png" class="icon-pic"></image>
+    </view>
+  </view>
+</v-footer>

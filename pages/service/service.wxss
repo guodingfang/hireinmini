@@ -4,6 +4,10 @@ Page {
   background-color: #ffffff;
 }
 
+.m-header {
+	background-color: transparent !important;
+}
+
 .content {
   height: calc(100vh - var(--topHeader--));
 }

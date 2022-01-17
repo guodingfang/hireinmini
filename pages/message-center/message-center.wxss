@@ -1,0 +1,84 @@
+@import '/assets/style/global.wxss';
+
+.message-center {
+  padding: 12rpx 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.message-item {
+  display: flex;
+  background-color: #ffffff;
+  padding: 24rpx;
+}
+
+.portrait {
+  position: relative;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 12rpx;
+  overflow: visible !important;
+  margin-right: 12rpx;
+}
+
+.head-portrait {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 12rpx;
+}
+
+
+.num{
+  position: absolute;
+  background-color:#ffffff;
+  border-radius: 12rpx;
+  right: -8rpx;
+  top: -8rpx;
+  min-width: 24rpx;
+  padding: 0 6rpx;
+  height: 24rpx;
+  display: block;
+  text-align: center;
+  line-height: 24rpx;
+  color: #FF4545;
+  font-family: "黑体";
+  border: 1rpx solid #FF4545;
+  font-size: 20rpx;
+  box-sizing: border-box;
+}
+
+.message-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  display: flex;
+}
+
+.user .name {
+  max-width: 390rpx;
+  margin-right: auto;
+  font-size: 28rpx;
+  color: #1a1a1a;
+}
+
+.user .created {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+.message-val {
+  margin-top: auto;
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.not-content-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #aaaaaa;
+	margin-top: 24rpx;
+}

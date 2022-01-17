@@ -1,6 +1,6 @@
-import { getCarousel } from '../../models/util'
+import { getCarousel, getPageHeaderImage } from '../../models/util'
 import { judgeTabBarHeight } from '../../utils/util'
-import config from '../../config'
+import config, { remoteImagesUrl } from '../../config'
 import {
 	getHighRentRateProduct,
   getRecommendSchemeList,
@@ -18,6 +18,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		bgImagesUrl: '',
 		imgUrl: config.imgUrl,
 		headerBlock: 0,
 		city: '',
@@ -50,9 +51,25 @@ Page({
 	 */
 	onLoad (options) {
 		this.getHeaderBlock()
+		this.getPageHeaderImage()
 		this.getCarousel()
 		// this.getInfo()
 		this.getLocationInfo()
+	},
+
+	async getPageHeaderImage () {
+		const { data, errcode } = await getPageHeaderImage({
+			pagename: 'service'
+		})
+		if(errcode === 0 && data && data.picurl) {
+			this.setData({
+				bgImagesUrl: `${config.imgUrl}${data.picurl}`
+			})
+		} else {
+			this.setData({
+				bgImagesUrl: ''
+			})
+		}
 	},
 
 	async getLocationInfo() {

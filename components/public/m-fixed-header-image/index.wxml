@@ -1,0 +1,3 @@
+<view class="fixed-header-bg" style="height: {{height}}rpx">
+	<image class="fixed-header-bg-img" mode="widthFix" src="{{bgImagesUrl}}"></image>
+</view>

@@ -1,6 +1,6 @@
-<view class="item" bind:tap="onSkipDetail">
+<view class="item">
   <image class="logo" src="{{info.userpic}}"></image>
-  <view class="info">
+  <view class="info" bind:tap="onSkipDetail">
     <view class="header">
       <view class="header-info">
         <text class="name">{{info.contacter}}</text>

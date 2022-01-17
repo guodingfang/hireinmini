@@ -7,6 +7,9 @@ Component({
     info: {
       type: Object,
       value: null,
+      observer(val) {
+        console.log('val', val)
+      }
     }
   },
 

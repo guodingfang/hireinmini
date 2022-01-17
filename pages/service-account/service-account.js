@@ -124,6 +124,15 @@ Page({
     })
   },
 
+  async onMessages () {
+    const login = isLogin()
+    if(!login) return
+    const { createdby } = this.data.info
+    wx.navigateTo({
+      url: `/pages/message-detail/message-detail?rid=${createdby}`,
+    })
+  },
+
   async onDial() {
     const login = isLogin()
     if(!login) return

@@ -1,7 +1,7 @@
 
-<view class="header">
+<view class="header m-header">
   <m-weather isCity="{{isCity}}" />
-  <button class="dial-button" open-type="contact" bindcontact="handleContact">
+  <button class="dial-button" bind:tap="openCustomer">
     <image class="icon-dial" src="/images/icon/dial-2.png"></image>
     <text class="dial-val">呼叫我的助手</text>
   </button>

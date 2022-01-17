@@ -1,5 +1,5 @@
 import { getDiscoverMsgList } from '../../models/release'
-import { getCarousel, getRecommendAccountList, getNLoginList } from '../../models/util'
+import { getCarousel, getRecommendAccountList, getNLoginList, getPageHeaderImage } from '../../models/util'
 import { initUserInfo, getAttentionedList, login } from '../../models/user'
 import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { getLocationInfo } from '../../models/map'
@@ -7,10 +7,12 @@ import { isUserHaveCoupon } from '../../models/vip'
 import { promisic } from '../../utils/util'
 import { storageSet, storageGet } from '../../utils/storage'
 import { gainParams } from '../../utils/tool'
+import config, { remoteImagesUrl } from '../../config'
 
 const app = getApp();
 Page({
 	data: {
+		bgImagesUrl: '',
 		havSkip: false,
 		showActivityModel: false,
 		initParams: {},
@@ -42,6 +44,7 @@ Page({
 
 	async onLoad(options = {}) {
 		this.getHeaderBlock()
+		this.getPageHeaderImage()
 		const { userid = 0 } = getUserInfo(['userid'])
 		const { path = '', needLogin = 'notNeed' } = options
 		if (path && needLogin === 'need') {
@@ -62,6 +65,21 @@ Page({
 		})
 		await this.getLocationInfo()
 		await this.isUserHaveCoupon()
+	},
+
+	async getPageHeaderImage () {
+		const { data, errcode } = await getPageHeaderImage({
+			pagename: 'research'
+		})
+		if(errcode === 0 && data && data.picurl) {
+			this.setData({
+				bgImagesUrl: `${config.imgUrl}${data.picurl}`
+			})
+		} else {
+			this.setData({
+				bgImagesUrl: ''
+			})
+		}
 	},
 
 	async isUserHaveCoupon() {
@@ -135,7 +153,7 @@ Page({
 			const city = cityinfo.city
 			this.setData({
 				city,
-				tabList: tabList.map(tab => tab.type === 'native' ? {...tab, name: city} : tab)
+				// tabList: tabList.map(tab => tab.type === 'native' ? {...tab, name: city} : tab)
 			})
 			if(tabname === 'native' && oldCity !== city) {
 				await this.getCarousel()
@@ -153,7 +171,19 @@ Page({
 
 	// 重新选择地址完成触发
 	onAgainLocationComplete() {
+		this.setData({
+			scrollTop: 0
+		})
 		this.getLocationInfo();
+	},
+
+	// 详情页浏览
+	onChangeBrowse({ info }) {
+		this.setData({
+			releaseList: this.data.releaseList.map(item => item.msgid === info.msgid
+				? {...item, viewcount: info.viewcount} 
+				: item)
+		})
 	},
 
 	// 详情页点赞

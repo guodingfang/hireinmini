@@ -26,6 +26,8 @@
       wx:for="{{imgs}}"
       wx:key="id"
       src="{{imgUrl}}{{item.picurl}}"
+      data-index="{{index}}"
+      bind:tap="onShowImage"
     ></image>
   </view>
 </block>
@@ -42,7 +44,7 @@
   <v-skip
     src="{{imgUrl2}}{{advertUrl}}"
     width="690"
-    height="180"
+    height="300"
     radius="20"
   />
 </view>

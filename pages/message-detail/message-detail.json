@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "v-footer": "/components/footer"
-  }
+  },
+  "navigationBarTitleText": "交流合作"
 }

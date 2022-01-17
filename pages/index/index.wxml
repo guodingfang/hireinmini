@@ -2,11 +2,12 @@
 
 <view style="height: {{headerBlock + 70}}rpx">
 	<v-header
+		m-header="{{bgImagesUrl ? 'm-header' : '' }}"
 		fixed="{{true}}"
 		placeholder="搜索资源/服务"
 		currentPage="index"
 		isTopTitle="{{true}}"
-		bind:getLocation="getLocation"
+		isWeather="{{true}}"
 	/>
 	<v-tab
 		fixed="{{true}}"
@@ -17,9 +18,15 @@
 	/>
 </view>
 
+<m-fixed-header-image
+	wx:if="{{bgImagesUrl}}"
+	height="{{headerBlock}}"
+	bgImagesUrl="{{bgImagesUrl}}"
+/>
+
 <scroll-view
 	class="content"
-	style="--topHeader--:{{headerBlock + 72 + tabHeight}}rpx"
+	style="--topHeader--:{{headerBlock + 72}}rpx"
 	scroll-y
 	scroll-top="{{scrollTop}}"
 	lower-threshold="250"
@@ -49,6 +56,7 @@
 	<loading hidden="{{loadingHidden}}">
 		加载中...
 	</loading>
+	<view style="height: {{tabHeight}}rpx"></view>
 </scroll-view>
 
 <m-location
@@ -58,9 +66,7 @@
 	bind:manual="onManualLocation" 	
 />
 
-<view style="height: {{tabHeight}}rpx">
-	<v-tabbar />
-</view>
+<v-tabbar />
 
 <m-not-page loading="{{havSkip}}" />
 

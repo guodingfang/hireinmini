@@ -28,7 +28,7 @@
     "pages/add-company/add-company",
     "pages/user-authentication/user-authentication",
     "pages/company-manage/company-manage",
-    "pages/cooperation-exchange/cooperation-exchange",
+    "pages/message-detail/message-detail",
     "pages/user-account/user-account",
     "pages/user-agreement/user-agreement",
     "pages/privacy-agreement/privacy-agreement",
@@ -39,7 +39,8 @@
     "pages/answer-publish/answer-publish",
     "pages/article-list/article-list",
     "pages/wallet-password/wallet-password",
-    "pages/vip/vip"
+    "pages/vip/vip",
+    "pages/message-center/message-center"
   ],
   "permission": {
     "scope.userLocation": {

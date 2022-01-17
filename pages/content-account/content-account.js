@@ -130,6 +130,11 @@ Page({
     })
   },
 
+  // 详情页点赞
+  onDetailsLike({ info }) {
+    console.log('allList', this.data.allList)
+    console.log('info', info)
+  },
 
 
   onScrollBottom() {

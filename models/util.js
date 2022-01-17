@@ -101,6 +101,15 @@ export const getNLoginList = (option = {}) => {
   })
 }
 
+/**
+ * 页面头图查询
+ * @param {*} option 
+ */
+export const getPageHeaderImage = (option = {}) => {
+  return request.post(`/Index/getPageImage`, {
+    ...option
+  })
+}
 
 /**
  * 上传访问日志
@@ -109,8 +118,12 @@ export const getNLoginList = (option = {}) => {
 export const uploadAccessLog = (option = {}) => {
   const launchInfo = wx.getLaunchOptionsSync()
   const enterInfo = wx.getEnterOptionsSync()
+  const { userid, unionid, wxappid } = getUserInfo(['userid', 'unionid', 'wxappid'])
   request.post('/User/accessLog', {
     ...option,
+    loginuserid: userid,
+    loginunionid: unionid,
+    openid: wxappid,
     launchscene: launchInfo.scene,
     enterscene: enterInfo.scene,
   })
@@ -166,3 +179,4 @@ export const paymentCallBack = (option = {}) => {
     userid
   })
 }
+

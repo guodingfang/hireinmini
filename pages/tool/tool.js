@@ -101,12 +101,8 @@ Page({
   async uploadAccessLog() {
     const { tabList, type, city } = this.data
     const tab = tabList.find(tab => tab.type === type)
-    const { userid, unionid, wxappid } = getUserInfo(['userid', 'unionid', 'wxappid'])
-    await uploadAccessLog({
+    uploadAccessLog({
       page: tab ? tab.name : '',
-      loginuserid: userid,
-      loginunionid: unionid,
-      openid: wxappid,
       city
     })
   },

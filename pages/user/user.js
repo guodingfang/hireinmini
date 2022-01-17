@@ -4,7 +4,8 @@ import {
 	unRegisterUser,
 	getMyCompanyInfo,
 	getUserBaseInfo,
-	getMyOrderForAuditNum
+	getMyOrderForAuditNum,
+	getUnReadMsgCount
 } from '../../models/user'
 
 import { isLogin, getUserInfo, judgeTabBarHeight } from '../../utils/util'
@@ -36,6 +37,7 @@ Page({
 		bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
 		skipCompanyUrl: '',
 		showModel: false,
+		msgCount: 0,
 	},
 
 	/**
@@ -102,7 +104,21 @@ Page({
           title: '嗨应'
         }
       })
-    }
+		}
+
+		await this.getUnReadMsgCount()
+	},
+
+	async getUnReadMsgCount () {
+		const { errcode = -1, msgcount = 0 } = await getUnReadMsgCount({})
+		if (errcode === 0) {
+			this.setData({
+				msgCount: msgcount
+			})
+		}
+		this.timer = setTimeout(() => {
+			this.getUnReadMsgCount()
+		}, 10000)
 	},
 
 	async onRegainGetUserInfo() {
@@ -217,11 +233,28 @@ Page({
 		})
 	},
 
+	async openCustomer () {
+		wx.openCustomerServiceChat({
+			extInfo: {url: 'https://work.weixin.qq.com/kfid/kfc1e69e0f1c8a60125'},
+			corpId: 'ww9e69cac7ccaa1f39',
+			success(res) {
+
+			},
+			fail(err) {
+				console.log('err', err)
+			}
+		})
+	},
+
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
 	async onShow () {
 		await this.getUserBaseInfo()
+	},
+
+	onHide () {
+		clearInterval(this.timer);
 	},
 
 	/**

@@ -1,0 +1,23 @@
+
+<view
+  class="container {{ animateShow ? 'animated fadeIn' : 'animated fadeOut' }}"
+  wx:if="{{showModel}}"
+>
+  <view class="model {{animateShow ? 'animated fadeInUp' : 'animated fadeOutDown'}}">
+    <view class="nav">
+      <view class="nav-item" bind:tap="onSkipDemand" wx:if="{{false}}">
+        <image class="nav-icon demand-icon" src="./images/demand.png"></image>
+        <text class="nav-val">发布需求</text>
+      </view>
+      <view class="nav-item" bind:tap="onSkipConsult">
+        <image class="nav-icon consult-icon" src="./images/consult.png"></image>
+        <text class="nav-val">提问</text>
+      </view>
+      <view class="nav-item" bind:tap="onSkipDynamic">
+        <image class="nav-icon dynamic-icon" src="./images/dynamic.png"></image>
+        <text class="nav-val">发布动态</text>
+      </view>
+    </view>
+    <image class="icon-close" src="/images/icon/close-2.png" bind:tap="onClose"></image>
+  </view>
+</view>

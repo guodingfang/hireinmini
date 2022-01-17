@@ -12,11 +12,9 @@
   </button>
 </view>
 
-<v-info userinfo="{{userinfo}}" />
+<v-info userinfo="{{userinfo}}" msgCount="{{msgCount}}" />
 
-<view class="fixed-header-bg" style="height: {{headerBlock}}rpx">
-	<image class="fixed-header-bg-img" mode="widthFix" src="{{bgImagesUrl}}"></image>
-</view>
+<m-fixed-header-image height="{{headerBlock}}" bgImagesUrl="{{bgImagesUrl}}" />
 
 <view class="user-bg">
 	<view class="user-mask"></view>
@@ -62,6 +60,10 @@
 <!-- <view class="demo-model" bind:tap="onPassword">
 	进入电子钱包密码设置
 </view> -->
+
+<!-- <view class="demo-model" bind:tap="openCustomer">
+	打开微信客服
+</view>  -->
 
 <!-- 
 <view class="advert">
@@ -110,6 +112,5 @@
 	加载中...
 </loading>
 
-<view style="height: {{tabHeight + 30}}rpx">
-	<v-tabbar />
-</view>
+<view style="height: {{tabHeight + 30}}rpx"></view>
+<v-tabbar />

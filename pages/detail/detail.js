@@ -36,6 +36,17 @@ Page({
 		this.getPageAdvertsment()
 	},
 
+	changeBrowse () {
+		const pages = getCurrentPages();
+		const prevPage = pages[pages.length - 2]; //上一个页面
+		prevPage.onDetailsLike && prevPage.onChangeBrowse({
+			info: {
+				...this.data.info,
+				viewcount: +this.data.info.viewcount + 1
+			}
+		})
+	},
+
 	async getPageAdvertsment() {
 		const { adcontent = '' } = await getPageAdvertsment({
 			page: 'msgdetail'
@@ -66,6 +77,7 @@ Page({
 			loading: false,
 		})
 		this.getVideoUrl()
+		this.changeBrowse()
 	},
 
 	// 获取大图及视频图片
@@ -142,15 +154,24 @@ Page({
 		})
 	},
 
+	onShowImage (e) {
+		const { index } = e.target.dataset
+		const { imgUrl, imgs } = this.data
+		const urls = imgs.map(item => `${imgUrl}${item.picurl}`)
+		wx.previewImage({
+			urls,
+			current: urls[index]
+		})
+	},
+
 	// 拨打电话
 	async onDial(e) {
 		const login = isLogin()
 		if(!login) return
-		const { contactphone: phone } = this.data.info	
+		const { contactphone: phone, userid } = this.data.info	
 		if(!phone) {
-			wx.showToast({
-				title: '该用户未提供电话',
-				icon: 'none'
+			wx.navigateTo({
+				url: `/pages/message-detail/message-detail?rid=${userid}`,
 			})
 			return
 		}

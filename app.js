@@ -1,4 +1,4 @@
-import { login } from '/models/user'
+import { login } from './models/user'
 
 App({
 	onLaunch (options) {

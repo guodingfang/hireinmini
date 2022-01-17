@@ -14,7 +14,9 @@
         <image class="icon-more" src="/images/icon/more-2.png"></image>
       </view>
       <view class="tool">
-        <image wx:if="{{false}}" class="icon-message" src="/images/icon/message.png" bind:tap="onMessage"></image>
+        <image class="icon-message" src="/images/icon/message.png" bind:tap="onMessage">
+          <text class="num" wx:if="{{msgCount}}">{{msgCount}}</text>
+        </image>
         <image class="icon-setup" src="/images/icon/setup.png" bind:tap="onSetup"></image>
       </view>
     </view>

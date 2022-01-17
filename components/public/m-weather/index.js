@@ -18,6 +18,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    loading: false,
     degree: 0,
     weatherText: '',
     weather: '',
@@ -41,6 +42,9 @@ Component({
     async getWeather() {
       const locationInfo = wx.getStorageSync('cityinfo')
       if(locationInfo && locationInfo.city !== this.data.currentCity) {
+        this.setData({
+          loading: true
+        })
         const { data } = await getWeather({
           source: 'pc',
           province: locationInfo.province,
@@ -51,6 +55,7 @@ Component({
         const { air, observe } = data
         if(observe.weather) {
           this.setData({
+            loading: false,
             currentCity: locationInfo.city,
             degree: observe.degree,
             weatherText: observe.weather,
@@ -63,6 +68,7 @@ Component({
           })
         } else {
           this.setData({
+            loading: false,
             currentCity: locationInfo.city,
             location: locationInfo.city,
             showLocation: locationInfo.city.slice(0, 3),

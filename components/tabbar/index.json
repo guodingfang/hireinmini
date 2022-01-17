@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "publish-nav": "/components/public/publish-nav"
+  }
 }

@@ -1,5 +1,6 @@
 import { judgeTabBarHeight, isLogin } from '../../utils/util'
-
+import { getPageHeaderImage } from '../../models/util'
+import config from '../../config'
 Component({
   /**
    * 组件的属性列表
@@ -15,6 +16,8 @@ Component({
     curRoute: '',
     tabHeight: 100,
     paddingBottom: 0,
+    showModel: false,
+    bgImagesUrl: '',
     tabbar: {
       selectedColor: "#24262B",
       backgroundColor: "#ffffff",
@@ -58,6 +61,7 @@ Component({
 
   lifetimes: {
     attached() {
+      this.getPageHeaderImage()
       const { tabHeight, paddingBottom } = judgeTabBarHeight();
       this.setData({
         tabHeight,
@@ -68,6 +72,7 @@ Component({
 
   pageLifetimes: {
     show() {
+      this.getPageHeaderImage()
       let pages = getCurrentPages();
       this.setData({
         curRoute: pages[pages.length - 1].route
@@ -84,6 +89,25 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    async getPageHeaderImage () {
+      const { data, errcode } = await getPageHeaderImage({
+        pagename: 'navigator'
+      })
+      if(errcode === 0 && data && data.picurl) {
+        this.setData({
+          bgImagesUrl: `${config.imgUrl}${data.picurl}`
+        })
+      } else {
+        this.setData({
+          bgImagesUrl: ''
+        })
+      }
+    },
+    onCloseModel () {
+      this.setData({
+        showModel: false
+      })
+    },
     redirectTo(e) {
       let { taburl } = e.currentTarget.dataset;
       if (taburl === this.data.curRoute) return
@@ -94,9 +118,12 @@ Component({
     onSkipCustom() {
       const login = isLogin()
       if(!login) return
-      wx.navigateTo({
-        url: '/pages/publish/publish',
+      this.setData({
+        showModel: true
       })
+      // wx.navigateTo({
+      //   url: '/pages/publish/publish',
+      // })
     }
   }
 })

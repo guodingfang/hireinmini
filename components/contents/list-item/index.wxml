@@ -18,7 +18,7 @@
     />
   </view>
   <view class="content" data-type="{{type}}" catch:tap="onSkipDetail">
-    <view class="content-info three-row-overstep">{{ item.content }}</view>
+    <view class="content-info two-row-overstep">{{ item.content }}</view>
     <view class="imgs" wx:if="{{ imgShow }}">
       <block wx:if="{{type === 'img'}}">
         <block wx:if="{{ imgShow === 1 }}">

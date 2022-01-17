@@ -64,7 +64,7 @@
 .content-info {
   line-height: 44rpx;
   color: #1A1A1A;
-  font-size: 32rpx;
+  font-size: 33rpx;
   word-break: break-all;
 }
 

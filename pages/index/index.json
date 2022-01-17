@@ -2,6 +2,7 @@
 	"usingComponents": {
 		"v-header": "/components/header",
 		"v-tab": "/components/contents/tab",
+		"m-fixed-header-image": "/components/public/m-fixed-header-image",
 		"v-carousel": "/components/carousel",
 		"m-header": "/components/public/m-header",
 		"v-focus": "/components/contents/focus-model",

@@ -1,7 +1,21 @@
 <view style="height: {{headerBlock}}rpx">
-	<v-header isCity="{{!!city}}" fixed="{{true}}" isWeather="{{true}}" placeholder="搜索全国资源/本地服务" currentPage="service"
-		isTopTitle="{{true}}" />
+	<v-header
+		m-header="{{ bgImagesUrl ? 'm-header' : ''}}"
+		isCity="{{!!city}}"
+		fixed="{{true}}"
+		isWeather="{{true}}"
+		placeholder="搜索全国资源/本地服务"
+		currentPage="service"
+		isTopTitle="{{true}}"
+	/>
 </view>
+
+<m-fixed-header-image
+	wx:if="{{bgImagesUrl}}"
+	height="{{headerBlock}}"
+	bgImagesUrl="{{bgImagesUrl}}"
+/>
+
 
 <scroll-view
 	class="content"
@@ -89,9 +103,8 @@
 			</block>
 		</view>
 	</block>
+	<view style="height: {{tabHeight}}rpx"></view>
 </scroll-view>
 
 
-<view style="height: {{tabHeight}}rpx">
-	<v-tabbar />
-</view>
+<v-tabbar />

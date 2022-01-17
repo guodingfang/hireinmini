@@ -2,6 +2,10 @@ Page {
   background-color: #F7F7F7;
 }
 
+.m-header {
+	background-color: transparent !important;
+}
+
 .advert {
   margin: 20rpx auto;
 }

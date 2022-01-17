@@ -1,0 +1,28 @@
+<scroll-view
+  class="message-center"
+  scroll-y
+  wx:if="{{messageList.length}}"
+>
+  <block wx:for="{{messageList}}" wx:key="id">
+    <view class="message-item" bind:tap="onSkipDetail" data-rid="{{item.userid}}">
+      <view class="portrait">
+        <image class="head-portrait" src="{{item.userpic}}"></image>
+        <text class="num" wx:if="{{item.unreadcounts > 0}}">{{item.unreadcounts}}</text>
+      </view>
+
+      <view class="message-info">
+        <view class="user">
+          <view class="name single-row-overstep">{{ item.nickname }}</view>
+          <view class="created">{{ item.chattime }}</view>
+        </view>
+        <view class="message-val" wx:if="{{item.filetype === 'chat'}}">
+          {{ item.content }}
+        </view>
+      </view>
+    </view>
+  </block>
+</scroll-view>
+
+<m-not-content wx:else>
+    <view class="not-content-text" slot="text">暂无数据...</view>
+  </m-not-content>

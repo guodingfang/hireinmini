@@ -72,13 +72,14 @@ Component({
       })
     },
     onInterflow() {
-      wx.showToast({
-        title: '即将开启，敬请期待',
-        icon: 'none'
-      })
-      // wx.navigateTo({
-      //   url: '/pages/cooperation-exchange/cooperation-exchange',
+      const { userinfo } = this.properties
+      // wx.showToast({
+      //   title: '即将开启，敬请期待',
+      //   icon: 'none'
       // })
+      wx.navigateTo({
+        url: `/pages/message-detail/message-detail?rid=${userinfo.userid}`,
+      })
     },
     onApproveCompany() {
       const { userinfo } = this.properties
