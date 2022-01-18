@@ -9,7 +9,6 @@
 
 .card {
   position: relative;
-  z-index: 1000;
   background: #FFFFFF;
   width: 690rpx;
   border-radius: 30rpx;
@@ -68,7 +67,7 @@
 
 .footer {
   position: fixed;
-  z-index: 99999;
+  z-index: 9;
   bottom: 0;
   left: 0;
   right: 0;

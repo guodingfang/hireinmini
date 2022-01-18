@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "v-header": "/components/public/m-header-image",
+    "van-calendar": "@vant/weapp/calendar/index",
     "m-upload": "/components/public/m-upload"
   },
   "navigationStyle": "custom"

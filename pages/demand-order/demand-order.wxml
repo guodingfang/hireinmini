@@ -49,6 +49,18 @@
       />
     </view>
     <view class="input-item">
+      <view class="label">日期:</view>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="选择起始 - 截止日期"
+        placeholder-class="pl-input"
+        disabled
+        value="{{date}}"
+        bind:tap="onSelectDate"
+      />
+    </view>
+    <view class="input-item">
       <view class="label">活动地点:</view>
       <input
         class="input-val"
@@ -111,6 +123,14 @@
     />
   </view>
 </view>
+
+<van-calendar
+  show="{{showCalendar}}"
+  type="range"
+  color="#0400E6"
+  bind:close="onCalendarClose"
+  bind:confirm="onCalendarConfirm"
+></van-calendar>
 
 <view style="height: 100rpx;">
   <view class="footer">

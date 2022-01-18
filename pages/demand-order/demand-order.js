@@ -1,5 +1,5 @@
 import { remoteImagesUrl } from '../../config'
-import { getUserInfo, judgeTabBarHeight } from '../../utils/util'
+import { getUserInfo, judgeTabBarHeight, formatDate } from '../../utils/util'
 import { addRequirement } from '../../models/demand'
 import { upload } from '../../models/util'
 import { verifyData } from '../../utils/tool'
@@ -14,7 +14,8 @@ Page({
   data: {
     bgImagesUrl: `${remoteImagesUrl}/user-bg.png`,
     headerBlock: 0,
-    uploadImages: []
+    uploadImages: [],
+    showCalendar: false
   },
 
   /**
@@ -37,6 +38,29 @@ Page({
     const { type } = e.currentTarget.dataset
     this.setData({
       [`${type}`]: e.detail.value
+    })
+  },
+
+  onSelectDate () {
+    this.setData({
+      showCalendar: true
+    })
+  },
+
+  onCalendarClose () {
+    this.setData({
+      showCalendar: false
+    })
+  },
+
+  onCalendarConfirm (e) {
+    const [start, end] = e.detail;
+    console.log('start, end', formatDate(start, 'yyyy-MM-dd'), formatDate(end, 'yyyy-MM-dd'))
+    this.setData({
+      showCalendar: false,
+      startdate: start,
+      enddate: end,
+      date: `${formatDate(start, 'yyyy-MM-dd')} - ${formatDate(end, 'yyyy-MM-dd')}`
     })
   },
 
