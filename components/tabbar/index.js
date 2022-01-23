@@ -1,5 +1,7 @@
 import { judgeTabBarHeight, isLogin } from '../../utils/util'
 import { getPageHeaderImage } from '../../models/util'
+import { getUnPayCount } from '../../models/demand'
+import { getUnReadMsgCount } from '../../models/user'
 import config from '../../config'
 Component({
   /**
@@ -24,12 +26,14 @@ Component({
       color: "#333",
       list: [
         {
+          key: 'index',
           pagePath: "pages/index/index",
           iconPath: "/images/tab/index.png",
           selectedIconPath: "/images/tab/index-select.png",
           text: "发现"
         },
         {
+          key: 'service',
           pagePath: "pages/service/service",
           iconPath: "/images/tab/service.png",
           selectedIconPath: "/images/tab/service-select.png",
@@ -44,12 +48,14 @@ Component({
           height: '70rpx',
         },
         {
+          key: 'helper',
           pagePath: "pages/helper/helper",
           iconPath: "/images/tab/helper.png",
           selectedIconPath: "/images/tab/helper-select.png",
           text: "助手"
         },
         {
+          key: 'user',
           pagePath: "pages/user/user",
           iconPath: "/images/tab/user.png",
           selectedIconPath: "/images/tab/user-select.png",
@@ -77,6 +83,7 @@ Component({
       this.setData({
         curRoute: pages[pages.length - 1].route
       });
+      this.getAmount()
     },
     // hide() {
     //   this.setData({
@@ -89,6 +96,23 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    async getAmount () {
+      const { msgcount } = await getUnReadMsgCount()
+      const { unpay } = await getUnPayCount()
+      if(msgcount > 0 || unpay > 0) {
+        const tabbar = {
+          ...this.data.tabbar,
+            list: this.data.tabbar.list.map(tab => tab.key === 'user' ? {
+            ...tab,
+            isTips: true,
+          } : tab)
+        }
+        console.log('tabbar', )
+        this.setData({
+          tabbar
+        })
+      }
+    },
     async getPageHeaderImage () {
       const { data, errcode } = await getPageHeaderImage({
         pagename: 'navigator'

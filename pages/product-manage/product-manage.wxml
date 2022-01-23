@@ -1,6 +1,16 @@
 <view wx:if="{{productList.length}}">
   <block wx:for="{{productList}}" wx:key="id">
-    <v-item info="{{item}}" />
+    <van-swipe-cell right-width="{{ 65 }}" left-width="{{ 65 }}">
+      <van-cell-group>
+        <v-item info="{{item}}" />
+      </van-cell-group>
+      <view
+        slot="right"
+        data-prodid="{{item.prodid}}"
+        class="delete"
+        bind:tap="onDelete"
+      >删除</view>
+    </van-swipe-cell>
   </block>
 </view>
 

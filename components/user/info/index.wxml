@@ -15,7 +15,7 @@
       </view>
       <view class="tool">
         <image class="icon-message" src="/images/icon/message.png" bind:tap="onMessage">
-          <text class="num" wx:if="{{msgCount}}">{{msgCount}}</text>
+          <text class="num" wx:if="{{msgCount > 0}}"></text>
         </image>
         <image class="icon-setup" src="/images/icon/setup.png" bind:tap="onSetup"></image>
       </view>

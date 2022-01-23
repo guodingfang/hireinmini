@@ -1,0 +1,45 @@
+<view class="list" wx:if="{{orderList.length}}">
+  <view
+    class="item"
+    wx:for="{{orderList}}"
+    wx:key="index"
+    data-id="{{item.id}}"
+    bind:tap="onSkipDetails"
+  >
+    <image class="label-tag" src="/images/public/{{ item.isService ? 'label.png' : 'label-2.png'}}">
+      <text class="label-tag-val">{{ item.isService ? '服务' : '需求' }}</text>
+    </image>
+    <view class="content">
+      <view class="row">
+        <view class="col label">需求方:</view>
+        <view class="col val">{{item.companyname}}</view>
+      </view>
+      <view class="row">
+        <view class="col label">城市:</view>
+        <view class="col val">{{item.city}}</view>
+      </view>
+      <view class="row">
+        <view class="col label">地址:</view>
+        <view class="col val">{{item.actaddress}}</view>
+      </view>
+      <view class="row row-column">
+        <view class="col label">需求描述:</view>
+        <text class="col val two-row-overstep col-remarks">{{item.remarks}}</text>
+      </view>
+    </view>
+    <view class="item-footer">
+      <view class="date">
+        <view>时间：</view>
+        <view>{{item.date}}</view>
+      </view>
+      <view wx:if="{{item.isService && item.paystatus !== 'pay' }}" class="btn">接单</view>
+      <view wx:if="{{item.isUser && !item.serviceuserid }}" class="btn">匹配中</view>
+      <view wx:if="{{item.isUser && item.serviceuserid }}" class="btn">服务中</view>
+      <view wx:if="{{ item.paystatus === 'pay' }}" class="btn">已完成</view>
+    </view>
+  </view>
+</view>
+
+<m-not-content wx:else>
+  <view class="not-content-text" slot="text">没有更多数据...</view>
+</m-not-content>

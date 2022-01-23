@@ -4,15 +4,15 @@
   wx:if="{{showModel}}"  
 >
   <view class="model">
-    <view class="title">开通服务账号</view>
+    <view class="title">{{ type === 'service' ? '免费开通服务账号' : '免费开通厂商服务账号'}}</view>
     <view class="content">
       <view class="item" bind:tap="onOpenCompany">
         <image class="service-img" src="/images/public/open-service.png"></image>
-        <text>开通服务商服务账号</text>
+        <text>{{ type === 'service' ? '开通服务商服务账号' : '开通厂商服务账号' }}</text>
       </view>
       <view class="item add-item" bind:tap="onAddCompany">
         <image class="service-img" src="/images/public/add-service.png"></image>
-        <text>加入服务商提供服务</text>
+        <text>{{ type === 'service' ? '加入服务商服务矩阵' : '加入厂商服务矩阵' }}</text>
       </view>
     </view>
   </view>

@@ -1,6 +1,6 @@
 <view class="about">
   <view class="about-item">
-    <text class="label">公司名称：</text>
+    <text class="label">服务名称：</text>
     <text class="val">{{ info.companyname }}</text>
   </view>
   <view class="about-item">

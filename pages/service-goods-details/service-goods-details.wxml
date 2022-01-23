@@ -28,4 +28,12 @@
   <view class="details-val">
     {{ detail.introduction }}
   </view>
+  <view class="goods-imgs">
+    <image
+      class="goods-img-item"
+      mode="widthFix"
+      wx:for="{{carouselList}}"
+      src="{{imgUrl}}{{item.picfile}}"
+    ></image>
+  </view>
 </view>

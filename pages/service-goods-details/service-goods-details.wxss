@@ -51,3 +51,7 @@ Page {
   justify-content: space-between;
   padding: 20rpx;
 }
+
+.goods-img-item {
+  width: 100%;
+}

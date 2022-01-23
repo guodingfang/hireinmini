@@ -105,7 +105,7 @@
         {
           "name": "内容账号",
           "pathName": "pages/content-account/content-account",
-          "query": "userid=7624",
+          "query": "userid=3592",
           "scene": null
         },
         {
@@ -327,6 +327,12 @@
         {
           "name": "需求单",
           "pathName": "pages/demand-order/demand-order",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "企业订单列表",
+          "pathName": "pages/company-order/company-order",
           "query": "",
           "scene": null
         }

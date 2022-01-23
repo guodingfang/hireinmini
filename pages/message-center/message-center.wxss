@@ -28,7 +28,7 @@
 }
 
 
-.num{
+.num {
   position: absolute;
   background-color:#FF4545;
   border-radius: 18rpx;

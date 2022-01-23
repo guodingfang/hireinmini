@@ -41,7 +41,8 @@
     "pages/wallet-password/wallet-password",
     "pages/vip/vip",
     "pages/message-center/message-center",
-    "pages/demand-order/demand-order"
+    "pages/demand-order/demand-order",
+    "pages/company-order/company-order"
   ],
   "permission": {
     "scope.userLocation": {

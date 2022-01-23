@@ -17,6 +17,11 @@ Component({
     userinfo: {
       type: Object,
       value: null,
+      observer(val) {
+        if(val && val.userid) {
+          this.getProfileStatus()
+        }
+      }
     },
     company: {
       type: Object,
@@ -37,6 +42,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    admin: false,
     openServiceImg: `${remoteImagesUrl}/advert/open-service-account.png`,
     enterServiceImg: `${remoteImagesUrl}/advert/enter-service-account.png`,
     skipCompanyUrl: '',
@@ -47,6 +53,33 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    getProfileStatus () {
+      this.setData({
+        admin: this.properties.userinfo.userid === '3592'
+      })
+      // wx.getChannelsLiveInfo({
+      //   finderUserName: 'sphmPpfHEhfWB4d',
+      //   success(res) {
+      //     console.log('res', res)
+      //   },
+      //   fail(err) {
+      //     console.log('err', err)
+      //   }
+      // })
+    },
+    async openProfile () {
+      if(!this.data.admin) return
+      wx.openChannelsUserProfile({
+        finderUserName: 'sphmPpfHEhfWB4d',
+        success(res) {
+          
+        },
+        fail(err) {
+          console.log('err', err)
+        }
+      })
+    },
+
     getCompany() {
       const { company } = this.properties
       this.setData({

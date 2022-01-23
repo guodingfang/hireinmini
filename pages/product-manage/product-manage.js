@@ -1,4 +1,4 @@
-import { getCompanyMainProductList } from '../../models/goods'
+import { getCompanyMainProductList, deleteMainProduct } from '../../models/goods'
 
 Page({
 
@@ -35,6 +35,27 @@ Page({
     wx.navigateTo({
       url: `/pages/add-product/add-product?companyid=${this.data.companyid}`,
     })
+  },
+
+  async onDelete(e) {
+    const { prodid } = e.currentTarget.dataset
+    const { errcode, errmsg } = await deleteMainProduct({
+      prodid
+    })
+    if(errcode !== 0) {
+      wx.showToast({
+        title: errmsg,
+        icon: 'none'
+      })
+    } else {
+      wx.showToast({
+        title: '删除成功',
+        icon: 'none'
+      })
+      this.setData({
+        productList: this.data.productList.filter(item => item.prodid !== prodid)
+      })
+    }
   },
 
   /**

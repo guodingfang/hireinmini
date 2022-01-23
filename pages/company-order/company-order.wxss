@@ -1,0 +1,107 @@
+@import '/assets/style/global.wxss';
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20rpx 30rpx;
+  font-weight: bold;
+}
+
+.item {
+  position: relative;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 20rpx 0 20rpx;
+  box-sizing: border-box;
+  width: 690rpx;
+  border-radius: 20rpx;
+  margin: 0 auto 20rpx auto;
+  overflow: hidden;
+}
+
+.label-tag {
+  position: absolute;
+  top: 0;
+  right: 10rpx;
+  height: 100rpx;
+  width: 120rpx;
+}
+
+.label-tag-val {
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  color: #ffffff;
+  font-size: 26rpx;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  height: 60rpx;
+}
+
+.row-column {
+  flex-direction: column;
+  height: auto;
+}
+
+.col {
+  color: #333333;
+  font-size: 26rpx;
+}
+
+.col-remarks {
+  max-height: 80rpx;
+}
+
+.label {
+  min-width: 120rpx;
+}
+
+.item-footer {
+  margin-top: 20rpx;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid #e5e5e5;
+}
+
+.date {
+  color: #999999;
+  font-size: 24rpx;
+  display: flex;
+}
+
+.btn {
+  width: 160rpx;
+  height: 60rpx;
+  background-color: rgb(1, 42, 227);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 26rpx;
+  border-radius: 46rpx;
+}
+
+.not-content-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #aaaaaa;
+	margin-top: 24rpx;
+}

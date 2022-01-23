@@ -4,7 +4,7 @@
     <view class="layout">
       <image class="layout-bg" src="./images/layout.png"></image>
       <image class="layout-title" src="./images/title.png"></image>
-      <view class="date">领取时间：2020 12.21 0:00 ~ 2022 2.1 24:00</view>
+      <!-- <view class="date">领取时间：2020 12.21 0:00 ~ 2022 2.1 24:00</view> -->
       <view class="footer">
         <view class="btn" bind:tap="onDraw">点击领取</view>
       </view>

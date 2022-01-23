@@ -22,6 +22,7 @@
     <view class="info">
       <view class="content">
         <text
+          user-select
           class="content-text"
           wx:if="{{item.filetype === 'chat'}}"
         >{{ item.content }}</text>

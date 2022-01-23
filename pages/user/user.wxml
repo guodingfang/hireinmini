@@ -49,6 +49,7 @@
 		width="690"
 		height="168"
 		bind:skip="onSelectCompany"
+		data-type="service"
 		url="{{skipCompanyUrl}}"
 	/>
 </view>
@@ -60,9 +61,9 @@
 <!-- <view class="demo-model" bind:tap="onPassword">
 	进入电子钱包密码设置
 </view> -->
-
-<!-- <view class="demo-model" bind:tap="openCustomer">
-	打开微信客服
+<!-- 
+<view class="demo-model" bind:tap="openProfile">
+	打开视频号
 </view>  -->
 
 <!-- 
@@ -86,25 +87,29 @@
  -->
 
 <view class="model">
-	<v-company company="{{company}}" bind:open="onSelectCompany" />
+	<v-company company="{{company}}" notPayAmount="{{notPayAmount}}" bind:open="onSelectCompany" />
 	<v-knowledge />
 	<v-group />
 	<v-advert />
 </view>
 
 <v-company-select
+	type="{{selectType}}"
 	showModel="{{showModel}}"
 	bind:close="onCloseModel"	
 	bind:open="onOpenCompany"
 	bind:add="onAddCompany"
 />
 
-<view class="advert">
+<view class="advert" wx:if="{{!company}}">
 	<v-skip
 		src="{{advertImg}}"
 		width="690"
 		height="200"
 		radius="20"
+		bind:skip="onSelectCompany"
+		data-type="manufacturer"
+		url="{{skipCompanyUrl}}"
 	/>
 </view>
 

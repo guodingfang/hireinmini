@@ -2,7 +2,10 @@
 <view style="height: 92rpx;"></view>
 <view class="card">
   <view class="header">
-    <image mode="aspectFill" class="portrait" src="{{userinfo.userpic}}"></image>
+    <view class="portrait-container {{admin ? 'portrait-container-admin' : ''}}" bind:tap="openProfile">
+      <image mode="aspectFill" class="portrait" src="{{userinfo.userpic}}"></image>
+      <!-- <view class="user-label" wx:if="{{admin}}">直播中</view> -->
+    </view>
     <block wx:if="{{isCurrentUser}}">
       <view class="btn btn-1" bind:tap="onSetUp">设置</view>
       <view class="btn btn-2" bind:tap="onApproveCompany">{{ userinfo.authenticationstatus === '0' ? '认证' : '已认证'}}</view> 

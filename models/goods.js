@@ -41,3 +41,13 @@ export const addMainProduct = (option = {}) => {
     ...option
   })
 }
+
+/**
+ * 删除主营产品
+ * @param {*} option 
+ */
+export const deleteMainProduct = (option = {}) => {
+  return request.post('/Company/deleteMainProduct', {
+    ...option
+  })
+}

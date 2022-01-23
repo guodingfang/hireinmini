@@ -74,6 +74,7 @@
 }
 
 .tab-icon {
+  position: relative;
   width: 50rpx;
   height: 50rpx;
   /* border-radius: 50%; */
@@ -110,4 +111,22 @@
   position: absolute;
   height: 28rpx;
   bottom: 8rpx;
+}
+
+.tab-tips {
+  position: absolute;
+  background-color: #FF4545;
+  border-radius: 18rpx;
+  right: calc(50% - 25rpx);
+  top: 8rpx;
+  width: 18rpx;
+  height: 18rpx;
+  display: block;
+  font-size: 0;
+  box-sizing: border-box;
+}
+
+.tab-item-select .tab-tips {
+  top: -18rpx;
+  right: calc(50% - 28rpx);
 }

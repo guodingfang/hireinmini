@@ -10,6 +10,10 @@ Component({
     company: {
       type: Object,
       value: null,
+    },
+    notPayAmount: {
+      type: String,
+      value: ''
     }
   },
 
@@ -26,18 +30,30 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    async onSkip () {
-      console.log('company', this.properties.company)
+    async onSkip (e) {
       if(!this.properties.company) {
         const { confirm = false } = await wx.showModal({
           title: '提示',
-          content: '开通服务账号接收管理订单',
+          content: '免费开通服务账号接收管理订单',
           confirmText: '去开通',
         })
         if(confirm) {
           this.triggerEvent('open', {}, {})
         }
       } else {
+        const { type } = e.currentTarget.dataset
+        if (type === 'order') {
+          wx.navigateTo({
+            url: '/pages/company-order/company-order',
+          })
+          return
+        } else if (type === 'complete') {
+          wx.navigateTo({
+            url: '/pages/company-order/company-order?type=complete',
+          })
+          return
+        }
+        
         wx.showToast({
           title: '订单接收、收款、管理功能即将上线',
           icon: 'none'

@@ -9,8 +9,9 @@
       <image
         class="tab-icon tab-icon-default"
         src="{{ curRoute === item.pagePath ? item.selectedIconPath : item.iconPath }}"
-        mode="aspectFit">
-      </image>
+        mode="aspectFit"
+      ></image>
+      <view wx:if="{{item.isTips}}" class="tab-tips"></view>
       <view class="item-text">{{item.text}}</view>
     </view>
 

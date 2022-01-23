@@ -1,7 +1,7 @@
 <view style="height: {{headerBlock}}rpx">
   <v-header
     fixed="{{true}}"
-    title="需求单"
+    title="发布需求"
     bgSrc="{{bgImagesUrl}}"
     m-header-image="m-header-image"
     m-mask="m-mask"
@@ -10,7 +10,6 @@
 </view>
 
 <view class="contianer">
-
   <view class="card">
     <view class="input-item">
       <view class="label">需求方:</view>
@@ -22,6 +21,7 @@
         data-type="companyname"
         value="{{companyname}}"
         bind:input="onChanageInput"
+        disabled="{{isEdit}}"
       />
     </view>
     <view class="input-item">
@@ -34,18 +34,21 @@
         data-type="contact"
         value="{{contact}}"
         bind:input="onChanageInput"
+        disabled="{{isEdit}}"
       />
     </view>
     <view class="input-item">
       <view class="label">联系电话:</view>
       <input
         class="input-val"
-        type="text"
+        type="number"
+        maxlength="11"
         placeholder="必填，输入联系电话"
         placeholder-class="pl-input"
         data-type="phone"
         value="{{phone}}"
         bind:input="onChanageInput"
+        disabled="{{isEdit}}"
       />
     </view>
     <view class="input-item">
@@ -61,6 +64,19 @@
       />
     </view>
     <view class="input-item">
+      <view class="label">活动城市:</view>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="必填，输入活动城市"
+        placeholder-class="pl-input"
+        data-type="city"
+        value="{{city}}"
+        bind:input="onChanageInput"
+        disabled="{{isEdit}}"
+      />
+    </view>
+    <view class="input-item">
       <view class="label">活动地点:</view>
       <input
         class="input-val"
@@ -70,6 +86,7 @@
         data-type="actaddress"
         value="{{actaddress}}"
         bind:input="onChanageInput"
+        disabled="{{isEdit}}"
       />
     </view>
   </view>
@@ -79,12 +96,13 @@
       <view class="label">活动预算:</view>
       <input
         class="input-val"
-        type="text"
+        type="number"
         placeholder="必填，输入活动预算"
         placeholder-class="pl-input"
         data-type="budget"
         value="{{budget}}"
         bind:input="onChanageInput"
+        disabled="{{isEdit}}"
       />
     </view>
     <view class="input-item">
@@ -97,6 +115,7 @@
         data-type="acttype"
         value="{{acttype}}"
         bind:input="onChanageInput"
+        disabled="{{isEdit}}"
       />
     </view>
     <view class="input-item textarea-item">
@@ -109,6 +128,7 @@
         data-type="remarks"
         value="{{remarks}}"
         bind:input="onChanageInput"
+        disabled="{{isEdit}}"
       ></textarea>
     </view>
   </view>
@@ -116,24 +136,52 @@
   <view class="card" style="padding-bottom: 0;">
     <view class="label">上传附件:</view>
     <m-upload
+      isUpload="{{!isEdit && isUser}}"
+      images="{{images}}"
       uploadType="img"
       maxCount="9"
       bind:isUpload="isUpload"
       bind:complete="onUploadComplete"
+      bind:delete="onDeleteUpload"
     />
+  </view>
+
+  <view class="card" wx:if="{{ type !== 'apply' && contractfile }}">
+    <view class="input-item">
+      <view class="label">合同文件:</view>
+      <input
+        class="input-val"
+        type="text"
+        placeholder="附件"
+        placeholder-class="pl-input"
+        disabled
+        value="点击查看附件"
+        bind:tap="onDownloadFile"
+      />
+    </view>
   </view>
 </view>
 
 <van-calendar
+  wx:if="{{!isEdit}}"
   show="{{showCalendar}}"
   type="range"
   color="#0400E6"
+  default-date="{{showDate}}"
   bind:close="onCalendarClose"
   bind:confirm="onCalendarConfirm"
 ></van-calendar>
 
-<view style="height: 100rpx;">
+<view style="height: 100rpx;" wx:if="{{paystatus !== 'pay'}}">
   <view class="footer">
-    <view class="btn" bind:tap="onSubmit">提交需求</view>
+    <view class="btn" bind:tap="onSubmit" wx:if="{{type === 'apply'}}">提交需求</view>
+    <block wx:else>
+      <view class="btn" bind:tap="onEdit" wx:if="{{isUser}}">
+        {{ orderStatus === 'edit' ? '确认修改' : '编辑'}}
+      </view>
+      <view class="btn" bind:tap="onAcceptOrder" wx:if="{{isService}}">
+        支付佣金/接单
+      </view>
+    </block>
   </view> 
 </view>

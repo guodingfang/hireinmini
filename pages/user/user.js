@@ -7,6 +7,7 @@ import {
 	getMyOrderForAuditNum,
 	getUnReadMsgCount
 } from '../../models/user'
+import { getUnPayCount } from '../../models/demand'
 
 import { isLogin, getUserInfo, judgeTabBarHeight } from '../../utils/util'
 import { remoteImagesUrl } from '../../config'
@@ -38,6 +39,7 @@ Page({
 		skipCompanyUrl: '',
 		showModel: false,
 		msgCount: 0,
+		notPayAmount: 0,
 	},
 
 	/**
@@ -105,8 +107,15 @@ Page({
         }
       })
 		}
-
+		await this.getUnPayCount()
 		await this.getUnReadMsgCount()
+	},
+
+	async getUnPayCount() {
+		const { unpay = 0 } = await getUnPayCount({})
+		this.setData({
+			notPayAmount: unpay
+		})
 	},
 
 	async getUnReadMsgCount () {
@@ -201,11 +210,13 @@ Page({
 		})
 	},
 
-	onSelectCompany() {
+	onSelectCompany(e) {
 		const { skipCompanyUrl } = this.data
 		if(skipCompanyUrl) return
+		const { type } = e.currentTarget.dataset
 		this.setData({
-			showModel: true
+			showModel: true,
+			selectType: type
 		})
 	},
 
@@ -233,12 +244,11 @@ Page({
 		})
 	},
 
-	async openCustomer () {
-		wx.openCustomerServiceChat({
-			extInfo: {url: 'https://work.weixin.qq.com/kfid/kfc1e69e0f1c8a60125'},
-			corpId: 'ww9e69cac7ccaa1f39',
+	async openProfile () {
+		wx.openChannelsUserProfile({
+			finderUserName: 'sphmPpfHEhfWB4d',
 			success(res) {
-
+				
 			},
 			fail(err) {
 				console.log('err', err)

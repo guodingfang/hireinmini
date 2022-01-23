@@ -12,6 +12,10 @@ Component({
           animateShow: true,
         });
       }
+    },
+    type: {
+      type: String,
+      value: 'service'
     }
   },
 

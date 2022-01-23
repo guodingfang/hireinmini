@@ -8,7 +8,7 @@
   >
     <view class="upload-item" data-idx="{{idx}}" bind:tap="onShowImage">
       <image class="upload-image" mode="aspectFill" src="{{img}}"></image>
-      <view class="delete-btn" data-idx="{{idx}}" catch:tap="onCloseImage">
+      <view class="delete-btn" data-idx="{{idx}}" catch:tap="onCloseImage" wx:if="{{isUpload}}">
         <image class="icon-delete" src="./images/icon-delete.png"></image>
       </view>
     </view>
@@ -16,7 +16,7 @@
   <view
     bind:tap="onChooseImage"
     class="add-upload upload-item upload-img"
-    wx:if="{{showImages.length < maxCount }}"
+    wx:if="{{showImages.length < maxCount && isUpload }}"
   >
     <image class="icon-add" src="./images/icon-add-img.png"></image>
     <text class="upload-text">上传图片</text>

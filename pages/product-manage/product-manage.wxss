@@ -1,1 +1,9 @@
-/* pages/product-manage/product-manage.wxss */
+.delete {
+  width: 65px;
+  height: 100%;
+  background-color: #ff0000;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

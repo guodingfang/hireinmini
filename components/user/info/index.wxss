@@ -68,24 +68,20 @@
   padding: 14rpx;
 }
 
+
 .num {
   position: absolute;
-  background-color: rgba(255, 255, 255, .95);
-  border-radius: 12rpx;
-  right: 8rpx;
+  background-color:#FF4545;
+  border-radius: 18rpx;
+  right: 6rpx;
   top: 8rpx;
-  min-width: 24rpx;
-  padding: 0 6rpx;
-  height: 24rpx;
+  width: 18rpx;
+  height: 18rpx;
   display: block;
-  text-align: center;
-  line-height: 24rpx;
-  color: #FF4545;
-  font-family: "黑体";
-  border: 1rpx solid #FF4545;
-  font-size: 20rpx;
+  font-size: 0;
   box-sizing: border-box;
 }
+
 
 .info-data {
   display: flex;

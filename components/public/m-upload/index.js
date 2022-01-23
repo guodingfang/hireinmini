@@ -5,6 +5,13 @@ Component({
    * 组件的属性列表
    */
   properties: {
+    isUpload: {
+      type: Boolean,
+      value: true,
+      observer(val) {
+        console.log('val', val)
+      }
+    },
     uploadType: {
       type: String,
       value: 'img'
@@ -42,6 +49,7 @@ Component({
   methods: {
     // 图片上传
     async onChooseImage(event) {
+      if(!this.properties.isUpload) return 
       const { maxCount } = this.properties;
       const { showImages, uploadImages } = this.data
 
@@ -62,6 +70,7 @@ Component({
     },
 
     async onChooseVideo() {
+      if(!this.properties.isUpload) return 
       const res = await promisic(wx.chooseVideo)({
         sourceType: ['album', 'camera'],
       });
@@ -93,6 +102,7 @@ Component({
 
     // 关闭删除图片
     onCloseImage(event) {
+      if(!this.properties.isUpload) return 
       let { showImages, uploadImages } = this.data;
       const { idx } = event.currentTarget.dataset;
       const deleteItem =  showImages.splice(idx, 1)
