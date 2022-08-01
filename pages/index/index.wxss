@@ -6,6 +6,26 @@ page {
 	background-color: transparent !important;
 }
 
+.live-btn {
+	position: fixed;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	width: 80rpx;
+	height: 80rpx;
+	right: 200rpx;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.icon-live {
+	width: 56rpx;
+	height: 56rpx;
+}
+
+
 .content {
   height: calc(100vh - var(--topHeader--));
 }

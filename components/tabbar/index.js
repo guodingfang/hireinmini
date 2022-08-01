@@ -99,19 +99,17 @@ Component({
     async getAmount () {
       const { msgcount } = await getUnReadMsgCount()
       const { unpay } = await getUnPayCount()
-      if(msgcount > 0 || unpay > 0) {
-        const tabbar = {
-          ...this.data.tabbar,
-            list: this.data.tabbar.list.map(tab => tab.key === 'user' ? {
-            ...tab,
-            isTips: true,
-          } : tab)
-        }
-        console.log('tabbar', )
-        this.setData({
-          tabbar
-        })
+      
+      const tabbar = {
+        ...this.data.tabbar,
+          list: this.data.tabbar.list.map(tab => tab.key === 'user' ? {
+          ...tab,
+          isTips: (msgcount > 0 || unpay > 0),
+        } : tab)
       }
+      this.setData({
+        tabbar
+      })
     },
     async getPageHeaderImage () {
       const { data, errcode } = await getPageHeaderImage({

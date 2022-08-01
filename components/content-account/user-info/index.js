@@ -1,6 +1,7 @@
 
 import { addAttention } from '../../../models/user'
 import { remoteImagesUrl } from '../../../config'
+import { promisic } from '../../../utils/util'
 Component({
   /**
    * 组件的属性列表
@@ -19,6 +20,9 @@ Component({
       value: null,
       observer(val) {
         if(val && val.userid) {
+          this.setData({
+            admin: this.properties.userinfo.userid === '3592'
+          })
           this.getProfileStatus()
         }
       }
@@ -43,6 +47,7 @@ Component({
    */
   data: {
     admin: false,
+    isLive: false,
     openServiceImg: `${remoteImagesUrl}/advert/open-service-account.png`,
     enterServiceImg: `${remoteImagesUrl}/advert/enter-service-account.png`,
     skipCompanyUrl: '',
@@ -53,31 +58,28 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    getProfileStatus () {
-      this.setData({
-        admin: this.properties.userinfo.userid === '3592'
-      })
-      // wx.getChannelsLiveInfo({
-      //   finderUserName: 'sphmPpfHEhfWB4d',
-      //   success(res) {
-      //     console.log('res', res)
-      //   },
-      //   fail(err) {
-      //     console.log('err', err)
-      //   }
-      // })
+    async getProfileStatus () {
+      if(!this.data.admin) return
+      try {
+        const { status } = await promisic(wx.getChannelsLiveInfo)({
+          finderUserName: 'sphmPpfHEhfWB4d',
+        })
+        this.setData({
+          isLive: status === 2
+        })
+      } catch (err) {
+        console.log('err', err)
+      }
     },
     async openProfile () {
       if(!this.data.admin) return
-      wx.openChannelsUserProfile({
-        finderUserName: 'sphmPpfHEhfWB4d',
-        success(res) {
-          
-        },
-        fail(err) {
-          console.log('err', err)
-        }
-      })
+      try {
+        const res = await promisic(wx.openChannelsUserProfile)({
+          finderUserName: 'sphmPpfHEhfWB4d',
+        })
+      } catch (err) {
+        console.log('err', err)
+      }
     },
 
     getCompany() {

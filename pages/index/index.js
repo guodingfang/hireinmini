@@ -40,6 +40,7 @@ Page({
 			{ id: '4', name: '本地', type: 'native' }
 		],
 		triggered: false,
+		isLive: false
 	},
 
 	async onLoad(options = {}) {
@@ -88,6 +89,32 @@ Page({
 			showActivityModel: !status
 		})
 	},
+
+	async getProfileStatus () {
+		try {
+			const { status } = await promisic(wx.getChannelsLiveInfo)({
+				finderUserName: 'sphmPpfHEhfWB4d',
+			})
+			this.setData({
+				isLive: status === 2
+			})
+		} catch (err) {
+			this.setData({
+				isLive: false
+			})
+			console.log('err', err)
+		}
+	},
+	async openProfile () {
+		try {
+			const res = await promisic(wx.openChannelsUserProfile)({
+				finderUserName: 'sphmPpfHEhfWB4d',
+			})
+		} catch (err) {
+			console.log('err', err)
+		}
+	},
+
 
 	onDraw () {
 		this.setData({
@@ -199,6 +226,7 @@ Page({
 		const { statusBarHeight, headerTopHeader, headerSearchHeader } = app.globalData;
 		const { tabHeight } = judgeTabBarHeight();
 		this.setData({
+			statusBarHeight,
 			headerBlock: statusBarHeight + headerTopHeader + headerSearchHeader,
 			tabHeight,
 		})
@@ -372,7 +400,7 @@ Page({
 		this.setData({
 			lastUserId: userid
 		})
-
+		this.getProfileStatus()
 		if (!initEnter) return
 		await this.getInitInfo(initEnter)
 		this.setData({

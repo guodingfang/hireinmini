@@ -10,7 +10,7 @@
     ></image>
     <view wx:else>
       <slot name="top-header-content"></slot>
-    </view>
+    </view> 
   </view>
   
   <view class="header-content" wx:if="{{isHeaderContent}}">

@@ -9,6 +9,9 @@
 		isTopTitle="{{true}}"
 		isWeather="{{true}}"
 	/>
+	<view style="top: {{statusBarHeight + 2}}rpx" class="live-btn" bind:tap="openProfile" wx:if="{{isLive}}">
+		<image class="icon-live" src="/images/icon/live.png"></image>
+  </view>
 	<v-tab
 		fixed="{{true}}"
 		height="{{60}}"

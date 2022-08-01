@@ -213,7 +213,7 @@ Page({
 	onSelectCompany(e) {
 		const { skipCompanyUrl } = this.data
 		if(skipCompanyUrl) return
-		const { type } = e.currentTarget.dataset
+		const { type = 'service' } = e.currentTarget.dataset
 		this.setData({
 			showModel: true,
 			selectType: type
