@@ -56,17 +56,23 @@ Page({
     const { verify } = verifyData(this.data, [
       { type: 'content', label: '回答的内容' },
     ])
-
+    console.log('verify', verify)
     if (!verify) return
     const { userid = '', wxappid = '' } = getUserInfo(['userid'])
-    const { errcode = -1, qaid = '' } = await publishArtic({
+    const { errcode = -1, errmsg = '', qaid = '' } = await publishArtic({
       topid: this.data.id,
       qatype: 'a',
       userid,
       content,
       openid: wxappid
     })
-    if (errcode !== 0) return
+    if (errcode !== 0) {
+      wx.showToast({
+        title: errmsg,
+        icon: 'none'
+      })
+      return
+    }
     const { selectUploadType } = this.data
     if (selectUploadType === 'img') {
       const { uploadImages = [] } = this.data

@@ -84,6 +84,7 @@ Component({
 
     getCompany() {
       const { company } = this.properties
+
       this.setData({
         skipCompanyUrl: company 
           ? `/pages/service-account/service-account?companyid=${company.companyid}`
@@ -107,14 +108,19 @@ Component({
       })
     },
     onInterflow() {
-      const { userinfo } = this.properties
-      // wx.showToast({
-      //   title: '即将开启，敬请期待',
-      //   icon: 'none'
+      // const { userinfo } = this.properties
+      // wx.navigateTo({
+      //   url: `/pages/message-detail/message-detail?rid=${userinfo.userid}`,
       // })
-      wx.navigateTo({
-        url: `/pages/message-detail/message-detail?rid=${userinfo.userid}`,
-      })
+      const { company } = this.properties
+      if (company) {
+        wx.navigateTo({ url: `/pages/service-account/service-account?companyid=${company.companyid}` })
+      } else {
+        wx.showToast({
+          title: '该账号未提供联系方式',
+          icon: 'none'
+        })
+      }
     },
     onApproveCompany() {
       const { userinfo } = this.properties

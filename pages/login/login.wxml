@@ -22,11 +22,17 @@
       <image class="user-logo" src="{{userinfo.avatarurl}}"></image>
       <view class="user-name">{{userinfo.nickname}}</view>
     </view>
-    <button
+    <!-- <button
       class="button"
       type="primary"
       open-type="getPhoneNumber"
       bindgetphonenumber="getUserPhone"
+    >微信用户快速登录</button> -->
+
+    <button
+      class="button"
+      type="primary"
+      bindtap="getUserPhone"
     >微信用户快速登录</button>
 
     <view class="phone-register" wx:if="{{false}}">

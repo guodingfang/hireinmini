@@ -67,37 +67,67 @@ Page({
     }
   },
 
-  async getUserPhone(e) {
-    const { errMsg, encryptedData, iv } = e.detail
-    if (errMsg == 'getPhoneNumber:ok'){
-      const { userinfo } = this.data
-      const { code } = await promisic(wx.login)();
-      const data = await getUserPhone({
-        encryptedData,
-        iv,
-        code,
-        reguserid: userinfo.reguserid
-      })
-      // 注册成功
-      if(data.code === 0) {
+  // 修改获取手机号
+  // async getUserPhone(e) {
+  //   console.log('e', e)
+  //   const { errMsg, encryptedData, iv } = e.detail
+  //   if (errMsg == 'getPhoneNumber:ok'){
+  //     const { userinfo } = this.data
+  //     const { code } = await promisic(wx.login)();
+  //     const data = await getUserPhone({
+  //       encryptedData,
+  //       iv,
+  //       code,
+  //       reguserid: userinfo.reguserid
+  //     })
+  //     // 注册成功
+  //     if(data.code === 0) {
 
-        const { code = -1 } = await login()
-        if(code !== 0) return
+  //       const { code = -1 } = await login()
+  //       if(code !== 0) return
         
-        const pages = getCurrentPages();
-        const prevPage = pages[pages.length - 2]; //上一个页面
+  //       const pages = getCurrentPages();
+  //       const prevPage = pages[pages.length - 2]; //上一个页面
     
-        prevPage.onAgainGetUserInfo && prevPage.onAgainGetUserInfo({})
+  //       prevPage.onAgainGetUserInfo && prevPage.onAgainGetUserInfo({})
 
-        wx.navigateBack({
-          delta: 1,
-        })
-      } else {
-        wx.showToast({
-          title: data.message,
-          icon: 'none'
-        })
-      }
+  //       wx.navigateBack({
+  //         delta: 1,
+  //       })
+  //     } else {
+  //       wx.showToast({
+  //         title: data.message,
+  //         icon: 'none'
+  //       })
+  //     }
+  //   }
+  // },
+
+  async getUserPhone() {
+    const { userinfo } = this.data
+    console.log('userinfo', userinfo)
+    const data = await getUserPhone({
+      reguserid: userinfo.reguserid
+    })
+    // 注册成功
+    if(data.code === 0) {
+
+      const { code = -1 } = await login()
+      if(code !== 0) return
+      
+      const pages = getCurrentPages();
+      const prevPage = pages[pages.length - 2]; //上一个页面
+  
+      prevPage.onAgainGetUserInfo && prevPage.onAgainGetUserInfo({})
+
+      wx.navigateBack({
+        delta: 1,
+      })
+    } else {
+      wx.showToast({
+        title: data.message,
+        icon: 'none'
+      })
     }
   },
 
